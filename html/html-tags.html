@@ -1,0 +1,324 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML Basic Tags | Code With Me</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        header {
+            background: #111827;
+            color: white;
+            padding: 20px 8%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+            padding: 45px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #dbeafe;
+            font-size: 18px;
+        }
+
+        /* LESSON */
+        .lesson {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+        }
+
+        .lesson h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .lesson p {
+            margin-bottom: 15px;
+        }
+
+        /* CODE BOX */
+        pre {
+            background: #020617;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* BUTTONS */
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .btn {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+
+            .hero {
+                padding: 30px 20px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .lesson {
+                padding: 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- TITLE -->
+        <div class="hero">
+
+            <h1>2. HTML Basic Tags</h1>
+
+            <p>
+                Learn headings, paragraphs, line breaks,
+                horizontal lines and other basic HTML tags.
+            </p>
+
+        </div>
+
+
+        <!-- HEADINGS -->
+        <section class="lesson">
+
+            <h2>1. HTML Headings</h2>
+
+            <p>
+                HTML provides six heading tags from
+                &lt;h1&gt; to &lt;h6&gt;.
+            </p>
+
+            <pre><code>&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Sub Heading&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
+
+        </section>
+
+
+        <!-- PARAGRAPH -->
+        <section class="lesson">
+
+            <h2>2. HTML Paragraph</h2>
+
+            <p>
+                The &lt;p&gt; tag is used to create a paragraph.
+            </p>
+
+            <pre><code>&lt;p&gt;
+This is my first HTML paragraph.
+&lt;/p&gt;</code></pre>
+
+        </section>
+
+
+        <!-- LINE BREAK -->
+        <section class="lesson">
+
+            <h2>3. HTML Line Break</h2>
+
+            <p>
+                The &lt;br&gt; tag is used to create a
+                line break.
+            </p>
+
+            <pre><code>&lt;p&gt;
+Hello&lt;br&gt;
+Welcome to Code With Me
+&lt;/p&gt;</code></pre>
+
+        </section>
+
+
+        <!-- HORIZONTAL LINE -->
+        <section class="lesson">
+
+            <h2>4. HTML Horizontal Line</h2>
+
+            <p>
+                The &lt;hr&gt; tag creates a horizontal line
+                on the webpage.
+            </p>
+
+            <pre><code>&lt;h2&gt;About HTML&lt;/h2&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;
+HTML is used to create web pages.
+&lt;/p&gt;</code></pre>
+
+        </section>
+
+
+        <!-- DIV -->
+        <section class="lesson">
+
+            <h2>5. HTML Div</h2>
+
+            <p>
+                The &lt;div&gt; tag is used to group HTML
+                elements together.
+            </p>
+
+            <pre><code>&lt;div&gt;
+
+    &lt;h2&gt;My Website&lt;/h2&gt;
+
+    &lt;p&gt;
+        Welcome to my website.
+    &lt;/p&gt;
+
+&lt;/div&gt;</code></pre>
+
+        </section>
+
+
+        <!-- SPAN -->
+        <section class="lesson">
+
+            <h2>6. HTML Span</h2>
+
+            <p>
+                The &lt;span&gt; tag is used to style or
+                group a small part of text.
+            </p>
+
+            <pre><code>&lt;p&gt;
+My name is
+&lt;span&gt;Krish&lt;/span&gt;.
+&lt;/p&gt;</code></pre>
+
+        </section>
+
+
+        <!-- NAVIGATION BUTTONS -->
+        <div class="buttons">
+
+            <a href="html-introduction.html" class="btn">
+                ← Previous Topic
+            </a>
+
+            <a href="html-formatting.html" class="btn">
+                Next Topic →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
+```
