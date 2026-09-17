@@ -3,9 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>HTML Basic Tags | Code With Me</title>
+
+    <meta name="description"
+          content="Learn basic HTML tags including headings, paragraphs, line breaks and horizontal lines with simple examples.">
 
     <style>
         * {
@@ -18,14 +22,16 @@
         body {
             background: #f5f7fb;
             color: #222;
-            line-height: 1.7;
         }
 
-        /* HEADER */
-        header {
+        /* NAVBAR */
+        nav {
             background: #111827;
             color: white;
-            padding: 20px 8%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
@@ -37,113 +43,169 @@
             color: #38bdf8;
         }
 
-        /* MAIN CONTAINER */
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* MAIN */
         .container {
             max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        /* HERO */
-        .hero {
-            background: linear-gradient(135deg, #0f172a, #1e3a8a);
-            color: white;
-            padding: 45px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-        }
-
-        .hero h1 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            color: #dbeafe;
-            font-size: 18px;
-        }
-
-        /* LESSON */
         .lesson {
             background: white;
-            padding: 30px;
-            margin-bottom: 25px;
+            padding: 35px;
             border-radius: 12px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
 
-        .lesson h2 {
+        h1 {
             color: #1e3a8a;
             margin-bottom: 15px;
         }
 
-        .lesson p {
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #111827;
+        }
+
+        p {
+            line-height: 1.7;
             margin-bottom: 15px;
         }
 
-        /* CODE BOX */
-        pre {
-            background: #020617;
-            color: #e5e7eb;
-            padding: 20px;
-            border-radius: 10px;
-            overflow-x: auto;
+        /* CODE EDITOR */
+        .editor {
+            margin-top: 20px;
         }
 
-        code {
+        textarea {
+            width: 100%;
+            min-height: 220px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
             font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            background: #020617;
+            color: #22c55e;
         }
 
-        /* BUTTONS */
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .btn {
+        .run-btn {
+            margin-top: 12px;
             background: #2563eb;
             color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* OUTPUT */
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 250px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* TAG TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        /* PREVIOUS NEXT */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 35px;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            padding: 13px 22px;
+            background: #111827;
+            color: white;
             text-decoration: none;
-            padding: 12px 20px;
             border-radius: 7px;
             font-weight: bold;
         }
 
-        .btn:hover {
-            background: #1d4ed8;
+        .nav-btn:hover {
+            background: #2563eb;
         }
 
         /* FOOTER */
         footer {
             background: #111827;
-            color: #cbd5e1;
+            color: white;
             text-align: center;
             padding: 25px;
-            margin-top: 40px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            color: #cbd5e1;
         }
 
         /* MOBILE */
         @media (max-width: 600px) {
 
-            .hero {
-                padding: 30px 20px;
+            nav {
+                flex-direction: column;
+                gap: 15px;
             }
 
-            .hero h1 {
-                font-size: 30px;
+            nav a {
+                margin-left: 8px;
             }
 
             .lesson {
-                padding: 20px;
+                padding: 22px;
             }
 
-            .buttons {
+            .navigation {
                 flex-direction: column;
             }
 
-            .btn {
+            .nav-btn {
                 text-align: center;
             }
         }
@@ -152,162 +214,178 @@
 
 <body>
 
-    <!-- HEADER -->
-    <header>
+    <!-- NAVBAR -->
+    <nav>
 
         <div class="logo">
             Code<span>WithMe</span>
         </div>
 
-    </header>
+        <div>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#courses">Courses</a>
+        </div>
+
+    </nav>
 
 
     <!-- MAIN CONTENT -->
-    <main class="container">
+    <div class="container">
 
-        <!-- TITLE -->
-        <div class="hero">
+        <div class="lesson">
 
-            <h1>2. HTML Basic Tags</h1>
+            <h1>HTML Basic Tags</h1>
 
             <p>
-                Learn headings, paragraphs, line breaks,
-                horizontal lines and other basic HTML tags.
+                HTML tags are used to create the structure and content
+                of a webpage. In this lesson, we will learn some basic
+                HTML tags.
             </p>
 
-        </div>
 
-
-        <!-- HEADINGS -->
-        <section class="lesson">
-
-            <h2>1. HTML Headings</h2>
+            <!-- HEADINGS -->
+            <h2>1. Heading Tags</h2>
 
             <p>
                 HTML provides six heading tags from
-                &lt;h1&gt; to &lt;h6&gt;.
+                <strong>&lt;h1&gt;</strong> to
+                <strong>&lt;h6&gt;</strong>.
             </p>
 
-            <pre><code>&lt;h1&gt;Main Heading&lt;/h1&gt;
-&lt;h2&gt;Sub Heading&lt;/h2&gt;
-&lt;h3&gt;Heading 3&lt;/h3&gt;
-&lt;h4&gt;Heading 4&lt;/h4&gt;
-&lt;h5&gt;Heading 5&lt;/h5&gt;
-&lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
+            <ul>
+                <li>&lt;h1&gt; - Largest heading</li>
+                <li>&lt;h2&gt; - Second-level heading</li>
+                <li>&lt;h3&gt; - Third-level heading</li>
+                <li>&lt;h4&gt; - Fourth-level heading</li>
+                <li>&lt;h5&gt; - Fifth-level heading</li>
+                <li>&lt;h6&gt; - Smallest heading</li>
+            </ul>
 
-        </section>
 
-
-        <!-- PARAGRAPH -->
-        <section class="lesson">
-
-            <h2>2. HTML Paragraph</h2>
+            <!-- PARAGRAPH -->
+            <h2>2. Paragraph Tag</h2>
 
             <p>
-                The &lt;p&gt; tag is used to create a paragraph.
+                The <strong>&lt;p&gt;</strong> tag is used to create
+                a paragraph.
             </p>
 
-            <pre><code>&lt;p&gt;
-This is my first HTML paragraph.
-&lt;/p&gt;</code></pre>
 
-        </section>
-
-
-        <!-- LINE BREAK -->
-        <section class="lesson">
-
-            <h2>3. HTML Line Break</h2>
+            <!-- BR -->
+            <h2>3. Line Break Tag</h2>
 
             <p>
-                The &lt;br&gt; tag is used to create a
-                line break.
+                The <strong>&lt;br&gt;</strong> tag is used to create
+                a line break.
             </p>
 
-            <pre><code>&lt;p&gt;
-Hello&lt;br&gt;
-Welcome to Code With Me
-&lt;/p&gt;</code></pre>
 
-        </section>
-
-
-        <!-- HORIZONTAL LINE -->
-        <section class="lesson">
-
-            <h2>4. HTML Horizontal Line</h2>
+            <!-- HR -->
+            <h2>4. Horizontal Line</h2>
 
             <p>
-                The &lt;hr&gt; tag creates a horizontal line
-                on the webpage.
+                The <strong>&lt;hr&gt;</strong> tag creates a horizontal
+                line on the webpage.
             </p>
 
-            <pre><code>&lt;h2&gt;About HTML&lt;/h2&gt;
 
-&lt;hr&gt;
+            <!-- TAG TABLE -->
+            <h2>Basic HTML Tags</h2>
 
-&lt;p&gt;
-HTML is used to create web pages.
-&lt;/p&gt;</code></pre>
+            <table>
 
-        </section>
+                <tr>
+                    <th>Tag</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>&lt;h1&gt;</td>
+                    <td>Creates a heading</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;p&gt;</td>
+                    <td>Creates a paragraph</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;br&gt;</td>
+                    <td>Creates a line break</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;hr&gt;</td>
+                    <td>Creates a horizontal line</td>
+                </tr>
+
+            </table>
 
 
-        <!-- DIV -->
-        <section class="lesson">
-
-            <h2>5. HTML Div</h2>
+            <!-- RUN CODE -->
+            <h2>Try It Yourself</h2>
 
             <p>
-                The &lt;div&gt; tag is used to group HTML
-                elements together.
+                Write HTML code in the box below and click
+                <strong>Run Code</strong> to see the result.
             </p>
 
-            <pre><code>&lt;div&gt;
+            <div class="editor">
 
-    &lt;h2&gt;My Website&lt;/h2&gt;
+                <textarea id="code">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Page</title>
+</head>
 
-    &lt;p&gt;
-        Welcome to my website.
-    &lt;/p&gt;
+<body>
 
-&lt;/div&gt;</code></pre>
+    <h1>Hello World!</h1>
 
-        </section>
+    <p>Welcome to Code With Me.</p>
 
+    <p>I am learning HTML.</p>
 
-        <!-- SPAN -->
-        <section class="lesson">
+    <hr>
 
-            <h2>6. HTML Span</h2>
+    <p>HTML is easy to learn!</p>
 
-            <p>
-                The &lt;span&gt; tag is used to style or
-                group a small part of text.
-            </p>
+</body>
+</html>
+                </textarea>
 
-            <pre><code>&lt;p&gt;
-My name is
-&lt;span&gt;Krish&lt;/span&gt;.
-&lt;/p&gt;</code></pre>
+                <br>
 
-        </section>
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+            </div>
 
 
-        <!-- NAVIGATION BUTTONS -->
-        <div class="buttons">
+            <!-- OUTPUT -->
+            <h2 class="output-title">Output</h2>
 
-            <a href="html-introduction.html" class="btn">
-                ← Previous Topic
-            </a>
+            <iframe id="output"></iframe>
 
-            <a href="html-formatting.html" class="btn">
-                Next Topic →
-            </a>
+
+            <!-- PREVIOUS / NEXT -->
+            <div class="navigation">
+
+                <a href="html-introduction.html" class="nav-btn">
+                    ← Previous
+                </a>
+
+                <a href="html-textformatting.html" class="nav-btn">
+                    Next →
+                </a>
+
+            </div>
 
         </div>
 
-    </main>
+    </div>
 
 
     <!-- FOOTER -->
@@ -318,6 +396,26 @@ My name is
         </p>
 
     </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function runCode() {
+
+            const code = document.getElementById("code").value;
+
+            const output = document.getElementById("output");
+
+            output.srcdoc = code;
+        }
+
+        // Run the default code when page opens
+        window.onload = function() {
+            runCode();
+        };
+
+    </script>
 
 </body>
 </html>
