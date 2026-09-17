@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML Introduction - Code With Me</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            color: #2563eb;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        p {
+            line-height: 1.7;
+        }
+
+        textarea {
+            width: 100%;
+            height: 220px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button,
+        a {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .run {
+            background: #16a34a;
+            color: white;
+        }
+
+        .previous {
+            background: #6b7280;
+            color: white;
+        }
+
+        .next {
+            background: #2563eb;
+            color: white;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="../index.html">← Back to HTML Course</a>
+
+    <h1>HTML Introduction</h1>
+
+    <p>
+        HTML stands for HyperText Markup Language.
+        HTML is used to create the structure of web pages.
+    </p>
+
+    <h2>Try HTML Code</h2>
+
+    <!-- Code Editor -->
+    <textarea id="code">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Website</title>
+</head>
+
+<body>
+
+    <h1>Hello World!</h1>
+    <p>Welcome to Code With Me.</p>
+
+</body>
+
+</html>
+    </textarea>
+
+    <br>
+
+    <!-- Run Button -->
+    <button class="run" onclick="runCode()">
+        ▶ Run Code
+    </button>
+
+    <h2>Output</h2>
+
+    <!-- Output -->
+    <iframe id="output"></iframe>
+
+    <!-- Previous / Next -->
+    <div class="navigation">
+
+        <a href="../index.html" class="previous">
+            ← Previous
+        </a>
+
+        <a href="html-tags.html" class="next">
+            Next →
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+function runCode() {
+
+    let code = document.getElementById("code").value;
+
+    document.getElementById("output").srcdoc = code;
+
+}
+
+</script>
+
+</body>
+</html>
