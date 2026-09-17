@@ -1,83 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WHQBNX9PG8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WHQBNX9PG8');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Website | Coding & Technology</title>
+    <title>Code With Me | Learn Coding</title>
 
-    <meta name="description" content="Welcome to my website. Learn coding, programming and technology.">
+    <meta name="description"
+          content="Learn HTML, CSS, JavaScript and Python with simple coding tutorials and examples.">
 
-    <meta name="keywords" content="coding, programming, HTML, CSS, Python, technology">
+    <meta name="keywords"
+          content="coding, programming, HTML, CSS, JavaScript, Python, web development">
 
-    <meta name="author" content="Your Name">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #111827;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 8%;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: #dbeafe;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 14px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: white;
+        }
+
+        .code-box {
+            background: #020617;
+            padding: 25px;
+            border-radius: 12px;
+            width: 380px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .code-box p {
+            color: #22c55e;
+            font-family: monospace;
+            margin: 8px 0;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .section-intro {
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .learn-btn {
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ABOUT */
+        .about {
+            background: white;
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            margin: 8px;
+            color: #cbd5e1;
+        }
+
+        footer a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .code-box {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav {
+                padding: 18px 5%;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 50px 5%;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 50px 5%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Welcome to My Website</h1>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Code<span>WithMe</span></div>
 
-        <nav>
-            <a href="#home">Home</a> |
-            <a href="#about">About</a> |
-            <a href="#services">Services</a> |
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <hr>
 
-    <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
 
-        <section id="home">
-            <h2>Learn Coding</h2>
+        <div class="hero-text">
+
+            <h1>Learn <span>Coding</span> Easily</h1>
+
             <p>
-                Welcome to my website. Here you can learn
-                HTML, CSS, JavaScript, Python and other programming topics.
+                Learn programming and web development with
+                simple tutorials, examples and practical projects.
             </p>
-        </section>
 
-        <section id="about">
-            <h2>About Us</h2>
-            <p>
-                This website provides simple coding tutorials
-                and programming resources for beginners.
-            </p>
-        </section>
+            <a href="#courses" class="btn">
+                Start Learning
+            </a>
 
-        <section id="services">
-            <h2>Our Services</h2>
+        </div>
 
-            <ul>
-                <li>HTML Tutorials</li>
-                <li>CSS Tutorials</li>
-                <li>JavaScript Tutorials</li>
-                <li>Python Programs</li>
-            </ul>
-        </section>
 
-        <section id="contact">
-            <h2>Contact Us</h2>
+        <div class="code-box">
 
-            <p>Email: example@gmail.com</p>
-        </section>
+            <p>&lt;html&gt;</p>
+            <p>&nbsp;&nbsp;&lt;h1&gt;Hello World&lt;/h1&gt;</p>
+            <p>&nbsp;&nbsp;&lt;p&gt;Learn Coding&lt;/p&gt;</p>
+            <p>&lt;/html&gt;</p>
 
-    </main>
+        </div>
 
-    <hr>
+    </section>
 
+
+    <!-- COURSES -->
+    <section class="section" id="courses">
+
+        <h2>Learn Programming</h2>
+
+        <p class="section-intro">
+            Choose a technology and start learning today.
+        </p>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">🌐</div>
+
+                <h3>HTML</h3>
+
+                <p>
+                    Learn how to create the structure
+                    of websites using HTML.
+                </p>
+
+                <a href="#" class="learn-btn">
+                    Learn HTML →
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🎨</div>
+
+                <h3>CSS</h3>
+
+                <p>
+                    Learn how to design beautiful
+                    and responsive websites.
+                </p>
+
+                <a href="#" class="learn-btn">
+                    Learn CSS →
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">⚡</div>
+
+                <h3>JavaScript</h3>
+
+                <p>
+                    Learn JavaScript and make your
+                    websites interactive.
+                </p>
+
+                <a href="#" class="learn-btn">
+                    Learn JavaScript →
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🐍</div>
+
+                <h3>Python</h3>
+
+                <p>
+                    Learn Python programming with
+                    simple examples and programs.
+                </p>
+
+                <a href="#" class="learn-btn">
+                    Learn Python →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <h2>About Us</h2>
+
+        <br>
+
+        <p>
+            Welcome to Code With Me. Our goal is to help
+            beginners learn programming and web development
+            in a simple and practical way.
+            We provide easy tutorials, coding examples
+            and useful programming resources.
+        </p>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+
+        <h2>Contact Us</h2>
+
+        <p class="section-intro">
+            Have a question? Contact us at:
+        </p>
+
+        <p>
+            📧 Email:
+            <strong>your-email@gmail.com</strong>
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 My Website. All Rights Reserved.</p>
+
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+
+        <p>
+            <a href="#home">Home</a> |
+            <a href="#about">About Us</a> |
+            <a href="#contact">Contact</a>
+        </p>
+
     </footer>
 
 </body>
