@@ -10,7 +10,7 @@
     <title>HTML Attributes | Code With Me</title>
 
     <meta name="description"
-          content="Learn HTML Attributes including id, class, href, src, alt, style, title, width, height and more with simple examples.">
+          content="Learn HTML attributes including id, class, href, src, alt, title, style, target and other commonly used HTML attributes with examples.">
 
     <style>
 
@@ -22,45 +22,42 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #f5f7fb;
+            background: #f4f7fb;
             color: #222;
             line-height: 1.7;
         }
 
-        /* Navbar */
-
-        nav {
-            background: #111827;
-            padding: 15px 8%;
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 18px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            flex-wrap: wrap;
         }
 
-        nav h2 {
-            color: white;
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
         }
 
         nav a {
             color: white;
             text-decoration: none;
             margin-left: 20px;
+            font-weight: bold;
         }
 
         nav a:hover {
-            color: #60a5fa;
+            text-decoration: underline;
         }
 
-        /* Hero */
-
         .hero {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 65px 20px;
         }
 
         .hero h1 {
@@ -72,194 +69,219 @@
             font-size: 18px;
         }
 
-        /* Container */
-
         .container {
             width: 90%;
             max-width: 1100px;
             margin: 40px auto;
         }
 
-        /* Topic */
-
-        .topic {
+        .section {
             background: white;
             padding: 30px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
         }
 
-        .topic h2 {
-            color: #2563eb;
+        .section h2 {
+            color: #2a5298;
             margin-bottom: 15px;
+            font-size: 28px;
         }
 
-        .topic h3 {
-            margin-top: 20px;
+        .section h3 {
+            color: #444;
+            margin-top: 22px;
             margin-bottom: 10px;
         }
 
-        /* Code */
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        code {
+            background: #eee;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
 
         pre {
-            background: #111827;
-            color: #e5e7eb;
+            background: #1e1e1e;
+            color: #f8f8f2;
             padding: 20px;
             border-radius: 8px;
             overflow-x: auto;
             margin: 15px 0;
-        }
-
-        code {
             font-family: Consolas, monospace;
+            line-height: 1.5;
         }
 
-        /* Output */
-
-        .output-box {
-            background: #f3f4f6;
-            border-left: 5px solid #2563eb;
-            padding: 20px;
-            margin-top: 15px;
-            border-radius: 8px;
+        .example {
+            background: #f0f7ff;
+            border-left: 5px solid #2a5298;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
 
-        /* Main Points */
-
-        .main-points {
-            background: #eff6ff;
-            border-left: 5px solid #2563eb;
-            padding: 20px;
-            margin-bottom: 35px;
-            border-radius: 8px;
+        .tip {
+            background: #e8f8ee;
+            border-left: 5px solid #28a745;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
 
-        .main-points h3 {
-            color: #1e3a8a;
-            margin-top: 0;
-            margin-bottom: 12px;
+        .note {
+            background: #fff7df;
+            border-left: 5px solid #f0ad4e;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
 
-        .main-points ul {
-            margin-left: 20px;
-        }
-
-        .main-points li {
-            margin-bottom: 8px;
-        }
-
-        /* Editor */
-
-        .editor {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 40px;
-        }
-
-        textarea {
+        table {
             width: 100%;
-            min-height: 300px;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2a5298;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f7f7f7;
+        }
+
+        .attribute-demo {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .attribute-demo a {
+            color: #2a5298;
+            font-weight: bold;
+        }
+
+        .attribute-demo .highlight {
+            background: yellow;
+            padding: 5px;
+        }
+
+        .practice textarea {
+            width: 100%;
+            height: 350px;
             padding: 15px;
-            font-family: Consolas, monospace;
-            font-size: 15px;
-            border: 2px solid #d1d5db;
+            border: 1px solid #bbb;
             border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
             resize: vertical;
         }
 
-        button {
-            padding: 12px 22px;
+        .run-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #28a745;
+            color: white;
             border: none;
-            border-radius: 7px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 15px;
-            margin-right: 10px;
+            font-weight: bold;
         }
 
-        .run-btn {
-            background: #2563eb;
-            color: white;
+        .run-btn:hover {
+            background: #218838;
         }
 
-        .clear-btn {
-            background: #dc2626;
-            color: white;
-        }
-
-        button:hover {
-            opacity: 0.85;
-        }
-
-        iframe {
+        .output {
             width: 100%;
             height: 350px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
+            border: 1px solid #bbb;
             margin-top: 20px;
+            border-radius: 8px;
             background: white;
         }
 
-        /* Navigation */
-
-        .page-navigation {
+        .navigation {
             display: flex;
             justify-content: space-between;
             gap: 20px;
-            margin: 40px 0;
+            margin: 35px 0;
         }
 
-        .nav-btn {
-            text-decoration: none;
-            padding: 14px 20px;
-            border-radius: 8px;
+        .btn {
+            background: #2a5298;
             color: white;
-            background: #2563eb;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
         }
 
-        .nav-btn:hover {
-            background: #1d4ed8;
+        .btn:hover {
+            background: #1e3c72;
         }
-
-        /* Footer */
 
         footer {
-            background: #111827;
+            background: #1e1e1e;
             color: white;
             text-align: center;
             padding: 25px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
-
-        /* Responsive */
 
         @media (max-width: 768px) {
 
-            nav {
+            header {
                 flex-direction: column;
-                gap: 10px;
+                text-align: center;
+            }
+
+            nav {
+                margin-top: 12px;
             }
 
             nav a {
-                margin-left: 10px;
+                margin: 0 8px;
             }
 
             .hero h1 {
                 font-size: 32px;
             }
 
-            .topic {
+            .section {
                 padding: 20px;
             }
 
-            .page-navigation {
+            .navigation {
                 flex-direction: column;
             }
 
-            .nav-btn {
+            .btn {
                 text-align: center;
             }
 
@@ -269,1226 +291,1239 @@
 
 </head>
 
-
 <body>
 
 
-    <!-- Navbar -->
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        Code With Me
+    </div>
 
     <nav>
 
-        <h2>Code With Me</h2>
+        <a href="../index.html">
+            Home
+        </a>
 
-        <div>
-
-            <a href="../index.html">Home</a>
-
-            <a href="../index.html">HTML Course</a>
-
-        </div>
+        <a href="../index.html">
+            Courses
+        </a>
 
     </nav>
 
+</header>
 
-    <!-- Hero -->
 
-    <section class="hero">
+<!-- HERO -->
 
-        <h1>HTML Attributes</h1>
+<section class="hero">
+
+    <h1>10. HTML Attributes</h1>
+
+    <p>
+        Learn how HTML attributes provide additional information
+        about HTML elements.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+
+    <!-- INTRODUCTION -->
+
+    <section class="section">
+
+        <h2>What are HTML Attributes?</h2>
 
         <p>
-            Learn how to add extra information and properties
-            to HTML elements using attributes.
+            HTML attributes provide additional information about
+            HTML elements.
+        </p>
+
+        <p>
+            Attributes are written inside the opening tag and
+            normally follow this structure:
+        </p>
+
+        <pre>
+&lt;element attribute="value"&gt;
+
+    Content
+
+&lt;/element&gt;
+        </pre>
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            <pre>
+&lt;a href="https://example.com"&gt;
+    Visit Website
+&lt;/a&gt;
+            </pre>
+
+            <p>
+                Here, <code>href</code> is an attribute and
+                <code>https://example.com</code> is its value.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ATTRIBUTE SYNTAX -->
+
+    <section class="section">
+
+        <h2>HTML Attribute Syntax</h2>
+
+        <p>
+            The general syntax of an HTML attribute is:
+        </p>
+
+        <pre>
+&lt;element attribute="value"&gt;
+        </pre>
+
+        <p>
+            For example:
+        </p>
+
+        <pre>
+&lt;img src="photo.jpg" alt="My Photo"&gt;
+        </pre>
+
+        <ul>
+
+            <li>
+                <code>img</code> → HTML element
+            </li>
+
+            <li>
+                <code>src</code> → Attribute
+            </li>
+
+            <li>
+                <code>"photo.jpg"</code> → Attribute value
+            </li>
+
+            <li>
+                <code>alt</code> → Another attribute
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- HREF -->
+
+    <section class="section">
+
+        <h2>1. href Attribute</h2>
+
+        <p>
+            The <code>href</code> attribute specifies the destination
+            of a link.
+        </p>
+
+        <pre>
+&lt;a href="https://www.google.com"&gt;
+    Visit Google
+&lt;/a&gt;
+        </pre>
+
+        <div class="attribute-demo">
+
+            <a href="https://www.google.com">
+                Visit Google
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- SRC -->
+
+    <section class="section">
+
+        <h2>2. src Attribute</h2>
+
+        <p>
+            The <code>src</code> attribute specifies the source
+            of an external resource such as an image.
+        </p>
+
+        <pre>
+&lt;img src="image.jpg" alt="Example Image"&gt;
+        </pre>
+
+        <p>
+            The browser uses the value of <code>src</code> to
+            locate the image.
         </p>
 
     </section>
 
 
-    <div class="container">
+    <!-- ALT -->
 
+    <section class="section">
 
-        <!-- Introduction -->
+        <h2>3. alt Attribute</h2>
 
-        <div class="topic">
+        <p>
+            The <code>alt</code> attribute provides alternative text
+            for an image.
+        </p>
 
-            <h2>1. What are HTML Attributes?</h2>
+        <pre>
+&lt;img
+    src="student.jpg"
+    alt="Student learning HTML"&gt;
+        </pre>
 
-            <p>
-                HTML attributes provide additional information
-                about HTML elements.
-            </p>
+        <div class="tip">
 
-            <p>
-                Attributes are normally written inside the
-                opening tag.
-            </p>
+            <strong>Tip:</strong>
 
-            <h3>Syntax</h3>
-
-            <pre><code>&lt;element attribute="value"&gt;
-    Content
-&lt;/element&gt;</code></pre>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;p title="This is a paragraph"&gt;
-    Hello World
-&lt;/p&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <p title="This is a paragraph">
-                    Hello World
-                </p>
-
-                <small>
-                    Hover your mouse over the text.
-                </small>
-
-            </div>
+            Use meaningful <code>alt</code> text for images.
+            It can help users who cannot see the image and can
+            also provide useful context if an image cannot load.
 
         </div>
 
+    </section>
 
-        <!-- href -->
 
-        <div class="topic">
+    <!-- TITLE -->
 
-            <h2>2. href Attribute</h2>
+    <section class="section">
 
-            <p>
-                The <strong>href</strong> attribute specifies
-                the destination of a link.
+        <h2>4. title Attribute</h2>
+
+        <p>
+            The <code>title</code> attribute provides additional
+            information about an element.
+        </p>
+
+        <pre>
+&lt;p title="This is additional information"&gt;
+
+    Move your mouse over this text.
+
+&lt;/p&gt;
+        </pre>
+
+        <div class="attribute-demo">
+
+            <p title="This is additional information">
+
+                Move your mouse over this text.
+
             </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;a href="https://www.google.com"&gt;
-    Visit Google
-&lt;/a&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <a href="https://www.google.com"
-                   target="_blank">
-
-                    Visit Google
-
-                </a>
-
-            </div>
 
         </div>
 
+    </section>
 
-        <!-- src -->
 
-        <div class="topic">
+    <!-- ID -->
 
-            <h2>3. src Attribute</h2>
+    <section class="section">
 
-            <p>
-                The <strong>src</strong> attribute specifies
-                the path or URL of an external resource such
-                as an image.
+        <h2>5. id Attribute</h2>
+
+        <p>
+            The <code>id</code> attribute gives an HTML element
+            a unique identifier.
+        </p>
+
+        <pre>
+&lt;p id="intro"&gt;
+
+    This is an introduction.
+
+&lt;/p&gt;
+        </pre>
+
+        <p>
+            An <code>id</code> can be used with CSS, JavaScript
+            and links.
+        </p>
+
+    </section>
+
+
+    <!-- CLASS -->
+
+    <section class="section">
+
+        <h2>6. class Attribute</h2>
+
+        <p>
+            The <code>class</code> attribute assigns one or more
+            class names to an element.
+        </p>
+
+        <pre>
+&lt;p class="highlight"&gt;
+
+    This text is highlighted.
+
+&lt;/p&gt;
+        </pre>
+
+        <div class="attribute-demo">
+
+            <p class="highlight">
+
+                This text has a class named
+                <code>highlight</code>.
+
             </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;img src="image.jpg"
-     alt="My Image"&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <p>
-                    The browser loads the image from
-                    the path specified in <strong>src</strong>.
-                </p>
-
-            </div>
 
         </div>
 
+    </section>
 
-        <!-- alt -->
 
-        <div class="topic">
+    <!-- STYLE -->
 
-            <h2>4. alt Attribute</h2>
+    <section class="section">
 
-            <p>
-                The <strong>alt</strong> attribute provides
-                alternative text for an image.
+        <h2>7. style Attribute</h2>
+
+        <p>
+            The <code>style</code> attribute allows you to apply
+            CSS directly to an HTML element.
+        </p>
+
+        <pre>
+&lt;p style="color: blue;"&gt;
+
+    This text is blue.
+
+&lt;/p&gt;
+        </pre>
+
+        <div class="attribute-demo">
+
+            <p style="color: blue;">
+
+                This text is blue.
+
             </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;img src="logo.png"
-     alt="Code With Me Logo"&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <img src="missing-image.jpg"
-                     alt="Code With Me Logo">
-
-                <p>
-                    If the image cannot load, the alt text
-                    can provide a text alternative.
-                </p>
-
-            </div>
 
         </div>
 
+    </section>
 
-        <!-- title -->
 
-        <div class="topic">
+    <!-- TARGET -->
 
-            <h2>5. title Attribute</h2>
+    <section class="section">
 
-            <p>
-                The <strong>title</strong> attribute provides
-                additional information about an element.
-            </p>
+        <h2>8. target Attribute</h2>
 
-            <h3>Example</h3>
+        <p>
+            The <code>target</code> attribute specifies where a
+            linked document should open.
+        </p>
 
-            <pre><code>&lt;p title="Welcome Message"&gt;
-    Welcome to Code With Me
-&lt;/p&gt;</code></pre>
+        <pre>
+&lt;a
+    href="https://example.com"
+    target="_blank"&gt;
 
-            <h3>Output</h3>
+    Open Website
 
-            <div class="output-box">
+&lt;/a&gt;
+        </pre>
 
-                <p title="Welcome Message">
+        <p>
+            Common value:
+        </p>
 
-                    Welcome to Code With Me
+        <ul>
 
-                </p>
+            <li>
+                <code>_blank</code> → Opens the link in a new browsing context.
+            </li>
 
-                <small>
-                    Hover over the text to see the title.
-                </small>
+            <li>
+                <code>_self</code> → Opens the link in the current browsing context.
+            </li>
 
-            </div>
+        </ul>
+
+    </section>
+
+
+    <!-- WIDTH HEIGHT -->
+
+    <section class="section">
+
+        <h2>9. width and height Attributes</h2>
+
+        <p>
+            The <code>width</code> and <code>height</code> attributes
+            can specify dimensions for certain HTML elements.
+        </p>
+
+        <pre>
+&lt;img
+    src="image.jpg"
+    alt="Example"
+    width="300"
+    height="200"&gt;
+        </pre>
+
+    </section>
+
+
+    <!-- INPUT ATTRIBUTES -->
+
+    <section class="section">
+
+        <h2>10. Common Input Attributes</h2>
+
+        <p>
+            HTML form elements support many useful attributes.
+        </p>
+
+        <pre>
+&lt;input
+    type="text"
+    name="username"
+    id="username"
+    placeholder="Enter your name"
+    required&gt;
+        </pre>
+
+        <table>
+
+            <tr>
+
+                <th>Attribute</th>
+
+                <th>Purpose</th>
+
+            </tr>
+
+            <tr>
+
+                <td>type</td>
+
+                <td>Specifies the type of input.</td>
+
+            </tr>
+
+            <tr>
+
+                <td>name</td>
+
+                <td>Gives a name to the form control.</td>
+
+            </tr>
+
+            <tr>
+
+                <td>placeholder</td>
+
+                <td>Displays a hint inside the input.</td>
+
+            </tr>
+
+            <tr>
+
+                <td>required</td>
+
+                <td>Makes the field required.</td>
+
+            </tr>
+
+            <tr>
+
+                <td>value</td>
+
+                <td>Specifies an initial value.</td>
+
+            </tr>
+
+            <tr>
+
+                <td>disabled</td>
+
+                <td>Disables the form control.</td>
+
+            </tr>
+
+            <tr>
+
+                <td>readonly</td>
+
+                <td>Makes the value read-only.</td>
+
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- PLACEHOLDER -->
+
+    <section class="section">
+
+        <h2>11. placeholder Attribute</h2>
+
+        <p>
+            The <code>placeholder</code> attribute displays a short
+            hint inside an input field.
+        </p>
+
+        <pre>
+&lt;input
+    type="text"
+    placeholder="Enter your name"&gt;
+        </pre>
+
+        <div class="attribute-demo">
+
+            <input
+                type="text"
+                placeholder="Enter your name"
+                style="padding: 10px; width: 100%;">
 
         </div>
 
-
-        <!-- style -->
-
-        <div class="topic">
-
-            <h2>6. style Attribute</h2>
-
-            <p>
-                The <strong>style</strong> attribute is used
-                to apply inline CSS to an HTML element.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;p style="color: blue;"&gt;
-    Blue Text
-&lt;/p&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <p style="color: blue; font-weight: bold;">
-                    Blue Text
-                </p>
-
-            </div>
-
-        </div>
+    </section>
 
 
-        <!-- id -->
+    <!-- REQUIRED -->
 
-        <div class="topic">
+    <section class="section">
 
-            <h2>7. id Attribute</h2>
+        <h2>12. required Attribute</h2>
 
-            <p>
-                The <strong>id</strong> attribute gives a unique
-                identifier to an HTML element.
-            </p>
+        <p>
+            The <code>required</code> attribute specifies that a
+            value must be entered before the form can be submitted.
+        </p>
 
-            <h3>Example</h3>
+        <pre>
+&lt;input
+    type="email"
+    required&gt;
+        </pre>
 
-            <pre><code>&lt;p id="intro"&gt;
-    This is the introduction.
-&lt;/p&gt;</code></pre>
+    </section>
 
-            <h3>Output</h3>
 
-            <div class="output-box">
+    <!-- DISABLED -->
 
-                <p id="intro">
-                    This is the introduction.
-                </p>
+    <section class="section">
 
-            </div>
+        <h2>13. disabled Attribute</h2>
+
+        <p>
+            The <code>disabled</code> attribute disables an element.
+        </p>
+
+        <pre>
+&lt;input
+    type="text"
+    value="Disabled field"
+    disabled&gt;
+        </pre>
+
+        <div class="attribute-demo">
+
+            <input
+                type="text"
+                value="Disabled field"
+                disabled
+                style="padding: 10px; width: 100%;">
 
         </div>
 
-
-        <!-- class -->
-
-        <div class="topic">
-
-            <h2>8. class Attribute</h2>
-
-            <p>
-                The <strong>class</strong> attribute is used
-                to assign one or more classes to an element.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;p class="highlight"&gt;
-    Important Text
-&lt;/p&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <p class="highlight"
-                   style="background:#fef3c7;padding:10px;">
-                    Important Text
-                </p>
-
-            </div>
-
-        </div>
+    </section>
 
 
-        <!-- width -->
+    <!-- READONLY -->
 
-        <div class="topic">
+    <section class="section">
 
-            <h2>9. width Attribute</h2>
+        <h2>14. readonly Attribute</h2>
 
-            <p>
-                The <strong>width</strong> attribute can specify
-                the width of certain HTML elements such as images.
-            </p>
+        <p>
+            The <code>readonly</code> attribute makes the value
+            of a form control read-only.
+        </p>
 
-            <h3>Example</h3>
+        <pre>
+&lt;input
+    type="text"
+    value="You cannot edit this"
+    readonly&gt;
+        </pre>
 
-            <pre><code>&lt;img src="image.jpg"
-     width="300"
-     alt="Example Image"&gt;</code></pre>
+        <div class="attribute-demo">
 
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <div style="
-                    width:300px;
-                    height:120px;
-                    background:#dbeafe;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    border-radius:8px;">
-
-                    Width: 300px
-
-                </div>
-
-            </div>
+            <input
+                type="text"
+                value="You cannot edit this"
+                readonly
+                style="padding: 10px; width: 100%;">
 
         </div>
 
+    </section>
 
-        <!-- height -->
 
-        <div class="topic">
+    <!-- MULTIPLE ATTRIBUTES -->
 
-            <h2>10. height Attribute</h2>
+    <section class="section">
 
-            <p>
-                The <strong>height</strong> attribute can specify
-                the height of certain HTML elements such as images.
-            </p>
+        <h2>Using Multiple Attributes</h2>
 
-            <h3>Example</h3>
+        <p>
+            An HTML element can have multiple attributes.
+        </p>
 
-            <pre><code>&lt;img src="image.jpg"
-     height="200"
-     alt="Example Image"&gt;</code></pre>
+        <pre>
+&lt;input
+    type="text"
+    id="username"
+    class="input-box"
+    name="username"
+    placeholder="Enter username"
+    required&gt;
+        </pre>
 
-            <h3>Output</h3>
+        <p>
+            Here, the input element has several attributes:
+        </p>
 
-            <div class="output-box">
+        <ul>
 
-                <div style="
-                    width:250px;
-                    height:200px;
-                    background:#e0e7ff;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    border-radius:8px;">
+            <li><code>type</code></li>
+            <li><code>id</code></li>
+            <li><code>class</code></li>
+            <li><code>name</code></li>
+            <li><code>placeholder</code></li>
+            <li><code>required</code></li>
 
-                    Height: 200px
+        </ul>
 
-                </div>
+    </section>
 
-            </div>
 
-        </div>
+    <!-- BOOLEAN -->
 
+    <section class="section">
 
-        <!-- target -->
+        <h2>Boolean Attributes</h2>
 
-        <div class="topic">
+        <p>
+            Some HTML attributes are boolean attributes. Their
+            presence represents a true state.
+        </p>
 
-            <h2>11. target Attribute</h2>
+        <p>
+            Examples include:
+        </p>
 
-            <p>
-                The <strong>target</strong> attribute specifies
-                where a linked document should open.
-            </p>
+        <ul>
 
-            <h3>Example</h3>
+            <li><code>required</code></li>
 
-            <pre><code>&lt;a href="https://www.google.com"
-   target="_blank"&gt;
+            <li><code>disabled</code></li>
 
-    Open Google
+            <li><code>readonly</code></li>
 
-&lt;/a&gt;</code></pre>
+            <li><code>checked</code></li>
 
-            <h3>Output</h3>
+            <li><code>multiple</code></li>
 
-            <div class="output-box">
+            <li><code>autofocus</code></li>
 
-                <a href="https://www.google.com"
-                   target="_blank">
+        </ul>
 
-                    Open Google in New Tab
+        <pre>
+&lt;input
+    type="checkbox"
+    checked&gt;
+        </pre>
 
-                </a>
+    </section>
 
-            </div>
 
-        </div>
+    <!-- DATA ATTRIBUTES -->
 
+    <section class="section">
 
-        <!-- disabled -->
+        <h2>Custom data-* Attributes</h2>
 
-        <div class="topic">
+        <p>
+            HTML allows custom data attributes that begin with
+            <code>data-</code>.
+        </p>
 
-            <h2>12. disabled Attribute</h2>
+        <p>
+            They can be useful for storing custom information that
+            scripts can access.
+        </p>
 
-            <p>
-                The <strong>disabled</strong> attribute disables
-                an HTML form control.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;button disabled&gt;
-    Disabled Button
-&lt;/button&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <button disabled>
-                    Disabled Button
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- readonly -->
-
-        <div class="topic">
-
-            <h2>13. readonly Attribute</h2>
-
-            <p>
-                The <strong>readonly</strong> attribute makes
-                an input value uneditable by the user.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;input type="text"
-       value="Code With Me"
-       readonly&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <input type="text"
-                       value="Code With Me"
-                       readonly>
-
-            </div>
-
-        </div>
-
-
-        <!-- required -->
-
-        <div class="topic">
-
-            <h2>14. required Attribute</h2>
-
-            <p>
-                The <strong>required</strong> attribute specifies
-                that a form field must be filled before submitting.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;input type="text"
-       required&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <form>
-
-                    <label>
-                        Name:
-                    </label>
-
-                    <input type="text"
-                           required>
-
-                    <button type="submit">
-                        Submit
-                    </button>
-
-                </form>
-
-            </div>
-
-        </div>
-
-
-        <!-- placeholder -->
-
-        <div class="topic">
-
-            <h2>15. placeholder Attribute</h2>
-
-            <p>
-                The <strong>placeholder</strong> attribute displays
-                a temporary hint inside an input field.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;input type="text"
-       placeholder="Enter your name"&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <input type="text"
-                       placeholder="Enter your name">
-
-            </div>
-
-        </div>
-
-
-        <!-- value -->
-
-        <div class="topic">
-
-            <h2>16. value Attribute</h2>
-
-            <p>
-                The <strong>value</strong> attribute specifies
-                the initial value of an input element.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;input type="text"
-       value="Krish"&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <input type="text"
-                       value="Krish">
-
-            </div>
-
-        </div>
-
-
-        <!-- lang -->
-
-        <div class="topic">
-
-            <h2>17. lang Attribute</h2>
-
-            <p>
-                The <strong>lang</strong> attribute specifies
-                the language of the document or element.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;html lang="en"&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <p>
-                    <strong>lang="en"</strong>
-                    specifies English as the document language.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- data -->
-
-        <div class="topic">
-
-            <h2>18. data-* Attributes</h2>
-
-            <p>
-                Custom <strong>data-*</strong> attributes allow
-                developers to store custom data on HTML elements.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;button data-course="HTML"
-        data-level="beginner"&gt;
+        <pre>
+&lt;button
+    data-course="html"
+    data-level="beginner"&gt;
 
     Learn HTML
 
-&lt;/button&gt;</code></pre>
+&lt;/button&gt;
+        </pre>
 
-            <h3>Output</h3>
+    </section>
 
-            <div class="output-box">
 
-                <button data-course="HTML"
-                        data-level="beginner">
+    <!-- COMMON ATTRIBUTES TABLE -->
 
-                    Learn HTML
+    <section class="section">
 
-                </button>
+        <h2>Common HTML Attributes</h2>
 
-            </div>
+        <table>
 
-        </div>
+            <tr>
 
+                <th>Attribute</th>
 
-        <!-- draggable -->
+                <th>Used For</th>
 
-        <div class="topic">
+            </tr>
 
-            <h2>19. draggable Attribute</h2>
+            <tr>
 
-            <p>
-                The <strong>draggable</strong> attribute specifies
-                whether an element can be dragged.
-            </p>
+                <td>id</td>
 
-            <h3>Example</h3>
+                <td>Unique element identifier</td>
 
-            <pre><code>&lt;p draggable="true"&gt;
-    Drag this text
-&lt;/p&gt;</code></pre>
+            </tr>
 
-            <h3>Output</h3>
+            <tr>
 
-            <div class="output-box">
+                <td>class</td>
 
-                <p draggable="true"
-                   style="padding:15px;background:#dbeafe;">
+                <td>Assigning CSS/JS classes</td>
 
-                    Try dragging this text.
+            </tr>
 
-                </p>
+            <tr>
 
-            </div>
+                <td>style</td>
 
-        </div>
+                <td>Inline CSS</td>
 
+            </tr>
 
-        <!-- hidden -->
+            <tr>
 
-        <div class="topic">
+                <td>title</td>
 
-            <h2>20. hidden Attribute</h2>
+                <td>Additional information</td>
 
-            <p>
-                The <strong>hidden</strong> attribute hides an
-                element from the rendered page.
-            </p>
+            </tr>
 
-            <h3>Example</h3>
+            <tr>
 
-            <pre><code>&lt;p hidden&gt;
-    This text is hidden.
-&lt;/p&gt;</code></pre>
+                <td>href</td>
 
-            <h3>Output</h3>
+                <td>Link destination</td>
 
-            <div class="output-box">
+            </tr>
 
-                <p>
-                    The hidden paragraph is not displayed.
-                </p>
+            <tr>
 
-            </div>
+                <td>src</td>
 
-        </div>
+                <td>Resource source</td>
 
+            </tr>
 
-        <!-- Boolean Attributes -->
+            <tr>
 
-        <div class="topic">
+                <td>alt</td>
 
-            <h2>21. Boolean Attributes</h2>
+                <td>Alternative image text</td>
 
-            <p>
-                Boolean attributes represent true/false states.
-                Their presence generally means true.
-            </p>
+            </tr>
 
-            <h3>Examples</h3>
+            <tr>
 
-            <pre><code>&lt;input type="checkbox" checked&gt;
+                <td>target</td>
 
-&lt;input type="text" readonly&gt;
+                <td>Link browsing target</td>
 
-&lt;button disabled&gt;
-    Button
-&lt;/button&gt;</code></pre>
+            </tr>
 
-            <h3>Output</h3>
+            <tr>
 
-            <div class="output-box">
+                <td>width</td>
 
-                <label>
+                <td>Element width</td>
 
-                    <input type="checkbox" checked>
+            </tr>
 
-                    Checked
+            <tr>
 
-                </label>
+                <td>height</td>
 
-                <br><br>
+                <td>Element height</td>
 
-                <input type="text"
-                       value="Readonly"
-                       readonly>
+            </tr>
 
-                <br><br>
+            <tr>
 
-                <button disabled>
-                    Disabled
-                </button>
+                <td>name</td>
 
-            </div>
+                <td>Form control name</td>
 
-        </div>
+            </tr>
 
+            <tr>
 
-        <!-- Multiple Attributes -->
+                <td>value</td>
 
-        <div class="topic">
+                <td>Element/form value</td>
 
-            <h2>22. Multiple Attributes</h2>
+            </tr>
 
-            <p>
-                An HTML element can contain multiple attributes.
-            </p>
+            <tr>
 
-            <h3>Example</h3>
+                <td>placeholder</td>
 
-            <pre><code>&lt;img src="logo.png"
-     alt="Code With Me Logo"
-     width="200"
-     height="100"
-     title="Code With Me"&gt;</code></pre>
+                <td>Input hint</td>
 
-            <h3>Important</h3>
+            </tr>
 
-            <p>
-                Each attribute provides different information
-                or behavior for the element.
-            </p>
+            <tr>
 
-        </div>
+                <td>required</td>
 
+                <td>Required form field</td>
 
-        <!-- Attribute Values -->
+            </tr>
 
-        <div class="topic">
+        </table>
 
-            <h2>23. Attribute Values</h2>
+    </section>
 
-            <p>
-                Most attributes use a value after an equals sign.
-            </p>
 
-            <h3>Example</h3>
+    <!-- COMPLETE EXAMPLE -->
 
-            <pre><code>&lt;p class="text"&gt;
+    <section class="section">
+
+        <h2>Complete HTML Attributes Example</h2>
+
+        <pre>
+&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;HTML Attributes Example&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1 id="heading"
+        class="main-title"
+        title="Welcome to my website"&gt;
+
+        My Website
+
+    &lt;/h1&gt;
+
+
+    &lt;p class="description"&gt;
+
+        Learn HTML attributes.
+
+    &lt;/p&gt;
+
+
+    &lt;a
+        href="https://example.com"
+        target="_blank"
+        title="Visit Example"&gt;
+
+        Visit Website
+
+    &lt;/a&gt;
+
+
+    &lt;form&gt;
+
+        &lt;input
+            type="text"
+            name="username"
+            placeholder="Enter your name"
+            required&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;button type="submit"&gt;
+
+            Submit
+
+        &lt;/button&gt;
+
+    &lt;/form&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+        </pre>
+
+    </section>
+
+
+    <!-- BEST PRACTICES -->
+
+    <section class="section">
+
+        <h2>HTML Attribute Best Practices</h2>
+
+        <ol>
+
+            <li>
+                Use meaningful attribute values.
+            </li>
+
+            <li>
+                Use descriptive <code>alt</code> text for images.
+            </li>
+
+            <li>
+                Use unique values for <code>id</code> attributes
+                within a page.
+            </li>
+
+            <li>
+                Use <code>class</code> when the same styling or behavior
+                applies to multiple elements.
+            </li>
+
+            <li>
+                Use quotes around attribute values.
+            </li>
+
+            <li>
+                Use the correct attribute for the correct HTML element.
+            </li>
+
+            <li>
+                Avoid unnecessary attributes.
+            </li>
+
+        </ol>
+
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+
+    <section class="section">
+
+        <h2>Common Mistakes</h2>
+
+        <ul>
+
+            <li>
+                Forgetting quotation marks around attribute values.
+            </li>
+
+            <li>
+                Using duplicate <code>id</code> values on the same page.
+            </li>
+
+            <li>
+                Forgetting the <code>alt</code> attribute on important images.
+            </li>
+
+            <li>
+                Typing attribute names incorrectly.
+            </li>
+
+            <li>
+                Putting attributes outside the opening HTML tag.
+            </li>
+
+        </ul>
+
+        <div class="example">
+
+            <strong>Incorrect:</strong>
+
+            <pre>
+&lt;p&gt; id="intro" Hello &lt;/p&gt;
+            </pre>
+
+            <strong>Correct:</strong>
+
+            <pre>
+&lt;p id="intro"&gt;
     Hello
-&lt;/p&gt;</code></pre>
-
-            <p>
-                Here:
-            </p>
-
-            <ul>
-
-                <li>
-                    <strong>class</strong> = attribute
-                </li>
-
-                <li>
-                    <strong>"text"</strong> = attribute value
-                </li>
-
-            </ul>
+&lt;/p&gt;
+            </pre>
 
         </div>
 
+    </section>
 
-        <!-- Global Attributes -->
 
-        <div class="topic">
+    <!-- PRACTICE -->
 
-            <h2>24. Global Attributes</h2>
+    <section class="section practice">
 
-            <p>
-                Global attributes can generally be used on many
-                HTML elements.
-            </p>
+        <h2>Practice: HTML Attributes</h2>
 
-            <h3>Common Global Attributes</h3>
+        <p>
+            Edit the code below and click
+            <strong>Run Code</strong> to see your result.
+        </p>
 
-            <pre><code>id
-class
-style
-title
-lang
-hidden
-data-*
-tabindex
-contenteditable
-draggable</code></pre>
+        <textarea id="code">
+<!DOCTYPE html>
 
-        </div>
-
-
-        <!-- Main Points -->
-
-        <div class="topic">
-
-            <div class="main-points">
-
-                <h3>⭐ Main Points</h3>
-
-                <ul>
-
-                    <li>
-                        Attributes provide additional information
-                        about HTML elements.
-                    </li>
-
-                    <li>
-                        Attributes are written inside the opening tag.
-                    </li>
-
-                    <li>
-                        Most attributes use the format
-                        <strong>attribute="value"</strong>.
-                    </li>
-
-                    <li>
-                        <strong>href</strong> is commonly used with links.
-                    </li>
-
-                    <li>
-                        <strong>src</strong> specifies a resource URL.
-                    </li>
-
-                    <li>
-                        <strong>alt</strong> provides alternative text
-                        for images.
-                    </li>
-
-                    <li>
-                        <strong>id</strong> identifies an element.
-                    </li>
-
-                    <li>
-                        <strong>class</strong> assigns one or more classes.
-                    </li>
-
-                    <li>
-                        <strong>style</strong> adds inline CSS.
-                    </li>
-
-                    <li>
-                        Boolean attributes such as
-                        <strong>disabled</strong>, <strong>checked</strong>
-                        and <strong>required</strong> represent states.
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <!-- Quick Reference -->
-
-        <div class="topic">
-
-            <h2>25. HTML Attributes Quick Reference</h2>
-
-            <table style="
-                width:100%;
-                border-collapse:collapse;
-                margin-top:20px;">
-
-                <tr style="background:#2563eb;color:white;">
-
-                    <th style="padding:12px;border:1px solid #ddd;">
-                        Attribute
-                    </th>
-
-                    <th style="padding:12px;border:1px solid #ddd;">
-                        Purpose
-                    </th>
-
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        href
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Link destination
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        src
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Resource URL
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        alt
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Alternative image text
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        title
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Additional information
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        id
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Unique identifier
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        class
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Assigns classes
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        style
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Inline CSS
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        width
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Width
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        height
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Height
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        target
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Link opening location
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        required
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Required form field
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        placeholder
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Input hint
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        disabled
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Disables an element
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        readonly
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Makes input uneditable
-                    </td>
-                </tr>
-
-            </table>
-
-        </div>
-
-
-        <!-- Live Editor -->
-
-        <div class="editor">
-
-            <h2>💻 Run HTML Attributes Code</h2>
-
-            <p>
-                નીચે HTML code લખો અને
-                <strong>Run Code</strong> button પર click કરો.
-            </p>
-
-            <textarea id="code"><!DOCTYPE html>
-
-<html lang="en">
+<html>
 
 <head>
 
-    <title>HTML Attributes Example</title>
+    <title>HTML Attributes Practice</title>
 
 </head>
 
 <body>
 
-    <h1 id="title"
-        class="heading"
-        style="color: blue;"
-        title="Main Heading">
+    <h1
+        id="main-heading"
+        title="This is my heading">
 
-        HTML Attributes
+        My Website
 
     </h1>
 
-    <p>
-        Attributes provide additional information
-        about HTML elements.
+
+    <p class="description">
+
+        Welcome to my website.
+
     </p>
 
-    <a href="https://www.google.com"
-       target="_blank">
 
-        Open Google
+    <a
+        href="https://www.google.com"
+        target="_blank">
+
+        Visit Google
 
     </a>
 
-    <br><br>
-
-    <input type="text"
-           placeholder="Enter your name"
-           required>
 
     <br><br>
 
-    <button>
-        Submit
+
+    <img
+        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80"
+        alt="Computer with code"
+        width="400">
+
+
+    <br><br>
+
+
+    <input
+        type="text"
+        placeholder="Enter your name"
+        required>
+
+
+    <br><br>
+
+
+    <button
+        type="button"
+        title="Click this button">
+
+        Click Me
+
     </button>
 
 </body>
 
-</html></textarea>
+</html>
+        </textarea>
 
-            <button class="run-btn"
-                    onclick="runCode()">
+        <button
+            class="run-btn"
+            onclick="runCode()">
 
-                ▶ Run Code
+            ▶ Run Code
 
-            </button>
+        </button>
 
-            <button class="clear-btn"
-                    onclick="clearCode()">
+        <iframe
+            id="output"
+            class="output"
+            title="HTML Attributes Output">
+        </iframe>
 
-                🗑 Clear
+    </section>
 
-            </button>
 
-            <iframe id="output"></iframe>
+    <!-- SUMMARY -->
+
+    <section class="section">
+
+        <h2>HTML Attributes Summary</h2>
+
+        <p>
+            HTML attributes provide additional information about
+            HTML elements.
+        </p>
+
+        <ul>
+
+            <li>
+                <code>href</code> → Link destination
+            </li>
+
+            <li>
+                <code>src</code> → Resource source
+            </li>
+
+            <li>
+                <code>alt</code> → Alternative image text
+            </li>
+
+            <li>
+                <code>id</code> → Unique identifier
+            </li>
+
+            <li>
+                <code>class</code> → Class name
+            </li>
+
+            <li>
+                <code>style</code> → Inline styling
+            </li>
+
+            <li>
+                <code>title</code> → Additional information
+            </li>
+
+            <li>
+                <code>target</code> → Link browsing target
+            </li>
+
+            <li>
+                <code>required</code> → Required form field
+            </li>
+
+            <li>
+                <code>placeholder</code> → Input hint
+            </li>
+
+        </ul>
+
+        <div class="tip">
+
+            <strong>Remember:</strong>
+
+            Attributes are written inside the opening HTML tag
+            and provide additional information or behavior for
+            an element.
 
         </div>
 
+    </section>
 
-        <!-- Page Navigation -->
 
-        <div class="page-navigation">
+    <!-- NAVIGATION -->
 
-            <a href="html-tags.html"
-               class="nav-btn">
+    <div class="navigation">
 
-                ← Previous: HTML Basic Tags
+        <a
+            class="btn"
+            href="html-semantic-elements.html">
 
-            </a>
+            ← HTML Semantic Elements
 
-            <a href="html-formatting.html"
-               class="nav-btn">
+        </a>
 
-                Next: HTML Formatting →
+        <a
+            class="btn"
+            href="../index.html">
 
-            </a>
+            Back to Course →
 
-        </div>
-
+        </a>
 
     </div>
 
 
-    <!-- Footer -->
-
-    <footer>
-
-        <p>
-            © 2026 Code With Me | Learn Coding Easily
-        </p>
-
-    </footer>
+</div>
 
 
-    <script>
+<!-- FOOTER -->
 
-        function runCode() {
+<footer>
 
-            const code =
-                document.getElementById("code").value;
+    <p>
+        © 2026 Code With Me | Learn Coding
+    </p>
 
-            const output =
-                document.getElementById("output");
-
-            output.srcdoc = code;
-
-        }
+</footer>
 
 
-        function clearCode() {
+<!-- RUN CODE SCRIPT -->
 
-            document.getElementById("code").value = "";
+<script>
 
-            document.getElementById("output").srcdoc = "";
+    function runCode() {
 
-        }
+        const code =
+            document.getElementById("code").value;
+
+        const output =
+            document.getElementById("output");
+
+        output.srcdoc = code;
+
+    }
 
 
-        window.onload = function () {
+    window.onload = function () {
 
-            runCode();
+        runCode();
 
-        };
+    };
 
-    </script>
+</script>
 
 
 </body>
