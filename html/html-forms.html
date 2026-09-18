@@ -10,7 +10,7 @@
     <title>HTML Forms | Code With Me</title>
 
     <meta name="description"
-          content="Learn HTML Forms with simple examples including input, labels, radio buttons, checkboxes, select, textarea, buttons and more.">
+          content="Learn HTML forms, input fields, labels, buttons, textarea, select, radio buttons, checkboxes and form attributes with simple examples.">
 
     <style>
 
@@ -22,330 +22,293 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #f5f7fb;
+            background: #f4f7fb;
             color: #222;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* Navbar */
-
-        nav {
-            background: #111827;
-            padding: 15px 30px;
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 18px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            flex-wrap: wrap;
         }
 
-        nav .logo {
-            color: white;
-            font-size: 24px;
+        .logo {
+            font-size: 25px;
             font-weight: bold;
-            text-decoration: none;
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav ul li a {
+        nav a {
             color: white;
             text-decoration: none;
-            font-size: 16px;
+            margin-left: 20px;
+            font-weight: bold;
         }
 
-        nav ul li a:hover {
-            color: #60a5fa;
+        nav a:hover {
+            text-decoration: underline;
         }
 
-        /* Header */
-
-        .page-header {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+        .hero {
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             text-align: center;
-            padding: 70px 20px;
+            padding: 65px 20px;
         }
 
-        .page-header h1 {
-            font-size: 45px;
-            margin-bottom: 15px;
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
         }
 
-        .page-header p {
-            font-size: 19px;
+        .hero p {
+            font-size: 18px;
         }
-
-        /* Main Container */
 
         .container {
+            width: 90%;
             max-width: 1100px;
             margin: 40px auto;
-            padding: 0 20px;
         }
 
-        /* Main Points */
-
-        .main-points {
-            background: #eff6ff;
-            border-left: 5px solid #2563eb;
-            padding: 20px;
-            margin-bottom: 35px;
-            border-radius: 8px;
-        }
-
-        .main-points h3 {
-            color: #1e3a8a;
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-
-        .main-points ul {
-            margin-left: 20px;
-        }
-
-        .main-points li {
-            margin-bottom: 8px;
-        }
-
-        /* Topic Card */
-
-        .topic-card {
+        .section {
             background: white;
             padding: 30px;
             margin-bottom: 30px;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
         }
 
-        .topic-card h2 {
-            color: #1d4ed8;
+        .section h2 {
+            color: #2a5298;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #444;
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        p {
             margin-bottom: 15px;
         }
 
-        .topic-card p {
+        ul,
+        ol {
+            margin-left: 25px;
             margin-bottom: 15px;
         }
 
-        /* Code */
-
-        .code-title {
-            font-weight: bold;
-            margin: 15px 0 8px;
-            color: #374151;
-        }
-
-        pre {
-            background: #111827;
-            color: #e5e7eb;
-            padding: 20px;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin-bottom: 15px;
+        li {
+            margin-bottom: 7px;
         }
 
         code {
+            background: #eee;
+            padding: 3px 6px;
+            border-radius: 4px;
             font-family: Consolas, monospace;
         }
 
-        /* Output */
-
-        .output-title {
-            font-weight: bold;
-            color: #047857;
-            margin: 10px 0;
-        }
-
-        .output-box {
-            background: #ecfdf5;
-            border: 1px solid #10b981;
+        pre {
+            background: #1e1e1e;
+            color: #f8f8f2;
             padding: 20px;
             border-radius: 8px;
-            margin-bottom: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: Consolas, monospace;
+            line-height: 1.5;
         }
 
-        /* Summary Table */
-
-        .summary {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 40px;
+        .example {
+            background: #f0f7ff;
+            border-left: 5px solid #2a5298;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
 
-        .summary h2 {
-            color: #1d4ed8;
-            margin-bottom: 20px;
+        .tip {
+            background: #e8f8ee;
+            border-left: 5px solid #28a745;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .note {
+            background: #fff7df;
+            border-left: 5px solid #f0ad4e;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            margin: 20px 0;
         }
 
-        table th,
-        table td {
-            border: 1px solid #d1d5db;
+        th,
+        td {
+            border: 1px solid #ccc;
             padding: 12px;
             text-align: left;
         }
 
-        table th {
-            background: #2563eb;
+        th {
+            background: #2a5298;
             color: white;
         }
 
-        /* Editor */
-
-        .editor {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 40px;
+        tr:nth-child(even) {
+            background: #f7f7f7;
         }
 
-        .editor h2 {
-            color: #1d4ed8;
-            margin-bottom: 10px;
-        }
-
-        .editor p {
-            margin-bottom: 15px;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 300px;
-            padding: 15px;
-            background: #111827;
-            color: #f9fafb;
-            border: none;
-            border-radius: 8px;
-            font-family: Consolas, monospace;
-            font-size: 15px;
-            resize: vertical;
-            margin-bottom: 15px;
-        }
-
-        .run-btn,
-        .clear-btn {
-            border: none;
-            padding: 12px 25px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-
-        .run-btn {
-            background: #2563eb;
-            color: white;
-        }
-
-        .run-btn:hover {
-            background: #1d4ed8;
-        }
-
-        .clear-btn {
-            background: #dc2626;
-            color: white;
-        }
-
-        .clear-btn:hover {
-            background: #b91c1c;
-        }
-
-        iframe {
-            width: 100%;
-            min-height: 300px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            background: white;
+        .form-demo {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
             margin-top: 20px;
         }
 
-        /* Navigation */
-
-        .lesson-navigation {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            margin: 40px 0;
+        .form-demo label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
         }
 
-        .nav-btn {
-            display: inline-block;
-            padding: 13px 22px;
-            border-radius: 7px;
-            text-decoration: none;
+        .form-demo input,
+        .form-demo select,
+        .form-demo textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .form-demo input[type="radio"],
+        .form-demo input[type="checkbox"] {
+            width: auto;
+            margin-right: 6px;
+        }
+
+        .form-demo button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-demo button:hover {
+            background: #218838;
+        }
+
+        .practice textarea {
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        .run-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
             font-weight: bold;
         }
 
-        .previous {
-            background: #374151;
+        .run-btn:hover {
+            background: #218838;
+        }
+
+        .output {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #bbb;
+            margin-top: 20px;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 35px 0;
+        }
+
+        .btn {
+            background: #2a5298;
             color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
         }
 
-        .previous:hover {
-            background: #1f2937;
+        .btn:hover {
+            background: #1e3c72;
         }
-
-        .next {
-            background: #2563eb;
-            color: white;
-        }
-
-        .next:hover {
-            background: #1d4ed8;
-        }
-
-        /* Footer */
 
         footer {
-            background: #111827;
+            background: #1e1e1e;
             color: white;
             text-align: center;
             padding: 25px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
-
-        /* Responsive */
 
         @media (max-width: 768px) {
 
-            nav {
+            header {
                 flex-direction: column;
-                gap: 15px;
+                text-align: center;
             }
 
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
+            nav {
+                margin-top: 12px;
             }
 
-            .page-header h1 {
-                font-size: 34px;
+            nav a {
+                margin: 0 8px;
             }
 
-            .topic-card,
-            .editor,
-            .summary {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
                 padding: 20px;
             }
 
-            .lesson-navigation {
+            .navigation {
                 flex-direction: column;
             }
 
-            .nav-btn {
+            .btn {
                 text-align: center;
             }
 
@@ -357,1315 +320,1352 @@
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- HEADER -->
 
-<nav>
+<header>
 
-    <a href="../index.html" class="logo">
+    <div class="logo">
         Code With Me
-    </a>
+    </div>
 
-    <ul>
-
-        <li>
-            <a href="../index.html">Home</a>
-        </li>
-
-        <li>
-            <a href="../index.html#html-topics">HTML</a>
-        </li>
-
-        <li>
-            <a href="../index.html#about">About</a>
-        </li>
-
-    </ul>
-
-</nav>
-
-
-<!-- ================= HEADER ================= -->
-
-<header class="page-header">
-
-    <h1>HTML Forms</h1>
-
-    <p>
-        Learn how to create forms in HTML with simple examples
-    </p>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../index.html">Courses</a>
+    </nav>
 
 </header>
 
 
-<!-- ================= MAIN CONTENT ================= -->
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>8. HTML Forms</h1>
+
+    <p>
+        Learn how to create forms, input fields, buttons, checkboxes,
+        radio buttons, dropdowns and more.
+    </p>
+
+</section>
+
 
 <div class="container">
 
 
-    <!-- MAIN POINTS -->
+    <!-- INTRODUCTION -->
 
-    <div class="main-points">
+    <section class="section">
 
-        <h3>⭐ Main Points</h3>
-
-        <ul>
-
-            <li>HTML Forms are used to collect user information.</li>
-
-            <li>The <code>&lt;form&gt;</code> element creates a form.</li>
-
-            <li><code>&lt;input&gt;</code> is used for different types of user input.</li>
-
-            <li><code>&lt;label&gt;</code> provides a name for an input field.</li>
-
-            <li>Radio buttons allow the user to select one option.</li>
-
-            <li>Checkboxes allow the user to select multiple options.</li>
-
-            <li><code>&lt;select&gt;</code> creates a dropdown list.</li>
-
-            <li><code>&lt;textarea&gt;</code> creates a multi-line input area.</li>
-
-            <li><code>&lt;button&gt;</code> creates a clickable button.</li>
-
-            <li><code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> can group form elements.</li>
-
-        </ul>
-
-    </div>
-
-
-    <!-- ================= TOPIC 1 ================= -->
-
-    <div class="topic-card">
-
-        <h2>1. HTML Form</h2>
+        <h2>What is an HTML Form?</h2>
 
         <p>
-            The <code>&lt;form&gt;</code> element is used to create a form
-            where users can enter information.
+            An HTML form is used to collect information from users.
+            Forms are commonly used for login pages, registration pages,
+            contact forms, search boxes and feedback forms.
         </p>
 
-        <div class="code-title">Example:</div>
+        <p>
+            The main HTML element used to create a form is
+            <code>&lt;form&gt;</code>.
+        </p>
 
-        <pre><code>&lt;form&gt;
+        <div class="example">
 
-    Name:
+            <strong>Example:</strong>
+
+            <pre>
+&lt;form&gt;
+
+    &lt;label&gt;Name:&lt;/label&gt;
     &lt;input type="text"&gt;
 
-&lt;/form&gt;</code></pre>
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
 
-        <div class="output-title">Output:</div>
-
-        <div class="output-box">
-
-            <form>
-                Name:
-                <input type="text">
-            </form>
+&lt;/form&gt;
+            </pre>
 
         </div>
 
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Creates an HTML form.</li>
-                <li>Form elements are placed inside it.</li>
-            </ul>
-
-        </div>
-
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 2 ================= -->
+    <!-- FORM TAG -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>2. Form Action</h2>
+        <h2>1. The &lt;form&gt; Element</h2>
 
         <p>
-            The <code>action</code> attribute specifies where the form
-            data should be sent after submission.
+            The <code>&lt;form&gt;</code> element is the container
+            for form controls.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;form&gt;
 
-        <pre><code>&lt;form action="submit.html"&gt;
+    Form elements go here.
 
-    &lt;input type="text" name="username"&gt;
+&lt;/form&gt;
+        </pre>
 
-    &lt;input type="submit"&gt;
+        <h3>Important Form Attributes</h3>
 
-&lt;/form&gt;</code></pre>
+        <table>
 
-        <div class="output-title">Output:</div>
+            <tr>
+                <th>Attribute</th>
+                <th>Purpose</th>
+            </tr>
 
-        <div class="output-box">
+            <tr>
+                <td>action</td>
+                <td>Specifies where form data should be sent.</td>
+            </tr>
 
-            <form action="#" onsubmit="return false;">
+            <tr>
+                <td>method</td>
+                <td>Specifies how the data should be sent.</td>
+            </tr>
 
-                <input type="text" placeholder="Username">
+            <tr>
+                <td>autocomplete</td>
+                <td>Controls browser autocomplete.</td>
+            </tr>
 
-                <input type="submit" value="Submit">
+            <tr>
+                <td>target</td>
+                <td>Specifies where the response should be displayed.</td>
+            </tr>
 
-            </form>
+        </table>
 
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li><code>action</code> defines the destination.</li>
-                <li>It is commonly used when submitting form data.</li>
-            </ul>
-
-        </div>
-
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 3 ================= -->
+    <!-- LABEL -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>3. Form Method</h2>
+        <h2>2. The &lt;label&gt; Element</h2>
 
         <p>
-            The <code>method</code> attribute defines how form data
-            is sent.
+            The <code>&lt;label&gt;</code> element provides a text
+            description for an input field.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;label for="username"&gt;
+    Username:
+&lt;/label&gt;
 
-        <pre><code>&lt;form method="post"&gt;
+&lt;input type="text" id="username"&gt;
+        </pre>
 
-    &lt;input type="text" name="username"&gt;
+        <div class="tip">
 
-    &lt;input type="submit"&gt;
+            <strong>Tip:</strong>
 
-&lt;/form&gt;</code></pre>
-
-        <div class="output-title">Output:</div>
-
-        <div class="output-box">
-
-            <form onsubmit="return false;">
-
-                <input type="text" placeholder="Username">
-
-                <input type="submit" value="Submit">
-
-            </form>
+            Always try to use labels with form inputs.
+            They make forms easier to understand and use.
 
         </div>
 
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li><code>GET</code> sends data through the URL.</li>
-                <li><code>POST</code> sends data in the request body.</li>
-            </ul>
-
-        </div>
-
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 4 ================= -->
+    <!-- TEXT INPUT -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>4. Text Input</h2>
+        <h2>3. Text Input</h2>
 
         <p>
-            <code>&lt;input type="text"&gt;</code> creates a single-line
-            text input field.
+            The <code>type="text"</code> input creates a single-line
+            text field.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;label&gt;Full Name:&lt;/label&gt;
 
-        <pre><code>&lt;input type="text" placeholder="Enter your name"&gt;</code></pre>
+&lt;input type="text"
+       placeholder="Enter your name"&gt;
+        </pre>
 
-        <div class="output-title">Output:</div>
+        <div class="form-demo">
 
-        <div class="output-box">
+            <label>Full Name:</label>
 
-            <input type="text" placeholder="Enter your name">
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Used for names and short text.</li>
-                <li><code>placeholder</code> displays hint text.</li>
-            </ul>
+            <input
+                type="text"
+                placeholder="Enter your name">
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 5 ================= -->
+    <!-- EMAIL -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>5. Label</h2>
+        <h2>4. Email Input</h2>
 
         <p>
-            The <code>&lt;label&gt;</code> element defines a label
-            for a form input.
+            The <code>email</code> input is used to collect an email
+            address.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;label&gt;Email:&lt;/label&gt;
 
-        <pre><code>&lt;label for="name"&gt;Name:&lt;/label&gt;
+&lt;input
+    type="email"
+    placeholder="Enter your email"&gt;
+        </pre>
 
-&lt;input type="text" id="name"&gt;</code></pre>
+        <div class="form-demo">
 
-        <div class="output-title">Output:</div>
+            <label>Email:</label>
 
-        <div class="output-box">
-
-            <label for="name1">Name:</label>
-
-            <input type="text" id="name1">
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Labels describe form fields.</li>
-                <li><code>for</code> connects the label with an input.</li>
-            </ul>
+            <input
+                type="email"
+                placeholder="Enter your email">
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 6 ================= -->
+    <!-- PASSWORD -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>6. Password Input</h2>
+        <h2>5. Password Input</h2>
 
         <p>
-            <code>&lt;input type="password"&gt;</code> creates a field
-            where entered characters are hidden.
+            The <code>password</code> input hides the characters
+            typed by the user.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;label&gt;Password:&lt;/label&gt;
 
-        <pre><code>&lt;input type="password" placeholder="Enter password"&gt;</code></pre>
+&lt;input
+    type="password"
+    placeholder="Enter password"&gt;
+        </pre>
 
-        <div class="output-title">Output:</div>
+        <div class="form-demo">
 
-        <div class="output-box">
+            <label>Password:</label>
 
-            <input type="password" placeholder="Enter password">
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Used for passwords.</li>
-                <li>Characters are visually hidden.</li>
-            </ul>
+            <input
+                type="password"
+                placeholder="Enter password">
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 7 ================= -->
+    <!-- NUMBER -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>7. Email Input</h2>
+        <h2>6. Number Input</h2>
 
         <p>
-            <code>&lt;input type="email"&gt;</code> is used to enter
-            an email address.
+            The <code>number</code> input is used to enter numbers.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;label&gt;Age:&lt;/label&gt;
 
-        <pre><code>&lt;input type="email" placeholder="Enter email"&gt;</code></pre>
+&lt;input
+    type="number"
+    min="1"
+    max="100"&gt;
+        </pre>
 
-        <div class="output-title">Output:</div>
+        <div class="form-demo">
 
-        <div class="output-box">
+            <label>Age:</label>
 
-            <input type="email" placeholder="Enter email">
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Used for email addresses.</li>
-                <li>Browsers can perform basic email validation.</li>
-            </ul>
+            <input
+                type="number"
+                min="1"
+                max="100">
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 8 ================= -->
+    <!-- RADIO BUTTON -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>8. Number Input</h2>
+        <h2>7. Radio Buttons</h2>
 
         <p>
-            <code>&lt;input type="number"&gt;</code> is used to enter
-            numerical values.
+            Radio buttons allow the user to select one option
+            from a group.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;input
+    type="radio"
+    name="gender"
+    value="male"&gt;
 
-        <pre><code>&lt;input type="number" min="1" max="100"&gt;</code></pre>
+Male
 
-        <div class="output-title">Output:</div>
+&lt;input
+    type="radio"
+    name="gender"
+    value="female"&gt;
 
-        <div class="output-box">
+Female
+        </pre>
 
-            <input type="number" min="1" max="100">
+        <div class="form-demo">
+
+            <label>Gender:</label>
+
+            <input type="radio" name="gender" value="male">
+            Male
+
+            <br>
+
+            <input type="radio" name="gender" value="female">
+            Female
+
+            <br>
+
+            <input type="radio" name="gender" value="other">
+            Other
 
         </div>
 
-        <div class="main-points">
+        <div class="note">
 
-            <h3>⭐ Main Points</h3>
+            <strong>Important:</strong>
 
-            <ul>
-                <li>Used for numbers.</li>
-                <li><code>min</code> specifies minimum value.</li>
-                <li><code>max</code> specifies maximum value.</li>
-            </ul>
+            Radio buttons that belong to the same group should have
+            the same <code>name</code> value.
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 9 ================= -->
+    <!-- CHECKBOX -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>9. Radio Buttons</h2>
+        <h2>8. Checkboxes</h2>
 
         <p>
-            Radio buttons allow the user to select one option from
-            a group of options.
+            Checkboxes allow users to select one or multiple options.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;input
+    type="checkbox"
+    name="skills"
+    value="html"&gt;
 
-        <pre><code>&lt;input type="radio" name="gender" value="male"&gt; Male
+HTML
 
-&lt;input type="radio" name="gender" value="female"&gt; Female</code></pre>
+&lt;input
+    type="checkbox"
+    name="skills"
+    value="css"&gt;
 
-        <div class="output-title">Output:</div>
+CSS
+        </pre>
 
-        <div class="output-box">
+        <div class="form-demo">
 
-            <input type="radio" name="gender1"> Male
+            <label>Skills:</label>
 
-            <input type="radio" name="gender1"> Female
+            <input type="checkbox" name="skill" value="html">
+            HTML
 
-        </div>
+            <br>
 
-        <div class="main-points">
+            <input type="checkbox" name="skill" value="css">
+            CSS
 
-            <h3>⭐ Main Points</h3>
+            <br>
 
-            <ul>
-                <li>Used when selecting one option.</li>
-                <li>Use the same <code>name</code> for the group.</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= TOPIC 10 ================= -->
-
-    <div class="topic-card">
-
-        <h2>10. Checkboxes</h2>
-
-        <p>
-            Checkboxes allow users to select multiple options.
-        </p>
-
-        <div class="code-title">Example:</div>
-
-        <pre><code>&lt;input type="checkbox"&gt; HTML
-
-&lt;input type="checkbox"&gt; CSS
-
-&lt;input type="checkbox"&gt; JavaScript</code></pre>
-
-        <div class="output-title">Output:</div>
-
-        <div class="output-box">
-
-            <input type="checkbox"> HTML
-
-            <input type="checkbox"> CSS
-
-            <input type="checkbox"> JavaScript
+            <input type="checkbox" name="skill" value="javascript">
+            JavaScript
 
         </div>
 
-        <div class="main-points">
+    </section>
 
-            <h3>⭐ Main Points</h3>
 
-            <ul>
-                <li>Multiple options can be selected.</li>
-                <li>Useful for preferences and skills.</li>
-            </ul>
+    <!-- SELECT -->
 
-        </div>
+    <section class="section">
 
-    </div>
-
-
-    <!-- ================= TOPIC 11 ================= -->
-
-    <div class="topic-card">
-
-        <h2>11. Date Input</h2>
-
-        <p>
-            <code>&lt;input type="date"&gt;</code> allows the user
-            to select a date.
-        </p>
-
-        <div class="code-title">Example:</div>
-
-        <pre><code>&lt;input type="date"&gt;</code></pre>
-
-        <div class="output-title">Output:</div>
-
-        <div class="output-box">
-
-            <input type="date">
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Used to select dates.</li>
-                <li>The browser provides a date picker.</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= TOPIC 12 ================= -->
-
-    <div class="topic-card">
-
-        <h2>12. File Input</h2>
-
-        <p>
-            <code>&lt;input type="file"&gt;</code> allows the user
-            to select a file from their device.
-        </p>
-
-        <div class="code-title">Example:</div>
-
-        <pre><code>&lt;input type="file"&gt;</code></pre>
-
-        <div class="output-title">Output:</div>
-
-        <div class="output-box">
-
-            <input type="file">
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Used for uploading files.</li>
-                <li>The selected file can be processed by a server.</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= TOPIC 13 ================= -->
-
-    <div class="topic-card">
-
-        <h2>13. Submit Button</h2>
-
-        <p>
-            A submit button is used to submit form data.
-        </p>
-
-        <div class="code-title">Example:</div>
-
-        <pre><code>&lt;input type="submit" value="Submit"&gt;</code></pre>
-
-        <div class="output-title">Output:</div>
-
-        <div class="output-box">
-
-            <input type="submit" value="Submit"
-                   onclick="return false;">
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Submits the form.</li>
-                <li>The <code>value</code> attribute controls button text.</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= TOPIC 14 ================= -->
-
-    <div class="topic-card">
-
-        <h2>14. Reset Button</h2>
-
-        <p>
-            A reset button clears the values entered into the form.
-        </p>
-
-        <div class="code-title">Example:</div>
-
-        <pre><code>&lt;input type="reset" value="Reset"&gt;</code></pre>
-
-        <div class="output-title">Output:</div>
-
-        <div class="output-box">
-
-            <form>
-
-                <input type="text" placeholder="Enter name">
-
-                <input type="reset" value="Reset">
-
-            </form>
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Clears form controls to their initial values.</li>
-                <li>Useful when users want to start again.</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= TOPIC 15 ================= -->
-
-    <div class="topic-card">
-
-        <h2>15. Textarea</h2>
-
-        <p>
-            The <code>&lt;textarea&gt;</code> element creates a
-            multi-line text input area.
-        </p>
-
-        <div class="code-title">Example:</div>
-
-        <pre><code>&lt;textarea rows="5" cols="40"&gt;
-Enter your message
-&lt;/textarea&gt;</code></pre>
-
-        <div class="output-title">Output:</div>
-
-        <div class="output-box">
-
-            <textarea rows="5" cols="40"
-                      placeholder="Enter your message"></textarea>
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Used for long text.</li>
-                <li>Useful for messages and comments.</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= TOPIC 16 ================= -->
-
-    <div class="topic-card">
-
-        <h2>16. Select Dropdown</h2>
+        <h2>9. Dropdown List</h2>
 
         <p>
             The <code>&lt;select&gt;</code> element creates a
             dropdown list.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;label&gt;Choose a Course:&lt;/label&gt;
 
-        <pre><code>&lt;select&gt;
-
-    &lt;option&gt;India&lt;/option&gt;
-
-    &lt;option&gt;USA&lt;/option&gt;
-
-    &lt;option&gt;Canada&lt;/option&gt;
-
-&lt;/select&gt;</code></pre>
-
-        <div class="output-title">Output:</div>
-
-        <div class="output-box">
-
-            <select>
-
-                <option>India</option>
-                <option>USA</option>
-                <option>Canada</option>
-
-            </select>
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Creates a dropdown.</li>
-                <li>Options are created using <code>&lt;option&gt;</code>.</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= TOPIC 17 ================= -->
-
-    <div class="topic-card">
-
-        <h2>17. Option</h2>
-
-        <p>
-            The <code>&lt;option&gt;</code> element defines an option
-            inside a select dropdown.
-        </p>
-
-        <div class="code-title">Example:</div>
-
-        <pre><code>&lt;select&gt;
+&lt;select&gt;
 
     &lt;option&gt;HTML&lt;/option&gt;
-
     &lt;option&gt;CSS&lt;/option&gt;
-
     &lt;option&gt;JavaScript&lt;/option&gt;
+    &lt;option&gt;Python&lt;/option&gt;
 
-&lt;/select&gt;</code></pre>
+&lt;/select&gt;
+        </pre>
 
-        <div class="output-title">Output:</div>
+        <div class="form-demo">
 
-        <div class="output-box">
+            <label>Choose a Course:</label>
 
             <select>
 
                 <option>HTML</option>
                 <option>CSS</option>
                 <option>JavaScript</option>
+                <option>Python</option>
 
             </select>
 
         </div>
 
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Defines dropdown choices.</li>
-                <li>Used inside <code>&lt;select&gt;</code>.</li>
-            </ul>
-
-        </div>
-
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 18 ================= -->
+    <!-- TEXTAREA -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>18. Button</h2>
+        <h2>10. Textarea</h2>
 
         <p>
-            The <code>&lt;button&gt;</code> element creates a
-            clickable button.
+            The <code>&lt;textarea&gt;</code> element is used when
+            the user needs to enter multiple lines of text.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;label&gt;Message:&lt;/label&gt;
 
-        <pre><code>&lt;button type="button"&gt;
-    Click Me
-&lt;/button&gt;</code></pre>
+&lt;textarea
+    rows="5"
+    cols="40"
+    placeholder="Enter your message"&gt;
+&lt;/textarea&gt;
+        </pre>
 
-        <div class="output-title">Output:</div>
+        <div class="form-demo">
 
-        <div class="output-box">
+            <label>Message:</label>
 
-            <button type="button">
-                Click Me
-            </button>
-
-        </div>
-
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li>Creates a clickable button.</li>
-                <li>Can be used with JavaScript.</li>
-                <li>Can also be used for form submission.</li>
-            </ul>
+            <textarea
+                rows="5"
+                placeholder="Enter your message"></textarea>
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 19 ================= -->
+    <!-- DATE -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>19. Fieldset and Legend</h2>
+        <h2>11. Date Input</h2>
 
         <p>
-            <code>&lt;fieldset&gt;</code> groups related form elements
-            and <code>&lt;legend&gt;</code> gives the group a title.
+            The <code>date</code> input allows users to select a date.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;label&gt;Date of Birth:&lt;/label&gt;
 
-        <pre><code>&lt;fieldset&gt;
+&lt;input type="date"&gt;
+        </pre>
 
-    &lt;legend&gt;Personal Information&lt;/legend&gt;
+        <div class="form-demo">
 
-    &lt;label&gt;Name:&lt;/label&gt;
+            <label>Date of Birth:</label>
 
-    &lt;input type="text"&gt;
-
-&lt;/fieldset&gt;</code></pre>
-
-        <div class="output-title">Output:</div>
-
-        <div class="output-box">
-
-            <fieldset>
-
-                <legend>Personal Information</legend>
-
-                <label>Name:</label>
-
-                <input type="text">
-
-            </fieldset>
+            <input type="date">
 
         </div>
 
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-                <li><code>fieldset</code> groups related fields.</li>
-                <li><code>legend</code> provides a caption.</li>
-            </ul>
-
-        </div>
-
-    </div>
+    </section>
 
 
-    <!-- ================= TOPIC 20 ================= -->
+    <!-- FILE -->
 
-    <div class="topic-card">
+    <section class="section">
 
-        <h2>20. Complete HTML Form</h2>
+        <h2>12. File Input</h2>
 
         <p>
-            We can combine different HTML form elements to create
-            a complete registration form.
+            The <code>file</code> input allows users to select a file
+            from their device.
         </p>
 
-        <div class="code-title">Example:</div>
+        <pre>
+&lt;label&gt;Upload File:&lt;/label&gt;
 
-        <pre><code>&lt;form&gt;
+&lt;input type="file"&gt;
+        </pre>
 
-    &lt;label&gt;Name:&lt;/label&gt;
-    &lt;input type="text"&gt;
+        <div class="form-demo">
 
-    &lt;br&gt;&lt;br&gt;
+            <label>Upload File:</label>
 
-    &lt;label&gt;Email:&lt;/label&gt;
-    &lt;input type="email"&gt;
+            <input type="file">
 
-    &lt;br&gt;&lt;br&gt;
+        </div>
 
-    &lt;label&gt;Password:&lt;/label&gt;
-    &lt;input type="password"&gt;
+    </section>
 
-    &lt;br&gt;&lt;br&gt;
+
+    <!-- TEL -->
+
+    <section class="section">
+
+        <h2>13. Telephone Input</h2>
+
+        <p>
+            The <code>tel</code> input is commonly used for phone numbers.
+        </p>
+
+        <pre>
+&lt;label&gt;Phone Number:&lt;/label&gt;
+
+&lt;input
+    type="tel"
+    placeholder="Enter phone number"&gt;
+        </pre>
+
+    </section>
+
+
+    <!-- URL -->
+
+    <section class="section">
+
+        <h2>14. URL Input</h2>
+
+        <p>
+            The <code>url</code> input is used for website addresses.
+        </p>
+
+        <pre>
+&lt;label&gt;Website:&lt;/label&gt;
+
+&lt;input
+    type="url"
+    placeholder="https://example.com"&gt;
+        </pre>
+
+    </section>
+
+
+    <!-- SUBMIT BUTTON -->
+
+    <section class="section">
+
+        <h2>15. Submit Button</h2>
+
+        <p>
+            A submit button is used to submit the form.
+        </p>
+
+        <pre>
+&lt;button type="submit"&gt;
+    Submit
+&lt;/button&gt;
+        </pre>
+
+        <p>
+            You can also use:
+        </p>
+
+        <pre>
+&lt;input type="submit" value="Submit"&gt;
+        </pre>
+
+    </section>
+
+
+    <!-- RESET BUTTON -->
+
+    <section class="section">
+
+        <h2>16. Reset Button</h2>
+
+        <p>
+            A reset button clears the form fields and returns them
+            to their initial values.
+        </p>
+
+        <pre>
+&lt;button type="reset"&gt;
+    Reset
+&lt;/button&gt;
+        </pre>
+
+    </section>
+
+
+    <!-- PLACEHOLDER -->
+
+    <section class="section">
+
+        <h2>17. Placeholder</h2>
+
+        <p>
+            The <code>placeholder</code> attribute displays a hint
+            inside an input field.
+        </p>
+
+        <pre>
+&lt;input
+    type="text"
+    placeholder="Enter your name"&gt;
+        </pre>
+
+    </section>
+
+
+    <!-- REQUIRED -->
+
+    <section class="section">
+
+        <h2>18. Required Attribute</h2>
+
+        <p>
+            The <code>required</code> attribute makes a form field
+            mandatory.
+        </p>
+
+        <pre>
+&lt;input
+    type="text"
+    required&gt;
+        </pre>
+
+        <div class="tip">
+
+            <strong>Tip:</strong>
+
+            If the user tries to submit the form without entering
+            a required value, the browser will ask them to complete it.
+
+        </div>
+
+    </section>
+
+
+    <!-- NAME -->
+
+    <section class="section">
+
+        <h2>19. Name Attribute</h2>
+
+        <p>
+            The <code>name</code> attribute identifies form data when
+            it is submitted.
+        </p>
+
+        <pre>
+&lt;input
+    type="text"
+    name="username"&gt;
+        </pre>
+
+    </section>
+
+
+    <!-- VALUE -->
+
+    <section class="section">
+
+        <h2>20. Value Attribute</h2>
+
+        <p>
+            The <code>value</code> attribute specifies an initial
+            or submitted value.
+        </p>
+
+        <pre>
+&lt;input
+    type="text"
+    name="country"
+    value="India"&gt;
+        </pre>
+
+    </section>
+
+
+    <!-- FORM ATTRIBUTES -->
+
+    <section class="section">
+
+        <h2>Important Form Input Types</h2>
+
+        <table>
+
+            <tr>
+                <th>Input Type</th>
+                <th>Purpose</th>
+            </tr>
+
+            <tr>
+                <td>text</td>
+                <td>Single-line text</td>
+            </tr>
+
+            <tr>
+                <td>email</td>
+                <td>Email address</td>
+            </tr>
+
+            <tr>
+                <td>password</td>
+                <td>Password</td>
+            </tr>
+
+            <tr>
+                <td>number</td>
+                <td>Numbers</td>
+            </tr>
+
+            <tr>
+                <td>radio</td>
+                <td>Select one option</td>
+            </tr>
+
+            <tr>
+                <td>checkbox</td>
+                <td>Select one or multiple options</td>
+            </tr>
+
+            <tr>
+                <td>date</td>
+                <td>Select a date</td>
+            </tr>
+
+            <tr>
+                <td>file</td>
+                <td>Upload a file</td>
+            </tr>
+
+            <tr>
+                <td>tel</td>
+                <td>Telephone number</td>
+            </tr>
+
+            <tr>
+                <td>url</td>
+                <td>Website URL</td>
+            </tr>
+
+            <tr>
+                <td>submit</td>
+                <td>Submit form</td>
+            </tr>
+
+            <tr>
+                <td>reset</td>
+                <td>Reset form</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- COMPLETE FORM -->
+
+    <section class="section">
+
+        <h2>Complete HTML Form Example</h2>
+
+        <p>
+            Here is a complete registration form using several
+            HTML form elements.
+        </p>
+
+        <pre>
+&lt;form action="/submit" method="post"&gt;
+
+    &lt;label for="name"&gt;Full Name:&lt;/label&gt;
+
+    &lt;input
+        type="text"
+        id="name"
+        name="name"
+        required&gt;
+
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+
+    &lt;input
+        type="email"
+        id="email"
+        name="email"
+        required&gt;
+
+    &lt;label for="password"&gt;Password:&lt;/label&gt;
+
+    &lt;input
+        type="password"
+        id="password"
+        name="password"
+        required&gt;
 
     &lt;label&gt;Gender:&lt;/label&gt;
 
-    &lt;input type="radio" name="gender"&gt; Male
-    &lt;input type="radio" name="gender"&gt; Female
+    &lt;input type="radio"
+           name="gender"
+           value="male"&gt;
+    Male
+
+    &lt;input type="radio"
+           name="gender"
+           value="female"&gt;
+    Female
 
     &lt;br&gt;&lt;br&gt;
 
     &lt;label&gt;Skills:&lt;/label&gt;
 
-    &lt;input type="checkbox"&gt; HTML
-    &lt;input type="checkbox"&gt; CSS
-    &lt;input type="checkbox"&gt; JavaScript
+    &lt;input type="checkbox"
+           name="skill"
+           value="html"&gt;
+    HTML
+
+    &lt;input type="checkbox"
+           name="skill"
+           value="css"&gt;
+    CSS
 
     &lt;br&gt;&lt;br&gt;
 
-    &lt;label&gt;Country:&lt;/label&gt;
+    &lt;label for="course"&gt;Course:&lt;/label&gt;
 
-    &lt;select&gt;
-        &lt;option&gt;India&lt;/option&gt;
-        &lt;option&gt;USA&lt;/option&gt;
-        &lt;option&gt;Canada&lt;/option&gt;
+    &lt;select id="course"
+            name="course"&gt;
+
+        &lt;option&gt;HTML&lt;/option&gt;
+        &lt;option&gt;CSS&lt;/option&gt;
+        &lt;option&gt;JavaScript&lt;/option&gt;
+
     &lt;/select&gt;
 
-    &lt;br&gt;&lt;br&gt;
+    &lt;label for="message"&gt;Message:&lt;/label&gt;
 
-    &lt;label&gt;Message:&lt;/label&gt;
+    &lt;textarea
+        id="message"
+        name="message"
+        rows="5"&gt;
+    &lt;/textarea&gt;
 
-    &lt;br&gt;
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
 
-    &lt;textarea rows="5"&gt;&lt;/textarea&gt;
+&lt;/form&gt;
+        </pre>
 
-    &lt;br&gt;&lt;br&gt;
+    </section>
 
-    &lt;input type="submit" value="Register"&gt;
 
-    &lt;input type="reset" value="Clear"&gt;
+    <!-- LIVE FORM -->
 
-&lt;/form&gt;</code></pre>
+    <section class="section">
 
-        <div class="output-title">Output:</div>
+        <h2>Live Form Example</h2>
 
-        <div class="output-box">
+        <div class="form-demo">
 
-            <form onsubmit="return false;">
+            <form onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
 
-                <label>Name:</label>
+                <label for="fullName">
+                    Full Name:
+                </label>
 
-                <input type="text">
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter your full name"
+                    required>
 
-                <br><br>
 
-                <label>Email:</label>
+                <label for="email">
+                    Email:
+                </label>
 
-                <input type="email">
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required>
 
-                <br><br>
 
-                <label>Password:</label>
+                <label for="password">
+                    Password:
+                </label>
 
-                <input type="password">
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required>
 
-                <br><br>
 
-                <label>Gender:</label>
+                <label>
+                    Gender:
+                </label>
 
-                <input type="radio" name="gender2"> Male
+                <input
+                    type="radio"
+                    name="gender"
+                    value="male">
 
-                <input type="radio" name="gender2"> Female
-
-                <br><br>
-
-                <label>Skills:</label>
-
-                <input type="checkbox"> HTML
-                <input type="checkbox"> CSS
-                <input type="checkbox"> JavaScript
-
-                <br><br>
-
-                <label>Country:</label>
-
-                <select>
-
-                    <option>India</option>
-                    <option>USA</option>
-                    <option>Canada</option>
-
-                </select>
-
-                <br><br>
-
-                <label>Message:</label>
+                Male
 
                 <br>
 
-                <textarea rows="5"></textarea>
+                <input
+                    type="radio"
+                    name="gender"
+                    value="female">
+
+                Female
 
                 <br><br>
 
-                <input type="submit"
-                       value="Register"
-                       onclick="return false;">
 
-                <input type="reset"
-                       value="Clear">
+                <label>
+                    Skills:
+                </label>
+
+                <input
+                    type="checkbox"
+                    name="skill"
+                    value="html">
+
+                HTML
+
+                <input
+                    type="checkbox"
+                    name="skill"
+                    value="css">
+
+                CSS
+
+                <input
+                    type="checkbox"
+                    name="skill"
+                    value="javascript">
+
+                JavaScript
+
+                <br><br>
+
+
+                <label for="course">
+                    Select Course:
+                </label>
+
+                <select
+                    id="course"
+                    name="course">
+
+                    <option>HTML</option>
+                    <option>CSS</option>
+                    <option>JavaScript</option>
+                    <option>Python</option>
+
+                </select>
+
+
+                <label for="message">
+                    Message:
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Write your message"></textarea>
+
+
+                <button type="submit">
+                    Submit Form
+                </button>
 
             </form>
 
         </div>
 
-        <div class="main-points">
-
-            <h3>⭐ Main Points</h3>
-
-            <ul>
-
-                <li>Different form controls can be combined.</li>
-
-                <li>Labels improve form structure and usability.</li>
-
-                <li>Input types provide different controls.</li>
-
-                <li>Forms are commonly used for registration and login pages.</li>
-
-            </ul>
-
-        </div>
-
-    </div>
+    </section>
 
 
-    <!-- ================= SUMMARY ================= -->
+    <!-- BEST PRACTICES -->
 
-    <div class="summary">
+    <section class="section">
 
-        <h2>📚 HTML Forms Summary</h2>
+        <h2>HTML Form Best Practices</h2>
 
-        <table>
+        <ol>
 
-            <thead>
+            <li>
+                Always use meaningful labels.
+            </li>
 
-                <tr>
+            <li>
+                Use the correct input type.
+            </li>
 
-                    <th>Tag / Attribute</th>
+            <li>
+                Use <code>required</code> for mandatory fields.
+            </li>
 
-                    <th>Purpose</th>
+            <li>
+                Use meaningful <code>name</code> attributes.
+            </li>
 
-                </tr>
+            <li>
+                Use placeholder text when it helps the user.
+            </li>
 
-            </thead>
+            <li>
+                Group related radio buttons correctly.
+            </li>
 
-            <tbody>
+            <li>
+                Keep forms simple and easy to understand.
+            </li>
 
-                <tr>
-                    <td>&lt;form&gt;</td>
-                    <td>Creates a form</td>
-                </tr>
+        </ol>
 
-                <tr>
-                    <td>action</td>
-                    <td>Defines where form data is sent</td>
-                </tr>
-
-                <tr>
-                    <td>method</td>
-                    <td>Defines how form data is sent</td>
-                </tr>
-
-                <tr>
-                    <td>&lt;input&gt;</td>
-                    <td>Creates input controls</td>
-                </tr>
-
-                <tr>
-                    <td>&lt;label&gt;</td>
-                    <td>Defines input labels</td>
-                </tr>
-
-                <tr>
-                    <td>type="text"</td>
-                    <td>Text input</td>
-                </tr>
-
-                <tr>
-                    <td>type="password"</td>
-                    <td>Password input</td>
-                </tr>
-
-                <tr>
-                    <td>type="email"</td>
-                    <td>Email input</td>
-                </tr>
-
-                <tr>
-                    <td>type="number"</td>
-                    <td>Number input</td>
-                </tr>
-
-                <tr>
-                    <td>type="radio"</td>
-                    <td>Single choice</td>
-                </tr>
-
-                <tr>
-                    <td>type="checkbox"</td>
-                    <td>Multiple choices</td>
-                </tr>
-
-                <tr>
-                    <td>type="date"</td>
-                    <td>Date selection</td>
-                </tr>
-
-                <tr>
-                    <td>type="file"</td>
-                    <td>File selection</td>
-                </tr>
-
-                <tr>
-                    <td>&lt;textarea&gt;</td>
-                    <td>Multi-line text input</td>
-                </tr>
-
-                <tr>
-                    <td>&lt;select&gt;</td>
-                    <td>Dropdown list</td>
-                </tr>
-
-                <tr>
-                    <td>&lt;option&gt;</td>
-                    <td>Dropdown option</td>
-                </tr>
-
-                <tr>
-                    <td>&lt;button&gt;</td>
-                    <td>Clickable button</td>
-                </tr>
-
-                <tr>
-                    <td>&lt;fieldset&gt;</td>
-                    <td>Groups related controls</td>
-                </tr>
-
-                <tr>
-                    <td>&lt;legend&gt;</td>
-                    <td>Caption for a fieldset</td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
+    </section>
 
 
-    <!-- ================= LIVE CODE EDITOR ================= -->
+    <!-- COMMON MISTAKES -->
 
-    <div class="editor">
+    <section class="section">
 
-        <h2>💻 Run HTML Form Code</h2>
+        <h2>Common Mistakes</h2>
+
+        <ul>
+
+            <li>
+                Forgetting the <code>&lt;form&gt;</code> element.
+            </li>
+
+            <li>
+                Not using labels for input fields.
+            </li>
+
+            <li>
+                Using different <code>name</code> values for radio buttons
+                that should belong to the same group.
+            </li>
+
+            <li>
+                Forgetting the <code>name</code> attribute when form data
+                needs to be submitted.
+            </li>
+
+            <li>
+                Using <code>type="text"</code> for every input instead of
+                using appropriate input types.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+
+    <section class="section practice">
+
+        <h2>Practice: Write Your Own HTML Form</h2>
 
         <p>
-            Write your HTML code below and click
+            Change the code below and click
             <strong>Run Code</strong> to see the result.
         </p>
 
-        <textarea id="code"><!DOCTYPE html>
+        <textarea id="code">
+<!DOCTYPE html>
 <html>
+
 <head>
+
     <title>My Form</title>
+
 </head>
 
 <body>
 
-<h2>Registration Form</h2>
+    <h1>Registration Form</h1>
 
-<form>
+    <form>
 
-    <label>Name:</label>
-    <input type="text" placeholder="Enter your name">
+        <label for="name">
+            Name:
+        </label>
 
-    <br><br>
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            required>
 
-    <label>Email:</label>
-    <input type="email" placeholder="Enter your email">
+        <br><br>
 
-    <br><br>
+        <label for="email">
+            Email:
+        </label>
 
-    <label>Password:</label>
-    <input type="password" placeholder="Enter password">
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required>
 
-    <br><br>
+        <br><br>
 
-    <label>Gender:</label>
+        <label for="password">
+            Password:
+        </label>
 
-    <input type="radio" name="gender"> Male
-    <input type="radio" name="gender"> Female
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter password">
 
-    <br><br>
+        <br><br>
 
-    <label>Skills:</label>
+        <label>
+            Gender:
+        </label>
 
-    <input type="checkbox"> HTML
-    <input type="checkbox"> CSS
-    <input type="checkbox"> JavaScript
+        <input
+            type="radio"
+            name="gender"
+            value="male">
 
-    <br><br>
+        Male
 
-    <label>Country:</label>
+        <input
+            type="radio"
+            name="gender"
+            value="female">
 
-    <select>
+        Female
 
-        <option>India</option>
-        <option>USA</option>
-        <option>Canada</option>
+        <br><br>
 
-    </select>
+        <label>
+            Skills:
+        </label>
 
-    <br><br>
+        <input
+            type="checkbox"
+            name="skill"
+            value="html">
 
-    <label>Message:</label>
+        HTML
 
-    <br>
+        <input
+            type="checkbox"
+            name="skill"
+            value="css">
 
-    <textarea rows="5"
-              placeholder="Write your message"></textarea>
+        CSS
 
-    <br><br>
+        <br><br>
 
-    <input type="submit" value="Register">
+        <label>
+            Select Course:
+        </label>
 
-    <input type="reset" value="Clear">
+        <select>
 
-</form>
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JavaScript</option>
+            <option>Python</option>
+
+        </select>
+
+        <br><br>
+
+        <label>
+            Message:
+        </label>
+
+        <br>
+
+        <textarea
+            rows="5"
+            cols="40"
+            placeholder="Write your message"></textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Submit
+        </button>
+
+        <button type="reset">
+            Reset
+        </button>
+
+    </form>
 
 </body>
-</html></textarea>
 
+</html>
+        </textarea>
 
-        <button class="run-btn" onclick="runCode()">
+        <button
+            class="run-btn"
+            onclick="runCode()">
+
             ▶ Run Code
+
         </button>
 
-        <button class="clear-btn" onclick="clearCode()">
-            🗑 Clear
-        </button>
+        <iframe
+            id="output"
+            class="output"
+            title="HTML Form Output">
+        </iframe>
+
+    </section>
 
 
-        <h3 style="margin-top: 25px;">
-            Output:
-        </h3>
+    <!-- SUMMARY -->
 
-        <iframe id="output"></iframe>
+    <section class="section">
 
-    </div>
+        <h2>HTML Forms Summary</h2>
+
+        <p>
+            HTML forms are used to collect information from users.
+        </p>
+
+        <ul>
+
+            <li>
+                <code>&lt;form&gt;</code> creates a form.
+            </li>
+
+            <li>
+                <code>&lt;label&gt;</code> describes an input.
+            </li>
+
+            <li>
+                <code>&lt;input&gt;</code> creates different types
+                of input fields.
+            </li>
+
+            <li>
+                <code>&lt;textarea&gt;</code> creates a multi-line
+                text field.
+            </li>
+
+            <li>
+                <code>&lt;select&gt;</code> creates a dropdown list.
+            </li>
+
+            <li>
+                <code>&lt;option&gt;</code> creates options inside
+                a dropdown.
+            </li>
+
+            <li>
+                <code>&lt;button&gt;</code> creates buttons.
+            </li>
+
+            <li>
+                <code>required</code> makes a field mandatory.
+            </li>
+
+        </ul>
+
+        <div class="tip">
+
+            <strong>Next Step:</strong>
+
+            Now you have completed the basic HTML topics from
+            Introduction through Forms.
+
+        </div>
+
+    </section>
 
 
-    <!-- ================= PREVIOUS / NEXT ================= -->
+    <!-- NAVIGATION -->
 
-    <div class="lesson-navigation">
+    <div class="navigation">
 
-        <a href="html-tables.html"
-           class="nav-btn previous">
+        <a
+            class="btn"
+            href="html-tables.html">
 
-            ← Previous: HTML Tables
+            ← HTML Tables
 
         </a>
 
+        <a
+            class="btn"
+            href="../index.html">
 
-        <a href="html-colors.html"
-           class="nav-btn next">
-
-            Next: HTML Colors →
+            Back to Course →
 
         </a>
 
     </div>
+
 
 </div>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 
 <footer>
 
     <p>
-        © 2026 Code With Me | Learn Coding Easily
+        © 2026 Code With Me | Learn Coding
     </p>
 
 </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- RUN CODE SCRIPT -->
 
 <script>
 
@@ -1678,15 +1678,6 @@ Enter your message
             document.getElementById("output");
 
         output.srcdoc = code;
-
-    }
-
-
-    function clearCode() {
-
-        document.getElementById("code").value = "";
-
-        document.getElementById("output").srcdoc = "";
 
     }
 
