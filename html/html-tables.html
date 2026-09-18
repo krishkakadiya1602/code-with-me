@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML Tables | Code With Me</title>
+
+    <meta name="description"
+          content="Learn HTML Tables with simple explanations, examples, table rows, columns, headers, captions, colspan, rowspan and an interactive code editor.">
+
+    <meta name="keywords"
+          content="HTML Tables, table tag, tr, th, td, colspan, rowspan, caption, thead, tbody, tfoot">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* =========================
+           TOPIC BOX
+        ========================= */
+
+        .topic {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .topic h2 {
+            color: #1d4ed8;
+            margin-bottom: 15px;
+        }
+
+        .topic h3 {
+            color: #374151;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           MAIN POINTS
+        ========================= */
+
+        .main-points {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 20px;
+            margin-bottom: 35px;
+            border-radius: 8px;
+        }
+
+        .main-points h3 {
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .main-points ul {
+            margin-left: 20px;
+        }
+
+        .main-points li {
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           CODE EXAMPLE
+        ========================= */
+
+        .example-code {
+            background: #111827;
+            color: #f9fafb;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            white-space: pre-wrap;
+        }
+
+        /* =========================
+           OUTPUT
+        ========================= */
+
+        .example-output {
+            background: #f9fafb;
+            border: 1px solid #d1d5db;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           DEMO TABLES
+        ========================= */
+
+        .demo-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .demo-table th,
+        .demo-table td {
+            border: 1px solid #374151;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .demo-table th {
+            background: #dbeafe;
+        }
+
+        /* =========================
+           SUMMARY TABLE
+        ========================= */
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .summary-table th,
+        .summary-table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .summary-table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        .summary-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* =========================
+           EDITOR
+        ========================= */
+
+        .editor-box {
+            background: #111827;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
+
+        .editor-box h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 450px;
+            background: #020617;
+            color: #e5e7eb;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        /* =========================
+           OUTPUT FRAME
+        ========================= */
+
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: white !important;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 350px;
+            background: white;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .previous {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .next {
+            background: #2563eb;
+            color: white;
+        }
+
+        .nav-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav .nav-links {
+                gap: 15px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .topic {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code With Me
+        </a>
+
+        <div class="nav-links">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../index.html#html-topics">
+                HTML
+            </a>
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         PAGE HEADER
+    ========================= -->
+
+    <header class="page-header">
+
+        <h1>HTML Tables</h1>
+
+        <p>
+            Learn how to create and design tables using HTML.
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- =========================
+             MAIN POINTS
+        ========================= -->
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>
+                    The <code>&lt;table&gt;</code> tag creates an HTML table.
+                </li>
+
+                <li>
+                    The <code>&lt;tr&gt;</code> tag creates a table row.
+                </li>
+
+                <li>
+                    The <code>&lt;th&gt;</code> tag creates a table header cell.
+                </li>
+
+                <li>
+                    The <code>&lt;td&gt;</code> tag creates a normal table cell.
+                </li>
+
+                <li>
+                    The <code>border</code> property can visually separate table cells.
+                </li>
+
+                <li>
+                    <code>colspan</code> can combine multiple columns.
+                </li>
+
+                <li>
+                    <code>rowspan</code> can combine multiple rows.
+                </li>
+
+                <li>
+                    <code>&lt;caption&gt;</code> adds a table caption.
+                </li>
+
+                <li>
+                    <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> and
+                    <code>&lt;tfoot&gt;</code> organize table sections.
+                </li>
+
+                <li>
+                    CSS can be used to make tables responsive and attractive.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- =========================
+             TOPIC 1
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>1. HTML Table</h2>
+
+            <p>
+                The <code>&lt;table&gt;</code> element is used to
+                create a table in HTML.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table border="1"&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;CSS&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tr>
+                        <td>HTML</td>
+                        <td>CSS</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 2
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>2. Table Row - &lt;tr&gt;</h2>
+
+            <p>
+                The <code>&lt;tr&gt;</code> element defines a row
+                inside an HTML table.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;CSS&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tr>
+                        <td>HTML</td>
+                        <td>CSS</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 3
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>3. Table Header - &lt;th&gt;</h2>
+
+            <p>
+                The <code>&lt;th&gt;</code> element defines a
+                header cell in a table.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table border="1"&gt;
+
+    &lt;tr&gt;
+
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Age&lt;/th&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tr>
+
+                        <th>Name</th>
+                        <th>Age</th>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 4
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>4. Table Data - &lt;td&gt;</h2>
+
+            <p>
+                The <code>&lt;td&gt;</code> element defines a
+                normal data cell in a table.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table border="1"&gt;
+
+    &lt;tr&gt;
+
+        &lt;td&gt;Krish&lt;/td&gt;
+        &lt;td&gt;20&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tr>
+
+                        <td>Krish</td>
+                        <td>20</td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 5
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>5. Complete Table</h2>
+
+            <p>
+                A basic table usually contains rows, header cells
+                and data cells.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table border="1"&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Rahul&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tr>
+
+                        <th>Name</th>
+                        <th>Course</th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Rahul</td>
+                        <td>HTML</td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 6
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>6. Table Border</h2>
+
+            <p>
+                CSS can be used to add borders to tables,
+                rows and cells.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table style="border-collapse:collapse;"&gt;
+
+    &lt;tr&gt;
+
+        &lt;td style="border:1px solid black;"&gt;
+            HTML
+        &lt;/td&gt;
+
+        &lt;td style="border:1px solid black;"&gt;
+            CSS
+        &lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table style="border-collapse:collapse;">
+
+                    <tr>
+
+                        <td style="border:1px solid black;padding:10px;">
+                            HTML
+                        </td>
+
+                        <td style="border:1px solid black;padding:10px;">
+                            CSS
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 7
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>7. Table Caption</h2>
+
+            <p>
+                The <code>&lt;caption&gt;</code> element adds a
+                title or caption to a table.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table border="1"&gt;
+
+    &lt;caption&gt;
+        Student Information
+    &lt;/caption&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <caption style="font-weight:bold;margin-bottom:8px;">
+                        Student Information
+                    </caption>
+
+                    <tr>
+
+                        <th>Name</th>
+                        <th>Course</th>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 8
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>8. Colspan</h2>
+
+            <p>
+                The <code>colspan</code> attribute allows a cell
+                to span across multiple columns.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table border="1"&gt;
+
+    &lt;tr&gt;
+
+        &lt;th colspan="2"&gt;
+            Student Details
+        &lt;/th&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;td&gt;Krish&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tr>
+
+                        <th colspan="2">
+                            Student Details
+                        </th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Krish</td>
+                        <td>HTML</td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 9
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>9. Rowspan</h2>
+
+            <p>
+                The <code>rowspan</code> attribute allows a cell
+                to span across multiple rows.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table border="1"&gt;
+
+    &lt;tr&gt;
+
+        &lt;th rowspan="2"&gt;
+            Student
+        &lt;/th&gt;
+
+        &lt;td&gt;HTML&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;td&gt;CSS&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tr>
+
+                        <th rowspan="2">
+                            Student
+                        </th>
+
+                        <td>HTML</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>CSS</td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 10
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>10. Table Head - &lt;thead&gt;</h2>
+
+            <p>
+                The <code>&lt;thead&gt;</code> element groups the
+                header rows of a table.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Marks&lt;/th&gt;
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Name</th>
+                            <th>Marks</th>
+
+                        </tr>
+
+                    </thead>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 11
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>11. Table Body - &lt;tbody&gt;</h2>
+
+            <p>
+                The <code>&lt;tbody&gt;</code> element groups the
+                main data rows of a table.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+
+            &lt;td&gt;Krish&lt;/td&gt;
+            &lt;td&gt;90&lt;/td&gt;
+
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Krish</td>
+                            <td>90</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 12
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>12. Table Footer - &lt;tfoot&gt;</h2>
+
+            <p>
+                The <code>&lt;tfoot&gt;</code> element groups footer
+                rows such as totals or summaries.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table border="1"&gt;
+
+    &lt;tfoot&gt;
+
+        &lt;tr&gt;
+
+            &lt;td&gt;Total&lt;/td&gt;
+            &lt;td&gt;100&lt;/td&gt;
+
+        &lt;/tr&gt;
+
+    &lt;/tfoot&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tfoot>
+
+                        <tr>
+
+                            <td>
+                                <strong>Total</strong>
+                            </td>
+
+                            <td>
+                                <strong>100</strong>
+                            </td>
+
+                        </tr>
+
+                    </tfoot>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 13
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>13. Cell Padding</h2>
+
+            <p>
+                CSS <code>padding</code> adds space between the
+                content and the cell border.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;td style="padding:20px;"&gt;
+    HTML
+&lt;/td&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tr>
+
+                        <td style="padding:20px;">
+                            HTML
+                        </td>
+
+                        <td style="padding:20px;">
+                            CSS
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 14
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>14. Cell Text Alignment</h2>
+
+            <p>
+                CSS <code>text-align</code> can control horizontal
+                alignment inside table cells.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;td style="text-align:center;"&gt;
+    HTML
+&lt;/td&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tr>
+
+                        <td style="text-align:center;">
+                            Center
+                        </td>
+
+                        <td style="text-align:right;">
+                            Right
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 15
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>15. Table Width</h2>
+
+            <p>
+                CSS <code>width</code> can control the width of a table.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table style="width:100%;"&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;CSS&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table style="width:100%;border-collapse:collapse;">
+
+                    <tr>
+
+                        <td style="border:1px solid #374151;padding:10px;">
+                            HTML
+                        </td>
+
+                        <td style="border:1px solid #374151;padding:10px;">
+                            CSS
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 16
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>16. Border Collapse</h2>
+
+            <p>
+                The CSS property
+                <code>border-collapse: collapse;</code>
+                combines adjacent table borders.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table style="border-collapse:collapse;"&gt;
+
+    &lt;tr&gt;
+
+        &lt;td style="border:1px solid black;"&gt;
+            HTML
+        &lt;/td&gt;
+
+        &lt;td style="border:1px solid black;"&gt;
+            CSS
+        &lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table style="
+                    width:100%;
+                    border-collapse:collapse;
+                ">
+
+                    <tr>
+
+                        <td style="
+                            border:1px solid black;
+                            padding:10px;
+                        ">
+                            HTML
+                        </td>
+
+                        <td style="
+                            border:1px solid black;
+                            padding:10px;
+                        ">
+                            CSS
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 17
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>17. Zebra Striped Table</h2>
+
+            <p>
+                CSS can create alternating row styles, often called
+                a zebra-striped table.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;style&gt;
+
+tr:nth-child(even) {
+    background:#f1f5f9;
+}
+
+&lt;/style&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                    </tr>
+
+                    <tr>
+                        <td>Rahul</td>
+                        <td>HTML</td>
+                    </tr>
+
+                    <tr style="background:#f1f5f9;">
+                        <td>Krish</td>
+                        <td>CSS</td>
+                    </tr>
+
+                    <tr>
+                        <td>Amit</td>
+                        <td>Python</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TOPIC 18
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>18. Complete Structured Table</h2>
+
+            <p>
+                A well-structured table can use
+                <code>&lt;caption&gt;</code>,
+                <code>&lt;thead&gt;</code>,
+                <code>&lt;tbody&gt;</code> and
+                <code>&lt;tfoot&gt;</code>.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+
+<pre>&lt;table border="1"&gt;
+
+    &lt;caption&gt;
+        Student Marks
+    &lt;/caption&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Marks&lt;/th&gt;
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;Krish&lt;/td&gt;
+            &lt;td&gt;90&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;Rahul&lt;/td&gt;
+            &lt;td&gt;85&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+    &lt;tfoot&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;Total&lt;/td&gt;
+            &lt;td&gt;175&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tfoot&gt;
+
+&lt;/table&gt;</pre>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <table class="demo-table">
+
+                    <caption style="
+                        font-weight:bold;
+                        padding:10px;
+                    ">
+                        Student Marks
+                    </caption>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Name</th>
+                            <th>Marks</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Krish</td>
+                            <td>90</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Rahul</td>
+                            <td>85</td>
+
+                        </tr>
+
+                    </tbody>
+
+                    <tfoot>
+
+                        <tr>
+
+                            <td>
+                                <strong>Total</strong>
+                            </td>
+
+                            <td>
+                                <strong>175</strong>
+                            </td>
+
+                        </tr>
+
+                    </tfoot>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SUMMARY
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>📚 HTML Tables Summary</h2>
+
+            <table class="summary-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Tag / Attribute</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>&lt;table&gt;</td>
+                        <td>Creates a table</td>
+                        <td>Table container</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&lt;tr&gt;</td>
+                        <td>Creates a table row</td>
+                        <td>One row</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&lt;th&gt;</td>
+                        <td>Creates a header cell</td>
+                        <td>Name</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&lt;td&gt;</td>
+                        <td>Creates a data cell</td>
+                        <td>Krish</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&lt;caption&gt;</td>
+                        <td>Adds table caption</td>
+                        <td>Student Marks</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>colspan</td>
+                        <td>Combines columns</td>
+                        <td>colspan="2"</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>rowspan</td>
+                        <td>Combines rows</td>
+                        <td>rowspan="2"</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&lt;thead&gt;</td>
+                        <td>Groups header rows</td>
+                        <td>Table header</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&lt;tbody&gt;</td>
+                        <td>Groups main table rows</td>
+                        <td>Table body</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>&lt;tfoot&gt;</td>
+                        <td>Groups footer rows</td>
+                        <td>Total</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>border-collapse</td>
+                        <td>Controls table border merging</td>
+                        <td>collapse</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>padding</td>
+                        <td>Adds space inside cells</td>
+                        <td>padding:10px</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>text-align</td>
+                        <td>Aligns cell text</td>
+                        <td>center</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             INTERACTIVE EDITOR
+        ========================= -->
+
+        <section class="topic">
+
+            <h2>💻 Try HTML Tables Yourself</h2>
+
+            <p>
+                Change the code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <div class="editor-box">
+
+                <h2>HTML Code Editor</h2>
+
+                <textarea id="code"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Student Table</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2563eb;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        caption {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #dbeafe;
+        }
+
+        tr:nth-child(even) {
+            background: #f1f5f9;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <h1>Student Information</h1>
+
+    <table>
+
+        <caption>
+            Student Marks
+        </caption>
+
+
+        <thead>
+
+            <tr>
+
+                <th>Name</th>
+                <th>Course</th>
+                <th>Marks</th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            <tr>
+
+                <td>Krish</td>
+                <td>HTML</td>
+                <td>90</td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Rahul</td>
+                <td>CSS</td>
+                <td>85</td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Amit</td>
+                <td>JavaScript</td>
+                <td>88</td>
+
+            </tr>
+
+        </tbody>
+
+
+        <tfoot>
+
+            <tr>
+
+                <td colspan="2">
+                    Total
+                </td>
+
+                <td>
+                    263
+                </td>
+
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+</body>
+
+</html></textarea>
+
+
+                <div class="buttons">
+
+                    <button class="run-btn"
+                            onclick="runCode()">
+
+                        ▶ Run Code
+
+                    </button>
+
+                    <button class="clear-btn"
+                            onclick="clearCode()">
+
+                        🗑 Clear
+
+                    </button>
+
+                </div>
+
+
+                <h3 class="output-title">
+                    Output
+                </h3>
+
+                <iframe id="output"></iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LESSON NAVIGATION
+        ========================= -->
+
+        <div class="lesson-navigation">
+
+            <a href="html-lists.html"
+               class="nav-btn previous">
+
+                ← Previous: HTML Lists
+
+            </a>
+
+            <a href="html-forms.html"
+               class="nav-btn next">
+
+                Next: HTML Forms →
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding Easily
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("code").value;
+
+            const output =
+                document.getElementById("output");
+
+            output.srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+
+        window.onload = function () {
+
+            runCode();
+
+        };
+
+    </script>
+
+
+</body>
+
+</html>
