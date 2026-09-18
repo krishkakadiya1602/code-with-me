@@ -10,12 +10,7 @@
     <title>HTML Lists | Code With Me</title>
 
     <meta name="description"
-          content="Learn HTML Lists including ordered lists, unordered lists, nested lists, description lists and more with simple examples.">
-
-    <meta name="keywords"
-          content="HTML Lists, ordered list, unordered list, nested list, HTML ol, HTML ul, HTML li, HTML dl">
-
-    <meta name="author" content="Code With Me">
+        content="Learn HTML Lists including unordered lists, ordered lists, description lists, nested lists and list styling with simple examples.">
 
     <style>
 
@@ -27,75 +22,59 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #f5f7fb;
+            background: #f4f7fb;
             color: #222;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* NAVBAR */
-
-        nav {
-            background: #111827;
-            padding: 15px 7%;
+        header {
+            background: #0d6efd;
+            color: white;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
-        nav .logo {
-            color: white;
-            font-size: 24px;
+        .logo {
+            font-size: 26px;
             font-weight: bold;
-            text-decoration: none;
         }
 
-        nav .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        nav .nav-links a {
+        nav a {
             color: white;
             text-decoration: none;
-            font-size: 16px;
+            margin-left: 20px;
+            font-weight: bold;
         }
 
-        nav .nav-links a:hover {
-            color: #60a5fa;
+        nav a:hover {
+            text-decoration: underline;
         }
 
-        /* PAGE HEADER */
-
-        .page-header {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+        .hero {
+            background: linear-gradient(135deg, #0d6efd, #6610f2);
             color: white;
             text-align: center;
             padding: 60px 20px;
         }
 
-        .page-header h1 {
+        .hero h1 {
             font-size: 42px;
             margin-bottom: 10px;
         }
 
-        .page-header p {
+        .hero p {
             font-size: 18px;
         }
 
-        /* CONTAINER */
-
         .container {
             width: 90%;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 40px auto;
         }
 
-        /* TOPIC */
-
-        .topic {
+        .section {
             background: white;
             padding: 30px;
             margin-bottom: 30px;
@@ -103,257 +82,180 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
-        .topic h2 {
-            color: #1d4ed8;
+        .section h2 {
+            color: #0d6efd;
             margin-bottom: 15px;
         }
 
-        .topic h3 {
-            color: #374151;
-            margin-top: 20px;
+        .section h3 {
+            margin-top: 25px;
             margin-bottom: 10px;
+            color: #333;
         }
 
-        /* MAIN POINTS */
+        code {
+            background: #eef2f7;
+            padding: 3px 7px;
+            border-radius: 5px;
+            color: #d63384;
+        }
 
-        .main-points {
-            background: #eff6ff;
-            border-left: 5px solid #2563eb;
+        pre {
+            background: #1e1e1e;
+            color: #f8f8f2;
             padding: 20px;
-            margin-bottom: 35px;
-            border-radius: 8px;
-        }
-
-        .main-points h3 {
-            color: #1e3a8a;
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-
-        .main-points ul {
-            margin-left: 20px;
-        }
-
-        .main-points li {
-            margin-bottom: 8px;
-        }
-
-        /* CODE */
-
-        .example-code {
-            background: #111827;
-            color: #f9fafb;
-            padding: 18px;
-            border-radius: 8px;
-            margin: 15px 0;
+            border-radius: 10px;
             overflow-x: auto;
+            margin: 15px 0;
         }
 
-        .example-code pre {
-            white-space: pre-wrap;
-        }
-
-        /* OUTPUT */
-
-        .example-output {
-            background: #f9fafb;
-            border: 1px solid #d1d5db;
+        .example-box {
+            background: #f8f9fa;
+            border-left: 5px solid #0d6efd;
             padding: 20px;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        /* INFO BOX */
-
-        .info-box {
-            background: #ecfdf5;
-            border-left: 5px solid #10b981;
-            padding: 18px;
             margin: 20px 0;
             border-radius: 8px;
         }
 
-        /* LIST OUTPUT */
-
-        .list-demo {
-            padding-left: 25px;
+        .example-box ul,
+        .example-box ol,
+        .example-box dl {
+            margin-left: 25px;
         }
 
-        .list-demo li {
-            margin-bottom: 6px;
-        }
-
-        /* SUMMARY TABLE */
-
-        .summary-table {
+        table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
 
-        .summary-table th,
-        .summary-table td {
-            border: 1px solid #d1d5db;
+        th,
+        td {
+            border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
         }
 
-        .summary-table th {
-            background: #2563eb;
+        th {
+            background: #0d6efd;
             color: white;
         }
 
-        .summary-table tr:nth-child(even) {
-            background: #f9fafb;
+        tr:nth-child(even) {
+            background: #f8f9fa;
         }
 
-        /* EDITOR */
-
-        .editor-box {
-            background: #111827;
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 25px;
-        }
-
-        .editor-box h2 {
-            color: white;
-            margin-bottom: 15px;
+        .editor {
+            margin-top: 20px;
         }
 
         textarea {
             width: 100%;
-            min-height: 420px;
-            background: #020617;
-            color: #e5e7eb;
-            border: 1px solid #374151;
-            border-radius: 8px;
-            padding: 15px;
+            min-height: 300px;
+            background: #1e1e1e;
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 10px;
             font-family: Consolas, monospace;
             font-size: 15px;
             resize: vertical;
         }
 
-        /* BUTTONS */
-
-        .buttons {
-            margin-top: 15px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .run-btn,
-        .clear-btn {
+        .run-btn {
+            background: #198754;
+            color: white;
             border: none;
-            padding: 12px 22px;
+            padding: 12px 25px;
+            margin-top: 15px;
             border-radius: 7px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: bold;
         }
 
-        .run-btn {
-            background: #22c55e;
-            color: white;
-        }
-
         .run-btn:hover {
-            background: #16a34a;
-        }
-
-        .clear-btn {
-            background: #ef4444;
-            color: white;
-        }
-
-        .clear-btn:hover {
-            background: #dc2626;
-        }
-
-        /* OUTPUT */
-
-        .output-title {
-            margin-top: 25px;
-            margin-bottom: 10px;
-            color: white !important;
+            background: #146c43;
         }
 
         iframe {
             width: 100%;
-            min-height: 320px;
+            min-height: 350px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-top: 20px;
             background: white;
-            border: none;
-            border-radius: 8px;
         }
 
-        /* NAVIGATION */
-
-        .lesson-navigation {
+        .navigation {
             display: flex;
             justify-content: space-between;
-            gap: 20px;
+            gap: 15px;
             margin: 40px 0;
         }
 
-        .nav-btn {
+        .btn {
+            background: #0d6efd;
+            color: white;
+            padding: 12px 20px;
             text-decoration: none;
-            padding: 14px 22px;
-            border-radius: 8px;
+            border-radius: 7px;
             font-weight: bold;
         }
 
-        .previous {
-            background: #e5e7eb;
-            color: #111827;
+        .btn:hover {
+            background: #0b5ed7;
         }
 
-        .next {
-            background: #2563eb;
-            color: white;
+        .tip {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
 
-        .nav-btn:hover {
-            opacity: 0.85;
+        .note {
+            background: #d1ecf1;
+            border-left: 5px solid #0dcaf0;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
-
-        /* FOOTER */
 
         footer {
-            background: #111827;
+            background: #212529;
             color: white;
             text-align: center;
             padding: 25px;
             margin-top: 50px;
         }
 
-        /* MOBILE */
+        @media (max-width: 768px) {
 
-        @media (max-width: 700px) {
-
-            nav {
+            header {
                 flex-direction: column;
-                gap: 12px;
+                gap: 10px;
             }
 
-            nav .nav-links {
-                gap: 15px;
+            nav a {
+                margin: 0 8px;
             }
 
-            .page-header h1 {
+            .hero h1 {
                 font-size: 32px;
             }
 
-            .topic {
-                padding: 20px;
-            }
-
-            .lesson-navigation {
+            .navigation {
                 flex-direction: column;
             }
 
-            .nav-btn {
+            .btn {
                 text-align: center;
+            }
+
+            table {
+                font-size: 14px;
             }
 
         }
@@ -362,116 +264,134 @@
 
 </head>
 
-
 <body>
 
-    <!-- NAVBAR -->
 
-    <nav>
+    <!-- HEADER -->
 
-        <a href="../index.html" class="logo">
+    <header>
+
+        <div class="logo">
             Code With Me
-        </a>
-
-        <div class="nav-links">
-
-            <a href="../index.html">
-                Home
-            </a>
-
-            <a href="../index.html#html-topics">
-                HTML
-            </a>
-
-            <a href="../index.html#about">
-                About
-            </a>
-
         </div>
 
-    </nav>
+        <nav>
 
+            <a href="../index.html">Home</a>
 
-    <!-- PAGE HEADER -->
+            <a href="../index.html">Courses</a>
 
-    <header class="page-header">
-
-        <h1>HTML Lists</h1>
-
-        <p>
-            Learn how to create ordered, unordered, nested and description lists.
-        </p>
+        </nav>
 
     </header>
 
 
-    <main class="container">
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>6. HTML Lists</h1>
+
+        <p>
+            Learn how to create different types of lists in HTML
+        </p>
+
+    </section>
 
 
-        <!-- MAIN POINTS -->
+    <div class="container">
 
-        <div class="main-points">
 
-            <h3>⭐ Main Points</h3>
+        <!-- INTRODUCTION -->
+
+        <section class="section">
+
+            <h2>What are HTML Lists?</h2>
+
+            <p>
+                HTML lists are used to display related items in an organized
+                way.
+            </p>
+
+            <p>
+                For example, a website can use lists to display:
+            </p>
 
             <ul>
 
-                <li>The <code>&lt;ul&gt;</code> tag creates an unordered list.</li>
+                <li>Programming languages</li>
 
-                <li>The <code>&lt;ol&gt;</code> tag creates an ordered list.</li>
+                <li>Navigation menus</li>
 
-                <li>The <code>&lt;li&gt;</code> tag defines a list item.</li>
+                <li>Shopping items</li>
 
-                <li>You can create nested lists inside other lists.</li>
+                <li>Steps of a process</li>
 
-                <li>The <code>type</code> attribute can change ordered-list numbering styles.</li>
-
-                <li>The <code>start</code> attribute can change where an ordered list begins.</li>
-
-                <li>The <code>reversed</code> attribute displays an ordered list in reverse order.</li>
-
-                <li>The <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code> tags create description lists.</li>
-
-                <li>CSS can be used to customize list appearance.</li>
+                <li>Features of a product</li>
 
             </ul>
 
-        </div>
+            <p>
+                HTML provides three main types of lists:
+            </p>
+
+            <ol>
+
+                <li>Unordered List</li>
+
+                <li>Ordered List</li>
+
+                <li>Description List</li>
+
+            </ol>
+
+        </section>
 
 
-        <!-- TOPIC 1 -->
+        <!-- UNORDERED LIST -->
 
-        <section class="topic">
+        <section class="section">
 
             <h2>1. Unordered List</h2>
 
             <p>
-                An unordered list displays list items using bullet points.
-                It is created using the <code>&lt;ul&gt;</code> tag.
+                An unordered list displays items using bullets.
             </p>
 
-            <h3>Example</h3>
+            <p>
+                It is created using the
+                <code>&lt;ul&gt;</code>
+                element.
+            </p>
 
-            <div class="example-code">
+            <p>
+                Each item is created using the
+                <code>&lt;li&gt;</code>
+                element.
+            </p>
 
-<pre>&lt;ul&gt;
+            <h3>Syntax</h3>
+
+            <pre>
+&lt;ul&gt;
 
     &lt;li&gt;HTML&lt;/li&gt;
     &lt;li&gt;CSS&lt;/li&gt;
     &lt;li&gt;JavaScript&lt;/li&gt;
 
-&lt;/ul&gt;</pre>
-
-            </div>
+&lt;/ul&gt;
+            </pre>
 
             <h3>Output</h3>
 
-            <div class="example-output">
+            <div class="example-box">
 
-                <ul class="list-demo">
+                <ul>
 
                     <li>HTML</li>
+
                     <li>CSS</li>
+
                     <li>JavaScript</li>
 
                 </ul>
@@ -481,39 +401,226 @@
         </section>
 
 
-        <!-- TOPIC 2 -->
+        <!-- UL LIST STYLE -->
 
-        <section class="topic">
+        <section class="section">
 
-            <h2>2. Ordered List</h2>
+            <h2>2. Unordered List Bullet Styles</h2>
 
             <p>
-                An ordered list displays list items in a numbered sequence.
-                It is created using the <code>&lt;ol&gt;</code> tag.
+                CSS can be used to change the bullet style.
+            </p>
+
+            <pre>
+ul {
+    list-style-type: square;
+}
+            </pre>
+
+            <h3>Common Values</h3>
+
+            <table>
+
+                <tr>
+
+                    <th>Value</th>
+
+                    <th>Description</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>disc</td>
+
+                    <td>Filled circular bullets</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>circle</td>
+
+                    <td>Hollow circular bullets</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>square</td>
+
+                    <td>Square bullets</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>none</td>
+
+                    <td>No bullets</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- ORDERED LIST -->
+
+        <section class="section">
+
+            <h2>3. Ordered List</h2>
+
+            <p>
+                An ordered list displays items in a specific order.
+            </p>
+
+            <p>
+                It is created using the
+                <code>&lt;ol&gt;</code>
+                element.
             </p>
 
             <h3>Example</h3>
 
-            <div class="example-code">
+            <pre>
+&lt;ol&gt;
 
-<pre>&lt;ol&gt;
+    &lt;li&gt;Open your computer&lt;/li&gt;
+    &lt;li&gt;Open VS Code&lt;/li&gt;
+    &lt;li&gt;Create an HTML file&lt;/li&gt;
+
+&lt;/ol&gt;
+            </pre>
+
+            <h3>Output</h3>
+
+            <div class="example-box">
+
+                <ol>
+
+                    <li>Open your computer</li>
+
+                    <li>Open VS Code</li>
+
+                    <li>Create an HTML file</li>
+
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- ORDER TYPES -->
+
+        <section class="section">
+
+            <h2>4. Ordered List Types</h2>
+
+            <p>
+                The
+                <code>type</code>
+                attribute can change the numbering style.
+            </p>
+
+            <pre>
+&lt;ol type="A"&gt;
 
     &lt;li&gt;HTML&lt;/li&gt;
     &lt;li&gt;CSS&lt;/li&gt;
     &lt;li&gt;JavaScript&lt;/li&gt;
 
-&lt;/ol&gt;</pre>
+&lt;/ol&gt;
+            </pre>
 
-            </div>
+            <table>
 
-            <h3>Output</h3>
+                <tr>
 
-            <div class="example-output">
+                    <th>Type</th>
 
-                <ol class="list-demo">
+                    <th>Example</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>1</td>
+
+                    <td>1, 2, 3</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>A</td>
+
+                    <td>A, B, C</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>a</td>
+
+                    <td>a, b, c</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>I</td>
+
+                    <td>I, II, III</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>i</td>
+
+                    <td>i, ii, iii</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- START ATTRIBUTE -->
+
+        <section class="section">
+
+            <h2>5. Starting an Ordered List</h2>
+
+            <p>
+                The
+                <code>start</code>
+                attribute allows an ordered list to start from a specific
+                number.
+            </p>
+
+            <pre>
+&lt;ol start="5"&gt;
+
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+
+&lt;/ol&gt;
+            </pre>
+
+            <div class="example-box">
+
+                <ol start="5">
 
                     <li>HTML</li>
+
                     <li>CSS</li>
+
                     <li>JavaScript</li>
 
                 </ol>
@@ -523,235 +630,36 @@
         </section>
 
 
-        <!-- TOPIC 3 -->
+        <!-- REVERSED -->
 
-        <section class="topic">
+        <section class="section">
 
-            <h2>3. List Item</h2>
-
-            <p>
-                The <code>&lt;li&gt;</code> tag defines an individual
-                item inside an ordered or unordered list.
-            </p>
-
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;ul&gt;
-
-    &lt;li&gt;Apple&lt;/li&gt;
-    &lt;li&gt;Banana&lt;/li&gt;
-    &lt;li&gt;Mango&lt;/li&gt;
-
-&lt;/ul&gt;</pre>
-
-            </div>
-
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <ul class="list-demo">
-
-                    <li>Apple</li>
-                    <li>Banana</li>
-                    <li>Mango</li>
-
-                </ul>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOPIC 4 -->
-
-        <section class="topic">
-
-            <h2>4. Unordered List Type</h2>
+            <h2>6. Reversed Ordered List</h2>
 
             <p>
-                CSS is recommended for styling unordered-list markers.
-                The <code>list-style-type</code> property can change
-                the bullet style.
+                The
+                <code>reversed</code>
+                attribute makes an ordered list count backwards.
             </p>
 
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;ul style="list-style-type:square;"&gt;
-
-    &lt;li&gt;HTML&lt;/li&gt;
-    &lt;li&gt;CSS&lt;/li&gt;
-    &lt;li&gt;Python&lt;/li&gt;
-
-&lt;/ul&gt;</pre>
-
-            </div>
-
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <ul class="list-demo"
-                    style="list-style-type:square;">
-
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>Python</li>
-
-                </ul>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOPIC 5 -->
-
-        <section class="topic">
-
-            <h2>5. Ordered List Type</h2>
-
-            <p>
-                The <code>type</code> attribute can specify the
-                numbering style of an ordered list.
-            </p>
-
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;ol type="A"&gt;
-
-    &lt;li&gt;HTML&lt;/li&gt;
-    &lt;li&gt;CSS&lt;/li&gt;
-    &lt;li&gt;JavaScript&lt;/li&gt;
-
-&lt;/ol&gt;</pre>
-
-            </div>
-
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <ol type="A" class="list-demo">
-
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-
-                </ol>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>Common values:</strong>
-
-                <br>
-
-                <code>1</code> → Numbers
-
-                <br>
-
-                <code>A</code> → Uppercase letters
-
-                <br>
-
-                <code>a</code> → Lowercase letters
-
-                <br>
-
-                <code>I</code> → Uppercase Roman numerals
-
-                <br>
-
-                <code>i</code> → Lowercase Roman numerals
-
-            </div>
-
-        </section>
-
-
-        <!-- TOPIC 6 -->
-
-        <section class="topic">
-
-            <h2>6. Start Attribute</h2>
-
-            <p>
-                The <code>start</code> attribute specifies the
-                starting number of an ordered list.
-            </p>
-
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;ol start="5"&gt;
-
-    &lt;li&gt;HTML&lt;/li&gt;
-    &lt;li&gt;CSS&lt;/li&gt;
-    &lt;li&gt;JavaScript&lt;/li&gt;
-
-&lt;/ol&gt;</pre>
-
-            </div>
-
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <ol start="5" class="list-demo">
-
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-
-                </ol>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOPIC 7 -->
-
-        <section class="topic">
-
-            <h2>7. Reversed Ordered List</h2>
-
-            <p>
-                The <code>reversed</code> attribute displays an
-                ordered list in descending order.
-            </p>
-
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;ol reversed&gt;
+            <pre>
+&lt;ol reversed&gt;
 
     &lt;li&gt;Third&lt;/li&gt;
     &lt;li&gt;Second&lt;/li&gt;
     &lt;li&gt;First&lt;/li&gt;
 
-&lt;/ol&gt;</pre>
+&lt;/ol&gt;
+            </pre>
 
-            </div>
+            <div class="example-box">
 
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <ol reversed class="list-demo">
+                <ol reversed>
 
                     <li>Third</li>
+
                     <li>Second</li>
+
                     <li>First</li>
 
                 </ol>
@@ -761,144 +669,44 @@
         </section>
 
 
-        <!-- TOPIC 8 -->
+        <!-- DESCRIPTION LIST -->
 
-        <section class="topic">
+        <section class="section">
 
-            <h2>8. Nested List</h2>
+            <h2>7. Description List</h2>
 
             <p>
-                A nested list is a list placed inside another list item.
+                A description list is used to display terms and their
+                descriptions.
             </p>
+
+            <p>
+                It uses three elements:
+            </p>
+
+            <ul>
+
+                <li>
+                    <code>&lt;dl&gt;</code>
+                    – Description List
+                </li>
+
+                <li>
+                    <code>&lt;dt&gt;</code>
+                    – Description Term
+                </li>
+
+                <li>
+                    <code>&lt;dd&gt;</code>
+                    – Description Details
+                </li>
+
+            </ul>
 
             <h3>Example</h3>
 
-            <div class="example-code">
-
-<pre>&lt;ul&gt;
-
-    &lt;li&gt;Frontend
-
-        &lt;ul&gt;
-
-            &lt;li&gt;HTML&lt;/li&gt;
-            &lt;li&gt;CSS&lt;/li&gt;
-
-        &lt;/ul&gt;
-
-    &lt;/li&gt;
-
-    &lt;li&gt;Backend&lt;/li&gt;
-
-&lt;/ul&gt;</pre>
-
-            </div>
-
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <ul class="list-demo">
-
-                    <li>
-                        Frontend
-
-                        <ul>
-
-                            <li>HTML</li>
-                            <li>CSS</li>
-
-                        </ul>
-
-                    </li>
-
-                    <li>Backend</li>
-
-                </ul>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOPIC 9 -->
-
-        <section class="topic">
-
-            <h2>9. Nested Ordered List</h2>
-
-            <p>
-                You can also place an ordered list inside another
-                ordered or unordered list.
-            </p>
-
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;ol&gt;
-
-    &lt;li&gt;Learn HTML
-
-        &lt;ol&gt;
-
-            &lt;li&gt;Tags&lt;/li&gt;
-            &lt;li&gt;Attributes&lt;/li&gt;
-
-        &lt;/ol&gt;
-
-    &lt;/li&gt;
-
-    &lt;li&gt;Learn CSS&lt;/li&gt;
-
-&lt;/ol&gt;</pre>
-
-            </div>
-
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <ol class="list-demo">
-
-                    <li>
-                        Learn HTML
-
-                        <ol>
-
-                            <li>Tags</li>
-                            <li>Attributes</li>
-
-                        </ol>
-
-                    </li>
-
-                    <li>Learn CSS</li>
-
-                </ol>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOPIC 10 -->
-
-        <section class="topic">
-
-            <h2>10. Description List</h2>
-
-            <p>
-                A description list is used to display terms and
-                their descriptions. It uses <code>&lt;dl&gt;</code>,
-                <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code>.
-            </p>
-
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;dl&gt;
+            <pre>
+&lt;dl&gt;
 
     &lt;dt&gt;HTML&lt;/dt&gt;
 
@@ -906,31 +714,33 @@
         HyperText Markup Language
     &lt;/dd&gt;
 
+
     &lt;dt&gt;CSS&lt;/dt&gt;
 
     &lt;dd&gt;
         Cascading Style Sheets
     &lt;/dd&gt;
 
-&lt;/dl&gt;</pre>
-
-            </div>
+&lt;/dl&gt;
+            </pre>
 
             <h3>Output</h3>
 
-            <div class="example-output">
+            <div class="example-box">
 
                 <dl>
 
-                    <dt><strong>HTML</strong></dt>
+                    <dt>
+                        <strong>HTML</strong>
+                    </dt>
 
                     <dd>
                         HyperText Markup Language
                     </dd>
 
-                    <br>
-
-                    <dt><strong>CSS</strong></dt>
+                    <dt>
+                        <strong>CSS</strong>
+                    </dt>
 
                     <dd>
                         Cascading Style Sheets
@@ -943,258 +753,64 @@
         </section>
 
 
-        <!-- TOPIC 11 -->
+        <!-- NESTED LIST -->
 
-        <section class="topic">
+        <section class="section">
 
-            <h2>11. Multiple Description Terms</h2>
+            <h2>8. Nested Lists</h2>
 
             <p>
-                One description can be associated with multiple terms.
+                A list inside another list is called a nested list.
             </p>
 
             <h3>Example</h3>
 
-            <div class="example-code">
-
-<pre>&lt;dl&gt;
-
-    &lt;dt&gt;HTML&lt;/dt&gt;
-    &lt;dt&gt;HyperText Markup Language&lt;/dt&gt;
-
-    &lt;dd&gt;
-        A markup language for webpages.
-    &lt;/dd&gt;
-
-&lt;/dl&gt;</pre>
-
-            </div>
-
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <dl>
-
-                    <dt><strong>HTML</strong></dt>
-
-                    <dt>
-                        HyperText Markup Language
-                    </dt>
-
-                    <dd>
-                        A markup language for webpages.
-                    </dd>
-
-                </dl>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOPIC 12 -->
-
-        <section class="topic">
-
-            <h2>12. List Inside Navigation</h2>
-
-            <p>
-                Lists are commonly used to create navigation menus
-                on websites.
-            </p>
-
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;nav&gt;
-
-    &lt;ul&gt;
-
-        &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
-
-    &lt;/ul&gt;
-
-&lt;/nav&gt;</pre>
-
-            </div>
-
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <nav style="
-                    background:#e5e7eb;
-                    padding:15px;
-                    position:static;
-                ">
-
-                    <ul style="
-                        display:flex;
-                        gap:25px;
-                        list-style:none;
-                    ">
-
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-
-                        <li>
-                            <a href="#">Contact</a>
-                        </li>
-
-                    </ul>
-
-                </nav>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOPIC 13 -->
-
-        <section class="topic">
-
-            <h2>13. Remove List Bullets</h2>
-
-            <p>
-                CSS <code>list-style-type: none;</code> can remove
-                the default bullets or numbers.
-            </p>
-
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;ul style="list-style-type:none;"&gt;
-
-    &lt;li&gt;Home&lt;/li&gt;
-    &lt;li&gt;About&lt;/li&gt;
-    &lt;li&gt;Contact&lt;/li&gt;
-
-&lt;/ul&gt;</pre>
-
-            </div>
-
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <ul style="list-style-type:none;">
-
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
-
-                </ul>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOPIC 14 -->
-
-        <section class="topic">
-
-            <h2>14. Custom List Marker</h2>
-
-            <p>
-                CSS can be used to customize the appearance
-                of list markers.
-            </p>
-
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;ul style="list-style-type:square;"&gt;
-
-    &lt;li&gt;HTML&lt;/li&gt;
-    &lt;li&gt;CSS&lt;/li&gt;
-    &lt;li&gt;JavaScript&lt;/li&gt;
-
-&lt;/ul&gt;</pre>
-
-            </div>
-
-            <h3>Output</h3>
-
-            <div class="example-output">
-
-                <ul style="
-                    list-style-type:square;
-                    padding-left:25px;
-                ">
-
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-
-                </ul>
-
-            </div>
-
-        </section>
-
-
-        <!-- TOPIC 15 -->
-
-        <section class="topic">
-
-            <h2>15. List with Links</h2>
-
-            <p>
-                List items can contain links. This is commonly
-                used in menus and course navigation.
-            </p>
-
-            <h3>Example</h3>
-
-            <div class="example-code">
-
-<pre>&lt;ul&gt;
+            <pre>
+&lt;ul&gt;
 
     &lt;li&gt;
-        &lt;a href="html-tags.html"&gt;
-            HTML Tags
-        &lt;/a&gt;
+        Frontend
+
+        &lt;ul&gt;
+
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+
+        &lt;/ul&gt;
+
     &lt;/li&gt;
 
     &lt;li&gt;
-        &lt;a href="html-links.html"&gt;
-            HTML Links
-        &lt;/a&gt;
+        Backend
     &lt;/li&gt;
 
-&lt;/ul&gt;</pre>
-
-            </div>
+&lt;/ul&gt;
+            </pre>
 
             <h3>Output</h3>
 
-            <div class="example-output">
+            <div class="example-box">
 
-                <ul class="list-demo">
+                <ul>
 
                     <li>
-                        <a href="html-tags.html">
-                            HTML Tags
-                        </a>
+                        Frontend
+
+                        <ul>
+
+                            <li>HTML</li>
+
+                            <li>CSS</li>
+
+                            <li>JavaScript</li>
+
+                        </ul>
+
                     </li>
 
                     <li>
-                        <a href="html-links.html">
-                            HTML Links
-                        </a>
+                        Backend
                     </li>
 
                 </ul>
@@ -1204,158 +820,260 @@
         </section>
 
 
-        <!-- SUMMARY -->
+        <!-- LIST ITEM -->
 
-        <section class="topic">
+        <section class="section">
 
-            <h2>📚 HTML Lists Summary</h2>
+            <h2>9. The &lt;li&gt; Element</h2>
 
-            <table class="summary-table">
+            <p>
+                The
+                <code>&lt;li&gt;</code>
+                element represents a single item inside an ordered or
+                unordered list.
+            </p>
 
-                <thead>
+            <pre>
+&lt;ul&gt;
 
-                    <tr>
+    &lt;li&gt;Apple&lt;/li&gt;
+    &lt;li&gt;Banana&lt;/li&gt;
+    &lt;li&gt;Mango&lt;/li&gt;
 
-                        <th>Tag / Attribute</th>
+&lt;/ul&gt;
+            </pre>
 
-                        <th>Purpose</th>
+            <div class="tip">
 
-                        <th>Example</th>
+                <strong>Remember:</strong>
 
-                    </tr>
+                The
+                <code>&lt;li&gt;</code>
+                element is normally used inside
+                <code>&lt;ul&gt;</code>
+                or
+                <code>&lt;ol&gt;</code>.
 
-                </thead>
+            </div>
 
-                <tbody>
+        </section>
 
-                    <tr>
 
-                        <td>&lt;ul&gt;</td>
+        <!-- NAVIGATION MENU -->
 
-                        <td>Creates unordered list</td>
+        <section class="section">
 
-                        <td>Bullet list</td>
+            <h2>10. Lists for Navigation Menus</h2>
 
-                    </tr>
+            <p>
+                Lists are commonly used to create website navigation menus.
+            </p>
 
-                    <tr>
+            <pre>
+&lt;ul&gt;
 
-                        <td>&lt;ol&gt;</td>
+    &lt;li&gt;
+        &lt;a href="index.html"&gt;Home&lt;/a&gt;
+    &lt;/li&gt;
 
-                        <td>Creates ordered list</td>
+    &lt;li&gt;
+        &lt;a href="about.html"&gt;About&lt;/a&gt;
+    &lt;/li&gt;
 
-                        <td>Numbered list</td>
+    &lt;li&gt;
+        &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+    &lt;/li&gt;
 
-                    </tr>
+&lt;/ul&gt;
+            </pre>
 
-                    <tr>
+            <div class="note">
 
-                        <td>&lt;li&gt;</td>
+                Lists are very useful when building navigation menus,
+                especially when combined with CSS.
 
-                        <td>Creates list item</td>
+            </div>
 
-                        <td>HTML</td>
+        </section>
 
-                    </tr>
 
-                    <tr>
+        <!-- LIST COMPARISON -->
 
-                        <td>type</td>
+        <section class="section">
 
-                        <td>Changes ordered-list numbering style</td>
+            <h2>11. Types of HTML Lists</h2>
 
-                        <td>A, a, I, i</td>
+            <table>
 
-                    </tr>
+                <tr>
 
-                    <tr>
+                    <th>List</th>
 
-                        <td>start</td>
+                    <th>Tag</th>
 
-                        <td>Sets starting number</td>
+                    <th>Purpose</th>
 
-                        <td>start="5"</td>
+                </tr>
 
-                    </tr>
+                <tr>
 
-                    <tr>
+                    <td>Unordered List</td>
 
-                        <td>reversed</td>
+                    <td>&lt;ul&gt;</td>
 
-                        <td>Reverses ordered list numbering</td>
+                    <td>Items without a specific order</td>
 
-                        <td>reversed</td>
+                </tr>
 
-                    </tr>
+                <tr>
 
-                    <tr>
+                    <td>Ordered List</td>
 
-                        <td>&lt;dl&gt;</td>
+                    <td>&lt;ol&gt;</td>
 
-                        <td>Creates description list</td>
+                    <td>Items with a specific order</td>
 
-                        <td>Terms + descriptions</td>
+                </tr>
 
-                    </tr>
+                <tr>
 
-                    <tr>
+                    <td>Description List</td>
 
-                        <td>&lt;dt&gt;</td>
+                    <td>&lt;dl&gt;</td>
 
-                        <td>Defines description term</td>
+                    <td>Terms and descriptions</td>
 
-                        <td>HTML</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>&lt;dd&gt;</td>
-
-                        <td>Defines description</td>
-
-                        <td>Markup language</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>list-style-type</td>
-
-                        <td>Changes list marker using CSS</td>
-
-                        <td>square</td>
-
-                    </tr>
-
-                </tbody>
+                </tr>
 
             </table>
 
         </section>
 
 
-        <!-- INTERACTIVE EDITOR -->
+        <!-- CSS LIST STYLING -->
 
-        <section class="topic">
+        <section class="section">
 
-            <h2>💻 Try HTML Lists Yourself</h2>
+            <h2>12. Styling Lists with CSS</h2>
 
             <p>
-                Change the code below and click
-                <strong>Run Code</strong> to see the result.
+                CSS can be used to change the appearance of HTML lists.
             </p>
 
-            <div class="editor-box">
+            <pre>
+ul {
+    list-style-type: square;
+    padding-left: 30px;
+}
 
-                <h2>HTML Code Editor</h2>
+li {
+    margin-bottom: 10px;
+}
+            </pre>
+
+            <p>
+                You can also remove bullets completely:
+            </p>
+
+            <pre>
+ul {
+    list-style-type: none;
+}
+            </pre>
+
+        </section>
+
+
+        <!-- COMPLETE EXAMPLE -->
+
+        <section class="section">
+
+            <h2>13. Complete HTML Lists Example</h2>
+
+            <pre>
+&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;My Lists&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;My Programming Courses&lt;/h1&gt;
+
+    &lt;h2&gt;Unordered List&lt;/h2&gt;
+
+    &lt;ul&gt;
+
+        &lt;li&gt;HTML&lt;/li&gt;
+        &lt;li&gt;CSS&lt;/li&gt;
+        &lt;li&gt;JavaScript&lt;/li&gt;
+
+    &lt;/ul&gt;
+
+
+    &lt;h2&gt;Ordered List&lt;/h2&gt;
+
+    &lt;ol&gt;
+
+        &lt;li&gt;Learn HTML&lt;/li&gt;
+        &lt;li&gt;Learn CSS&lt;/li&gt;
+        &lt;li&gt;Learn JavaScript&lt;/li&gt;
+
+    &lt;/ol&gt;
+
+
+    &lt;h2&gt;Description List&lt;/h2&gt;
+
+    &lt;dl&gt;
+
+        &lt;dt&gt;HTML&lt;/dt&gt;
+
+        &lt;dd&gt;
+            Structure of a webpage
+        &lt;/dd&gt;
+
+        &lt;dt&gt;CSS&lt;/dt&gt;
+
+        &lt;dd&gt;
+            Styling of a webpage
+        &lt;/dd&gt;
+
+    &lt;/dl&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+            </pre>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+
+        <section class="section">
+
+            <h2>14. Practice HTML Lists</h2>
+
+            <p>
+                Write your HTML code below and click
+                <strong>Run Code</strong>
+                to see the result.
+            </p>
+
+            <div class="editor">
 
                 <textarea id="code"><!DOCTYPE html>
+
 <html>
 
 <head>
 
-    <title>My HTML Lists</title>
+    <title>HTML Lists Practice</title>
 
     <style>
 
@@ -1365,16 +1083,11 @@
         }
 
         h1 {
-            color: #2563eb;
+            color: #0d6efd;
         }
 
         li {
-            margin: 8px;
-        }
-
-        .menu {
-            background: #f1f5f9;
-            padding: 20px;
+            margin-bottom: 8px;
         }
 
     </style>
@@ -1383,9 +1096,7 @@
 
 <body>
 
-    <h1>My Coding Course</h1>
-
-    <h2>Unordered List</h2>
+    <h1>My Favorite Programming Languages</h1>
 
     <ul>
 
@@ -1397,75 +1108,38 @@
     </ul>
 
 
-    <h2>Ordered List</h2>
+    <h2>Learning Steps</h2>
 
     <ol>
 
         <li>Learn HTML</li>
         <li>Learn CSS</li>
         <li>Learn JavaScript</li>
+        <li>Build a Website</li>
 
     </ol>
 
 
-    <h2>Nested List</h2>
-
-    <ul>
-
-        <li>
-            Frontend
-
-            <ul>
-
-                <li>HTML</li>
-                <li>CSS</li>
-
-            </ul>
-
-        </li>
-
-        <li>Backend</li>
-
-    </ul>
-
-
-    <h2>My Course Menu</h2>
-
-    <div class="menu">
-
-        <ul style="list-style-type:none;">
-
-            <li>
-                <a href="#">HTML</a>
-            </li>
-
-            <li>
-                <a href="#">CSS</a>
-            </li>
-
-            <li>
-                <a href="#">JavaScript</a>
-            </li>
-
-        </ul>
-
-    </div>
-
-
-    <h2>Description List</h2>
+    <h2>Web Technologies</h2>
 
     <dl>
 
         <dt><strong>HTML</strong></dt>
 
         <dd>
-            HyperText Markup Language
+            Used to create webpage structure.
         </dd>
 
         <dt><strong>CSS</strong></dt>
 
         <dd>
-            Cascading Style Sheets
+            Used to style webpages.
+        </dd>
+
+        <dt><strong>JavaScript</strong></dt>
+
+        <dd>
+            Used to add interactivity.
         </dd>
 
     </dl>
@@ -1474,29 +1148,9 @@
 
 </html></textarea>
 
-
-                <div class="buttons">
-
-                    <button class="run-btn"
-                            onclick="runCode()">
-
-                        ▶ Run Code
-
-                    </button>
-
-                    <button class="clear-btn"
-                            onclick="clearCode()">
-
-                        🗑 Clear
-
-                    </button>
-
-                </div>
-
-
-                <h3 class="output-title">
-                    Output
-                </h3>
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
 
                 <iframe id="output"></iframe>
 
@@ -1505,22 +1159,129 @@
         </section>
 
 
-        <!-- LESSON NAVIGATION -->
+        <!-- COMMON MISTAKES -->
 
-        <div class="lesson-navigation">
+        <section class="section">
 
-            <a href="html-images.html" class="nav-btn previous">
-               ← Previous: HTML Images
+            <h2>15. Common Mistakes</h2>
+
+            <h3>Mistake 1: Forgetting &lt;li&gt;</h3>
+
+            <p>
+                Incorrect:
+            </p>
+
+            <pre>
+&lt;ul&gt;
+
+    HTML
+    CSS
+    JavaScript
+
+&lt;/ul&gt;
+            </pre>
+
+            <p>
+                Correct:
+            </p>
+
+            <pre>
+&lt;ul&gt;
+
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+
+&lt;/ul&gt;
+            </pre>
+
+
+            <h3>Mistake 2: Incorrect Closing Tags</h3>
+
+            <p>
+                Make sure every list element is properly closed.
+            </p>
+
+            <pre>
+&lt;li&gt;HTML&lt;/li&gt;
+            </pre>
+
+
+            <h3>Mistake 3: Confusing &lt;ul&gt; and &lt;ol&gt;</h3>
+
+            <p>
+                Use
+                <code>&lt;ul&gt;</code>
+                when the order does not matter.
+            </p>
+
+            <p>
+                Use
+                <code>&lt;ol&gt;</code>
+                when the order matters.
+            </p>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="section">
+
+            <h2>16. HTML Lists Summary</h2>
+
+            <p>
+                HTML provides three main types of lists:
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>&lt;ul&gt;</strong>
+                    – Unordered List
+                </li>
+
+                <li>
+                    <strong>&lt;ol&gt;</strong>
+                    – Ordered List
+                </li>
+
+                <li>
+                    <strong>&lt;dl&gt;</strong>
+                    – Description List
+                </li>
+
+            </ul>
+
+            <p>
+                The
+                <code>&lt;li&gt;</code>
+                element is used for individual list items.
+            </p>
+
+            <p>
+                Lists can also be nested and styled using CSS.
+            </p>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="navigation">
+
+            <a class="btn" href="html-images.html">
+                ← HTML Images
             </a>
 
-            <a href="html-tables.html" class="nav-btn next">
-               Next: HTML Tables →
+            <a class="btn" href="html-tables.html">
+                Next: HTML Tables →
             </a>
 
         </div>
 
 
-    </main>
+    </div>
 
 
     <!-- FOOTER -->
@@ -1528,37 +1289,25 @@
     <footer>
 
         <p>
-            © 2026 Code With Me | Learn Coding Easily
+            © 2026 Code With Me | Learn Coding
         </p>
 
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- RUN CODE SCRIPT -->
 
     <script>
 
         function runCode() {
 
-            const code =
-                document.getElementById("code").value;
+            const code = document.getElementById("code").value;
 
-            const output =
-                document.getElementById("output");
+            const output = document.getElementById("output");
 
             output.srcdoc = code;
 
         }
-
-
-        function clearCode() {
-
-            document.getElementById("code").value = "";
-
-            document.getElementById("output").srcdoc = "";
-
-        }
-
 
         window.onload = function () {
 
