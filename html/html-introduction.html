@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
     <title>HTML Introduction | Code With Me</title>
 
     <meta name="description"
-        content="Learn HTML Introduction, HTML structure, basic elements and how to create your first HTML webpage.">
+        content="Learn HTML in depth. Understand HTML structure, elements, tags, attributes, HTML5, semantic HTML, DOM, SEO, accessibility and how browsers render HTML.">
 
     <style>
 
@@ -23,10 +24,10 @@
         body {
             background: #f5f7fb;
             color: #222;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
-        /* Header */
+        /* ================= HEADER ================= */
 
         header {
             background: #111827;
@@ -35,7 +36,7 @@
         }
 
         .logo {
-            font-size: 25px;
+            font-size: 26px;
             font-weight: bold;
         }
 
@@ -43,72 +44,126 @@
             color: #38bdf8;
         }
 
-        /* Main Container */
+        /* ================= CONTAINER ================= */
 
         .container {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        /* Hero */
+        /* ================= HERO ================= */
 
         .hero {
             background: linear-gradient(135deg, #0f172a, #1e3a8a);
             color: white;
-            padding: 45px;
-            border-radius: 14px;
-            margin-bottom: 25px;
+            padding: 50px;
+            border-radius: 15px;
+            margin-bottom: 30px;
         }
 
         .hero h1 {
-            font-size: 38px;
-            margin-bottom: 12px;
+            font-size: 42px;
+            margin-bottom: 15px;
         }
 
         .hero p {
             color: #dbeafe;
-            font-size: 18px;
+            font-size: 19px;
         }
 
-        /* Lesson */
+        /* ================= LESSON ================= */
 
         .lesson {
             background: white;
-            margin-top: 25px;
-            padding: 28px;
-            border-radius: 12px;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 13px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
         }
 
         .lesson h2 {
             color: #1e3a8a;
             margin-bottom: 15px;
+            font-size: 27px;
         }
 
         .lesson h3 {
             color: #2563eb;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            margin-top: 22px;
+            margin-bottom: 8px;
         }
 
         .lesson p {
-            margin-bottom: 12px;
             color: #444;
+            margin-bottom: 12px;
         }
 
-        /* Code Box */
+        .lesson ul,
+        .lesson ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .lesson li {
+            margin-bottom: 7px;
+        }
+
+        /* ================= INFO BOX ================= */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 7px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 7px;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        /* ================= CODE EDITOR ================= */
 
         .code-title {
-            margin-top: 20px;
-            margin-bottom: 10px;
             font-weight: bold;
             color: #1e3a8a;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         textarea {
             width: 100%;
-            min-height: 230px;
+            min-height: 320px;
             background: #020617;
             color: #e5e7eb;
             border: none;
@@ -121,14 +176,14 @@
             outline: none;
         }
 
-        /* Run Button */
+        /* ================= RUN BUTTON ================= */
 
         .run-btn {
             margin-top: 15px;
             background: #16a34a;
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 13px 25px;
             border-radius: 7px;
             font-size: 16px;
             font-weight: bold;
@@ -139,30 +194,30 @@
             background: #15803d;
         }
 
-        /* Output */
+        /* ================= OUTPUT ================= */
 
         .output-title {
-            margin-top: 25px;
-            margin-bottom: 10px;
             font-weight: bold;
             color: #1e3a8a;
+            margin-top: 25px;
+            margin-bottom: 10px;
         }
 
         iframe {
             width: 100%;
-            min-height: 220px;
+            min-height: 280px;
             background: white;
             border: 2px solid #dbeafe;
             border-radius: 10px;
         }
 
-        /* Navigation Buttons */
+        /* ================= NAVIGATION ================= */
 
         .buttons {
             display: flex;
             justify-content: space-between;
             gap: 15px;
-            margin: 30px 0;
+            margin: 35px 0;
             flex-wrap: wrap;
         }
 
@@ -170,7 +225,7 @@
             background: #2563eb;
             color: white;
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 13px 22px;
             border-radius: 7px;
             font-weight: bold;
             display: inline-block;
@@ -180,7 +235,7 @@
             background: #1d4ed8;
         }
 
-        /* Footer */
+        /* ================= FOOTER ================= */
 
         footer {
             background: #111827;
@@ -190,20 +245,24 @@
             margin-top: 40px;
         }
 
-        /* Mobile */
+        /* ================= MOBILE ================= */
 
         @media (max-width: 600px) {
 
             .hero {
-                padding: 28px 20px;
+                padding: 30px 20px;
             }
 
             .hero h1 {
-                font-size: 30px;
+                font-size: 31px;
             }
 
             .lesson {
-                padding: 20px;
+                padding: 21px;
+            }
+
+            .lesson h2 {
+                font-size: 23px;
             }
 
             .buttons {
@@ -211,8 +270,8 @@
             }
 
             .btn {
-                text-align: center;
                 width: 100%;
+                text-align: center;
             }
 
         }
@@ -225,7 +284,7 @@
 <body>
 
 
-    <!-- Header -->
+    <!-- ================= HEADER ================= -->
 
     <header>
 
@@ -237,27 +296,27 @@
 
 
 
-    <!-- Main Content -->
+    <!-- ================= MAIN ================= -->
 
     <main class="container">
 
 
-        <!-- Hero Section -->
+        <!-- HERO -->
 
         <section class="hero">
 
-            <h1>HTML Introduction</h1>
+            <h1>1. HTML Introduction</h1>
 
             <p>
-                Learn what HTML is, understand its basic structure,
-                and create your first HTML webpage.
+                Learn HTML from the beginning and understand how web pages
+                are created, structured and displayed in a web browser.
             </p>
 
         </section>
 
 
 
-        <!-- Lesson 1 -->
+        <!-- ================= WHAT IS HTML ================= -->
 
         <section class="lesson">
 
@@ -266,104 +325,724 @@
             <p>
                 HTML stands for
                 <strong>HyperText Markup Language</strong>.
-                It is used to create and structure content on web pages.
+                HTML is the standard markup language used to structure
+                content on web pages.
             </p>
 
             <p>
-                HTML uses different elements and tags to tell the browser
-                how the content should be displayed.
+                HTML allows developers to define different types of
+                content such as headings, paragraphs, images, links,
+                lists, tables, forms, videos and more.
             </p>
 
-        </section>
+            <div class="info-box">
 
+                <strong>Important:</strong>
 
+                HTML is a markup language, not a programming language.
+                HTML describes the structure and meaning of web content.
 
-        <!-- Lesson 2 -->
-
-        <section class="lesson">
-
-            <h2>Basic Structure of HTML</h2>
-
-            <p>
-                Every HTML document generally contains a basic structure.
-                The main parts are:
-            </p>
-
-            <h3>1. DOCTYPE</h3>
-
-            <p>
-                The <strong>&lt;!DOCTYPE html&gt;</strong> declaration
-                tells the browser that the document is an HTML5 document.
-            </p>
-
-
-            <h3>2. HTML Element</h3>
-
-            <p>
-                The <strong>&lt;html&gt;</strong> element is the root
-                element of an HTML document.
-            </p>
-
-
-            <h3>3. Head</h3>
-
-            <p>
-                The <strong>&lt;head&gt;</strong> section contains information
-                about the webpage such as title and meta information.
-            </p>
-
-
-            <h3>4. Body</h3>
-
-            <p>
-                The <strong>&lt;body&gt;</strong> section contains the
-                visible content of the webpage.
-            </p>
-
-        </section>
-
-
-
-        <!-- Code Example -->
-
-        <section class="lesson">
-
-            <h2>First HTML Program</h2>
-
-            <p>
-                Try the following HTML code and click the
-                <strong>Run Code</strong> button.
-            </p>
-
-
-            <div class="code-title">
-                HTML Code:
             </div>
 
+        </section>
 
-            <textarea id="code">
 
+
+        <!-- ================= WHY HTML ================= -->
+
+        <section class="lesson">
+
+            <h2>Why Do We Need HTML?</h2>
+
+            <p>
+                A web browser needs a structured document to understand
+                what content should appear on a webpage.
+            </p>
+
+            <p>
+                HTML provides that structure.
+            </p>
+
+            <h3>HTML can be used to create:</h3>
+
+            <ul>
+
+                <li>Headings</li>
+
+                <li>Paragraphs</li>
+
+                <li>Links</li>
+
+                <li>Images</li>
+
+                <li>Lists</li>
+
+                <li>Tables</li>
+
+                <li>Forms</li>
+
+                <li>Audio and video</li>
+
+                <li>Navigation menus</li>
+
+                <li>Webpage sections</li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- ================= HISTORY ================= -->
+
+        <section class="lesson">
+
+            <h2>Brief History of HTML</h2>
+
+            <p>
+                HTML was created for sharing and linking documents
+                over the early World Wide Web.
+            </p>
+
+            <p>
+                Over time, HTML evolved and gained support for more
+                features and richer web applications.
+            </p>
+
+            <h3>Important stages</h3>
+
+            <ul>
+
+                <li>
+                    Early HTML provided basic document structure
+                    and hyperlinks.
+                </li>
+
+                <li>
+                    Later versions introduced additional elements
+                    and improved capabilities.
+                </li>
+
+                <li>
+                    HTML5 introduced many modern elements and APIs
+                    used by today's web applications.
+                </li>
+
+            </ul>
+
+            <div class="info-box">
+
+                <strong>Today:</strong>
+
+                Modern HTML is developed as a living standard and
+                works together with CSS and JavaScript to build
+                modern websites and web applications.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= HOW HTML WORKS ================= -->
+
+        <section class="lesson">
+
+            <h2>How Does HTML Work?</h2>
+
+            <p>
+                When you create an HTML file, the browser reads the
+                HTML markup and builds a representation of the
+                document.
+            </p>
+
+            <p>
+                The browser then uses that structure to display the
+                webpage.
+            </p>
+
+            <h3>Basic process</h3>
+
+            <ol>
+
+                <li>You create an HTML file.</li>
+
+                <li>The browser loads the file.</li>
+
+                <li>The browser parses the HTML.</li>
+
+                <li>The browser creates the document structure.</li>
+
+                <li>The browser displays the content.</li>
+
+            </ol>
+
+        </section>
+
+
+
+        <!-- ================= BASIC STRUCTURE ================= -->
+
+        <section class="lesson">
+
+            <h2>Basic HTML Document Structure</h2>
+
+            <p>
+                A typical HTML document contains a document type
+                declaration, an HTML root element, a head section
+                and a body section.
+            </p>
+
+            <div class="code-title">
+                Basic Structure:
+            </div>
+
+            <textarea readonly>
 <!DOCTYPE html>
+
 <html>
+
 <head>
-    <title>My First Webpage</title>
+
+    <title>My Webpage</title>
+
 </head>
 
 <body>
 
-    <h1>Welcome to Code With Me</h1>
+    <h1>Hello World</h1>
 
-    <p>
-        This is my first HTML webpage.
-    </p>
+    <p>This is my webpage.</p>
 
 </body>
-</html>
 
+</html>
             </textarea>
 
+        </section>
 
-            <br>
+
+
+        <!-- ================= DOCTYPE ================= -->
+
+        <section class="lesson">
+
+            <h2>Understanding DOCTYPE</h2>
+
+            <p>
+                The declaration
+                <strong>&lt;!DOCTYPE html&gt;</strong>
+                tells the browser that the document uses the modern
+                HTML standard.
+            </p>
+
+            <p>
+                It appears at the beginning of an HTML document.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= HTML ELEMENT ================= -->
+
+        <section class="lesson">
+
+            <h2>The HTML Element</h2>
+
+            <p>
+                The
+                <strong>&lt;html&gt;</strong>
+                element is the root element of the document.
+            </p>
+
+            <p>
+                Other HTML elements are placed inside it.
+            </p>
+
+            <pre>
+&lt;html&gt;
+
+    ...
+
+&lt;/html&gt;
+            </pre>
+
+        </section>
+
+
+
+        <!-- ================= HEAD ================= -->
+
+        <section class="lesson">
+
+            <h2>The &lt;head&gt; Section</h2>
+
+            <p>
+                The head section contains information about the
+                document that is generally not displayed as the
+                main page content.
+            </p>
+
+            <h3>Common elements inside head:</h3>
+
+            <ul>
+
+                <li>&lt;title&gt;</li>
+
+                <li>&lt;meta&gt;</li>
+
+                <li>&lt;link&gt;</li>
+
+                <li>&lt;style&gt;</li>
+
+                <li>&lt;script&gt;</li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- ================= BODY ================= -->
+
+        <section class="lesson">
+
+            <h2>The &lt;body&gt; Section</h2>
+
+            <p>
+                The body contains the content that users normally
+                see and interact with on the webpage.
+            </p>
+
+            <p>
+                Examples include headings, paragraphs, images,
+                buttons, links, forms and other visible content.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= TAGS ================= -->
+
+        <section class="lesson">
+
+            <h2>HTML Tags</h2>
+
+            <p>
+                HTML uses tags to describe elements in a document.
+            </p>
+
+            <p>
+                For example:
+            </p>
+
+            <pre>
+&lt;h1&gt;Welcome&lt;/h1&gt;
+
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+            </pre>
+
+            <p>
+                Here, <strong>&lt;h1&gt;</strong> represents a
+                heading element and <strong>&lt;p&gt;</strong>
+                represents a paragraph element.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= ELEMENTS ================= -->
+
+        <section class="lesson">
+
+            <h2>HTML Elements</h2>
+
+            <p>
+                An HTML element generally consists of an opening tag,
+                content and a closing tag.
+            </p>
+
+            <pre>
+&lt;p&gt;Hello World&lt;/p&gt;
+            </pre>
+
+            <p>
+                In this example:
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>&lt;p&gt;</strong> is the opening tag.
+                </li>
+
+                <li>
+                    <strong>Hello World</strong> is the content.
+                </li>
+
+                <li>
+                    <strong>&lt;/p&gt;</strong> is the closing tag.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- ================= ATTRIBUTES ================= -->
+
+        <section class="lesson">
+
+            <h2>HTML Attributes</h2>
+
+            <p>
+                Attributes provide additional information about
+                an HTML element.
+            </p>
+
+            <pre>
+&lt;a href="https://example.com"&gt;
+    Visit Website
+&lt;/a&gt;
+            </pre>
+
+            <p>
+                Here, <strong>href</strong> is an attribute of
+                the anchor element.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= HTML5 ================= -->
+
+        <section class="lesson">
+
+            <h2>What is HTML5?</h2>
+
+            <p>
+                HTML5 is the modern generation of HTML and includes
+                many elements and capabilities useful for modern
+                websites and applications.
+            </p>
+
+            <h3>Examples of modern HTML elements:</h3>
+
+            <ul>
+
+                <li>&lt;header&gt;</li>
+
+                <li>&lt;nav&gt;</li>
+
+                <li>&lt;main&gt;</li>
+
+                <li>&lt;section&gt;</li>
+
+                <li>&lt;article&gt;</li>
+
+                <li>&lt;aside&gt;</li>
+
+                <li>&lt;footer&gt;</li>
+
+                <li>&lt;video&gt;</li>
+
+                <li>&lt;audio&gt;</li>
+
+                <li>&lt;canvas&gt;</li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- ================= SEMANTIC HTML ================= -->
+
+        <section class="lesson">
+
+            <h2>Semantic HTML</h2>
+
+            <p>
+                Semantic elements communicate the meaning or role
+                of content more clearly.
+            </p>
+
+            <pre>
+&lt;header&gt;
+
+&lt;nav&gt;
+
+&lt;main&gt;
+
+&lt;section&gt;
+
+&lt;article&gt;
+
+&lt;footer&gt;
+            </pre>
+
+            <p>
+                Semantic HTML can make documents easier for people,
+                search engines and assistive technologies to understand.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= HTML CSS JS ================= -->
+
+        <section class="lesson">
+
+            <h2>HTML, CSS and JavaScript</h2>
+
+            <p>
+                Modern websites commonly use three core technologies.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Technology</th>
+                        <th>Main Purpose</th>
+                    </tr>
+
+                    <tr>
+                        <td>HTML</td>
+                        <td>Structure and content</td>
+                    </tr>
+
+                    <tr>
+                        <td>CSS</td>
+                        <td>Design and presentation</td>
+                    </tr>
+
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>Behavior and interactivity</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="info-box">
+
+                Think of it simply as:
+
+                <br><br>
+
+                <strong>HTML = Structure</strong><br>
+                <strong>CSS = Design</strong><br>
+                <strong>JavaScript = Behavior</strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= DOM ================= -->
+
+        <section class="lesson">
+
+            <h2>What is the DOM?</h2>
+
+            <p>
+                DOM stands for
+                <strong>Document Object Model</strong>.
+            </p>
+
+            <p>
+                When a browser loads an HTML document, it creates
+                an object-based representation of the document.
+                JavaScript can use this representation to read
+                and modify webpage content and structure.
+            </p>
+
+            <pre>
+HTML Document
+      ↓
+Browser parses HTML
+      ↓
+DOM
+      ↓
+JavaScript can interact with it
+            </pre>
+
+        </section>
+
+
+
+        <!-- ================= SEO ================= -->
+
+        <section class="lesson">
+
+            <h2>HTML and SEO</h2>
+
+            <p>
+                HTML structure can also provide important information
+                that helps search engines understand webpage content.
+            </p>
+
+            <h3>Examples:</h3>
+
+            <ul>
+
+                <li>
+                    Meaningful page titles
+                </li>
+
+                <li>
+                    Proper heading structure
+                </li>
+
+                <li>
+                    Descriptive links
+                </li>
+
+                <li>
+                    Semantic HTML
+                </li>
+
+                <li>
+                    Alternative text for meaningful images
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- ================= ACCESSIBILITY ================= -->
+
+        <section class="lesson">
+
+            <h2>HTML and Accessibility</h2>
+
+            <p>
+                Accessible HTML helps people using assistive
+                technologies navigate and understand webpages.
+            </p>
+
+            <p>
+                Using appropriate elements, labels, headings,
+                link text and image alternative text can improve
+                the accessibility of a webpage.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= COMMON MISTAKES ================= -->
+
+        <section class="lesson">
+
+            <h2>Common Beginner Mistakes</h2>
+
+            <ol>
+
+                <li>
+                    Forgetting to close elements when a closing tag
+                    is required.
+                </li>
+
+                <li>
+                    Incorrectly nesting HTML elements.
+                </li>
+
+                <li>
+                    Using headings only for visual size instead of
+                    document structure.
+                </li>
+
+                <li>
+                    Forgetting meaningful alternative text for
+                    informative images.
+                </li>
+
+                <li>
+                    Writing incorrect file paths for links and images.
+                </li>
+
+                <li>
+                    Forgetting the viewport meta tag for responsive pages.
+                </li>
+
+            </ol>
+
+            <div class="warning-box">
+
+                <strong>Tip:</strong>
+
+                Always keep your HTML properly structured and
+                indented. Clean HTML is easier to read, debug
+                and maintain.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PRACTICAL EXAMPLE ================= -->
+
+        <section class="lesson">
+
+            <h2>Practice: Create Your First Webpage</h2>
+
+            <p>
+                Edit the code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <div class="code-title">
+                Write your HTML code:
+            </div>
+
+            <textarea id="code"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My First Website</title>
+
+</head>
+
+<body>
+
+    <h1>Welcome to My Website</h1>
+
+    <p>
+        I am learning HTML with Code With Me.
+    </p>
+
+    <h2>My Skills</h2>
+
+    <ul>
+
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+
+    </ul>
+
+    <a href="https://example.com">
+        Visit Example
+    </a>
+
+</body>
+
+</html></textarea>
 
 
             <button class="run-btn" onclick="runCode()">
@@ -382,45 +1061,51 @@
 
 
 
-        <!-- HTML Elements -->
+        <!-- ================= SUMMARY ================= -->
 
         <section class="lesson">
 
-            <h2>What are HTML Elements?</h2>
+            <h2>HTML Introduction Summary</h2>
 
             <p>
-                HTML elements are used to define different parts of
-                a webpage.
+                In this lesson, you learned the foundation of HTML.
             </p>
 
-            <p>
-                For example:
-            </p>
+            <ul>
 
-            <p>
-                <strong>&lt;h1&gt;</strong> is used for a main heading.
-            </p>
+                <li>HTML stands for HyperText Markup Language.</li>
 
-            <p>
-                <strong>&lt;p&gt;</strong> is used for a paragraph.
-            </p>
+                <li>HTML is used to structure webpage content.</li>
 
-            <p>
-                <strong>&lt;br&gt;</strong> is used to create a line break.
-            </p>
+                <li>HTML documents contain elements.</li>
+
+                <li>Elements can have attributes.</li>
+
+                <li>The head contains document metadata and resources.</li>
+
+                <li>The body contains the main webpage content.</li>
+
+                <li>HTML works together with CSS and JavaScript.</li>
+
+                <li>Semantic HTML gives meaning to document structure.</li>
+
+                <li>The browser builds a DOM from HTML.</li>
+
+                <li>Good HTML can support accessibility and SEO.</li>
+
+            </ul>
 
         </section>
 
 
 
-        <!-- Navigation -->
+        <!-- ================= NAVIGATION ================= -->
 
         <div class="buttons">
 
             <a class="btn" href="../index.html">
                 ← Previous
             </a>
-
 
             <a class="btn" href="html-tags.html">
                 Next: HTML Basic Tags →
@@ -433,7 +1118,7 @@
 
 
 
-    <!-- Footer -->
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
@@ -443,7 +1128,7 @@
 
 
 
-    <!-- JavaScript -->
+    <!-- ================= JAVASCRIPT ================= -->
 
     <script>
 
