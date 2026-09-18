@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,7 @@
     <title>HTML Introduction | Code With Me</title>
 
     <meta name="description"
-          content="Learn HTML introduction, HTML structure, tags, elements, headings, paragraphs and how HTML works with simple examples.">
+        content="Learn HTML Introduction, HTML structure, basic elements and how to create your first HTML webpage.">
 
     <style>
 
@@ -18,217 +17,166 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
             background: #f5f7fb;
             color: #222;
             line-height: 1.7;
         }
 
-        /* Navbar */
+        /* Header */
 
-        nav {
+        header {
             background: #111827;
-            padding: 15px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav h2 {
             color: white;
+            padding: 20px 8%;
         }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
         }
 
-        nav a:hover {
-            color: #60a5fa;
+        .logo span {
+            color: #38bdf8;
+        }
+
+        /* Main Container */
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
         /* Hero */
 
         .hero {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
             color: white;
-            text-align: center;
-            padding: 60px 20px;
+            padding: 45px;
+            border-radius: 14px;
+            margin-bottom: 25px;
         }
 
         .hero h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
+            font-size: 38px;
+            margin-bottom: 12px;
         }
 
         .hero p {
+            color: #dbeafe;
             font-size: 18px;
         }
 
-        /* Container */
+        /* Lesson */
 
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 40px auto;
-        }
-
-        /* Topic Cards */
-
-        .topic {
+        .lesson {
             background: white;
-            padding: 30px;
-            margin-bottom: 35px;
+            margin-top: 25px;
+            padding: 28px;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
         }
 
-        .topic h2 {
-            color: #2563eb;
+        .lesson h2 {
+            color: #1e3a8a;
             margin-bottom: 15px;
         }
 
-        .topic h3 {
+        .lesson h3 {
+            color: #2563eb;
             margin-top: 20px;
             margin-bottom: 10px;
         }
 
-        .topic ul {
-            margin-left: 25px;
-        }
-
-        .topic li {
-            margin-bottom: 8px;
-        }
-
-        /* Code Block */
-
-        pre {
-            background: #111827;
-            color: #e5e7eb;
-            padding: 20px;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 15px 0;
-        }
-
-        code {
-            font-family: Consolas, monospace;
-        }
-
-        /* Output */
-
-        .output-box {
-            background: #f3f4f6;
-            border-left: 5px solid #2563eb;
-            padding: 20px;
-            margin-top: 15px;
-            border-radius: 8px;
-        }
-
-        /* Main Points */
-
-        .main-points {
-            background: #eff6ff;
-            border-left: 5px solid #2563eb;
-            padding: 20px;
-            margin-bottom: 35px;
-            border-radius: 8px;
-        }
-
-        .main-points h3 {
-            color: #1e3a8a;
-            margin-top: 0;
+        .lesson p {
             margin-bottom: 12px;
+            color: #444;
         }
 
-        .main-points ul {
-            margin-left: 20px;
-        }
+        /* Code Box */
 
-        .main-points li {
-            margin-bottom: 8px;
-        }
-
-        /* Editor */
-
-        .editor {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 40px;
+        .code-title {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #1e3a8a;
         }
 
         textarea {
             width: 100%;
-            min-height: 320px;
-            padding: 15px;
+            min-height: 230px;
+            background: #020617;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
             font-family: Consolas, monospace;
             font-size: 15px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
+            line-height: 1.6;
             resize: vertical;
+            outline: none;
         }
 
-        button {
-            padding: 12px 22px;
-            border: none;
-            border-radius: 7px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 15px;
-            margin-right: 10px;
-        }
+        /* Run Button */
 
         .run-btn {
-            background: #2563eb;
+            margin-top: 15px;
+            background: #16a34a;
             color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        .clear-btn {
-            background: #dc2626;
-            color: white;
+        .run-btn:hover {
+            background: #15803d;
         }
 
-        button:hover {
-            opacity: 0.85;
+        /* Output */
+
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #1e3a8a;
         }
 
         iframe {
             width: 100%;
-            height: 350px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
-            margin-top: 20px;
+            min-height: 220px;
             background: white;
+            border: 2px solid #dbeafe;
+            border-radius: 10px;
         }
 
-        /* Navigation */
+        /* Navigation Buttons */
 
-        .page-navigation {
+        .buttons {
             display: flex;
             justify-content: space-between;
-            gap: 20px;
-            margin: 40px 0;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
         }
 
-        .nav-btn {
-            text-decoration: none;
-            padding: 14px 20px;
-            border-radius: 8px;
-            color: white;
+        .btn {
             background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+            display: inline-block;
         }
 
-        .nav-btn:hover {
+        .btn:hover {
             background: #1d4ed8;
         }
 
@@ -236,39 +184,35 @@
 
         footer {
             background: #111827;
-            color: white;
+            color: #cbd5e1;
             text-align: center;
             padding: 25px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
-        /* Responsive */
+        /* Mobile */
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
 
-            nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav a {
-                margin-left: 10px;
+            .hero {
+                padding: 28px 20px;
             }
 
             .hero h1 {
-                font-size: 32px;
+                font-size: 30px;
             }
 
-            .topic {
+            .lesson {
                 padding: 20px;
             }
 
-            .page-navigation {
+            .buttons {
                 flex-direction: column;
             }
 
-            .nav-btn {
+            .btn {
                 text-align: center;
+                width: 100%;
             }
 
         }
@@ -281,1049 +225,237 @@
 <body>
 
 
-    <!-- Navbar -->
+    <!-- Header -->
 
-    <nav>
+    <header>
 
-        <h2>Code With Me</h2>
-
-        <div>
-
-            <a href="../index.html">Home</a>
-
-            <a href="../index.html">HTML Course</a>
-
+        <div class="logo">
+            Code<span>WithMe</span>
         </div>
 
-    </nav>
+    </header>
 
 
-    <!-- Hero Section -->
 
-    <section class="hero">
+    <!-- Main Content -->
 
-        <h1>HTML Introduction</h1>
-
-        <p>
-            Learn the basics of HTML and understand
-            how web pages are created.
-        </p>
-
-    </section>
+    <main class="container">
 
 
-    <div class="container">
+        <!-- Hero Section -->
+
+        <section class="hero">
+
+            <h1>HTML Introduction</h1>
+
+            <p>
+                Learn what HTML is, understand its basic structure,
+                and create your first HTML webpage.
+            </p>
+
+        </section>
 
 
-        <!-- 1. What is HTML -->
 
-        <div class="topic">
+        <!-- Lesson 1 -->
 
-            <h2>1. What is HTML?</h2>
+        <section class="lesson">
+
+            <h2>What is HTML?</h2>
 
             <p>
                 HTML stands for
                 <strong>HyperText Markup Language</strong>.
+                It is used to create and structure content on web pages.
             </p>
 
             <p>
-                HTML is the standard markup language used
-                to create and structure web pages.
+                HTML uses different elements and tags to tell the browser
+                how the content should be displayed.
             </p>
+
+        </section>
+
+
+
+        <!-- Lesson 2 -->
+
+        <section class="lesson">
+
+            <h2>Basic Structure of HTML</h2>
 
             <p>
-                HTML tells the browser how different parts
-                of a webpage should be structured.
+                Every HTML document generally contains a basic structure.
+                The main parts are:
             </p>
 
-            <h3>Example</h3>
+            <h3>1. DOCTYPE</h3>
 
-            <pre><code>&lt;h1&gt;Hello World&lt;/h1&gt;
+            <p>
+                The <strong>&lt;!DOCTYPE html&gt;</strong> declaration
+                tells the browser that the document is an HTML5 document.
+            </p>
 
-&lt;p&gt;Welcome to my website.&lt;/p&gt;</code></pre>
 
-            <h3>Output</h3>
+            <h3>2. HTML Element</h3>
 
-            <div class="output-box">
+            <p>
+                The <strong>&lt;html&gt;</strong> element is the root
+                element of an HTML document.
+            </p>
 
-                <h1>Hello World</h1>
 
-                <p>
-                    Welcome to my website.
-                </p>
+            <h3>3. Head</h3>
 
+            <p>
+                The <strong>&lt;head&gt;</strong> section contains information
+                about the webpage such as title and meta information.
+            </p>
+
+
+            <h3>4. Body</h3>
+
+            <p>
+                The <strong>&lt;body&gt;</strong> section contains the
+                visible content of the webpage.
+            </p>
+
+        </section>
+
+
+
+        <!-- Code Example -->
+
+        <section class="lesson">
+
+            <h2>First HTML Program</h2>
+
+            <p>
+                Try the following HTML code and click the
+                <strong>Run Code</strong> button.
+            </p>
+
+
+            <div class="code-title">
+                HTML Code:
             </div>
 
-        </div>
 
+            <textarea id="code">
 
-        <!-- 2. Why HTML -->
-
-        <div class="topic">
-
-            <h2>2. Why Do We Use HTML?</h2>
-
-            <p>
-                HTML is used to create the basic structure
-                of websites.
-            </p>
-
-            <h3>HTML can be used to create:</h3>
-
-            <ul>
-
-                <li>Headings</li>
-
-                <li>Paragraphs</li>
-
-                <li>Links</li>
-
-                <li>Images</li>
-
-                <li>Lists</li>
-
-                <li>Tables</li>
-
-                <li>Forms</li>
-
-                <li>Audio and Video</li>
-
-                <li>Webpage layouts</li>
-
-            </ul>
-
-        </div>
-
-
-        <!-- 3. HTML Document -->
-
-        <div class="topic">
-
-            <h2>3. Basic HTML Document Structure</h2>
-
-            <p>
-                A basic HTML document contains several
-                important parts.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;!DOCTYPE html&gt;
-
-&lt;html&gt;
-
-&lt;head&gt;
-
-    &lt;title&gt;My Website&lt;/title&gt;
-
-&lt;/head&gt;
-
-&lt;body&gt;
-
-    &lt;h1&gt;Hello World&lt;/h1&gt;
-
-    &lt;p&gt;This is my webpage.&lt;/p&gt;
-
-&lt;/body&gt;
-
-&lt;/html&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <h1>Hello World</h1>
-
-                <p>
-                    This is my webpage.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- 4. DOCTYPE -->
-
-        <div class="topic">
-
-            <h2>4. &lt;!DOCTYPE html&gt;</h2>
-
-            <p>
-                <strong>&lt;!DOCTYPE html&gt;</strong>
-                tells the browser that the document uses
-                modern HTML.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
-
-            <div class="main-points">
-
-                <h3>⭐ Main Point</h3>
-
-                <ul>
-
-                    <li>
-                        It should normally be the first line
-                        of an HTML document.
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <!-- 5. HTML Element -->
-
-        <div class="topic">
-
-            <h2>5. HTML Element</h2>
-
-            <p>
-                An HTML element generally consists of an
-                opening tag, content and a closing tag.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;p&gt;
-    Hello World
-&lt;/p&gt;</code></pre>
-
-            <p>
-                Here <strong>&lt;p&gt;</strong> is the opening
-                tag and <strong>&lt;/p&gt;</strong> is the
-                closing tag.
-            </p>
-
-        </div>
-
-
-        <!-- 6. HTML Tags -->
-
-        <div class="topic">
-
-            <h2>6. HTML Tags</h2>
-
-            <p>
-                HTML tags are keywords enclosed inside
-                angle brackets.
-            </p>
-
-            <h3>Examples</h3>
-
-            <pre><code>&lt;h1&gt;
-&lt;p&gt;
-&lt;a&gt;
-&lt;img&gt;
-&lt;table&gt;
-&lt;form&gt;</code></pre>
-
-        </div>
-
-
-        <!-- 7. Headings -->
-
-        <div class="topic">
-
-            <h2>7. HTML Headings</h2>
-
-            <p>
-                HTML provides six levels of headings,
-                from <strong>&lt;h1&gt;</strong> to
-                <strong>&lt;h6&gt;</strong>.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
-
-&lt;h2&gt;Heading 2&lt;/h2&gt;
-
-&lt;h3&gt;Heading 3&lt;/h3&gt;
-
-&lt;h4&gt;Heading 4&lt;/h4&gt;
-
-&lt;h5&gt;Heading 5&lt;/h5&gt;
-
-&lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <h1>Heading 1</h1>
-
-                <h2>Heading 2</h2>
-
-                <h3>Heading 3</h3>
-
-                <h4>Heading 4</h4>
-
-                <h5>Heading 5</h5>
-
-                <h6>Heading 6</h6>
-
-            </div>
-
-        </div>
-
-
-        <!-- 8. Paragraph -->
-
-        <div class="topic">
-
-            <h2>8. HTML Paragraph</h2>
-
-            <p>
-                The <strong>&lt;p&gt;</strong> element is used
-                to create a paragraph.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;p&gt;
-    HTML is easy to learn.
-&lt;/p&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <p>
-                    HTML is easy to learn.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- 9. HTML Attributes -->
-
-        <div class="topic">
-
-            <h2>9. HTML Attributes</h2>
-
-            <p>
-                Attributes provide additional information
-                about HTML elements.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;a href="https://example.com"&gt;
-    Visit Website
-&lt;/a&gt;</code></pre>
-
-            <p>
-                Here <strong>href</strong> is an attribute.
-            </p>
-
-        </div>
-
-
-        <!-- 10. HTML Comments -->
-
-        <div class="topic">
-
-            <h2>10. HTML Comments</h2>
-
-            <p>
-                Comments are used to write notes inside
-                HTML code. They are not displayed on the webpage.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;!-- This is an HTML comment --&gt;
-
-&lt;p&gt;Hello World&lt;/p&gt;</code></pre>
-
-        </div>
-
-
-        <!-- 11. HTML Links -->
-
-        <div class="topic">
-
-            <h2>11. HTML Links</h2>
-
-            <p>
-                The <strong>&lt;a&gt;</strong> element is used
-                to create hyperlinks.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;a href="https://www.google.com"&gt;
-    Visit Google
-&lt;/a&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <a href="https://www.google.com"
-                   target="_blank">
-
-                    Visit Google
-
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- 12. Images -->
-
-        <div class="topic">
-
-            <h2>12. HTML Images</h2>
-
-            <p>
-                The <strong>&lt;img&gt;</strong> element is
-                used to display images.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;img src="image.jpg"
-     alt="My Image"
-     width="300"&gt;</code></pre>
-
-            <h3>Important Attributes</h3>
-
-            <ul>
-
-                <li><strong>src</strong> - image location</li>
-
-                <li><strong>alt</strong> - alternative text</li>
-
-                <li><strong>width</strong> - image width</li>
-
-                <li><strong>height</strong> - image height</li>
-
-            </ul>
-
-        </div>
-
-
-        <!-- 13. HTML Lists -->
-
-        <div class="topic">
-
-            <h2>13. HTML Lists</h2>
-
-            <p>
-                HTML provides ordered and unordered lists.
-            </p>
-
-            <h3>Unordered List</h3>
-
-            <pre><code>&lt;ul&gt;
-
-    &lt;li&gt;HTML&lt;/li&gt;
-
-    &lt;li&gt;CSS&lt;/li&gt;
-
-    &lt;li&gt;JavaScript&lt;/li&gt;
-
-&lt;/ul&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <ul>
-
-                    <li>HTML</li>
-
-                    <li>CSS</li>
-
-                    <li>JavaScript</li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <!-- 14. HTML Forms -->
-
-        <div class="topic">
-
-            <h2>14. HTML Forms</h2>
-
-            <p>
-                HTML forms are used to collect information
-                from users.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;form&gt;
-
-    &lt;label&gt;Name:&lt;/label&gt;
-
-    &lt;input type="text"&gt;
-
-    &lt;button&gt;
-        Submit
-    &lt;/button&gt;
-
-&lt;/form&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <form>
-
-                    <label>
-                        Name:
-                    </label>
-
-                    <input type="text">
-
-                    <button type="button">
-                        Submit
-                    </button>
-
-                </form>
-
-            </div>
-
-        </div>
-
-
-        <!-- 15. HTML Semantic -->
-
-        <div class="topic">
-
-            <h2>15. HTML Semantic Elements</h2>
-
-            <p>
-                Semantic elements describe the meaning and
-                purpose of their content.
-            </p>
-
-            <h3>Examples</h3>
-
-            <pre><code>&lt;header&gt;
-&lt;nav&gt;
-&lt;main&gt;
-&lt;section&gt;
-&lt;article&gt;
-&lt;aside&gt;
-&lt;footer&gt;</code></pre>
-
-        </div>
-
-
-        <!-- 16. HTML and CSS -->
-
-        <div class="topic">
-
-            <h2>16. HTML with CSS</h2>
-
-            <p>
-                HTML creates the structure of a webpage,
-                while CSS is used to style that structure.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;h1 style="color: blue;"&gt;
-    Welcome
-&lt;/h1&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <h1 style="color: blue;">
-                    Welcome
-                </h1>
-
-            </div>
-
-        </div>
-
-
-        <!-- 17. HTML with JavaScript -->
-
-        <div class="topic">
-
-            <h2>17. HTML with JavaScript</h2>
-
-            <p>
-                JavaScript can be used to add behavior and
-                interactivity to HTML pages.
-            </p>
-
-            <h3>Example</h3>
-
-            <pre><code>&lt;button onclick="alert('Hello!')"&gt;
-
-    Click Me
-
-&lt;/button&gt;</code></pre>
-
-            <h3>Output</h3>
-
-            <div class="output-box">
-
-                <button onclick="alert('Hello from Code With Me!')">
-
-                    Click Me
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- 18. Browser -->
-
-        <div class="topic">
-
-            <h2>18. How Does HTML Work?</h2>
-
-            <p>
-                When you create an HTML file and open it
-                in a web browser, the browser reads the HTML
-                code and renders the webpage.
-            </p>
-
-            <h3>Simple Process</h3>
-
-            <ol>
-
-                <li>
-                    Write HTML code.
-                </li>
-
-                <li>
-                    Save the file with <strong>.html</strong>
-                    extension.
-                </li>
-
-                <li>
-                    Open the file in a web browser.
-                </li>
-
-                <li>
-                    Browser interprets the HTML.
-                </li>
-
-                <li>
-                    Webpage appears on the screen.
-                </li>
-
-            </ol>
-
-        </div>
-
-
-        <!-- 19. File Extension -->
-
-        <div class="topic">
-
-            <h2>19. HTML File Extension</h2>
-
-            <p>
-                HTML files normally use the
-                <strong>.html</strong> extension.
-            </p>
-
-            <h3>Examples</h3>
-
-            <pre><code>index.html
-
-about.html
-
-contact.html
-
-html-introduction.html</code></pre>
-
-        </div>
-
-
-        <!-- 20. Main Points -->
-
-        <div class="topic">
-
-            <div class="main-points">
-
-                <h3>⭐ Main Points</h3>
-
-                <ul>
-
-                    <li>
-                        HTML stands for
-                        <strong>HyperText Markup Language</strong>.
-                    </li>
-
-                    <li>
-                        HTML is used to create the structure
-                        of webpages.
-                    </li>
-
-                    <li>
-                        HTML uses tags and elements.
-                    </li>
-
-                    <li>
-                        HTML attributes provide additional
-                        information about elements.
-                    </li>
-
-                    <li>
-                        <strong>&lt;h1&gt;</strong> to
-                        <strong>&lt;h6&gt;</strong> are heading elements.
-                    </li>
-
-                    <li>
-                        <strong>&lt;p&gt;</strong> creates paragraphs.
-                    </li>
-
-                    <li>
-                        <strong>&lt;a&gt;</strong> creates links.
-                    </li>
-
-                    <li>
-                        <strong>&lt;img&gt;</strong> displays images.
-                    </li>
-
-                    <li>
-                        HTML files normally use the
-                        <strong>.html</strong> extension.
-                    </li>
-
-                    <li>
-                        CSS is used for styling and JavaScript
-                        is used for webpage behavior.
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <!-- Quick Reference -->
-
-        <div class="topic">
-
-            <h2>21. HTML Quick Reference</h2>
-
-            <table style="
-                width:100%;
-                border-collapse:collapse;
-                margin-top:20px;">
-
-                <tr style="background:#2563eb;color:white;">
-
-                    <th style="padding:12px;border:1px solid #ddd;">
-                        Tag
-                    </th>
-
-                    <th style="padding:12px;border:1px solid #ddd;">
-                        Purpose
-                    </th>
-
-                </tr>
-
-                <tr>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        &lt;html&gt;
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Root element
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        &lt;head&gt;
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Document information
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        &lt;title&gt;
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Page title
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        &lt;body&gt;
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Visible page content
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        &lt;h1&gt;
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Main heading
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        &lt;p&gt;
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Paragraph
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        &lt;a&gt;
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Link
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        &lt;img&gt;
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Image
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        &lt;ul&gt;
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Unordered list
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        &lt;form&gt;
-                    </td>
-
-                    <td style="padding:12px;border:1px solid #ddd;">
-                        Form
-                    </td>
-
-                </tr>
-
-            </table>
-
-        </div>
-
-
-        <!-- Live Editor -->
-
-        <div class="editor">
-
-            <h2>💻 Run HTML Code</h2>
-
-            <p>
-                નીચે HTML code લખો અને
-                <strong>Run Code</strong> button પર click કરો.
-            </p>
-
-            <textarea id="code"><!DOCTYPE html>
-
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-
-    <meta charset="UTF-8">
-
-    <title>My First HTML Page</title>
-
-    <style>
-
-        body {
-            font-family: Arial;
-            padding: 30px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #2563eb;
-        }
-
-        .box {
-            background: #eff6ff;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-    </style>
-
+    <title>My First Webpage</title>
 </head>
 
 <body>
 
-    <h1>Welcome to HTML</h1>
+    <h1>Welcome to Code With Me</h1>
 
     <p>
         This is my first HTML webpage.
     </p>
 
-    <div class="box">
-
-        <h2>Code With Me</h2>
-
-        <p>
-            Learn HTML step by step.
-        </p>
-
-        <a href="https://www.google.com"
-           target="_blank">
-
-            Visit Google
-
-        </a>
-
-    </div>
-
 </body>
+</html>
 
-</html></textarea>
+            </textarea>
 
 
-            <button class="run-btn"
-                    onclick="runCode()">
+            <br>
 
+
+            <button class="run-btn" onclick="runCode()">
                 ▶ Run Code
-
             </button>
 
 
-            <button class="clear-btn"
-                    onclick="clearCode()">
-
-                🗑 Clear
-
-            </button>
+            <div class="output-title">
+                Output:
+            </div>
 
 
             <iframe id="output"></iframe>
 
-        </div>
+        </section>
+
+
+
+        <!-- HTML Elements -->
+
+        <section class="lesson">
+
+            <h2>What are HTML Elements?</h2>
+
+            <p>
+                HTML elements are used to define different parts of
+                a webpage.
+            </p>
+
+            <p>
+                For example:
+            </p>
+
+            <p>
+                <strong>&lt;h1&gt;</strong> is used for a main heading.
+            </p>
+
+            <p>
+                <strong>&lt;p&gt;</strong> is used for a paragraph.
+            </p>
+
+            <p>
+                <strong>&lt;br&gt;</strong> is used to create a line break.
+            </p>
+
+        </section>
+
 
 
         <!-- Navigation -->
 
-        <div class="page-navigation">
+        <div class="buttons">
 
-            <a href="../index.html" class="nav-btn">
-                ← Back to HTML Course
-
+            <a class="btn" href="../index.html">
+                ← Previous
             </a>
 
 
-            <a href="html-tags.html" class="nav-btn">
+            <a class="btn" href="html-tags.html">
                 Next: HTML Basic Tags →
-
             </a>
 
         </div>
 
 
-    </div>
+    </main>
+
 
 
     <!-- Footer -->
 
     <footer>
 
-        <p>
-            © 2026 Code With Me | Learn Coding Easily
-        </p>
+        © 2026 Code With Me. All Rights Reserved.
 
     </footer>
 
+
+
+    <!-- JavaScript -->
 
     <script>
 
         function runCode() {
 
-            const code =
-                document.getElementById("code").value;
+            const code = document.getElementById("code").value;
 
-            const output =
-                document.getElementById("output");
+            const output = document.getElementById("output");
 
             output.srcdoc = code;
 
         }
-
-
-        function clearCode() {
-
-            document.getElementById("code").value = "";
-
-            document.getElementById("output").srcdoc = "";
-
-        }
-
-
-        window.onload = function () {
-
-            runCode();
-
-        };
 
     </script>
 
