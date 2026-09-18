@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
     <title>HTML Basic Tags | Code With Me</title>
 
     <meta name="description"
-          content="Learn HTML basic tags including headings, paragraphs, line breaks, horizontal lines and other common HTML tags with simple examples.">
+        content="Learn HTML basic tags including headings, paragraphs, line breaks, horizontal lines, comments and other essential HTML tags with practical examples.">
 
     <style>
 
@@ -17,119 +18,137 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.7;
-            background: #f4f7fb;
+            background: #f5f7fb;
             color: #222;
+            line-height: 1.8;
         }
 
-        /* Navbar */
+        /* ================= HEADER ================= */
 
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        header {
             background: #111827;
-            padding: 15px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav h2 {
             color: white;
+            padding: 20px 8%;
         }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
         }
 
-        nav a:hover {
-            color: #60a5fa;
+        .logo span {
+            color: #38bdf8;
         }
 
-        /* Hero */
+        /* ================= CONTAINER ================= */
+
+        .container {
+            max-width: 1050px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* ================= HERO ================= */
 
         .hero {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
             color: white;
-            text-align: center;
-            padding: 70px 20px;
+            padding: 50px;
+            border-radius: 15px;
+            margin-bottom: 30px;
         }
 
         .hero h1 {
             font-size: 42px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 18px;
-        }
-
-        /* Container */
-
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 40px auto;
-        }
-
-        /* Content Card */
-
-        .topic {
-            background: white;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .topic h2 {
-            color: #1d4ed8;
             margin-bottom: 15px;
         }
 
-        .topic h3 {
+        .hero p {
+            color: #dbeafe;
+            font-size: 19px;
+        }
+
+        /* ================= LESSON ================= */
+
+        .lesson {
+            background: white;
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 13px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .lesson h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-size: 27px;
+        }
+
+        .lesson h3 {
+            color: #2563eb;
+            margin-top: 22px;
+            margin-bottom: 8px;
+        }
+
+        .lesson p {
+            color: #444;
+            margin-bottom: 12px;
+        }
+
+        .lesson ul,
+        .lesson ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .lesson li {
+            margin-bottom: 7px;
+        }
+
+        /* ================= INFO BOX ================= */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 7px;
+        }
+
+        .tip-box {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 7px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 7px;
+        }
+
+        /* ================= CODE ================= */
+
+        .code-title {
+            font-weight: bold;
+            color: #1e3a8a;
             margin-top: 20px;
             margin-bottom: 10px;
         }
 
-        /* Main Points */
-
-        .main-points {
-            background: #eff6ff;
-            border-left: 5px solid #2563eb;
-            padding: 20px;
-            margin-bottom: 35px;
-            border-radius: 8px;
-        }
-
-        .main-points h3 {
-            color: #1e3a8a;
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-
-        .main-points ul {
-            margin-left: 20px;
-        }
-
-        .main-points li {
-            margin-bottom: 8px;
-        }
-
-        /* Code */
-
         pre {
-            background: #111827;
+            background: #020617;
             color: #e5e7eb;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow-x: auto;
             margin: 15px 0;
         }
@@ -138,235 +157,289 @@
             font-family: Consolas, monospace;
         }
 
-        /* Output */
-
-        .output {
-            background: #f9fafb;
-            border: 2px solid #d1d5db;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        .output-title {
-            font-weight: bold;
-            color: #374151;
-            margin-bottom: 10px;
-        }
-
-        /* Editor */
-
-        .editor {
-            background: white;
-            padding: 30px;
-            margin-top: 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        }
-
         textarea {
             width: 100%;
-            height: 250px;
-            padding: 15px;
+            min-height: 330px;
+            background: #020617;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
             font-family: Consolas, monospace;
             font-size: 15px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
+            line-height: 1.6;
             resize: vertical;
             outline: none;
         }
 
-        textarea:focus {
-            border-color: #2563eb;
-        }
-
-        .buttons {
-            margin-top: 15px;
-        }
-
-        button {
-            padding: 12px 22px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 15px;
-            margin-right: 10px;
-        }
+        /* ================= RUN BUTTON ================= */
 
         .run-btn {
-            background: #2563eb;
+            margin-top: 15px;
+            background: #16a34a;
             color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         .run-btn:hover {
-            background: #1d4ed8;
+            background: #15803d;
         }
 
-        .clear-btn {
-            background: #dc2626;
-            color: white;
-        }
+        /* ================= OUTPUT ================= */
 
-        .clear-btn:hover {
-            background: #b91c1c;
+        .output-title {
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-top: 25px;
+            margin-bottom: 10px;
         }
 
         iframe {
             width: 100%;
-            height: 300px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
-            margin-top: 20px;
+            min-height: 300px;
             background: white;
+            border: 2px solid #dbeafe;
+            border-radius: 10px;
         }
 
-        /* Navigation */
+        /* ================= TAG TABLE ================= */
 
-        .lesson-navigation {
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        td code {
+            background: #f1f5f9;
+            color: #1e3a8a;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .buttons {
             display: flex;
             justify-content: space-between;
-            gap: 20px;
-            margin: 40px 0;
+            gap: 15px;
+            margin: 35px 0;
+            flex-wrap: wrap;
         }
 
-        .nav-btn {
-            display: inline-block;
+        .btn {
             background: #2563eb;
             color: white;
             text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 6px;
+            padding: 13px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            display: inline-block;
         }
 
-        .nav-btn:hover {
+        .btn:hover {
             background: #1d4ed8;
         }
 
-        /* Footer */
+        /* ================= FOOTER ================= */
 
         footer {
             background: #111827;
-            color: white;
+            color: #cbd5e1;
             text-align: center;
             padding: 25px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
-        /* Mobile */
+        /* ================= MOBILE ================= */
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
 
-            nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav a {
-                margin: 0 8px;
+            .hero {
+                padding: 30px 20px;
             }
 
             .hero h1 {
-                font-size: 32px;
+                font-size: 31px;
             }
 
-            .container {
-                width: 94%;
+            .lesson {
+                padding: 21px;
             }
 
-            .topic {
-                padding: 20px;
+            .lesson h2 {
+                font-size: 23px;
             }
 
-            .lesson-navigation {
+            .buttons {
                 flex-direction: column;
             }
 
-            .nav-btn {
+            .btn {
+                width: 100%;
                 text-align: center;
             }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
 
-    <!-- Navbar -->
 
-    <nav>
+    <!-- ================= HEADER ================= -->
 
-        <h2>Code With Me</h2>
+    <header>
 
-        <div>
-            <a href="../index.html">Home</a>
-            <a href="../index.html">HTML Course</a>
+        <div class="logo">
+            Code<span>WithMe</span>
         </div>
 
-    </nav>
+    </header>
 
 
-    <!-- Hero -->
 
-    <section class="hero">
+    <!-- ================= MAIN ================= -->
 
-        <h1>HTML Basic Tags</h1>
-
-        <p>Learn the most commonly used HTML tags with simple examples.</p>
-
-    </section>
+    <main class="container">
 
 
-    <div class="container">
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <h1>2. HTML Basic Tags</h1>
+
+            <p>
+                Learn the most important HTML tags used to create
+                headings, paragraphs, line breaks, horizontal lines
+                and basic webpage content.
+            </p>
+
+        </section>
 
 
-        <!-- Main Points -->
 
-        <div class="main-points">
+        <!-- ================= INTRODUCTION ================= -->
 
-            <h3>⭐ Main Points</h3>
+        <section class="lesson">
+
+            <h2>Introduction to HTML Tags</h2>
+
+            <p>
+                HTML uses tags to define the structure and meaning
+                of content on a webpage.
+            </p>
+
+            <p>
+                Tags are written inside angle brackets
+                <strong>&lt; &gt;</strong>.
+            </p>
+
+            <p>
+                For example:
+            </p>
+
+            <pre><code>&lt;h1&gt;Hello World&lt;/h1&gt;</code></pre>
+
+            <p>
+                In this example,
+                <strong>&lt;h1&gt;</strong> is used to create
+                a main heading.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Remember:</strong>
+
+                HTML tags tell the browser what type of content
+                an element represents.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= OPENING AND CLOSING TAG ================= -->
+
+        <section class="lesson">
+
+            <h2>Opening and Closing Tags</h2>
+
+            <p>
+                Many HTML elements have an opening tag and a
+                closing tag.
+            </p>
+
+            <pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+
+            <p>
+                Here:
+            </p>
 
             <ul>
 
-                <li>HTML tags are used to create the structure of a webpage.</li>
+                <li>
+                    <strong>&lt;p&gt;</strong> is the opening tag.
+                </li>
 
-                <li>Most HTML elements have an opening and closing tag.</li>
+                <li>
+                    <strong>This is a paragraph.</strong>
+                    is the content.
+                </li>
 
-                <li>&lt;h1&gt; to &lt;h6&gt; are used for headings.</li>
-
-                <li>&lt;p&gt; is used for paragraphs.</li>
-
-                <li>&lt;br&gt; creates a line break.</li>
-
-                <li>&lt;hr&gt; creates a horizontal line.</li>
-
-                <li>&lt;strong&gt; and &lt;b&gt; are used for bold text.</li>
-
-                <li>&lt;i&gt; and &lt;em&gt; are used for italic/emphasized text.</li>
+                <li>
+                    <strong>&lt;/p&gt;</strong> is the closing tag.
+                </li>
 
             </ul>
 
-        </div>
+        </section>
 
 
-        <!-- Topic 1 -->
 
-        <div class="topic">
+        <!-- ================= HEADINGS ================= -->
 
-            <h2>1. HTML Heading Tags</h2>
+        <section class="lesson">
+
+            <h2>1. HTML Headings</h2>
 
             <p>
-                HTML provides six heading tags from
-                <strong>&lt;h1&gt;</strong> to
+                HTML provides six heading levels:
+                <strong>&lt;h1&gt;</strong> through
                 <strong>&lt;h6&gt;</strong>.
             </p>
 
             <p>
-                &lt;h1&gt; is the largest heading and
-                &lt;h6&gt; is the smallest heading.
+                <strong>&lt;h1&gt;</strong> represents the highest
+                level heading, while <strong>&lt;h6&gt;</strong>
+                represents a lower level heading.
             </p>
-
-            <h3>Example:</h3>
 
             <pre><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
 &lt;h2&gt;Heading 2&lt;/h2&gt;
@@ -375,855 +448,627 @@
 &lt;h5&gt;Heading 5&lt;/h5&gt;
 &lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
 
-            <div class="output">
 
-                <div class="output-title">Output:</div>
+            <h3>Example Output</h3>
 
-                <h1>Heading 1</h1>
-                <h2>Heading 2</h2>
-                <h3>Heading 3</h3>
-                <h4>Heading 4</h4>
-                <h5>Heading 5</h5>
-                <h6>Heading 6</h6>
-
-            </div>
-
-        </div>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h5>Heading 5</h5>
+            <h6>Heading 6</h6>
 
 
-        <!-- Topic 2 -->
+            <div class="tip-box">
 
-        <div class="topic">
+                <strong>Tip:</strong>
 
-            <h2>2. Paragraph Tag &lt;p&gt;</h2>
-
-            <p>
-                The <strong>&lt;p&gt;</strong> tag is used to create
-                paragraphs in HTML.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;This is my first paragraph.&lt;/p&gt;
-
-&lt;p&gt;This is my second paragraph.&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>This is my first paragraph.</p>
-
-                <p>This is my second paragraph.</p>
+                Use headings according to the structure of your
+                content rather than choosing them only because
+                of their visual size.
 
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- Topic 3 -->
 
-        <div class="topic">
+        <!-- ================= PARAGRAPH ================= -->
 
-            <h2>3. Line Break Tag &lt;br&gt;</h2>
+        <section class="lesson">
+
+            <h2>2. HTML Paragraph</h2>
 
             <p>
-                The <strong>&lt;br&gt;</strong> tag is used to create
-                a line break.
+                The <strong>&lt;p&gt;</strong> tag is used to
+                create a paragraph.
             </p>
-
-            <h3>Example:</h3>
 
             <pre><code>&lt;p&gt;
-Hello World!&lt;br&gt;
+HTML is used to create webpages.
+&lt;/p&gt;</code></pre>
+
+            <p>
+                Browsers normally display paragraphs as separate
+                blocks of text.
+            </p>
+
+            <h3>Example</h3>
+
+            <p>
+                This is my first paragraph.
+            </p>
+
+            <p>
+                This is my second paragraph.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= LINE BREAK ================= -->
+
+        <section class="lesson">
+
+            <h2>3. HTML Line Break</h2>
+
+            <p>
+                The <strong>&lt;br&gt;</strong> tag creates a
+                line break within text.
+            </p>
+
+            <pre><code>&lt;p&gt;
+Hello&lt;br&gt;
 Welcome to Code With Me.
 &lt;/p&gt;</code></pre>
 
-            <div class="output">
+            <h3>Example Output</h3>
 
-                <div class="output-title">Output:</div>
+            <p>
+                Hello<br>
+                Welcome to Code With Me.
+            </p>
 
-                <p>
-                    Hello World!<br>
-                    Welcome to Code With Me.
-                </p>
+            <div class="info-box">
+
+                <strong>Note:</strong>
+
+                The <strong>&lt;br&gt;</strong> element does not
+                need a closing tag.
 
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- Topic 4 -->
 
-        <div class="topic">
+        <!-- ================= HORIZONTAL LINE ================= -->
 
-            <h2>4. Horizontal Line Tag &lt;hr&gt;</h2>
+        <section class="lesson">
+
+            <h2>4. HTML Horizontal Line</h2>
 
             <p>
-                The <strong>&lt;hr&gt;</strong> tag creates a
-                horizontal line on a webpage.
+                The <strong>&lt;hr&gt;</strong> element represents
+                a thematic break between sections of content.
             </p>
 
-            <h3>Example:</h3>
+            <pre><code>&lt;h2&gt;About HTML&lt;/h2&gt;
 
-            <pre><code>&lt;h2&gt;HTML Course&lt;/h2&gt;
+&lt;p&gt;
+HTML is a markup language.
+&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;Learn HTML step by step.&lt;/p&gt;</code></pre>
+&lt;h2&gt;About CSS&lt;/h2&gt;</code></pre>
 
-            <div class="output">
+            <h3>Example Output</h3>
 
-                <div class="output-title">Output:</div>
+            <p>
+                HTML is a markup language.
+            </p>
 
-                <h2>HTML Course</h2>
+            <hr>
 
-                <hr>
+            <p>
+                CSS is used for presentation and design.
+            </p>
 
-                <p>Learn HTML step by step.</p>
+        </section>
+
+
+
+        <!-- ================= COMMENTS ================= -->
+
+        <section class="lesson">
+
+            <h2>5. HTML Comments</h2>
+
+            <p>
+                Comments allow developers to leave notes inside
+                HTML source code.
+            </p>
+
+            <p>
+                Comments are not normally displayed as webpage
+                content.
+            </p>
+
+            <pre><code>&lt;!-- This is an HTML comment --&gt;
+
+&lt;p&gt;Hello World&lt;/p&gt;</code></pre>
+
+            <div class="tip-box">
+
+                <strong>Why use comments?</strong>
+
+                <ul>
+
+                    <li>To explain code.</li>
+
+                    <li>To organize large HTML files.</li>
+
+                    <li>To leave notes for other developers.</li>
+
+                    <li>To temporarily comment out code.</li>
+
+                </ul>
 
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- Topic 5 -->
 
-        <div class="topic">
+        <!-- ================= TEXT CONTAINER ================= -->
 
-            <h2>5. Bold Tag &lt;b&gt;</h2>
+        <section class="lesson">
 
-            <p>
-                The <strong>&lt;b&gt;</strong> tag makes text bold.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;This is &lt;b&gt;bold text&lt;/b&gt;.&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>This is <b>bold text</b>.</p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 6 -->
-
-        <div class="topic">
-
-            <h2>6. Strong Tag &lt;strong&gt;</h2>
+            <h2>6. Basic Text Containers</h2>
 
             <p>
-                The <strong>&lt;strong&gt;</strong> tag indicates
-                that the text is important.
+                HTML also provides elements for organizing and
+                grouping content.
             </p>
 
-            <h3>Example:</h3>
+            <h3>&lt;div&gt;</h3>
+
+            <p>
+                The <strong>&lt;div&gt;</strong> element is a
+                generic container used to group content.
+            </p>
+
+            <pre><code>&lt;div&gt;
+
+    &lt;h2&gt;My Website&lt;/h2&gt;
+
+    &lt;p&gt;Welcome to my website.&lt;/p&gt;
+
+&lt;/div&gt;</code></pre>
+
+
+            <h3>&lt;span&gt;</h3>
+
+            <p>
+                The <strong>&lt;span&gt;</strong> element is a
+                generic inline container.
+            </p>
 
             <pre><code>&lt;p&gt;
-&lt;strong&gt;Important information&lt;/strong&gt;
+This is &lt;span&gt;important&lt;/span&gt; text.
 &lt;/p&gt;</code></pre>
 
-            <div class="output">
+        </section>
 
-                <div class="output-title">Output:</div>
 
-                <p>
-                    <strong>Important information</strong>
-                </p>
+
+        <!-- ================= COMMON BASIC TAGS ================= -->
+
+        <section class="lesson">
+
+            <h2>Common HTML Basic Tags</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+
+                        <th>Tag</th>
+
+                        <th>Purpose</th>
+
+                        <th>Example</th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <code>&lt;h1&gt;</code>
+                        </td>
+
+                        <td>
+                            Main heading
+                        </td>
+
+                        <td>
+                            <code>&lt;h1&gt;Title&lt;/h1&gt;</code>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <code>&lt;p&gt;</code>
+                        </td>
+
+                        <td>
+                            Paragraph
+                        </td>
+
+                        <td>
+                            <code>&lt;p&gt;Hello&lt;/p&gt;</code>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <code>&lt;br&gt;</code>
+                        </td>
+
+                        <td>
+                            Line break
+                        </td>
+
+                        <td>
+                            <code>&lt;br&gt;</code>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <code>&lt;hr&gt;</code>
+                        </td>
+
+                        <td>
+                            Thematic break
+                        </td>
+
+                        <td>
+                            <code>&lt;hr&gt;</code>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <code>&lt;!-- --&gt;</code>
+                        </td>
+
+                        <td>
+                            Comment
+                        </td>
+
+                        <td>
+                            <code>&lt;!-- Note --&gt;</code>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <code>&lt;div&gt;</code>
+                        </td>
+
+                        <td>
+                            Generic block container
+                        </td>
+
+                        <td>
+                            <code>&lt;div&gt;...&lt;/div&gt;</code>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <code>&lt;span&gt;</code>
+                        </td>
+
+                        <td>
+                            Generic inline container
+                        </td>
+
+                        <td>
+                            <code>&lt;span&gt;Text&lt;/span&gt;</code>
+                        </td>
+
+                    </tr>
+
+                </table>
 
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- Topic 7 -->
 
-        <div class="topic">
+        <!-- ================= COMPLETE EXAMPLE ================= -->
 
-            <h2>7. Italic Tag &lt;i&gt;</h2>
+        <section class="lesson">
+
+            <h2>Complete Basic HTML Example</h2>
 
             <p>
-                The <strong>&lt;i&gt;</strong> tag displays text
-                in italic style.
+                The following example combines several basic HTML
+                tags together.
             </p>
 
-            <h3>Example:</h3>
+            <pre><code>&lt;!DOCTYPE html&gt;
 
-            <pre><code>&lt;p&gt;
-This is &lt;i&gt;italic text&lt;/i&gt;.
-&lt;/p&gt;</code></pre>
+&lt;html&gt;
 
-            <div class="output">
+&lt;head&gt;
 
-                <div class="output-title">Output:</div>
+    &lt;title&gt;My Website&lt;/title&gt;
 
-                <p>
-                    This is <i>italic text</i>.
-                </p>
+&lt;/head&gt;
 
-            </div>
+&lt;body&gt;
 
-        </div>
+    &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
 
+    &lt;p&gt;
+        This is my first webpage.
+    &lt;/p&gt;
 
-        <!-- Topic 8 -->
+    &lt;hr&gt;
 
-        <div class="topic">
+    &lt;h2&gt;About Me&lt;/h2&gt;
 
-            <h2>8. Emphasis Tag &lt;em&gt;</h2>
+    &lt;p&gt;
+        I am learning HTML.
+    &lt;/p&gt;
 
-            <p>
-                The <strong>&lt;em&gt;</strong> tag is used to
-                emphasize text.
-            </p>
+    &lt;p&gt;
+        HTML is easy to learn.&lt;br&gt;
+        Practice makes you better.
+    &lt;/p&gt;
 
-            <h3>Example:</h3>
+&lt;/body&gt;
 
-            <pre><code>&lt;p&gt;
-This is &lt;em&gt;emphasized text&lt;/em&gt;.
-&lt;/p&gt;</code></pre>
+&lt;/html&gt;</code></pre>
 
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    This is <em>emphasized text</em>.
-                </p>
-
-            </div>
-
-        </div>
+        </section>
 
 
-        <!-- Topic 9 -->
 
-        <div class="topic">
+        <!-- ================= PRACTICE ================= -->
 
-            <h2>9. Underline Tag &lt;u&gt;</h2>
+        <section class="lesson">
+
+            <h2>Practice: Run Your HTML Code</h2>
 
             <p>
-                The <strong>&lt;u&gt;</strong> tag underlines text.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-This is &lt;u&gt;underlined text&lt;/u&gt;.
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    This is <u>underlined text</u>.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 10 -->
-
-        <div class="topic">
-
-            <h2>10. Small Text Tag &lt;small&gt;</h2>
-
-            <p>
-                The <strong>&lt;small&gt;</strong> tag displays
-                smaller text.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-Normal text
-&lt;small&gt;Small text&lt;/small&gt;
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    Normal text
-                    <small>Small text</small>
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 11 -->
-
-        <div class="topic">
-
-            <h2>11. Mark Tag &lt;mark&gt;</h2>
-
-            <p>
-                The <strong>&lt;mark&gt;</strong> tag highlights
-                text.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-Learn &lt;mark&gt;HTML&lt;/mark&gt; easily.
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    Learn <mark>HTML</mark> easily.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 12 -->
-
-        <div class="topic">
-
-            <h2>12. Deleted Text Tag &lt;del&gt;</h2>
-
-            <p>
-                The <strong>&lt;del&gt;</strong> tag represents
-                deleted text.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-Old Price: &lt;del&gt;₹1000&lt;/del&gt;
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    Old Price: <del>₹1000</del>
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 13 -->
-
-        <div class="topic">
-
-            <h2>13. Inserted Text Tag &lt;ins&gt;</h2>
-
-            <p>
-                The <strong>&lt;ins&gt;</strong> tag represents
-                inserted text.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-New Price:
-&lt;ins&gt;₹800&lt;/ins&gt;
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    New Price:
-                    <ins>₹800</ins>
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 14 -->
-
-        <div class="topic">
-
-            <h2>14. Subscript Tag &lt;sub&gt;</h2>
-
-            <p>
-                The <strong>&lt;sub&gt;</strong> tag displays
-                text below the normal line.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-H&lt;sub&gt;2&lt;/sub&gt;O
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    H<sub>2</sub>O
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 15 -->
-
-        <div class="topic">
-
-            <h2>15. Superscript Tag &lt;sup&gt;</h2>
-
-            <p>
-                The <strong>&lt;sup&gt;</strong> tag displays
-                text above the normal line.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-X&lt;sup&gt;2&lt;/sup&gt;
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    X<sup>2</sup>
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 16 -->
-
-        <div class="topic">
-
-            <h2>16. Preformatted Text &lt;pre&gt;</h2>
-
-            <p>
-                The <strong>&lt;pre&gt;</strong> tag displays
-                text exactly as it is written, including spaces
-                and line breaks.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;pre&gt;
-Hello
-    Welcome
-        To HTML
-&lt;/pre&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <pre>
-Hello
-    Welcome
-        To HTML
-                </pre>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 17 -->
-
-        <div class="topic">
-
-            <h2>17. Code Tag &lt;code&gt;</h2>
-
-            <p>
-                The <strong>&lt;code&gt;</strong> tag is used
-                to represent computer code.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-Use &lt;code&gt;console.log()&lt;/code&gt;
-in JavaScript.
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    Use <code>console.log()</code>
-                    in JavaScript.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 18 -->
-
-        <div class="topic">
-
-            <h2>18. Quotation Tag &lt;q&gt;</h2>
-
-            <p>
-                The <strong>&lt;q&gt;</strong> tag is used for
-                short quotations.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-HTML is &lt;q&gt;easy to learn&lt;/q&gt;.
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    HTML is <q>easy to learn</q>.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 19 -->
-
-        <div class="topic">
-
-            <h2>19. Blockquote Tag &lt;blockquote&gt;</h2>
-
-            <p>
-                The <strong>&lt;blockquote&gt;</strong> tag is
-                used for longer quotations.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;blockquote&gt;
-Learning HTML is the first step
-towards web development.
-&lt;/blockquote&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <blockquote>
-                    Learning HTML is the first step
-                    towards web development.
-                </blockquote>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 20 -->
-
-        <div class="topic">
-
-            <h2>20. Abbreviation Tag &lt;abbr&gt;</h2>
-
-            <p>
-                The <strong>&lt;abbr&gt;</strong> tag is used
-                for abbreviations.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-&lt;abbr title="HyperText Markup Language"&gt;
-HTML
-&lt;/abbr&gt;
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    <abbr title="HyperText Markup Language">
-                        HTML
-                    </abbr>
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 21 -->
-
-        <div class="topic">
-
-            <h2>21. Address Tag &lt;address&gt;</h2>
-
-            <p>
-                The <strong>&lt;address&gt;</strong> tag is used
-                for contact information.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;address&gt;
-Code With Me&lt;br&gt;
-Gujarat, India
-&lt;/address&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <address>
-                    Code With Me<br>
-                    Gujarat, India
-                </address>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 22 -->
-
-        <div class="topic">
-
-            <h2>22. Citation Tag &lt;cite&gt;</h2>
-
-            <p>
-                The <strong>&lt;cite&gt;</strong> tag is used
-                to represent the title of a work.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-&lt;cite&gt;The Web Development Guide&lt;/cite&gt;
-is a useful book.
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    <cite>The Web Development Guide</cite>
-                    is a useful book.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 23 -->
-
-        <div class="topic">
-
-            <h2>23. Keyboard Input Tag &lt;kbd&gt;</h2>
-
-            <p>
-                The <strong>&lt;kbd&gt;</strong> tag represents
-                keyboard input.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; +
-&lt;kbd&gt;C&lt;/kbd&gt; to copy.
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    Press <kbd>Ctrl</kbd> +
-                    <kbd>C</kbd> to copy.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Topic 24 -->
-
-        <div class="topic">
-
-            <h2>24. Sample Output Tag &lt;samp&gt;</h2>
-
-            <p>
-                The <strong>&lt;samp&gt;</strong> tag represents
-                sample output from a computer program.
-            </p>
-
-            <h3>Example:</h3>
-
-            <pre><code>&lt;p&gt;
-&lt;samp&gt;Hello World!&lt;/samp&gt;
-&lt;/p&gt;</code></pre>
-
-            <div class="output">
-
-                <div class="output-title">Output:</div>
-
-                <p>
-                    <samp>Hello World!</samp>
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Live Editor -->
-
-        <div class="editor">
-
-            <h2>💻 Try HTML Yourself</h2>
-
-            <p>
-                Write your HTML code below and click
+                Edit the code below and click
                 <strong>Run Code</strong> to see the output.
             </p>
 
-            <br>
+            <div class="code-title">
+                HTML Code:
+            </div>
 
             <textarea id="code"><!DOCTYPE html>
+
 <html>
+
 <head>
-    <title>My First HTML Page</title>
+
+    <title>HTML Basic Tags</title>
+
 </head>
 
 <body>
 
-    <h1>Hello World!</h1>
+    <h1>My HTML Page</h1>
 
-    <p>Welcome to Code With Me.</p>
+    <p>
+        Welcome to Code With Me.
+    </p>
 
     <hr>
 
+    <h2>About HTML</h2>
+
     <p>
-        I am learning <b>HTML</b>.
+        HTML is used to create webpages.
     </p>
 
+    <p>
+        I am learning HTML.<br>
+        I will practice every day.
+    </p>
+
+    <!-- This is a comment -->
+
 </body>
+
 </html></textarea>
 
 
-            <div class="buttons">
+            <button class="run-btn" onclick="runCode()">
+                ▶ Run Code
+            </button>
 
-                <button class="run-btn"
-                        onclick="runCode()">
-                    ▶ Run Code
-                </button>
 
-                <button class="clear-btn"
-                        onclick="clearCode()">
-                    ✕ Clear
-                </button>
-
+            <div class="output-title">
+                Output:
             </div>
 
 
             <iframe id="output"></iframe>
 
-        </div>
+        </section>
 
 
-        <!-- Navigation -->
 
-        <div class="lesson-navigation">
+        <!-- ================= COMMON MISTAKES ================= -->
 
-            <a href="html-introduction.html" class="nav-btn">
-                 ← Previous: HTML Introduction
+        <section class="lesson">
 
+            <h2>Common Mistakes</h2>
+
+            <ol>
+
+                <li>
+                    Forgetting the closing tag where one is required.
+                </li>
+
+                <li>
+                    Incorrectly nesting elements.
+                </li>
+
+                <li>
+                    Using too many line breaks instead of structuring
+                    content with appropriate elements.
+                </li>
+
+                <li>
+                    Forgetting to close quotation marks around
+                    attribute values.
+                </li>
+
+                <li>
+                    Writing tag names incorrectly.
+                </li>
+
+            </ol>
+
+            <div class="warning-box">
+
+                <strong>Practice Tip:</strong>
+
+                Do not only read HTML tags. Write the code yourself,
+                run it in the browser and experiment with different
+                values.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SUMMARY ================= -->
+
+        <section class="lesson">
+
+            <h2>HTML Basic Tags Summary</h2>
+
+            <p>
+                In this lesson, you learned the basic tags that form
+                the foundation of an HTML document.
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>&lt;h1&gt; - &lt;h6&gt;</strong>
+                    → Headings
+                </li>
+
+                <li>
+                    <strong>&lt;p&gt;</strong>
+                    → Paragraphs
+                </li>
+
+                <li>
+                    <strong>&lt;br&gt;</strong>
+                    → Line breaks
+                </li>
+
+                <li>
+                    <strong>&lt;hr&gt;</strong>
+                    → Thematic breaks
+                </li>
+
+                <li>
+                    <strong>&lt;!-- --&gt;</strong>
+                    → Comments
+                </li>
+
+                <li>
+                    <strong>&lt;div&gt;</strong>
+                    → Generic block container
+                </li>
+
+                <li>
+                    <strong>&lt;span&gt;</strong>
+                    → Generic inline container
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <div class="buttons">
+
+            <a class="btn" href="html-introduction.html">
+                ← HTML Introduction
             </a>
 
 
-            <a href="html-attributes.html" class="nav-btn">
-                 Next: HTML Text Formatting →
-
+            <a class="btn" href="html-text-formatting.html">
+                Next: HTML Text Formatting →
             </a>
 
         </div>
 
-    </div>
+
+    </main>
 
 
-    <!-- Footer -->
+
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
-        <p>
-            © 2026 Code With Me. All Rights Reserved.
-        </p>
-
-        <p>
-            Learn HTML • CSS • JavaScript • Python
-        </p>
+        © 2026 Code With Me. All Rights Reserved.
 
     </footer>
 
+
+
+    <!-- ================= JAVASCRIPT ================= -->
 
     <script>
 
         function runCode() {
 
-            const code =
-                document.getElementById("code").value;
+            const code = document.getElementById("code").value;
 
-            const output =
-                document.getElementById("output");
+            const output = document.getElementById("output");
 
             output.srcdoc = code;
-        }
-
-
-        function clearCode() {
-
-            document.getElementById("code").value = "";
-
-            document.getElementById("output").srcdoc = "";
 
         }
-
-
-        window.onload = function () {
-
-            runCode();
-
-        };
 
     </script>
+
 
 </body>
 
