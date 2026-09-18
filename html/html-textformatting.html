@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML Text Formatting | Code With Me</title>
+
+    <meta name="description"
+        content="Learn HTML text formatting tags including bold, strong, italic, emphasis, mark, small, delete, insert, subscript, superscript and more with practical examples.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.8;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 20px 8%;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            max-width: 1050px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #dbeafe;
+            font-size: 19px;
+        }
+
+        /* ================= LESSON ================= */
+
+        .lesson {
+            background: white;
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 13px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .lesson h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-size: 27px;
+        }
+
+        .lesson h3 {
+            color: #2563eb;
+            margin-top: 22px;
+            margin-bottom: 8px;
+        }
+
+        .lesson p {
+            color: #444;
+            margin-bottom: 12px;
+        }
+
+        .lesson ul,
+        .lesson ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .lesson li {
+            margin-bottom: 7px;
+        }
+
+        /* ================= INFO BOX ================= */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 7px;
+        }
+
+        .tip-box {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 7px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 7px;
+        }
+
+        /* ================= CODE ================= */
+
+        .code-title {
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: #020617;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 350px;
+            background: #020617;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            resize: vertical;
+            outline: none;
+        }
+
+        /* ================= RUN BUTTON ================= */
+
+        .run-btn {
+            margin-top: 15px;
+            background: #16a34a;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .run-btn:hover {
+            background: #15803d;
+        }
+
+        /* ================= OUTPUT ================= */
+
+        .output-title {
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 320px;
+            background: white;
+            border: 2px solid #dbeafe;
+            border-radius: 10px;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        td code {
+            background: #f1f5f9;
+            color: #1e3a8a;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 35px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 600px) {
+
+            .hero {
+                padding: 30px 20px;
+            }
+
+            .hero h1 {
+                font-size: 31px;
+            }
+
+            .lesson {
+                padding: 21px;
+            }
+
+            .lesson h2 {
+                font-size: 23px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <h1>3. HTML Text Formatting</h1>
+
+            <p>
+                Learn how to format and give meaning to text using
+                HTML formatting elements.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= INTRODUCTION ================= -->
+
+        <section class="lesson">
+
+            <h2>Introduction to Text Formatting</h2>
+
+            <p>
+                Text formatting means changing or marking text so
+                that its appearance or meaning is communicated
+                clearly.
+            </p>
+
+            <p>
+                HTML provides several elements for representing
+                important, emphasized, highlighted, deleted,
+                inserted and other types of text.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                HTML elements should be selected based on the
+                meaning and purpose of the content, not only
+                its visual appearance.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= BOLD ================= -->
+
+        <section class="lesson">
+
+            <h2>1. Bold Text - &lt;b&gt;</h2>
+
+            <p>
+                The <strong>&lt;b&gt;</strong> element draws
+                attention to text without adding special importance
+                to its meaning.
+            </p>
+
+            <pre><code>&lt;b&gt;This is bold text.&lt;/b&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                <b>This is bold text.</b>
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= STRONG ================= -->
+
+        <section class="lesson">
+
+            <h2>2. Important Text - &lt;strong&gt;</h2>
+
+            <p>
+                The <strong>&lt;strong&gt;</strong> element
+                represents text with strong importance, seriousness
+                or urgency.
+            </p>
+
+            <pre><code>&lt;strong&gt;Warning! Save your work.&lt;/strong&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                <strong>Warning! Save your work.</strong>
+            </p>
+
+            <div class="tip-box">
+
+                <strong>Remember:</strong>
+
+                <strong>&lt;strong&gt;</strong> is semantic.
+                It communicates importance rather than simply
+                requesting bold styling.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= ITALIC ================= -->
+
+        <section class="lesson">
+
+            <h2>3. Italic Text - &lt;i&gt;</h2>
+
+            <p>
+                The <strong>&lt;i&gt;</strong> element represents
+                text in an alternate voice or mood, such as a
+                technical term, foreign phrase or other text that
+                is conventionally presented in italics.
+            </p>
+
+            <pre><code>&lt;i&gt;HTML is interesting.&lt;/i&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                <i>HTML is interesting.</i>
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= EMPHASIS ================= -->
+
+        <section class="lesson">
+
+            <h2>4. Emphasized Text - &lt;em&gt;</h2>
+
+            <p>
+                The <strong>&lt;em&gt;</strong> element represents
+                emphasis.
+            </p>
+
+            <pre><code>&lt;em&gt;Practice HTML every day.&lt;/em&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                <em>Practice HTML every day.</em>
+            </p>
+
+            <div class="info-box">
+
+                <strong>&lt;em&gt;</strong> is semantic and can
+                communicate emphasis to assistive technologies.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= MARK ================= -->
+
+        <section class="lesson">
+
+            <h2>5. Highlighted Text - &lt;mark&gt;</h2>
+
+            <p>
+                The <strong>&lt;mark&gt;</strong> element represents
+                text that is highlighted or marked because it is
+                relevant in the current context.
+            </p>
+
+            <pre><code>&lt;p&gt;
+Learn &lt;mark&gt;HTML&lt;/mark&gt; first.
+&lt;/p&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                Learn <mark>HTML</mark> first.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= SMALL ================= -->
+
+        <section class="lesson">
+
+            <h2>6. Smaller Text - &lt;small&gt;</h2>
+
+            <p>
+                The <strong>&lt;small&gt;</strong> element represents
+                side comments, small print or other text that is
+                less prominent.
+            </p>
+
+            <pre><code>&lt;p&gt;
+Main content
+&lt;small&gt;Terms and conditions apply.&lt;/small&gt;
+&lt;/p&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                Main content
+                <small>Terms and conditions apply.</small>
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= DELETE ================= -->
+
+        <section class="lesson">
+
+            <h2>7. Deleted Text - &lt;del&gt;</h2>
+
+            <p>
+                The <strong>&lt;del&gt;</strong> element represents
+                content that has been deleted from a document.
+            </p>
+
+            <pre><code>&lt;p&gt;
+Price:
+&lt;del&gt;₹1000&lt;/del&gt;
+₹799
+&lt;/p&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                Price:
+                <del>₹1000</del>
+                ₹799
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= INSERTED ================= -->
+
+        <section class="lesson">
+
+            <h2>8. Inserted Text - &lt;ins&gt;</h2>
+
+            <p>
+                The <strong>&lt;ins&gt;</strong> element represents
+                content that has been inserted into a document.
+            </p>
+
+            <pre><code>&lt;p&gt;
+This is
+&lt;ins&gt;new content&lt;/ins&gt;.
+&lt;/p&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                This is <ins>new content</ins>.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= SUBSCRIPT ================= -->
+
+        <section class="lesson">
+
+            <h2>9. Subscript - &lt;sub&gt;</h2>
+
+            <p>
+                The <strong>&lt;sub&gt;</strong> element displays
+                text as subscript.
+            </p>
+
+            <p>
+                It is commonly used for chemical formulas.
+            </p>
+
+            <pre><code>&lt;p&gt;
+H&lt;sub&gt;2&lt;/sub&gt;O
+&lt;/p&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                H<sub>2</sub>O
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= SUPERSCRIPT ================= -->
+
+        <section class="lesson">
+
+            <h2>10. Superscript - &lt;sup&gt;</h2>
+
+            <p>
+                The <strong>&lt;sup&gt;</strong> element displays
+                text as superscript.
+            </p>
+
+            <p>
+                It can be useful for mathematical expressions,
+                powers and other notation.
+            </p>
+
+            <pre><code>&lt;p&gt;
+x&lt;sup&gt;2&lt;/sup&gt;
+&lt;/p&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                x<sup>2</sup>
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= UNDERLINE ================= -->
+
+        <section class="lesson">
+
+            <h2>11. Underlined Text - &lt;u&gt;</h2>
+
+            <p>
+                The <strong>&lt;u&gt;</strong> element represents
+                text with an unarticulated annotation and is
+                typically displayed with an underline.
+            </p>
+
+            <pre><code>&lt;p&gt;
+&lt;u&gt;Important text&lt;/u&gt;
+&lt;/p&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                <u>Important text</u>
+            </p>
+
+            <div class="warning-box">
+
+                Do not use underlining just to make ordinary text
+                look like a link. Users commonly expect underlined
+                text to be clickable.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= S ================= -->
+
+        <section class="lesson">
+
+            <h2>12. No Longer Accurate Text - &lt;s&gt;</h2>
+
+            <p>
+                The <strong>&lt;s&gt;</strong> element represents
+                content that is no longer accurate, relevant or
+                appropriate.
+            </p>
+
+            <pre><code>&lt;p&gt;
+&lt;s&gt;Sale ends today&lt;/s&gt;
+&lt;/p&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                <s>Sale ends today</s>
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= CODE ================= -->
+
+        <section class="lesson">
+
+            <h2>13. Computer Code - &lt;code&gt;</h2>
+
+            <p>
+                The <strong>&lt;code&gt;</strong> element represents
+                a fragment of computer code.
+            </p>
+
+            <pre><code>&lt;p&gt;
+Use &lt;code&gt;console.log()&lt;/code&gt;
+in JavaScript.
+&lt;/p&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <p>
+                Use <code>console.log()</code> in JavaScript.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= PRE ================= -->
+
+        <section class="lesson">
+
+            <h2>14. Preformatted Text - &lt;pre&gt;</h2>
+
+            <p>
+                The <strong>&lt;pre&gt;</strong> element represents
+                preformatted text. Whitespace and line breaks
+                inside the element are preserved.
+            </p>
+
+            <pre><code>&lt;pre&gt;
+Hello
+    World
+        HTML
+&lt;/pre&gt;</code></pre>
+
+            <h3>Example Output:</h3>
+
+            <pre>
+Hello
+    World
+        HTML
+            </pre>
+
+        </section>
+
+
+
+        <!-- ================= COMPARISON ================= -->
+
+        <section class="lesson">
+
+            <h2>Text Formatting Tags at a Glance</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Tag</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;b&gt;</code></td>
+                        <td>Attention without added importance</td>
+                        <td><b>Bold text</b></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;strong&gt;</code></td>
+                        <td>Strong importance</td>
+                        <td><strong>Important</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;i&gt;</code></td>
+                        <td>Alternate voice or mood</td>
+                        <td><i>Italic text</i></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;em&gt;</code></td>
+                        <td>Emphasis</td>
+                        <td><em>Emphasized</em></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;mark&gt;</code></td>
+                        <td>Highlighted text</td>
+                        <td><mark>Highlighted</mark></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;small&gt;</code></td>
+                        <td>Side comments / small print</td>
+                        <td><small>Small text</small></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;del&gt;</code></td>
+                        <td>Deleted content</td>
+                        <td><del>Deleted</del></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;ins&gt;</code></td>
+                        <td>Inserted content</td>
+                        <td><ins>Inserted</ins></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;sub&gt;</code></td>
+                        <td>Subscript</td>
+                        <td>H<sub>2</sub>O</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;sup&gt;</code></td>
+                        <td>Superscript</td>
+                        <td>x<sup>2</sup></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;u&gt;</code></td>
+                        <td>Unarticulated annotation</td>
+                        <td><u>Underlined</u></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;s&gt;</code></td>
+                        <td>No longer accurate/relevant</td>
+                        <td><s>Old text</s></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;code&gt;</code></td>
+                        <td>Computer code</td>
+                        <td><code>print()</code></td>
+                    </tr>
+
+                    <tr>
+                        <td><code>&lt;pre&gt;</code></td>
+                        <td>Preformatted text</td>
+                        <td>Preserves whitespace</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= B AND STRONG ================= -->
+
+        <section class="lesson">
+
+            <h2>&lt;b&gt; vs &lt;strong&gt;</h2>
+
+            <p>
+                Both elements are commonly displayed with bold
+                styling in browsers, but they have different
+                meanings.
+            </p>
+
+            <pre><code>&lt;b&gt;Important-looking text&lt;/b&gt;
+
+&lt;strong&gt;Important information&lt;/strong&gt;</code></pre>
+
+            <div class="info-box">
+
+                <strong>&lt;b&gt;</strong>
+                → draws attention without conveying extra importance.
+
+                <br><br>
+
+                <strong>&lt;strong&gt;</strong>
+                → represents strong importance, seriousness or urgency.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= I AND EM ================= -->
+
+        <section class="lesson">
+
+            <h2>&lt;i&gt; vs &lt;em&gt;</h2>
+
+            <p>
+                Both can appear italic in a browser, but their
+                meanings are different.
+            </p>
+
+            <pre><code>&lt;i&gt;Technical term&lt;/i&gt;
+
+&lt;em&gt;Really important emphasis&lt;/em&gt;</code></pre>
+
+            <div class="info-box">
+
+                <strong>&lt;i&gt;</strong>
+                → alternate voice, mood or conventionally italic text.
+
+                <br><br>
+
+                <strong>&lt;em&gt;</strong>
+                → emphasis.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= COMPLETE EXAMPLE ================= -->
+
+        <section class="lesson">
+
+            <h2>Complete Text Formatting Example</h2>
+
+            <pre><code>&lt;h1&gt;HTML Text Formatting&lt;/h1&gt;
+
+&lt;p&gt;
+This is &lt;b&gt;bold&lt;/b&gt; text.
+&lt;/p&gt;
+
+&lt;p&gt;
+This is &lt;strong&gt;important&lt;/strong&gt; text.
+&lt;/p&gt;
+
+&lt;p&gt;
+This is &lt;i&gt;italic&lt;/i&gt; text.
+&lt;/p&gt;
+
+&lt;p&gt;
+This is &lt;em&gt;emphasized&lt;/em&gt; text.
+&lt;/p&gt;
+
+&lt;p&gt;
+This is &lt;mark&gt;highlighted&lt;/mark&gt; text.
+&lt;/p&gt;
+
+&lt;p&gt;
+Old price:
+&lt;del&gt;₹1000&lt;/del&gt;
+New price: ₹799
+&lt;/p&gt;
+
+&lt;p&gt;
+Water formula:
+H&lt;sub&gt;2&lt;/sub&gt;O
+&lt;/p&gt;
+
+&lt;p&gt;
+Square:
+x&lt;sup&gt;2&lt;/sup&gt;
+&lt;/p&gt;</code></pre>
+
+        </section>
+
+
+
+        <!-- ================= PRACTICE ================= -->
+
+        <section class="lesson">
+
+            <h2>Practice: Run Your HTML Code</h2>
+
+            <p>
+                Edit the code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <div class="code-title">
+                HTML Code:
+            </div>
+
+            <textarea id="code"><!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Text Formatting</title>
+
+</head>
+
+<body>
+
+    <h1>HTML Text Formatting</h1>
+
+    <p>
+        This is <b>bold text</b>.
+    </p>
+
+    <p>
+        This is <strong>important text</strong>.
+    </p>
+
+    <p>
+        This is <i>italic text</i>.
+    </p>
+
+    <p>
+        This is <em>emphasized text</em>.
+    </p>
+
+    <p>
+        This is <mark>highlighted text</mark>.
+    </p>
+
+    <p>
+        This is <small>small text</small>.
+    </p>
+
+    <p>
+        Old price:
+        <del>₹1000</del>
+        New price: ₹799
+    </p>
+
+    <p>
+        This is <ins>newly inserted text</ins>.
+    </p>
+
+    <p>
+        Water:
+        H<sub>2</sub>O
+    </p>
+
+    <p>
+        Mathematics:
+        x<sup>2</sup>
+    </p>
+
+    <p>
+        <u>Underlined text</u>
+    </p>
+
+    <p>
+        <s>Old information</s>
+    </p>
+
+    <p>
+        HTML code:
+        <code>&lt;h1&gt;Hello&lt;/h1&gt;</code>
+    </p>
+
+</body>
+
+</html></textarea>
+
+
+            <button class="run-btn" onclick="runCode()">
+                ▶ Run Code
+            </button>
+
+
+            <div class="output-title">
+                Output:
+            </div>
+
+
+            <iframe id="output"></iframe>
+
+        </section>
+
+
+
+        <!-- ================= COMMON MISTAKES ================= -->
+
+        <section class="lesson">
+
+            <h2>Common Mistakes</h2>
+
+            <ol>
+
+                <li>
+                    Using formatting elements only for visual styling
+                    instead of considering their meaning.
+                </li>
+
+                <li>
+                    Using <code>&lt;br&gt;</code> repeatedly to create
+                    page layout.
+                </li>
+
+                <li>
+                    Using underlined ordinary text in a way that makes
+                    users think it is a link.
+                </li>
+
+                <li>
+                    Using <code>&lt;strong&gt;</code> everywhere when
+                    the content is not actually important.
+                </li>
+
+                <li>
+                    Forgetting to close elements where a closing tag
+                    is required.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+
+        <!-- ================= SUMMARY ================= -->
+
+        <section class="lesson">
+
+            <h2>HTML Text Formatting Summary</h2>
+
+            <p>
+                In this lesson, you learned how HTML can represent
+                different types of formatted and meaningful text.
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>&lt;b&gt;</strong> → Attention without added importance
+                </li>
+
+                <li>
+                    <strong>&lt;strong&gt;</strong> → Strong importance
+                </li>
+
+                <li>
+                    <strong>&lt;i&gt;</strong> → Alternate voice or mood
+                </li>
+
+                <li>
+                    <strong>&lt;em&gt;</strong> → Emphasis
+                </li>
+
+                <li>
+                    <strong>&lt;mark&gt;</strong> → Highlighted text
+                </li>
+
+                <li>
+                    <strong>&lt;small&gt;</strong> → Small print or side comments
+                </li>
+
+                <li>
+                    <strong>&lt;del&gt;</strong> → Deleted content
+                </li>
+
+                <li>
+                    <strong>&lt;ins&gt;</strong> → Inserted content
+                </li>
+
+                <li>
+                    <strong>&lt;sub&gt;</strong> → Subscript
+                </li>
+
+                <li>
+                    <strong>&lt;sup&gt;</strong> → Superscript
+                </li>
+
+                <li>
+                    <strong>&lt;u&gt;</strong> → Unarticulated annotation
+                </li>
+
+                <li>
+                    <strong>&lt;s&gt;</strong> → No longer accurate/relevant
+                </li>
+
+                <li>
+                    <strong>&lt;code&gt;</strong> → Computer code
+                </li>
+
+                <li>
+                    <strong>&lt;pre&gt;</strong> → Preformatted text
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <div class="buttons">
+
+            <a class="btn" href="html-tags.html">
+                ← HTML Basic Tags
+            </a>
+
+            <a class="btn" href="html-links.html">
+                Next: HTML Links →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © 2026 Code With Me. All Rights Reserved.
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code = document.getElementById("code").value;
+
+            const output = document.getElementById("output");
+
+            output.srcdoc = code;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
