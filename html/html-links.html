@@ -1,3 +1,1217 @@
-<a href="html-formatting.html" class="nav-btn previous">
-    ← Previous
-</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML Links | Code With Me</title>
+
+    <meta name="description"
+          content="Learn HTML Links with simple explanations, examples and interactive code editor.">
+
+    <meta name="keywords"
+          content="HTML links, anchor tag, HTML href, HTML target, HTML email link, HTML telephone link">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* HEADER */
+
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* CONTENT BOX */
+
+        .topic {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .topic h2 {
+            color: #1d4ed8;
+            margin-bottom: 15px;
+        }
+
+        .topic h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #374151;
+        }
+
+        /* MAIN POINTS */
+
+        .main-points {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 20px;
+            margin-bottom: 35px;
+            border-radius: 8px;
+        }
+
+        .main-points h3 {
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .main-points ul {
+            margin-left: 20px;
+        }
+
+        .main-points li {
+            margin-bottom: 8px;
+        }
+
+        /* CODE */
+
+        .example-code {
+            background: #111827;
+            color: #f9fafb;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .example-code pre {
+            white-space: pre-wrap;
+        }
+
+        /* OUTPUT */
+
+        .example-output {
+            background: #f9fafb;
+            border: 1px solid #d1d5db;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .example-output a {
+            color: #2563eb;
+        }
+
+        /* INFO BOX */
+
+        .info-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        /* SUMMARY TABLE */
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .summary-table th,
+        .summary-table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .summary-table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        .summary-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* EDITOR */
+
+        .editor-box {
+            background: #111827;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
+
+        .editor-box h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 350px;
+            background: #020617;
+            color: #e5e7eb;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        /* OUTPUT AREA */
+
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 250px;
+            background: white;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* NAVIGATION */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .previous {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .next {
+            background: #2563eb;
+            color: white;
+        }
+
+        .nav-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav .nav-links {
+                gap: 15px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .topic {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code With Me
+        </a>
+
+        <div class="nav-links">
+
+            <a href="../index.html">Home</a>
+
+            <a href="../index.html#html-topics">
+                HTML
+            </a>
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- PAGE HEADER -->
+
+    <header class="page-header">
+
+        <h1>HTML Links</h1>
+
+        <p>
+            Learn how to create links and connect webpages using HTML.
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- MAIN POINTS -->
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>The <code>&lt;a&gt;</code> tag is used to create links.</li>
+
+                <li>The <code>href</code> attribute specifies the destination.</li>
+
+                <li>You can link websites, pages, files, email addresses and phone numbers.</li>
+
+                <li>The <code>target="_blank"</code> attribute opens a link in a new tab.</li>
+
+                <li>Relative URLs are useful for connecting pages inside your website.</li>
+
+                <li>Absolute URLs are used for external websites.</li>
+
+                <li>Good link text improves usability and accessibility.</li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- TOPIC 1 -->
+
+        <section class="topic">
+
+            <h2>1. HTML Anchor Tag</h2>
+
+            <p>
+                The <code>&lt;a&gt;</code> tag is called the Anchor tag.
+                It is used to create a clickable link.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="https://www.google.com"&gt;
+    Visit Google
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="https://www.google.com">
+                    Visit Google
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 2 -->
+
+        <section class="topic">
+
+            <h2>2. href Attribute</h2>
+
+            <p>
+                The <code>href</code> attribute tells the browser
+                where the link should go.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="https://www.example.com"&gt;
+    Example Website
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="https://www.example.com">
+                    Example Website
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 3 -->
+
+        <section class="topic">
+
+            <h2>3. Link to Another Website</h2>
+
+            <p>
+                You can use an absolute URL to link to another website.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="https://www.wikipedia.org"&gt;
+    Visit Wikipedia
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="https://www.wikipedia.org">
+                    Visit Wikipedia
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 4 -->
+
+        <section class="topic">
+
+            <h2>4. Link to Another HTML Page</h2>
+
+            <p>
+                Relative paths are used to connect pages inside your website.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="about.html"&gt;
+    About Us
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 5 -->
+
+        <section class="topic">
+
+            <h2>5. Open Link in New Tab</h2>
+
+            <p>
+                Use <code>target="_blank"</code> to open a link
+                in a new browser tab.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="https://www.google.com"
+   target="_blank"&gt;
+    Open Google
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="https://www.google.com"
+                   target="_blank"
+                   rel="noopener">
+                    Open Google
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 6 -->
+
+        <section class="topic">
+
+            <h2>6. Email Link</h2>
+
+            <p>
+                The <code>mailto:</code> scheme creates a link
+                that opens the user's email application.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="mailto:example@gmail.com"&gt;
+    Send Email
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="mailto:example@gmail.com">
+                    Send Email
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 7 -->
+
+        <section class="topic">
+
+            <h2>7. Telephone Link</h2>
+
+            <p>
+                The <code>tel:</code> scheme can be used to create
+                a clickable telephone number, especially on mobile devices.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="tel:+911234567890"&gt;
+    Call Us
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="tel:+911234567890">
+                    Call Us
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 8 -->
+
+        <section class="topic">
+
+            <h2>8. Link to a Section on the Same Page</h2>
+
+            <p>
+                You can move the user to a specific section of the same page
+                by using an ID.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="#contact"&gt;
+    Go to Contact
+&lt;/a&gt;
+
+&lt;h2 id="contact"&gt;
+    Contact Us
+&lt;/h2&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="#contact-demo">
+                    Go to Contact
+                </a>
+
+                <br><br>
+
+                <h3 id="contact-demo">
+                    Contact Us
+                </h3>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 9 -->
+
+        <section class="topic">
+
+            <h2>9. Download Link</h2>
+
+            <p>
+                The <code>download</code> attribute tells the browser
+                to download the linked resource instead of navigating to it.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="sample.txt" download&gt;
+    Download File
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="sample.txt" download>
+                    Download File
+                </a>
+
+                <p>
+                    Note: The file must exist for the download to work.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 10 -->
+
+        <section class="topic">
+
+            <h2>10. Image as a Link</h2>
+
+            <p>
+                An image can also be placed inside an anchor tag
+                to make the image clickable.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="https://www.google.com"&gt;
+
+    &lt;img src="image.jpg"
+         alt="Google"
+         width="150"&gt;
+
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="https://www.google.com">
+
+                    <div style="
+                        width:150px;
+                        height:80px;
+                        background:#2563eb;
+                        color:white;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        border-radius:8px;
+                    ">
+                        Click Image
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 11 -->
+
+        <section class="topic">
+
+            <h2>11. Title Attribute</h2>
+
+            <p>
+                The <code>title</code> attribute can provide additional
+                information when the user hovers over a link.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="https://www.google.com"
+   title="Open Google Website"&gt;
+
+    Google
+
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="https://www.google.com"
+                   title="Open Google Website">
+
+                    Google
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 12 -->
+
+        <section class="topic">
+
+            <h2>12. Link with target="_self"</h2>
+
+            <p>
+                <code>target="_self"</code> opens the link in the
+                same browser tab. This is the default behavior.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="https://www.google.com"
+   target="_self"&gt;
+
+    Open in Same Tab
+
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="https://www.google.com"
+                   target="_self">
+
+                    Open in Same Tab
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 13 -->
+
+        <section class="topic">
+
+            <h2>13. Link with target="_blank"</h2>
+
+            <p>
+                <code>target="_blank"</code> opens the destination
+                in a new tab or browsing context.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="https://www.youtube.com"
+   target="_blank"
+   rel="noopener"&gt;
+
+    Open YouTube
+
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="https://www.youtube.com"
+                   target="_blank"
+                   rel="noopener">
+
+                    Open YouTube
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 14 -->
+
+        <section class="topic">
+
+            <h2>14. Relative URL</h2>
+
+            <p>
+                A relative URL points to a file or page within
+                your own website.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="html-tags.html"&gt;
+    HTML Tags
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="html-tags.html">
+                    HTML Tags
+                </a>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                Since this file is inside the
+                <code>html/</code> folder, use:
+
+                <br><br>
+
+                <code>html-tags.html</code>
+
+                <br><br>
+
+                to open another file inside the same folder.
+
+            </div>
+
+        </section>
+
+
+        <!-- TOPIC 15 -->
+
+        <section class="topic">
+
+            <h2>15. Absolute URL</h2>
+
+            <p>
+                An absolute URL contains the complete web address,
+                including the protocol such as HTTPS.
+            </p>
+
+            <h3>Example</h3>
+
+            <div class="example-code">
+<pre>&lt;a href="https://www.google.com"&gt;
+    Google
+&lt;/a&gt;</pre>
+            </div>
+
+            <h3>Output</h3>
+
+            <div class="example-output">
+
+                <a href="https://www.google.com">
+                    Google
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="topic">
+
+            <h2>📚 HTML Links Summary</h2>
+
+            <table class="summary-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Topic</th>
+                        <th>HTML</th>
+                        <th>Purpose</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Anchor</td>
+                        <td>&lt;a&gt;</td>
+                        <td>Creates a link</td>
+                    </tr>
+
+                    <tr>
+                        <td>Destination</td>
+                        <td>href</td>
+                        <td>Specifies link destination</td>
+                    </tr>
+
+                    <tr>
+                        <td>New Tab</td>
+                        <td>target="_blank"</td>
+                        <td>Opens link in new tab</td>
+                    </tr>
+
+                    <tr>
+                        <td>Same Tab</td>
+                        <td>target="_self"</td>
+                        <td>Opens link in same tab</td>
+                    </tr>
+
+                    <tr>
+                        <td>Email</td>
+                        <td>mailto:</td>
+                        <td>Creates email link</td>
+                    </tr>
+
+                    <tr>
+                        <td>Telephone</td>
+                        <td>tel:</td>
+                        <td>Creates phone link</td>
+                    </tr>
+
+                    <tr>
+                        <td>Download</td>
+                        <td>download</td>
+                        <td>Downloads a resource</td>
+                    </tr>
+
+                    <tr>
+                        <td>Tooltip</td>
+                        <td>title</td>
+                        <td>Provides extra information</td>
+                    </tr>
+
+                    <tr>
+                        <td>Same Page</td>
+                        <td>#id</td>
+                        <td>Moves to a page section</td>
+                    </tr>
+
+                    <tr>
+                        <td>External Page</td>
+                        <td>Absolute URL</td>
+                        <td>Links to another website</td>
+                    </tr>
+
+                    <tr>
+                        <td>Internal Page</td>
+                        <td>Relative URL</td>
+                        <td>Links to pages in your website</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- INTERACTIVE EDITOR -->
+
+        <section class="topic">
+
+            <h2>💻 Try HTML Links Yourself</h2>
+
+            <p>
+                Change the code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <div class="editor-box">
+
+                <h2>HTML Code Editor</h2>
+
+                <textarea id="code"><!DOCTYPE html>
+<html>
+<head>
+    <title>My Links</title>
+</head>
+
+<body>
+
+    <h1>My Website Links</h1>
+
+    <p>
+        Visit my favorite websites:
+    </p>
+
+    <a href="https://www.google.com" target="_blank">
+        Google
+    </a>
+
+    <br><br>
+
+    <a href="https://www.youtube.com" target="_blank">
+        YouTube
+    </a>
+
+    <br><br>
+
+    <a href="mailto:example@gmail.com">
+        Send Email
+    </a>
+
+    <br><br>
+
+    <a href="tel:+911234567890">
+        Call Us
+    </a>
+
+</body>
+</html></textarea>
+
+
+                <div class="buttons">
+
+                    <button class="run-btn"
+                            onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn"
+                            onclick="clearCode()">
+                        🗑 Clear
+                    </button>
+
+                </div>
+
+
+                <h3 class="output-title">
+                    Output
+                </h3>
+
+                <iframe id="output"></iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- LESSON NAVIGATION -->
+
+        <div class="lesson-navigation">
+
+            <a href="html-formatting.html"
+               class="nav-btn previous">
+
+                ← Previous: HTML Formatting
+
+            </a>
+
+            <a href="html-images.html"
+               class="nav-btn next">
+
+                Next: HTML Images →
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding Easily
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("code").value;
+
+            const output =
+                document.getElementById("output");
+
+            output.srcdoc = code;
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").srcdoc = "";
+        }
+
+
+        window.onload = function () {
+
+            runCode();
+
+        };
+
+    </script>
+
+</body>
+
+</html>
