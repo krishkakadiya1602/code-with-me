@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML Multimedia | Code With Me</title>
+
+    <meta name="description"
+          content="Learn HTML Multimedia including images, audio, video, iframe, YouTube videos, subtitles and responsive multimedia with simple examples.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* ================= HEADER ================= */
+
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 19px;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* ================= MAIN POINTS ================= */
+
+        .main-points {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 20px;
+            margin-bottom: 35px;
+            border-radius: 8px;
+        }
+
+        .main-points h3 {
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .main-points ul {
+            margin-left: 20px;
+        }
+
+        .main-points li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= TOPIC CARD ================= */
+
+        .topic-card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .topic-card h2 {
+            color: #1d4ed8;
+            margin-bottom: 15px;
+        }
+
+        .topic-card p {
+            margin-bottom: 15px;
+        }
+
+        /* ================= CODE ================= */
+
+        .code-title {
+            font-weight: bold;
+            margin: 15px 0 8px;
+            color: #374151;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* ================= OUTPUT ================= */
+
+        .output-title {
+            font-weight: bold;
+            color: #047857;
+            margin: 10px 0;
+        }
+
+        .output-box {
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* ================= MEDIA ================= */
+
+        .media-example {
+            max-width: 100%;
+        }
+
+        audio,
+        video {
+            max-width: 100%;
+        }
+
+        iframe {
+            max-width: 100%;
+            border: 0;
+        }
+
+        /* ================= SUMMARY ================= */
+
+        .summary {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .summary h2 {
+            color: #1d4ed8;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* ================= EDITOR ================= */
+
+        .editor {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .editor h2 {
+            color: #1d4ed8;
+            margin-bottom: 10px;
+        }
+
+        .editor p {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 350px;
+            padding: 15px;
+            background: #111827;
+            color: #f9fafb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        .editor iframe {
+            width: 100%;
+            min-height: 350px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            margin-top: 20px;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .previous {
+            background: #374151;
+            color: white;
+        }
+
+        .previous:hover {
+            background: #1f2937;
+        }
+
+        .next {
+            background: #2563eb;
+            color: white;
+        }
+
+        .next:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            .topic-card,
+            .editor,
+            .summary {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <a href="../index.html" class="logo">
+        Code With Me
+    </a>
+
+    <ul>
+
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#html-topics">HTML</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="page-header">
+
+    <h1>HTML Multimedia</h1>
+
+    <p>
+        Learn how to add images, audio, video and other multimedia
+        content to your HTML website.
+    </p>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+
+    <!-- ================= MAIN POINTS ================= -->
+
+    <div class="main-points">
+
+        <h3>⭐ Main Points</h3>
+
+        <ul>
+
+            <li>HTML supports different types of multimedia content.</li>
+
+            <li>The <code>&lt;img&gt;</code> element displays images.</li>
+
+            <li>The <code>&lt;audio&gt;</code> element adds audio.</li>
+
+            <li>The <code>&lt;video&gt;</code> element adds video.</li>
+
+            <li>The <code>&lt;source&gt;</code> element provides media files.</li>
+
+            <li>The <code>controls</code> attribute displays media controls.</li>
+
+            <li>The <code>autoplay</code> attribute can start media automatically.</li>
+
+            <li>The <code>loop</code> attribute repeats media.</li>
+
+            <li>The <code>muted</code> attribute starts media without sound.</li>
+
+            <li>The <code>&lt;iframe&gt;</code> element can embed external content.</li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- ================= TOPIC 1 ================= -->
+
+    <div class="topic-card">
+
+        <h2>1. HTML Multimedia</h2>
+
+        <p>
+            Multimedia means adding content such as images, audio,
+            video and external media to a webpage.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;img src="image.jpg" alt="My Image"&gt;
+
+&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+
+&lt;video controls width="400"&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            Multimedia can include images, audio and video.
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Multimedia makes websites more interactive.</li>
+
+                <li>HTML provides built-in elements for media.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 2 ================= -->
+
+    <div class="topic-card">
+
+        <h2>2. Image</h2>
+
+        <p>
+            The <code>&lt;img&gt;</code> element is used to display
+            an image on a webpage.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;img src="image.jpg"
+     alt="Beautiful Image"
+     width="300"&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <p>
+                An image will appear here when a valid image file
+                is provided.
+            </p>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li><code>src</code> specifies the image location.</li>
+
+                <li><code>alt</code> describes the image.</li>
+
+                <li><code>width</code> controls the image width.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 3 ================= -->
+
+    <div class="topic-card">
+
+        <h2>3. Audio</h2>
+
+        <p>
+            The <code>&lt;audio&gt;</code> element is used to add
+            sound or music to a webpage.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;audio controls&gt;
+
+    &lt;source src="music.mp3"
+            type="audio/mpeg"&gt;
+
+&lt;/audio&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <audio controls>
+
+                <source src="music.mp3" type="audio/mpeg">
+
+                Your browser does not support audio.
+
+            </audio>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li><code>&lt;audio&gt;</code> adds audio.</li>
+
+                <li><code>controls</code> displays play and volume controls.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 4 ================= -->
+
+    <div class="topic-card">
+
+        <h2>4. Audio Controls</h2>
+
+        <p>
+            The <code>controls</code> attribute displays audio
+            controls such as play, pause and volume.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;audio controls&gt;
+
+    &lt;source src="music.mp3"
+            type="audio/mpeg"&gt;
+
+&lt;/audio&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <audio controls>
+
+                <source src="music.mp3" type="audio/mpeg">
+
+            </audio>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Shows media controls.</li>
+
+                <li>Users can play and pause the audio.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 5 ================= -->
+
+    <div class="topic-card">
+
+        <h2>5. Video</h2>
+
+        <p>
+            The <code>&lt;video&gt;</code> element is used to display
+            video content on a webpage.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video width="400" controls&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <video width="400" controls>
+
+                <source src="video.mp4" type="video/mp4">
+
+                Your browser does not support video.
+
+            </video>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li><code>&lt;video&gt;</code> adds video.</li>
+
+                <li><code>controls</code> provides video controls.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 6 ================= -->
+
+    <div class="topic-card">
+
+        <h2>6. Video Controls</h2>
+
+        <p>
+            The <code>controls</code> attribute allows users to
+            control video playback.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video controls width="400"&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <video width="400" controls>
+
+                <source src="video.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Provides play and pause controls.</li>
+
+                <li>Users can control volume and playback.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 7 ================= -->
+
+    <div class="topic-card">
+
+        <h2>7. Source Element</h2>
+
+        <p>
+            The <code>&lt;source&gt;</code> element specifies the
+            media file used by audio or video.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video controls&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            The browser uses the specified media source.
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Specifies the media file.</li>
+
+                <li>Can provide multiple formats.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 8 ================= -->
+
+    <div class="topic-card">
+
+        <h2>8. Autoplay</h2>
+
+        <p>
+            The <code>autoplay</code> attribute tells the browser
+            to start media automatically.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video autoplay muted controls&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <p>
+                The video can start automatically when browser
+                policies allow it.
+            </p>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li><code>autoplay</code> starts media automatically.</li>
+
+                <li>Browsers may restrict autoplay with sound.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 9 ================= -->
+
+    <div class="topic-card">
+
+        <h2>9. Loop</h2>
+
+        <p>
+            The <code>loop</code> attribute makes audio or video
+            play repeatedly.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video controls loop width="400"&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <video width="400" controls loop>
+
+                <source src="video.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Repeats media after it finishes.</li>
+
+                <li>Works with audio and video.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 10 ================= -->
+
+    <div class="topic-card">
+
+        <h2>10. Muted</h2>
+
+        <p>
+            The <code>muted</code> attribute starts audio or video
+            without sound.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video controls muted width="400"&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <video width="400" controls muted>
+
+                <source src="video.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Starts media with sound turned off.</li>
+
+                <li>Useful when using autoplay.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 11 ================= -->
+
+    <div class="topic-card">
+
+        <h2>11. Video Width and Height</h2>
+
+        <p>
+            The <code>width</code> and <code>height</code> attributes
+            control the size of a video.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video width="500"
+       height="300"
+       controls&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <p>
+                Video dimensions can be controlled using
+                <code>width</code> and <code>height</code>.
+            </p>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Controls media dimensions.</li>
+
+                <li>CSS can also be used for responsive sizing.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 12 ================= -->
+
+    <div class="topic-card">
+
+        <h2>12. Video Poster</h2>
+
+        <p>
+            The <code>poster</code> attribute displays an image
+            before the video starts.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video controls
+       poster="thumbnail.jpg"
+       width="400"&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <p>
+                A poster image can be shown before video playback.
+            </p>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li><code>poster</code> specifies a preview image.</li>
+
+                <li>It is useful for video thumbnails.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 13 ================= -->
+
+    <div class="topic-card">
+
+        <h2>13. Multiple Media Sources</h2>
+
+        <p>
+            Multiple <code>&lt;source&gt;</code> elements can be
+            provided so the browser can select a supported format.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video controls&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+    &lt;source src="video.webm"
+            type="video/webm"&gt;
+
+    Your browser does not support video.
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <p>
+                The browser can choose a supported source.
+            </p>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Multiple formats can be provided.</li>
+
+                <li>Improves browser compatibility.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 14 ================= -->
+
+    <div class="topic-card">
+
+        <h2>14. YouTube Video using iframe</h2>
+
+        <p>
+            The <code>&lt;iframe&gt;</code> element can be used to
+            embed a YouTube video on a webpage.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    title="YouTube video"
+    allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <p>
+                Replace <code>VIDEO_ID</code> with the ID of a
+                YouTube video to embed it.
+            </p>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li><code>iframe</code> embeds external content.</li>
+
+                <li>YouTube provides embed URLs for videos.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 15 ================= -->
+
+    <div class="topic-card">
+
+        <h2>15. iframe</h2>
+
+        <p>
+            An <code>&lt;iframe&gt;</code> embeds another webpage
+            or external content inside your page.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;iframe
+    src="https://example.com"
+    width="500"
+    height="300"&gt;
+&lt;/iframe&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <p>
+                An external page can be displayed inside an iframe
+                when the external site permits embedding.
+            </p>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Embeds external content.</li>
+
+                <li>The external website may block iframe embedding.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 16 ================= -->
+
+    <div class="topic-card">
+
+        <h2>16. Audio Preload</h2>
+
+        <p>
+            The <code>preload</code> attribute gives the browser
+            a hint about whether media should be loaded before playback.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;audio controls preload="metadata"&gt;
+
+    &lt;source src="music.mp3"
+            type="audio/mpeg"&gt;
+
+&lt;/audio&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <audio controls preload="metadata">
+
+                <source src="music.mp3" type="audio/mpeg">
+
+            </audio>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li><code>preload</code> provides a loading hint.</li>
+
+                <li>Common values include <code>none</code>,
+                    <code>metadata</code> and <code>auto</code>.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 17 ================= -->
+
+    <div class="topic-card">
+
+        <h2>17. Video Preload</h2>
+
+        <p>
+            The <code>preload</code> attribute can also be used
+            with video.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video controls preload="metadata"
+       width="400"&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <video controls preload="metadata" width="400">
+
+                <source src="video.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Provides a loading hint for video.</li>
+
+                <li>Can help control unnecessary media loading.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 18 ================= -->
+
+    <div class="topic-card">
+
+        <h2>18. Track and Subtitles</h2>
+
+        <p>
+            The <code>&lt;track&gt;</code> element can add subtitles,
+            captions or other timed text to a video.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;video controls width="400"&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+    &lt;track
+        src="subtitles.vtt"
+        kind="subtitles"
+        srclang="en"
+        label="English"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <p>
+                A valid WebVTT subtitle file can provide captions
+                for the video.
+            </p>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li><code>track</code> provides timed text.</li>
+
+                <li>Useful for subtitles and captions.</li>
+
+                <li>The subtitle file commonly uses the
+                    <code>.vtt</code> format.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 19 ================= -->
+
+    <div class="topic-card">
+
+        <h2>19. Responsive Video</h2>
+
+        <p>
+            CSS can make videos responsive so they fit different
+            screen sizes.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;style&gt;
+
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+&lt;/style&gt;
+
+&lt;video controls&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <p>
+                The video can automatically fit smaller screens.
+            </p>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li><code>max-width: 100%</code> prevents overflow.</li>
+
+                <li>Useful for mobile-friendly websites.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOPIC 20 ================= -->
+
+    <div class="topic-card">
+
+        <h2>20. Complete Multimedia Example</h2>
+
+        <p>
+            Images, audio and video can be combined on the same
+            HTML page.
+        </p>
+
+        <div class="code-title">Example:</div>
+
+        <pre><code>&lt;h2&gt;My Multimedia Page&lt;/h2&gt;
+
+&lt;img src="image.jpg"
+     alt="My Image"
+     width="300"&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;audio controls&gt;
+
+    &lt;source src="music.mp3"
+            type="audio/mpeg"&gt;
+
+&lt;/audio&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;video width="400"
+       controls&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+        <div class="output-title">Output:</div>
+
+        <div class="output-box">
+
+            <h3>My Multimedia Page</h3>
+
+            <p>
+                Image + Audio + Video can be displayed together.
+            </p>
+
+            <br>
+
+            <audio controls>
+
+                <source src="music.mp3" type="audio/mpeg">
+
+            </audio>
+
+            <br><br>
+
+            <video width="400" controls>
+
+                <source src="video.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+        <div class="main-points">
+
+            <h3>⭐ Main Points</h3>
+
+            <ul>
+
+                <li>Multiple multimedia elements can be used together.</li>
+
+                <li>Use correct file paths for local media.</li>
+
+                <li>Use responsive CSS for mobile devices.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SUMMARY ================= -->
+
+    <div class="summary">
+
+        <h2>📚 HTML Multimedia Summary</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Tag / Attribute</th>
+
+                    <th>Purpose</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>&lt;img&gt;</td>
+                    <td>Displays an image</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;audio&gt;</td>
+                    <td>Adds audio</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;video&gt;</td>
+                    <td>Adds video</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;source&gt;</td>
+                    <td>Specifies media source</td>
+                </tr>
+
+                <tr>
+                    <td>controls</td>
+                    <td>Displays media controls</td>
+                </tr>
+
+                <tr>
+                    <td>autoplay</td>
+                    <td>Starts media automatically when permitted</td>
+                </tr>
+
+                <tr>
+                    <td>loop</td>
+                    <td>Repeats media</td>
+                </tr>
+
+                <tr>
+                    <td>muted</td>
+                    <td>Starts media without sound</td>
+                </tr>
+
+                <tr>
+                    <td>poster</td>
+                    <td>Displays video preview image</td>
+                </tr>
+
+                <tr>
+                    <td>preload</td>
+                    <td>Provides media loading hint</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;track&gt;</td>
+                    <td>Adds subtitles or captions</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;iframe&gt;</td>
+                    <td>Embeds external content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- ================= LIVE CODE EDITOR ================= -->
+
+    <div class="editor">
+
+        <h2>💻 Run HTML Multimedia Code</h2>
+
+        <p>
+            Write your HTML multimedia code below and click
+            <strong>Run Code</strong> to see the result.
+        </p>
+
+        <textarea id="code"><!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>My Multimedia Page</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        img {
+            max-width: 300px;
+        }
+
+        video {
+            max-width: 100%;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>My Multimedia Page</h1>
+
+    <h2>Image</h2>
+
+    <img src="https://via.placeholder.com/300"
+         alt="Sample Image">
+
+    <h2>Audio</h2>
+
+    <audio controls>
+
+        <source src="music.mp3"
+                type="audio/mpeg">
+
+        Your browser does not support audio.
+
+    </audio>
+
+    <h2>Video</h2>
+
+    <video width="400"
+           controls>
+
+        <source src="video.mp4"
+                type="video/mp4">
+
+        Your browser does not support video.
+
+    </video>
+
+    <h2>YouTube Video</h2>
+
+    <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/VIDEO_ID"
+        title="YouTube video"
+        allowfullscreen>
+    </iframe>
+
+</body>
+
+</html></textarea>
+
+
+        <button class="run-btn" onclick="runCode()">
+            ▶ Run Code
+        </button>
+
+        <button class="clear-btn" onclick="clearCode()">
+            🗑 Clear
+        </button>
+
+
+        <h3 style="margin-top: 25px;">
+            Output:
+        </h3>
+
+        <iframe id="output"></iframe>
+
+    </div>
+
+
+    <!-- ================= PREVIOUS / NEXT ================= -->
+
+    <div class="lesson-navigation">
+
+        <a href="html-forms.html"
+           class="nav-btn previous">
+
+            ← Previous: HTML Forms
+
+        </a>
+
+        <a href="html-semantic.html"
+           class="nav-btn next">
+
+            Next: HTML Semantic Elements →
+
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 Code With Me | Learn Coding Easily
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    function runCode() {
+
+        const code =
+            document.getElementById("code").value;
+
+        const output =
+            document.getElementById("output");
+
+        output.srcdoc = code;
+
+    }
+
+
+    function clearCode() {
+
+        document.getElementById("code").value = "";
+
+        document.getElementById("output").srcdoc = "";
+
+    }
+
+
+    window.onload = function () {
+
+        runCode();
+
+    };
+
+</script>
+
+
+</body>
+
+</html>
