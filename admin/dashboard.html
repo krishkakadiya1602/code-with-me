@@ -339,105 +339,76 @@
 
     <aside class="sidebar">
 
-
         <div class="logo">
-
             Code <span>With Me</span>
-
         </div>
 
 
         <ul class="menu">
 
-
             <li>
-
                 <a
                     href="#"
                     class="menu-link active"
                     data-section="dashboard"
                 >
-
                     📊 Dashboard
-
                 </a>
-
             </li>
 
 
             <li>
-
                 <a
                     href="#"
                     class="menu-link"
                     data-section="courses"
                 >
-
                     📚 Courses
-
                 </a>
-
             </li>
 
 
             <li>
-
                 <a
                     href="#"
                     class="menu-link"
                     data-section="users"
                 >
-
                     👥 Visitors
-
                 </a>
-
             </li>
 
 
             <li>
-
                 <a
                     href="#"
                     class="menu-link"
                     data-section="ratings"
                 >
-
                     ⭐ Ratings
-
                 </a>
-
             </li>
 
 
             <li>
-
                 <a
                     href="#"
                     class="menu-link"
                     data-section="settings"
                 >
-
                     ⚙️ Settings
-
                 </a>
-
             </li>
 
 
             <li>
-
                 <a
                     href="../index.html"
                     class="menu-link"
                 >
-
                     🌐 Visit Website
-
                 </a>
-
             </li>
-
 
         </ul>
 
@@ -446,11 +417,8 @@
             class="logout-btn"
             onclick="logout()"
         >
-
             Logout
-
         </button>
-
 
     </aside>
 
@@ -476,9 +444,7 @@
                 class="admin-email"
                 id="adminEmail"
             >
-
                 Checking login...
-
             </div>
 
         </header>
@@ -510,6 +476,8 @@
                 <div class="cards">
 
 
+                    <!-- TOTAL COURSES -->
+
                     <div class="card">
 
                         <div class="card-title">
@@ -520,14 +488,14 @@
                             class="card-value"
                             id="totalCourses"
                         >
-
                             0
-
                         </div>
 
                     </div>
 
 
+
+                    <!-- TOTAL VISITORS -->
 
                     <div class="card">
 
@@ -539,14 +507,14 @@
                             class="card-value"
                             id="totalVisitors"
                         >
-
                             0
-
                         </div>
 
                     </div>
 
 
+
+                    <!-- TOTAL RATINGS -->
 
                     <div class="card">
 
@@ -558,14 +526,14 @@
                             class="card-value"
                             id="totalRatings"
                         >
-
                             0
-
                         </div>
 
                     </div>
 
 
+
+                    <!-- AVERAGE RATING -->
 
                     <div class="card">
 
@@ -577,9 +545,7 @@
                             class="card-value"
                             id="averageRating"
                         >
-
                             0.0 ⭐
-
                         </div>
 
                     </div>
@@ -589,7 +555,9 @@
 
 
 
-                <!-- RECENT RATINGS -->
+                <!-- =================================
+                     RECENT RATINGS
+                ================================== -->
 
                 <div class="table-box">
 
@@ -621,9 +589,7 @@
                         </thead>
 
 
-                        <tbody
-                            id="recentRatings"
-                        >
+                        <tbody id="recentRatings">
 
                             <tr>
 
@@ -631,9 +597,7 @@
                                     colspan="3"
                                     class="loading"
                                 >
-
                                     Loading...
-
                                 </td>
 
                             </tr>
@@ -657,7 +621,6 @@
                 id="courses"
                 class="section"
             >
-
 
                 <div class="table-box">
 
@@ -689,9 +652,7 @@
                         </thead>
 
 
-                        <tbody
-                            id="coursesTable"
-                        >
+                        <tbody id="coursesTable">
 
                             <tr>
 
@@ -699,9 +660,7 @@
                                     colspan="3"
                                     class="loading"
                                 >
-
                                     Loading...
-
                                 </td>
 
                             </tr>
@@ -711,7 +670,6 @@
                     </table>
 
                 </div>
-
 
             </section>
 
@@ -725,7 +683,6 @@
                 id="users"
                 class="section"
             >
-
 
                 <div class="table-box">
 
@@ -753,9 +710,7 @@
                         </thead>
 
 
-                        <tbody
-                            id="visitorsTable"
-                        >
+                        <tbody id="visitorsTable">
 
                             <tr>
 
@@ -763,9 +718,7 @@
                                     colspan="2"
                                     class="loading"
                                 >
-
                                     Loading...
-
                                 </td>
 
                             </tr>
@@ -775,7 +728,6 @@
                     </table>
 
                 </div>
-
 
             </section>
 
@@ -794,6 +746,8 @@
                 <div class="cards">
 
 
+                    <!-- TOTAL RATINGS -->
+
                     <div class="card">
 
                         <div class="card-title">
@@ -804,14 +758,14 @@
                             class="card-value"
                             id="ratingsTotal2"
                         >
-
                             0
-
                         </div>
 
                     </div>
 
 
+
+                    <!-- AVERAGE RATING -->
 
                     <div class="card">
 
@@ -823,9 +777,7 @@
                             class="card-value"
                             id="ratingsAverage2"
                         >
-
                             0.0 ⭐
-
                         </div>
 
                     </div>
@@ -834,6 +786,8 @@
                 </div>
 
 
+
+                <!-- ALL RATINGS -->
 
                 <div class="table-box">
 
@@ -865,9 +819,7 @@
                         </thead>
 
 
-                        <tbody
-                            id="ratingsTable"
-                        >
+                        <tbody id="ratingsTable">
 
                             <tr>
 
@@ -875,9 +827,7 @@
                                     colspan="3"
                                     class="loading"
                                 >
-
                                     Loading...
-
                                 </td>
 
                             </tr>
@@ -901,7 +851,6 @@
                 id="settings"
                 class="section"
             >
-
 
                 <div class="settings-box">
 
@@ -945,7 +894,6 @@
                     </p>
 
                 </div>
-
 
             </section>
 
@@ -1048,7 +996,10 @@
                 await supabaseClient
                 .from("admin_users")
                 .select("user_id")
-                .eq("user_id", data.user.id)
+                .eq(
+                    "user_id",
+                    data.user.id
+                )
                 .maybeSingle();
 
 
@@ -1179,6 +1130,7 @@
                 }
 
 
+
                 /* =============================
                    RATING LIST
                 ============================= */
@@ -1223,7 +1175,9 @@
                             function(sum, item) {
 
                                 return sum +
-                                    Number(item.rating);
+                                    Number(
+                                        item.rating
+                                    );
 
                             },
                             0
@@ -1283,48 +1237,50 @@
                 } else {
 
                     ratingList
-                    .slice(0, 5)
-                    .forEach(
-                        function(item) {
+                        .slice(0, 5)
+                        .forEach(
+                            function(item) {
 
-                            const date =
-                                new Date(
-                                    item.created_at
-                                ).toLocaleString();
+                                const date =
+                                    new Date(
+                                        item.created_at
+                                    ).toLocaleString();
 
 
-                            const row =
-                                document.createElement(
-                                    "tr"
+                                const row =
+                                    document.createElement(
+                                        "tr"
+                                    );
+
+
+                                row.innerHTML = `
+                                    <td>
+                                        ${"⭐".repeat(
+                                            Number(
+                                                item.rating
+                                            )
+                                        )}
+                                    </td>
+
+                                    <td>
+                                        ${escapeHtml(
+                                            item.review ||
+                                            "No review"
+                                        )}
+                                    </td>
+
+                                    <td>
+                                        ${date}
+                                    </td>
+                                `;
+
+
+                                recentRatings.appendChild(
+                                    row
                                 );
 
-
-                            row.innerHTML = `
-                                <td>
-                                    ${"⭐".repeat(
-                                        Number(item.rating)
-                                    )}
-                                </td>
-
-                                <td>
-                                    ${escapeHtml(
-                                        item.review ||
-                                        "No review"
-                                    )}
-                                </td>
-
-                                <td>
-                                    ${date}
-                                </td>
-                            `;
-
-
-                            recentRatings.appendChild(
-                                row
-                            );
-
-                        }
-                    );
+                            }
+                        );
 
                 }
 
@@ -1368,7 +1324,9 @@
 
                                 <td>
                                     ${"⭐".repeat(
-                                        Number(item.rating)
+                                        Number(
+                                            item.rating
+                                        )
                                     )}
                                 </td>
 
