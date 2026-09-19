@@ -112,7 +112,8 @@
         }
 
 
-        .login-btn {
+        .login-btn,
+        .reset-btn {
             width: 100%;
 
             padding: 13px;
@@ -135,12 +136,14 @@
         }
 
 
-        .login-btn:hover {
+        .login-btn:hover,
+        .reset-btn:hover {
             background: #1d4ed8;
         }
 
 
-        .login-btn:disabled {
+        .login-btn:disabled,
+        .reset-btn:disabled {
             background: #93c5fd;
 
             cursor: not-allowed;
@@ -173,6 +176,81 @@
         }
 
 
+        .forgot {
+            text-align: right;
+
+            margin-top: -10px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .forgot a {
+            color: #2563eb;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+
+        .forgot a:hover {
+            text-decoration: underline;
+        }
+
+
+        .reset-section {
+            display: none;
+        }
+
+
+        .reset-title {
+            text-align: center;
+
+            font-size: 22px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .reset-description {
+            text-align: center;
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            margin-bottom: 25px;
+        }
+
+
+        .back-login {
+            text-align: center;
+
+            margin-top: 20px;
+        }
+
+
+        .back-login a {
+            color: #2563eb;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+
+        .back-login a:hover {
+            text-decoration: underline;
+        }
+
+
         .back {
             text-align: center;
 
@@ -201,7 +279,14 @@
 <body>
 
 
-    <div class="login-box">
+<div class="login-box">
+
+
+    <!-- =========================================
+         LOGIN SECTION
+    ========================================== -->
+
+    <div id="loginSection">
 
 
         <div class="logo">
@@ -224,7 +309,9 @@
             <div class="form-group">
 
                 <label for="email">
+
                     Email
+
                 </label>
 
 
@@ -239,11 +326,12 @@
             </div>
 
 
-
             <div class="form-group">
 
                 <label for="password">
+
                     Password
+
                 </label>
 
 
@@ -258,6 +346,18 @@
             </div>
 
 
+            <!-- FORGOT PASSWORD -->
+
+            <div class="forgot">
+
+                <a id="forgotPasswordLink">
+
+                    Forgot Password?
+
+                </a>
+
+            </div>
+
 
             <button
                 type="submit"
@@ -270,12 +370,10 @@
             </button>
 
 
-
             <p
                 id="error"
                 class="error"
             ></p>
-
 
 
             <p
@@ -289,7 +387,6 @@
 
 
         </form>
-
 
 
         <div class="back">
@@ -308,175 +405,310 @@
 
 
     <!-- =========================================
-         SUPABASE JAVASCRIPT LIBRARY
+         FORGOT PASSWORD SECTION
     ========================================== -->
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <div
+        id="resetSection"
+        class="reset-section"
+    >
 
 
-    <!-- =========================================
-         YOUR SUPABASE CONFIGURATION
-    ========================================== -->
+        <div class="logo">
 
-    <script src="../js/supabase.js"></script>
+            Code <span>With Me</span>
 
+        </div>
 
 
-    <script>
+        <h2 class="reset-title">
 
+            Forgot Password?
 
-        // Get HTML elements
+        </h2>
 
-        const loginForm =
-            document.getElementById("loginForm");
 
+        <p class="reset-description">
 
-        const loginButton =
-            document.getElementById("loginButton");
+            Enter your admin email address.
+            We will send you a password reset link.
 
+        </p>
 
-        const errorMessage =
-            document.getElementById("error");
 
+        <form id="resetForm">
 
-        const successMessage =
-            document.getElementById("success");
 
+            <div class="form-group">
 
+                <label for="resetEmail">
 
-        // Login form
+                    Admin Email
 
-        loginForm.addEventListener(
-            "submit",
-            async function (event) {
+                </label>
 
-                event.preventDefault();
 
+                <input
+                    type="email"
+                    id="resetEmail"
+                    placeholder="Enter admin email"
+                    autocomplete="email"
+                    required
+                >
 
-                // Get email
+            </div>
 
-                const email =
-                    document
-                    .getElementById("email")
-                    .value
-                    .trim();
 
+            <button
+                type="submit"
+                class="reset-btn"
+                id="resetButton"
+            >
 
-                // Get password
+                Send Reset Link
 
-                const password =
-                    document
-                    .getElementById("password")
-                    .value;
+            </button>
 
 
-                // Reset messages
+            <p
+                id="resetError"
+                class="error"
+            ></p>
 
-                errorMessage.style.display =
-                    "none";
 
-                successMessage.style.display =
-                    "none";
+            <p
+                id="resetSuccess"
+                class="success"
+            ></p>
 
 
-                // Disable button
+        </form>
 
-                loginButton.disabled =
-                    true;
 
-                loginButton.textContent =
-                    "Logging in...";
+        <div class="back-login">
 
+            <a id="backToLogin">
 
+                ← Back to Login
 
-                try {
+            </a>
 
+        </div>
 
-                    // Supabase login
 
-                    const { data, error } =
-                        await supabaseClient.auth
-                        .signInWithPassword({
+    </div>
 
-                            email: email,
 
-                            password: password
+</div>
 
-                        });
 
 
+<!-- =========================================
+     SUPABASE JAVASCRIPT LIBRARY
+========================================== -->
 
-                    // Check error
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-                    if (error) {
 
-                        console.error(
-                            "Login Error:",
-                            error
-                        );
+<!-- =========================================
+     YOUR SUPABASE CONFIGURATION
+========================================== -->
 
+<script src="../js/supabase.js"></script>
 
-                        errorMessage.textContent =
-                            "Invalid email or password.";
 
 
-                        errorMessage.style.display =
-                            "block";
+<script>
 
 
-                        loginButton.disabled =
-                            false;
+    // =========================================
+    // GET HTML ELEMENTS
+    // =========================================
 
+    const loginSection =
+        document.getElementById("loginSection");
 
-                        loginButton.textContent =
-                            "Login";
 
+    const resetSection =
+        document.getElementById("resetSection");
 
-                        return;
 
-                    }
+    const loginForm =
+        document.getElementById("loginForm");
 
 
+    const loginButton =
+        document.getElementById("loginButton");
 
-                    // Login successful
 
-                    console.log(
-                        "Logged in user:",
-                        data.user
-                    );
+    const errorMessage =
+        document.getElementById("error");
 
 
-                    successMessage.style.display =
-                        "block";
+    const successMessage =
+        document.getElementById("success");
 
 
-                    loginButton.textContent =
-                        "Success!";
+    const forgotPasswordLink =
+        document.getElementById("forgotPasswordLink");
 
 
-                    // Go to dashboard
+    const resetForm =
+        document.getElementById("resetForm");
 
-                    setTimeout(function () {
 
-                        window.location.href =
-                            "dashboard.html";
+    const resetButton =
+        document.getElementById("resetButton");
 
-                    }, 500);
 
+    const resetError =
+        document.getElementById("resetError");
 
-                }
 
+    const resetSuccess =
+        document.getElementById("resetSuccess");
 
-                catch (error) {
+
+    const backToLogin =
+        document.getElementById("backToLogin");
+
+
+
+    // =========================================
+    // SHOW FORGOT PASSWORD SECTION
+    // =========================================
+
+    forgotPasswordLink.addEventListener(
+        "click",
+        function () {
+
+            loginSection.style.display =
+                "none";
+
+            resetSection.style.display =
+                "block";
+
+            resetError.style.display =
+                "none";
+
+            resetSuccess.style.display =
+                "none";
+
+            // Copy login email to reset email
+            const loginEmail =
+                document.getElementById("email").value.trim();
+
+            if (loginEmail) {
+
+                document.getElementById("resetEmail").value =
+                    loginEmail;
+
+            }
+
+        }
+    );
+
+
+
+    // =========================================
+    // BACK TO LOGIN
+    // =========================================
+
+    backToLogin.addEventListener(
+        "click",
+        function () {
+
+            resetSection.style.display =
+                "none";
+
+            loginSection.style.display =
+                "block";
+
+            resetError.style.display =
+                "none";
+
+            resetSuccess.style.display =
+                "none";
+
+        }
+    );
+
+
+
+    // =========================================
+    // ADMIN LOGIN
+    // =========================================
+
+    loginForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            // Get email
+
+            const email =
+                document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+            // Get password
+
+            const password =
+                document
+                .getElementById("password")
+                .value;
+
+
+            // Reset messages
+
+            errorMessage.style.display =
+                "none";
+
+            successMessage.style.display =
+                "none";
+
+
+            // Disable button
+
+            loginButton.disabled =
+                true;
+
+            loginButton.textContent =
+                "Logging in...";
+
+
+            try {
+
+
+                // Supabase login
+
+                const { data, error } =
+                    await supabaseClient.auth
+                    .signInWithPassword({
+
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+                // Check error
+
+                if (error) {
 
                     console.error(
-                        "Unexpected Error:",
+                        "Login Error:",
                         error
                     );
 
 
                     errorMessage.textContent =
-                        "Something went wrong. Please try again.";
+                        "Invalid email or password.";
 
 
                     errorMessage.style.display =
@@ -490,12 +722,216 @@
                     loginButton.textContent =
                         "Login";
 
+
+                    return;
+
                 }
 
-            }
-        );
 
-    </script>
+
+                // Login successful
+
+                console.log(
+                    "Logged in user:",
+                    data.user
+                );
+
+
+                successMessage.style.display =
+                    "block";
+
+
+                loginButton.textContent =
+                    "Success!";
+
+
+                // Go to dashboard
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    },
+                    500
+                );
+
+
+            }
+
+
+            catch (error) {
+
+                console.error(
+                    "Unexpected Error:",
+                    error
+                );
+
+
+                errorMessage.textContent =
+                    "Something went wrong. Please try again.";
+
+
+                errorMessage.style.display =
+                    "block";
+
+
+                loginButton.disabled =
+                    false;
+
+
+                loginButton.textContent =
+                    "Login";
+
+            }
+
+        }
+    );
+
+
+
+    // =========================================
+    // FORGOT PASSWORD / RESET PASSWORD
+    // =========================================
+
+    resetForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            // Get reset email
+
+            const email =
+                document
+                .getElementById("resetEmail")
+                .value
+                .trim();
+
+
+            // Reset messages
+
+            resetError.style.display =
+                "none";
+
+            resetSuccess.style.display =
+                "none";
+
+
+            // Disable button
+
+            resetButton.disabled =
+                true;
+
+            resetButton.textContent =
+                "Sending...";
+
+
+            try {
+
+
+                // Password reset redirect URL
+
+                const redirectURL =
+                    "https://krishkakadiya1602.github.io/code-with-me/admin/update-password.html";
+
+
+                // Send password reset email
+
+                const { error } =
+                    await supabaseClient.auth
+                    .resetPasswordForEmail(
+                        email,
+                        {
+                            redirectTo: redirectURL
+                        }
+                    );
+
+
+                // Check error
+
+                if (error) {
+
+                    console.error(
+                        "Reset Password Error:",
+                        error
+                    );
+
+
+                    resetError.textContent =
+                        error.message;
+
+
+                    resetError.style.display =
+                        "block";
+
+
+                    resetButton.disabled =
+                        false;
+
+
+                    resetButton.textContent =
+                        "Send Reset Link";
+
+
+                    return;
+
+                }
+
+
+                // Success
+
+                resetSuccess.textContent =
+                    "Password reset link has been sent to your email. Please check your inbox.";
+
+
+                resetSuccess.style.display =
+                    "block";
+
+
+                resetButton.disabled =
+                    false;
+
+
+                resetButton.textContent =
+                    "Send Reset Link";
+
+
+            }
+
+
+            catch (error) {
+
+                console.error(
+                    "Unexpected Reset Error:",
+                    error
+                );
+
+
+                resetError.textContent =
+                    "Something went wrong. Please try again.";
+
+
+                resetError.style.display =
+                    "block";
+
+
+                resetButton.disabled =
+                    false;
+
+
+                resetButton.textContent =
+                    "Send Reset Link";
+
+            }
+
+        }
+    );
+
+
+</script>
 
 
 </body>
