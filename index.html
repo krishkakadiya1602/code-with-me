@@ -885,7 +885,9 @@
         </section>
 
 
-<!-- RATING -->
+<!-- ============================= -->
+<!-- WEBSITE RATING SECTION -->
+<!-- ============================= -->
 
 <section class="section" id="rating">
 
@@ -895,17 +897,37 @@
         How would you rate your experience?
     </p>
 
-    <div class="stars">
-        <span onclick="rate(1)">★</span>
-        <span onclick="rate(2)">★</span>
-        <span onclick="rate(3)">★</span>
-        <span onclick="rate(4)">★</span>
-        <span onclick="rate(5)">★</span>
+    <div class="stars" id="starContainer">
+
+        <button type="button" onclick="selectRating(1)">★</button>
+        <button type="button" onclick="selectRating(2)">★</button>
+        <button type="button" onclick="selectRating(3)">★</button>
+        <button type="button" onclick="selectRating(4)">★</button>
+        <button type="button" onclick="selectRating(5)">★</button>
+
     </div>
 
-    <p id="ratingText">
+    <p id="selectedRating">
         Select a rating
     </p>
+
+    <textarea
+        id="review"
+        placeholder="Write your review (optional)"
+        rows="4"
+    ></textarea>
+
+    <br><br>
+
+    <button
+        type="button"
+        onclick="submitRating()"
+        class="rating-submit-btn"
+    >
+        Submit Rating
+    </button>
+
+    <p id="ratingMessage"></p>
 
 </section>
 
