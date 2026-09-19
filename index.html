@@ -390,6 +390,73 @@
                 font-size: 18px;
                 font-weight: bold;
            }
+        /* ============================= */
+        /* RATING SECTION */
+        /* ============================= */
+
+        .rating-section {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            text-align: center;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+        }
+
+        .rating-section h2 {
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            margin: 20px 0;
+        }
+
+        .stars button {
+            border: none;
+            background: transparent;
+            font-size: 40px;
+            cursor: pointer;
+            color: #ccc;
+            transition: 0.2s;
+        }
+
+        .stars button:hover {
+            transform: scale(1.15);
+        }
+
+        .stars button.active {
+            color: #ffc107;
+        }
+
+        .rating-section textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: Arial, sans-serif;
+        }
+
+        .rating-submit-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+        }
+
+        .rating-submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        #ratingMessage {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 
@@ -889,7 +956,7 @@
 <!-- WEBSITE RATING SECTION -->
 <!-- ============================= -->
 
-<section class="section" id="rating">
+<section class="rating-section" id="rating">
 
     <h2>⭐ Rate Our Website</h2>
 
@@ -955,25 +1022,6 @@
     <!-- FOOTER -->
 
     <footer>
-<script>
-function rate(number) {
-
-    const stars = document.querySelectorAll(".stars span");
-
-    stars.forEach((star, index) => {
-
-        if (index < number) {
-            star.style.color = "gold";
-        } else {
-            star.style.color = "#ccc";
-        }
-
-    });
-
-    document.getElementById("ratingText").innerText =
-        "You rated our website " + number + " out of 5 ⭐";
-}
-</script>
         <p>
             © 2026 Code With Me. All Rights Reserved.
         </p>
