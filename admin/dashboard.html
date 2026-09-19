@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Code With Me</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f3f4f6;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 240px;
+            height: 100vh;
+            background: #111827;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .menu a {
+            display: block;
+            color: #d1d5db;
+            text-decoration: none;
+            padding: 13px;
+            margin-bottom: 8px;
+            border-radius: 7px;
+        }
+
+        .menu a:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .main {
+            margin-left: 240px;
+            padding: 25px;
+        }
+
+        .topbar {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .logout {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns:
+                repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 30px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .content {
+            background: white;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 13px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #f3f4f6;
+        }
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            Code <span>With Me</span>
+        </div>
+
+        <div class="menu">
+
+            <a href="#">
+                📊 Dashboard
+            </a>
+
+            <a href="#">
+                📚 Courses
+            </a>
+
+            <a href="#">
+                👨‍🎓 Users
+            </a>
+
+            <a href="#">
+                ⭐ Ratings
+            </a>
+
+            <a href="#">
+                ⚙️ Settings
+            </a>
+
+            <a href="../index.html">
+                🏠 Website
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <h1>
+                Admin Dashboard
+            </h1>
+
+            <button
+                class="logout"
+                onclick="logout()">
+
+                Logout
+
+            </button>
+
+        </div>
+
+
+        <!-- DASHBOARD CARDS -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+                    Total Courses
+                </h3>
+
+                <p>
+                    12
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Total Users
+                </h3>
+
+                <p>
+                    150
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Total Ratings
+                </h3>
+
+                <p>
+                    85
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Average Rating
+                </h3>
+
+                <p>
+                    4.5 ⭐
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- COURSES -->
+
+        <div class="content">
+
+            <h2>
+                📚 Courses
+            </h2>
+
+            <table>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Course</th>
+                    <th>Topics</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>HTML</td>
+                    <td>12</td>
+                    <td>Active</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>CSS</td>
+                    <td>15</td>
+                    <td>Active</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>JavaScript</td>
+                    <td>20</td>
+                    <td>Coming Soon</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /*
+         * Check admin login
+         */
+
+        if (
+            sessionStorage.getItem("adminLoggedIn")
+            !== "true"
+        ) {
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+        /*
+         * Logout
+         */
+
+        function logout() {
+
+            sessionStorage.removeItem(
+                "adminLoggedIn"
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
