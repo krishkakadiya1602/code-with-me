@@ -1103,6 +1103,132 @@
 
 </body>
 </html>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="js/supabase.js"></script>
+
+<script>
+
+let selectedRating = 0;
+
+
+// =============================
+// SELECT STAR RATING
+// =============================
+
+function selectRating(rating) {
+
+    selectedRating = rating;
+
+    const stars =
+        document.querySelectorAll("#starContainer button");
+
+    stars.forEach((star, index) => {
+
+        if (index < rating) {
+            star.classList.add("active");
+        } else {
+            star.classList.remove("active");
+        }
+
+    });
+
+    document.getElementById("selectedRating").textContent =
+        "You selected " + rating + " / 5";
+}
+
+
+// =============================
+// SUBMIT RATING
+// =============================
+
+async function submitRating() {
+
+    const message =
+        document.getElementById("ratingMessage");
+
+    const review =
+        document.getElementById("review").value.trim();
+
+
+    // Check rating
+    if (selectedRating === 0) {
+
+        message.textContent =
+            "Please select a rating first.";
+
+        return;
+    }
+
+
+    // Disable submit button
+    const button =
+        document.querySelector(".rating-submit-btn");
+
+    button.disabled = true;
+
+    button.textContent =
+        "Submitting...";
+
+
+    // Insert rating into Supabase
+    const { error } =
+        await supabaseClient
+            .from("ratings")
+            .insert({
+                rating: selectedRating,
+                review: review || null
+            });
+
+
+    if (error) {
+
+        console.error(error);
+
+        message.textContent =
+            "Something went wrong. Please try again.";
+
+        button.disabled = false;
+
+        button.textContent =
+            "Submit Rating";
+
+        return;
+    }
+
+
+    // Success
+    message.textContent =
+        "Thank you! Your rating has been submitted.";
+
+    message.style.color =
+        "green";
+
+
+    // Clear form
+    selectedRating = 0;
+
+    document
+        .querySelectorAll("#starContainer button")
+        .forEach(star =>
+            star.classList.remove("active")
+        );
+
+    document.getElementById("selectedRating").textContent =
+        "Select a rating";
+
+    document.getElementById("review").value =
+        "";
+
+
+    button.disabled = false;
+
+    button.textContent =
+        "Submit Rating";
+}
+
+</script>
 </body>
 
 </html>
