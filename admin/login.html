@@ -2,12 +2,16 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Admin Login | Code With Me</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -87,8 +91,20 @@
             background: #1d4ed8;
         }
 
+        .login-btn:disabled {
+            background: #93c5fd;
+            cursor: not-allowed;
+        }
+
         .error {
             color: #dc2626;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .success {
+            color: #16a34a;
             text-align: center;
             margin-top: 15px;
             display: none;
@@ -103,7 +119,9 @@
             color: #2563eb;
             text-decoration: none;
         }
+
     </style>
+
 </head>
 
 <body>
@@ -118,9 +136,10 @@
             Administrator Login
         </p>
 
-        <form onsubmit="login(event)">
+        <form id="loginForm">
 
             <div class="form-group">
+
                 <label>Email</label>
 
                 <input
@@ -129,9 +148,12 @@
                     placeholder="Enter admin email"
                     required
                 >
+
             </div>
 
+
             <div class="form-group">
+
                 <label>Password</label>
 
                 <input
@@ -140,69 +162,121 @@
                     placeholder="Enter password"
                     required
                 >
+
             </div>
 
-            <button type="submit" class="login-btn">
+
+            <button
+                type="submit"
+                class="login-btn"
+                id="loginButton"
+            >
                 Login
             </button>
 
-            <p id="error" class="error">
-                Invalid email or password.
+
+            <p id="error" class="error"></p>
+
+            <p id="success" class="success">
+                Login successful...
             </p>
 
         </form>
 
+
         <div class="back">
+
             <a href="../index.html">
                 ← Back to Website
             </a>
+
         </div>
 
     </div>
 
 
+    <!-- Supabase Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- Your Supabase Configuration -->
+    <script src="../js/supabase.js"></script>
+
+
     <script>
 
-        function login(event) {
+        const loginForm =
+            document.getElementById("loginForm");
 
-            event.preventDefault();
+        const loginButton =
+            document.getElementById("loginButton");
 
-            const email =
-                document.getElementById("email").value;
+        const errorMessage =
+            document.getElementById("error");
 
-            const password =
-                document.getElementById("password").value;
+        const successMessage =
+            document.getElementById("success");
 
-            /*
-             * DEMO ONLY
-             * Real authentication should be done
-             * on a backend server.
-             */
 
-            const adminEmail = "admin@example.com";
-            const adminPassword = "Admin@123";
+        loginForm.addEventListener(
+            "submit",
+            async function(event) {
 
-            if (
-                email === adminEmail &&
-                password === adminPassword
-            ) {
+                event.preventDefault();
 
-                sessionStorage.setItem(
-                    "adminLoggedIn",
-                    "true"
-                );
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+
+                const password =
+                    document.getElementById("password").value;
+
+
+                errorMessage.style.display = "none";
+
+                successMessage.style.display = "none";
+
+                loginButton.disabled = true;
+
+                loginButton.textContent = "Logging in...";
+
+
+                const { data, error } =
+                    await supabaseClient.auth.signInWithPassword({
+                        email: email,
+                        password: password
+                    });
+
+
+                if (error) {
+
+                    console.error(error);
+
+                    errorMessage.textContent =
+                        "Invalid email or password.";
+
+                    errorMessage.style.display =
+                        "block";
+
+                    loginButton.disabled = false;
+
+                    loginButton.textContent =
+                        "Login";
+
+                    return;
+                }
+
+
+                successMessage.style.display =
+                    "block";
+
 
                 window.location.href =
                     "dashboard.html";
 
-            } else {
-
-                document.getElementById("error").style.display =
-                    "block";
-
             }
-
-        }
+        );
 
     </script>
 
