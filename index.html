@@ -991,7 +991,47 @@ function rate(number) {
 </p>
 
 </footer>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
 
+<script>
+    async function trackVisitor() {
+
+        // Check if this browser already has a visitor ID
+        let visitorId = localStorage.getItem("codeWithMeVisitorId");
+
+        // Create a new visitor ID for first-time visitors
+        if (!visitorId) {
+            visitorId = crypto.randomUUID();
+
+            localStorage.setItem(
+                "codeWithMeVisitorId",
+                visitorId
+            );
+        }
+
+        // Add visitor to Supabase
+        const { error } = await supabaseClient
+            .from("visitors")
+            .insert({
+                visitor_id: visitorId
+            });
+
+        // Duplicate visitor is expected when the same browser returns
+        if (error) {
+            console.log("Visitor already exists or tracking error:", error.message);
+        } else {
+            console.log("New visitor tracked successfully!");
+        }
+    }
+
+    // Start visitor tracking
+    trackVisitor();
+</script>
+
+</body>
+</html>
 </body>
 
 </html>
