@@ -8,13 +8,13 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>CSS Syntax | Code With Me</title>
+    <title>CSS Selectors | Code With Me</title>
 
     <meta name="description"
-          content="Learn CSS syntax including selectors, properties, values, declarations and declaration blocks with practical examples.">
+          content="Learn CSS selectors including element, class, ID, universal, grouping, attribute, descendant and pseudo-class selectors.">
 
     <meta name="keywords"
-          content="CSS syntax, CSS selector, CSS property, CSS value, CSS declaration, learn CSS">
+          content="CSS selectors, CSS element selector, CSS class selector, CSS ID selector, CSS pseudo class">
 
     <meta name="author"
           content="Code With Me">
@@ -157,14 +157,14 @@
 
             color: #dbeafe;
 
-            max-width: 800px;
+            max-width: 850px;
 
             margin: auto;
         }
 
 
         /* =========================
-           MAIN CONTENT
+           MAIN CONTAINER
         ========================= */
 
         .container {
@@ -175,6 +175,10 @@
             padding: 50px 20px;
         }
 
+
+        /* =========================
+           LESSON SECTION
+        ========================= */
 
         .lesson-section {
             background: white;
@@ -234,7 +238,7 @@
 
 
         /* =========================
-           IMPORTANT BOX
+           INFO BOX
         ========================= */
 
         .info-box {
@@ -247,11 +251,6 @@
             border-radius: 8px;
 
             margin: 20px 0;
-        }
-
-
-        .info-box strong {
-            color: #1d4ed8;
         }
 
 
@@ -339,10 +338,10 @@
 
 
         /* =========================
-           SYNTAX DIAGRAM
+           SELECTOR DIAGRAM
         ========================= */
 
-        .syntax-box {
+        .selector-diagram {
             background: #0f172a;
 
             color: white;
@@ -355,29 +354,31 @@
 
             font-family: monospace;
 
-            font-size: 19px;
+            font-size: 20px;
 
             overflow-x: auto;
+
+            margin: 20px 0;
         }
 
 
-        .selector {
+        .selector-color {
             color: #60a5fa;
         }
 
 
-        .property {
+        .property-color {
             color: #fbbf24;
         }
 
 
-        .value {
+        .value-color {
             color: #4ade80;
         }
 
 
         /* =========================
-           TABLE
+           SELECTOR TABLE
         ========================= */
 
         .table-wrapper {
@@ -398,7 +399,7 @@
         td {
             border: 1px solid #cbd5e1;
 
-            padding: 12px;
+            padding: 13px;
 
             text-align: left;
         }
@@ -417,7 +418,31 @@
 
 
         /* =========================
-           CODE EDITOR
+           DEMO BOXES
+        ========================= */
+
+        .demo-area {
+            background: #f8fafc;
+
+            padding: 25px;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 10px;
+
+            margin: 20px 0;
+        }
+
+
+        .demo-title {
+            color: #1e3a8a;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           LIVE EDITOR
         ========================= */
 
         .editor {
@@ -428,7 +453,7 @@
         .editor textarea {
             width: 100%;
 
-            min-height: 280px;
+            min-height: 330px;
 
             resize: vertical;
 
@@ -522,7 +547,7 @@
         #output {
             width: 100%;
 
-            min-height: 250px;
+            min-height: 300px;
 
             border: 2px solid #cbd5e1;
 
@@ -533,7 +558,7 @@
 
 
         /* =========================
-           NAVIGATION BUTTONS
+           NAVIGATION
         ========================= */
 
         .lesson-navigation {
@@ -733,13 +758,13 @@
     <header class="page-header">
 
         <h1>
-            CSS Syntax
+            CSS Selectors
         </h1>
 
         <p>
-            Learn the basic structure of CSS,
-            including selectors, properties,
-            values and declarations.
+            Learn how CSS selectors identify HTML
+            elements and allow you to apply styles
+            to specific elements.
         </p>
 
     </header>
@@ -760,89 +785,36 @@
         <section class="lesson-section">
 
             <h2>
-                What is CSS Syntax?
+                What are CSS Selectors?
             </h2>
 
             <p>
-                CSS syntax is the set of rules that
-                defines how CSS code is written.
-                Every CSS rule follows a specific structure.
+                CSS selectors are used to select the
+                HTML elements that you want to style.
             </p>
 
             <p>
-                A CSS rule usually contains a
-                <strong>selector</strong>,
-                one or more
-                <strong>properties</strong>,
-                and their
-                <strong>values</strong>.
+                After selecting an HTML element,
+                CSS applies properties and values
+                to that element.
             </p>
 
 
-            <div class="info-box">
+            <div class="selector-diagram">
 
-                <strong>
-                    Basic CSS Syntax:
-                </strong>
-
-                <br><br>
-
-                selector {
-                    property: value;
-                }
-
-            </div>
-
-
-            <p>
-                For example, if we want to make all
-                paragraph text blue, we can write:
-            </p>
-
-
-            <div class="code-title">
-                CSS Example
-            </div>
-
-            <pre><code>p {
-    color: blue;
-}</code></pre>
-
-        </section>
-
-
-
-        <!-- =========================
-             CSS SYNTAX STRUCTURE
-        ========================= -->
-
-        <section class="lesson-section">
-
-            <h2>
-                CSS Syntax Structure
-            </h2>
-
-            <p>
-                The basic structure of a CSS rule
-                looks like this:
-            </p>
-
-
-            <div class="syntax-box">
-
-                <span class="selector">
+                <span class="selector-color">
                     selector
                 </span>
 
                 {
 
-                <span class="property">
+                <span class="property-color">
                     property
                 </span>
 
                 :
 
-                <span class="value">
+                <span class="value-color">
                     value
                 </span>
 
@@ -853,113 +825,88 @@
             </div>
 
 
-            <h3>
-                Example
-            </h3>
+            <div class="info-box">
 
+                <strong>
+                    Example:
+                </strong>
 
-            <div class="code-title">
-                CSS
-            </div>
+                <br><br>
 
-            <pre><code>h1 {
-    color: blue;
-}</code></pre>
+                <code>
+                    p {
+                        color: blue;
+                    }
+                </code>
 
+                <br><br>
 
-            <p>
-                In this example:
-            </p>
-
-
-            <ul>
-
-                <li>
-                    <strong>h1</strong> is the selector.
-                </li>
-
-                <li>
-                    <strong>color</strong> is the property.
-                </li>
-
-                <li>
-                    <strong>blue</strong> is the value.
-                </li>
-
-                <li>
-                    The entire
-                    <strong>color: blue;</strong>
-                    is a declaration.
-                </li>
-
-            </ul>
-
-        </section>
-
-
-
-        <!-- =========================
-             SELECTOR
-        ========================= -->
-
-        <section class="lesson-section">
-
-            <h2>
-                1. CSS Selector
-            </h2>
-
-            <p>
-                A selector identifies the HTML element
-                that you want to style.
-            </p>
-
-
-            <p>
-                For example:
-            </p>
-
-
-            <div class="code-title">
-                CSS
-            </div>
-
-            <pre><code>p {
-    color: red;
-}</code></pre>
-
-
-            <p>
-                Here, <span class="inline-code">p</span>
-                is the selector.
+                Here,
+                <strong>p</strong> is the selector.
                 It selects all paragraph elements.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             TYPES
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Types of CSS Selectors
+            </h2>
+
+            <p>
+                CSS provides many types of selectors.
+                The most commonly used selectors are:
             </p>
-
-
-            <h3>
-                Common Selectors
-            </h3>
 
 
             <ul>
 
                 <li>
-                    Element selector:
-                    <span class="inline-code">p</span>
+                    Universal Selector
                 </li>
 
                 <li>
-                    Class selector:
-                    <span class="inline-code">.box</span>
+                    Element Selector
                 </li>
 
                 <li>
-                    ID selector:
-                    <span class="inline-code">#header</span>
+                    Class Selector
                 </li>
 
                 <li>
-                    Universal selector:
-                    <span class="inline-code">*</span>
+                    ID Selector
+                </li>
+
+                <li>
+                    Grouping Selector
+                </li>
+
+                <li>
+                    Descendant Selector
+                </li>
+
+                <li>
+                    Child Selector
+                </li>
+
+                <li>
+                    Attribute Selector
+                </li>
+
+                <li>
+                    Pseudo-class Selector
+                </li>
+
+                <li>
+                    Pseudo-element Selector
                 </li>
 
             </ul>
@@ -969,197 +916,50 @@
 
 
         <!-- =========================
-             PROPERTY
+             UNIVERSAL
         ========================= -->
 
         <section class="lesson-section">
 
             <h2>
-                2. CSS Property
+                1. Universal Selector
             </h2>
 
             <p>
-                A property specifies what aspect of
-                an HTML element you want to change.
+                The universal selector selects
+                all HTML elements.
             </p>
 
-
             <p>
-                Examples of CSS properties include:
-            </p>
-
-
-            <ul>
-
-                <li>color</li>
-
-                <li>background-color</li>
-
-                <li>font-size</li>
-
-                <li>margin</li>
-
-                <li>padding</li>
-
-                <li>width</li>
-
-                <li>height</li>
-
-                <li>border</li>
-
-            </ul>
-
-
-            <div class="code-title">
-                Example
-            </div>
-
-            <pre><code>h1 {
-    color: blue;
-}</code></pre>
-
-
-            <p>
-                In this example,
-                <span class="inline-code">color</span>
-                is the property.
-            </p>
-
-        </section>
-
-
-
-        <!-- =========================
-             VALUE
-        ========================= -->
-
-        <section class="lesson-section">
-
-            <h2>
-                3. CSS Value
-            </h2>
-
-            <p>
-                A value defines what the property
-                should be set to.
+                It is represented by an asterisk:
+                <span class="inline-code">*</span>
             </p>
 
 
             <div class="code-title">
-                Example
+                CSS
             </div>
 
-            <pre><code>h1 {
-    color: blue;
+            <pre><code>* {
+    margin: 0;
+    padding: 0;
 }</code></pre>
 
 
             <p>
-                Here:
-            </p>
-
-
-            <ul>
-
-                <li>
-                    Property =
-                    <strong>color</strong>
-                </li>
-
-                <li>
-                    Value =
-                    <strong>blue</strong>
-                </li>
-
-            </ul>
-
-
-            <p>
-                Different properties can have
-                different types of values.
-            </p>
-
-
-            <div class="code-title">
-                More Examples
-            </div>
-
-            <pre><code>p {
-    color: red;
-    font-size: 20px;
-}
-
-.box {
-    width: 300px;
-    height: 200px;
-}
-
-body {
-    background-color: lightgray;
-}</code></pre>
-
-        </section>
-
-
-
-        <!-- =========================
-             DECLARATION
-        ========================= -->
-
-        <section class="lesson-section">
-
-            <h2>
-                4. CSS Declaration
-            </h2>
-
-            <p>
-                A CSS declaration consists of a
-                property and its value.
-            </p>
-
-
-            <div class="syntax-box">
-
-                <span class="property">
-                    property
-                </span>
-
-                :
-
-                <span class="value">
-                    value
-                </span>
-
-                ;
-
-            </div>
-
-
-            <p>
-                Example:
-            </p>
-
-
-            <pre><code>color: blue;</code></pre>
-
-
-            <p>
-                This is one CSS declaration.
+                This rule applies to all elements
+                on the page.
             </p>
 
 
             <div class="tip-box">
 
                 <strong>
-                    Tip:
+                    Common use:
                 </strong>
 
-                Always put a colon
-                <strong>:</strong>
-                between the property and value,
-                and normally finish the declaration
-                with a semicolon
-                <strong>;</strong>.
+                The universal selector is often used
+                as part of a CSS reset.
 
             </div>
 
@@ -1168,71 +968,18 @@ body {
 
 
         <!-- =========================
-             DECLARATION BLOCK
+             ELEMENT
         ========================= -->
 
         <section class="lesson-section">
 
             <h2>
-                5. CSS Declaration Block
+                2. Element Selector
             </h2>
 
             <p>
-                A declaration block contains one or
-                more CSS declarations inside curly braces
-                <strong>{ }</strong>.
-            </p>
-
-
-            <div class="code-title">
-                Example
-            </div>
-
-            <pre><code>p {
-    color: blue;
-    font-size: 18px;
-    line-height: 1.6;
-}</code></pre>
-
-
-            <p>
-                The declarations inside this block are:
-            </p>
-
-
-            <ul>
-
-                <li>
-                    color: blue;
-                </li>
-
-                <li>
-                    font-size: 18px;
-                </li>
-
-                <li>
-                    line-height: 1.6;
-                </li>
-
-            </ul>
-
-        </section>
-
-
-
-        <!-- =========================
-             MULTIPLE PROPERTIES
-        ========================= -->
-
-        <section class="lesson-section">
-
-            <h2>
-                Multiple CSS Properties
-            </h2>
-
-            <p>
-                You can use multiple properties
-                inside one CSS rule.
+                An element selector selects HTML
+                elements by their tag name.
             </p>
 
 
@@ -1240,49 +987,56 @@ body {
                 CSS
             </div>
 
-            <pre><code>h1 {
+            <pre><code>p {
     color: blue;
-    font-size: 40px;
-    text-align: center;
-    background-color: lightgray;
 }</code></pre>
 
 
             <p>
-                This example changes four things
-                about the heading:
+                This selects all
+                <span class="inline-code">&lt;p&gt;</span>
+                elements.
             </p>
 
 
-            <ul>
+            <div class="demo-area">
 
-                <li>Text color</li>
+                <h3 class="demo-title">
+                    Example
+                </h3>
 
-                <li>Font size</li>
+                <p style="color: blue;">
+                    This paragraph is blue.
+                </p>
 
-                <li>Text alignment</li>
+                <p style="color: blue;">
+                    This paragraph is also blue.
+                </p>
 
-                <li>Background color</li>
-
-            </ul>
+            </div>
 
         </section>
 
 
 
         <!-- =========================
-             CLASS SELECTOR
+             CLASS
         ========================= -->
 
         <section class="lesson-section">
 
             <h2>
-                CSS Class Syntax
+                3. Class Selector
             </h2>
 
             <p>
-                A class selector starts with a
-                period <strong>.</strong>.
+                A class selector selects elements
+                that have a particular class attribute.
+            </p>
+
+            <p>
+                A class selector begins with a dot:
+                <span class="inline-code">.</span>
             </p>
 
 
@@ -1290,8 +1044,8 @@ body {
                 HTML
             </div>
 
-            <pre><code>&lt;p class="text"&gt;
-    Hello CSS
+            <pre><code>&lt;p class="important"&gt;
+    Important information
 &lt;/p&gt;</code></pre>
 
 
@@ -1299,35 +1053,54 @@ body {
                 CSS
             </div>
 
-            <pre><code>.text {
-    color: blue;
-    font-size: 20px;
+            <pre><code>.important {
+    color: red;
+    font-weight: bold;
 }</code></pre>
 
 
-            <p>
-                The CSS rule applies to the HTML
-                element having the class
-                <span class="inline-code">text</span>.
-            </p>
+            <div class="demo-area">
+
+                <p style="color: red; font-weight: bold;">
+                    This paragraph uses a class selector.
+                </p>
+
+            </div>
+
+
+            <div class="tip-box">
+
+                <strong>
+                    Important:
+                </strong>
+
+                The same class can normally be used
+                on multiple HTML elements.
+
+            </div>
 
         </section>
 
 
 
         <!-- =========================
-             ID SELECTOR
+             ID
         ========================= -->
 
         <section class="lesson-section">
 
             <h2>
-                CSS ID Syntax
+                4. ID Selector
             </h2>
 
             <p>
-                An ID selector starts with a
-                hash symbol <strong>#</strong>.
+                An ID selector selects an element
+                using its ID attribute.
+            </p>
+
+            <p>
+                An ID selector begins with:
+                <span class="inline-code">#</span>
             </p>
 
 
@@ -1335,8 +1108,8 @@ body {
                 HTML
             </div>
 
-            <pre><code>&lt;h1 id="title"&gt;
-    Welcome
+            <pre><code>&lt;h1 id="main-title"&gt;
+    Welcome to CSS
 &lt;/h1&gt;</code></pre>
 
 
@@ -1344,43 +1117,38 @@ body {
                 CSS
             </div>
 
-            <pre><code>#title {
+            <pre><code>#main-title {
     color: green;
-    font-size: 35px;
-}</code></pre>
-
-        </section>
-
-
-
-        <!-- =========================
-             UNIVERSAL SELECTOR
-        ========================= -->
-
-        <section class="lesson-section">
-
-            <h2>
-                Universal Selector
-            </h2>
-
-            <p>
-                The universal selector
-                <span class="inline-code">*</span>
-                selects all HTML elements.
-            </p>
-
-
-            <pre><code>* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    text-align: center;
 }</code></pre>
 
 
-            <p>
-                This technique is commonly used
-                as a CSS reset.
-            </p>
+            <div class="demo-area">
+
+                <h3
+                    style="
+                        color: green;
+                        text-align: center;
+                    ">
+
+                    Welcome to CSS
+
+                </h3>
+
+            </div>
+
+
+            <div class="warning-box">
+
+                <strong>
+                    Remember:
+                </strong>
+
+                An ID is intended to identify a
+                specific element. For reusable styles,
+                classes are generally more appropriate.
+
+            </div>
 
         </section>
 
@@ -1393,15 +1161,19 @@ body {
         <section class="lesson-section">
 
             <h2>
-                Grouping Selectors
+                5. Grouping Selector
             </h2>
 
             <p>
-                You can apply the same CSS rules
-                to multiple selectors by separating
-                them with commas.
+                The grouping selector allows you to
+                apply the same styles to multiple
+                selectors.
             </p>
 
+
+            <div class="code-title">
+                CSS
+            </div>
 
             <pre><code>h1,
 h2,
@@ -1415,121 +1187,20 @@ p {
                 h1, h2 and p elements.
             </p>
 
-        </section>
 
+            <div class="demo-area">
 
+                <h2 style="color: blue;">
+                    Heading 2
+                </h2>
 
-        <!-- =========================
-             CSS COMMENTS
-        ========================= -->
+                <h3 style="color: blue;">
+                    Heading 3
+                </h3>
 
-        <section class="lesson-section">
-
-            <h2>
-                CSS Comments
-            </h2>
-
-            <p>
-                Comments are used to explain CSS code.
-                They are ignored by the browser.
-            </p>
-
-
-            <pre><code>/* This is a CSS comment */
-
-p {
-    color: blue;
-}</code></pre>
-
-
-            <p>
-                CSS comments begin with
-                <strong>/*</strong>
-                and end with
-                <strong>*/</strong>.
-            </p>
-
-        </section>
-
-
-
-        <!-- =========================
-             COMMON ERRORS
-        ========================= -->
-
-        <section class="lesson-section">
-
-            <h2>
-                Common CSS Syntax Errors
-            </h2>
-
-            <p>
-                Beginners often make small syntax
-                mistakes. Here are some common examples.
-            </p>
-
-
-            <h3>
-                Missing Colon
-            </h3>
-
-            <pre><code>p {
-    color blue;
-}</code></pre>
-
-
-            <p>
-                Correct version:
-            </p>
-
-
-            <pre><code>p {
-    color: blue;
-}</code></pre>
-
-
-            <h3>
-                Missing Semicolon
-            </h3>
-
-            <p>
-                Although the last declaration can
-                sometimes work without a semicolon,
-                it is good practice to use semicolons.
-            </p>
-
-
-            <pre><code>p {
-    color: blue;
-    font-size: 18px;
-}</code></pre>
-
-
-            <h3>
-                Missing Curly Braces
-            </h3>
-
-            <p>
-                CSS declarations must normally be
-                inside curly braces.
-            </p>
-
-
-            <pre><code>p {
-    color: blue;
-}</code></pre>
-
-
-            <div class="warning-box">
-
-                <strong>
-                    Remember:
-                </strong>
-
-                CSS is sensitive to correct syntax.
-                Check your selector, colon,
-                value, semicolon and curly braces
-                when something does not work.
+                <p style="color: blue;">
+                    Paragraph
+                </p>
 
             </div>
 
@@ -1538,13 +1209,381 @@ p {
 
 
         <!-- =========================
-             SYNTAX TABLE
+             DESCENDANT
         ========================= -->
 
         <section class="lesson-section">
 
             <h2>
-                CSS Syntax Summary
+                6. Descendant Selector
+            </h2>
+
+            <p>
+                A descendant selector selects elements
+                that are inside another element.
+            </p>
+
+
+            <div class="code-title">
+                CSS
+            </div>
+
+            <pre><code>div p {
+    color: purple;
+}</code></pre>
+
+
+            <p>
+                This selects all paragraphs that
+                are descendants of a div.
+            </p>
+
+
+            <div class="demo-area">
+
+                <div>
+
+                    <p style="color: purple;">
+                        This paragraph is inside the div.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CHILD
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                7. Child Selector
+            </h2>
+
+            <p>
+                The child selector selects elements
+                that are direct children of another element.
+            </p>
+
+
+            <div class="code-title">
+                CSS
+            </div>
+
+            <pre><code>div > p {
+    color: orange;
+}</code></pre>
+
+
+            <p>
+                The <strong>&gt;</strong> symbol means
+                direct child.
+            </p>
+
+
+            <div class="demo-area">
+
+                <div>
+
+                    <p style="color: orange;">
+                        Direct child paragraph.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ATTRIBUTE
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                8. Attribute Selector
+            </h2>
+
+            <p>
+                Attribute selectors select elements
+                based on their attributes.
+            </p>
+
+
+            <h3>
+                Example
+            </h3>
+
+
+            <div class="code-title">
+                CSS
+            </div>
+
+            <pre><code>input[type="text"] {
+    border: 2px solid blue;
+}</code></pre>
+
+
+            <p>
+                This selects input elements whose
+                type attribute is "text".
+            </p>
+
+
+            <div class="demo-area">
+
+                <input
+                    type="text"
+                    placeholder="Text input"
+                    style="
+                        padding: 10px;
+                        border: 2px solid blue;
+                        border-radius: 5px;
+                    ">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PSEUDO CLASS
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                9. Pseudo-class Selector
+            </h2>
+
+            <p>
+                A pseudo-class selects an element
+                based on a special state.
+            </p>
+
+
+            <p>
+                One common example is
+                <span class="inline-code">:hover</span>.
+            </p>
+
+
+            <div class="code-title">
+                CSS
+            </div>
+
+            <pre><code>button:hover {
+    background-color: blue;
+    color: white;
+}</code></pre>
+
+
+            <p>
+                When the user moves the mouse over
+                the button, the hover styles are applied.
+            </p>
+
+
+            <div class="demo-area">
+
+                <button
+                    style="
+                        padding: 12px 20px;
+                        border: none;
+                        border-radius: 7px;
+                        cursor: pointer;
+                        background: #e2e8f0;
+                    "
+                    onmouseover="
+                        this.style.background='#2563eb';
+                        this.style.color='white';
+                    "
+                    onmouseout="
+                        this.style.background='#e2e8f0';
+                        this.style.color='black';
+                    ">
+
+                    Hover Over Me
+
+                </button>
+
+            </div>
+
+
+            <h3>
+                Other Common Pseudo-classes
+            </h3>
+
+
+            <ul>
+
+                <li>
+                    :hover
+                </li>
+
+                <li>
+                    :focus
+                </li>
+
+                <li>
+                    :active
+                </li>
+
+                <li>
+                    :visited
+                </li>
+
+                <li>
+                    :first-child
+                </li>
+
+                <li>
+                    :last-child
+                </li>
+
+                <li>
+                    :nth-child()
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- =========================
+             PSEUDO ELEMENT
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                10. Pseudo-element Selector
+            </h2>
+
+            <p>
+                Pseudo-elements allow you to style
+                a specific part of an element.
+            </p>
+
+
+            <p>
+                Common pseudo-elements include:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    ::before
+                </li>
+
+                <li>
+                    ::after
+                </li>
+
+                <li>
+                    ::first-letter
+                </li>
+
+                <li>
+                    ::first-line
+                </li>
+
+            </ul>
+
+
+            <div class="code-title">
+                CSS
+            </div>
+
+            <pre><code>p::first-letter {
+    color: red;
+    font-size: 40px;
+}</code></pre>
+
+
+            <div class="demo-area">
+
+                <p>
+                    This example demonstrates
+                    the first-letter pseudo-element.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             SELECTOR COMBINATIONS
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Combining Selectors
+            </h2>
+
+            <p>
+                CSS selectors can be combined to
+                target elements more specifically.
+            </p>
+
+
+            <h3>
+                Element + Class
+            </h3>
+
+
+            <pre><code>p.note {
+    color: blue;
+}</code></pre>
+
+
+            <p>
+                This selects only paragraph elements
+                having the class "note".
+            </p>
+
+
+            <h3>
+                Class + Class
+            </h3>
+
+
+            <pre><code>.box.highlight {
+    border: 2px solid red;
+}</code></pre>
+
+
+            <p>
+                This selects an element that has
+                both classes.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             SELECTOR TABLE
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                CSS Selectors Summary
             </h2>
 
 
@@ -1557,7 +1596,7 @@ p {
                         <tr>
 
                             <th>
-                                Part
+                                Selector
                             </th>
 
                             <th>
@@ -1578,7 +1617,24 @@ p {
                         <tr>
 
                             <td>
-                                Selector
+                                Universal
+                            </td>
+
+                            <td>
+                                *
+                            </td>
+
+                            <td>
+                                Selects all elements.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Element
                             </td>
 
                             <td>
@@ -1586,7 +1642,7 @@ p {
                             </td>
 
                             <td>
-                                Selects the HTML element.
+                                Selects all p elements.
                             </td>
 
                         </tr>
@@ -1595,32 +1651,15 @@ p {
                         <tr>
 
                             <td>
-                                Property
+                                Class
                             </td>
 
                             <td>
-                                color
+                                .box
                             </td>
 
                             <td>
-                                Defines what to change.
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>
-                                Value
-                            </td>
-
-                            <td>
-                                blue
-                            </td>
-
-                            <td>
-                                Defines the setting.
+                                Selects elements with class box.
                             </td>
 
                         </tr>
@@ -1629,15 +1668,15 @@ p {
                         <tr>
 
                             <td>
-                                Declaration
+                                ID
                             </td>
 
                             <td>
-                                color: blue;
+                                #header
                             </td>
 
                             <td>
-                                Property and value together.
+                                Selects the element with that ID.
                             </td>
 
                         </tr>
@@ -1646,15 +1685,100 @@ p {
                         <tr>
 
                             <td>
-                                Declaration Block
+                                Grouping
                             </td>
 
                             <td>
-                                { color: blue; }
+                                h1, p
                             </td>
 
                             <td>
-                                Contains CSS declarations.
+                                Selects multiple types.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Descendant
+                            </td>
+
+                            <td>
+                                div p
+                            </td>
+
+                            <td>
+                                Selects p inside div.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Child
+                            </td>
+
+                            <td>
+                                div &gt; p
+                            </td>
+
+                            <td>
+                                Selects direct child p.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Attribute
+                            </td>
+
+                            <td>
+                                input[type="text"]
+                            </td>
+
+                            <td>
+                                Selects elements by attribute.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Pseudo-class
+                            </td>
+
+                            <td>
+                                a:hover
+                            </td>
+
+                            <td>
+                                Selects an element in a state.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Pseudo-element
+                            </td>
+
+                            <td>
+                                p::first-letter
+                            </td>
+
+                            <td>
+                                Selects part of an element.
                             </td>
 
                         </tr>
@@ -1670,18 +1794,19 @@ p {
 
 
         <!-- =========================
-             LIVE CODE EDITOR
+             LIVE EDITOR
         ========================= -->
 
         <section class="lesson-section">
 
             <h2>
-                Try CSS Syntax Yourself
+                Try CSS Selectors Yourself
             </h2>
 
             <p>
-                Edit the HTML and CSS below and click
-                <strong>Run Code</strong> to see the result.
+                Change the code below and click
+                <strong>Run Code</strong> to see
+                how different selectors work.
             </p>
 
 
@@ -1689,24 +1814,43 @@ p {
 
                 <textarea id="codeEditor"><!DOCTYPE html>
 <html>
+
 <head>
 
 <style>
 
-h1 {
+/* Element selector */
+p {
     color: blue;
+}
+
+/* Class selector */
+.highlight {
+    background-color: yellow;
+}
+
+/* ID selector */
+#main-title {
+    color: green;
     text-align: center;
 }
 
-p {
-    color: green;
-    font-size: 20px;
+/* Universal selector */
+* {
+    box-sizing: border-box;
 }
 
-.box {
-    background-color: lightblue;
-    padding: 20px;
-    border: 2px solid blue;
+/* Hover pseudo-class */
+button:hover {
+    background-color: #2563eb;
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid #2563eb;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 </style>
@@ -1715,15 +1859,24 @@ p {
 
 <body>
 
-<h1>CSS Syntax Example</h1>
+<h1 id="main-title">
+    CSS Selectors
+</h1>
 
-<p>This paragraph is styled using CSS.</p>
+<p>
+    This paragraph uses an element selector.
+</p>
 
-<div class="box">
-    This is a CSS styled box.
-</div>
+<p class="highlight">
+    This paragraph uses a class selector.
+</p>
+
+<button>
+    Hover Over Me
+</button>
 
 </body>
+
 </html></textarea>
 
 
@@ -1756,7 +1909,7 @@ p {
 
                 <iframe
                     id="output"
-                    title="CSS Code Output">
+                    title="CSS Selectors Output">
                 </iframe>
 
             </div>
@@ -1779,38 +1932,8 @@ p {
             <ul>
 
                 <li>
-                    CSS rules contain selectors
-                    and declaration blocks.
-                </li>
-
-                <li>
-                    A declaration contains a
-                    property and a value.
-                </li>
-
-                <li>
-                    Use a colon between a property
-                    and its value.
-                </li>
-
-                <li>
-                    Use a semicolon to separate
-                    declarations.
-                </li>
-
-                <li>
-                    Use curly braces to contain
-                    declarations.
-                </li>
-
-                <li>
-                    Class selectors start with
-                    <strong>.</strong>.
-                </li>
-
-                <li>
-                    ID selectors start with
-                    <strong>#</strong>.
+                    CSS selectors choose which HTML
+                    elements will receive styles.
                 </li>
 
                 <li>
@@ -1819,8 +1942,46 @@ p {
                 </li>
 
                 <li>
-                    CSS comments use
-                    <strong>/* */</strong>.
+                    Element selectors use HTML
+                    tag names.
+                </li>
+
+                <li>
+                    Class selectors begin with
+                    <strong>.</strong>.
+                </li>
+
+                <li>
+                    ID selectors begin with
+                    <strong>#</strong>.
+                </li>
+
+                <li>
+                    Commas can group multiple selectors.
+                </li>
+
+                <li>
+                    A space creates a descendant selector.
+                </li>
+
+                <li>
+                    The <strong>&gt;</strong> symbol
+                    selects direct children.
+                </li>
+
+                <li>
+                    Attribute selectors target elements
+                    according to their attributes.
+                </li>
+
+                <li>
+                    Pseudo-classes describe special
+                    element states.
+                </li>
+
+                <li>
+                    Pseudo-elements style specific
+                    parts of elements.
                 </li>
 
             </ul>
@@ -1835,11 +1996,11 @@ p {
 
         <div class="lesson-navigation">
 
-            <a href="css-introduction.html"
+            <a href="css-syntax.html"
                class="navigation-btn">
 
                 ← Previous:
-                CSS Introduction
+                CSS Syntax
 
             </a>
 
@@ -1852,11 +2013,11 @@ p {
             </a>
 
 
-            <a href="css-selectors.html"
+            <a href="css-how-to-add.html"
                class="navigation-btn">
 
                 Next:
-                CSS Selectors →
+                How to Add CSS →
 
             </a>
 
@@ -1920,11 +2081,6 @@ p {
 
         }
 
-
-        /*
-         * Run the example automatically
-         * when the page loads.
-         */
 
         window.addEventListener(
             "load",
