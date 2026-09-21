@@ -1,0 +1,967 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Padding | Code With Me</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* HEADER */
+
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* INFO BOX */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #1d4ed8;
+        }
+
+        /* CODE */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* PADDING DEMOS */
+
+        .padding-demo {
+            background: #dbeafe;
+            border: 3px solid #2563eb;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .padding-small {
+            padding: 10px;
+        }
+
+        .padding-medium {
+            padding: 30px;
+        }
+
+        .padding-large {
+            padding: 50px;
+        }
+
+        .side-padding {
+            padding-top: 40px;
+            padding-right: 20px;
+            padding-bottom: 40px;
+            padding-left: 60px;
+        }
+
+        /* BOX MODEL */
+
+        .box-model {
+            width: 100%;
+            background: #fef3c7;
+            border: 5px solid #f59e0b;
+            padding: 30px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .content-box {
+            box-sizing: content-box;
+            width: 300px;
+            padding: 30px;
+            border: 5px solid #2563eb;
+            margin: 20px auto;
+            background: #eff6ff;
+        }
+
+        .border-box {
+            box-sizing: border-box;
+            width: 300px;
+            padding: 30px;
+            border: 5px solid #7c3aed;
+            margin: 20px auto;
+            background: #f5f3ff;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* EDITOR */
+
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 15px;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #ddd;
+            margin-top: 20px;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* NAVIGATION */
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        Code <span>WithMe</span>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- PAGE HEADER -->
+
+<header class="page-header">
+
+    <h1>CSS Padding</h1>
+
+    <p>
+        Learn how to create space inside HTML elements
+    </p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- INTRODUCTION -->
+
+<section>
+
+    <h2>Introduction to CSS Padding</h2>
+
+    <p>
+        Padding is the space between an element's content
+        and its border.
+    </p>
+
+    <p>
+        You can use padding to create more space around
+        text, images, buttons, cards and other HTML elements.
+    </p>
+
+    <div class="info-box">
+
+        <strong>Important:</strong>
+
+        Padding creates space
+        <b>inside</b> an element,
+        while margin creates space
+        <b>outside</b> an element.
+
+    </div>
+
+</section>
+
+
+<!-- BASIC PADDING -->
+
+<section>
+
+    <h2>1. Basic CSS Padding</h2>
+
+    <p>
+        The <b>padding</b> property is used to add space
+        inside an element.
+    </p>
+
+<pre><code>div {
+    padding: 20px;
+}</code></pre>
+
+    <div class="padding-demo padding-medium">
+
+        This box has 30px padding.
+
+    </div>
+
+</section>
+
+
+<!-- PADDING VALUES -->
+
+<section>
+
+    <h2>2. Different Padding Values</h2>
+
+    <p>
+        Increasing the padding value creates more space
+        between the content and the border.
+    </p>
+
+    <div class="padding-demo padding-small">
+
+        Small Padding - 10px
+
+    </div>
+
+    <div class="padding-demo padding-medium">
+
+        Medium Padding - 30px
+
+    </div>
+
+    <div class="padding-demo padding-large">
+
+        Large Padding - 50px
+
+    </div>
+
+<pre><code>.small {
+    padding: 10px;
+}
+
+.medium {
+    padding: 30px;
+}
+
+.large {
+    padding: 50px;
+}</code></pre>
+
+</section>
+
+
+<!-- INDIVIDUAL SIDES -->
+
+<section>
+
+    <h2>3. Padding for Individual Sides</h2>
+
+    <p>
+        CSS allows you to set padding separately for
+        the top, right, bottom and left sides.
+    </p>
+
+<pre><code>div {
+    padding-top: 40px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    padding-left: 60px;
+}</code></pre>
+
+    <div class="padding-demo side-padding">
+
+        Different padding on each side.
+
+    </div>
+
+</section>
+
+
+<!-- PADDING SHORTHAND -->
+
+<section>
+
+    <h2>4. Padding Shorthand</h2>
+
+    <p>
+        The padding shorthand property can define all
+        four sides in one line.
+    </p>
+
+    <h3>One Value</h3>
+
+<pre><code>padding: 20px;</code></pre>
+
+    <p>
+        All four sides receive 20px padding.
+    </p>
+
+
+    <h3>Two Values</h3>
+
+<pre><code>padding: 20px 40px;</code></pre>
+
+    <p>
+        The first value applies to top and bottom.
+        The second value applies to left and right.
+    </p>
+
+
+    <h3>Three Values</h3>
+
+<pre><code>padding: 10px 20px 30px;</code></pre>
+
+    <p>
+        The values apply to:
+    </p>
+
+    <ul>
+
+        <li>Top = 10px</li>
+
+        <li>Left and Right = 20px</li>
+
+        <li>Bottom = 30px</li>
+
+    </ul>
+
+
+    <h3>Four Values</h3>
+
+<pre><code>padding: 10px 20px 30px 40px;</code></pre>
+
+    <p>
+        The values apply clockwise:
+    </p>
+
+    <ul>
+
+        <li>Top = 10px</li>
+
+        <li>Right = 20px</li>
+
+        <li>Bottom = 30px</li>
+
+        <li>Left = 40px</li>
+
+    </ul>
+
+</section>
+
+
+<!-- PADDING WITH BORDER -->
+
+<section>
+
+    <h2>5. Padding with Border</h2>
+
+    <p>
+        Padding creates space between the content and
+        the border.
+    </p>
+
+<pre><code>div {
+    padding: 30px;
+    border: 4px solid blue;
+}</code></pre>
+
+    <div class="box-model">
+
+        Content
+
+    </div>
+
+</section>
+
+
+<!-- PADDING AND WIDTH -->
+
+<section>
+
+    <h2>6. Padding and Width</h2>
+
+    <p>
+        Padding can affect the total size of an element.
+        The <b>box-sizing</b> property can be used to
+        control this behavior.
+    </p>
+
+    <h3>Content Box</h3>
+
+<pre><code>.box {
+    box-sizing: content-box;
+    width: 300px;
+    padding: 30px;
+    border: 5px solid blue;
+}</code></pre>
+
+    <div class="content-box">
+
+        Content-box example
+
+    </div>
+
+
+    <h3>Border Box</h3>
+
+<pre><code>.box {
+    box-sizing: border-box;
+    width: 300px;
+    padding: 30px;
+    border: 5px solid purple;
+}</code></pre>
+
+    <div class="border-box">
+
+        Border-box example
+
+    </div>
+
+</section>
+
+
+<!-- PADDING UNITS -->
+
+<section>
+
+    <h2>7. Padding Units</h2>
+
+    <p>
+        Padding can be specified using different CSS units.
+    </p>
+
+    <table>
+
+        <tr>
+            <th>Unit</th>
+            <th>Example</th>
+            <th>Description</th>
+        </tr>
+
+        <tr>
+            <td>px</td>
+            <td>padding: 20px;</td>
+            <td>Fixed pixel size</td>
+        </tr>
+
+        <tr>
+            <td>%</td>
+            <td>padding: 5%;</td>
+            <td>Percentage-based padding</td>
+        </tr>
+
+        <tr>
+            <td>em</td>
+            <td>padding: 2em;</td>
+            <td>Relative to font size</td>
+        </tr>
+
+        <tr>
+            <td>rem</td>
+            <td>padding: 2rem;</td>
+            <td>Relative to root font size</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- PADDING PROPERTIES -->
+
+<section>
+
+    <h2>8. CSS Padding Properties</h2>
+
+    <table>
+
+        <tr>
+            <th>Property</th>
+            <th>Purpose</th>
+        </tr>
+
+        <tr>
+            <td>padding</td>
+            <td>Sets padding on all sides</td>
+        </tr>
+
+        <tr>
+            <td>padding-top</td>
+            <td>Sets top padding</td>
+        </tr>
+
+        <tr>
+            <td>padding-right</td>
+            <td>Sets right padding</td>
+        </tr>
+
+        <tr>
+            <td>padding-bottom</td>
+            <td>Sets bottom padding</td>
+        </tr>
+
+        <tr>
+            <td>padding-left</td>
+            <td>Sets left padding</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- LIVE EDITOR -->
+
+<section>
+
+    <h2>Try CSS Padding Yourself</h2>
+
+    <p>
+        Change the code below and click
+        <b>Run Code</b> to see the result.
+    </p>
+
+    <div class="editor">
+
+<textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body {
+    font-family: Arial;
+    padding: 30px;
+}
+
+.card {
+    background-color: #eff6ff;
+    border: 4px solid #2563eb;
+    border-radius: 15px;
+
+    /* Change this value */
+    padding: 40px;
+
+    text-align: center;
+}
+
+h1 {
+    color: #2563eb;
+}
+
+p {
+    color: #333;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>CSS Padding</h1>
+
+    <p>
+        Padding creates space inside
+        the element.
+    </p>
+
+</div>
+
+</body>
+
+</html></textarea>
+
+
+        <div class="buttons">
+
+            <button
+                class="run-btn"
+                onclick="runCode()">
+
+                ▶ Run Code
+
+            </button>
+
+            <button
+                class="clear-btn"
+                onclick="clearCode()">
+
+                ✕ Clear
+
+            </button>
+
+        </div>
+
+
+        <iframe
+            id="output"
+            title="CSS Padding Output">
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- KEY POINTS -->
+
+<section>
+
+    <h2>CSS Padding - Key Points</h2>
+
+    <ul>
+
+        <li>
+            Padding creates space inside an element.
+        </li>
+
+        <li>
+            The <b>padding</b> property sets padding
+            on all four sides.
+        </li>
+
+        <li>
+            You can use padding-top, padding-right,
+            padding-bottom and padding-left separately.
+        </li>
+
+        <li>
+            Padding shorthand can set multiple sides
+            in one declaration.
+        </li>
+
+        <li>
+            Padding can be combined with borders.
+        </li>
+
+        <li>
+            Padding can affect the total size of an element.
+        </li>
+
+        <li>
+            <b>box-sizing: border-box</b> helps keep the
+            declared width inclusive of padding and border.
+        </li>
+
+        <li>
+            Padding does not accept negative values.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+    <a href="css-margins.html">
+        ← Previous: CSS Margins
+    </a>
+
+    <a href="css-width-height.html">
+        Next: CSS Width & Height →
+    </a>
+
+</div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Code With Me | Learn Coding
+    </p>
+
+    <p>
+        HTML • CSS • JavaScript • Python
+    </p>
+
+</footer>
+
+
+<script>
+
+function runCode() {
+
+    const code =
+        document.getElementById("codeEditor").value;
+
+    document.getElementById("output").srcdoc = code;
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").srcdoc = "";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
