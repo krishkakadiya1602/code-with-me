@@ -1,0 +1,915 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Borders | Code With Me</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* HEADER */
+
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* INFO BOX */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #1d4ed8;
+        }
+
+        /* CODE */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* BORDER DEMOS */
+
+        .border-demo {
+            padding: 20px;
+            margin: 15px 0;
+            background: #f8fafc;
+        }
+
+        .solid {
+            border: 4px solid #2563eb;
+        }
+
+        .dashed {
+            border: 4px dashed #16a34a;
+        }
+
+        .dotted {
+            border: 4px dotted #dc2626;
+        }
+
+        .double {
+            border: 6px double #7c3aed;
+        }
+
+        .groove {
+            border: 8px groove #f59e0b;
+        }
+
+        .ridge {
+            border: 8px ridge #0891b2;
+        }
+
+        .inset {
+            border: 8px inset #64748b;
+        }
+
+        .outset {
+            border: 8px outset #64748b;
+        }
+
+        .none {
+            border: none;
+        }
+
+        /* RADIUS */
+
+        .radius-demo {
+            background: #dbeafe;
+            border: 4px solid #2563eb;
+            padding: 25px;
+            margin-top: 15px;
+            border-radius: 20px;
+        }
+
+        .circle-demo {
+            width: 150px;
+            height: 150px;
+            background: #bfdbfe;
+            border: 5px solid #2563eb;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            font-weight: bold;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* EDITOR */
+
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #ddd;
+            margin-top: 20px;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* NAVIGATION */
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        Code <span>WithMe</span>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header class="page-header">
+
+    <h1>CSS Borders</h1>
+
+    <p>
+        Learn how to create and style borders with CSS
+    </p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- INTRODUCTION -->
+
+<section>
+
+    <h2>Introduction to CSS Borders</h2>
+
+    <p>
+        CSS borders are used to create a visible boundary
+        around HTML elements.
+    </p>
+
+    <p>
+        You can control the border's style, width, color,
+        and rounded corners using CSS properties.
+    </p>
+
+    <div class="info-box">
+
+        <strong>Basic Border Syntax:</strong>
+
+<pre><code>selector {
+    border: width style color;
+}</code></pre>
+
+    </div>
+
+</section>
+
+
+<!-- BORDER STYLE -->
+
+<section>
+
+    <h2>1. CSS Border Style</h2>
+
+    <p>
+        The <b>border-style</b> property defines the
+        style of the border.
+    </p>
+
+<pre><code>border-style: solid;</code></pre>
+
+    <h3>Common Border Styles</h3>
+
+    <div class="border-demo solid">
+        Solid Border
+    </div>
+
+    <div class="border-demo dashed">
+        Dashed Border
+    </div>
+
+    <div class="border-demo dotted">
+        Dotted Border
+    </div>
+
+    <div class="border-demo double">
+        Double Border
+    </div>
+
+    <div class="border-demo groove">
+        Groove Border
+    </div>
+
+    <div class="border-demo ridge">
+        Ridge Border
+    </div>
+
+    <div class="border-demo inset">
+        Inset Border
+    </div>
+
+    <div class="border-demo outset">
+        Outset Border
+    </div>
+
+</section>
+
+
+<!-- BORDER WIDTH -->
+
+<section>
+
+    <h2>2. CSS Border Width</h2>
+
+    <p>
+        The <b>border-width</b> property controls the
+        thickness of the border.
+    </p>
+
+<pre><code>div {
+    border-style: solid;
+    border-width: 5px;
+}</code></pre>
+
+    <p>
+        You can use values such as:
+    </p>
+
+    <ul>
+
+        <li>1px</li>
+        <li>2px</li>
+        <li>5px</li>
+        <li>10px</li>
+
+    </ul>
+
+</section>
+
+
+<!-- BORDER COLOR -->
+
+<section>
+
+    <h2>3. CSS Border Color</h2>
+
+    <p>
+        The <b>border-color</b> property sets the color
+        of the border.
+    </p>
+
+<pre><code>div {
+    border-style: solid;
+    border-width: 4px;
+    border-color: blue;
+}</code></pre>
+
+    <p>
+        You can use color names, HEX, RGB, RGBA, HSL,
+        and other CSS color formats.
+    </p>
+
+</section>
+
+
+<!-- BORDER SHORTHAND -->
+
+<section>
+
+    <h2>4. CSS Border Shorthand</h2>
+
+    <p>
+        Instead of writing three separate properties,
+        you can use the <b>border</b> shorthand property.
+    </p>
+
+<pre><code>div {
+    border: 5px solid blue;
+}</code></pre>
+
+    <p>
+        The order is normally:
+    </p>
+
+<pre><code>border: width style color;</code></pre>
+
+    <div class="info-box">
+
+        <strong>Example:</strong>
+
+<pre><code>border: 3px dashed red;</code></pre>
+
+        This creates a 3px red dashed border.
+
+    </div>
+
+</section>
+
+
+<!-- INDIVIDUAL BORDERS -->
+
+<section>
+
+    <h2>5. Individual Border Sides</h2>
+
+    <p>
+        You can style each side of an element separately.
+    </p>
+
+<pre><code>div {
+    border-top: 3px solid red;
+    border-right: 3px solid blue;
+    border-bottom: 3px solid green;
+    border-left: 3px solid orange;
+}</code></pre>
+
+    <div style="
+        border-top: 5px solid red;
+        border-right: 5px solid blue;
+        border-bottom: 5px solid green;
+        border-left: 5px solid orange;
+        padding: 20px;
+        margin-top: 20px;
+        text-align: center;
+    ">
+
+        Different border on every side
+
+    </div>
+
+</section>
+
+
+<!-- BORDER RADIUS -->
+
+<section>
+
+    <h2>6. CSS Border Radius</h2>
+
+    <p>
+        The <b>border-radius</b> property is used to make
+        rounded corners.
+    </p>
+
+<pre><code>div {
+    border: 4px solid blue;
+    border-radius: 20px;
+}</code></pre>
+
+    <div class="radius-demo">
+
+        This box has rounded corners.
+
+    </div>
+
+    <h3>Creating a Circle</h3>
+
+    <p>
+        You can create a circle by using
+        <b>border-radius: 50%</b>.
+    </p>
+
+    <div class="circle-demo">
+        Circle
+    </div>
+
+<pre><code>.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}</code></pre>
+
+</section>
+
+
+<!-- BORDER TABLE -->
+
+<section>
+
+    <h2>7. Border Properties</h2>
+
+    <table>
+
+        <tr>
+            <th>Property</th>
+            <th>Purpose</th>
+        </tr>
+
+        <tr>
+            <td>border-style</td>
+            <td>Defines the border style</td>
+        </tr>
+
+        <tr>
+            <td>border-width</td>
+            <td>Defines the border thickness</td>
+        </tr>
+
+        <tr>
+            <td>border-color</td>
+            <td>Defines the border color</td>
+        </tr>
+
+        <tr>
+            <td>border</td>
+            <td>Shorthand for width, style and color</td>
+        </tr>
+
+        <tr>
+            <td>border-radius</td>
+            <td>Creates rounded corners</td>
+        </tr>
+
+        <tr>
+            <td>border-top</td>
+            <td>Styles the top border</td>
+        </tr>
+
+        <tr>
+            <td>border-right</td>
+            <td>Styles the right border</td>
+        </tr>
+
+        <tr>
+            <td>border-bottom</td>
+            <td>Styles the bottom border</td>
+        </tr>
+
+        <tr>
+            <td>border-left</td>
+            <td>Styles the left border</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- LIVE EDITOR -->
+
+<section>
+
+    <h2>Try CSS Borders Yourself</h2>
+
+    <p>
+        Edit the code below and click
+        <b>Run Code</b> to see the result.
+    </p>
+
+    <div class="editor">
+
+<textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body {
+    font-family: Arial;
+    padding: 30px;
+}
+
+.box {
+    padding: 30px;
+    border: 5px solid #2563eb;
+    border-radius: 20px;
+    background-color: #eff6ff;
+    text-align: center;
+}
+
+h1 {
+    color: #2563eb;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>CSS Borders</h1>
+
+    <p>
+        This box has a blue border
+        and rounded corners.
+    </p>
+
+</div>
+
+</body>
+
+</html></textarea>
+
+
+        <div class="buttons">
+
+            <button
+                class="run-btn"
+                onclick="runCode()">
+                ▶ Run Code
+            </button>
+
+            <button
+                class="clear-btn"
+                onclick="clearCode()">
+                ✕ Clear
+            </button>
+
+        </div>
+
+
+        <iframe
+            id="output"
+            title="CSS Border Output">
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- KEY POINTS -->
+
+<section>
+
+    <h2>CSS Borders - Key Points</h2>
+
+    <ul>
+
+        <li>
+            The <b>border</b> property creates a border
+            around an element.
+        </li>
+
+        <li>
+            <b>border-style</b> defines the border style.
+        </li>
+
+        <li>
+            <b>border-width</b> controls border thickness.
+        </li>
+
+        <li>
+            <b>border-color</b> changes the border color.
+        </li>
+
+        <li>
+            The shorthand property can combine width,
+            style and color.
+        </li>
+
+        <li>
+            Individual sides can be styled separately.
+        </li>
+
+        <li>
+            <b>border-radius</b> creates rounded corners.
+        </li>
+
+        <li>
+            <b>border-radius: 50%</b> can be used to create
+            circular elements.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+    <a href="css-colors.html">
+        ← Previous: CSS Colors
+    </a>
+
+    <a href="css-margins.html">
+        Next: CSS Margins →
+    </a>
+
+</div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Code With Me | Learn Coding
+    </p>
+
+    <p>
+        HTML • CSS • JavaScript • Python
+    </p>
+
+</footer>
+
+
+<script>
+
+function runCode() {
+
+    const code =
+        document.getElementById("codeEditor").value;
+
+    document.getElementById("output").srcdoc = code;
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").srcdoc = "";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
