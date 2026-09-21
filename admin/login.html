@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,11 +17,18 @@
 
     <h1>Code With Me Admin Login</h1>
 
+
+    <!-- ========================= -->
+    <!-- ADMIN LOGIN -->
+    <!-- ========================= -->
+
     <input
         type="email"
         id="email"
         placeholder="Admin Email"
     >
+
+    <br><br>
 
     <input
         type="password"
@@ -28,16 +36,23 @@
         placeholder="Password"
     >
 
+    <br><br>
+
     <button onclick="loginAdmin()">
         Login
     </button>
 
+
     <p>
-        <a href="update-password.html">
+        <a href="#" onclick="sendResetLink(); return false;">
             Forgot Password?
         </a>
     </p>
 
+
+    <!-- ========================= -->
+    <!-- SUPABASE -->
+    <!-- ========================= -->
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -45,6 +60,10 @@
 
 
     <script>
+
+        // =========================================
+        // ADMIN LOGIN
+        // =========================================
 
         async function loginAdmin() {
 
@@ -85,6 +104,10 @@
                 data.user;
 
 
+            // =========================================
+            // CHECK ADMIN USER
+            // =========================================
+
             const { data: admin, error: adminError } =
                 await supabaseClient
                     .from("admin_users")
@@ -103,8 +126,70 @@
             }
 
 
+            // =========================================
+            // LOGIN SUCCESS
+            // =========================================
+
             window.location.href =
                 "dashboard.html";
+
+        }
+
+
+        // =========================================
+        // FORGOT PASSWORD
+        // =========================================
+
+        async function sendResetLink() {
+
+            const email =
+                document.getElementById("email").value.trim();
+
+
+            // Check email
+            if (!email) {
+
+                alert(
+                    "Please enter your admin email address first."
+                );
+
+                document.getElementById("email").focus();
+
+                return;
+            }
+
+
+            // Send password reset email
+            const { error } =
+                await supabaseClient.auth.resetPasswordForEmail(
+
+                    email,
+
+                    {
+                        redirectTo:
+                            "https://krishkakadiya1602.github.io/code-with-me/admin/update-password.html"
+                    }
+
+                );
+
+
+            // Error
+            if (error) {
+
+                alert(
+                    "Password reset failed: " +
+                    error.message
+                );
+
+                return;
+            }
+
+
+            // Success
+            alert(
+                "Password reset link has been sent to your email. " +
+                "Please check your inbox."
+            );
 
         }
 
@@ -113,3 +198,95 @@
 </body>
 
 </html>
+```
+
+### શું બદલ્યું છે?
+
+**1. Forgot Password link**
+
+તમારા જૂના codeમાં:
+
+```html
+<a href="update-password.html">
+    Forgot Password?
+</a>
+```
+
+તેની જગ્યાએ હવે:
+
+```html
+<a href="#" onclick="sendResetLink(); return false;">
+    Forgot Password?
+</a>
+```
+
+એટલે user જ્યારે **Forgot Password?** પર click કરશે ત્યારે `sendResetLink()` function ચાલશે.
+
+**2. `sendResetLink()` function**
+
+આ function:
+
+```javascript
+async function sendResetLink() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    if (!email) {
+        alert(
+            "Please enter your admin email address first."
+        );
+        return;
+    }
+
+    const { error } =
+        await supabaseClient.auth.resetPasswordForEmail(
+            email,
+            {
+                redirectTo:
+                    "https://krishkakadiya1602.github.io/code-with-me/admin/update-password.html"
+            }
+        );
+
+    if (error) {
+        alert(
+            "Password reset failed: " +
+            error.message
+        );
+        return;
+    }
+
+    alert(
+        "Password reset link has been sent to your email. " +
+        "Please check your inbox."
+    );
+}
+```
+
+Supabaseને password-reset email મોકલશે.
+
+### ખૂબ મહત્વનું — Supabaseમાં Redirect URL
+
+Supabase Dashboardમાં:
+
+**Authentication → URL Configuration → Redirect URLs**
+
+અહીં આ URL add કરેલો હોવો જોઈએ:
+
+```text
+https://krishkakadiya1602.github.io/code-with-me/admin/update-password.html
+```
+
+અને `update-password.html` તમારી GitHub repositoryમાં અહીં હોવું જોઈએ:
+
+```text
+code-with-me/
+└── admin/
+    ├── login.html
+    ├── dashboard.html
+    └── update-password.html
+```
+
+પછી flow આ રીતે થશે:
+
+**Login page → Forgot Password → Email દાખલ → Reset email → Emailમાં link → `update-password.html` → New password → Password update**.
