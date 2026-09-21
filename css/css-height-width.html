@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn CSS Height and Width with simple explanations, examples and an interactive code editor.">
+
+    <meta name="keywords"
+          content="CSS height, CSS width, CSS height property, CSS width property, CSS tutorial">
+
+    <meta name="author"
+          content="Code With Me">
+
+    <title>CSS Height and Width | Code With Me</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* HEADER */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        /* INFO BOX */
+
+        .info-box {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* CODE */
+
+        .code-title {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 10px 0 20px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* LIVE EDITOR */
+
+        .editor {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 260px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+            background: #111827;
+            color: white;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .run-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 250px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: white;
+        }
+
+        /* LIST */
+
+        ul {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* NAVIGATION */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .page-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <div>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../index.html#courses">
+                Courses
+            </a>
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>CSS Height and Width</h1>
+
+        <p>
+            Learn how to control the height and width of HTML elements using CSS.
+        </p>
+
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="section">
+
+            <h2>1. What are CSS Height and Width?</h2>
+
+            <p>
+                The CSS <strong>height</strong> and <strong>width</strong>
+                properties are used to control the size of HTML elements.
+            </p>
+
+            <p>
+                The <strong>width</strong> property controls how wide an
+                element is, while the <strong>height</strong> property
+                controls how tall an element is.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                <br>
+
+                You can use CSS to make a box
+                300 pixels wide and 200 pixels high.
+
+            </div>
+
+        </section>
+
+
+        <!-- WIDTH -->
+
+        <section class="section">
+
+            <h2>2. CSS Width Property</h2>
+
+            <p>
+                The <strong>width</strong> property sets the width of an
+                element.
+            </p>
+
+            <div class="code-title">
+                Example:
+            </div>
+
+<pre><code>.box {
+    width: 300px;
+}</code></pre>
+
+            <p>
+                In this example, the element will have a width of
+                <strong>300 pixels</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- HEIGHT -->
+
+        <section class="section">
+
+            <h2>3. CSS Height Property</h2>
+
+            <p>
+                The <strong>height</strong> property sets the height of
+                an element.
+            </p>
+
+            <div class="code-title">
+                Example:
+            </div>
+
+<pre><code>.box {
+    height: 200px;
+}</code></pre>
+
+            <p>
+                The element will have a height of
+                <strong>200 pixels</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- HEIGHT AND WIDTH TOGETHER -->
+
+        <section class="section">
+
+            <h2>4. Using Height and Width Together</h2>
+
+            <p>
+                You can use both properties at the same time.
+            </p>
+
+<pre><code>.box {
+    width: 300px;
+    height: 200px;
+    background-color: lightblue;
+}</code></pre>
+
+            <div class="success-box">
+
+                The element will be
+                <strong>300px wide</strong> and
+                <strong>200px high</strong>.
+
+            </div>
+
+        </section>
+
+
+        <!-- PIXELS -->
+
+        <section class="section">
+
+            <h2>5. Height and Width in Pixels</h2>
+
+            <p>
+                Pixels (<strong>px</strong>) are one of the most commonly
+                used CSS units.
+            </p>
+
+<pre><code>.box {
+    width: 400px;
+    height: 250px;
+}</code></pre>
+
+            <p>
+                Pixels provide a fixed size.
+            </p>
+
+        </section>
+
+
+        <!-- PERCENTAGE -->
+
+        <section class="section">
+
+            <h2>6. Height and Width Using Percentage</h2>
+
+            <p>
+                You can use percentages to make an element relative to
+                its parent element.
+            </p>
+
+<pre><code>.box {
+    width: 50%;
+    height: 50%;
+}</code></pre>
+
+            <div class="info-box">
+
+                <strong>50% width</strong> means the element will take
+                approximately half of its parent's available width.
+
+            </div>
+
+        </section>
+
+
+        <!-- MAX WIDTH -->
+
+        <section class="section">
+
+            <h2>7. CSS max-width</h2>
+
+            <p>
+                The <strong>max-width</strong> property defines the
+                maximum width an element can have.
+            </p>
+
+<pre><code>.container {
+    width: 100%;
+    max-width: 1000px;
+}</code></pre>
+
+            <p>
+                This is very useful for creating responsive websites.
+            </p>
+
+        </section>
+
+
+        <!-- MIN WIDTH -->
+
+        <section class="section">
+
+            <h2>8. CSS min-width</h2>
+
+            <p>
+                The <strong>min-width</strong> property defines the
+                minimum width of an element.
+            </p>
+
+<pre><code>.box {
+    min-width: 200px;
+}</code></pre>
+
+            <p>
+                The element will not become smaller than 200px.
+            </p>
+
+        </section>
+
+
+        <!-- MAX HEIGHT -->
+
+        <section class="section">
+
+            <h2>9. CSS max-height</h2>
+
+            <p>
+                The <strong>max-height</strong> property defines the
+                maximum height of an element.
+            </p>
+
+<pre><code>.box {
+    max-height: 300px;
+}</code></pre>
+
+            <p>
+                The element will not become taller than 300px.
+            </p>
+
+        </section>
+
+
+        <!-- MIN HEIGHT -->
+
+        <section class="section">
+
+            <h2>10. CSS min-height</h2>
+
+            <p>
+                The <strong>min-height</strong> property defines the
+                minimum height of an element.
+            </p>
+
+<pre><code>.box {
+    min-height: 200px;
+}</code></pre>
+
+            <p>
+                The element will always have at least 200px of height.
+            </p>
+
+        </section>
+
+
+        <!-- AUTO -->
+
+        <section class="section">
+
+            <h2>11. CSS auto Value</h2>
+
+            <p>
+                The <strong>auto</strong> value allows the browser to
+                automatically calculate the size.
+            </p>
+
+<pre><code>.box {
+    width: auto;
+    height: auto;
+}</code></pre>
+
+            <div class="warning-box">
+
+                <strong>Tip:</strong>
+
+                <br>
+
+                The default value for height and width depends on the
+                element and its display behavior.
+
+            </div>
+
+        </section>
+
+
+        <!-- VIEWPORT UNITS -->
+
+        <section class="section">
+
+            <h2>12. Viewport Units</h2>
+
+            <p>
+                CSS also provides viewport units for responsive sizing.
+            </p>
+
+            <h3>vw</h3>
+
+            <p>
+                <strong>vw</strong> means viewport width.
+            </p>
+
+<pre><code>.box {
+    width: 50vw;
+}</code></pre>
+
+            <h3>vh</h3>
+
+            <p>
+                <strong>vh</strong> means viewport height.
+            </p>
+
+<pre><code>.box {
+    height: 50vh;
+}</code></pre>
+
+            <div class="info-box">
+
+                <strong>1vw</strong> = 1% of viewport width.
+
+                <br>
+
+                <strong>1vh</strong> = 1% of viewport height.
+
+            </div>
+
+        </section>
+
+
+        <!-- WIDTH HEIGHT TABLE -->
+
+        <section class="section">
+
+            <h2>13. Common CSS Size Units</h2>
+
+            <table>
+
+                <tr>
+                    <th>Unit</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>px</td>
+                    <td>Pixels</td>
+                    <td>width: 300px;</td>
+                </tr>
+
+                <tr>
+                    <td>%</td>
+                    <td>Percentage of parent</td>
+                    <td>width: 50%;</td>
+                </tr>
+
+                <tr>
+                    <td>em</td>
+                    <td>Relative to font size</td>
+                    <td>width: 20em;</td>
+                </tr>
+
+                <tr>
+                    <td>rem</td>
+                    <td>Relative to root font size</td>
+                    <td>width: 20rem;</td>
+                </tr>
+
+                <tr>
+                    <td>vw</td>
+                    <td>Viewport width</td>
+                    <td>width: 50vw;</td>
+                </tr>
+
+                <tr>
+                    <td>vh</td>
+                    <td>Viewport height</td>
+                    <td>height: 50vh;</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- BOX SIZING -->
+
+        <section class="section">
+
+            <h2>14. Height, Width and box-sizing</h2>
+
+            <p>
+                The <strong>box-sizing</strong> property controls how
+                the total width and height of an element are calculated.
+            </p>
+
+<pre><code>* {
+    box-sizing: border-box;
+}</code></pre>
+
+            <p>
+                With <strong>border-box</strong>, padding and border are
+                included inside the specified width and height.
+            </p>
+
+            <div class="success-box">
+
+                <strong>Recommended:</strong>
+
+                <br>
+
+                Many modern websites use
+                <code>box-sizing: border-box;</code>
+                for easier layout control.
+
+            </div>
+
+        </section>
+
+
+        <!-- WIDTH HEIGHT DIFFERENCE -->
+
+        <section class="section">
+
+            <h2>15. Width vs Height</h2>
+
+            <table>
+
+                <tr>
+                    <th>Property</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>width</td>
+                    <td>Controls horizontal size</td>
+                    <td>width: 300px;</td>
+                </tr>
+
+                <tr>
+                    <td>height</td>
+                    <td>Controls vertical size</td>
+                    <td>height: 200px;</td>
+                </tr>
+
+                <tr>
+                    <td>min-width</td>
+                    <td>Sets minimum width</td>
+                    <td>min-width: 200px;</td>
+                </tr>
+
+                <tr>
+                    <td>max-width</td>
+                    <td>Sets maximum width</td>
+                    <td>max-width: 1000px;</td>
+                </tr>
+
+                <tr>
+                    <td>min-height</td>
+                    <td>Sets minimum height</td>
+                    <td>min-height: 200px;</td>
+                </tr>
+
+                <tr>
+                    <td>max-height</td>
+                    <td>Sets maximum height</td>
+                    <td>max-height: 500px;</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- LIVE EDITOR -->
+
+        <section class="section">
+
+            <h2>16. CSS Height and Width Live Editor</h2>
+
+            <p>
+                Change the CSS code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <div class="editor">
+
+<textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+.box {
+    width: 300px;
+    height: 200px;
+    background-color: lightblue;
+    border: 3px solid blue;
+    padding: 20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Hello CSS!</h2>
+
+    <p>
+        This box has a width of 300px
+        and a height of 200px.
+    </p>
+
+</div>
+
+</body>
+
+</html></textarea>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+
+                        ▶ Run Code
+
+                    </button>
+
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+
+                        ✖ Clear
+
+                    </button>
+
+                </div>
+
+
+                <iframe
+                    id="output"
+                    title="CSS Height Width Output">
+                </iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEY POINTS -->
+
+        <section class="section">
+
+            <h2>17. Key Points to Remember</h2>
+
+            <ul>
+
+                <li>
+                    <strong>width</strong> controls the horizontal size
+                    of an element.
+                </li>
+
+                <li>
+                    <strong>height</strong> controls the vertical size
+                    of an element.
+                </li>
+
+                <li>
+                    <strong>min-width</strong> defines the minimum width.
+                </li>
+
+                <li>
+                    <strong>max-width</strong> defines the maximum width.
+                </li>
+
+                <li>
+                    <strong>min-height</strong> defines the minimum height.
+                </li>
+
+                <li>
+                    <strong>max-height</strong> defines the maximum height.
+                </li>
+
+                <li>
+                    You can use units such as
+                    <strong>px, %, em, rem, vw and vh</strong>.
+                </li>
+
+                <li>
+                    <strong>max-width</strong> is very useful for
+                    responsive websites.
+                </li>
+
+                <li>
+                    <strong>box-sizing: border-box</strong> makes
+                    width and height easier to control.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="page-navigation">
+
+            <a href="css-margins.html">
+                ← Previous: CSS Margins
+            </a>
+
+            <a href="../index.html">
+                🏠 Home
+            </a>
+
+            <a href="css-padding.html">
+                Next: CSS Padding →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            document.getElementById("output").srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+
+        // Run code automatically when page loads
+
+        window.onload = function () {
+
+            runCode();
+
+        };
+
+    </script>
+
+
+</body>
+
+</html>
