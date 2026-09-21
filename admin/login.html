@@ -1,119 +1,324 @@
-<button onclick="loginAdmin()">
-    Login
-</button>
+<!DOCTYPE html>
+<html lang="en">
 
-<p>
-    <a href="#" onclick="sendResetLink(); return false;">
-        Forgot Password?
-    </a>
-</p>
+<head>
 
+    <meta charset="UTF-8">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<script src="../js/supabase.js"></script>
+    <title>Admin Login | Code With Me</title>
 
-<script>
+    <style>
 
-    // LOGIN FUNCTION
-    async function loginAdmin() {
-
-        const email =
-            document.getElementById("email").value.trim();
-
-        const password =
-            document.getElementById("password").value;
-
-        if (!email || !password) {
-
-            alert("Please enter email and password.");
-
-            return;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
-        const { data, error } =
-            await supabaseClient.auth.signInWithPassword({
-
-                email: email,
-                password: password
-
-            });
-
-        if (error) {
-
-            alert(error.message);
-
-            return;
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f3f4f6;
         }
 
-        const user = data.user;
-
-        const { data: admin, error: adminError } =
-            await supabaseClient
-                .from("admin_users")
-                .select("id, email")
-                .eq("id", user.id)
-                .maybeSingle();
-
-        if (adminError || !admin) {
-
-            await supabaseClient.auth.signOut();
-
-            alert("You are not authorized as an admin.");
-
-            return;
+        .login-box {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
         }
 
-        window.location.href = "dashboard.html";
-    }
+        h1 {
+            text-align: center;
+            color: #111827;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .forgot {
+            display: block;
+            margin-top: 15px;
+            text-align: right;
+            color: #2563eb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <h1>
+            Code With Me Admin Login
+        </h1>
 
 
-    // =========================================
-    // FORGOT PASSWORD
-    // =========================================
+        <!-- ADMIN EMAIL -->
 
-    async function sendResetLink() {
+        <label for="email">
+            Admin Email
+        </label>
 
-        const email =
-            document.getElementById("email").value.trim();
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter admin email"
+            required
+        >
 
-        if (!email) {
+
+        <!-- ADMIN PASSWORD -->
+
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            required
+        >
+
+
+        <!-- LOGIN BUTTON -->
+
+        <button onclick="loginAdmin()">
+            Login
+        </button>
+
+
+        <!-- FORGOT PASSWORD -->
+
+        <a
+            href="#"
+            class="forgot"
+            onclick="sendResetLink(); return false;"
+        >
+            Forgot Password?
+        </a>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- SUPABASE -->
+    <!-- ========================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../js/supabase.js"></script>
+
+
+    <script>
+
+        // =========================================
+        // LOGIN FUNCTION
+        // =========================================
+
+        async function loginAdmin() {
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            if (!email || !password) {
+
+                alert(
+                    "Please enter email and password."
+                );
+
+                return;
+            }
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.signInWithPassword({
+
+                    email: email,
+
+                    password: password
+
+                });
+
+
+            if (error) {
+
+                alert(error.message);
+
+                return;
+            }
+
+
+            const user =
+                data.user;
+
+
+            // =========================================
+            // CHECK ADMIN USER
+            // =========================================
+
+            const {
+                data: admin,
+                error: adminError
+            } =
+                await supabaseClient
+                    .from("admin_users")
+                    .select("id, email")
+                    .eq("id", user.id)
+                    .maybeSingle();
+
+
+            if (adminError || !admin) {
+
+                await supabaseClient
+                    .auth
+                    .signOut();
+
+                alert(
+                    "You are not authorized as an admin."
+                );
+
+                return;
+            }
+
+
+            // =========================================
+            // LOGIN SUCCESS
+            // =========================================
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+
+
+        // =========================================
+        // FORGOT PASSWORD
+        // =========================================
+
+        async function sendResetLink() {
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            if (!email) {
+
+                alert(
+                    "Please enter your admin email address first."
+                );
+
+                document
+                    .getElementById("email")
+                    .focus();
+
+                return;
+            }
+
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .auth
+                    .resetPasswordForEmail(
+
+                        email,
+
+                        {
+                            redirectTo:
+                                "https://krishkakadiya1602.github.io/code-with-me/admin/update-password.html"
+                        }
+
+                    );
+
+
+            if (error) {
+
+                alert(
+                    "Password reset failed: " +
+                    error.message
+                );
+
+                return;
+            }
+
 
             alert(
-                "Please enter your admin email address first."
+                "Password reset link has been sent to your email. " +
+                "Please check your inbox."
             );
 
-            document.getElementById("email").focus();
-
-            return;
         }
 
-        const { error } =
-            await supabaseClient.auth.resetPasswordForEmail(
+    </script>
 
-                email,
+</body>
 
-                {
-                    redirectTo:
-                        "https://krishkakadiya1602.github.io/code-with-me/admin/update-password.html"
-                }
-
-            );
-
-        if (error) {
-
-            alert(
-                "Password reset failed: " +
-                error.message
-            );
-
-            return;
-        }
-
-        alert(
-            "Password reset link has been sent to your email. " +
-            "Please check your inbox."
-        );
-    }
-
-</script>
+</html>
