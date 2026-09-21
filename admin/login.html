@@ -262,31 +262,3 @@ async function sendResetLink() {
     );
 }
 ```
-
-Supabaseને password-reset email મોકલશે.
-
-### ખૂબ મહત્વનું — Supabaseમાં Redirect URL
-
-Supabase Dashboardમાં:
-
-**Authentication → URL Configuration → Redirect URLs**
-
-અહીં આ URL add કરેલો હોવો જોઈએ:
-
-```text
-https://krishkakadiya1602.github.io/code-with-me/admin/update-password.html
-```
-
-અને `update-password.html` તમારી GitHub repositoryમાં અહીં હોવું જોઈએ:
-
-```text
-code-with-me/
-└── admin/
-    ├── login.html
-    ├── dashboard.html
-    └── update-password.html
-```
-
-પછી flow આ રીતે થશે:
-
-**Login page → Forgot Password → Email દાખલ → Reset email → Emailમાં link → `update-password.html` → New password → Password update**.
