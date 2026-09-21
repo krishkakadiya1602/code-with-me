@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================================================
+         BASIC HTML INFORMATION
+    ========================================================== -->
+
+    <meta charset="UTF-8">
+
+    <!-- Makes the website responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Complete Introduction to CSS</title>
+
+
+    <!-- =========================================================
+         INTERNAL CSS
+    ========================================================== -->
+
+    <style>
+
+        /* =====================================================
+           CSS VARIABLES
+        ====================================================== */
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #16a34a;
+            --danger-color: #dc2626;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --text-color: #334155;
+            --white: #ffffff;
+        }
+
+
+        /* =====================================================
+           UNIVERSAL SELECTOR
+        ====================================================== */
+
+        /*
+            The * selector selects every HTML element.
+
+            box-sizing:
+            border-box makes width/height calculations easier.
+
+            margin: 0 and padding: 0 remove browser defaults.
+        */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* =====================================================
+           BODY
+        ====================================================== */
+
+        body {
+            background-color: #f1f5f9;
+
+            color: var(--text-color);
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        header {
+            background-color: var(--dark-color);
+
+            color: white;
+
+            text-align: center;
+
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+
+            color: #cbd5e1;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
+
+        nav {
+            background-color: #0f172a;
+
+            padding: 15px;
+
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+
+            text-decoration: none;
+
+            margin: 0 15px;
+
+            font-weight: bold;
+        }
+
+        /* Pseudo-class */
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ====================================================== */
+
+        main {
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: 40px auto;
+        }
+
+
+        /* =====================================================
+           SECTION
+        ====================================================== */
+
+        section {
+            background-color: white;
+
+            margin-bottom: 40px;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =====================================================
+           HEADINGS
+        ====================================================== */
+
+        h2 {
+            color: var(--primary-color);
+
+            font-size: 30px;
+
+            margin-bottom: 20px;
+
+            border-bottom: 2px solid var(--primary-color);
+
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--dark-color);
+
+            margin-top: 20px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =====================================================
+           PARAGRAPHS
+        ====================================================== */
+
+        p {
+            margin-bottom: 15px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           CSS SELECTORS
+        ====================================================== */
+
+        /* Element selector */
+
+        .element-example {
+            color: blue;
+        }
+
+
+        /* Class selector */
+
+        .class-example {
+            color: green;
+
+            font-weight: bold;
+        }
+
+
+        /* ID selector */
+
+        #id-example {
+            color: purple;
+
+            font-size: 20px;
+        }
+
+
+        /* Group selector */
+
+        .group-one,
+        .group-two,
+        .group-three {
+            color: darkorange;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           COLORS
+        ====================================================== */
+
+        .color-box {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+        }
+
+        .color-name {
+            background-color: red;
+
+            color: white;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+        .color-hex {
+            background-color: #2563eb;
+
+            color: white;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+        .color-rgb {
+            background-color: rgb(22, 163, 74);
+
+            color: white;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+
+        /* =====================================================
+           TEXT STYLING
+        ====================================================== */
+
+        .text-example {
+            color: #2563eb;
+
+            font-size: 24px;
+
+            font-family: Georgia, serif;
+
+            font-weight: bold;
+
+            font-style: italic;
+
+            text-align: center;
+
+            text-decoration: underline;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            line-height: 2;
+        }
+
+
+        /* =====================================================
+           BOX MODEL
+        ====================================================== */
+
+        .box-model-container {
+            background-color: #fee2e2;
+
+            border: 5px solid #ef4444;
+
+            padding: 30px;
+
+            margin: 20px;
+
+            text-align: center;
+        }
+
+        .box-model-content {
+            background-color: #bfdbfe;
+
+            border: 3px solid #2563eb;
+
+            padding: 30px;
+
+            margin: 20px;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           WIDTH AND HEIGHT
+        ====================================================== */
+
+        .size-box {
+            width: 300px;
+
+            height: 150px;
+
+            background-color: #bbf7d0;
+
+            border: 2px solid green;
+
+            padding: 20px;
+
+            margin: 20px auto;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           BORDER
+        ====================================================== */
+
+        .border-example {
+            border: 3px solid #2563eb;
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           MARGIN AND PADDING
+        ====================================================== */
+
+        .spacing-example {
+            background-color: #fde68a;
+
+            padding: 30px;
+
+            margin: 30px;
+
+            border: 2px solid orange;
+        }
+
+
+        /* =====================================================
+           BORDER RADIUS
+        ====================================================== */
+
+        .rounded-box {
+            background-color: #a78bfa;
+
+            color: white;
+
+            padding: 30px;
+
+            border-radius: 30px;
+
+            text-align: center;
+        }
+
+        .circle {
+            width: 120px;
+
+            height: 120px;
+
+            background-color: #ef4444;
+
+            border-radius: 50%;
+
+            margin: 20px auto;
+        }
+
+
+        /* =====================================================
+           DISPLAY PROPERTY
+        ====================================================== */
+
+        .display-container {
+            margin-top: 20px;
+        }
+
+        .display-block {
+            display: block;
+
+            background-color: #bfdbfe;
+
+            padding: 10px;
+
+            margin-bottom: 5px;
+        }
+
+        .display-inline {
+            display: inline;
+
+            background-color: #bbf7d0;
+
+            padding: 10px;
+        }
+
+        .display-inline-block {
+            display: inline-block;
+
+            background-color: #fde68a;
+
+            padding: 20px;
+
+            margin: 10px;
+        }
+
+
+        /* =====================================================
+           FLEXBOX
+        ====================================================== */
+
+        .flex-container {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            background-color: #e0e7ff;
+
+            padding: 30px;
+
+            border-radius: 10px;
+        }
+
+        .flex-item {
+            background-color: #4f46e5;
+
+            color: white;
+
+            width: 150px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-radius: 8px;
+        }
+
+
+        /* =====================================================
+           FLEX DIRECTION
+        ====================================================== */
+
+        .flex-column {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            background-color: #fce7f3;
+
+            padding: 20px;
+        }
+
+        .flex-column div {
+            background-color: #db2777;
+
+            color: white;
+
+            padding: 15px;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           CSS GRID
+        ====================================================== */
+
+        .grid-container {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: #0891b2;
+
+            color: white;
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-radius: 8px;
+        }
+
+
+        /* =====================================================
+           POSITION
+        ====================================================== */
+
+        .position-container {
+            position: relative;
+
+            height: 250px;
+
+            background-color: #e2e8f0;
+
+            border: 2px solid #64748b;
+        }
+
+        .position-static {
+            position: static;
+
+            background-color: #94a3b8;
+
+            padding: 10px;
+        }
+
+        .position-absolute {
+            position: absolute;
+
+            right: 20px;
+
+            bottom: 20px;
+
+            background-color: #ef4444;
+
+            color: white;
+
+            padding: 15px;
+
+            border-radius: 5px;
+        }
+
+
+        /* =====================================================
+           FIXED POSITION
+        ====================================================== */
+
+        .fixed-example {
+            position: fixed;
+
+            right: 20px;
+
+            bottom: 20px;
+
+            background-color: #16a34a;
+
+            color: white;
+
+            padding: 15px;
+
+            border-radius: 50px;
+
+            z-index: 1000;
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ====================================================== */
+
+        .button {
+            display: inline-block;
+
+            background-color: var(--primary-color);
+
+            color: white;
+
+            padding: 12px 25px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.3s,
+                transform 0.3s;
+        }
+
+
+        /* =====================================================
+           HOVER
+        ====================================================== */
+
+        .button:hover {
+            background-color: #1d4ed8;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =====================================================
+           TRANSITION
+        ====================================================== */
+
+        .transition-box {
+            width: 150px;
+
+            height: 100px;
+
+            background-color: #f97316;
+
+            color: white;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            transition:
+                all 0.5s ease;
+
+            margin: 20px auto;
+        }
+
+        .transition-box:hover {
+            width: 250px;
+
+            background-color: #7c3aed;
+
+            border-radius: 50%;
+        }
+
+
+        /* =====================================================
+           TRANSFORM
+        ====================================================== */
+
+        .transform-box {
+            width: 150px;
+
+            height: 100px;
+
+            background-color: #14b8a6;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 30px auto;
+
+            transition: transform 0.5s;
+        }
+
+        .transform-box:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+
+        /* =====================================================
+           BOX SHADOW
+        ====================================================== */
+
+        .shadow-box {
+            background-color: white;
+
+            padding: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 0, 0, 0.2);
+
+            border-radius: 10px;
+        }
+
+
+        /* =====================================================
+           OPACITY
+        ====================================================== */
+
+        .opacity-box {
+            background-color: #2563eb;
+
+            color: white;
+
+            padding: 30px;
+
+            text-align: center;
+
+            opacity: 0.5;
+        }
+
+
+        /* =====================================================
+           CSS SPECIFICITY
+        ====================================================== */
+
+        .specificity-example {
+            color: green;
+        }
+
+        #specificity-example {
+            color: red;
+        }
+
+
+        /* =====================================================
+           ATTRIBUTE SELECTOR
+        ====================================================== */
+
+        input[type="text"] {
+            border: 2px solid #2563eb;
+
+            padding: 10px;
+
+            border-radius: 5px;
+        }
+
+
+        /* =====================================================
+           PSEUDO CLASS
+        ====================================================== */
+
+        .pseudo-example:hover {
+            background-color: #facc15;
+
+            color: black;
+        }
+
+        .pseudo-example {
+            background-color: #2563eb;
+
+            color: white;
+
+            padding: 15px;
+
+            display: inline-block;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           PSEUDO ELEMENT
+        ====================================================== */
+
+        .pseudo-element::first-letter {
+            font-size: 40px;
+
+            color: red;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           CSS VARIABLE EXAMPLE
+        ====================================================== */
+
+        .variable-example {
+            background-color: var(--primary-color);
+
+            color: var(--white);
+
+            padding: 20px;
+
+            text-align: center;
+
+            border-radius: 8px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE DESIGN
+        ====================================================== */
+
+        .responsive-box {
+            background-color: #16a34a;
+
+            color: white;
+
+            padding: 30px;
+
+            text-align: center;
+
+            font-size: 24px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+            background-color: var(--dark-color);
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px;
+
+            margin-top: 40px;
+        }
+
+
+        /* =====================================================
+           MEDIA QUERY
+        ====================================================== */
+
+        @media (max-width: 768px) {
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            main {
+                width: 95%;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            nav a {
+                display: block;
+
+                margin: 10px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            header h1 {
+                font-size: 26px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .size-box {
+                width: 100%;
+            }
+
+            .responsive-box {
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header>
+
+        <h1>Introduction to CSS</h1>
+
+        <p>
+            Complete HTML + CSS Tutorial
+        </p>
+
+    </header>
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+
+    <nav>
+
+        <a href="#selectors">Selectors</a>
+
+        <a href="#colors">Colors</a>
+
+        <a href="#text">Text</a>
+
+        <a href="#box-model">Box Model</a>
+
+        <a href="#flexbox">Flexbox</a>
+
+        <a href="#grid">Grid</a>
+
+        <a href="#responsive">Responsive</a>
+
+    </nav>
+
+
+    <!-- =========================================================
+         MAIN CONTENT
+    ========================================================== -->
+
+    <main>
+
+
+        <!-- =====================================================
+             INTRODUCTION
+        ====================================================== -->
+
+        <section>
+
+            <h2>1. What is CSS?</h2>
+
+            <p>
+                CSS stands for
+                <strong>Cascading Style Sheets</strong>.
+            </p>
+
+            <p>
+                CSS is used to control the appearance,
+                layout, colors, fonts, spacing and
+                responsiveness of HTML webpages.
+            </p>
+
+            <h3>HTML and CSS</h3>
+
+            <p>
+                HTML provides the structure of a webpage,
+                while CSS provides its design.
+            </p>
+
+            <div class="variable-example">
+
+                HTML = Structure
+
+                <br>
+
+                CSS = Design
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CSS SYNTAX
+        ====================================================== -->
+
+        <section>
+
+            <h2>2. CSS Syntax</h2>
+
+            <p>
+                Basic CSS syntax:
+            </p>
+
+            <pre>
+selector {
+    property: value;
+}
+            </pre>
+
+            <p>
+                Example:
+            </p>
+
+            <pre>
+p {
+    color: blue;
+    font-size: 20px;
+}
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             SELECTORS
+        ====================================================== -->
+
+        <section id="selectors">
+
+            <h2>3. CSS Selectors</h2>
+
+            <h3>Element Selector</h3>
+
+            <p class="element-example">
+                This paragraph uses a class for demonstration,
+                while the CSS concept is an element selector.
+            </p>
+
+            <pre>
+p {
+    color: blue;
+}
+            </pre>
+
+
+            <h3>Class Selector</h3>
+
+            <p class="class-example">
+                This text uses a class selector.
+            </p>
+
+            <pre>
+.class-example {
+    color: green;
+}
+            </pre>
+
+
+            <h3>ID Selector</h3>
+
+            <p id="id-example">
+                This text uses an ID selector.
+            </p>
+
+            <pre>
+#id-example {
+    color: purple;
+}
+            </pre>
+
+
+            <h3>Group Selector</h3>
+
+            <p class="group-one">
+                Group selector example 1
+            </p>
+
+            <p class="group-two">
+                Group selector example 2
+            </p>
+
+            <p class="group-three">
+                Group selector example 3
+            </p>
+
+            <pre>
+.group-one,
+.group-two,
+.group-three {
+    color: orange;
+}
+            </pre>
+
+
+            <h3>Universal Selector</h3>
+
+            <p>
+                The <strong>*</strong> selector selects
+                all HTML elements.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             COLORS
+        ====================================================== -->
+
+        <section id="colors">
+
+            <h2>4. CSS Colors</h2>
+
+            <div class="color-box">
+
+                <div class="color-name">
+                    Color Name
+                </div>
+
+                <div class="color-hex">
+                    HEX Color
+                </div>
+
+                <div class="color-rgb">
+                    RGB Color
+                </div>
+
+            </div>
+
+            <pre>
+color: red;
+
+color: #ff0000;
+
+color: rgb(255, 0, 0);
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             TEXT
+        ====================================================== -->
+
+        <section id="text">
+
+            <h2>5. Text Styling</h2>
+
+            <p class="text-example">
+                CSS Text Styling Example
+            </p>
+
+            <pre>
+color
+font-size
+font-family
+font-weight
+font-style
+text-align
+text-decoration
+text-transform
+letter-spacing
+line-height
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             BOX MODEL
+        ====================================================== -->
+
+        <section id="box-model">
+
+            <h2>6. CSS Box Model</h2>
+
+            <p>
+                Every HTML element can be treated as a box.
+            </p>
+
+            <p>
+                The box model consists of:
+            </p>
+
+            <ul>
+
+                <li>Content</li>
+
+                <li>Padding</li>
+
+                <li>Border</li>
+
+                <li>Margin</li>
+
+            </ul>
+
+
+            <div class="box-model-container">
+
+                Margin
+
+                <div class="box-model-content">
+
+                    Content + Padding + Border
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             WIDTH AND HEIGHT
+        ====================================================== -->
+
+        <section>
+
+            <h2>7. Width and Height</h2>
+
+            <div class="size-box">
+
+                Width: 300px
+
+                <br>
+
+                Height: 150px
+
+            </div>
+
+            <pre>
+.box {
+    width: 300px;
+    height: 150px;
+}
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             MARGIN PADDING BORDER
+        ====================================================== -->
+
+        <section>
+
+            <h2>8. Margin, Padding and Border</h2>
+
+            <div class="spacing-example">
+
+                This box demonstrates
+                margin, padding and border.
+
+            </div>
+
+            <pre>
+margin: 30px;
+
+padding: 30px;
+
+border: 2px solid orange;
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             BORDER RADIUS
+        ====================================================== -->
+
+        <section>
+
+            <h2>9. Border Radius</h2>
+
+            <div class="rounded-box">
+
+                Rounded Box
+
+            </div>
+
+            <div class="circle"></div>
+
+            <p style="text-align: center;">
+                The second shape is a circle.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             DISPLAY
+        ====================================================== -->
+
+        <section>
+
+            <h2>10. Display Property</h2>
+
+            <p>
+                Common display values:
+            </p>
+
+            <ul>
+
+                <li>block</li>
+
+                <li>inline</li>
+
+                <li>inline-block</li>
+
+                <li>none</li>
+
+                <li>flex</li>
+
+                <li>grid</li>
+
+            </ul>
+
+
+            <div class="display-container">
+
+                <div class="display-block">
+                    Block Element
+                </div>
+
+                <span class="display-inline">
+                    Inline Element
+                </span>
+
+                <span class="display-inline-block">
+                    Inline Block
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FLEXBOX
+        ====================================================== -->
+
+        <section id="flexbox">
+
+            <h2>11. CSS Flexbox</h2>
+
+            <p>
+                Flexbox is used to arrange elements
+                in rows or columns.
+            </p>
+
+            <div class="flex-container">
+
+                <div class="flex-item">
+                    Box 1
+                </div>
+
+                <div class="flex-item">
+                    Box 2
+                </div>
+
+                <div class="flex-item">
+                    Box 3
+                </div>
+
+            </div>
+
+
+            <h3>Flex Direction</h3>
+
+            <div class="flex-column">
+
+                <div>Item 1</div>
+
+                <div>Item 2</div>
+
+                <div>Item 3</div>
+
+            </div>
+
+
+            <pre>
+display: flex;
+
+justify-content: center;
+
+align-items: center;
+
+gap: 20px;
+
+flex-wrap: wrap;
+
+flex-direction: column;
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             GRID
+        ====================================================== -->
+
+        <section id="grid">
+
+            <h2>12. CSS Grid</h2>
+
+            <p>
+                CSS Grid is useful for creating
+                rows and columns.
+            </p>
+
+            <div class="grid-container">
+
+                <div class="grid-item">
+                    1
+                </div>
+
+                <div class="grid-item">
+                    2
+                </div>
+
+                <div class="grid-item">
+                    3
+                </div>
+
+                <div class="grid-item">
+                    4
+                </div>
+
+                <div class="grid-item">
+                    5
+                </div>
+
+                <div class="grid-item">
+                    6
+                </div>
+
+            </div>
+
+
+            <pre>
+display: grid;
+
+grid-template-columns:
+    repeat(3, 1fr);
+
+gap: 20px;
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             POSITION
+        ====================================================== -->
+
+        <section>
+
+            <h2>13. CSS Position</h2>
+
+            <p>
+                Common position values are:
+            </p>
+
+            <ul>
+
+                <li>static</li>
+
+                <li>relative</li>
+
+                <li>absolute</li>
+
+                <li>fixed</li>
+
+                <li>sticky</li>
+
+            </ul>
+
+
+            <div class="position-container">
+
+                <div class="position-static">
+
+                    Static Element
+
+                </div>
+
+
+                <div class="position-absolute">
+
+                    Absolute Element
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             BUTTON AND HOVER
+        ====================================================== -->
+
+        <section>
+
+            <h2>14. Hover Effect</h2>
+
+            <p>
+                Move your mouse over the button.
+            </p>
+
+            <a href="#" class="button">
+                Hover Me
+            </a>
+
+            <pre>
+.button:hover {
+    background-color: #1d4ed8;
+}
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             TRANSITION
+        ====================================================== -->
+
+        <section>
+
+            <h2>15. CSS Transition</h2>
+
+            <p>
+                Move your mouse over the box.
+            </p>
+
+            <div class="transition-box">
+
+                Hover Me
+
+            </div>
+
+            <pre>
+transition: all 0.5s ease;
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             TRANSFORM
+        ====================================================== -->
+
+        <section>
+
+            <h2>16. CSS Transform</h2>
+
+            <div class="transform-box">
+
+                Hover Me
+
+            </div>
+
+            <pre>
+transform:
+    rotate(10deg)
+    scale(1.1);
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             BOX SHADOW
+        ====================================================== -->
+
+        <section>
+
+            <h2>17. Box Shadow</h2>
+
+            <div class="shadow-box">
+
+                This box has a shadow.
+
+            </div>
+
+            <pre>
+box-shadow:
+    0 10px 25px
+    rgba(0, 0, 0, 0.2);
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             OPACITY
+        ====================================================== -->
+
+        <section>
+
+            <h2>18. Opacity</h2>
+
+            <div class="opacity-box">
+
+                Opacity: 0.5
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SPECIFICITY
+        ====================================================== -->
+
+        <section>
+
+            <h2>19. CSS Specificity</h2>
+
+            <p>
+                CSS specificity determines which rule
+                takes priority when multiple rules
+                target the same element.
+            </p>
+
+            <p
+                id="specificity-example"
+                class="specificity-example">
+
+                This text is red because the ID selector
+                has higher specificity than the class selector.
+
+            </p>
+
+            <pre>
+p {
+    color: blue;
+}
+
+.class {
+    color: green;
+}
+
+#id {
+    color: red;
+}
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             ATTRIBUTE SELECTOR
+        ====================================================== -->
+
+        <section>
+
+            <h2>20. Attribute Selector</h2>
+
+            <input
+                type="text"
+                placeholder="Enter your name">
+
+            <pre>
+input[type="text"] {
+    border: 2px solid blue;
+}
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             PSEUDO CLASS
+        ====================================================== -->
+
+        <section>
+
+            <h2>21. Pseudo-Class</h2>
+
+            <p>
+                A pseudo-class defines a special state
+                of an element.
+            </p>
+
+            <div class="pseudo-example">
+
+                Hover over me
+
+            </div>
+
+            <pre>
+:hover
+:focus
+:active
+:first-child
+:last-child
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             PSEUDO ELEMENT
+        ====================================================== -->
+
+        <section>
+
+            <h2>22. Pseudo-Element</h2>
+
+            <p class="pseudo-element">
+
+                The first letter of this paragraph
+                has special styling.
+
+            </p>
+
+            <pre>
+::first-letter
+::first-line
+::before
+::after
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             CSS VARIABLES
+        ====================================================== -->
+
+        <section>
+
+            <h2>23. CSS Variables</h2>
+
+            <div class="variable-example">
+
+                This box uses a CSS variable.
+
+            </div>
+
+            <pre>
+:root {
+    --primary-color: #2563eb;
+}
+
+.box {
+    background-color:
+        var(--primary-color);
+}
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             RESPONSIVE DESIGN
+        ====================================================== -->
+
+        <section id="responsive">
+
+            <h2>24. Responsive Design</h2>
+
+            <p>
+                Resize your browser window to see
+                the responsive behavior.
+            </p>
+
+            <div class="responsive-box">
+
+                I change according to screen size.
+
+            </div>
+
+            <pre>
+@media (max-width: 768px) {
+
+    .container {
+        width: 95%;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             CSS UNITS
+        ====================================================== -->
+
+        <section>
+
+            <h2>25. CSS Units</h2>
+
+            <ul>
+
+                <li><strong>px</strong> - Pixels</li>
+
+                <li><strong>%</strong> - Percentage</li>
+
+                <li><strong>em</strong> - Relative to font size</li>
+
+                <li><strong>rem</strong> - Relative to root font size</li>
+
+                <li><strong>vw</strong> - Viewport width</li>
+
+                <li><strong>vh</strong> - Viewport height</li>
+
+            </ul>
+
+            <pre>
+width: 300px;
+
+width: 50%;
+
+width: 50vw;
+
+height: 50vh;
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             COMMON CSS PROPERTIES
+        ====================================================== -->
+
+        <section>
+
+            <h2>26. Important CSS Properties</h2>
+
+            <h3>Text</h3>
+
+            <pre>
+color
+font-size
+font-family
+font-weight
+font-style
+text-align
+text-decoration
+text-transform
+line-height
+letter-spacing
+            </pre>
+
+
+            <h3>Box Model</h3>
+
+            <pre>
+width
+height
+margin
+padding
+border
+border-radius
+box-sizing
+            </pre>
+
+
+            <h3>Layout</h3>
+
+            <pre>
+display
+position
+top
+right
+bottom
+left
+            </pre>
+
+
+            <h3>Flexbox</h3>
+
+            <pre>
+display: flex
+flex-direction
+justify-content
+align-items
+gap
+flex-wrap
+            </pre>
+
+
+            <h3>Grid</h3>
+
+            <pre>
+display: grid
+grid-template-columns
+grid-template-rows
+gap
+            </pre>
+
+        </section>
+
+
+        <!-- =====================================================
+             COMPLETE EXAMPLE
+        ====================================================== -->
+
+        <section>
+
+            <h2>27. Complete HTML + CSS Example</h2>
+
+            <div class="shadow-box">
+
+                <h3>
+                    Welcome to My Website
+                </h3>
+
+                <p>
+                    This is a complete example
+                    combining HTML and CSS.
+                </p>
+
+                <a href="#" class="button">
+                    Learn More
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             LEARNING ORDER
+        ====================================================== -->
+
+        <section>
+
+            <h2>28. Recommended Learning Order</h2>
+
+            <ol>
+
+                <li>HTML Basics</li>
+
+                <li>HTML Headings and Paragraphs</li>
+
+                <li>HTML Links and Images</li>
+
+                <li>HTML Lists</li>
+
+                <li>HTML Tables</li>
+
+                <li>HTML Forms</li>
+
+                <li>Semantic HTML</li>
+
+                <li>CSS Syntax</li>
+
+                <li>CSS Selectors</li>
+
+                <li>Colors and Backgrounds</li>
+
+                <li>Fonts and Text</li>
+
+                <li>Box Model</li>
+
+                <li>Margin and Padding</li>
+
+                <li>Width and Height</li>
+
+                <li>Display</li>
+
+                <li>Position</li>
+
+                <li>Flexbox</li>
+
+                <li>CSS Grid</li>
+
+                <li>Responsive Design</li>
+
+                <li>Transitions and Animations</li>
+
+                <li>Complete Projects</li>
+
+            </ol>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FIXED BUTTON
+    ========================================================== -->
+
+    <div class="fixed-example">
+
+        CSS
+
+    </div>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        <p>
+            Complete HTML + CSS Tutorial
+        </p>
+
+        <p>
+            Practice every example yourself.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
