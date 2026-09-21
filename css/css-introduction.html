@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CSS Introduction | Code With Me</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f4f7fb;
+        color: #222;
+        line-height: 1.7;
+    }
+
+    /* Navbar */
+
+    nav {
+        background: #111827;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    nav ul li a:hover {
+        color: #38bdf8;
+    }
+
+    /* Header */
+
+    .page-header {
+        background: linear-gradient(135deg, #2563eb, #06b6d4);
+        color: white;
+        text-align: center;
+        padding: 70px 20px;
+    }
+
+    .page-header h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .page-header p {
+        font-size: 18px;
+    }
+
+    /* Main Container */
+
+    .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    section {
+        background: white;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    section h2 {
+        color: #2563eb;
+        margin-bottom: 15px;
+        font-size: 28px;
+    }
+
+    section h3 {
+        color: #111827;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    section p {
+        margin-bottom: 15px;
+    }
+
+    /* Info Box */
+
+    .info-box {
+        background: #eff6ff;
+        border-left: 5px solid #2563eb;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    .important-box {
+        background: #fff7ed;
+        border-left: 5px solid #f97316;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    /* Code */
+
+    pre {
+        background: #111827;
+        color: #e5e7eb;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 15px 0;
+    }
+
+    code {
+        font-family: Consolas, monospace;
+    }
+
+    /* Lists */
+
+    ul.lesson-list {
+        margin-left: 25px;
+        margin-bottom: 15px;
+    }
+
+    ul.lesson-list li {
+        margin-bottom: 8px;
+    }
+
+    /* Editor */
+
+    .editor {
+        margin-top: 20px;
+    }
+
+    .editor textarea {
+        width: 100%;
+        height: 250px;
+        padding: 15px;
+        background: #111827;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        resize: vertical;
+        font-family: Consolas, monospace;
+        font-size: 15px;
+    }
+
+    .buttons {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    button {
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .run-btn {
+        background: #16a34a;
+        color: white;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+        color: white;
+    }
+
+    button:hover {
+        opacity: 0.85;
+    }
+
+    iframe {
+        width: 100%;
+        height: 250px;
+        border: 2px solid #ddd;
+        margin-top: 20px;
+        border-radius: 8px;
+        background: white;
+    }
+
+    /* Navigation Buttons */
+
+    .lesson-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 30px 0;
+    }
+
+    .nav-btn {
+        display: inline-block;
+        background: #2563eb;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .nav-btn:hover {
+        background: #1d4ed8;
+    }
+
+    /* Footer */
+
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 40px;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 700px) {
+
+        nav {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        nav ul {
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .lesson-navigation {
+            flex-direction: column;
+        }
+
+        .nav-btn {
+            text-align: center;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul>
+
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
+
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
+
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
+
+</ul>
+```
+
+</nav>
+
+<!-- Page Header -->
+
+<header class="page-header">
+
+```
+<h1>CSS Introduction</h1>
+
+<p>Learn how CSS is used to style and design web pages.</p>
+```
+
+</header>
+
+<main class="container">
+
+<!-- Introduction -->
+
+<section>
+
+```
+<h2>What is CSS?</h2>
+
+<p>
+    CSS stands for <strong>Cascading Style Sheets</strong>.
+    CSS is used to style and design HTML web pages.
+</p>
+
+<p>
+    HTML creates the structure of a webpage, while CSS controls
+    how that webpage looks.
+</p>
+
+<div class="info-box">
+
+    <strong>Example:</strong>
+
+    <p>
+        HTML can create a heading, while CSS can change its
+        color, size, font, background and position.
+    </p>
+
+</div>
+```
+
+</section>
+
+<!-- Why CSS -->
+
+<section>
+
+```
+<h2>Why Do We Use CSS?</h2>
+
+<p>
+    CSS makes websites attractive, readable and responsive.
+</p>
+
+<ul class="lesson-list">
+
+    <li>Change text colors</li>
+
+    <li>Change font sizes</li>
+
+    <li>Add backgrounds</li>
+
+    <li>Create layouts</li>
+
+    <li>Add spacing and borders</li>
+
+    <li>Design buttons</li>
+
+    <li>Create responsive websites</li>
+
+    <li>Create animations and visual effects</li>
+
+</ul>
+```
+
+</section>
+
+<!-- HTML vs CSS -->
+
+<section>
+
+```
+<h2>HTML vs CSS</h2>
+
+<p>
+    HTML and CSS work together, but they have different purposes.
+</p>
+
+<div class="info-box">
+
+    <p>
+        <strong>HTML:</strong> Creates the structure of the webpage.
+    </p>
+
+    <p>
+        <strong>CSS:</strong> Styles and designs the webpage.
+    </p>
+
+</div>
+```
+
+</section>
+
+<!-- CSS Syntax -->
+
+<section>
+
+```
+<h2>CSS Syntax</h2>
+
+<p>
+    A basic CSS rule contains a selector, property and value.
+</p>
+
+<pre><code>selector {
+property: value;
+```
+
+}</code></pre>
+
+```
+<h3>Example</h3>
+
+<pre><code>p {
+color: blue;
+font-size: 20px;
+```
+
+}</code></pre>
+
+```
+<p>
+    In this example, <strong>p</strong> is the selector,
+    <strong>color</strong> and <strong>font-size</strong>
+    are properties, and <strong>blue</strong> and
+    <strong>20px</strong> are their values.
+</p>
+```
+
+</section>
+
+<!-- Three Ways -->
+
+<section>
+
+```
+<h2>Three Ways to Add CSS</h2>
+
+
+<h3>1. Inline CSS</h3>
+
+<p>
+    Inline CSS is written directly inside an HTML element.
+</p>
+
+<pre><code>&lt;p style="color: red;"&gt;
+Hello World
+```
+
+</p></code></pre>
+
+```
+<h3>2. Internal CSS</h3>
+
+<p>
+    Internal CSS is written inside the
+    <code>&lt;style&gt;</code> element.
+</p>
+
+<pre><code>&lt;style&gt;
+```
+
+p {
+color: blue;
+}
+
+</style></code></pre>
+
+```
+<h3>3. External CSS</h3>
+
+<p>
+    External CSS is stored in a separate CSS file.
+</p>
+
+<pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+```
+
+</section>
+
+<!-- Selectors -->
+
+<section>
+
+```
+<h2>CSS Selectors</h2>
+
+<p>
+    Selectors are used to select HTML elements that we want to style.
+</p>
+
+
+<h3>Element Selector</h3>
+
+<pre><code>p {
+color: green;
+```
+
+}</code></pre>
+
+```
+<h3>Class Selector</h3>
+
+<pre><code>.title {
+color: red;
+```
+
+}</code></pre>
+
+```
+<h3>ID Selector</h3>
+
+<pre><code>#heading {
+color: blue;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Properties -->
+
+<section>
+
+```
+<h2>CSS Properties</h2>
+
+<p>
+    CSS properties control different visual aspects of an HTML element.
+</p>
+
+<ul class="lesson-list">
+
+    <li><strong>color</strong> - Changes text color</li>
+
+    <li><strong>background-color</strong> - Changes background color</li>
+
+    <li><strong>font-size</strong> - Changes text size</li>
+
+    <li><strong>font-family</strong> - Changes the font</li>
+
+    <li><strong>margin</strong> - Creates outside spacing</li>
+
+    <li><strong>padding</strong> - Creates inside spacing</li>
+
+    <li><strong>border</strong> - Adds a border</li>
+
+    <li><strong>width</strong> - Controls width</li>
+
+    <li><strong>height</strong> - Controls height</li>
+
+</ul>
+```
+
+</section>
+
+<!-- Example -->
+
+<section>
+
+```
+<h2>CSS Example</h2>
+
+<p>
+    Here is a simple HTML and CSS example:
+</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+```
+
+<html>
+
+<head>
+
+<style>
+
+body {
+background-color: lightblue;
+}
+
+h1 {
+color: navy;
+text-align: center;
+}
+
+p {
+color: black;
+font-size: 20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Welcome to CSS</h1>
+
+<p>CSS makes websites beautiful.</p>
+
+</body>
+
+</html></code></pre>
+
+</section>
+
+<!-- Interactive Editor -->
+
+<section>
+
+```
+<h2>Try CSS Yourself</h2>
+
+<p>
+    Write HTML and CSS code below and click
+    <strong>Run Code</strong> to see the result.
+</p>
+
+
+<div class="editor">
+```
+
+<textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body {
+    background-color: lightblue;
+    text-align: center;
+}
+
+h1 {
+    color: navy;
+}
+
+p {
+    color: darkgreen;
+    font-size: 20px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Welcome to CSS</h1>
+
+<p>I am learning CSS with Code With Me.</p>
+
+<button>Click Me</button>
+
+</body>
+
+</html></textarea>
+
+```
+    <div class="buttons">
+
+        <button
+            class="run-btn"
+            onclick="runCode()">
+            ▶ Run Code
+        </button>
+
+        <button
+            class="clear-btn"
+            onclick="clearCode()">
+            Clear
+        </button>
+
+    </div>
+
+
+    <iframe id="output"></iframe>
+
+</div>
+```
+
+</section>
+
+<!-- Important -->
+
+<section>
+
+```
+<h2>Important Points</h2>
+
+<div class="important-box">
+
+    <ul class="lesson-list">
+
+        <li>CSS stands for Cascading Style Sheets.</li>
+
+        <li>CSS is used to style HTML pages.</li>
+
+        <li>CSS can be written inline, internally or externally.</li>
+
+        <li>CSS uses selectors, properties and values.</li>
+
+        <li>External CSS is commonly used for larger websites.</li>
+
+        <li>CSS helps create responsive and attractive websites.</li>
+
+    </ul>
+
+</div>
+```
+
+</section>
+
+<!-- Navigation -->
+
+<div class="lesson-navigation">
+
+```
+<a
+    href="../index.html#courses"
+    class="nav-btn">
+    ← Previous
+</a>
+
+<a
+    href="css-basic-syntax.html"
+    class="nav-btn">
+    Next →
+</a>
+```
+
+</div>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code =
+        document.getElementById("codeEditor").value;
+
+    const output =
+        document.getElementById("output");
+
+    output.srcdoc = code;
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").srcdoc = "";
+
+}
+
+</script>
+
+</body>
+
+</html>
