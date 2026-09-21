@@ -1,200 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================
+         BASIC SETTINGS
+    ========================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Code With Me | Learn Coding</title>
+
+    <meta name="description"
+          content="Learn HTML, CSS, JavaScript and Python with simple coding tutorials and examples.">
+
+    <meta name="keywords"
+          content="HTML, CSS, JavaScript, Python, coding, programming, web development">
+
+    <meta name="author"
+          content="Code With Me">
+
+
+    <!-- =========================
+         STYLES
+    ========================== -->
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: #111827;
+
+            box-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+
+            min-height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 20px;
+        }
+
+
+        .logo {
+            color: white;
+
+            font-size: 28px;
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+            list-style: none;
+        }
+
+
+        .nav-links a {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 16px;
+
+            transition: color 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================== */
+
+        .hero {
+            min-height: 500px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111827,
+                    #1e3a8a
+                );
+
+            color: white;
+        }
+
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+
+        .hero h1 {
+            font-size: 52px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+
+        .hero p {
+            font-size: 20px;
+
+            color: #dbeafe;
+
+            margin-bottom: 30px;
+        }
+
+
+        .hero-btn {
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            background: #2563eb;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition:
+                background 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        .hero-btn:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           COMMON SECTION
+        ========================== */
+
+        .section {
+            padding: 70px 20px;
+        }
+
+
+        .section-title {
+            text-align: center;
+
+            max-width: 800px;
+
+            margin: 0 auto 45px;
+        }
+
+
+        .section-title h2 {
+            font-size: 36px;
+
+            color: #111827;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-title p {
+            color: #64748b;
+
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           COURSES SECTION
+        ========================== */
+
+        #courses {
+            background: white;
+        }
+
+
+        .course-grid {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 25px;
+        }
+
+
+        .course-card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .course-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .course-card h3 {
+            font-size: 23px;
+
+            color: #2563eb;
+
+            margin-bottom: 15px;
+        }
+
+
+        .course-card p {
+            color: #475569;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+
+        .course-btn {
+            display: inline-block;
+
+            padding: 11px 20px;
+
+            background: #2563eb;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition:
+                background 0.3s ease;
+        }
+
+
+        .course-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           HTML COURSE
+        ========================== */
+
+        #html-topics {
+            background: #f8fafc;
+        }
+
+
+        /* =========================
+           CSS COURSE
+        ========================== */
+
+        #css-course {
+            background: #ffffff;
+        }
+
+
+        /* =========================
+           ABOUT SECTION
+        ========================== */
+
+        .about-section {
+            background: #f8fafc;
+        }
+
+
+        .about-content {
+            max-width: 1000px;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .about-content h3 {
+            color: #2563eb;
+
+            margin-bottom: 15px;
+
+            font-size: 25px;
+        }
+
+
+        .about-content p {
+            color: #475569;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           CONTACT SECTION
+        ========================== */
+
+        .contact-section {
+            background: white;
+        }
+
+
+        .contact-grid {
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 25px;
+        }
+
+
+        .contact-card {
+            text-align: center;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            background: #f8fafc;
+
+            border: 1px solid #e5e7eb;
+        }
+
+
+        .contact-card h3 {
+            color: #2563eb;
+
+            margin-bottom: 10px;
+        }
+
+
+        .contact-card p {
+            color: #475569;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px 20px;
+        }
+
+
+        footer p {
+            margin-bottom: 5px;
+
+            color: #cbd5e1;
+        }
+
+
+        /* =========================
+           MOBILE RESPONSIVE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            .nav-container {
+                flex-direction: column;
+
+                padding: 18px 20px;
+
+                gap: 15px;
+            }
+
+
+            .nav-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+
+            .hero p {
+                font-size: 17px;
+            }
+
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
 <body>
 
-    <!-- Navbar -->
 
-    <!-- Hero Section -->
+    <!-- =========================
+         NAVBAR
+    ========================== -->
 
-    <!-- HTML Course Section -->
-<!-- =========================
-     CSS COURSE SECTION
-========================= -->
+    <nav class="navbar">
 
-<section id="css-course" class="course-section">
+        <div class="nav-container">
 
-    <div class="section-title">
-        <h2>CSS Course</h2>
-        <p>Learn CSS from beginner to advanced with simple examples.</p>
-    </div>
+            <a href="index.html" class="logo">
+                Code<span>WithMe</span>
+            </a>
 
-    <div class="course-grid">
 
-        <!-- CSS Introduction -->
-        <div class="course-card">
-            <h3>CSS Introduction</h3>
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#courses">
+                        Courses
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#html-topics">
+                        HTML
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#css-course">
+                        CSS
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#about">
+                        About
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#contact">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Learn Coding with
+                <span>Code With Me</span>
+            </h1>
+
 
             <p>
-                Learn what CSS is, why CSS is used,
-                and how CSS styles HTML pages.
+                Learn HTML, CSS, JavaScript and Python
+                with simple tutorials, examples and
+                practical projects.
             </p>
 
-            <a href="css/css-introduction.html" class="course-btn">
-                Start Learning
+
+            <a href="#courses" class="hero-btn">
+                Explore Courses
             </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         COURSES SECTION
+    ========================== -->
+
+    <section id="courses" class="section">
+
+        <div class="section-title">
+
+            <h2>
+                Our Courses
+            </h2>
+
+            <p>
+                Start learning programming step by step.
+            </p>
+
         </div>
 
 
-        <!-- CSS Syntax -->
-        <div class="course-card">
-            <h3>CSS Syntax</h3>
+        <div class="course-grid">
+
+
+            <!-- HTML -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML
+                </h3>
+
+                <p>
+                    Learn HTML from the basics to
+                    practical projects and build
+                    the structure of websites.
+                </p>
+
+                <a href="#html-topics"
+                   class="course-btn">
+
+                    Start HTML
+
+                </a>
+
+            </div>
+
+
+            <!-- CSS -->
+
+            <div class="course-card">
+
+                <h3>
+                    CSS
+                </h3>
+
+                <p>
+                    Learn CSS and create beautiful,
+                    responsive and modern websites.
+                </p>
+
+                <a href="#css-course"
+                   class="course-btn">
+
+                    Start CSS
+
+                </a>
+
+            </div>
+
+
+            <!-- JavaScript -->
+
+            <div class="course-card">
+
+                <h3>
+                    JavaScript
+                </h3>
+
+                <p>
+                    Learn JavaScript fundamentals
+                    and make your websites interactive.
+                </p>
+
+                <a href="#courses"
+                   class="course-btn">
+
+                    Coming Soon
+
+                </a>
+
+            </div>
+
+
+            <!-- Python -->
+
+            <div class="course-card">
+
+                <h3>
+                    Python
+                </h3>
+
+                <p>
+                    Learn Python programming from
+                    basic concepts to practical programs.
+                </p>
+
+                <a href="#courses"
+                   class="course-btn">
+
+                    Coming Soon
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         HTML COURSE SECTION
+    ========================== -->
+
+    <section id="html-topics" class="section">
+
+        <div class="section-title">
+
+            <h2>
+                HTML Course
+            </h2>
 
             <p>
-                Learn CSS selectors, properties,
-                values and basic CSS syntax.
+                Learn HTML step by step with practical
+                examples and coding exercises.
             </p>
 
-            <a href="css/css-syntax.html" class="course-btn">
-                Learn CSS Syntax
-            </a>
         </div>
 
 
-        <!-- CSS Selectors -->
-        <div class="course-card">
-            <h3>CSS Selectors</h3>
+        <div class="course-grid">
+
+
+            <!-- HTML Introduction -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Introduction
+                </h3>
+
+                <p>
+                    Learn what HTML is and how
+                    HTML is used to create websites.
+                </p>
+
+                <a href="html/html-introduction.html"
+                   class="course-btn">
+
+                    Start Learning
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Basic Tags -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Basic Tags
+                </h3>
+
+                <p>
+                    Learn headings, paragraphs,
+                    div, span and other basic tags.
+                </p>
+
+                <a href="html/html-basic-tags.html"
+                   class="course-btn">
+
+                    Learn Basic Tags
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Text Formatting -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Text Formatting
+                </h3>
+
+                <p>
+                    Learn bold, italic, underline,
+                    strong, emphasis and more.
+                </p>
+
+                <a href="html/html-text-formatting.html"
+                   class="course-btn">
+
+                    Learn Formatting
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Links -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Links
+                </h3>
+
+                <p>
+                    Learn how to create links and
+                    navigate between web pages.
+                </p>
+
+                <a href="html/html-links.html"
+                   class="course-btn">
+
+                    Learn Links
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Images -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Images
+                </h3>
+
+                <p>
+                    Learn how to add images to
+                    your HTML webpages.
+                </p>
+
+                <a href="html/html-images.html"
+                   class="course-btn">
+
+                    Learn Images
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Lists -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Lists
+                </h3>
+
+                <p>
+                    Learn ordered, unordered and
+                    description lists.
+                </p>
+
+                <a href="html/html-lists.html"
+                   class="course-btn">
+
+                    Learn Lists
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Tables -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Tables
+                </h3>
+
+                <p>
+                    Learn how to create tables
+                    using HTML.
+                </p>
+
+                <a href="html/html-tables.html"
+                   class="course-btn">
+
+                    Learn Tables
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Forms -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Forms
+                </h3>
+
+                <p>
+                    Learn input fields, buttons,
+                    forms and form elements.
+                </p>
+
+                <a href="html/html-forms.html"
+                   class="course-btn">
+
+                    Learn Forms
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Semantic Elements -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Semantic Elements
+                </h3>
+
+                <p>
+                    Learn semantic tags such as
+                    header, nav, main, section and footer.
+                </p>
+
+                <a href="html/html-semantic-elements.html"
+                   class="course-btn">
+
+                    Learn Semantic HTML
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Attributes -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Attributes
+                </h3>
+
+                <p>
+                    Learn HTML attributes and
+                    how they provide extra information.
+                </p>
+
+                <a href="html/html-attributes.html"
+                   class="course-btn">
+
+                    Learn Attributes
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Multimedia -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Multimedia
+                </h3>
+
+                <p>
+                    Learn how to add audio,
+                    video and other multimedia.
+                </p>
+
+                <a href="html/html-multimedia.html"
+                   class="course-btn">
+
+                    Learn Multimedia
+
+                </a>
+
+            </div>
+
+
+            <!-- HTML Projects -->
+
+            <div class="course-card">
+
+                <h3>
+                    HTML Projects
+                </h3>
+
+                <p>
+                    Practice your HTML knowledge
+                    by creating practical projects.
+                </p>
+
+                <a href="html/html-projects.html"
+                   class="course-btn">
+
+                    Start Projects
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CSS COURSE SECTION
+    ========================== -->
+
+    <section id="css-course" class="section">
+
+        <div class="section-title">
+
+            <h2>
+                CSS Course
+            </h2>
 
             <p>
-                Learn element, class, ID and
-                other important CSS selectors.
+                Learn CSS from beginner level
+                and start creating beautiful websites.
             </p>
 
-            <a href="css/css-selectors.html" class="course-btn">
-                Learn Selectors
-            </a>
         </div>
 
 
-        <!-- CSS Colors -->
-        <div class="course-card">
-            <h3>CSS Colors</h3>
+        <div class="course-grid">
 
-            <p>
-                Learn how to use names, HEX, RGB,
-                RGBA and other CSS colors.
-            </p>
 
-            <a href="css/css-colors.html" class="course-btn">
-                Learn Colors
-            </a>
+            <!-- CSS Introduction -->
+
+            <div class="course-card">
+
+                <h3>
+                    CSS Introduction
+                </h3>
+
+                <p>
+                    Learn what CSS is, why CSS is used,
+                    and how CSS styles HTML webpages.
+                </p>
+
+                <a href="css/css-introduction.html"
+                   class="course-btn">
+
+                    Start Learning
+
+                </a>
+
+            </div>
+
+
+            <!-- CSS Syntax -->
+
+            <div class="course-card">
+
+                <h3>
+                    CSS Syntax
+                </h3>
+
+                <p>
+                    Learn CSS selectors, properties,
+                    values and basic CSS syntax.
+                </p>
+
+                <a href="css/css-syntax.html"
+                   class="course-btn">
+
+                    Learn CSS Syntax
+
+                </a>
+
+            </div>
+
+
+            <!-- CSS Selectors -->
+
+            <div class="course-card">
+
+                <h3>
+                    CSS Selectors
+                </h3>
+
+                <p>
+                    Learn element, class, ID and
+                    other important CSS selectors.
+                </p>
+
+                <a href="css/css-selectors.html"
+                   class="course-btn">
+
+                    Learn Selectors
+
+                </a>
+
+            </div>
+
+
+            <!-- CSS Colors -->
+
+            <div class="course-card">
+
+                <h3>
+                    CSS Colors
+                </h3>
+
+                <p>
+                    Learn CSS color names, HEX,
+                    RGB, RGBA and more.
+                </p>
+
+                <a href="css/css-colors.html"
+                   class="course-btn">
+
+                    Learn Colors
+
+                </a>
+
+            </div>
+
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =========================
-     CSS COURSE STYLES
-========================= -->
 
-<style>
+    <!-- =========================
+         ABOUT SECTION
+    ========================== -->
 
-.course-section {
-    padding: 70px 20px;
-    background: #f8fafc;
-}
+    <section id="about"
+             class="section about-section">
 
+        <div class="section-title">
 
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-}
+            <h2>
+                About Code With Me
+            </h2>
 
+            <p>
+                Learn coding in a simple and practical way.
+            </p>
 
-.section-title h2 {
-    font-size: 36px;
-    color: #111827;
-    margin-bottom: 10px;
-}
+        </div>
 
 
-.section-title p {
-    color: #64748b;
-    font-size: 17px;
-}
+        <div class="about-content">
+
+            <h3>
+                Learn. Practice. Build.
+            </h3>
+
+            <p>
+                Code With Me is a learning platform
+                created to help beginners understand
+                programming and web development.
+            </p>
+
+            <p>
+                Our tutorials focus on simple explanations,
+                practical examples and hands-on coding.
+            </p>
+
+            <p>
+                You can learn HTML, CSS, JavaScript
+                and Python step by step.
+            </p>
+
+        </div>
+
+    </section>
 
 
-.course-grid {
-    max-width: 1200px;
-    margin: auto;
 
-    display: grid;
+    <!-- =========================
+         CONTACT SECTION
+    ========================== -->
 
-    grid-template-columns:
-        repeat(auto-fit, minmax(250px, 1fr));
+    <section id="contact"
+             class="section contact-section">
 
-    gap: 25px;
-}
+        <div class="section-title">
 
+            <h2>
+                Contact Us
+            </h2>
 
-.course-card {
-    background: white;
+            <p>
+                Have a question? Get in touch with us.
+            </p>
 
-    padding: 30px;
-
-    border-radius: 15px;
-
-    box-shadow:
-        0 5px 20px rgba(0, 0, 0, 0.08);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
+        </div>
 
 
-.course-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.15);
-}
+        <div class="contact-grid">
 
 
-.course-card h3 {
-    font-size: 23px;
+            <!-- Location -->
 
-    color: #2563eb;
+            <div class="contact-card">
 
-    margin-bottom: 15px;
-}
+                <h3>
+                    Location
+                </h3>
 
+                <p>
+                    Gujarat, India
+                </p>
 
-.course-card p {
-    color: #475569;
-
-    line-height: 1.7;
-
-    margin-bottom: 25px;
-}
+            </div>
 
 
-.course-btn {
-    display: inline-block;
+            <!-- Phone -->
 
-    padding: 11px 20px;
+            <div class="contact-card">
 
-    background: #2563eb;
+                <h3>
+                    Contact
+                </h3>
 
-    color: white;
+                <p>
+                    123456789
+                </p>
 
-    text-decoration: none;
-
-    border-radius: 8px;
-
-    font-weight: bold;
-
-    transition:
-        background 0.3s ease;
-}
+            </div>
 
 
-.course-btn:hover {
-    background: #1d4ed8;
-}
+            <!-- Website -->
 
-</style>
-     <!-- About Section -->
+            <div class="contact-card">
 
-    <!-- Footer -->
+                <h3>
+                    Website
+                </h3>
+
+                <p>
+                    Code With Me
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn Coding • Build Projects • Grow Your Skills
+        </p>
+
+    </footer>
+
 
 </body>
+
+</html>
