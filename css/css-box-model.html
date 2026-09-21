@@ -1,0 +1,1060 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Box Model | Code With Me</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* HEADER */
+
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* INFO BOX */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #1d4ed8;
+        }
+
+        /* CODE */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* BOX MODEL DIAGRAM */
+
+        .box-model-container {
+            display: flex;
+            justify-content: center;
+            margin: 35px 0;
+            overflow-x: auto;
+        }
+
+        .margin-layer {
+            background: #fef3c7;
+            padding: 30px;
+            border: 3px dashed #d97706;
+            text-align: center;
+            min-width: 430px;
+        }
+
+        .margin-label {
+            color: #92400e;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .border-layer {
+            background: #ddd6fe;
+            padding: 25px;
+            border: 8px solid #7c3aed;
+            text-align: center;
+        }
+
+        .border-label {
+            color: #5b21b6;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .padding-layer {
+            background: #bfdbfe;
+            padding: 25px;
+            border: 3px solid #2563eb;
+            text-align: center;
+        }
+
+        .padding-label {
+            color: #1d4ed8;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .content-layer {
+            background: #bbf7d0;
+            padding: 25px;
+            border: 3px solid #16a34a;
+            text-align: center;
+            color: #166534;
+            font-weight: bold;
+        }
+
+        /* DEMO BOX */
+
+        .demo-box {
+            width: 300px;
+            margin: 30px auto;
+            padding: 30px;
+            border: 8px solid #2563eb;
+            background: #dbeafe;
+            text-align: center;
+        }
+
+        /* BOX SIZING */
+
+        .content-box-demo {
+            box-sizing: content-box;
+            width: 300px;
+            padding: 30px;
+            border: 5px solid #2563eb;
+            margin: 20px auto;
+            background: #eff6ff;
+            text-align: center;
+        }
+
+        .border-box-demo {
+            box-sizing: border-box;
+            width: 300px;
+            padding: 30px;
+            border: 5px solid #7c3aed;
+            margin: 20px auto;
+            background: #f5f3ff;
+            text-align: center;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* EDITOR */
+
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 350px;
+            padding: 15px;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        iframe {
+            width: 100%;
+            height: 320px;
+            border: 2px solid #ddd;
+            margin-top: 20px;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* NAVIGATION */
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .navigation a {
+                text-align: center;
+            }
+
+            .margin-layer {
+                min-width: 320px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        Code <span>WithMe</span>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- PAGE HEADER -->
+
+<header class="page-header">
+
+    <h1>CSS Box Model</h1>
+
+    <p>
+        Understand content, padding, border and margin
+    </p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- INTRODUCTION -->
+
+<section>
+
+    <h2>Introduction to CSS Box Model</h2>
+
+    <p>
+        Every HTML element on a webpage is treated as a
+        rectangular box by CSS.
+    </p>
+
+    <p>
+        This is called the <b>CSS Box Model</b>.
+        It describes how the size and spacing of an element
+        are calculated.
+    </p>
+
+    <div class="info-box">
+
+        <strong>The CSS Box Model contains four parts:</strong>
+
+        <br><br>
+
+        1. Content
+
+        <br>
+
+        2. Padding
+
+        <br>
+
+        3. Border
+
+        <br>
+
+        4. Margin
+
+    </div>
+
+</section>
+
+
+<!-- VISUAL DIAGRAM -->
+
+<section>
+
+    <h2>1. CSS Box Model Diagram</h2>
+
+    <p>
+        The following example shows the four layers
+        of the CSS Box Model.
+    </p>
+
+    <div class="box-model-container">
+
+        <div class="margin-layer">
+
+            <div class="margin-label">
+                MARGIN
+            </div>
+
+            <div class="border-layer">
+
+                <div class="border-label">
+                    BORDER
+                </div>
+
+                <div class="padding-layer">
+
+                    <div class="padding-label">
+                        PADDING
+                    </div>
+
+                    <div class="content-layer">
+
+                        CONTENT
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTENT -->
+
+<section>
+
+    <h2>2. Content</h2>
+
+    <p>
+        Content is the actual information inside an HTML
+        element.
+    </p>
+
+    <p>
+        Content can be text, images, videos, buttons or
+        other HTML elements.
+    </p>
+
+<pre><code>div {
+    width: 300px;
+    height: 150px;
+}</code></pre>
+
+    <div class="demo-box">
+
+        This is the content area.
+
+    </div>
+
+</section>
+
+
+<!-- PADDING -->
+
+<section>
+
+    <h2>3. Padding</h2>
+
+    <p>
+        Padding is the space between the content and
+        the border.
+    </p>
+
+<pre><code>div {
+    padding: 20px;
+}</code></pre>
+
+    <div style="
+        width: 300px;
+        padding: 30px;
+        border: 4px solid #2563eb;
+        background: #eff6ff;
+        margin: 25px auto;
+        text-align: center;
+    ">
+
+        Content with 30px padding
+
+    </div>
+
+</section>
+
+
+<!-- BORDER -->
+
+<section>
+
+    <h2>4. Border</h2>
+
+    <p>
+        The border surrounds the padding and content.
+    </p>
+
+<pre><code>div {
+    border: 5px solid blue;
+}</code></pre>
+
+    <div style="
+        width: 300px;
+        padding: 25px;
+        border: 8px solid #7c3aed;
+        background: #f5f3ff;
+        margin: 25px auto;
+        text-align: center;
+    ">
+
+        Content + Padding + Border
+
+    </div>
+
+</section>
+
+
+<!-- MARGIN -->
+
+<section>
+
+    <h2>5. Margin</h2>
+
+    <p>
+        Margin is the space outside the border of an element.
+    </p>
+
+<pre><code>div {
+    margin: 30px;
+}</code></pre>
+
+    <div style="
+        width: 300px;
+        padding: 25px;
+        border: 5px solid #16a34a;
+        background: #dcfce7;
+        margin: 40px auto;
+        text-align: center;
+    ">
+
+        This element has margin.
+
+    </div>
+
+</section>
+
+
+<!-- BOX MODEL CALCULATION -->
+
+<section>
+
+    <h2>6. Box Model Size Calculation</h2>
+
+    <p>
+        With the default <b>content-box</b> model,
+        the total width of an element can include:
+    </p>
+
+<pre><code>Total Width =
+Content Width
++ Left Padding
++ Right Padding
++ Left Border
++ Right Border
++ Left Margin
++ Right Margin</code></pre>
+
+    <p>
+        For example:
+    </p>
+
+<pre><code>width: 300px;
+padding-left: 20px;
+padding-right: 20px;
+border-left: 5px;
+border-right: 5px;</code></pre>
+
+    <p>
+        The content width is 300px, while padding and
+        border add additional space to the overall size
+        when using <b>content-box</b>.
+    </p>
+
+</section>
+
+
+<!-- BOX SIZING -->
+
+<section>
+
+    <h2>7. box-sizing Property</h2>
+
+    <p>
+        The <b>box-sizing</b> property controls how the
+        width and height of an element are calculated.
+    </p>
+
+
+    <h3>content-box</h3>
+
+<pre><code>box-sizing: content-box;</code></pre>
+
+    <p>
+        This is the default CSS behavior.
+        The declared width applies to the content area.
+    </p>
+
+    <div class="content-box-demo">
+
+        Content-box
+
+    </div>
+
+
+    <h3>border-box</h3>
+
+<pre><code>box-sizing: border-box;</code></pre>
+
+    <p>
+        With border-box, the declared width includes
+        content, padding and border.
+    </p>
+
+    <div class="border-box-demo">
+
+        Border-box
+
+    </div>
+
+</section>
+
+
+<!-- UNIVERSAL BOX SIZING -->
+
+<section>
+
+    <h2>8. Recommended Box-Sizing Rule</h2>
+
+    <p>
+        A commonly used CSS rule is:
+    </p>
+
+<pre><code>* {
+    box-sizing: border-box;
+}</code></pre>
+
+    <p>
+        This makes sizing easier to manage because the
+        declared width and height include padding and border.
+    </p>
+
+    <div class="info-box">
+
+        <strong>Tip:</strong>
+
+        Many modern websites use
+        <b>box-sizing: border-box</b> for predictable layouts.
+
+    </div>
+
+</section>
+
+
+<!-- BOX MODEL PROPERTIES -->
+
+<section>
+
+    <h2>9. Important Box Model Properties</h2>
+
+    <table>
+
+        <tr>
+            <th>Property</th>
+            <th>Purpose</th>
+        </tr>
+
+        <tr>
+            <td>width</td>
+            <td>Controls the width of the element</td>
+        </tr>
+
+        <tr>
+            <td>height</td>
+            <td>Controls the height of the element</td>
+        </tr>
+
+        <tr>
+            <td>padding</td>
+            <td>Creates space inside the element</td>
+        </tr>
+
+        <tr>
+            <td>border</td>
+            <td>Creates a boundary around the element</td>
+        </tr>
+
+        <tr>
+            <td>margin</td>
+            <td>Creates space outside the element</td>
+        </tr>
+
+        <tr>
+            <td>box-sizing</td>
+            <td>Controls how width and height are calculated</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- DIFFERENCE -->
+
+<section>
+
+    <h2>10. Padding vs Margin</h2>
+
+    <table>
+
+        <tr>
+            <th>Padding</th>
+            <th>Margin</th>
+        </tr>
+
+        <tr>
+            <td>Space inside the border</td>
+            <td>Space outside the border</td>
+        </tr>
+
+        <tr>
+            <td>Part of the element's box</td>
+            <td>Separates the element from other elements</td>
+        </tr>
+
+        <tr>
+            <td>Can have background color</td>
+            <td>Does not belong to the content area</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- LIVE EDITOR -->
+
+<section>
+
+    <h2>Try CSS Box Model Yourself</h2>
+
+    <p>
+        Change the code below and click
+        <b>Run Code</b> to see the result.
+    </p>
+
+    <div class="editor">
+
+<textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    padding: 30px;
+}
+
+.box {
+    width: 300px;
+
+    /* Content spacing */
+    padding: 30px;
+
+    /* Border */
+    border: 8px solid #2563eb;
+
+    /* Outside spacing */
+    margin: 30px auto;
+
+    background-color: #eff6ff;
+
+    text-align: center;
+}
+
+h1 {
+    color: #2563eb;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>CSS Box Model</h1>
+
+    <p>
+        Content + Padding + Border + Margin
+    </p>
+
+</div>
+
+</body>
+
+</html></textarea>
+
+
+        <div class="buttons">
+
+            <button
+                class="run-btn"
+                onclick="runCode()">
+
+                ▶ Run Code
+
+            </button>
+
+            <button
+                class="clear-btn"
+                onclick="clearCode()">
+
+                ✕ Clear
+
+            </button>
+
+        </div>
+
+
+        <iframe
+            id="output"
+            title="CSS Box Model Output">
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- KEY POINTS -->
+
+<section>
+
+    <h2>CSS Box Model - Key Points</h2>
+
+    <ul>
+
+        <li>
+            Every HTML element is treated as a box.
+        </li>
+
+        <li>
+            The CSS Box Model contains content, padding,
+            border and margin.
+        </li>
+
+        <li>
+            Padding creates space inside the border.
+        </li>
+
+        <li>
+            Margin creates space outside the border.
+        </li>
+
+        <li>
+            Border surrounds the content and padding.
+        </li>
+
+        <li>
+            The <b>box-sizing</b> property controls how
+            element dimensions are calculated.
+        </li>
+
+        <li>
+            <b>border-box</b> includes padding and border
+            within the declared width and height.
+        </li>
+
+        <li>
+            Understanding the Box Model is important for
+            creating accurate CSS layouts.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+    <a href="css-padding.html">
+        ← Previous: CSS Padding
+    </a>
+
+    <a href="css-width-height.html">
+        Next: CSS Width & Height →
+    </a>
+
+</div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Code With Me | Learn Coding
+    </p>
+
+    <p>
+        HTML • CSS • JavaScript • Python
+    </p>
+
+</footer>
+
+
+<script>
+
+function runCode() {
+
+    const code =
+        document.getElementById("codeEditor").value;
+
+    document.getElementById("output").srcdoc = code;
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").srcdoc = "";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
