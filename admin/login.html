@@ -1,264 +1,119 @@
-```html
-<!DOCTYPE html>
-<html lang="en">
+<button onclick="loginAdmin()">
+    Login
+</button>
 
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Admin Login | Code With Me</title>
-
-</head>
-
-<body>
-
-    <h1>Code With Me Admin Login</h1>
+<p>
+    <a href="#" onclick="sendResetLink(); return false;">
+        Forgot Password?
+    </a>
+</p>
 
 
-    <!-- ========================= -->
-    <!-- ADMIN LOGIN -->
-    <!-- ========================= -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <input
-        type="email"
-        id="email"
-        placeholder="Admin Email"
-    >
+<script src="../js/supabase.js"></script>
 
-    <br><br>
+<script>
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Password"
-    >
+    // LOGIN FUNCTION
+    async function loginAdmin() {
 
-    <br><br>
+        const email =
+            document.getElementById("email").value.trim();
 
-    <button onclick="loginAdmin()">
-        Login
-    </button>
+        const password =
+            document.getElementById("password").value;
 
+        if (!email || !password) {
 
-    <p>
-        <a href="#" onclick="sendResetLink(); return false;">
-            Forgot Password?
-        </a>
-    </p>
+            alert("Please enter email and password.");
 
-
-    <!-- ========================= -->
-    <!-- SUPABASE -->
-    <!-- ========================= -->
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <script src="../js/supabase.js"></script>
-
-
-    <script>
-
-        // =========================================
-        // ADMIN LOGIN
-        // =========================================
-
-        async function loginAdmin() {
-
-            const email =
-                document.getElementById("email").value.trim();
-
-            const password =
-                document.getElementById("password").value;
-
-
-            if (!email || !password) {
-
-                alert("Please enter email and password.");
-
-                return;
-            }
-
-
-            const { data, error } =
-                await supabaseClient.auth.signInWithPassword({
-
-                    email: email,
-
-                    password: password
-
-                });
-
-
-            if (error) {
-
-                alert(error.message);
-
-                return;
-            }
-
-
-            const user =
-                data.user;
-
-
-            // =========================================
-            // CHECK ADMIN USER
-            // =========================================
-
-            const { data: admin, error: adminError } =
-                await supabaseClient
-                    .from("admin_users")
-                    .select("id, email")
-                    .eq("id", user.id)
-                    .maybeSingle();
-
-
-            if (adminError || !admin) {
-
-                await supabaseClient.auth.signOut();
-
-                alert("You are not authorized as an admin.");
-
-                return;
-            }
-
-
-            // =========================================
-            // LOGIN SUCCESS
-            // =========================================
-
-            window.location.href =
-                "dashboard.html";
-
+            return;
         }
 
+        const { data, error } =
+            await supabaseClient.auth.signInWithPassword({
 
-        // =========================================
-        // FORGOT PASSWORD
-        // =========================================
+                email: email,
+                password: password
 
-        async function sendResetLink() {
+            });
 
-            const email =
-                document.getElementById("email").value.trim();
+        if (error) {
 
+            alert(error.message);
 
-            // Check email
-            if (!email) {
+            return;
+        }
 
-                alert(
-                    "Please enter your admin email address first."
-                );
+        const user = data.user;
 
-                document.getElementById("email").focus();
+        const { data: admin, error: adminError } =
+            await supabaseClient
+                .from("admin_users")
+                .select("id, email")
+                .eq("id", user.id)
+                .maybeSingle();
 
-                return;
-            }
+        if (adminError || !admin) {
 
+            await supabaseClient.auth.signOut();
 
-            // Send password reset email
-            const { error } =
-                await supabaseClient.auth.resetPasswordForEmail(
+            alert("You are not authorized as an admin.");
 
-                    email,
+            return;
+        }
 
-                    {
-                        redirectTo:
-                            "https://krishkakadiya1602.github.io/code-with-me/admin/update-password.html"
-                    }
-
-                );
-
-
-            // Error
-            if (error) {
-
-                alert(
-                    "Password reset failed: " +
-                    error.message
-                );
-
-                return;
-            }
+        window.location.href = "dashboard.html";
+    }
 
 
-            // Success
+    // =========================================
+    // FORGOT PASSWORD
+    // =========================================
+
+    async function sendResetLink() {
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        if (!email) {
+
             alert(
-                "Password reset link has been sent to your email. " +
-                "Please check your inbox."
+                "Please enter your admin email address first."
             );
 
+            document.getElementById("email").focus();
+
+            return;
         }
 
-    </script>
+        const { error } =
+            await supabaseClient.auth.resetPasswordForEmail(
 
-</body>
+                email,
 
-</html>
-```
+                {
+                    redirectTo:
+                        "https://krishkakadiya1602.github.io/code-with-me/admin/update-password.html"
+                }
 
-### શું બદલ્યું છે?
+            );
 
-**1. Forgot Password link**
+        if (error) {
 
-તમારા જૂના codeમાં:
+            alert(
+                "Password reset failed: " +
+                error.message
+            );
 
-```html
-<a href="update-password.html">
-    Forgot Password?
-</a>
-```
+            return;
+        }
 
-તેની જગ્યાએ હવે:
-
-```html
-<a href="#" onclick="sendResetLink(); return false;">
-    Forgot Password?
-</a>
-```
-
-એટલે user જ્યારે **Forgot Password?** પર click કરશે ત્યારે `sendResetLink()` function ચાલશે.
-
-**2. `sendResetLink()` function**
-
-આ function:
-
-```javascript
-async function sendResetLink() {
-
-    const email =
-        document.getElementById("email").value.trim();
-
-    if (!email) {
         alert(
-            "Please enter your admin email address first."
+            "Password reset link has been sent to your email. " +
+            "Please check your inbox."
         );
-        return;
     }
 
-    const { error } =
-        await supabaseClient.auth.resetPasswordForEmail(
-            email,
-            {
-                redirectTo:
-                    "https://krishkakadiya1602.github.io/code-with-me/admin/update-password.html"
-            }
-        );
-
-    if (error) {
-        alert(
-            "Password reset failed: " +
-            error.message
-        );
-        return;
-    }
-
-    alert(
-        "Password reset link has been sent to your email. " +
-        "Please check your inbox."
-    );
-}
-```
+</script>
