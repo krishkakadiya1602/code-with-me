@@ -1,0 +1,915 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Colors | Code With Me</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* HEADER */
+
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* INFO BOX */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #1d4ed8;
+        }
+
+        /* CODE */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* COLOR BOXES */
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .color-card {
+            padding: 25px;
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .red {
+            background: red;
+        }
+
+        .blue {
+            background: blue;
+        }
+
+        .green {
+            background: green;
+        }
+
+        .orange {
+            background: orange;
+        }
+
+        .purple {
+            background: purple;
+        }
+
+        .black {
+            background: black;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* EDITOR */
+
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 250px;
+            padding: 15px;
+            background: #111827;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        iframe {
+            width: 100%;
+            height: 280px;
+            border: 2px solid #ddd;
+            margin-top: 20px;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* NAVIGATION */
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        Code <span>WithMe</span>
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- PAGE HEADER -->
+
+<header class="page-header">
+
+    <h1>CSS Colors</h1>
+
+    <p>
+        Learn how to use colors in CSS
+    </p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- INTRODUCTION -->
+
+<section>
+
+    <h2>Introduction to CSS Colors</h2>
+
+    <p>
+        Colors are an important part of web design.
+        CSS allows you to change the color of text,
+        backgrounds, borders and many other elements.
+    </p>
+
+    <p>
+        CSS provides several different ways to specify
+        colors, including color names, HEX values,
+        RGB, RGBA, HSL and HSLA.
+    </p>
+
+    <div class="info-box">
+
+        <strong>Remember:</strong>
+
+        CSS colors can be used with properties such as
+        <b>color</b>, <b>background-color</b> and
+        <b>border-color</b>.
+
+    </div>
+
+</section>
+
+
+<!-- COLOR NAMES -->
+
+<section>
+
+    <h2>1. CSS Color Names</h2>
+
+    <p>
+        CSS supports many predefined color names.
+    </p>
+
+    <p>
+        For example:
+    </p>
+
+<pre><code>p {
+    color: red;
+}
+
+h1 {
+    color: blue;
+}
+
+div {
+    background-color: green;
+}</code></pre>
+
+
+    <h3>Common Color Names</h3>
+
+    <div class="color-grid">
+
+        <div class="color-card red">
+            Red
+        </div>
+
+        <div class="color-card blue">
+            Blue
+        </div>
+
+        <div class="color-card green">
+            Green
+        </div>
+
+        <div class="color-card orange">
+            Orange
+        </div>
+
+        <div class="color-card purple">
+            Purple
+        </div>
+
+        <div class="color-card black">
+            Black
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HEX -->
+
+<section>
+
+    <h2>2. HEX Colors</h2>
+
+    <p>
+        HEX stands for hexadecimal.
+        HEX colors start with a <b>#</b> symbol.
+    </p>
+
+    <p>
+        A HEX color normally contains six hexadecimal
+        characters.
+    </p>
+
+<pre><code>h1 {
+    color: #ff0000;
+}
+
+p {
+    color: #0000ff;
+}
+
+div {
+    background-color: #00ff00;
+}</code></pre>
+
+    <div class="info-box">
+
+        <strong>Example:</strong>
+
+        <br>
+
+        #ff0000 = Red
+
+        <br>
+
+        #00ff00 = Green
+
+        <br>
+
+        #0000ff = Blue
+
+        <br>
+
+        #000000 = Black
+
+        <br>
+
+        #ffffff = White
+
+    </div>
+
+</section>
+
+
+<!-- RGB -->
+
+<section>
+
+    <h2>3. RGB Colors</h2>
+
+    <p>
+        RGB means Red, Green and Blue.
+    </p>
+
+    <p>
+        RGB uses three values between 0 and 255.
+    </p>
+
+<pre><code>p {
+    color: rgb(255, 0, 0);
+}
+
+h2 {
+    color: rgb(0, 0, 255);
+}
+
+div {
+    background-color: rgb(0, 255, 0);
+}</code></pre>
+
+    <table>
+
+        <tr>
+            <th>RGB Value</th>
+            <th>Color</th>
+        </tr>
+
+        <tr>
+            <td>rgb(255, 0, 0)</td>
+            <td>Red</td>
+        </tr>
+
+        <tr>
+            <td>rgb(0, 255, 0)</td>
+            <td>Green</td>
+        </tr>
+
+        <tr>
+            <td>rgb(0, 0, 255)</td>
+            <td>Blue</td>
+        </tr>
+
+        <tr>
+            <td>rgb(0, 0, 0)</td>
+            <td>Black</td>
+        </tr>
+
+        <tr>
+            <td>rgb(255, 255, 255)</td>
+            <td>White</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- RGBA -->
+
+<section>
+
+    <h2>4. RGBA Colors</h2>
+
+    <p>
+        RGBA is an extension of RGB.
+        The A stands for Alpha.
+    </p>
+
+    <p>
+        Alpha controls the transparency of a color.
+        Its value can range from 0 to 1.
+    </p>
+
+<pre><code>div {
+    background-color: rgba(255, 0, 0, 0.5);
+}</code></pre>
+
+    <p>
+        In the example above, the red color has
+        50% transparency.
+    </p>
+
+</section>
+
+
+<!-- HSL -->
+
+<section>
+
+    <h2>5. HSL Colors</h2>
+
+    <p>
+        HSL stands for Hue, Saturation and Lightness.
+    </p>
+
+<pre><code>h1 {
+    color: hsl(0, 100%, 50%);
+}
+
+p {
+    color: hsl(240, 100%, 50%);
+}</code></pre>
+
+    <h3>HSL Components</h3>
+
+    <table>
+
+        <tr>
+            <th>Component</th>
+            <th>Meaning</th>
+        </tr>
+
+        <tr>
+            <td>Hue</td>
+            <td>The color itself</td>
+        </tr>
+
+        <tr>
+            <td>Saturation</td>
+            <td>Intensity of the color</td>
+        </tr>
+
+        <tr>
+            <td>Lightness</td>
+            <td>Brightness of the color</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- HSLA -->
+
+<section>
+
+    <h2>6. HSLA Colors</h2>
+
+    <p>
+        HSLA is similar to HSL but also includes
+        an Alpha value for transparency.
+    </p>
+
+<pre><code>div {
+    background-color: hsla(240, 100%, 50%, 0.5);
+}</code></pre>
+
+    <p>
+        The last value controls the transparency.
+    </p>
+
+</section>
+
+
+<!-- COLOR PROPERTIES -->
+
+<section>
+
+    <h2>7. CSS Color Properties</h2>
+
+    <p>
+        Colors can be applied to different CSS properties.
+    </p>
+
+<pre><code>/* Text color */
+
+p {
+    color: blue;
+}
+
+
+/* Background color */
+
+body {
+    background-color: lightgray;
+}
+
+
+/* Border color */
+
+div {
+    border: 2px solid red;
+}</code></pre>
+
+</section>
+
+
+<!-- LIVE EDITOR -->
+
+<section>
+
+    <h2>Try CSS Colors Yourself</h2>
+
+    <p>
+        Change the code below and click
+        <b>Run Code</b> to see the result.
+    </p>
+
+
+    <div class="editor">
+
+<textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body {
+    background-color: #f0f8ff;
+}
+
+h1 {
+    color: #2563eb;
+}
+
+p {
+    color: rgb(50, 50, 50);
+}
+
+.box {
+    background-color: rgba(255, 0, 0, 0.5);
+    padding: 20px;
+    border: 3px solid blue;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>CSS Colors</h1>
+
+<p>This paragraph uses an RGB color.</p>
+
+<div class="box">
+    This box uses RGBA and a blue border.
+</div>
+
+</body>
+
+</html></textarea>
+
+
+        <div class="buttons">
+
+            <button
+                class="run-btn"
+                onclick="runCode()">
+                ▶ Run Code
+            </button>
+
+            <button
+                class="clear-btn"
+                onclick="clearCode()">
+                ✕ Clear
+            </button>
+
+        </div>
+
+
+        <iframe
+            id="output"
+            title="CSS Color Output">
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- KEY POINTS -->
+
+<section>
+
+    <h2>CSS Colors - Key Points</h2>
+
+    <ul>
+
+        <li>
+            CSS supports many predefined color names.
+        </li>
+
+        <li>
+            HEX colors start with #.
+        </li>
+
+        <li>
+            RGB uses Red, Green and Blue values.
+        </li>
+
+        <li>
+            RGBA adds transparency to RGB.
+        </li>
+
+        <li>
+            HSL uses Hue, Saturation and Lightness.
+        </li>
+
+        <li>
+            HSLA adds transparency to HSL.
+        </li>
+
+        <li>
+            Colors can be used for text, backgrounds
+            and borders.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- PREVIOUS NEXT -->
+
+<div class="navigation">
+
+    <a href="css-comments.html">
+        ← Previous: CSS Comments
+    </a>
+
+    <a href="css-backgrounds.html">
+        Next: CSS Backgrounds →
+    </a>
+
+</div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Code With Me | Learn Coding
+    </p>
+
+    <p>
+        HTML • CSS • JavaScript • Python
+    </p>
+
+</footer>
+
+
+<script>
+
+function runCode() {
+
+    const code =
+        document.getElementById("codeEditor").value;
+
+    document.getElementById("output").srcdoc = code;
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").srcdoc = "";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
