@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Backgrounds | Code With Me</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* PAGE HEADER */
+
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        .section ul,
+        .section ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* INFO BOX */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* CODE */
+
+        .code-title {
+            background: #1e293b;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 7px 7px 0 0;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* DEMO BOXES */
+
+        .demo {
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .background-color-demo {
+            background-color: lightblue;
+        }
+
+        .gradient-demo {
+            background: linear-gradient(90deg, #2563eb, #9333ea);
+            color: white;
+        }
+
+        .radial-demo {
+            background: radial-gradient(circle, #38bdf8, #2563eb);
+            color: white;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* EDITOR */
+
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 350px;
+            padding: 15px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        button {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-right: 10px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 320px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: white;
+        }
+
+        /* NAVIGATION */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav a {
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        Code <span>With Me</span>
+    </div>
+
+    <div>
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="../index.html#courses">
+            Courses
+        </a>
+
+        <a href="../index.html#css-course">
+            CSS
+        </a>
+
+        <a href="../index.html#about">
+            About
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- PAGE HEADER -->
+
+<header class="page-header">
+
+    <h1>CSS Backgrounds</h1>
+
+    <p>
+        Learn how to add colors, images, gradients, and other
+        background effects with CSS.
+    </p>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+
+    <!-- INTRODUCTION -->
+
+    <section class="section">
+
+        <h2>1. What are CSS Backgrounds?</h2>
+
+        <p>
+            CSS background properties are used to control the
+            background of HTML elements.
+        </p>
+
+        <p>
+            You can use CSS backgrounds to add colors, images,
+            gradients, patterns, and other visual effects.
+        </p>
+
+        <div class="info-box">
+
+            <strong>Common CSS background properties:</strong>
+
+            <ul>
+
+                <li>background-color</li>
+
+                <li>background-image</li>
+
+                <li>background-repeat</li>
+
+                <li>background-position</li>
+
+                <li>background-size</li>
+
+                <li>background-attachment</li>
+
+                <li>background</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- BACKGROUND COLOR -->
+
+    <section class="section">
+
+        <h2>2. CSS background-color</h2>
+
+        <p>
+            The <strong>background-color</strong> property is used
+            to set the background color of an element.
+        </p>
+
+        <div class="code-title">
+            CSS
+        </div>
+
+        <pre><code>body {
+    background-color: lightblue;
+}</code></pre>
+
+        <h3>Example</h3>
+
+        <pre><code>div {
+    background-color: yellow;
+}</code></pre>
+
+        <div class="demo background-color-demo">
+            This box has a light blue background.
+        </div>
+
+    </section>
+
+
+    <!-- BACKGROUND IMAGE -->
+
+    <section class="section">
+
+        <h2>3. CSS background-image</h2>
+
+        <p>
+            The <strong>background-image</strong> property is used
+            to add an image as the background of an element.
+        </p>
+
+        <pre><code>body {
+    background-image: url("image.jpg");
+}</code></pre>
+
+        <p>
+            The <strong>url()</strong> function specifies the
+            location of the image.
+        </p>
+
+        <h3>Example</h3>
+
+        <pre><code>.box {
+    background-image: url("background.jpg");
+}</code></pre>
+
+        <div class="warning-box">
+
+            <strong>Important:</strong>
+
+            Make sure the image path is correct.
+            A wrong image path will prevent the browser from
+            displaying the background image.
+
+        </div>
+
+    </section>
+
+
+    <!-- BACKGROUND REPEAT -->
+
+    <section class="section">
+
+        <h2>4. CSS background-repeat</h2>
+
+        <p>
+            By default, a background image can repeat.
+            The <strong>background-repeat</strong> property
+            controls this behavior.
+        </p>
+
+        <h3>Common Values</h3>
+
+        <ul>
+
+            <li>
+                <strong>repeat</strong> - repeats horizontally
+                and vertically.
+            </li>
+
+            <li>
+                <strong>repeat-x</strong> - repeats horizontally.
+            </li>
+
+            <li>
+                <strong>repeat-y</strong> - repeats vertically.
+            </li>
+
+            <li>
+                <strong>no-repeat</strong> - does not repeat.
+            </li>
+
+        </ul>
+
+        <pre><code>body {
+    background-image: url("image.jpg");
+    background-repeat: no-repeat;
+}</code></pre>
+
+    </section>
+
+
+    <!-- BACKGROUND POSITION -->
+
+    <section class="section">
+
+        <h2>5. CSS background-position</h2>
+
+        <p>
+            The <strong>background-position</strong> property
+            specifies the position of a background image.
+        </p>
+
+        <pre><code>body {
+    background-image: url("image.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}</code></pre>
+
+        <h3>Common Values</h3>
+
+        <ul>
+
+            <li>left</li>
+
+            <li>right</li>
+
+            <li>top</li>
+
+            <li>bottom</li>
+
+            <li>center</li>
+
+        </ul>
+
+        <h3>Example</h3>
+
+        <pre><code>.box {
+    background-position: center center;
+}</code></pre>
+
+    </section>
+
+
+    <!-- BACKGROUND SIZE -->
+
+    <section class="section">
+
+        <h2>6. CSS background-size</h2>
+
+        <p>
+            The <strong>background-size</strong> property controls
+            the size of a background image.
+        </p>
+
+        <h3>cover</h3>
+
+        <p>
+            The <strong>cover</strong> value makes the image cover
+            the entire element.
+        </p>
+
+        <pre><code>body {
+    background-image: url("image.jpg");
+    background-size: cover;
+}</code></pre>
+
+        <h3>contain</h3>
+
+        <p>
+            The <strong>contain</strong> value scales the image so
+            the complete image is visible.
+        </p>
+
+        <pre><code>body {
+    background-image: url("image.jpg");
+    background-size: contain;
+}</code></pre>
+
+        <h3>Specific Size</h3>
+
+        <pre><code>.box {
+    background-size: 300px 200px;
+}</code></pre>
+
+    </section>
+
+
+    <!-- BACKGROUND ATTACHMENT -->
+
+    <section class="section">
+
+        <h2>7. CSS background-attachment</h2>
+
+        <p>
+            The <strong>background-attachment</strong> property
+            determines whether the background image scrolls
+            with the page.
+        </p>
+
+        <h3>scroll</h3>
+
+        <pre><code>body {
+    background-attachment: scroll;
+}</code></pre>
+
+        <h3>fixed</h3>
+
+        <pre><code>body {
+    background-attachment: fixed;
+}</code></pre>
+
+        <p>
+            With <strong>fixed</strong>, the background image
+            remains fixed while the page content scrolls.
+        </p>
+
+    </section>
+
+
+    <!-- BACKGROUND SHORTHAND -->
+
+    <section class="section">
+
+        <h2>8. CSS Background Shorthand</h2>
+
+        <p>
+            Instead of writing several background properties,
+            you can combine them using the
+            <strong>background</strong> shorthand property.
+        </p>
+
+        <pre><code>body {
+    background: lightblue url("image.jpg")
+               no-repeat center / cover;
+}</code></pre>
+
+        <p>
+            The shorthand property can make CSS code shorter,
+            although separate properties can sometimes be easier
+            to read.
+        </p>
+
+    </section>
+
+
+    <!-- LINEAR GRADIENT -->
+
+    <section class="section">
+
+        <h2>9. CSS Linear Gradient</h2>
+
+        <p>
+            A linear gradient creates a smooth transition
+            between colors.
+        </p>
+
+        <pre><code>div {
+    background: linear-gradient(
+        to right,
+        blue,
+        purple
+    );
+}</code></pre>
+
+        <div class="demo gradient-demo">
+            Linear Gradient Example
+        </div>
+
+        <h3>Multiple Colors</h3>
+
+        <pre><code>div {
+    background: linear-gradient(
+        to right,
+        red,
+        yellow,
+        green
+    );
+}</code></pre>
+
+    </section>
+
+
+    <!-- RADIAL GRADIENT -->
+
+    <section class="section">
+
+        <h2>10. CSS Radial Gradient</h2>
+
+        <p>
+            A radial gradient creates a circular or elliptical
+            color transition.
+        </p>
+
+        <pre><code>div {
+    background: radial-gradient(
+        circle,
+        lightblue,
+        blue
+    );
+}</code></pre>
+
+        <div class="demo radial-demo">
+            Radial Gradient Example
+        </div>
+
+    </section>
+
+
+    <!-- MULTIPLE BACKGROUNDS -->
+
+    <section class="section">
+
+        <h2>11. Multiple Background Images</h2>
+
+        <p>
+            CSS allows you to use multiple background images
+            on the same element.
+        </p>
+
+        <pre><code>div {
+    background-image:
+        url("image1.png"),
+        url("image2.png");
+}</code></pre>
+
+        <p>
+            The first image is placed on top of the second image.
+        </p>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+
+    <section class="section">
+
+        <h2>12. CSS Background Properties Summary</h2>
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Property
+                </th>
+
+                <th>
+                    Purpose
+                </th>
+
+                <th>
+                    Example
+                </th>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    background-color
+                </td>
+
+                <td>
+                    Sets background color
+                </td>
+
+                <td>
+                    background-color: blue;
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    background-image
+                </td>
+
+                <td>
+                    Adds background image
+                </td>
+
+                <td>
+                    background-image: url("image.jpg");
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    background-repeat
+                </td>
+
+                <td>
+                    Controls image repetition
+                </td>
+
+                <td>
+                    background-repeat: no-repeat;
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    background-position
+                </td>
+
+                <td>
+                    Sets image position
+                </td>
+
+                <td>
+                    background-position: center;
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    background-size
+                </td>
+
+                <td>
+                    Controls image size
+                </td>
+
+                <td>
+                    background-size: cover;
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    background-attachment
+                </td>
+
+                <td>
+                    Controls scrolling behavior
+                </td>
+
+                <td>
+                    background-attachment: fixed;
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    background
+                </td>
+
+                <td>
+                    Shorthand property
+                </td>
+
+                <td>
+                    background: blue;
+                </td>
+
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- LIVE EDITOR -->
+
+    <section class="section">
+
+        <h2>13. Try CSS Backgrounds Yourself</h2>
+
+        <p>
+            Change the CSS below and click
+            <strong>Run Code</strong> to see the result.
+        </p>
+
+        <div class="editor">
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #9333ea
+    );
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: white;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.9),
+            rgba(255,255,255,0.9)
+        );
+
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+}
+
+h1 {
+    color: #2563eb;
+}
+
+p {
+    color: #555;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>CSS Backgrounds</h1>
+
+    <p>
+        I am learning CSS backgrounds.
+    </p>
+
+    <button>
+        Learn CSS
+    </button>
+
+</div>
+
+</body>
+
+</html></textarea>
+
+
+            <div class="buttons">
+
+                <button
+                    class="run-btn"
+                    onclick="runCode()">
+
+                    ▶ Run Code
+
+                </button>
+
+                <button
+                    class="clear-btn"
+                    onclick="clearCode()">
+
+                    Clear
+
+                </button>
+
+            </div>
+
+
+            <iframe
+                id="output"
+                title="CSS Background Output">
+            </iframe>
+
+        </div>
+
+    </section>
+
+
+    <!-- KEY POINTS -->
+
+    <section class="section">
+
+        <h2>14. Key Points</h2>
+
+        <ul>
+
+            <li>
+                Use <strong>background-color</strong> to add
+                a background color.
+            </li>
+
+            <li>
+                Use <strong>background-image</strong> to add
+                a background image.
+            </li>
+
+            <li>
+                Use <strong>background-repeat</strong> to
+                control image repetition.
+            </li>
+
+            <li>
+                Use <strong>background-position</strong> to
+                position the background image.
+            </li>
+
+            <li>
+                Use <strong>background-size</strong> to control
+                image size.
+            </li>
+
+            <li>
+                Use <strong>background-attachment</strong> to
+                control background scrolling.
+            </li>
+
+            <li>
+                Use <strong>linear-gradient()</strong> for
+                linear color gradients.
+            </li>
+
+            <li>
+                Use <strong>radial-gradient()</strong> for
+                radial color gradients.
+            </li>
+
+            <li>
+                The <strong>background</strong> property can
+                combine multiple background settings.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="lesson-navigation">
+
+        <a href="css-comments.html">
+            ← Previous: CSS Comments
+        </a>
+
+        <a href="../index.html">
+            🏠 Home
+        </a>
+
+        <a href="css-colors.html">
+            Next: CSS Colors →
+        </a>
+
+    </div>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Code With Me | Learn Coding
+    </p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function runCode() {
+
+    const code =
+        document.getElementById("codeEditor").value;
+
+    const output =
+        document.getElementById("output");
+
+    output.srcdoc = code;
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").srcdoc = "";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
