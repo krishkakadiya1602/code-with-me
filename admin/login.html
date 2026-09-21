@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | Code With Me</title>
+
+</head>
+
+<body>
+
+    <h1>Code With Me Admin Login</h1>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Admin Email"
+    >
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Password"
+    >
+
+    <button onclick="loginAdmin()">
+        Login
+    </button>
+
+    <p>
+        <a href="update-password.html">
+            Forgot Password?
+        </a>
+    </p>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../js/supabase.js"></script>
+
+
+    <script>
+
+        async function loginAdmin() {
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+
+            if (!email || !password) {
+
+                alert("Please enter email and password.");
+
+                return;
+            }
+
+
+            const { data, error } =
+                await supabaseClient.auth.signInWithPassword({
+
+                    email: email,
+
+                    password: password
+
+                });
+
+
+            if (error) {
+
+                alert(error.message);
+
+                return;
+            }
+
+
+            const user =
+                data.user;
+
+
+            const { data: admin, error: adminError } =
+                await supabaseClient
+                    .from("admin_users")
+                    .select("id, email")
+                    .eq("id", user.id)
+                    .maybeSingle();
+
+
+            if (adminError || !admin) {
+
+                await supabaseClient.auth.signOut();
+
+                alert("You are not authorized as an admin.");
+
+                return;
+            }
+
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
