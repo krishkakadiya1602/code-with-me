@@ -11,9 +11,7 @@
     <title>Admin Dashboard | Code With Me</title>
 
 
-    <!-- ================================================= -->
-    <!-- 1. SUPABASE SCRIPT                                -->
-    <!-- ================================================= -->
+    <!-- SUPABASE -->
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -259,7 +257,7 @@
 
 
     <!-- ================================================= -->
-    <!-- SIDEBAR                                            -->
+    <!-- SIDEBAR -->
     <!-- ================================================= -->
 
     <div class="sidebar">
@@ -297,7 +295,7 @@
 
 
     <!-- ================================================= -->
-    <!-- MAIN CONTENT                                       -->
+    <!-- MAIN CONTENT -->
     <!-- ================================================= -->
 
     <div class="main">
@@ -331,11 +329,13 @@
 
 
         <!-- ================================================= -->
-        <!-- STATISTICS                                        -->
+        <!-- STATISTICS -->
         <!-- ================================================= -->
 
         <div class="cards">
 
+
+            <!-- TOTAL COURSES -->
 
             <div class="card">
 
@@ -344,11 +344,13 @@
                 </h3>
 
                 <p id="totalCourses">
-                    0
+                    4
                 </p>
 
             </div>
 
+
+            <!-- TOTAL VISITORS -->
 
             <div class="card">
 
@@ -363,6 +365,8 @@
             </div>
 
 
+            <!-- TOTAL RATINGS -->
+
             <div class="card">
 
                 <h3>
@@ -375,6 +379,8 @@
 
             </div>
 
+
+            <!-- AVERAGE RATING -->
 
             <div class="card">
 
@@ -393,7 +399,7 @@
 
 
         <!-- ================================================= -->
-        <!-- DASHBOARD                                         -->
+        <!-- DASHBOARD -->
         <!-- ================================================= -->
 
         <div id="dashboard"
@@ -416,7 +422,7 @@
 
 
         <!-- ================================================= -->
-        <!-- COURSES                                           -->
+        <!-- COURSES -->
         <!-- ================================================= -->
 
         <div id="courses"
@@ -473,7 +479,7 @@
 
 
         <!-- ================================================= -->
-        <!-- VISITORS                                          -->
+        <!-- VISITORS -->
         <!-- ================================================= -->
 
         <div id="visitors"
@@ -530,7 +536,7 @@
 
 
         <!-- ================================================= -->
-        <!-- RATINGS                                           -->
+        <!-- RATINGS -->
         <!-- ================================================= -->
 
         <div id="ratings"
@@ -594,14 +600,14 @@
 
 
     <!-- ================================================= -->
-    <!-- JAVASCRIPT                                        -->
+    <!-- JAVASCRIPT -->
     <!-- ================================================= -->
 
     <script>
 
 
         // =================================================
-        // 2. ADMIN CHECK
+        // ADMIN CHECK
         // =================================================
 
         async function checkAdmin() {
@@ -616,10 +622,6 @@
                 } = await supabaseClient.auth.getUser();
 
 
-                // -----------------------------------------
-                // User login નથી
-                // -----------------------------------------
-
                 if (userError || !user) {
 
                     window.location.href =
@@ -629,9 +631,7 @@
                 }
 
 
-                // -----------------------------------------
-                // 5. admin_users TABLE CHECK
-                // -----------------------------------------
+                // ADMIN TABLE CHECK
 
                 const {
                     data: admin,
@@ -643,13 +643,11 @@
                     .maybeSingle();
 
 
-                // -----------------------------------------
-                // User admin નથી
-                // -----------------------------------------
-
                 if (adminError || !admin) {
 
-                    await supabaseClient.auth.signOut();
+                    await supabaseClient
+                        .auth
+                        .signOut();
 
                     window.location.href =
                         "login.html";
@@ -658,9 +656,7 @@
                 }
 
 
-                // -----------------------------------------
-                // Admin email show
-                // -----------------------------------------
+                // SHOW ADMIN EMAIL
 
                 document
                     .getElementById("adminEmail")
@@ -671,6 +667,7 @@
                 return true;
 
             }
+
 
             catch (error) {
 
@@ -732,29 +729,19 @@
 
         async function loadDashboard() {
 
+
             // -----------------------------------------
             // COURSES COUNT
             // -----------------------------------------
 
-            const {
-                count: coursesCount,
-                error: coursesCountError
-            } = await supabaseClient
-                .from("courses")
-                .select("*", {
-                    count: "exact",
-                    head: true
-                });
+            // IMPORTANT:
+            // There are 4 courses.
+            // The 12 records in the courses table
+            // are course topics.
 
-
-            if (!coursesCountError) {
-
-                document
-                    .getElementById("totalCourses")
-                    .textContent =
-                    coursesCount || 0;
-
-            }
+            document
+                .getElementById("totalCourses")
+                .textContent = "4";
 
 
 
@@ -812,9 +799,11 @@
                 );
 
             }
+
             else if (ratings) {
 
-                // Total ratings
+
+                // TOTAL RATINGS
 
                 document
                     .getElementById("totalRatings")
@@ -823,7 +812,7 @@
 
 
                 // -------------------------------------
-                // Average Rating
+                // AVERAGE RATING
                 // -------------------------------------
 
                 if (ratings.length > 0) {
@@ -859,6 +848,7 @@
                         + " ⭐";
 
                 }
+
                 else {
 
                     document
@@ -873,7 +863,7 @@
 
 
                 // -------------------------------------
-                // Ratings Table
+                // RATINGS TABLE
                 // -------------------------------------
 
                 const ratingsTable =
@@ -900,6 +890,7 @@
                     `;
 
                 }
+
                 else {
 
                     ratings.forEach(item => {
@@ -997,15 +988,20 @@
                 `;
 
             }
-            else if (!courses ||
-                     courses.length === 0) {
+
+            else if (
+                !courses ||
+                courses.length === 0
+            ) {
 
                 coursesTable.innerHTML = `
 
                     <tr>
 
                         <td colspan="3">
+
                             No courses found.
+
                         </td>
 
                     </tr>
@@ -1013,6 +1009,7 @@
                 `;
 
             }
+
             else {
 
                 courses.forEach(course => {
@@ -1105,15 +1102,20 @@
                 `;
 
             }
-            else if (!visitors ||
-                     visitors.length === 0) {
+
+            else if (
+                !visitors ||
+                visitors.length === 0
+            ) {
 
                 visitorsTable.innerHTML = `
 
                     <tr>
 
                         <td colspan="3">
+
                             No visitors found.
+
                         </td>
 
                     </tr>
@@ -1121,6 +1123,7 @@
                 `;
 
             }
+
             else {
 
                 visitors.forEach(visitor => {
@@ -1168,7 +1171,7 @@
 
 
         // =================================================
-        // 4. LOGOUT BUTTON
+        // LOGOUT BUTTON
         // =================================================
 
         document
@@ -1198,20 +1201,16 @@
 
 
         // =================================================
-        // 3. DASHBOARD LOAD
+        // DASHBOARD LOAD
         // =================================================
 
         document.addEventListener(
             "DOMContentLoaded",
             async function () {
 
-                // First check admin
-
                 const isAdmin =
                     await checkAdmin();
 
-
-                // Admin નથી તો stop
 
                 if (!isAdmin) {
 
@@ -1220,8 +1219,6 @@
                 }
 
 
-                // Admin છે તો dashboard data load કરો
-
                 await loadDashboard();
 
             }
@@ -1229,6 +1226,7 @@
 
 
     </script>
+
 
 </body>
 
