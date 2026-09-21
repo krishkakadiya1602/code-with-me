@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -9,290 +10,1933 @@
 
     <title>CSS Syntax | Code With Me</title>
 
+    <meta name="description"
+          content="Learn CSS syntax including selectors, properties, values, declarations and declaration blocks with practical examples.">
+
+    <meta name="keywords"
+          content="CSS syntax, CSS selector, CSS property, CSS value, CSS declaration, learn CSS">
+
+    <meta name="author"
+          content="Code With Me">
+
+
     <style>
+
+        /* =========================
+           RESET
+        ========================= */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
 
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
+            font-family: Arial, Helvetica, sans-serif;
+
             background: #f8fafc;
+
             color: #111827;
+
             line-height: 1.7;
         }
 
-        header {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: #111827;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .nav-container {
+            max-width: 1200px;
+
+            margin: auto;
+
+            min-height: 70px;
+
+            padding: 0 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .logo {
             color: white;
+
+            text-decoration: none;
+
+            font-size: 27px;
+
+            font-weight: bold;
+        }
+
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+
+        .nav-links {
+            display: flex;
+
+            list-style: none;
+
+            gap: 25px;
+        }
+
+
+        .nav-links a {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 16px;
+
+            transition: color 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #111827,
+                    #1e3a8a
+                );
+
+            color: white;
+
             text-align: center;
-            padding: 60px 20px;
+
+            padding: 70px 20px;
         }
 
-        header h1 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
 
-        header p {
-            font-size: 18px;
-        }
+        .page-header h1 {
+            font-size: 46px;
 
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        .content-box {
-            background: white;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        h2 {
-            color: #2563eb;
             margin-bottom: 15px;
         }
 
-        pre {
-            background: #111827;
-            color: #f8fafc;
+
+        .page-header p {
+            font-size: 19px;
+
+            color: #dbeafe;
+
+            max-width: 800px;
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 50px 20px;
+        }
+
+
+        .lesson-section {
+            background: white;
+
+            padding: 35px;
+
+            margin-bottom: 30px;
+
+            border-radius: 15px;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+
+        .lesson-section h2 {
+            color: #1d4ed8;
+
+            font-size: 30px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .lesson-section h3 {
+            color: #2563eb;
+
+            font-size: 22px;
+
+            margin-top: 25px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .lesson-section p {
+            color: #475569;
+
+            margin-bottom: 15px;
+        }
+
+
+        .lesson-section ul {
+            margin-left: 25px;
+
+            color: #475569;
+
+            margin-bottom: 15px;
+        }
+
+
+        .lesson-section li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           IMPORTANT BOX
+        ========================= */
+
+        .info-box {
+            background: #eff6ff;
+
+            border-left: 5px solid #2563eb;
+
             padding: 20px;
+
+            border-radius: 8px;
+
+            margin: 20px 0;
+        }
+
+
+        .info-box strong {
+            color: #1d4ed8;
+        }
+
+
+        .tip-box {
+            background: #f0fdf4;
+
+            border-left: 5px solid #16a34a;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            margin: 20px 0;
+        }
+
+
+        .warning-box {
+            background: #fff7ed;
+
+            border-left: 5px solid #f97316;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            margin: 20px 0;
+        }
+
+
+        /* =========================
+           CODE BLOCK
+        ========================= */
+
+        .code-title {
+            background: #111827;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius:
+                8px 8px 0 0;
+
+            font-weight: bold;
+        }
+
+
+        pre {
+            background: #0f172a;
+
+            color: #e2e8f0;
+
+            padding: 20px;
+
+            overflow-x: auto;
+
+            border-radius:
+                0 0 8px 8px;
+
+            margin-bottom: 20px;
+        }
+
+
+        code {
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            font-size: 15px;
+        }
+
+
+        .inline-code {
+            background: #e2e8f0;
+
+            color: #be123c;
+
+            padding: 3px 7px;
+
+            border-radius: 5px;
+
+            font-family: monospace;
+        }
+
+
+        /* =========================
+           SYNTAX DIAGRAM
+        ========================= */
+
+        .syntax-box {
+            background: #0f172a;
+
+            color: white;
+
+            padding: 25px;
+
             border-radius: 10px;
+
+            text-align: center;
+
+            font-family: monospace;
+
+            font-size: 19px;
+
             overflow-x: auto;
         }
 
-        .editor {
+
+        .selector {
+            color: #60a5fa;
+        }
+
+
+        .property {
+            color: #fbbf24;
+        }
+
+
+        .value {
+            color: #4ade80;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+
+        table {
             width: 100%;
-            min-height: 200px;
-            padding: 15px;
-            font-family: monospace;
-            font-size: 15px;
-            border: 2px solid #d1d5db;
-            border-radius: 10px;
-            resize: vertical;
+
+            border-collapse: collapse;
+
+            margin: 20px 0;
         }
 
-        button {
-            margin-top: 15px;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
+
+        th,
+        td {
+            border: 1px solid #cbd5e1;
+
+            padding: 12px;
+
+            text-align: left;
+        }
+
+
+        th {
             background: #2563eb;
+
             color: white;
-            cursor: pointer;
-            font-weight: bold;
         }
 
-        button:hover {
+
+        td {
+            color: #475569;
+        }
+
+
+        /* =========================
+           CODE EDITOR
+        ========================= */
+
+        .editor {
+            margin-top: 20px;
+        }
+
+
+        .editor textarea {
+            width: 100%;
+
+            min-height: 280px;
+
+            resize: vertical;
+
+            padding: 20px;
+
+            background: #0f172a;
+
+            color: #e2e8f0;
+
+            border: none;
+
+            outline: none;
+
+            border-radius: 8px;
+
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+
+
+        .editor-buttons {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 15px;
+        }
+
+
+        .run-btn {
+            background: #2563eb;
+
+            color: white;
+        }
+
+
+        .run-btn:hover {
             background: #1d4ed8;
         }
 
-        iframe {
+
+        .clear-btn {
+            background: #64748b;
+
+            color: white;
+        }
+
+
+        .clear-btn:hover {
+            background: #475569;
+        }
+
+
+        .output-title {
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+
+            color: #1d4ed8;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+
+        #output {
             width: 100%;
-            height: 250px;
-            margin-top: 20px;
-            border: 2px solid #d1d5db;
-            border-radius: 10px;
+
+            min-height: 250px;
+
+            border: 2px solid #cbd5e1;
+
+            border-radius: 8px;
+
             background: white;
         }
 
-        .navigation {
+
+        /* =========================
+           NAVIGATION BUTTONS
+        ========================= */
+
+        .lesson-navigation {
             display: flex;
+
             justify-content: space-between;
-            gap: 15px;
+
+            gap: 20px;
+
+            margin-top: 40px;
+        }
+
+
+        .navigation-btn {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            background: #2563eb;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .navigation-btn:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+
+        .home-btn {
+            background: #111827;
+        }
+
+
+        .home-btn:hover {
+            background: #374151;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px 20px;
+
             margin-top: 30px;
         }
 
-        .navigation a {
-            text-decoration: none;
-            background: #2563eb;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: bold;
+
+        footer p {
+            color: #cbd5e1;
+
+            margin-bottom: 5px;
         }
 
-        .navigation a:hover {
-            background: #1d4ed8;
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .nav-container {
+                flex-direction: column;
+
+                gap: 15px;
+
+                padding: 18px 20px;
+            }
+
+
+            .nav-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+
+            .page-header p {
+                font-size: 17px;
+            }
+
+
+            .lesson-section {
+                padding: 25px 20px;
+            }
+
+
+            .lesson-section h2 {
+                font-size: 26px;
+            }
+
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+
+            .navigation-btn {
+                text-align: center;
+            }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
 
-    <header>
-        <h1>CSS Syntax</h1>
-        <p>Learn the basic syntax of CSS</p>
-    </header>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="../index.html"
+               class="logo">
+
+                Code<span>WithMe</span>
+
+            </a>
 
 
-    <div class="container">
+            <ul class="nav-links">
 
-        <div class="content-box">
+                <li>
+                    <a href="../index.html">
+                        Home
+                    </a>
+                </li>
 
-            <h2>What is CSS Syntax?</h2>
+                <li>
+                    <a href="../index.html#courses">
+                        Courses
+                    </a>
+                </li>
 
-            <p>
-                CSS syntax defines how CSS rules are written.
-                A CSS rule contains a selector and a declaration
-                block.
-            </p>
+                <li>
+                    <a href="../index.html#html-topics">
+                        HTML
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html#css-course">
+                        CSS
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../index.html#about">
+                        About
+                    </a>
+                </li>
+
+            </ul>
 
         </div>
 
+    </nav>
 
-        <div class="content-box">
 
-            <h2>Basic CSS Syntax</h2>
 
-            <pre>
-selector {
-    property: value;
+    <!-- =========================
+         PAGE HEADER
+    ========================= -->
+
+    <header class="page-header">
+
+        <h1>
+            CSS Syntax
+        </h1>
+
+        <p>
+            Learn the basic structure of CSS,
+            including selectors, properties,
+            values and declarations.
+        </p>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="container">
+
+
+        <!-- =========================
+             INTRODUCTION
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                What is CSS Syntax?
+            </h2>
+
+            <p>
+                CSS syntax is the set of rules that
+                defines how CSS code is written.
+                Every CSS rule follows a specific structure.
+            </p>
+
+            <p>
+                A CSS rule usually contains a
+                <strong>selector</strong>,
+                one or more
+                <strong>properties</strong>,
+                and their
+                <strong>values</strong>.
+            </p>
+
+
+            <div class="info-box">
+
+                <strong>
+                    Basic CSS Syntax:
+                </strong>
+
+                <br><br>
+
+                selector {
+                    property: value;
+                }
+
+            </div>
+
+
+            <p>
+                For example, if we want to make all
+                paragraph text blue, we can write:
+            </p>
+
+
+            <div class="code-title">
+                CSS Example
+            </div>
+
+            <pre><code>p {
+    color: blue;
+}</code></pre>
+
+        </section>
+
+
+
+        <!-- =========================
+             CSS SYNTAX STRUCTURE
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                CSS Syntax Structure
+            </h2>
+
+            <p>
+                The basic structure of a CSS rule
+                looks like this:
+            </p>
+
+
+            <div class="syntax-box">
+
+                <span class="selector">
+                    selector
+                </span>
+
+                {
+
+                <span class="property">
+                    property
+                </span>
+
+                :
+
+                <span class="value">
+                    value
+                </span>
+
+                ;
+
+                }
+
+            </div>
+
+
+            <h3>
+                Example
+            </h3>
+
+
+            <div class="code-title">
+                CSS
+            </div>
+
+            <pre><code>h1 {
+    color: blue;
+}</code></pre>
+
+
+            <p>
+                In this example:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    <strong>h1</strong> is the selector.
+                </li>
+
+                <li>
+                    <strong>color</strong> is the property.
+                </li>
+
+                <li>
+                    <strong>blue</strong> is the value.
+                </li>
+
+                <li>
+                    The entire
+                    <strong>color: blue;</strong>
+                    is a declaration.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- =========================
+             SELECTOR
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                1. CSS Selector
+            </h2>
+
+            <p>
+                A selector identifies the HTML element
+                that you want to style.
+            </p>
+
+
+            <p>
+                For example:
+            </p>
+
+
+            <div class="code-title">
+                CSS
+            </div>
+
+            <pre><code>p {
+    color: red;
+}</code></pre>
+
+
+            <p>
+                Here, <span class="inline-code">p</span>
+                is the selector.
+                It selects all paragraph elements.
+            </p>
+
+
+            <h3>
+                Common Selectors
+            </h3>
+
+
+            <ul>
+
+                <li>
+                    Element selector:
+                    <span class="inline-code">p</span>
+                </li>
+
+                <li>
+                    Class selector:
+                    <span class="inline-code">.box</span>
+                </li>
+
+                <li>
+                    ID selector:
+                    <span class="inline-code">#header</span>
+                </li>
+
+                <li>
+                    Universal selector:
+                    <span class="inline-code">*</span>
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- =========================
+             PROPERTY
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                2. CSS Property
+            </h2>
+
+            <p>
+                A property specifies what aspect of
+                an HTML element you want to change.
+            </p>
+
+
+            <p>
+                Examples of CSS properties include:
+            </p>
+
+
+            <ul>
+
+                <li>color</li>
+
+                <li>background-color</li>
+
+                <li>font-size</li>
+
+                <li>margin</li>
+
+                <li>padding</li>
+
+                <li>width</li>
+
+                <li>height</li>
+
+                <li>border</li>
+
+            </ul>
+
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>h1 {
+    color: blue;
+}</code></pre>
+
+
+            <p>
+                In this example,
+                <span class="inline-code">color</span>
+                is the property.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             VALUE
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                3. CSS Value
+            </h2>
+
+            <p>
+                A value defines what the property
+                should be set to.
+            </p>
+
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>h1 {
+    color: blue;
+}</code></pre>
+
+
+            <p>
+                Here:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Property =
+                    <strong>color</strong>
+                </li>
+
+                <li>
+                    Value =
+                    <strong>blue</strong>
+                </li>
+
+            </ul>
+
+
+            <p>
+                Different properties can have
+                different types of values.
+            </p>
+
+
+            <div class="code-title">
+                More Examples
+            </div>
+
+            <pre><code>p {
+    color: red;
+    font-size: 20px;
 }
-            </pre>
+
+.box {
+    width: 300px;
+    height: 200px;
+}
+
+body {
+    background-color: lightgray;
+}</code></pre>
+
+        </section>
+
+
+
+        <!-- =========================
+             DECLARATION
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                4. CSS Declaration
+            </h2>
+
+            <p>
+                A CSS declaration consists of a
+                property and its value.
+            </p>
+
+
+            <div class="syntax-box">
+
+                <span class="property">
+                    property
+                </span>
+
+                :
+
+                <span class="value">
+                    value
+                </span>
+
+                ;
+
+            </div>
+
 
             <p>
                 Example:
             </p>
 
-            <pre>
-p {
+
+            <pre><code>color: blue;</code></pre>
+
+
+            <p>
+                This is one CSS declaration.
+            </p>
+
+
+            <div class="tip-box">
+
+                <strong>
+                    Tip:
+                </strong>
+
+                Always put a colon
+                <strong>:</strong>
+                between the property and value,
+                and normally finish the declaration
+                with a semicolon
+                <strong>;</strong>.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             DECLARATION BLOCK
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                5. CSS Declaration Block
+            </h2>
+
+            <p>
+                A declaration block contains one or
+                more CSS declarations inside curly braces
+                <strong>{ }</strong>.
+            </p>
+
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>p {
+    color: blue;
+    font-size: 18px;
+    line-height: 1.6;
+}</code></pre>
+
+
+            <p>
+                The declarations inside this block are:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    color: blue;
+                </li>
+
+                <li>
+                    font-size: 18px;
+                </li>
+
+                <li>
+                    line-height: 1.6;
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- =========================
+             MULTIPLE PROPERTIES
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Multiple CSS Properties
+            </h2>
+
+            <p>
+                You can use multiple properties
+                inside one CSS rule.
+            </p>
+
+
+            <div class="code-title">
+                CSS
+            </div>
+
+            <pre><code>h1 {
+    color: blue;
+    font-size: 40px;
+    text-align: center;
+    background-color: lightgray;
+}</code></pre>
+
+
+            <p>
+                This example changes four things
+                about the heading:
+            </p>
+
+
+            <ul>
+
+                <li>Text color</li>
+
+                <li>Font size</li>
+
+                <li>Text alignment</li>
+
+                <li>Background color</li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- =========================
+             CLASS SELECTOR
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                CSS Class Syntax
+            </h2>
+
+            <p>
+                A class selector starts with a
+                period <strong>.</strong>.
+            </p>
+
+
+            <div class="code-title">
+                HTML
+            </div>
+
+            <pre><code>&lt;p class="text"&gt;
+    Hello CSS
+&lt;/p&gt;</code></pre>
+
+
+            <div class="code-title">
+                CSS
+            </div>
+
+            <pre><code>.text {
     color: blue;
     font-size: 20px;
-}
-            </pre>
+}</code></pre>
 
-        </div>
-
-
-        <div class="content-box">
-
-            <h2>CSS Selector</h2>
 
             <p>
-                The selector selects the HTML element that you
-                want to style.
+                The CSS rule applies to the HTML
+                element having the class
+                <span class="inline-code">text</span>.
             </p>
 
-            <pre>
-h1 {
-    color: red;
-}
-            </pre>
-
-        </div>
+        </section>
 
 
-        <div class="content-box">
 
-            <h2>CSS Property</h2>
+        <!-- =========================
+             ID SELECTOR
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                CSS ID Syntax
+            </h2>
 
             <p>
-                A property defines what style you want to change.
+                An ID selector starts with a
+                hash symbol <strong>#</strong>.
             </p>
 
-            <pre>
-color
-font-size
-background-color
-margin
-padding
-            </pre>
 
-        </div>
+            <div class="code-title">
+                HTML
+            </div>
+
+            <pre><code>&lt;h1 id="title"&gt;
+    Welcome
+&lt;/h1&gt;</code></pre>
 
 
-        <div class="content-box">
+            <div class="code-title">
+                CSS
+            </div>
 
-            <h2>CSS Value</h2>
+            <pre><code>#title {
+    color: green;
+    font-size: 35px;
+}</code></pre>
+
+        </section>
+
+
+
+        <!-- =========================
+             UNIVERSAL SELECTOR
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Universal Selector
+            </h2>
 
             <p>
-                A value specifies the setting for a CSS property.
+                The universal selector
+                <span class="inline-code">*</span>
+                selects all HTML elements.
             </p>
 
-            <pre>
-color: blue;
-font-size: 20px;
-            </pre>
 
-        </div>
+            <pre><code>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}</code></pre>
 
 
-        <div class="content-box">
+            <p>
+                This technique is commonly used
+                as a CSS reset.
+            </p>
 
-            <h2>Try CSS Yourself</h2>
+        </section>
 
-            <textarea id="editor" class="editor"><style>
+
+
+        <!-- =========================
+             GROUPING
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Grouping Selectors
+            </h2>
+
+            <p>
+                You can apply the same CSS rules
+                to multiple selectors by separating
+                them with commas.
+            </p>
+
+
+            <pre><code>h1,
+h2,
+p {
+    color: blue;
+}</code></pre>
+
+
+            <p>
+                The same color will be applied to
+                h1, h2 and p elements.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             CSS COMMENTS
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                CSS Comments
+            </h2>
+
+            <p>
+                Comments are used to explain CSS code.
+                They are ignored by the browser.
+            </p>
+
+
+            <pre><code>/* This is a CSS comment */
+
+p {
+    color: blue;
+}</code></pre>
+
+
+            <p>
+                CSS comments begin with
+                <strong>/*</strong>
+                and end with
+                <strong>*/</strong>.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             COMMON ERRORS
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Common CSS Syntax Errors
+            </h2>
+
+            <p>
+                Beginners often make small syntax
+                mistakes. Here are some common examples.
+            </p>
+
+
+            <h3>
+                Missing Colon
+            </h3>
+
+            <pre><code>p {
+    color blue;
+}</code></pre>
+
+
+            <p>
+                Correct version:
+            </p>
+
+
+            <pre><code>p {
+    color: blue;
+}</code></pre>
+
+
+            <h3>
+                Missing Semicolon
+            </h3>
+
+            <p>
+                Although the last declaration can
+                sometimes work without a semicolon,
+                it is good practice to use semicolons.
+            </p>
+
+
+            <pre><code>p {
+    color: blue;
+    font-size: 18px;
+}</code></pre>
+
+
+            <h3>
+                Missing Curly Braces
+            </h3>
+
+            <p>
+                CSS declarations must normally be
+                inside curly braces.
+            </p>
+
+
+            <pre><code>p {
+    color: blue;
+}</code></pre>
+
+
+            <div class="warning-box">
+
+                <strong>
+                    Remember:
+                </strong>
+
+                CSS is sensitive to correct syntax.
+                Check your selector, colon,
+                value, semicolon and curly braces
+                when something does not work.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             SYNTAX TABLE
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                CSS Syntax Summary
+            </h2>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Part
+                            </th>
+
+                            <th>
+                                Example
+                            </th>
+
+                            <th>
+                                Meaning
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Selector
+                            </td>
+
+                            <td>
+                                p
+                            </td>
+
+                            <td>
+                                Selects the HTML element.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Property
+                            </td>
+
+                            <td>
+                                color
+                            </td>
+
+                            <td>
+                                Defines what to change.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Value
+                            </td>
+
+                            <td>
+                                blue
+                            </td>
+
+                            <td>
+                                Defines the setting.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Declaration
+                            </td>
+
+                            <td>
+                                color: blue;
+                            </td>
+
+                            <td>
+                                Property and value together.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Declaration Block
+                            </td>
+
+                            <td>
+                                { color: blue; }
+                            </td>
+
+                            <td>
+                                Contains CSS declarations.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             LIVE CODE EDITOR
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Try CSS Syntax Yourself
+            </h2>
+
+            <p>
+                Edit the HTML and CSS below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+
+            <div class="editor">
+
+                <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
 h1 {
     color: blue;
+    text-align: center;
 }
 
 p {
     color: green;
     font-size: 20px;
 }
+
+.box {
+    background-color: lightblue;
+    padding: 20px;
+    border: 2px solid blue;
+}
+
 </style>
 
-<h1>Hello CSS!</h1>
-<p>This is my first CSS example.</p></textarea>
+</head>
 
-            <br>
+<body>
 
-            <button onclick="runCode()">
-                Run Code
-            </button>
+<h1>CSS Syntax Example</h1>
 
-            <button onclick="clearCode()">
-                Clear
-            </button>
+<p>This paragraph is styled using CSS.</p>
 
-            <iframe id="output"></iframe>
+<div class="box">
+    This is a CSS styled box.
+</div>
+
+</body>
+</html></textarea>
+
+
+                <div class="editor-buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+
+                        Run Code
+
+                    </button>
+
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+
+                <div class="output-title">
+                    Output
+                </div>
+
+
+                <iframe
+                    id="output"
+                    title="CSS Code Output">
+                </iframe>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             KEY POINTS
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Key Points to Remember
+            </h2>
+
+
+            <ul>
+
+                <li>
+                    CSS rules contain selectors
+                    and declaration blocks.
+                </li>
+
+                <li>
+                    A declaration contains a
+                    property and a value.
+                </li>
+
+                <li>
+                    Use a colon between a property
+                    and its value.
+                </li>
+
+                <li>
+                    Use a semicolon to separate
+                    declarations.
+                </li>
+
+                <li>
+                    Use curly braces to contain
+                    declarations.
+                </li>
+
+                <li>
+                    Class selectors start with
+                    <strong>.</strong>.
+                </li>
+
+                <li>
+                    ID selectors start with
+                    <strong>#</strong>.
+                </li>
+
+                <li>
+                    The universal selector is
+                    <strong>*</strong>.
+                </li>
+
+                <li>
+                    CSS comments use
+                    <strong>/* */</strong>.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- =========================
+             NAVIGATION
+        ========================= -->
+
+        <div class="lesson-navigation">
+
+            <a href="css-introduction.html"
+               class="navigation-btn">
+
+                ← Previous:
+                CSS Introduction
+
+            </a>
+
+
+            <a href="../index.html"
+               class="navigation-btn home-btn">
+
+                🏠 Home
+
+            </a>
+
+
+            <a href="css-selectors.html"
+               class="navigation-btn">
+
+                Next:
+                CSS Selectors →
+
+            </a>
 
         </div>
 
 
-        <div class="navigation">
+    </main>
 
-            <a href="css-introduction.html">
-                ← Previous
-            </a>
 
-            <a href="index.html">
-                CSS Home
-            </a>
 
-        </div>
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
-    </div>
+    <footer>
 
+        <p>
+            © 2026 Code With Me.
+            All Rights Reserved.
+        </p>
+
+        <p>
+            Learn Coding • Practice • Build Projects
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
     <script>
 
         function runCode() {
 
             const code =
-                document.getElementById("editor").value;
+                document.getElementById(
+                    "codeEditor"
+                ).value;
 
-            document.getElementById("output").srcdoc = code;
+            const output =
+                document.getElementById(
+                    "output"
+                );
+
+            output.srcdoc = code;
         }
 
 
         function clearCode() {
 
-            document.getElementById("editor").value = "";
+            document.getElementById(
+                "codeEditor"
+            ).value = "";
 
-            document.getElementById("output").srcdoc = "";
+            document.getElementById(
+                "output"
+            ).srcdoc = "";
+
         }
 
+
+        /*
+         * Run the example automatically
+         * when the page loads.
+         */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                runCode();
+
+            }
+        );
+
     </script>
+
 
 </body>
 
