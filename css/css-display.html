@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn CSS Display property with examples. Learn block, inline, inline-block, none, flex and grid display.">
+
+    <title>CSS Display | Code With Me</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav .logo span {
+            color: #38bdf8;
+        }
+
+        nav .nav-links {
+            float: right;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        nav::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* Hero */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Container */
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        /* Info boxes */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        /* Code */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Demo */
+
+        .demo-box {
+            background: #f8fafc;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .demo-item {
+            background: #dbeafe;
+            border: 2px solid #2563eb;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .block-demo {
+            display: block;
+        }
+
+        .inline-demo {
+            display: inline;
+        }
+
+        .inline-block-demo {
+            display: inline-block;
+            width: 180px;
+        }
+
+        /* Flex */
+
+        .flex-demo {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .flex-demo .demo-item {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        /* Grid */
+
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        /* Table */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Live Editor */
+
+        .editor textarea {
+            width: 100%;
+            min-height: 330px;
+            padding: 15px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        .editor button {
+            padding: 12px 20px;
+            margin-top: 12px;
+            margin-right: 8px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .editor button:hover {
+            opacity: 0.85;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: white;
+        }
+
+        /* Navigation */
+
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-nav a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 7px;
+        }
+
+        .lesson-nav a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 700px) {
+
+            nav {
+                text-align: center;
+            }
+
+            nav .nav-links {
+                float: none;
+                margin-top: 10px;
+            }
+
+            nav .nav-links a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-nav {
+                flex-direction: column;
+            }
+
+            .lesson-nav a {
+                text-align: center;
+            }
+
+            .grid-demo {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- Navbar -->
+
+    <nav>
+
+        <a href="../index.html"
+           class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../index.html#courses">
+                Courses
+            </a>
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero -->
+
+    <header class="hero">
+
+        <h1>CSS Display</h1>
+
+        <p>
+            Learn how the CSS display property controls the layout of elements
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+
+        <section class="section">
+
+            <h2>1. What is the CSS Display Property?</h2>
+
+            <p>
+                The CSS <strong>display</strong> property specifies how
+                an HTML element should be displayed on a webpage.
+            </p>
+
+            <p>
+                It is one of the most important CSS properties for
+                controlling webpage layouts.
+            </p>
+
+            <pre><code>selector {
+    display: value;
+}</code></pre>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                The display property can change an element from block
+                to inline, hide an element, or create modern layouts
+                using Flexbox and Grid.
+
+            </div>
+
+        </section>
+
+
+        <!-- Values -->
+
+        <section class="section">
+
+            <h2>2. Common Display Values</h2>
+
+            <table>
+
+                <tr>
+                    <th>Value</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>block</td>
+                    <td>Displays an element as a block element</td>
+                </tr>
+
+                <tr>
+                    <td>inline</td>
+                    <td>Displays an element inline</td>
+                </tr>
+
+                <tr>
+                    <td>inline-block</td>
+                    <td>Inline element that can have width and height</td>
+                </tr>
+
+                <tr>
+                    <td>none</td>
+                    <td>Removes the element from the page layout</td>
+                </tr>
+
+                <tr>
+                    <td>flex</td>
+                    <td>Creates a Flexbox container</td>
+                </tr>
+
+                <tr>
+                    <td>grid</td>
+                    <td>Creates a CSS Grid container</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Block -->
+
+        <section class="section">
+
+            <h2>3. display: block</h2>
+
+            <p>
+                A block element starts on a new line and normally takes
+                the full available width.
+            </p>
+
+            <p>
+                Common block elements include:
+                <strong>div, p, h1, section</strong> and
+                <strong>header</strong>.
+            </p>
+
+            <pre><code>div {
+    display: block;
+}</code></pre>
+
+            <div class="demo-box">
+
+                <div class="demo-item block-demo">
+                    Block Element 1
+                </div>
+
+                <div class="demo-item block-demo">
+                    Block Element 2
+                </div>
+
+                <div class="demo-item block-demo">
+                    Block Element 3
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Inline -->
+
+        <section class="section">
+
+            <h2>4. display: inline</h2>
+
+            <p>
+                Inline elements do not start on a new line.
+                They take only the width required by their content.
+            </p>
+
+            <p>
+                Common inline elements include
+                <strong>span, a</strong> and <strong>strong</strong>.
+            </p>
+
+            <pre><code>span {
+    display: inline;
+}</code></pre>
+
+            <div class="demo-box">
+
+                <span class="demo-item inline-demo">
+                    Inline 1
+                </span>
+
+                <span class="demo-item inline-demo">
+                    Inline 2
+                </span>
+
+                <span class="demo-item inline-demo">
+                    Inline 3
+                </span>
+
+            </div>
+
+            <div class="warning-box">
+
+                With <strong>display: inline</strong>, width and height
+                generally do not work as they do for block elements.
+
+            </div>
+
+        </section>
+
+
+        <!-- Inline Block -->
+
+        <section class="section">
+
+            <h2>5. display: inline-block</h2>
+
+            <p>
+                <strong>inline-block</strong> combines characteristics
+                of inline and block elements.
+            </p>
+
+            <p>
+                Multiple elements can appear on the same line while
+                still allowing width and height.
+            </p>
+
+            <pre><code>div {
+    display: inline-block;
+    width: 180px;
+    height: 80px;
+}</code></pre>
+
+            <div class="demo-box">
+
+                <div class="demo-item inline-block-demo">
+                    Box 1
+                </div>
+
+                <div class="demo-item inline-block-demo">
+                    Box 2
+                </div>
+
+                <div class="demo-item inline-block-demo">
+                    Box 3
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- None -->
+
+        <section class="section">
+
+            <h2>6. display: none</h2>
+
+            <p>
+                The <strong>display: none</strong> property hides an
+                element completely.
+            </p>
+
+            <pre><code>.hidden {
+    display: none;
+}</code></pre>
+
+            <div class="demo-box">
+
+                <p>
+                    This text is visible.
+                </p>
+
+                <p style="display:none;">
+                    This text is hidden.
+                </p>
+
+                <p>
+                    The hidden paragraph takes no space.
+                </p>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>Note:</strong>
+
+                <strong>display: none</strong> removes the element
+                from the page layout.
+
+            </div>
+
+        </section>
+
+
+        <!-- Visibility -->
+
+        <section class="section">
+
+            <h2>7. display: none vs visibility: hidden</h2>
+
+            <p>
+                These two properties both hide elements, but they behave
+                differently.
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>Property</th>
+                    <th>Element Hidden?</th>
+                    <th>Space Remains?</th>
+                </tr>
+
+                <tr>
+                    <td>display: none</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+
+                <tr>
+                    <td>visibility: hidden</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+
+            </table>
+
+            <pre><code>.example {
+    visibility: hidden;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Flex -->
+
+        <section class="section">
+
+            <h2>8. display: flex</h2>
+
+            <p>
+                The <strong>display: flex</strong> property creates
+                a Flexbox container.
+            </p>
+
+            <p>
+                Flexbox is useful for arranging elements in rows or
+                columns.
+            </p>
+
+            <pre><code>.container {
+    display: flex;
+}</code></pre>
+
+            <div class="demo-box">
+
+                <div class="flex-demo">
+
+                    <div class="demo-item">
+                        Item 1
+                    </div>
+
+                    <div class="demo-item">
+                        Item 2
+                    </div>
+
+                    <div class="demo-item">
+                        Item 3
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="success-box">
+
+                Flexbox is commonly used for navigation bars,
+                cards, buttons, and responsive layouts.
+
+            </div>
+
+        </section>
+
+
+        <!-- Flex Direction -->
+
+        <section class="section">
+
+            <h2>9. Flex Direction</h2>
+
+            <p>
+                The <strong>flex-direction</strong> property controls
+                the direction of flex items.
+            </p>
+
+            <pre><code>.container {
+    display: flex;
+    flex-direction: row;
+}</code></pre>
+
+            <p>
+                Common values:
+            </p>
+
+            <ul>
+
+                <li>row</li>
+                <li>row-reverse</li>
+                <li>column</li>
+                <li>column-reverse</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Grid -->
+
+        <section class="section">
+
+            <h2>10. display: grid</h2>
+
+            <p>
+                The <strong>display: grid</strong> property creates
+                a CSS Grid container.
+            </p>
+
+            <p>
+                CSS Grid is useful for creating rows and columns.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}</code></pre>
+
+            <div class="demo-box">
+
+                <div class="grid-demo">
+
+                    <div class="demo-item">
+                        Item 1
+                    </div>
+
+                    <div class="demo-item">
+                        Item 2
+                    </div>
+
+                    <div class="demo-item">
+                        Item 3
+                    </div>
+
+                    <div class="demo-item">
+                        Item 4
+                    </div>
+
+                    <div class="demo-item">
+                        Item 5
+                    </div>
+
+                    <div class="demo-item">
+                        Item 6
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Table -->
+
+        <section class="section">
+
+            <h2>11. display: table</h2>
+
+            <p>
+                CSS also provides table-related display values.
+            </p>
+
+            <pre><code>.container {
+    display: table;
+}
+
+.item {
+    display: table-cell;
+}</code></pre>
+
+            <p>
+                These values can imitate table layouts, although
+                modern layouts generally use Flexbox or Grid.
+            </p>
+
+        </section>
+
+
+        <!-- Width Height -->
+
+        <section class="section">
+
+            <h2>12. Width and Height with Display</h2>
+
+            <p>
+                Width and height behave differently depending on the
+                display value.
+            </p>
+
+            <pre><code>.box {
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+}</code></pre>
+
+            <div class="demo-box">
+
+                <div style="
+                    display:inline-block;
+                    width:200px;
+                    height:100px;
+                    background:#dbeafe;
+                    border:2px solid #2563eb;
+                    padding:15px;">
+
+                    Width: 200px<br>
+                    Height: 100px
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Display Block -->
+
+        <section class="section">
+
+            <h2>13. Changing Inline to Block</h2>
+
+            <p>
+                An inline element can be changed into a block element
+                using CSS.
+            </p>
+
+            <pre><code>span {
+    display: block;
+}</code></pre>
+
+            <div class="demo-box">
+
+                <span style="
+                    display:block;
+                    background:#dbeafe;
+                    padding:10px;
+                    margin-bottom:5px;">
+                    Span 1
+                </span>
+
+                <span style="
+                    display:block;
+                    background:#dbeafe;
+                    padding:10px;">
+                    Span 2
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- Block to Inline -->
+
+        <section class="section">
+
+            <h2>14. Changing Block to Inline</h2>
+
+            <p>
+                A block element can also be changed to an inline element.
+            </p>
+
+            <pre><code>div {
+    display: inline;
+}</code></pre>
+
+            <div class="demo-box">
+
+                <div style="
+                    display:inline;
+                    background:#dbeafe;
+                    padding:10px;">
+                    Block converted to inline
+                </div>
+
+                <div style="
+                    display:inline;
+                    background:#dcfce7;
+                    padding:10px;">
+                    Another inline element
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- List -->
+
+        <section class="section">
+
+            <h2>15. Display and Navigation Menus</h2>
+
+            <p>
+                The display property is often used to create
+                horizontal navigation menus.
+            </p>
+
+            <pre><code>ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+}</code></pre>
+
+            <div class="demo-box">
+
+                <ul style="list-style:none;">
+
+                    <li style="
+                        display:inline-block;
+                        margin-right:20px;">
+                        <a href="#"
+                           style="text-decoration:none;
+                                  color:#2563eb;">
+                            Home
+                        </a>
+                    </li>
+
+                    <li style="
+                        display:inline-block;
+                        margin-right:20px;">
+                        <a href="#"
+                           style="text-decoration:none;
+                                  color:#2563eb;">
+                            Courses
+                        </a>
+                    </li>
+
+                    <li style="
+                        display:inline-block;">
+                        <a href="#"
+                           style="text-decoration:none;
+                                  color:#2563eb;">
+                            About
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Important Difference -->
+
+        <section class="section">
+
+            <h2>16. Block vs Inline vs Inline-Block</h2>
+
+            <table>
+
+                <tr>
+                    <th>Feature</th>
+                    <th>Block</th>
+                    <th>Inline</th>
+                    <th>Inline-Block</th>
+                </tr>
+
+                <tr>
+                    <td>New line</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+
+                <tr>
+                    <td>Full width</td>
+                    <td>Usually</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+
+                <tr>
+                    <td>Width/Height</td>
+                    <td>Yes</td>
+                    <td>Limited</td>
+                    <td>Yes</td>
+                </tr>
+
+                <tr>
+                    <td>Same line</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Overflow -->
+
+        <section class="section">
+
+            <h2>17. Common Use of Display</h2>
+
+            <p>
+                The display property is useful when creating:
+            </p>
+
+            <ul>
+
+                <li>Navigation bars</li>
+                <li>Card layouts</li>
+                <li>Responsive websites</li>
+                <li>Menus</li>
+                <li>Buttons</li>
+                <li>Image galleries</li>
+                <li>Flexbox layouts</li>
+                <li>Grid layouts</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Summary -->
+
+        <section class="section">
+
+            <h2>18. CSS Display Properties Summary</h2>
+
+            <table>
+
+                <tr>
+                    <th>Display</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>block</td>
+                    <td>Starts on a new line and takes available width</td>
+                </tr>
+
+                <tr>
+                    <td>inline</td>
+                    <td>Stays on the same line and takes required width</td>
+                </tr>
+
+                <tr>
+                    <td>inline-block</td>
+                    <td>Inline layout with width and height support</td>
+                </tr>
+
+                <tr>
+                    <td>none</td>
+                    <td>Hides the element and removes its layout space</td>
+                </tr>
+
+                <tr>
+                    <td>flex</td>
+                    <td>Creates a Flexbox layout</td>
+                </tr>
+
+                <tr>
+                    <td>grid</td>
+                    <td>Creates a Grid layout</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Live Editor -->
+
+        <section class="section editor">
+
+            <h2>19. CSS Display Live Editor</h2>
+
+            <p>
+                Change the CSS and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeInput"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+.container {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+}
+
+.box {
+    flex: 1;
+    background-color: #2563eb;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>CSS Display Example</h2>
+
+<div class="container">
+
+    <div class="box">
+        HTML
+    </div>
+
+    <div class="box">
+        CSS
+    </div>
+
+    <div class="box">
+        JavaScript
+    </div>
+
+</div>
+
+</body>
+
+</html></textarea>
+
+            <br>
+
+            <button class="run-btn"
+                    onclick="runCode()">
+                ▶ Run Code
+            </button>
+
+            <button class="clear-btn"
+                    onclick="clearCode()">
+                Clear
+            </button>
+
+            <iframe id="output"></iframe>
+
+        </section>
+
+
+        <!-- Key Points -->
+
+        <section class="section">
+
+            <h2>20. Key Points</h2>
+
+            <ul>
+
+                <li>
+                    The <strong>display</strong> property controls
+                    how an element is displayed.
+                </li>
+
+                <li>
+                    <strong>display: block</strong> creates a block
+                    element.
+                </li>
+
+                <li>
+                    <strong>display: inline</strong> keeps elements
+                    on the same line.
+                </li>
+
+                <li>
+                    <strong>display: inline-block</strong> combines
+                    inline layout with width and height support.
+                </li>
+
+                <li>
+                    <strong>display: none</strong> hides an element
+                    and removes its layout space.
+                </li>
+
+                <li>
+                    <strong>display: flex</strong> creates a Flexbox
+                    container.
+                </li>
+
+                <li>
+                    <strong>display: grid</strong> creates a Grid
+                    container.
+                </li>
+
+                <li>
+                    Display properties are essential for creating
+                    responsive website layouts.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Navigation -->
+
+        <div class="lesson-nav">
+
+            <a href="css-lists.html">
+                ← Previous: CSS Lists
+            </a>
+
+            <a href="../index.html">
+                🏠 Home
+            </a>
+
+            <a href="css-padding.html">
+                Next: CSS Padding →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeInput").value;
+
+            document.getElementById("output").srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeInput").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
