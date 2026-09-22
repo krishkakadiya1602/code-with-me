@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn CSS Overflow with examples. Learn overflow visible, hidden, scroll, auto, overflow-x, overflow-y and text overflow.">
+
+    <title>CSS Overflow | Code With Me</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav .logo span {
+            color: #38bdf8;
+        }
+
+        nav .nav-links {
+            float: right;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        nav::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* Hero */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Container */
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        /* Info Boxes */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        /* Code */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Overflow Demo */
+
+        .overflow-demo {
+            width: 100%;
+            height: 120px;
+            border: 3px solid #2563eb;
+            background: #eff6ff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .small-box {
+            width: 650px;
+            padding: 15px;
+            background: #dbeafe;
+            border: 2px solid #7c3aed;
+        }
+
+        .visible-demo {
+            overflow: visible;
+        }
+
+        .hidden-demo {
+            overflow: hidden;
+        }
+
+        .scroll-demo {
+            overflow: scroll;
+        }
+
+        .auto-demo {
+            overflow: auto;
+        }
+
+        /* Horizontal Scroll */
+
+        .horizontal-scroll {
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            border: 2px solid #2563eb;
+            padding: 15px;
+            background: #eff6ff;
+            margin: 15px 0;
+        }
+
+        .horizontal-content {
+            display: inline-block;
+            width: 900px;
+            padding: 20px;
+            background: #dbeafe;
+        }
+
+        /* Vertical Scroll */
+
+        .vertical-scroll {
+            height: 150px;
+            overflow-y: auto;
+            border: 2px solid #2563eb;
+            padding: 15px;
+            background: #eff6ff;
+            margin: 15px 0;
+        }
+
+        /* Text Overflow */
+
+        .text-overflow-demo {
+            width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border: 2px solid #2563eb;
+            padding: 10px;
+            margin: 15px 0;
+        }
+
+        /* Table */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Live Editor */
+
+        .editor textarea {
+            width: 100%;
+            min-height: 350px;
+            padding: 15px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        .editor button {
+            padding: 12px 20px;
+            margin-top: 12px;
+            margin-right: 8px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .editor button:hover {
+            opacity: 0.85;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: white;
+        }
+
+        /* Navigation */
+
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-nav a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 7px;
+        }
+
+        .lesson-nav a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 700px) {
+
+            nav {
+                text-align: center;
+            }
+
+            nav .nav-links {
+                float: none;
+                margin-top: 10px;
+            }
+
+            nav .nav-links a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-nav {
+                flex-direction: column;
+            }
+
+            .lesson-nav a {
+                text-align: center;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- Navbar -->
+
+    <nav>
+
+        <a href="../index.html"
+           class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../index.html#courses">
+                Courses
+            </a>
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero -->
+
+    <header class="hero">
+
+        <h1>CSS Overflow</h1>
+
+        <p>
+            Learn how to control content that is too large for an element
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+
+        <section class="section">
+
+            <h2>1. What is CSS Overflow?</h2>
+
+            <p>
+                The CSS <strong>overflow</strong> property controls what
+                happens when content is too large to fit inside an element.
+            </p>
+
+            <p>
+                Overflow commonly occurs when an element has a fixed
+                width or height and its content is larger than the
+                available space.
+            </p>
+
+            <pre><code>.box {
+    overflow: value;
+}</code></pre>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                The overflow property is especially useful for containers,
+                long text, tables, images, and responsive layouts.
+
+            </div>
+
+        </section>
+
+
+        <!-- Values -->
+
+        <section class="section">
+
+            <h2>2. CSS Overflow Values</h2>
+
+            <table>
+
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>visible</td>
+                    <td>Content is displayed outside the element</td>
+                </tr>
+
+                <tr>
+                    <td>hidden</td>
+                    <td>Extra content is clipped</td>
+                </tr>
+
+                <tr>
+                    <td>scroll</td>
+                    <td>Scrollbars are provided</td>
+                </tr>
+
+                <tr>
+                    <td>auto</td>
+                    <td>Scrollbars appear when necessary</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Visible -->
+
+        <section class="section">
+
+            <h2>3. overflow: visible</h2>
+
+            <p>
+                <strong>visible</strong> is the default overflow value.
+                Content can extend outside the element.
+            </p>
+
+            <pre><code>.box {
+    overflow: visible;
+}</code></pre>
+
+            <div class="overflow-demo visible-demo">
+
+                <div class="small-box">
+
+                    This content is wider than the parent container.
+                    Because overflow is set to visible, the content
+                    can extend outside the parent element.
+
+                </div>
+
+            </div>
+
+            <div class="warning-box">
+
+                With <strong>overflow: visible</strong>, content may
+                overlap other elements.
+
+            </div>
+
+        </section>
+
+
+        <!-- Hidden -->
+
+        <section class="section">
+
+            <h2>4. overflow: hidden</h2>
+
+            <p>
+                The <strong>hidden</strong> value clips content that
+                extends outside the element.
+            </p>
+
+            <pre><code>.box {
+    overflow: hidden;
+}</code></pre>
+
+            <div class="overflow-demo hidden-demo">
+
+                <div class="small-box">
+
+                    This content is larger than the parent container.
+                    The extra content is hidden because overflow is
+                    set to hidden.
+
+                </div>
+
+            </div>
+
+            <div class="success-box">
+
+                <strong>Use case:</strong>
+
+                overflow: hidden is often used to prevent content from
+                escaping a container.
+
+            </div>
+
+        </section>
+
+
+        <!-- Scroll -->
+
+        <section class="section">
+
+            <h2>5. overflow: scroll</h2>
+
+            <p>
+                The <strong>scroll</strong> value adds scrollbars so
+                users can view the overflowing content.
+            </p>
+
+            <pre><code>.box {
+    overflow: scroll;
+}</code></pre>
+
+            <div class="overflow-demo scroll-demo">
+
+                <div class="small-box">
+
+                    This content is larger than the container.
+                    Use the scrollbars to view the complete content.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Auto -->
+
+        <section class="section">
+
+            <h2>6. overflow: auto</h2>
+
+            <p>
+                The <strong>auto</strong> value adds scrollbars only
+                when they are needed.
+            </p>
+
+            <pre><code>.box {
+    overflow: auto;
+}</code></pre>
+
+            <div class="overflow-demo auto-demo">
+
+                <div class="small-box">
+
+                    This content is wider than the parent element.
+                    Because overflow is auto, a scrollbar appears
+                    when necessary.
+
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>Tip:</strong>
+
+                <strong>overflow: auto</strong> is commonly useful for
+                responsive containers.
+
+            </div>
+
+        </section>
+
+
+        <!-- Overflow X -->
+
+        <section class="section">
+
+            <h2>7. overflow-x</h2>
+
+            <p>
+                The <strong>overflow-x</strong> property controls
+                horizontal overflow.
+            </p>
+
+            <pre><code>.box {
+    overflow-x: auto;
+}</code></pre>
+
+            <p>
+                For example, a wide table can be placed inside a
+                horizontally scrollable container.
+            </p>
+
+            <div class="horizontal-scroll">
+
+                <div class="horizontal-content">
+
+                    This is a wide content area.
+                    Scroll horizontally to see all the content.
+                    This technique is useful for responsive tables.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Overflow Y -->
+
+        <section class="section">
+
+            <h2>8. overflow-y</h2>
+
+            <p>
+                The <strong>overflow-y</strong> property controls
+                vertical overflow.
+            </p>
+
+            <pre><code>.box {
+    overflow-y: auto;
+}</code></pre>
+
+            <div class="vertical-scroll">
+
+                <p>
+                    This is line 1 of the content.
+                </p>
+
+                <p>
+                    This is line 2 of the content.
+                </p>
+
+                <p>
+                    This is line 3 of the content.
+                </p>
+
+                <p>
+                    This is line 4 of the content.
+                </p>
+
+                <p>
+                    This is line 5 of the content.
+                </p>
+
+                <p>
+                    This is line 6 of the content.
+                </p>
+
+                <p>
+                    This is line 7 of the content.
+                </p>
+
+                <p>
+                    This is line 8 of the content.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Both -->
+
+        <section class="section">
+
+            <h2>9. overflow-x and overflow-y Together</h2>
+
+            <p>
+                You can control horizontal and vertical overflow
+                separately.
+            </p>
+
+            <pre><code>.box {
+    overflow-x: auto;
+    overflow-y: hidden;
+}</code></pre>
+
+            <p>
+                This is useful when you want horizontal scrolling but
+                don't want vertical scrolling.
+            </p>
+
+        </section>
+
+
+        <!-- Shorthand -->
+
+        <section class="section">
+
+            <h2>10. Overflow Shorthand</h2>
+
+            <p>
+                You can specify different overflow values for the
+                horizontal and vertical directions.
+            </p>
+
+            <pre><code>.box {
+    overflow: hidden auto;
+}</code></pre>
+
+            <p>
+                In this example:
+            </p>
+
+            <ul>
+
+                <li>
+                    The first value controls horizontal overflow.
+                </li>
+
+                <li>
+                    The second value controls vertical overflow.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Text Overflow -->
+
+        <section class="section">
+
+            <h2>11. text-overflow</h2>
+
+            <p>
+                The <strong>text-overflow</strong> property controls
+                how text that does not fit inside a container is
+                displayed.
+            </p>
+
+            <pre><code>.text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}</code></pre>
+
+            <div class="text-overflow-demo">
+
+                This is a very long line of text that does not fit
+                inside the container.
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>Ellipsis:</strong>
+
+                The <strong>...</strong> indicates that some text
+                has been hidden.
+
+            </div>
+
+        </section>
+
+
+        <!-- White Space -->
+
+        <section class="section">
+
+            <h2>12. white-space and Overflow</h2>
+
+            <p>
+                The <strong>white-space</strong> property can be
+                combined with overflow to control long text.
+            </p>
+
+            <pre><code>.text {
+    white-space: nowrap;
+    overflow: hidden;
+}</code></pre>
+
+            <p>
+                <strong>nowrap</strong> prevents the text from wrapping
+                to a new line.
+            </p>
+
+        </section>
+
+
+        <!-- Images -->
+
+        <section class="section">
+
+            <h2>13. Overflow with Images</h2>
+
+            <p>
+                Large images can cause horizontal overflow on small
+                screens.
+            </p>
+
+            <pre><code>img {
+    max-width: 100%;
+    height: auto;
+}</code></pre>
+
+            <div class="success-box">
+
+                <strong>Responsive Tip:</strong>
+
+                Using <strong>max-width: 100%</strong> helps prevent
+                images from becoming wider than their containers.
+
+            </div>
+
+        </section>
+
+
+        <!-- Tables -->
+
+        <section class="section">
+
+            <h2>14. Overflow with Tables</h2>
+
+            <p>
+                Wide tables can create horizontal scrolling on small
+                screens.
+            </p>
+
+            <pre><code>.table-container {
+    overflow-x: auto;
+}</code></pre>
+
+            <div style="
+                overflow-x:auto;
+                border:1px solid #ddd;
+                padding:10px;">
+
+                <table style="min-width:700px;">
+
+                    <tr>
+
+                        <th>Course</th>
+                        <th>Topic</th>
+                        <th>Level</th>
+                        <th>Duration</th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>HTML</td>
+                        <td>Elements</td>
+                        <td>Beginner</td>
+                        <td>2 Weeks</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>CSS</td>
+                        <td>Layouts</td>
+                        <td>Beginner</td>
+                        <td>3 Weeks</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>JavaScript</td>
+                        <td>Functions</td>
+                        <td>Intermediate</td>
+                        <td>4 Weeks</td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Overflow and Position -->
+
+        <section class="section">
+
+            <h2>15. Overflow and Child Elements</h2>
+
+            <p>
+                Overflow can affect how child elements that extend
+                outside their parent are displayed.
+            </p>
+
+            <pre><code>.parent {
+    width: 300px;
+    height: 150px;
+    overflow: hidden;
+}</code></pre>
+
+            <p>
+                This is commonly useful for cards, image containers,
+                and components with fixed dimensions.
+            </p>
+
+        </section>
+
+
+        <!-- Practical Example -->
+
+        <section class="section">
+
+            <h2>16. Practical Card Example</h2>
+
+            <p>
+                Here is an example of using overflow with a card.
+            </p>
+
+            <pre><code>.card {
+    width: 300px;
+    height: 150px;
+    overflow: auto;
+    padding: 20px;
+    border: 2px solid #2563eb;
+}</code></pre>
+
+            <div style="
+                width:300px;
+                height:150px;
+                overflow:auto;
+                padding:20px;
+                border:2px solid #2563eb;
+                background:#eff6ff;">
+
+                <h3>CSS Course</h3>
+
+                <p>
+                    Learn CSS from beginner to advanced level.
+                    This card has a fixed height, so additional
+                    content can be viewed using the scrollbar.
+                </p>
+
+                <p>
+                    Learn selectors, colors, backgrounds, margins,
+                    padding, display, overflow, positioning,
+                    Flexbox, Grid and responsive design.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Comparison -->
+
+        <section class="section">
+
+            <h2>17. Overflow Values Comparison</h2>
+
+            <table>
+
+                <tr>
+                    <th>Value</th>
+                    <th>Overflow Content</th>
+                    <th>Scrollbar</th>
+                </tr>
+
+                <tr>
+                    <td>visible</td>
+                    <td>Shown outside</td>
+                    <td>No</td>
+                </tr>
+
+                <tr>
+                    <td>hidden</td>
+                    <td>Clipped</td>
+                    <td>No</td>
+                </tr>
+
+                <tr>
+                    <td>scroll</td>
+                    <td>Available by scrolling</td>
+                    <td>Yes</td>
+                </tr>
+
+                <tr>
+                    <td>auto</td>
+                    <td>Available when necessary</td>
+                    <td>When needed</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Common Uses -->
+
+        <section class="section">
+
+            <h2>18. Common Uses of CSS Overflow</h2>
+
+            <ul>
+
+                <li>Scrollable containers</li>
+
+                <li>Responsive tables</li>
+
+                <li>Long text containers</li>
+
+                <li>Image galleries</li>
+
+                <li>Cards with fixed dimensions</li>
+
+                <li>Navigation areas</li>
+
+                <li>Preventing content from overflowing</li>
+
+                <li>Mobile-friendly layouts</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Summary -->
+
+        <section class="section">
+
+            <h2>19. CSS Overflow Properties Summary</h2>
+
+            <table>
+
+                <tr>
+                    <th>Property</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>overflow</td>
+                    <td>Controls overflow in both directions</td>
+                </tr>
+
+                <tr>
+                    <td>overflow-x</td>
+                    <td>Controls horizontal overflow</td>
+                </tr>
+
+                <tr>
+                    <td>overflow-y</td>
+                    <td>Controls vertical overflow</td>
+                </tr>
+
+                <tr>
+                    <td>text-overflow</td>
+                    <td>Controls overflowing text</td>
+                </tr>
+
+                <tr>
+                    <td>white-space</td>
+                    <td>Controls how whitespace and wrapping work</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Live Editor -->
+
+        <section class="section editor">
+
+            <h2>20. CSS Overflow Live Editor</h2>
+
+            <p>
+                Change the CSS and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeInput"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+.box {
+    width: 300px;
+    height: 150px;
+    overflow: auto;
+    border: 3px solid #2563eb;
+    padding: 15px;
+    background-color: #eff6ff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>CSS Overflow Example</h2>
+
+<div class="box">
+
+    <p>
+        This is a large amount of content inside
+        a small container.
+    </p>
+
+    <p>
+        The container has a fixed width and height.
+        Because overflow is set to auto, a scrollbar
+        will appear when the content is larger than
+        the available space.
+    </p>
+
+    <p>
+        You can scroll to see the remaining content.
+    </p>
+
+</div>
+
+</body>
+
+</html></textarea>
+
+            <br>
+
+            <button class="run-btn"
+                    onclick="runCode()">
+                ▶ Run Code
+            </button>
+
+            <button class="clear-btn"
+                    onclick="clearCode()">
+                Clear
+            </button>
+
+            <iframe id="output"></iframe>
+
+        </section>
+
+
+        <!-- Key Points -->
+
+        <section class="section">
+
+            <h2>21. Key Points</h2>
+
+            <ul>
+
+                <li>
+                    The <strong>overflow</strong> property controls
+                    content that is larger than its container.
+                </li>
+
+                <li>
+                    <strong>visible</strong> allows content to extend
+                    outside the element.
+                </li>
+
+                <li>
+                    <strong>hidden</strong> clips overflowing content.
+                </li>
+
+                <li>
+                    <strong>scroll</strong> provides scrollbars.
+                </li>
+
+                <li>
+                    <strong>auto</strong> provides scrollbars when
+                    necessary.
+                </li>
+
+                <li>
+                    <strong>overflow-x</strong> controls horizontal
+                    overflow.
+                </li>
+
+                <li>
+                    <strong>overflow-y</strong> controls vertical
+                    overflow.
+                </li>
+
+                <li>
+                    <strong>text-overflow</strong> can display an
+                    ellipsis for overflowing text.
+                </li>
+
+                <li>
+                    Overflow is very useful for responsive websites.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Navigation -->
+
+        <div class="lesson-nav">
+
+            <a href="css-display.html">
+                ← Previous: CSS Display
+            </a>
+
+            <a href="../index.html">
+                🏠 Home
+            </a>
+
+            <a href="css-padding.html">
+                Next: CSS Padding →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeInput").value;
+
+            document.getElementById("output").srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeInput").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
