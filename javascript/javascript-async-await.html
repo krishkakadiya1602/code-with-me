@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Async Await | Code With Me</title>
+
+    <meta name="description"
+          content="Learn JavaScript Async Await with simple explanations, examples and an interactive code editor.">
+
+    <meta name="keywords"
+          content="JavaScript Async Await, async await JavaScript, JavaScript asynchronous programming, JavaScript tutorial">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: linear-gradient(135deg, #f7df1e, #f59e0b);
+            padding: 70px 20px;
+            text-align: center;
+            color: #111827;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .lesson-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .lesson-section h2 {
+            color: #2563eb;
+            margin-bottom: 18px;
+            font-size: 28px;
+        }
+
+        .lesson-section h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .lesson-section p {
+            margin-bottom: 15px;
+        }
+
+        .lesson-section ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .lesson-section li {
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* =========================
+           CODE BLOCK
+        ========================= */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0 20px;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* =========================
+           EDITOR
+        ========================= */
+
+        .editor {
+            background: #111827;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .editor h3 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 320px;
+            resize: vertical;
+            padding: 15px;
+            background: #020617;
+            color: #e5e7eb;
+            border: 1px solid #374151;
+            border-radius: 7px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #60a5fa;
+        }
+
+        .editor-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+            padding: 12px 25px;
+            border-radius: 7px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .run-btn {
+            background: #22c55e;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        .output-title {
+            color: white;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 300px;
+            background: white;
+            border: none;
+            border-radius: 7px;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .lesson-navigation {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 45px 0;
+        }
+
+        .lesson-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            padding: 0 24px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .lesson-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .previous-btn {
+            margin-right: auto;
+        }
+
+        .home-btn {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .next-btn {
+            margin-left: auto;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 50px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .lesson-section {
+                padding: 22px;
+            }
+
+            .lesson-section h2 {
+                font-size: 24px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .lesson-btn {
+                width: 100%;
+                min-height: 55px;
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .previous-btn,
+            .home-btn,
+            .next-btn {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#javascript-topics">JavaScript</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <h1>JavaScript Async / Await</h1>
+
+        <p>
+            Learn how to write asynchronous JavaScript using
+            async and await with simple examples.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="lesson-section">
+
+            <h2>What is Async / Await?</h2>
+
+            <p>
+                <strong>Async</strong> and <strong>Await</strong> are
+                JavaScript keywords used to work with asynchronous
+                operations in a cleaner and easier way.
+            </p>
+
+            <p>
+                They are commonly used with
+                <strong>Promises</strong>.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Simple idea:</strong>
+
+                <br>
+
+                <code>async</code> makes a function asynchronous,
+                while <code>await</code> waits for a Promise to finish.
+                
+            </div>
+
+            <p>
+                Async/await makes asynchronous code look more like
+                normal synchronous code, which can make it easier
+                to read and understand.
+            </p>
+
+        </section>
+
+
+        <!-- ASYNC -->
+
+        <section class="lesson-section">
+
+            <h2>The async Keyword</h2>
+
+            <p>
+                The <code>async</code> keyword is placed before a
+                function.
+            </p>
+
+            <pre><code>async function hello() {
+    return "Hello JavaScript!";
+}</code></pre>
+
+            <p>
+                An async function always returns a Promise.
+            </p>
+
+            <h3>Example</h3>
+
+            <pre><code>async function message() {
+    return "Hello!";
+}
+
+message().then(function(result) {
+    console.log(result);
+});</code></pre>
+
+            <div class="success-box">
+
+                <strong>Important:</strong>
+
+                <p>
+                    Even if an async function returns a normal value,
+                    JavaScript automatically wraps that value inside
+                    a Promise.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- AWAIT -->
+
+        <section class="lesson-section">
+
+            <h2>The await Keyword</h2>
+
+            <p>
+                The <code>await</code> keyword is used to wait for
+                a Promise to complete.
+            </p>
+
+            <pre><code>async function getData() {
+
+    let result = await somePromise;
+
+    console.log(result);
+}</code></pre>
+
+            <p>
+                Normally, <code>await</code> is used inside an
+                <code>async</code> function.
+            </p>
+
+        </section>
+
+
+        <!-- BASIC EXAMPLE -->
+
+        <section class="lesson-section">
+
+            <h2>Basic Async/Await Example</h2>
+
+            <pre><code>function getMessage() {
+
+    return new Promise(function(resolve) {
+
+        setTimeout(function() {
+            resolve("Data received!");
+        }, 2000);
+
+    });
+
+}
+
+
+async function showMessage() {
+
+    const message = await getMessage();
+
+    console.log(message);
+
+}
+
+showMessage();</code></pre>
+
+            <p>
+                In this example, the function waits until the Promise
+                finishes before continuing.
+            </p>
+
+        </section>
+
+
+        <!-- PROMISE -->
+
+        <section class="lesson-section">
+
+            <h2>Async/Await with Promise</h2>
+
+            <p>
+                Async/await is commonly used with Promises.
+            </p>
+
+            <pre><code>function getData() {
+
+    return new Promise(function(resolve) {
+
+        setTimeout(function() {
+            resolve("Data loaded successfully!");
+        }, 1500);
+
+    });
+
+}
+
+
+async function loadData() {
+
+    const data = await getData();
+
+    console.log(data);
+
+}
+
+loadData();</code></pre>
+
+        </section>
+
+
+        <!-- MULTIPLE AWAIT -->
+
+        <section class="lesson-section">
+
+            <h2>Using Multiple await Statements</h2>
+
+            <p>
+                You can use multiple <code>await</code> statements
+                inside the same async function.
+            </p>
+
+            <pre><code>function firstTask() {
+
+    return new Promise(function(resolve) {
+
+        setTimeout(function() {
+            resolve("First task completed");
+        }, 1000);
+
+    });
+
+}
+
+
+function secondTask() {
+
+    return new Promise(function(resolve) {
+
+        setTimeout(function() {
+            resolve("Second task completed");
+        }, 1000);
+
+    });
+
+}
+
+
+async function runTasks() {
+
+    const first = await firstTask();
+
+    console.log(first);
+
+    const second = await secondTask();
+
+    console.log(second);
+
+}
+
+runTasks();</code></pre>
+
+            <p>
+                The second task starts after the first awaited Promise
+                has completed.
+            </p>
+
+        </section>
+
+
+        <!-- ERROR HANDLING -->
+
+        <section class="lesson-section">
+
+            <h2>Error Handling with try...catch</h2>
+
+            <p>
+                Errors in async/await code can be handled using
+                <code>try...catch</code>.
+            </p>
+
+            <pre><code>async function getData() {
+
+    try {
+
+        const response = await fetch(
+            "https://example.com/data"
+        );
+
+        console.log(response);
+
+    } catch (error) {
+
+        console.log("Something went wrong:", error);
+
+    }
+
+}
+
+getData();</code></pre>
+
+            <div class="info-box">
+
+                <strong>try:</strong>
+                Contains code that may produce an error.
+
+                <br><br>
+
+                <strong>catch:</strong>
+                Handles the error if something goes wrong.
+
+            </div>
+
+        </section>
+
+
+        <!-- FETCH -->
+
+        <section class="lesson-section">
+
+            <h2>Async/Await with fetch()</h2>
+
+            <p>
+                Async/await is frequently used with the JavaScript
+                <code>fetch()</code> API.
+            </p>
+
+            <pre><code>async function getUsers() {
+
+    try {
+
+        const response = await fetch(
+            "https://jsonplaceholder.typicode.com/users"
+        );
+
+        const users = await response.json();
+
+        console.log(users);
+
+    } catch (error) {
+
+        console.log("Error:", error);
+
+    }
+
+}
+
+getUsers();</code></pre>
+
+            <p>
+                Here there are two <code>await</code> operations:
+            </p>
+
+            <ul>
+                <li>Wait for the HTTP response.</li>
+                <li>Wait for the response to be converted to JSON.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- RETURN VALUE -->
+
+        <section class="lesson-section">
+
+            <h2>Returning Values from Async Functions</h2>
+
+            <p>
+                An async function returns a Promise.
+            </p>
+
+            <pre><code>async function calculate() {
+
+    return 100;
+
+}
+
+calculate().then(function(result) {
+
+    console.log(result);
+
+});</code></pre>
+
+            <p>
+                The returned value is automatically available through
+                the Promise.
+            </p>
+
+        </section>
+
+
+        <!-- ASYNC ARROW -->
+
+        <section class="lesson-section">
+
+            <h2>Async Arrow Functions</h2>
+
+            <p>
+                You can also use async with arrow functions.
+            </p>
+
+            <pre><code>const getMessage = async () => {
+
+    return "Hello from async function!";
+
+};
+
+
+getMessage().then(function(result) {
+
+    console.log(result);
+
+});</code></pre>
+
+        </section>
+
+
+        <!-- SEQUENTIAL -->
+
+        <section class="lesson-section">
+
+            <h2>Sequential Async Operations</h2>
+
+            <p>
+                When multiple await statements are written one after
+                another, the operations run sequentially.
+            </p>
+
+            <pre><code>async function processData() {
+
+    const first = await taskOne();
+
+    const second = await taskTwo();
+
+    const third = await taskThree();
+
+    console.log(first);
+    console.log(second);
+    console.log(third);
+
+}</code></pre>
+
+            <p>
+                The next operation waits until the previous operation
+                finishes.
+            </p>
+
+        </section>
+
+
+        <!-- PROMISE ALL -->
+
+        <section class="lesson-section">
+
+            <h2>Async/Await with Promise.all()</h2>
+
+            <p>
+                If multiple independent asynchronous operations can
+                run at the same time, you can use
+                <code>Promise.all()</code>.
+            </p>
+
+            <pre><code>async function loadData() {
+
+    const results = await Promise.all([
+
+        getUsers(),
+        getProducts(),
+        getOrders()
+
+    ]);
+
+    console.log(results);
+
+}</code></pre>
+
+            <div class="success-box">
+
+                <strong>Tip:</strong>
+
+                <p>
+                    Use <code>Promise.all()</code> when multiple
+                    asynchronous operations do not depend on each
+                    other.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ASYNC AWAIT VS PROMISE -->
+
+        <section class="lesson-section">
+
+            <h2>Promise vs Async/Await</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Promise</th>
+                        <th>Async/Await</th>
+                    </tr>
+
+                    <tr>
+                        <td>Uses .then()</td>
+                        <td>Uses await</td>
+                    </tr>
+
+                    <tr>
+                        <td>Can become difficult with many operations</td>
+                        <td>Usually easier to read</td>
+                    </tr>
+
+                    <tr>
+                        <td>Uses .catch() for errors</td>
+                        <td>Can use try...catch</td>
+                    </tr>
+
+                    <tr>
+                        <td>Works with asynchronous operations</td>
+                        <td>Works with Promises</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- WAIT EXAMPLE -->
+
+        <section class="lesson-section">
+
+            <h2>Practical Delay Example</h2>
+
+            <p>
+                The following example creates a delay using a Promise
+                and await.
+            </p>
+
+            <pre><code>function delay(time) {
+
+    return new Promise(function(resolve) {
+
+        setTimeout(resolve, time);
+
+    });
+
+}
+
+
+async function start() {
+
+    console.log("Starting...");
+
+    await delay(2000);
+
+    console.log("2 seconds completed!");
+
+}
+
+start();</code></pre>
+
+            <p>
+                The program waits for two seconds before printing the
+                second message.
+            </p>
+
+        </section>
+
+
+        <!-- IMPORTANT RULES -->
+
+        <section class="lesson-section">
+
+            <h2>Important Rules of Async/Await</h2>
+
+            <ul>
+
+                <li>
+                    <code>async</code> is used to create an async function.
+                </li>
+
+                <li>
+                    An async function always returns a Promise.
+                </li>
+
+                <li>
+                    <code>await</code> waits for a Promise to settle.
+                </li>
+
+                <li>
+                    Normally, await is used inside an async function.
+                </li>
+
+                <li>
+                    Use <code>try...catch</code> for error handling.
+                </li>
+
+                <li>
+                    Use <code>Promise.all()</code> for independent
+                    asynchronous operations.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="lesson-section">
+
+            <h2>Async/Await Best Practices</h2>
+
+            <ul>
+
+                <li>
+                    Use meaningful function names.
+                </li>
+
+                <li>
+                    Handle errors using try...catch.
+                </li>
+
+                <li>
+                    Avoid unnecessary await statements.
+                </li>
+
+                <li>
+                    Use Promise.all() when tasks can run concurrently.
+                </li>
+
+                <li>
+                    Keep asynchronous functions small and readable.
+                </li>
+
+                <li>
+                    Check HTTP responses when using fetch().
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- LIVE EDITOR -->
+
+        <section class="lesson-section">
+
+            <h2>JavaScript Async/Await - Live Code Editor</h2>
+
+            <p>
+                Write your JavaScript code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <div class="editor">
+
+                <h3>Try Async/Await</h3>
+
+                <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+<head>
+    <title>Async Await Example</title>
+</head>
+
+<body>
+
+    <h2 id="message">Waiting...</h2>
+
+    <script>
+
+        function delay(time) {
+
+            return new Promise(function(resolve) {
+
+                setTimeout(resolve, time);
+
+            });
+
+        }
+
+
+        async function showMessage() {
+
+            document.getElementById("message").textContent =
+                "Please wait...";
+
+            await delay(2000);
+
+            document.getElementById("message").textContent =
+                "Async/Await completed!";
+
+        }
+
+
+        showMessage();
+
+    </script>
+
+</body>
+</html></textarea>
+
+                <div class="editor-buttons">
+
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        ✕ Clear
+                    </button>
+
+                </div>
+
+                <h3 class="output-title">
+                    Output
+                </h3>
+
+                <iframe id="output"></iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEY POINTS -->
+
+        <section class="lesson-section">
+
+            <h2>Key Points to Remember</h2>
+
+            <ul>
+
+                <li>
+                    Async/await is used for asynchronous programming.
+                </li>
+
+                <li>
+                    <code>async</code> makes a function return a Promise.
+                </li>
+
+                <li>
+                    <code>await</code> waits for a Promise to complete.
+                </li>
+
+                <li>
+                    Async/await makes asynchronous code easier to read.
+                </li>
+
+                <li>
+                    Use try...catch to handle errors.
+                </li>
+
+                <li>
+                    Async/await is commonly used with fetch().
+                </li>
+
+                <li>
+                    Promise.all() can be used for multiple independent
+                    asynchronous operations.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="lesson-navigation">
+
+            <a
+                href="javascript-promises.html"
+                class="lesson-btn previous-btn">
+                ← Previous
+            </a>
+
+            <a
+                href="../index.html"
+                class="lesson-btn home-btn">
+                🏠 Home
+            </a>
+
+            <a
+                href="javascript-local-storage.html"
+                class="lesson-btn next-btn">
+                Next →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+            output.srcdoc = code;
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+        }
+
+
+        window.addEventListener("load", function() {
+
+            runCode();
+
+        });
+
+    </script>
+
+</body>
+</html>
