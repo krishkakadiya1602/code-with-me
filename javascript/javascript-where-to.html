@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn where to put JavaScript in HTML. Learn inline, internal and external JavaScript with examples and live code editor.">
+
+    <meta name="keywords"
+          content="JavaScript Where To, JavaScript in HTML, Inline JavaScript, Internal JavaScript, External JavaScript, JavaScript defer, JavaScript async">
+
+    <meta name="author"
+          content="Code With Me">
+
+    <title>JavaScript Where To | Code With Me</title>
+
+
+    <style>
+
+        /* ========================================
+           RESET
+        ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* ========================================
+           BODY
+        ======================================== */
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+
+        /* ========================================
+           NAVBAR
+        ======================================== */
+
+        .navbar {
+            background: #111827;
+            color: white;
+
+            min-height: 70px;
+
+            padding: 0 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+            list-style: none;
+        }
+
+
+        .nav-links a {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 16px;
+
+            font-weight: 500;
+        }
+
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* ========================================
+           HERO
+        ======================================== */
+
+        .hero {
+            background: linear-gradient(
+                135deg,
+                #f7df1e,
+                #f59e0b
+            );
+
+            color: #111827;
+
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+
+        .hero h1 {
+            font-size: 48px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .hero p {
+            font-size: 20px;
+
+            max-width: 850px;
+
+            margin: 0 auto;
+        }
+
+
+        /* ========================================
+           MAIN CONTAINER
+        ======================================== */
+
+        .container {
+            width: 90%;
+
+            max-width: 1100px;
+
+            margin: 45px auto;
+        }
+
+
+        /* ========================================
+           LESSON SECTION
+        ======================================== */
+
+        .lesson-section {
+            background: white;
+
+            padding: 32px;
+
+            margin-bottom: 30px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .lesson-section h2 {
+            color: #2563eb;
+
+            font-size: 28px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .lesson-section h3 {
+            color: #7c3aed;
+
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .lesson-section p {
+            margin-bottom: 15px;
+        }
+
+
+        .lesson-section ul {
+            margin-left: 25px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .lesson-section li {
+            margin-bottom: 8px;
+        }
+
+
+        /* ========================================
+           INFO BOXES
+        ======================================== */
+
+        .info-box {
+            background: #eff6ff;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 18px 20px;
+
+            margin: 20px 0;
+
+            border-radius: 6px;
+        }
+
+
+        .success-box {
+            background: #f0fdf4;
+
+            border-left: 5px solid #22c55e;
+
+            padding: 18px 20px;
+
+            margin: 20px 0;
+
+            border-radius: 6px;
+        }
+
+
+        .warning-box {
+            background: #fff7ed;
+
+            border-left: 5px solid #f97316;
+
+            padding: 18px 20px;
+
+            margin: 20px 0;
+
+            border-radius: 6px;
+        }
+
+
+        /* ========================================
+           INLINE CODE
+        ======================================== */
+
+        code {
+            background: #e5e7eb;
+
+            color: #b91c1c;
+
+            padding: 3px 7px;
+
+            border-radius: 4px;
+
+            font-family:
+                Consolas,
+                "Courier New",
+                monospace;
+        }
+
+
+        /* ========================================
+           CODE BLOCK
+        ======================================== */
+
+        pre {
+            background: #111827;
+
+            color: #e5e7eb;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            overflow-x: auto;
+
+            margin: 18px 0;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+
+
+        pre code {
+            background: transparent;
+
+            color: inherit;
+
+            padding: 0;
+        }
+
+
+        /* ========================================
+           EXAMPLE BOX
+        ======================================== */
+
+        .example-box {
+            background: #f9fafb;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 8px;
+
+            padding: 20px;
+
+            margin: 20px 0;
+        }
+
+
+        .example-box h3 {
+            margin-top: 0;
+
+            color: #2563eb;
+        }
+
+
+        /* ========================================
+           TABLE
+        ======================================== */
+
+        .table-wrapper {
+            width: 100%;
+
+            overflow-x: auto;
+        }
+
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin: 20px 0;
+        }
+
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+
+            padding: 12px;
+
+            text-align: left;
+        }
+
+
+        th {
+            background: #2563eb;
+
+            color: white;
+        }
+
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+
+        /* ========================================
+           EDITOR
+        ======================================== */
+
+        .editor-section {
+            background: #111827;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .editor-section h2 {
+            color: white;
+
+            margin-bottom: 10px;
+        }
+
+
+        .editor-description {
+            color: #d1d5db;
+
+            margin-bottom: 18px;
+        }
+
+
+        #codeEditor {
+            width: 100%;
+
+            min-height: 450px;
+
+            resize: vertical;
+
+            padding: 20px;
+
+            border: 1px solid #374151;
+
+            border-radius: 8px;
+
+            outline: none;
+
+            background: #020617;
+
+            color: #e5e7eb;
+
+            font-family:
+                Consolas,
+                "Courier New",
+                monospace;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+
+
+        #codeEditor:focus {
+            border-color: #60a5fa;
+        }
+
+
+        /* ========================================
+           EDITOR BUTTONS
+        ======================================== */
+
+        .editor-buttons {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+
+            padding: 13px 25px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            font-weight: bold;
+        }
+
+
+        .run-btn {
+            background: #22c55e;
+
+            color: white;
+        }
+
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+
+        .clear-btn {
+            background: #ef4444;
+
+            color: white;
+        }
+
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+
+        /* ========================================
+           PREVIEW
+        ======================================== */
+
+        .preview-heading {
+            color: white;
+
+            margin-top: 28px;
+
+            margin-bottom: 12px;
+        }
+
+
+        #output {
+            width: 100%;
+
+            height: 400px;
+
+            background: white;
+
+            border: 2px solid #374151;
+
+            border-radius: 8px;
+        }
+
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+
+        .lesson-navigation {
+            width: 100%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin: 45px 0;
+        }
+
+
+        .lesson-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 60px;
+
+            padding: 0 24px;
+
+            background: #2563eb;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+
+            transition: 0.3s;
+        }
+
+
+        .lesson-btn:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+
+        .previous-btn {
+            margin-right: auto;
+        }
+
+
+        .home-btn {
+            margin-left: auto;
+
+            margin-right: auto;
+        }
+
+
+        .next-btn {
+            margin-left: auto;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+
+        /* ========================================
+           MOBILE
+        ======================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: column;
+
+                justify-content: center;
+
+                gap: 15px;
+
+                padding: 18px 20px;
+            }
+
+
+            .nav-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+
+            .hero p {
+                font-size: 17px;
+            }
+
+
+            .container {
+                width: 94%;
+            }
+
+
+            .lesson-section {
+                padding: 22px;
+            }
+
+
+            .lesson-section h2 {
+                font-size: 24px;
+            }
+
+
+            .lesson-navigation {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            .lesson-btn {
+                width: 100%;
+
+                min-height: 55px;
+
+                font-size: 16px;
+
+                text-align: center;
+            }
+
+
+            .previous-btn,
+            .home-btn,
+            .next-btn {
+                margin-left: 0;
+
+                margin-right: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
+
+    <nav class="navbar">
+
+
+        <div class="logo">
+
+            Code <span>WithMe</span>
+
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+
+            <li>
+                <a href="../index.html#courses">
+                    Courses
+                </a>
+            </li>
+
+
+            <li>
+                <a href="javascript-introduction.html">
+                    JavaScript
+                </a>
+            </li>
+
+
+            <li>
+                <a href="../index.html#about">
+                    About
+                </a>
+            </li>
+
+        </ul>
+
+
+    </nav>
+
+
+
+    <!-- ========================================
+         HERO
+    ======================================== -->
+
+    <section class="hero">
+
+        <h1>JavaScript Where To</h1>
+
+        <p>
+            Learn where and how JavaScript can be added
+            to an HTML page.
+        </p>
+
+    </section>
+
+
+
+    <main class="container">
+
+
+        <!-- ========================================
+             SECTION 1
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>1. Where Can JavaScript Be Added?</h2>
+
+
+            <p>
+                JavaScript can be added to an HTML document
+                in different ways.
+            </p>
+
+
+            <p>
+                The three common methods are:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Inline JavaScript
+                </li>
+
+                <li>
+                    Internal JavaScript
+                </li>
+
+                <li>
+                    External JavaScript
+                </li>
+
+            </ul>
+
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                All three methods allow JavaScript to run
+                in a webpage, but they are useful in
+                different situations.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 2
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>2. Inline JavaScript</h2>
+
+
+            <p>
+                Inline JavaScript is written directly inside
+                an HTML element using an event attribute.
+            </p>
+
+
+            <p>
+                For example, JavaScript can be written inside
+                the <code>onclick</code> attribute.
+            </p>
+
+
+            <pre><code>&lt;button onclick="alert('Hello JavaScript!')"&gt;
+
+    Click Me
+
+&lt;/button&gt;</code></pre>
+
+
+            <div class="example-box">
+
+                <h3>Example</h3>
+
+                <button
+                    onclick="alert('Hello from Inline JavaScript!')"
+                    style="
+                        background:#2563eb;
+                        color:white;
+                        border:none;
+                        padding:12px 22px;
+                        border-radius:7px;
+                        cursor:pointer;
+                    ">
+
+                    Click Me
+
+                </button>
+
+            </div>
+
+
+            <div class="warning-box">
+
+                Inline JavaScript can be useful for small
+                examples, but larger websites are usually
+                easier to maintain when JavaScript is kept
+                separate from HTML.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 3
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>3. Internal JavaScript</h2>
+
+
+            <p>
+                Internal JavaScript is written inside a
+                <code>&lt;script&gt;</code> element in the
+                same HTML file.
+            </p>
+
+
+            <p>
+                The script can be placed in the
+                <code>&lt;head&gt;</code> or
+                <code>&lt;body&gt;</code> section.
+            </p>
+
+
+            <pre><code>&lt;script&gt;
+
+function showMessage() {
+
+    alert("Hello JavaScript!");
+
+}
+
+&lt;/script&gt;</code></pre>
+
+
+            <h3>Complete Example</h3>
+
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;body&gt;
+
+&lt;button onclick="showMessage()"&gt;
+
+    Click Me
+
+&lt;/button&gt;
+
+
+&lt;script&gt;
+
+function showMessage() {
+
+    alert("Hello JavaScript!");
+
+}
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 4
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>4. JavaScript in the &lt;head&gt;</h2>
+
+
+            <p>
+                JavaScript can be placed inside the
+                <code>&lt;head&gt;</code> section of an
+                HTML document.
+            </p>
+
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+&lt;script&gt;
+
+function showMessage() {
+
+    alert("Hello from the head!");
+
+}
+
+&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;button onclick="showMessage()"&gt;
+
+    Click Me
+
+&lt;/button&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+
+            <div class="info-box">
+
+                When scripts need access to HTML elements,
+                the timing of script execution matters.
+                Using <code>defer</code> or placing scripts
+                appropriately can help avoid timing problems.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 5
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>5. JavaScript in the &lt;body&gt;</h2>
+
+
+            <p>
+                JavaScript can also be placed near the end
+                of the <code>&lt;body&gt;</code>.
+            </p>
+
+
+            <pre><code>&lt;body&gt;
+
+&lt;h1 id="demo"&gt;Hello&lt;/h1&gt;
+
+
+&lt;script&gt;
+
+document.getElementById("demo").innerHTML =
+"Hello JavaScript!";
+
+&lt;/script&gt;
+
+&lt;/body&gt;</code></pre>
+
+
+            <p>
+                This allows the HTML content above the script
+                to already exist when the script runs.
+            </p>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 6
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>6. External JavaScript</h2>
+
+
+            <p>
+                External JavaScript means JavaScript code
+                is stored in a separate <code>.js</code> file.
+            </p>
+
+
+            <p>
+                The external JavaScript file is connected
+                to HTML using the <code>&lt;script src&gt;</code>
+                element.
+            </p>
+
+
+            <h3>HTML File</h3>
+
+
+            <pre><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+
+
+            <h3>script.js</h3>
+
+
+            <pre><code>function showMessage() {
+
+    alert("Hello from external JavaScript!");
+
+}</code></pre>
+
+
+            <div class="success-box">
+
+                External JavaScript is especially useful when
+                the same JavaScript code is needed by multiple
+                HTML pages.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 7
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>7. External JavaScript File Structure</h2>
+
+
+            <p>
+                Suppose your website has this structure:
+            </p>
+
+
+            <pre><code>website/
+│
+├── index.html
+│
+├── about.html
+│
+└── js/
+    └── script.js</code></pre>
+
+
+            <p>
+                From <code>index.html</code>, you can connect
+                the JavaScript file like this:
+            </p>
+
+
+            <pre><code>&lt;script src="js/script.js"&gt;&lt;/script&gt;</code></pre>
+
+
+            <p>
+                If your HTML page is inside a folder, the path
+                may need to use <code>../</code>.
+            </p>
+
+
+            <pre><code>&lt;script src="../js/script.js"&gt;&lt;/script&gt;</code></pre>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 8
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>8. Using defer</h2>
+
+
+            <p>
+                The <code>defer</code> attribute tells the
+                browser to download the script while parsing
+                the HTML and execute it after the document
+                has been parsed.
+            </p>
+
+
+            <pre><code>&lt;script
+    src="script.js"
+    defer&gt;
+&lt;/script&gt;</code></pre>
+
+
+            <div class="info-box">
+
+                <strong>Common usage:</strong>
+
+                External scripts that need to work with
+                elements in the HTML document can often use
+                <code>defer</code>.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 9
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>9. Using async</h2>
+
+
+            <p>
+                The <code>async</code> attribute allows an
+                external script to download independently
+                and execute as soon as it is ready.
+            </p>
+
+
+            <pre><code>&lt;script
+    src="script.js"
+    async&gt;
+&lt;/script&gt;</code></pre>
+
+
+            <div class="warning-box">
+
+                <strong>Important:</strong>
+
+                Async scripts may execute before or after
+                other page resources are ready, so they are
+                generally used when the script does not depend
+                on a specific execution order.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 10
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>10. Inline vs Internal vs External</h2>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <tr>
+
+                        <th>
+                            Method
+                        </th>
+
+                        <th>
+                            Location
+                        </th>
+
+                        <th>
+                            Example
+                        </th>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Inline
+                        </td>
+
+                        <td>
+                            Inside HTML element
+                        </td>
+
+                        <td>
+                            onclick="..."
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Internal
+                        </td>
+
+                        <td>
+                            Inside &lt;script&gt;
+                        </td>
+
+                        <td>
+                            &lt;script&gt;...&lt;/script&gt;
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            External
+                        </td>
+
+                        <td>
+                            Separate .js file
+                        </td>
+
+                        <td>
+                            &lt;script src="script.js"&gt;
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 11
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>11. Multiple External JavaScript Files</h2>
+
+
+            <p>
+                A website can use more than one JavaScript file.
+            </p>
+
+
+            <pre><code>&lt;script src="js/main.js" defer&gt;&lt;/script&gt;
+
+&lt;script src="js/navigation.js" defer&gt;&lt;/script&gt;
+
+&lt;script src="js/form.js" defer&gt;&lt;/script&gt;</code></pre>
+
+
+            <p>
+                This can help organize JavaScript code into
+                separate files based on their responsibilities.
+            </p>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SECTION 12
+        ======================================== -->
+
+        <section class="lesson-section">
+
+            <h2>12. Best Practice for Websites</h2>
+
+
+            <p>
+                For a multi-page website such as
+                <strong>Code With Me</strong>, keeping reusable
+                JavaScript in external files can make the
+                project easier to organize.
+            </p>
+
+
+            <pre><code>code-with-me/
+│
+├── index.html
+│
+├── css/
+│
+├── javascript/
+│
+└── js/
+    ├── main.js
+    ├── rating.js
+    └── navigation.js</code></pre>
+
+
+            <div class="success-box">
+
+                <strong>Recommended approach:</strong>
+
+                Keep page-specific examples inside the lesson,
+                while reusable JavaScript can be placed in
+                separate <code>.js</code> files.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             LIVE CODE EDITOR
+        ======================================== -->
+
+        <section class="editor-section">
+
+
+            <h2>
+                💻 JavaScript Where To - Code Editor
+            </h2>
+
+
+            <p class="editor-description">
+
+                Try the example below. The HTML, CSS and
+                JavaScript are all inside one file.
+
+                Click <strong>Run Code</strong> to see
+                the result.
+
+            </p>
+
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>JavaScript Where To</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+            background: #f3f4f6;
+        }
+
+        h1 {
+            color: #2563eb;
+        }
+
+        #message {
+            font-size: 24px;
+            margin: 25px 0;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <h1>
+        JavaScript Where To
+    </h1>
+
+
+    <p id="message">
+        JavaScript is ready!
+    </p>
+
+
+    <button onclick="changeMessage()">
+
+        Click Me
+
+    </button>
+
+
+    <script>
+
+        function changeMessage() {
+
+            document.getElementById("message").innerHTML =
+                "JavaScript is running successfully! 🎉";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html></textarea>
+
+
+            <!-- BUTTONS -->
+
+            <div class="editor-buttons">
+
+
+                <button
+                    type="button"
+                    class="run-btn"
+                    onclick="runCode()">
+
+                    ▶ Run Code
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="clear-btn"
+                    onclick="clearCode()">
+
+                    🗑 Clear
+
+                </button>
+
+
+            </div>
+
+
+            <!-- PREVIEW -->
+
+            <h3 class="preview-heading">
+                👁 Live Preview
+            </h3>
+
+
+            <iframe
+                id="output"
+                title="JavaScript Live Preview">
+            </iframe>
+
+
+        </section>
+
+
+
+        <!-- ========================================
+             KEY POINTS
+        ======================================== -->
+
+        <section class="lesson-section">
+
+
+            <h2>
+                🎯 Key Points to Remember
+            </h2>
+
+
+            <ul>
+
+                <li>
+                    JavaScript can be written inline.
+                </li>
+
+                <li>
+                    JavaScript can be written inside
+                    a <code>&lt;script&gt;</code> element.
+                </li>
+
+                <li>
+                    JavaScript can be stored in an
+                    external <code>.js</code> file.
+                </li>
+
+                <li>
+                    External JavaScript can be connected
+                    using <code>src</code>.
+                </li>
+
+                <li>
+                    <code>defer</code> is useful when a script
+                    should execute after HTML parsing.
+                </li>
+
+                <li>
+                    <code>async</code> allows an external
+                    script to execute as soon as it is ready.
+                </li>
+
+                <li>
+                    External JavaScript is useful for
+                    reusable code across multiple pages.
+                </li>
+
+            </ul>
+
+
+            <div class="success-box">
+
+                <strong>
+                    Next Topic:
+                </strong>
+
+                In the next lesson, you will learn
+                <strong>JavaScript Output</strong>.
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ========================================
+             PREVIOUS / HOME / NEXT
+        ======================================== -->
+
+        <div class="lesson-navigation">
+
+
+            <!-- PREVIOUS -->
+
+            <a
+                href="javascript-introduction.html"
+                class="lesson-btn previous-btn">
+
+                ← Previous: JavaScript Introduction
+
+            </a>
+
+
+            <!-- HOME -->
+
+            <a
+                href="../index.html"
+                class="lesson-btn home-btn">
+
+                🏠 Home
+
+            </a>
+
+
+            <!-- NEXT -->
+
+            <a
+                href="javascript-output.html"
+                class="lesson-btn next-btn">
+
+                Next: JavaScript Output →
+
+            </a>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+
+        /* ========================================
+           RUN CODE
+        ======================================== */
+
+        function runCode() {
+
+            const codeEditor =
+                document.getElementById("codeEditor");
+
+            const output =
+                document.getElementById("output");
+
+
+            output.srcdoc =
+                codeEditor.value;
+
+        }
+
+
+
+        /* ========================================
+           CLEAR CODE
+        ======================================== */
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+
+
+        /* ========================================
+           RUN ON PAGE LOAD
+        ======================================== */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                runCode();
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
