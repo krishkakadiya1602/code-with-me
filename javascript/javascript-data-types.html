@@ -1,0 +1,1320 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn JavaScript Data Types with simple examples and an interactive code editor.">
+
+    <meta name="keywords"
+          content="JavaScript Data Types, JavaScript String, Number, Boolean, Object, Array, Undefined, Null, Symbol">
+
+    <meta name="author"
+          content="Code With Me">
+
+    <title>JavaScript Data Types | Code With Me</title>
+
+
+    <style>
+
+        /* ========================================
+           RESET
+        ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* ========================================
+           BODY
+        ======================================== */
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+
+        /* ========================================
+           NAVBAR
+        ======================================== */
+
+        .navbar {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* ========================================
+           PAGE HEADER
+        ======================================== */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #1d4ed8,
+                #7c3aed
+            );
+
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+
+        /* ========================================
+           CONTAINER
+        ======================================== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+
+        /* ========================================
+           CONTENT CARD
+        ======================================== */
+
+        .content-card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-card h2 {
+            color: #1d4ed8;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-card h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-card p {
+            margin-bottom: 15px;
+        }
+
+
+        /* ========================================
+           INFO BOX
+        ======================================== */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #1d4ed8;
+        }
+
+
+        /* ========================================
+           LIST
+        ======================================== */
+
+        .content-card ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-card li {
+            margin-bottom: 8px;
+        }
+
+
+        /* ========================================
+           CODE BLOCK
+        ======================================== */
+
+        .code-block {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0 25px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+        }
+
+
+        /* ========================================
+           DATA TYPE TABLE
+        ======================================== */
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background: #1d4ed8;
+            color: white;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+
+        /* ========================================
+           EDITOR
+        ======================================== */
+
+        .editor-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .editor-section h2 {
+            color: #1d4ed8;
+            margin-bottom: 10px;
+        }
+
+        .editor-section p {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 350px;
+            resize: vertical;
+            padding: 18px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: #111827;
+            color: #f9fafb;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+
+        /* ========================================
+           BUTTONS
+        ======================================== */
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+
+        /* ========================================
+           PREVIEW
+        ======================================== */
+
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #374151;
+        }
+
+        .output-frame {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+        }
+
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background: #111827;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #2563eb;
+        }
+
+        .home-btn {
+            background: #7c3aed;
+        }
+
+        .home-btn:hover {
+            background: #6d28d9;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+
+        /* ========================================
+           MOBILE
+        ======================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .content-card,
+            .editor-section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .data-table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
+
+    <nav class="navbar">
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">
+                    Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript-introduction.html">
+                    JavaScript
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">
+                    About
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ========================================
+         PAGE HEADER
+    ======================================== -->
+
+    <header class="page-header">
+
+        <h1>JavaScript Data Types</h1>
+
+        <p>
+            Learn the different types of data used in JavaScript.
+        </p>
+
+    </header>
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ======================================== -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="content-card">
+
+            <h2>What are Data Types?</h2>
+
+            <p>
+                In JavaScript, a data type describes the kind of
+                value stored in a variable.
+            </p>
+
+            <p>
+                For example, a variable can store a number, text,
+                true or false, an object, or another type of value.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                <div class="code-block">
+<pre>
+let name = "Krish";
+let age = 20;
+let isStudent = true;
+</pre>
+                </div>
+
+                Here, <strong>name</strong> is a String,
+                <strong>age</strong> is a Number, and
+                <strong>isStudent</strong> is a Boolean.
+
+            </div>
+
+        </section>
+
+
+        <!-- MAIN DATA TYPES -->
+
+        <section class="content-card">
+
+            <h2>JavaScript Data Types</h2>
+
+            <p>
+                JavaScript has several built-in data types.
+                They can broadly be divided into primitive and
+                non-primitive data types.
+            </p>
+
+            <table class="data-table">
+
+                <tr>
+
+                    <th>
+                        Data Type
+                    </th>
+
+                    <th>
+                        Example
+                    </th>
+
+                    <th>
+                        Description
+                    </th>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        String
+                    </td>
+
+                    <td>
+                        "Hello"
+                    </td>
+
+                    <td>
+                        Represents text.
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Number
+                    </td>
+
+                    <td>
+                        100
+                    </td>
+
+                    <td>
+                        Represents numbers.
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        BigInt
+                    </td>
+
+                    <td>
+                        12345678901234567890n
+                    </td>
+
+                    <td>
+                        Represents very large integers.
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Boolean
+                    </td>
+
+                    <td>
+                        true
+                    </td>
+
+                    <td>
+                        Represents true or false.
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Undefined
+                    </td>
+
+                    <td>
+                        undefined
+                    </td>
+
+                    <td>
+                        A variable without a value.
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Null
+                    </td>
+
+                    <td>
+                        null
+                    </td>
+
+                    <td>
+                        Represents an intentional empty value.
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Symbol
+                    </td>
+
+                    <td>
+                        Symbol("id")
+                    </td>
+
+                    <td>
+                        Represents a unique value.
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Object
+                    </td>
+
+                    <td>
+                        {name: "Krish"}
+                    </td>
+
+                    <td>
+                        Represents collections of properties and values.
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- STRING -->
+
+        <section class="content-card">
+
+            <h2>1. String</h2>
+
+            <p>
+                A String represents text.
+                Strings can be written inside single quotes,
+                double quotes, or backticks.
+            </p>
+
+            <div class="code-block">
+<pre>
+let firstName = "Krish";
+
+let city = 'Vadodara';
+
+let message = `Welcome to Code With Me`;
+
+console.log(firstName);
+console.log(city);
+console.log(message);
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- NUMBER -->
+
+        <section class="content-card">
+
+            <h2>2. Number</h2>
+
+            <p>
+                The Number data type is used for integers and
+                decimal numbers.
+            </p>
+
+            <div class="code-block">
+<pre>
+let age = 20;
+
+let price = 99.99;
+
+let total = 100 + 50;
+
+console.log(age);
+console.log(price);
+console.log(total);
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- BIGINT -->
+
+        <section class="content-card">
+
+            <h2>3. BigInt</h2>
+
+            <p>
+                BigInt is used to represent integers larger than
+                the safe limit of the regular Number type.
+            </p>
+
+            <div class="code-block">
+<pre>
+let largeNumber = 12345678901234567890n;
+
+console.log(largeNumber);
+</pre>
+            </div>
+
+            <div class="info-box">
+
+                <strong>Note:</strong>
+
+                A BigInt literal ends with the letter
+                <strong>n</strong>.
+
+            </div>
+
+        </section>
+
+
+        <!-- BOOLEAN -->
+
+        <section class="content-card">
+
+            <h2>4. Boolean</h2>
+
+            <p>
+                Boolean values can have only two possible values:
+                <strong>true</strong> or <strong>false</strong>.
+            </p>
+
+            <div class="code-block">
+<pre>
+let isLoggedIn = true;
+
+let isAdmin = false;
+
+console.log(isLoggedIn);
+console.log(isAdmin);
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- UNDEFINED -->
+
+        <section class="content-card">
+
+            <h2>5. Undefined</h2>
+
+            <p>
+                A variable has the value
+                <strong>undefined</strong> when it has been declared
+                but no value has been assigned to it.
+            </p>
+
+            <div class="code-block">
+<pre>
+let username;
+
+console.log(username);
+</pre>
+            </div>
+
+            <p>
+                The output will be:
+            </p>
+
+            <div class="info-box">
+
+                <strong>undefined</strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- NULL -->
+
+        <section class="content-card">
+
+            <h2>6. Null</h2>
+
+            <p>
+                The value <strong>null</strong> represents an
+                intentional absence of a value.
+            </p>
+
+            <div class="code-block">
+<pre>
+let selectedUser = null;
+
+console.log(selectedUser);
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- SYMBOL -->
+
+        <section class="content-card">
+
+            <h2>7. Symbol</h2>
+
+            <p>
+                Symbol creates a unique value.
+                Symbols are often used as unique object property keys.
+            </p>
+
+            <div class="code-block">
+<pre>
+let id = Symbol("userId");
+
+console.log(id);
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- OBJECT -->
+
+        <section class="content-card">
+
+            <h2>8. Object</h2>
+
+            <p>
+                An object can store multiple related values as
+                properties and values.
+            </p>
+
+            <div class="code-block">
+<pre>
+let student = {
+    name: "Krish",
+    age: 20,
+    course: "JavaScript"
+};
+
+console.log(student.name);
+console.log(student.age);
+console.log(student.course);
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- ARRAY -->
+
+        <section class="content-card">
+
+            <h2>9. Array</h2>
+
+            <p>
+                An Array is used to store multiple values in a
+                single variable.
+            </p>
+
+            <div class="code-block">
+<pre>
+let fruits = [
+    "Apple",
+    "Banana",
+    "Mango"
+];
+
+console.log(fruits);
+console.log(fruits[0]);
+</pre>
+            </div>
+
+            <div class="info-box">
+
+                <strong>Note:</strong>
+
+                Arrays are objects in JavaScript.
+                They are commonly used to store lists of values.
+
+            </div>
+
+        </section>
+
+
+        <!-- TYPEOF -->
+
+        <section class="content-card">
+
+            <h2>Checking Data Type with typeof</h2>
+
+            <p>
+                JavaScript provides the <strong>typeof</strong>
+                operator to determine the type of a value.
+            </p>
+
+            <div class="code-block">
+<pre>
+let name = "Krish";
+let age = 20;
+let student = true;
+
+console.log(typeof name);
+console.log(typeof age);
+console.log(typeof student);
+</pre>
+            </div>
+
+            <p>
+                Output:
+            </p>
+
+            <div class="code-block">
+<pre>
+string
+number
+boolean
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- PRIMITIVE -->
+
+        <section class="content-card">
+
+            <h2>Primitive Data Types</h2>
+
+            <p>
+                Primitive data types represent single values.
+            </p>
+
+            <ul>
+
+                <li>String</li>
+
+                <li>Number</li>
+
+                <li>BigInt</li>
+
+                <li>Boolean</li>
+
+                <li>Undefined</li>
+
+                <li>Null</li>
+
+                <li>Symbol</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NON PRIMITIVE -->
+
+        <section class="content-card">
+
+            <h2>Non-Primitive Data Type</h2>
+
+            <p>
+                Objects are non-primitive values and can contain
+                multiple properties and values.
+            </p>
+
+            <div class="code-block">
+<pre>
+let person = {
+    name: "Krish",
+    age: 20
+};
+
+console.log(person);
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- IMPORTANT POINTS -->
+
+        <section class="content-card">
+
+            <h2>Important Points</h2>
+
+            <ul>
+
+                <li>
+                    JavaScript variables can store different types of values.
+                </li>
+
+                <li>
+                    Strings are used for text.
+                </li>
+
+                <li>
+                    Numbers are used for numeric values.
+                </li>
+
+                <li>
+                    Boolean values are either true or false.
+                </li>
+
+                <li>
+                    Undefined means a value has not been assigned.
+                </li>
+
+                <li>
+                    Null represents an intentional empty value.
+                </li>
+
+                <li>
+                    Objects can store multiple related values.
+                </li>
+
+                <li>
+                    The <strong>typeof</strong> operator can be used
+                    to check a value's type.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- ========================================
+             CODE EDITOR
+        ======================================== -->
+
+        <section class="editor-section">
+
+            <h2>JavaScript Data Types - Code Editor</h2>
+
+            <p>
+                Write your JavaScript code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>JavaScript Data Types</title>
+
+</head>
+
+<body>
+
+    <h2>JavaScript Data Types</h2>
+
+    <p id="result"></p>
+
+    <script>
+
+        let name = "Krish";
+
+        let age = 20;
+
+        let price = 99.99;
+
+        let isStudent = true;
+
+        let username;
+
+        let selectedUser = null;
+
+        let fruits = [
+            "Apple",
+            "Banana",
+            "Mango"
+        ];
+
+        let student = {
+            name: "Krish",
+            course: "JavaScript"
+        };
+
+        document.getElementById("result").innerHTML =
+
+            "Name: " + name + "<br>" +
+
+            "Age: " + age + "<br>" +
+
+            "Price: " + price + "<br>" +
+
+            "Student: " + isStudent + "<br>" +
+
+            "Username: " + username + "<br>" +
+
+            "Selected User: " + selectedUser + "<br>" +
+
+            "First Fruit: " + fruits[0] + "<br>" +
+
+            "Course: " + student.course;
+
+        console.log("Name type:", typeof name);
+
+        console.log("Age type:", typeof age);
+
+        console.log("Student type:", typeof isStudent);
+
+    </script>
+
+</body>
+
+</html></textarea>
+
+
+            <div class="button-group">
+
+                <button
+                    class="btn run-btn"
+                    onclick="runCode()">
+
+                    ▶ Run Code
+
+                </button>
+
+                <button
+                    class="btn clear-btn"
+                    onclick="clearCode()">
+
+                    ✕ Clear
+
+                </button>
+
+            </div>
+
+
+            <h3 class="output-title">
+                Preview
+            </h3>
+
+
+            <iframe
+                id="outputFrame"
+                class="output-frame"
+                title="JavaScript Data Types Preview">
+            </iframe>
+
+        </section>
+
+
+        <!-- ========================================
+             NAVIGATION
+        ======================================== -->
+
+        <div class="lesson-navigation">
+
+
+            <!-- PREVIOUS -->
+
+            <a
+                href="javascript-comments.html"
+                class="nav-btn">
+
+                ← Previous
+
+            </a>
+
+
+            <!-- HOME -->
+
+            <a
+                href="../index.html"
+                class="nav-btn home-btn">
+
+                🏠 Home
+
+            </a>
+
+
+            <!-- NEXT -->
+
+            <a
+                href="javascript-variables.html"
+                class="nav-btn">
+
+                Next →
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python.
+        </p>
+
+    </footer>
+
+
+    <!-- ========================================
+         CODE RUNNER
+    ======================================== -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const outputFrame =
+                document.getElementById("outputFrame");
+
+            outputFrame.srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("outputFrame").srcdoc = "";
+
+        }
+
+
+        /* Run default code when page loads */
+
+        window.addEventListener("load", function () {
+
+            runCode();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
+```
