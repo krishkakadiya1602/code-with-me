@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Form Validation | Code With Me</title>
+
+    <meta name="description"
+        content="Learn JavaScript Form Validation with simple examples. Learn how to validate forms, email, password, numbers and required fields using JavaScript.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #f7df1e, #f59e0b);
+            color: #111827;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        /* ================= LESSON CARD ================= */
+
+        .lesson-card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .lesson-card h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .lesson-card h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .lesson-card p {
+            margin-bottom: 15px;
+        }
+
+        .lesson-card ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .lesson-card li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= INFO BOX ================= */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* ================= CODE ================= */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            color: #dc2626;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        /* ================= TABLE ================= */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* ================= FORM DEMO ================= */
+
+        .demo-form {
+            max-width: 600px;
+            margin: 25px auto;
+            padding: 25px;
+            background: #f8fafc;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+        }
+
+        .demo-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .demo-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .demo-form button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .demo-form button:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= EDITOR ================= */
+
+        .editor-section {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 400px;
+            background: #020617;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #22c55e;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        /* ================= OUTPUT ================= */
+
+        .output-title {
+            margin-top: 20px;
+            color: #2563eb;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            margin-top: 10px;
+        }
+
+        /* ================= KEY POINTS ================= */
+
+        .key-points {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            border-radius: 7px;
+        }
+
+        .key-points ul {
+            margin-left: 25px;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .lesson-navigation {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 45px 0;
+        }
+
+        .lesson-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            padding: 0 24px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .lesson-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .previous-btn {
+            margin-right: auto;
+        }
+
+        .home-btn {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .next-btn {
+            margin-left: auto;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .lesson-card {
+                padding: 20px;
+            }
+
+            .lesson-card h2 {
+                font-size: 24px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .lesson-btn {
+                width: 100%;
+                min-height: 55px;
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .previous-btn,
+            .home-btn,
+            .next-btn {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul>
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <h1>JavaScript Form Validation</h1>
+
+        <p>
+            Learn how to validate user input in HTML forms
+            using JavaScript.
+        </p>
+
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="lesson-card">
+
+            <h2>What is Form Validation?</h2>
+
+            <p>
+                Form validation is the process of checking whether
+                the information entered by a user is correct and
+                complete before the form is submitted.
+            </p>
+
+            <p>
+                For example, a website may require the user to enter
+                a name, valid email address and password.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                <p>
+                    If a user leaves an email field empty,
+                    JavaScript can display an error message instead
+                    of allowing the form to continue.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHY VALIDATION -->
+
+        <section class="lesson-card">
+
+            <h2>Why is Form Validation Important?</h2>
+
+            <ul>
+
+                <li>Prevents empty fields.</li>
+
+                <li>Checks whether data has the correct format.</li>
+
+                <li>Improves the user experience.</li>
+
+                <li>Helps prevent invalid data from being submitted.</li>
+
+                <li>Provides immediate feedback to users.</li>
+
+            </ul>
+
+            <div class="warning-box">
+
+                <strong>Important:</strong>
+
+                <p>
+                    Client-side validation improves usability, but
+                    important data should also be validated on the
+                    server before being trusted or stored.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- REQUIRED FIELD -->
+
+        <section class="lesson-card">
+
+            <h2>Checking Required Fields</h2>
+
+            <p>
+                You can check whether an input contains a value
+                using JavaScript.
+            </p>
+
+            <pre><code>const name =
+    document.getElementById("name").value;
+
+if (name.trim() === "") {
+
+    alert("Name is required.");
+
+}</code></pre>
+
+            <p>
+                The <span class="inline-code">trim()</span> method
+                removes spaces from the beginning and end of text.
+            </p>
+
+        </section>
+
+
+        <!-- EMAIL -->
+
+        <section class="lesson-card">
+
+            <h2>Validating an Email Address</h2>
+
+            <p>
+                JavaScript can check whether an email looks like
+                a valid email address.
+            </p>
+
+            <pre><code>const email =
+    document.getElementById("email").value;
+
+const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailPattern.test(email)) {
+
+    alert("Please enter a valid email address.");
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- PASSWORD -->
+
+        <section class="lesson-card">
+
+            <h2>Password Validation</h2>
+
+            <p>
+                You can check the length of a password before
+                accepting it.
+            </p>
+
+            <pre><code>const password =
+    document.getElementById("password").value;
+
+if (password.length < 8) {
+
+    alert("Password must contain at least 8 characters.");
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- CONFIRM PASSWORD -->
+
+        <section class="lesson-card">
+
+            <h2>Confirm Password Validation</h2>
+
+            <p>
+                A registration form can compare two password fields
+                to make sure they match.
+            </p>
+
+            <pre><code>const password =
+    document.getElementById("password").value;
+
+const confirmPassword =
+    document.getElementById("confirmPassword").value;
+
+if (password !== confirmPassword) {
+
+    alert("Passwords do not match.");
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- NUMBER -->
+
+        <section class="lesson-card">
+
+            <h2>Number Validation</h2>
+
+            <p>
+                JavaScript can check whether a number is within
+                a particular range.
+            </p>
+
+            <pre><code>const age =
+    Number(document.getElementById("age").value);
+
+if (age < 18) {
+
+    alert("Age must be 18 or above.");
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- MIN MAX -->
+
+        <section class="lesson-card">
+
+            <h2>Minimum and Maximum Values</h2>
+
+            <p>
+                You can check whether a number is between a minimum
+                and maximum value.
+            </p>
+
+            <pre><code>const age = 25;
+
+if (age >= 18 && age <= 60) {
+
+    console.log("Valid age.");
+
+} else {
+
+    console.log("Age is outside the allowed range.");
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- REGEX -->
+
+        <section class="lesson-card">
+
+            <h2>Using Regular Expressions</h2>
+
+            <p>
+                Regular expressions, also called regex, can be used
+                to check whether text follows a specific pattern.
+            </p>
+
+            <p>
+                For example, you can use regex to validate emails,
+                phone numbers and other formatted input.
+            </p>
+
+            <pre><code>const phone =
+    "9876543210";
+
+const phonePattern =
+    /^[0-9]{10}$/;
+
+if (phonePattern.test(phone)) {
+
+    console.log("Valid phone number.");
+
+} else {
+
+    console.log("Invalid phone number.");
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- PREVENT SUBMIT -->
+
+        <section class="lesson-card">
+
+            <h2>Preventing Form Submission</h2>
+
+            <p>
+                The <span class="inline-code">preventDefault()</span>
+                method can stop the browser's default form submission.
+            </p>
+
+            <pre><code>form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    console.log("Form validation started.");
+
+});</code></pre>
+
+        </section>
+
+
+        <!-- ERROR MESSAGE -->
+
+        <section class="lesson-card">
+
+            <h2>Displaying Error Messages</h2>
+
+            <p>
+                Instead of using only an alert, you can display an
+                error message directly on the page.
+            </p>
+
+            <pre><code>const error =
+    document.getElementById("error");
+
+error.textContent =
+    "Please enter your name.";</code></pre>
+
+        </section>
+
+
+        <!-- SUCCESS -->
+
+        <section class="lesson-card">
+
+            <h2>Displaying a Success Message</h2>
+
+            <pre><code>const success =
+    document.getElementById("success");
+
+success.textContent =
+    "Form submitted successfully!";</code></pre>
+
+        </section>
+
+
+        <!-- VALIDATION FLOW -->
+
+        <section class="lesson-card">
+
+            <h2>Form Validation Flow</h2>
+
+            <table>
+
+                <tr>
+                    <th>Step</th>
+                    <th>Action</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>User enters information.</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>JavaScript reads the form values.</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>JavaScript checks the values.</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Error messages are displayed if necessary.</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>The form is submitted when validation passes.</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- COMPLETE EXAMPLE -->
+
+        <section class="lesson-card">
+
+            <h2>Complete Form Validation Example</h2>
+
+            <p>
+                This example validates name, email and password.
+            </p>
+
+            <pre><code>&lt;form id="myForm"&gt;
+
+    &lt;input id="name" type="text"&gt;
+
+    &lt;input id="email" type="email"&gt;
+
+    &lt;input id="password" type="password"&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;
+
+&lt;script&gt;
+
+const form =
+    document.getElementById("myForm");
+
+form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    if (name === "") {
+
+        alert("Name is required.");
+        return;
+
+    }
+
+    if (email === "") {
+
+        alert("Email is required.");
+        return;
+
+    }
+
+    if (password.length &lt; 8) {
+
+        alert("Password must be at least 8 characters.");
+        return;
+
+    }
+
+    alert("Form is valid!");
+
+});
+
+&lt;/script&gt;</code></pre>
+
+        </section>
+
+
+        <!-- LIVE DEMO -->
+
+        <section class="lesson-card">
+
+            <h2>Live Form Validation Example</h2>
+
+            <div class="demo-form">
+
+                <form id="demoForm">
+
+                    <label for="demoName">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="demoName"
+                        placeholder="Enter your name"
+                    >
+
+                    <label for="demoEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="demoEmail"
+                        placeholder="Enter your email"
+                    >
+
+                    <label for="demoPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="demoPassword"
+                        placeholder="Minimum 8 characters"
+                    >
+
+                    <button type="submit">
+                        Validate Form
+                    </button>
+
+                </form>
+
+                <p id="demoMessage"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="lesson-card">
+
+            <h2>Form Validation Best Practices</h2>
+
+            <ul>
+
+                <li>Always validate required fields.</li>
+
+                <li>Show clear and useful error messages.</li>
+
+                <li>Check email formats when an email is required.</li>
+
+                <li>Use appropriate input types such as email and number.</li>
+
+                <li>Validate passwords according to the application's requirements.</li>
+
+                <li>Use <span class="inline-code">preventDefault()</span> when handling forms with JavaScript.</li>
+
+                <li>Do not rely only on client-side validation for security.</li>
+
+                <li>Validate important data again on the server.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- LIVE CODE EDITOR -->
+
+        <section class="lesson-card editor-section">
+
+            <h2>JavaScript Form Validation - Live Code Editor</h2>
+
+            <p>
+                Write your form validation code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Form Validation</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Registration Form</h2>
+
+    <form id="myForm">
+
+        <label>Name</label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+        >
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+        >
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Minimum 8 characters"
+        >
+
+        <button type="submit">
+            Submit
+        </button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+
+        const form =
+            document.getElementById("myForm");
+
+        const message =
+            document.getElementById("message");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            if (name === "") {
+
+                message.textContent =
+                    "Please enter your name.";
+
+                message.style.color = "red";
+
+                return;
+            }
+
+            if (email === "") {
+
+                message.textContent =
+                    "Please enter your email.";
+
+                message.style.color = "red";
+
+                return;
+            }
+
+            if (password.length < 8) {
+
+                message.textContent =
+                    "Password must be at least 8 characters.";
+
+                message.style.color = "red";
+
+                return;
+            }
+
+            message.textContent =
+                "Form validation successful!";
+
+            message.style.color = "green";
+
+        });
+
+    </script>
+
+</body>
+
+</html></textarea>
+
+            <div class="button-container">
+
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearCode()">
+                    ✕ Clear
+                </button>
+
+            </div>
+
+            <h3 class="output-title">
+                Live Preview
+            </h3>
+
+            <iframe id="output"></iframe>
+
+        </section>
+
+
+        <!-- KEY POINTS -->
+
+        <section class="lesson-card">
+
+            <h2>Key Points</h2>
+
+            <div class="key-points">
+
+                <ul>
+
+                    <li>Form validation checks user input before processing it.</li>
+
+                    <li>Use <strong>trim()</strong> to check text input while ignoring surrounding spaces.</li>
+
+                    <li>Email addresses can be checked using patterns or suitable input types.</li>
+
+                    <li>Password validation can check minimum length and other requirements.</li>
+
+                    <li>Passwords can be compared using <strong>!==</strong>.</li>
+
+                    <li><strong>preventDefault()</strong> can stop the browser's default form submission.</li>
+
+                    <li>Error messages should clearly tell users what needs to be corrected.</li>
+
+                    <li>Client-side validation should not replace server-side validation.</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <div class="lesson-navigation">
+
+            <a href="javascript-forms.html"
+               class="lesson-btn previous-btn">
+                ← Previous: JavaScript Forms
+            </a>
+
+            <a href="../index.html"
+               class="lesson-btn home-btn">
+                🏠 Home
+            </a>
+
+            <a href="javascript-json.html"
+               class="lesson-btn next-btn">
+                Next: JavaScript JSON →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ================= LIVE DEMO ================= */
+
+        const demoForm =
+            document.getElementById("demoForm");
+
+        const demoMessage =
+            document.getElementById("demoMessage");
+
+        demoForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("demoName").value.trim();
+
+            const email =
+                document.getElementById("demoEmail").value.trim();
+
+            const password =
+                document.getElementById("demoPassword").value;
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            if (name === "") {
+
+                demoMessage.textContent =
+                    "Please enter your name.";
+
+                demoMessage.style.color = "red";
+
+                return;
+            }
+
+
+            if (!emailPattern.test(email)) {
+
+                demoMessage.textContent =
+                    "Please enter a valid email address.";
+
+                demoMessage.style.color = "red";
+
+                return;
+            }
+
+
+            if (password.length < 8) {
+
+                demoMessage.textContent =
+                    "Password must contain at least 8 characters.";
+
+                demoMessage.style.color = "red";
+
+                return;
+            }
+
+
+            demoMessage.textContent =
+                "✓ Form validation successful!";
+
+            demoMessage.style.color = "green";
+
+        });
+
+
+        /* ================= CODE EDITOR ================= */
+
+        function runCode() {
+
+            const codeEditor =
+                document.getElementById("codeEditor");
+
+            const output =
+                document.getElementById("output");
+
+            output.srcdoc = codeEditor.value;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+
+        window.addEventListener("load", function() {
+
+            runCode();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
