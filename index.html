@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,22 +9,61 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Code With Me | Learn Coding</title>
-
     <meta name="description"
-          content="Learn HTML, CSS, JavaScript and Python with simple coding tutorials and practical examples.">
+          content="Code With Me - Learn HTML, CSS, JavaScript and Python with simple coding tutorials, examples and interactive code editors.">
 
     <meta name="keywords"
-          content="HTML, CSS, JavaScript, Python, coding, programming, web development">
+          content="HTML, CSS, JavaScript, Python, coding, programming, web development, tutorials">
 
     <meta name="author"
           content="Code With Me">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <meta property="og:title"
+          content="Code With Me | Learn Coding">
+
+    <meta property="og:description"
+          content="Learn HTML, CSS, JavaScript and Python with simple tutorials and examples.">
+
+    <meta property="og:type"
+          content="website">
+
+    <title>Code With Me | Learn Coding</title>
+
+
+    <!-- Google Analytics -->
+
+    <script async
+        src="https://www.googletagmanager.com/gtag/js?id=G-WHQBNX9PG8">
+    </script>
+
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag("js", new Date());
+
+        gtag("config", "G-WHQBNX9PG8");
+
+    </script>
+
+
+    <!-- Supabase -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+    </script>
 
 
     <style>
 
         /* =========================
-           RESET
+           GLOBAL
         ========================= */
 
         * {
@@ -32,17 +72,19 @@
             box-sizing: border-box;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f8fafc;
-            color: #111827;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
         }
 
 
@@ -50,39 +92,38 @@
            NAVBAR
         ========================= */
 
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
+        nav {
             background: #111827;
-
-            box-shadow:
-                0 2px 10px rgba(0, 0, 0, 0.15);
-        }
-
-
-        .nav-container {
-            max-width: 1200px;
-            margin: auto;
 
             min-height: 70px;
 
+            padding: 15px 6%;
+
             display: flex;
-            align-items: center;
+
             justify-content: space-between;
 
-            padding: 0 20px;
+            align-items: center;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 3px 15px rgba(0, 0, 0, 0.2);
         }
 
 
         .logo {
             color: white;
 
-            font-size: 28px;
+            font-size: 26px;
+
             font-weight: bold;
 
-            text-decoration: none;
+            white-space: nowrap;
         }
 
 
@@ -91,30 +132,44 @@
         }
 
 
-        .nav-links {
+        nav ul {
+            list-style: none;
+
             display: flex;
 
             align-items: center;
 
-            gap: 25px;
-
-            list-style: none;
+            gap: 28px;
         }
 
 
-        .nav-links a {
+        nav ul li a {
             color: white;
-
-            text-decoration: none;
 
             font-size: 16px;
 
-            transition: color 0.3s ease;
+            transition: 0.3s;
         }
 
 
-        .nav-links a:hover {
+        nav ul li a:hover {
             color: #38bdf8;
+        }
+
+
+        .nav-button {
+            background: #2563eb;
+
+            padding: 9px 16px;
+
+            border-radius: 6px;
+        }
+
+
+        .nav-button:hover {
+            background: #1d4ed8;
+
+            color: white !important;
         }
 
 
@@ -123,102 +178,138 @@
         ========================= */
 
         .hero {
-            min-height: 500px;
+            min-height: 620px;
 
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             text-align: center;
 
             padding: 80px 20px;
 
+            color: white;
+
             background:
                 linear-gradient(
                     135deg,
-                    #111827,
-                    #1e3a8a
+                    #2563eb,
+                    #7c3aed
                 );
-
-            color: white;
         }
 
 
         .hero-content {
-            max-width: 850px;
+            max-width: 900px;
         }
 
 
         .hero h1 {
-            font-size: 52px;
+            font-size: 58px;
+
+            line-height: 1.2;
 
             margin-bottom: 20px;
         }
 
 
         .hero h1 span {
-            color: #38bdf8;
+            color: #bae6fd;
         }
 
 
         .hero p {
-            font-size: 20px;
+            font-size: 21px;
 
-            color: #dbeafe;
+            max-width: 750px;
 
-            margin-bottom: 30px;
+            margin: 0 auto 30px;
+        }
+
+
+        .hero-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
         }
 
 
         .hero-btn {
             display: inline-block;
 
-            padding: 14px 28px;
+            padding: 14px 25px;
 
-            background: #2563eb;
-
-            color: white;
-
-            text-decoration: none;
-
-            border-radius: 8px;
+            border-radius: 7px;
 
             font-weight: bold;
+
+            font-size: 17px;
 
             transition: 0.3s;
         }
 
 
-        .hero-btn:hover {
-            background: #1d4ed8;
+        .primary-btn {
+            background: white;
 
-            transform: translateY(-2px);
+            color: #2563eb;
+        }
+
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+        }
+
+
+        .secondary-btn {
+            border: 2px solid white;
+
+            color: white;
+        }
+
+
+        .secondary-btn:hover {
+            background: white;
+
+            color: #2563eb;
         }
 
 
         /* =========================
-           COMMON SECTION
+           COMMON CONTAINER
         ========================= */
 
+        .container {
+            width: 90%;
+
+            max-width: 1150px;
+
+            margin: auto;
+        }
+
+
         .section {
-            padding: 70px 20px;
+            padding: 75px 0;
         }
 
 
         .section-title {
-            max-width: 850px;
-
-            margin: 0 auto 45px;
-
             text-align: center;
+
+            margin-bottom: 45px;
         }
 
 
         .section-title h2 {
-            font-size: 36px;
+            color: #2563eb;
 
-            color: #111827;
+            font-size: 38px;
 
             margin-bottom: 10px;
         }
@@ -232,42 +323,34 @@
 
 
         /* =========================
-           COURSE GRID
+           COURSE CARDS
         ========================= */
 
-        .course-grid {
-            max-width: 1200px;
-
-            margin: auto;
-
+        .courses-grid {
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(250px, 1fr));
+                repeat(4, 1fr);
 
             gap: 25px;
         }
 
 
-        /* =========================
-           COURSE CARD
-        ========================= */
-
         .course-card {
             background: white;
 
-            padding: 30px;
+            padding: 30px 25px;
 
-            border-radius: 15px;
+            border-radius: 12px;
 
-            border: 1px solid #e5e7eb;
+            text-align: center;
 
             box-shadow:
                 0 5px 20px rgba(0, 0, 0, 0.08);
 
             transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
+                transform 0.3s,
+                box-shadow 0.3s;
         }
 
 
@@ -275,63 +358,83 @@
             transform: translateY(-8px);
 
             box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.15);
+                0 12px 30px rgba(0, 0, 0, 0.14);
         }
 
 
-        .course-number {
-            display: inline-block;
+        .course-icon {
+            width: 80px;
 
-            margin-bottom: 15px;
+            height: 80px;
 
-            padding: 5px 10px;
+            margin: 0 auto 20px;
 
-            background: #dbeafe;
+            border-radius: 50%;
 
-            color: #2563eb;
+            display: flex;
 
-            border-radius: 6px;
+            justify-content: center;
 
-            font-size: 14px;
+            align-items: center;
+
+            font-size: 32px;
 
             font-weight: bold;
+
+            color: white;
+        }
+
+
+        .html-icon {
+            background: #e34f26;
+        }
+
+
+        .css-icon {
+            background: #1572b6;
+        }
+
+
+        .js-icon {
+            background: #f7df1e;
+
+            color: #111;
+        }
+
+
+        .python-icon {
+            background: #3776ab;
         }
 
 
         .course-card h3 {
-            font-size: 22px;
+            color: #111827;
 
-            color: #2563eb;
+            font-size: 23px;
 
             margin-bottom: 12px;
         }
 
 
         .course-card p {
-            color: #475569;
+            color: #64748b;
 
-            line-height: 1.7;
-
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
 
 
         .course-btn {
             display: inline-block;
 
-            padding: 11px 18px;
-
             background: #2563eb;
 
             color: white;
 
-            text-decoration: none;
+            padding: 10px 20px;
 
-            border-radius: 8px;
+            border-radius: 6px;
 
             font-weight: bold;
-
-            transition: 0.3s;
         }
 
 
@@ -341,20 +444,53 @@
 
 
         /* =========================
-           HTML SECTION
+           FEATURES
         ========================= */
 
-        #html-topics {
-            background: #f8fafc;
+        .features {
+            background: white;
         }
 
 
-        /* =========================
-           CSS SECTION
-        ========================= */
+        .features-grid {
+            display: grid;
 
-        #css-course {
-            background: white;
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .feature-card {
+            background: #f8fafc;
+
+            padding: 30px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            border: 1px solid #e2e8f0;
+        }
+
+
+        .feature-icon {
+            font-size: 38px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .feature-card h3 {
+            color: #2563eb;
+
+            margin-bottom: 10px;
+        }
+
+
+        .feature-card p {
+            color: #64748b;
         }
 
 
@@ -363,12 +499,144 @@
         ========================= */
 
         .about-section {
-            background: #f8fafc;
+            background: #eef6ff;
         }
 
 
         .about-content {
-            max-width: 1000px;
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+
+        .about-text h2 {
+            color: #2563eb;
+
+            font-size: 38px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .about-text p {
+            margin-bottom: 15px;
+
+            color: #475569;
+        }
+
+
+        .about-box {
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .about-box h3 {
+            color: #7c3aed;
+
+            margin-bottom: 15px;
+        }
+
+
+        .about-box ul {
+            list-style: none;
+        }
+
+
+        .about-box li {
+            margin-bottom: 12px;
+
+            color: #475569;
+        }
+
+
+        .about-box li::before {
+            content: "✓";
+
+            color: #16a34a;
+
+            font-weight: bold;
+
+            margin-right: 10px;
+        }
+
+
+        /* =========================
+           HTML TOPICS
+        ========================= */
+
+        .topics-section {
+            background: white;
+        }
+
+
+        .topics-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .topic-card {
+            background: #f8fafc;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            border-left: 4px solid #2563eb;
+
+            transition: 0.3s;
+        }
+
+
+        .topic-card:hover {
+            transform: translateX(5px);
+
+            background: #eff6ff;
+        }
+
+
+        .topic-card a {
+            color: #1e3a8a;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           RATING
+        ========================= */
+
+        .rating-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #f5f3ff
+                );
+
+            text-align: center;
+        }
+
+
+        .rating-box {
+            max-width: 700px;
 
             margin: auto;
 
@@ -376,26 +644,117 @@
 
             padding: 40px;
 
-            border-radius: 15px;
+            border-radius: 14px;
 
             box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.08);
+                0 5px 25px rgba(0, 0, 0, 0.08);
         }
 
 
-        .about-content h3 {
+        .rating-box h2 {
+            color: #2563eb;
+
+            margin-bottom: 10px;
+        }
+
+
+        .rating-box p {
+            color: #64748b;
+
+            margin-bottom: 20px;
+        }
+
+
+        .stars {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .star-btn {
+            border: none;
+
+            background: transparent;
+
+            font-size: 40px;
+
+            cursor: pointer;
+
+            color: #cbd5e1;
+
+            transition: 0.2s;
+        }
+
+
+        .star-btn:hover,
+        .star-btn.active {
+            color: #f59e0b;
+
+            transform: scale(1.1);
+        }
+
+
+        #selectedRating {
+            font-weight: bold;
+
             color: #2563eb;
 
             margin-bottom: 15px;
-
-            font-size: 25px;
         }
 
 
-        .about-content p {
-            color: #475569;
+        #review {
+            width: 100%;
+
+            min-height: 110px;
+
+            padding: 15px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 8px;
+
+            resize: vertical;
+
+            font-family: Arial;
 
             margin-bottom: 15px;
+        }
+
+
+        .submit-rating {
+            border: none;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 12px 25px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 16px;
+        }
+
+
+        .submit-rating:hover {
+            background: #1d4ed8;
+        }
+
+
+        #ratingMessage {
+            margin-top: 15px;
+
+            font-weight: bold;
         }
 
 
@@ -404,46 +763,49 @@
         ========================= */
 
         .contact-section {
-            background: white;
+            background: #111827;
+
+            color: white;
         }
 
 
         .contact-grid {
-            max-width: 1000px;
-
-            margin: auto;
-
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(250px, 1fr));
+                repeat(3, 1fr);
 
             gap: 25px;
+
+            text-align: center;
         }
 
 
         .contact-card {
-            text-align: center;
+            background: #1f2937;
 
             padding: 30px;
 
-            border-radius: 15px;
-
-            background: #f8fafc;
-
-            border: 1px solid #e5e7eb;
+            border-radius: 10px;
         }
 
 
-        .contact-card h3 {
-            color: #2563eb;
+        .contact-card .icon {
+            font-size: 35px;
 
             margin-bottom: 10px;
         }
 
 
+        .contact-card h3 {
+            color: #38bdf8;
+
+            margin-bottom: 8px;
+        }
+
+
         .contact-card p {
-            color: #475569;
+            color: #d1d5db;
         }
 
 
@@ -452,9 +814,9 @@
         ========================= */
 
         footer {
-            background: #111827;
+            background: #030712;
 
-            color: white;
+            color: #9ca3af;
 
             text-align: center;
 
@@ -462,29 +824,60 @@
         }
 
 
-        footer p {
-            color: #cbd5e1;
+        footer strong {
+            color: #38bdf8;
+        }
 
-            margin-bottom: 5px;
+
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+
+        .footer-links a {
+            color: #d1d5db;
+
+            margin: 0 10px;
+        }
+
+
+        .footer-links a:hover {
+            color: #38bdf8;
         }
 
 
         /* =========================
-           MOBILE
+           RESPONSIVE
         ========================= */
 
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
 
-            .nav-container {
-                flex-direction: column;
-
-                padding: 18px 20px;
-
-                gap: 15px;
+            .courses-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
 
-            .nav-links {
+            .topics-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+
+                gap: 15px;
+
+                padding: 15px 20px;
+            }
+
+
+            nav ul {
                 flex-wrap: wrap;
 
                 justify-content: center;
@@ -493,18 +886,85 @@
             }
 
 
+            .hero {
+                min-height: 520px;
+
+                padding: 60px 20px;
+            }
+
+
             .hero h1 {
-                font-size: 38px;
+                font-size: 40px;
             }
 
 
             .hero p {
-                font-size: 17px;
+                font-size: 18px;
+            }
+
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+
+            .topics-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+
+            .hero-btn {
+                width: 100%;
             }
 
 
             .section-title h2 {
                 font-size: 30px;
+            }
+
+
+            .rating-box {
+                padding: 25px 15px;
+            }
+
+
+            .star-btn {
+                font-size: 32px;
             }
 
         }
@@ -521,1225 +981,699 @@
          NAVBAR
     ========================= -->
 
-    <nav class="navbar">
+    <nav>
 
-        <div class="nav-container">
-
-            <a href="index.html" class="logo">
-                Code<span>WithMe</span>
-            </a>
-
-
-            <ul class="nav-links">
-
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#courses">
-                        Courses
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#html-topics">
-                        HTML
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#css-course">
-                        CSS
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#about">
-                        About
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#contact">
-                        Contact
-                    </a>
-                </li>
-
-            </ul>
-
+        <div class="logo">
+            Code<span>WithMe</span>
         </div>
 
-    </nav>
 
+        <ul>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+            <li>
+                <a
+                    href="#courses"
+                    class="nav-button">
+                    Start Learning
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
 
 
     <!-- =========================
          HERO
     ========================= -->
 
-    <section class="hero">
+    <section
+        class="hero"
+        id="home">
 
         <div class="hero-content">
 
             <h1>
-                Learn Coding With
-                <span>Code With Me</span>
+                Learn Coding
+                <span>With Me</span>
             </h1>
+
 
             <p>
                 Learn HTML, CSS, JavaScript and Python
-                with simple tutorials and practical examples.
+                with simple tutorials, practical examples
+                and interactive code editors.
             </p>
 
-            <a href="#courses"
-               class="hero-btn">
 
-                Explore Courses
+            <div class="hero-buttons">
 
-            </a>
+                <a
+                    href="#courses"
+                    class="hero-btn primary-btn">
+                    Explore Courses
+                </a>
+
+
+                <a
+                    href="#about"
+                    class="hero-btn secondary-btn">
+                    Learn More
+                </a>
+
+            </div>
 
         </div>
 
     </section>
-
 
 
     <!-- =========================
          COURSES
     ========================= -->
 
-    <section id="courses"
-             class="section">
+    <section
+        class="section"
+        id="courses">
 
-        <div class="section-title">
+        <div class="container">
 
-            <h2>
-                Our Courses
-            </h2>
+            <div class="section-title">
 
-            <p>
-                Choose a course and start learning.
-            </p>
-
-        </div>
-
-
-        <div class="course-grid">
-
-
-            <!-- HTML -->
-
-            <div class="course-card">
-
-                <div class="course-number">
-                    COURSE 01
-                </div>
-
-                <h3>
-                    HTML
-                </h3>
+                <h2>Our Courses</h2>
 
                 <p>
-                    Learn HTML from beginner level
-                    to practical website projects.
+                    Start learning programming step by step.
                 </p>
-
-                <a href="#html-topics"
-                   class="course-btn">
-
-                    Start HTML
-
-                </a>
 
             </div>
 
 
-            <!-- CSS -->
+            <div class="courses-grid">
 
-            <div class="course-card">
 
-                <div class="course-number">
-                    COURSE 02
+                <!-- HTML -->
+
+                <div class="course-card">
+
+                    <div
+                        class="course-icon html-icon">
+                        HTML
+                    </div>
+
+
+                    <h3>HTML</h3>
+
+
+                    <p>
+                        Learn the foundation of web development
+                        and create the structure of webpages.
+                    </p>
+
+
+                    <a
+                        href="html/html-introduction.html"
+                        class="course-btn">
+                        Learn HTML
+                    </a>
+
                 </div>
 
-                <h3>
-                    CSS
-                </h3>
 
-                <p>
-                    Learn CSS from basic syntax
-                    to Flexbox, Grid and responsive design.
-                </p>
+                <!-- CSS -->
 
-                <a href="#css-course"
-                   class="course-btn">
+                <div class="course-card">
 
-                    Start CSS
-
-                </a>
-
-            </div>
+                    <div
+                        class="course-icon css-icon">
+                        CSS
+                    </div>
 
 
-            <!-- JAVASCRIPT -->
+                    <h3>CSS</h3>
 
-            <div class="course-card">
 
-                <div class="course-number">
-                    COURSE 03
+                    <p>
+                        Learn how to style websites with colors,
+                        layouts, Flexbox, Grid and responsive design.
+                    </p>
+
+
+                    <a
+                        href="css/css-introduction.html"
+                        class="course-btn">
+                        Learn CSS
+                    </a>
+
                 </div>
 
-                <h3>
-                    JavaScript
-                </h3>
 
-                <p>
-                    Learn JavaScript and create
-                    interactive websites.
-                </p>
+                <!-- JavaScript -->
 
-                <a href="#courses"
-                   class="course-btn">
+                <div class="course-card">
 
-                    Coming Soon
-
-                </a>
-
-            </div>
+                    <div
+                        class="course-icon js-icon">
+                        JS
+                    </div>
 
 
-            <!-- PYTHON -->
+                    <h3>JavaScript</h3>
 
-            <div class="course-card">
 
-                <div class="course-number">
-                    COURSE 04
+                    <p>
+                        Learn programming concepts and make
+                        your websites interactive.
+                    </p>
+
+
+                    <a
+                        href="javascript/javascript-introduction.html"
+                        class="course-btn">
+                        Learn JavaScript
+                    </a>
+
                 </div>
 
-                <h3>
-                    Python
-                </h3>
 
-                <p>
-                    Learn Python programming with
-                    simple programs and examples.
-                </p>
+                <!-- Python -->
 
-                <a href="#courses"
-                   class="course-btn">
+                <div class="course-card">
 
-                    Coming Soon
+                    <div
+                        class="course-icon python-icon">
+                        PY
+                    </div>
 
-                </a>
+
+                    <h3>Python</h3>
+
+
+                    <p>
+                        Learn Python programming from basic
+                        concepts to practical programs.
+                    </p>
+
+
+                    <a
+                        href="python/python-introduction.html"
+                        class="course-btn">
+                        Learn Python
+                    </a>
+
+                </div>
+
 
             </div>
 
         </div>
 
     </section>
-
 
 
     <!-- =========================
-         HTML COURSE
+         FEATURES
     ========================= -->
 
-    <section id="html-topics"
-             class="section">
+    <section
+        class="section features">
 
-        <div class="section-title">
+        <div class="container">
 
-            <h2>
-                Complete HTML Course
-            </h2>
+            <div class="section-title">
 
-            <p>
-                Learn HTML step by step.
-            </p>
-
-        </div>
-
-
-        <div class="course-grid">
-
-
-            <div class="course-card">
-
-                <div class="course-number">01</div>
-
-                <h3>HTML Introduction</h3>
+                <h2>Why Learn With Code With Me?</h2>
 
                 <p>
-                    Learn what HTML is and how
-                    HTML is used to create webpages.
+                    Simple learning resources for beginners.
                 </p>
-
-                <a href="html/html-introduction.html"
-                   class="course-btn">
-
-                    Start Learning
-
-                </a>
 
             </div>
 
 
-            <div class="course-card">
+            <div class="features-grid">
 
-                <div class="course-number">02</div>
 
-                <h3>HTML Basic Tags</h3>
+                <div class="feature-card">
 
-                <p>
-                    Learn headings, paragraphs,
-                    div, span and basic HTML tags.
-                </p>
+                    <div class="feature-icon">
+                        📚
+                    </div>
 
-                <a href="html/html-basic-tags.html"
-                   class="course-btn">
+                    <h3>Easy Tutorials</h3>
 
-                    Learn Basic Tags
+                    <p>
+                        Learn programming concepts using
+                        simple explanations and examples.
+                    </p>
 
-                </a>
+                </div>
 
-            </div>
 
+                <div class="feature-card">
 
-            <div class="course-card">
+                    <div class="feature-icon">
+                        💻
+                    </div>
 
-                <div class="course-number">03</div>
+                    <h3>Practice Code</h3>
 
-                <h3>HTML Text Formatting</h3>
+                    <p>
+                        Practice your coding skills using
+                        interactive code examples and editors.
+                    </p>
 
-                <p>
-                    Learn bold, italic, strong,
-                    emphasis and text formatting.
-                </p>
+                </div>
 
-                <a href="html/html-text-formatting.html"
-                   class="course-btn">
 
-                    Learn Formatting
+                <div class="feature-card">
 
-                </a>
+                    <div class="feature-icon">
+                        📱
+                    </div>
 
-            </div>
+                    <h3>Responsive Learning</h3>
 
+                    <p>
+                        Access coding tutorials from mobile,
+                        tablet or desktop devices.
+                    </p>
 
-            <div class="course-card">
+                </div>
 
-                <div class="course-number">04</div>
-
-                <h3>HTML Links</h3>
-
-                <p>
-                    Learn how to create links
-                    between webpages.
-                </p>
-
-                <a href="html/html-links.html"
-                   class="course-btn">
-
-                    Learn Links
-
-                </a>
-
-            </div>
-
-
-            <div class="course-card">
-
-                <div class="course-number">05</div>
-
-                <h3>HTML Images</h3>
-
-                <p>
-                    Learn how to add images
-                    to your webpages.
-                </p>
-
-                <a href="html/html-images.html"
-                   class="course-btn">
-
-                    Learn Images
-
-                </a>
-
-            </div>
-
-
-            <div class="course-card">
-
-                <div class="course-number">06</div>
-
-                <h3>HTML Lists</h3>
-
-                <p>
-                    Learn ordered, unordered
-                    and description lists.
-                </p>
-
-                <a href="html/html-lists.html"
-                   class="course-btn">
-
-                    Learn Lists
-
-                </a>
-
-            </div>
-
-
-            <div class="course-card">
-
-                <div class="course-number">07</div>
-
-                <h3>HTML Tables</h3>
-
-                <p>
-                    Learn how to create
-                    HTML tables.
-                </p>
-
-                <a href="html/html-tables.html"
-                   class="course-btn">
-
-                    Learn Tables
-
-                </a>
-
-            </div>
-
-
-            <div class="course-card">
-
-                <div class="course-number">08</div>
-
-                <h3>HTML Forms</h3>
-
-                <p>
-                    Learn forms, inputs,
-                    buttons and form elements.
-                </p>
-
-                <a href="html/html-forms.html"
-                   class="course-btn">
-
-                    Learn Forms
-
-                </a>
-
-            </div>
-
-
-            <div class="course-card">
-
-                <div class="course-number">09</div>
-
-                <h3>HTML Semantic Elements</h3>
-
-                <p>
-                    Learn header, nav, main,
-                    section, article and footer.
-                </p>
-
-                <a href="html/html-semantic-elements.html"
-                   class="course-btn">
-
-                    Learn Semantic HTML
-
-                </a>
-
-            </div>
-
-
-            <div class="course-card">
-
-                <div class="course-number">10</div>
-
-                <h3>HTML Attributes</h3>
-
-                <p>
-                    Learn HTML attributes and
-                    how they provide extra information.
-                </p>
-
-                <a href="html/html-attributes.html"
-                   class="course-btn">
-
-                    Learn Attributes
-
-                </a>
-
-            </div>
-
-
-            <div class="course-card">
-
-                <div class="course-number">11</div>
-
-                <h3>HTML Multimedia</h3>
-
-                <p>
-                    Learn audio, video and
-                    multimedia elements.
-                </p>
-
-                <a href="html/html-multimedia.html"
-                   class="course-btn">
-
-                    Learn Multimedia
-
-                </a>
-
-            </div>
-
-
-            <div class="course-card">
-
-                <div class="course-number">12</div>
-
-                <h3>HTML Projects</h3>
-
-                <p>
-                    Build practical projects
-                    using HTML.
-                </p>
-
-                <a href="html/html-projects.html"
-                   class="course-btn">
-
-                    Start Projects
-
-                </a>
 
             </div>
 
         </div>
 
     </section>
-
 
 
     <!-- =========================
-         COMPLETE CSS COURSE
+         HTML TOPICS
     ========================= -->
 
-    <section id="css-course"
-             class="section">
+    <section
+        class="section topics-section"
+        id="html-topics">
 
-        <div class="section-title">
+        <div class="container">
 
-            <h2>
-                Complete CSS Course
-            </h2>
+            <div class="section-title">
 
-            <p>
-                Learn CSS from beginner to advanced
-                with practical examples.
-            </p>
-
-        </div>
-
-
-        <div class="course-grid">
-
-
-            <!-- 01 -->
-
-            <div class="course-card">
-
-                <div class="course-number">01</div>
-
-                <h3>CSS Introduction</h3>
+                <h2>Popular HTML Topics</h2>
 
                 <p>
-                    Learn what CSS is, why CSS is used,
-                    and how CSS works with HTML.
+                    Explore some of the HTML topics available.
                 </p>
-
-                <a href="css/css-introduction.html"
-                   class="course-btn">
-
-                    Start Learning
-
-                </a>
 
             </div>
 
 
-            <!-- 02 -->
+            <div class="topics-grid">
 
-            <div class="course-card">
 
-                <div class="course-number">02</div>
+                <div class="topic-card">
 
-                <h3>CSS Syntax</h3>
+                    <a href="html/html-introduction.html">
+                        HTML Introduction
+                    </a>
 
-                <p>
-                    Learn selectors, properties,
-                    values and basic CSS syntax.
-                </p>
+                </div>
 
-                <a href="css/css-syntax.html"
-                   class="course-btn">
 
-                    Learn Syntax
+                <div class="topic-card">
 
-                </a>
+                    <a href="html/html-basic-tags.html">
+                        HTML Basic Tags
+                    </a>
 
-            </div>
+                </div>
 
 
-            <!-- 03 -->
+                <div class="topic-card">
 
-            <div class="course-card">
+                    <a href="html/html-text-formatting.html">
+                        HTML Text Formatting
+                    </a>
 
-                <div class="course-number">03</div>
+                </div>
 
-                <h3>CSS Selectors</h3>
 
-                <p>
-                    Learn element, class, ID and
-                    other important CSS selectors.
-                </p>
+                <div class="topic-card">
 
-                <a href="css/css-selectors.html"
-                   class="course-btn">
+                    <a href="html/html-links.html">
+                        HTML Links
+                    </a>
 
-                    Learn Selectors
+                </div>
 
-                </a>
 
-            </div>
+                <div class="topic-card">
 
+                    <a href="html/html-images.html">
+                        HTML Images
+                    </a>
 
-            <!-- 04 -->
+                </div>
 
-            <div class="course-card">
 
-                <div class="course-number">04</div>
+                <div class="topic-card">
 
-                <h3>How to Add CSS</h3>
+                    <a href="html/html-lists.html">
+                        HTML Lists
+                    </a>
 
-                <p>
-                    Learn inline, internal and
-                    external CSS.
-                </p>
+                </div>
 
-                <a href="css/css-how-to-add.html"
-                   class="course-btn">
 
-                    Learn More
+                <div class="topic-card">
 
-                </a>
+                    <a href="html/html-tables.html">
+                        HTML Tables
+                    </a>
 
-            </div>
+                </div>
 
 
-            <!-- 05 -->
+                <div class="topic-card">
 
-            <div class="course-card">
+                    <a href="html/html-forms.html">
+                        HTML Forms
+                    </a>
 
-                <div class="course-number">05</div>
+                </div>
 
-                <h3>CSS Comments</h3>
 
-                <p>
-                    Learn how to write and
-                    organize CSS comments.
-                </p>
+                <div class="topic-card">
 
-                <a href="css/css-comments.html"
-                   class="course-btn">
+                    <a href="html/html-semantic-elements.html">
+                        HTML Semantic Elements
+                    </a>
 
-                    Learn Comments
+                </div>
 
-                </a>
 
-            </div>
+                <div class="topic-card">
 
+                    <a href="html/html-attributes.html">
+                        HTML Attributes
+                    </a>
 
-            <!-- 06 -->
+                </div>
 
-            <div class="course-card">
 
-                <div class="course-number">06</div>
+                <div class="topic-card">
 
-                <h3>CSS Colors</h3>
+                    <a href="html/html-multimedia.html">
+                        HTML Multimedia
+                    </a>
 
-                <p>
-                    Learn color names, HEX,
-                    RGB, RGBA and HSL.
-                </p>
+                </div>
 
-                <a href="css/css-colors.html"
-                   class="course-btn">
 
-                    Learn Colors
+                <div class="topic-card">
 
-                </a>
+                    <a href="html/html-projects.html">
+                        HTML Projects
+                    </a>
 
-            </div>
+                </div>
 
-
-            <!-- 07 -->
-
-            <div class="course-card">
-
-                <div class="course-number">07</div>
-
-                <h3>CSS Backgrounds</h3>
-
-                <p>
-                    Learn background colors,
-                    images and gradients.
-                </p>
-
-                <a href="css/css-backgrounds.html"
-                   class="course-btn">
-
-                    Learn Backgrounds
-
-                </a>
-
-            </div>
-
-
-            <!-- 08 -->
-
-            <div class="course-card">
-
-                <div class="course-number">08</div>
-
-                <h3>CSS Borders</h3>
-
-                <p>
-                    Learn border width, style,
-                    color and border radius.
-                </p>
-
-                <a href="css/css-borders.html"
-                   class="course-btn">
-
-                    Learn Borders
-
-                </a>
-
-            </div>
-
-
-            <!-- 09 -->
-
-            <div class="course-card">
-
-                <div class="course-number">09</div>
-
-                <h3>CSS Margins</h3>
-
-                <p>
-                    Learn how to create space
-                    around elements.
-                </p>
-
-                <a href="css/css-margins.html"
-                   class="course-btn">
-
-                    Learn Margins
-
-                </a>
-
-            </div>
-
-
-            <!-- 10 -->
-
-            <div class="course-card">
-
-                <div class="course-number">10</div>
-
-                <h3>CSS Padding</h3>
-
-                <p>
-                    Learn how to create space
-                    inside elements.
-                </p>
-
-                <a href="css/css-padding.html"
-                   class="course-btn">
-
-                    Learn Padding
-
-                </a>
-
-            </div>
-
-
-            <!-- 11 -->
-
-            <div class="course-card">
-
-                <div class="course-number">11</div>
-
-                <h3>CSS Height & Width</h3>
-
-                <p>
-                    Learn how to control the
-                    dimensions of elements.
-                </p>
-
-                <a href="css/css-height-width.html"
-                   class="course-btn">
-
-                    Learn Size
-
-                </a>
-
-            </div>
-
-
-            <!-- 12 -->
-
-            <div class="course-card">
-
-                <div class="course-number">12</div>
-
-                <h3>CSS Box Model</h3>
-
-                <p>
-                    Learn content, padding,
-                    border and margin.
-                </p>
-
-                <a href="css/css-box-model.html"
-                   class="course-btn">
-
-                    Learn Box Model
-
-                </a>
-
-            </div>
-
-
-            <!-- 13 -->
-
-            <div class="course-card">
-
-                <div class="course-number">13</div>
-
-                <h3>CSS Text</h3>
-
-                <p>
-                    Learn text color, alignment,
-                    spacing and decoration.
-                </p>
-
-                <a href="css/css-text.html"
-                   class="course-btn">
-
-                    Learn Text
-
-                </a>
-
-            </div>
-
-
-            <!-- 14 -->
-
-            <div class="course-card">
-
-                <div class="course-number">14</div>
-
-                <h3>CSS Fonts</h3>
-
-                <p>
-                    Learn font family, size,
-                    style and weight.
-                </p>
-
-                <a href="css/css-fonts.html"
-                   class="course-btn">
-
-                    Learn Fonts
-
-                </a>
-
-            </div>
-
-
-            <!-- 15 -->
-
-            <div class="course-card">
-
-                <div class="course-number">15</div>
-
-                <h3>CSS Icons</h3>
-
-                <p>
-                    Learn how to use icons
-                    in your webpages.
-                </p>
-
-                <a href="css/css-icons.html"
-                   class="course-btn">
-
-                    Learn Icons
-
-                </a>
-
-            </div>
-
-
-            <!-- 16 -->
-
-            <div class="course-card">
-
-                <div class="course-number">16</div>
-
-                <h3>CSS Links</h3>
-
-                <p>
-                    Learn how to style links
-                    and hover effects.
-                </p>
-
-                <a href="css/css-links.html"
-                   class="course-btn">
-
-                    Learn Links
-
-                </a>
-
-            </div>
-
-
-            <!-- 17 -->
-
-            <div class="course-card">
-
-                <div class="course-number">17</div>
-
-                <h3>CSS Lists</h3>
-
-                <p>
-                    Learn how to style ordered
-                    and unordered lists.
-                </p>
-
-                <a href="css/css-lists.html"
-                   class="course-btn">
-
-                    Learn Lists
-
-                </a>
-
-            </div>
-
-
-            <!-- 18 -->
-
-            <div class="course-card">
-
-                <div class="course-number">18</div>
-
-                <h3>CSS Tables</h3>
-
-                <p>
-                    Learn table borders,
-                    spacing and styling.
-                </p>
-
-                <a href="css/css-tables.html"
-                   class="course-btn">
-
-                    Learn Tables
-
-                </a>
-
-            </div>
-
-
-            <!-- 19 -->
-
-            <div class="course-card">
-
-                <div class="course-number">19</div>
-
-                <h3>CSS Display</h3>
-
-                <p>
-                    Learn block, inline,
-                    inline-block and none.
-                </p>
-
-                <a href="css/css-display.html"
-                   class="course-btn">
-
-                    Learn Display
-
-                </a>
-
-            </div>
-
-
-            <!-- 20 -->
-
-            <div class="course-card">
-
-                <div class="course-number">20</div>
-
-                <h3>CSS Position</h3>
-
-                <p>
-                    Learn static, relative,
-                    absolute, fixed and sticky.
-                </p>
-
-                <a href="css/css-position.html"
-                   class="course-btn">
-
-                    Learn Position
-
-                </a>
-
-            </div>
-
-
-            <!-- 21 -->
-
-            <div class="course-card">
-
-                <div class="course-number">21</div>
-
-                <h3>CSS Overflow</h3>
-
-                <p>
-                    Learn how to control
-                    overflowing content.
-                </p>
-
-                <a href="css/css-overflow.html"
-                   class="course-btn">
-
-                    Learn Overflow
-
-                </a>
-
-            </div>
-
-
-            <!-- 22 -->
-
-            <div class="course-card">
-
-                <div class="course-number">22</div>
-
-                <h3>CSS Flexbox</h3>
-
-                <p>
-                    Learn Flexbox and create
-                    flexible layouts.
-                </p>
-
-                <a href="css/css-flexbox.html"
-                   class="course-btn">
-
-                    Learn Flexbox
-
-                </a>
-
-            </div>
-
-
-            <!-- 23 -->
-
-            <div class="course-card">
-
-                <div class="course-number">23</div>
-
-                <h3>CSS Grid</h3>
-
-                <p>
-                    Learn CSS Grid and create
-                    two-dimensional layouts.
-                </p>
-
-                <a href="css/css-grid.html"
-                   class="course-btn">
-
-                    Learn Grid
-
-                </a>
-
-            </div>
-
-
-            <!-- 24 -->
-
-            <div class="course-card">
-
-                <div class="course-number">24</div>
-
-                <h3>CSS Responsive Design</h3>
-
-                <p>
-                    Learn media queries and
-                    responsive websites.
-                </p>
-
-                <a href="css/css-responsive.html"
-                   class="course-btn">
-
-                    Learn Responsive CSS
-
-                </a>
-
-            </div>
-
-
-            <!-- 25 -->
-
-            <div class="course-card">
-
-                <div class="course-number">25</div>
-
-                <h3>CSS Projects</h3>
-
-                <p>
-                    Build practical websites
-                    using your CSS skills.
-                </p>
-
-                <a href="css/css-projects.html"
-                   class="course-btn">
-
-                    Start Projects
-
-                </a>
 
             </div>
 
         </div>
 
     </section>
-
 
 
     <!-- =========================
          ABOUT
     ========================= -->
 
-    <section id="about"
-             class="section about-section">
+    <section
+        class="section about-section"
+        id="about">
 
-        <div class="section-title">
+        <div class="container">
 
-            <h2>
-                About Code With Me
-            </h2>
-
-            <p>
-                Learn coding in a simple and practical way.
-            </p>
-
-        </div>
+            <div class="about-content">
 
 
-        <div class="about-content">
+                <div class="about-text">
 
-            <h3>
-                Learn. Practice. Build.
-            </h3>
+                    <h2>About Code With Me</h2>
 
-            <p>
-                Code With Me is a learning platform
-                designed to help beginners learn
-                programming and web development.
-            </p>
+                    <p>
+                        Code With Me is a learning website
+                        created to make programming easier
+                        for beginners.
+                    </p>
 
-            <p>
-                Our tutorials focus on simple explanations,
-                practical examples and hands-on coding.
-            </p>
 
-            <p>
-                Learn HTML, CSS, JavaScript and Python
-                step by step.
-            </p>
+                    <p>
+                        Our tutorials focus on practical
+                        examples so learners can understand
+                        concepts and practice them while learning.
+                    </p>
+
+
+                    <p>
+                        You can learn web development technologies
+                        such as HTML, CSS and JavaScript, along
+                        with Python programming.
+                    </p>
+
+                </div>
+
+
+                <div class="about-box">
+
+                    <h3>What You Can Learn</h3>
+
+
+                    <ul>
+
+                        <li>
+                            HTML website structure
+                        </li>
+
+                        <li>
+                            CSS styling and layouts
+                        </li>
+
+                        <li>
+                            Responsive web design
+                        </li>
+
+                        <li>
+                            JavaScript programming
+                        </li>
+
+                        <li>
+                            Python programming
+                        </li>
+
+                        <li>
+                            Practical coding projects
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+            </div>
 
         </div>
 
     </section>
 
+
+    <!-- =========================
+         RATING
+    ========================= -->
+
+    <section
+        class="section rating-section"
+        id="rating">
+
+        <div class="container">
+
+            <div class="rating-box">
+
+                <h2>
+                    Rate Code With Me
+                </h2>
+
+
+                <p>
+                    How helpful was this website?
+                </p>
+
+
+                <div
+                    class="stars"
+                    id="stars">
+
+                    <button
+                        class="star-btn"
+                        data-rating="1">
+                        ★
+                    </button>
+
+                    <button
+                        class="star-btn"
+                        data-rating="2">
+                        ★
+                    </button>
+
+                    <button
+                        class="star-btn"
+                        data-rating="3">
+                        ★
+                    </button>
+
+                    <button
+                        class="star-btn"
+                        data-rating="4">
+                        ★
+                    </button>
+
+                    <button
+                        class="star-btn"
+                        data-rating="5">
+                        ★
+                    </button>
+
+                </div>
+
+
+                <div id="selectedRating">
+                    Select a rating
+                </div>
+
+
+                <textarea
+                    id="review"
+                    placeholder="Write your review (optional)...">
+                </textarea>
+
+
+                <br>
+
+
+                <button
+                    class="submit-rating"
+                    onclick="submitRating()">
+
+                    Submit Rating
+
+                </button>
+
+
+                <div id="ratingMessage"></div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
     <!-- =========================
          CONTACT
     ========================= -->
 
-    <section id="contact"
-             class="section contact-section">
+    <section
+        class="section contact-section"
+        id="contact">
 
-        <div class="section-title">
+        <div class="container">
 
-            <h2>
-                Contact Us
-            </h2>
+            <div class="section-title">
 
-            <p>
-                Have a question? Get in touch with us.
-            </p>
+                <h2 style="color:#38bdf8;">
+                    Contact Us
+                </h2>
 
-        </div>
-
-
-        <div class="contact-grid">
-
-
-            <div class="contact-card">
-
-                <h3>
-                    Location
-                </h3>
-
-                <p>
-                    Gujarat, India
+                <p style="color:#d1d5db;">
+                    Have a question? Get in touch with us.
                 </p>
 
             </div>
 
 
-            <div class="contact-card">
-
-                <h3>
-                    Contact
-                </h3>
-
-                <p>
-                    123456789
-                </p>
-
-            </div>
+            <div class="contact-grid">
 
 
-            <div class="contact-card">
+                <div class="contact-card">
 
-                <h3>
-                    Website
-                </h3>
+                    <div class="icon">
+                        📍
+                    </div>
 
-                <p>
-                    Code With Me
-                </p>
+                    <h3>Location</h3>
+
+                    <p>
+                        Gujarat, India
+                    </p>
+
+                </div>
+
+
+                <div class="contact-card">
+
+                    <div class="icon">
+                        📞
+                    </div>
+
+                    <h3>Phone</h3>
+
+                    <p>
+                        123456789
+                    </p>
+
+                </div>
+
+
+                <div class="contact-card">
+
+                    <div class="icon">
+                        💻
+                    </div>
+
+                    <h3>Website</h3>
+
+                    <p>
+                        Code With Me
+                    </p>
+
+                </div>
+
 
             </div>
 
         </div>
 
     </section>
-
 
 
     <!-- =========================
@@ -1748,17 +1682,357 @@
 
     <footer>
 
-        <p>
-            © 2026 Code With Me. All Rights Reserved.
-        </p>
+        <div class="footer-links">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#courses">
+                Courses
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#rating">
+                Rating
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </div>
+
 
         <p>
-            Learn Coding • Build Projects • Grow Your Skills
+            © 2026
+            <strong>Code With Me</strong>.
+            All Rights Reserved.
+        </p>
+
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python.
         </p>
 
     </footer>
 
 
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /*
+         * SUPABASE CONFIGURATION
+         *
+         * Replace the two values below with
+         * your own Supabase project URL and
+         * anon/public key.
+         *
+         * Do NOT use your service_role key
+         * in this public website.
+         */
+
+        const SUPABASE_URL =
+            "YOUR_SUPABASE_URL";
+
+        const SUPABASE_ANON_KEY =
+            "YOUR_SUPABASE_ANON_KEY";
+
+
+        let supabaseClient = null;
+
+
+        if (
+            SUPABASE_URL !== "YOUR_SUPABASE_URL" &&
+            SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY"
+        ) {
+
+            supabaseClient =
+                window.supabase.createClient(
+                    SUPABASE_URL,
+                    SUPABASE_ANON_KEY
+                );
+
+        }
+
+
+        /* =========================
+           RATING
+        ========================= */
+
+        let selectedRating = 0;
+
+
+        const starButtons =
+            document.querySelectorAll(".star-btn");
+
+
+        starButtons.forEach(function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    selectedRating =
+                        Number(
+                            this.getAttribute(
+                                "data-rating"
+                            )
+                        );
+
+
+                    starButtons.forEach(
+                        function(star) {
+
+                            const rating =
+                                Number(
+                                    star.getAttribute(
+                                        "data-rating"
+                                    )
+                                );
+
+                            if (
+                                rating <= selectedRating
+                            ) {
+
+                                star.classList.add(
+                                    "active"
+                                );
+
+                            } else {
+
+                                star.classList.remove(
+                                    "active"
+                                );
+
+                            }
+
+                        }
+                    );
+
+
+                    document.getElementById(
+                        "selectedRating"
+                    ).textContent =
+                        "You selected " +
+                        selectedRating +
+                        " out of 5 stars.";
+
+                }
+            );
+
+        });
+
+
+        /* =========================
+           SUBMIT RATING
+        ========================= */
+
+        async function submitRating() {
+
+            const message =
+                document.getElementById(
+                    "ratingMessage"
+                );
+
+
+            const review =
+                document.getElementById(
+                    "review"
+                ).value.trim();
+
+
+            if (selectedRating === 0) {
+
+                message.textContent =
+                    "Please select a rating first.";
+
+                message.style.color =
+                    "#dc2626";
+
+                return;
+
+            }
+
+
+            if (!supabaseClient) {
+
+                message.textContent =
+                    "Supabase is not configured yet.";
+
+                message.style.color =
+                    "#dc2626";
+
+                return;
+
+            }
+
+
+            message.textContent =
+                "Submitting rating...";
+
+            message.style.color =
+                "#2563eb";
+
+
+            try {
+
+                const {
+                    error
+                } = await supabaseClient
+                    .from("ratings")
+                    .insert([
+                        {
+                            rating: selectedRating,
+                            review: review || null
+                        }
+                    ]);
+
+
+                if (error) {
+
+                    throw error;
+
+                }
+
+
+                message.textContent =
+                    "Thank you for your rating! ⭐";
+
+
+                message.style.color =
+                    "#16a34a";
+
+
+                document.getElementById(
+                    "review"
+                ).value = "";
+
+
+                selectedRating = 0;
+
+
+                starButtons.forEach(
+                    function(star) {
+
+                        star.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                document.getElementById(
+                    "selectedRating"
+                ).textContent =
+                    "Select a rating";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Rating error:",
+                    error
+                );
+
+
+                message.textContent =
+                    "Unable to submit rating. Please try again.";
+
+                message.style.color =
+                    "#dc2626";
+
+            }
+
+        }
+
+
+        /* =========================
+           VISITOR TRACKING
+        ========================= */
+
+        async function trackVisitor() {
+
+            if (!supabaseClient) {
+
+                return;
+
+            }
+
+
+            try {
+
+                let visitorId =
+                    localStorage.getItem(
+                        "codeWithMeVisitorId"
+                    );
+
+
+                if (!visitorId) {
+
+                    visitorId =
+                        "visitor-" +
+                        Date.now() +
+                        "-" +
+                        Math.random()
+                            .toString(36)
+                            .substring(2, 10);
+
+
+                    localStorage.setItem(
+                        "codeWithMeVisitorId",
+                        visitorId
+                    );
+
+                }
+
+
+                const {
+                    error
+                } = await supabaseClient
+                    .from("visitors")
+                    .insert([
+                        {
+                            visitor_id:
+                                visitorId
+                        }
+                    ]);
+
+
+                if (error) {
+
+                    console.log(
+                        "Visitor tracking:",
+                        error.message
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.log(
+                    "Visitor tracking error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        trackVisitor();
+
+    </script>
+
+
 </body>
 
 </html>
+```
