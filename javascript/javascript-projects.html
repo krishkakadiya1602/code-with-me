@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Projects | Code With Me</title>
+
+    <meta name="description"
+        content="Learn JavaScript through simple beginner projects with Code With Me. Build interactive JavaScript projects and practice your coding skills.">
+
+    <meta name="keywords"
+        content="JavaScript projects, JavaScript beginner projects, JavaScript practice, JavaScript coding projects, Code With Me">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            background: linear-gradient(135deg, #111827, #2563eb, #7c3aed);
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: auto;
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .card h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           INFO BOX
+        ========================== */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           PROJECT GRID
+        ========================== */
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .project {
+            border: 1px solid #e5e7eb;
+            padding: 25px;
+            border-radius: 12px;
+            background: #ffffff;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .project h3 {
+            margin-top: 0;
+            color: #2563eb;
+        }
+
+        .project-number {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           CODE BLOCK
+        ========================== */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* =========================
+           LIST
+        ========================== */
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           EDITOR
+        ========================== */
+
+        .editor-title {
+            margin-top: 10px;
+            color: #2563eb;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 330px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 10px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        .preview-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #7c3aed;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 2px solid #d1d5db;
+            border-radius: 10px;
+            background: white;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .lesson-navigation a {
+            text-decoration: none;
+            color: white;
+            background: #2563eb;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        .lesson-navigation .home-btn {
+            background: #7c3aed;
+        }
+
+        .lesson-navigation .home-btn:hover {
+            background: #6d28d9;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <div class="logo">
+            Code <span>WithMe</span>
+        </div>
+
+        <ul>
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="javascript-introduction.html">JavaScript</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <h1>JavaScript Projects</h1>
+
+        <p>
+            Practice your JavaScript skills by building simple,
+            interactive and useful beginner projects.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- =========================
+             INTRODUCTION
+        ========================== -->
+
+        <section class="card">
+
+            <h2>What Are JavaScript Projects?</h2>
+
+            <p>
+                JavaScript projects are small applications that help
+                you practice JavaScript concepts in real-world examples.
+            </p>
+
+            <p>
+                Instead of only learning syntax and theory, projects
+                allow you to use variables, functions, conditions,
+                loops, arrays, objects, events and DOM manipulation.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Tip:</strong>
+
+                The best way to learn JavaScript is to write code
+                and build projects regularly.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECT LIST
+        ========================== -->
+
+        <section class="card">
+
+            <h2>Beginner JavaScript Projects</h2>
+
+            <p>
+                Here are some beginner-friendly JavaScript projects
+                that you can build while learning JavaScript.
+            </p>
+
+
+            <div class="project-grid">
+
+
+                <div class="project">
+
+                    <span class="project-number">Project 1</span>
+
+                    <h3>Digital Clock</h3>
+
+                    <p>
+                        Create a digital clock that displays the current
+                        hours, minutes and seconds.
+                    </p>
+
+                    <p>
+                        <strong>Concepts:</strong>
+                        Date object, functions, setInterval()
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <span class="project-number">Project 2</span>
+
+                    <h3>Counter App</h3>
+
+                    <p>
+                        Build a counter application with Increase,
+                        Decrease and Reset buttons.
+                    </p>
+
+                    <p>
+                        <strong>Concepts:</strong>
+                        Variables, functions and events
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <span class="project-number">Project 3</span>
+
+                    <h3>Calculator</h3>
+
+                    <p>
+                        Build a simple calculator that can perform
+                        addition, subtraction, multiplication and division.
+                    </p>
+
+                    <p>
+                        <strong>Concepts:</strong>
+                        Functions, operators and DOM
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <span class="project-number">Project 4</span>
+
+                    <h3>To-Do List</h3>
+
+                    <p>
+                        Create a to-do list where users can add,
+                        complete and remove tasks.
+                    </p>
+
+                    <p>
+                        <strong>Concepts:</strong>
+                        Arrays, DOM manipulation and events
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <span class="project-number">Project 5</span>
+
+                    <h3>Random Number Generator</h3>
+
+                    <p>
+                        Generate a random number whenever the user
+                        clicks a button.
+                    </p>
+
+                    <p>
+                        <strong>Concepts:</strong>
+                        Math.random() and functions
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <span class="project-number">Project 6</span>
+
+                    <h3>Color Changer</h3>
+
+                    <p>
+                        Change the background color of a webpage
+                        using JavaScript.
+                    </p>
+
+                    <p>
+                        <strong>Concepts:</strong>
+                        DOM, events and random values
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <span class="project-number">Project 7</span>
+
+                    <h3>Digital Stopwatch</h3>
+
+                    <p>
+                        Create a stopwatch with Start, Stop and Reset
+                        buttons.
+                    </p>
+
+                    <p>
+                        <strong>Concepts:</strong>
+                        setInterval(), variables and events
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <span class="project-number">Project 8</span>
+
+                    <h3>Quiz App</h3>
+
+                    <p>
+                        Create a multiple-choice quiz and display
+                        the user's final score.
+                    </p>
+
+                    <p>
+                        <strong>Concepts:</strong>
+                        Arrays, objects, conditions and events
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <span class="project-number">Project 9</span>
+
+                    <h3>Password Generator</h3>
+
+                    <p>
+                        Create a random password generator with
+                        different password options.
+                    </p>
+
+                    <p>
+                        <strong>Concepts:</strong>
+                        Strings, arrays and random values
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <span class="project-number">Project 10</span>
+
+                    <h3>Image Slider</h3>
+
+                    <p>
+                        Build an image slider with Previous and
+                        Next buttons.
+                    </p>
+
+                    <p>
+                        <strong>Concepts:</strong>
+                        Arrays, DOM and events
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SAMPLE PROJECT
+        ========================== -->
+
+        <section class="card">
+
+            <h2>Project Example: Counter App</h2>
+
+            <p>
+                Let's create a simple counter application using
+                HTML, CSS and JavaScript.
+            </p>
+
+
+            <h3>HTML</h3>
+
+<pre><code>&lt;h1 id="count"&gt;0&lt;/h1&gt;
+
+&lt;button onclick="increase()"&gt;
+    Increase
+&lt;/button&gt;
+
+&lt;button onclick="decrease()"&gt;
+    Decrease
+&lt;/button&gt;
+
+&lt;button onclick="reset()"&gt;
+    Reset
+&lt;/button&gt;</code></pre>
+
+
+            <h3>JavaScript</h3>
+
+<pre><code>let count = 0;
+
+function increase() {
+    count++;
+    document.getElementById("count").textContent = count;
+}
+
+function decrease() {
+    count--;
+    document.getElementById("count").textContent = count;
+}
+
+function reset() {
+    count = 0;
+    document.getElementById("count").textContent = count;
+}</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             INTERACTIVE EDITOR
+        ========================== -->
+
+        <section class="card">
+
+            <h2>JavaScript Project Editor</h2>
+
+            <p>
+                Try creating your own JavaScript project in the
+                editor below.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Challenge:</strong>
+
+                Modify the code and create your own counter,
+                calculator or color changer.
+
+            </div>
+
+
+            <h3 class="editor-title">
+                Write Your Code
+            </h3>
+
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Project</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 40px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Counter App</h1>
+
+    <h2 id="count">0</h2>
+
+    <button onclick="increase()">Increase</button>
+
+    <button onclick="decrease()">Decrease</button>
+
+    <button onclick="reset()">Reset</button>
+
+
+    <script>
+
+        let count = 0;
+
+        function increase() {
+            count++;
+            document.getElementById("count").textContent = count;
+        }
+
+        function decrease() {
+            count--;
+            document.getElementById("count").textContent = count;
+        }
+
+        function reset() {
+            count = 0;
+            document.getElementById("count").textContent = count;
+        }
+
+    <\/script>
+
+</body>
+</html></textarea>
+
+
+            <div class="buttons">
+
+                <button
+                    class="run-btn"
+                    onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button
+                    class="clear-btn"
+                    onclick="clearCode()">
+                    Clear
+                </button>
+
+            </div>
+
+
+            <h3 class="preview-title">
+                Project Preview
+            </h3>
+
+            <iframe
+                id="preview"
+                title="JavaScript Project Preview">
+            </iframe>
+
+        </section>
+
+
+        <!-- =========================
+             IMPORTANT CONCEPTS
+        ========================== -->
+
+        <section class="card">
+
+            <h2>JavaScript Concepts Used in Projects</h2>
+
+            <p>
+                While building projects, you will use many important
+                JavaScript concepts.
+            </p>
+
+            <ul>
+
+                <li>Variables</li>
+
+                <li>Data Types</li>
+
+                <li>Operators</li>
+
+                <li>Conditional Statements</li>
+
+                <li>Loops</li>
+
+                <li>Functions</li>
+
+                <li>Arrays</li>
+
+                <li>Objects</li>
+
+                <li>Events</li>
+
+                <li>DOM Manipulation</li>
+
+                <li>setTimeout()</li>
+
+                <li>setInterval()</li>
+
+                <li>Promises</li>
+
+                <li>Async and Await</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECT BUILDING STEPS
+        ========================== -->
+
+        <section class="card">
+
+            <h2>How to Build a JavaScript Project</h2>
+
+            <ol>
+
+                <li>
+                    Choose a simple project idea.
+                </li>
+
+                <li>
+                    Create the HTML structure.
+                </li>
+
+                <li>
+                    Add CSS to design the project.
+                </li>
+
+                <li>
+                    Create JavaScript variables and functions.
+                </li>
+
+                <li>
+                    Add event listeners or events.
+                </li>
+
+                <li>
+                    Connect JavaScript with HTML using the DOM.
+                </li>
+
+                <li>
+                    Test the project in your browser.
+                </li>
+
+                <li>
+                    Find and fix errors.
+                </li>
+
+                <li>
+                    Improve the project with additional features.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECT CHALLENGE
+        ========================== -->
+
+        <section class="card">
+
+            <h2>Project Challenge</h2>
+
+            <p>
+                Try building a complete JavaScript To-Do List
+                application.
+            </p>
+
+            <h3>Your To-Do List Should Have:</h3>
+
+            <ul>
+
+                <li>Add a new task</li>
+
+                <li>Display tasks</li>
+
+                <li>Mark tasks as completed</li>
+
+                <li>Delete tasks</li>
+
+                <li>Clear all tasks</li>
+
+            </ul>
+
+            <div class="warning-box">
+
+                <strong>Practice Tip:</strong>
+
+                Try building the project yourself before looking
+                for a solution. Making mistakes is an important
+                part of learning programming.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             IMPORTANT POINTS
+        ========================== -->
+
+        <section class="card">
+
+            <h2>Important Points</h2>
+
+            <ul>
+
+                <li>
+                    Start with small projects.
+                </li>
+
+                <li>
+                    Understand the code instead of only copying it.
+                </li>
+
+                <li>
+                    Practice DOM manipulation.
+                </li>
+
+                <li>
+                    Use functions to organize your code.
+                </li>
+
+                <li>
+                    Learn how JavaScript interacts with HTML.
+                </li>
+
+                <li>
+                    Test your project frequently.
+                </li>
+
+                <li>
+                    Use browser Developer Tools to find errors.
+                </li>
+
+                <li>
+                    Gradually make your projects more complex.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             CONCLUSION
+        ========================== -->
+
+        <section class="card">
+
+            <h2>Conclusion</h2>
+
+            <p>
+                Building projects is one of the most effective ways
+                to improve your JavaScript programming skills.
+            </p>
+
+            <p>
+                Start with simple projects such as a counter,
+                calculator and color changer. After that, move on
+                to larger projects such as To-Do Lists, Quiz Apps,
+                Weather Apps and other interactive web applications.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Keep Practicing:</strong>
+
+                The more projects you build, the more confident
+                you will become with JavaScript.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             NAVIGATION
+        ========================== -->
+
+        <div class="lesson-navigation">
+
+            <a href="javascript-async.html">
+                ← Previous
+            </a>
+
+            <a
+                href="../index.html"
+                class="home-btn">
+                🏠 Home
+            </a>
+
+            <a href="../index.html#courses">
+                Finish Course →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT EDITOR
+    ========================== -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const preview =
+                document.getElementById("preview");
+
+            preview.srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("preview").srcdoc = "";
+
+        }
+
+
+        // Run example automatically when page loads
+
+        window.addEventListener("load", function() {
+
+            runCode();
+
+        });
+
+    </script>
+
+</body>
+</html>
