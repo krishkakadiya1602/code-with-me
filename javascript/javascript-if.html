@@ -1,0 +1,1199 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn JavaScript if statements with simple examples and an interactive code editor.">
+
+    <meta name="keywords"
+          content="JavaScript if, JavaScript if statement, if else, else if, JavaScript conditions">
+
+    <meta name="author"
+          content="Code With Me">
+
+    <title>JavaScript If Statement | Code With Me</title>
+
+
+    <style>
+
+        /* ========================================
+           RESET
+        ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* ========================================
+           BODY
+        ======================================== */
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+
+        /* ========================================
+           NAVBAR
+        ======================================== */
+
+        .navbar {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* ========================================
+           PAGE HEADER
+        ======================================== */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #1d4ed8,
+                #7c3aed
+            );
+
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+
+        /* ========================================
+           CONTAINER
+        ======================================== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+
+        /* ========================================
+           CONTENT CARD
+        ======================================== */
+
+        .content-card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-card h2 {
+            color: #1d4ed8;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-card h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-card p {
+            margin-bottom: 15px;
+        }
+
+
+        /* ========================================
+           INFO BOX
+        ======================================== */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #1d4ed8;
+        }
+
+
+        /* ========================================
+           LIST
+        ======================================== */
+
+        .content-card ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-card li {
+            margin-bottom: 8px;
+        }
+
+
+        /* ========================================
+           CODE BLOCK
+        ======================================== */
+
+        .code-block {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0 25px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+        }
+
+
+        /* ========================================
+           CONDITION FLOW
+        ======================================== */
+
+        .flow-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .flow-item {
+            padding: 15px 25px;
+            border-radius: 8px;
+            background: #eff6ff;
+            border: 2px solid #2563eb;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .arrow {
+            font-size: 24px;
+            color: #2563eb;
+        }
+
+
+        /* ========================================
+           TABLE
+        ======================================== */
+
+        .condition-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .condition-table th,
+        .condition-table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .condition-table th {
+            background: #1d4ed8;
+            color: white;
+        }
+
+        .condition-table tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+
+        /* ========================================
+           EDITOR
+        ======================================== */
+
+        .editor-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .editor-section h2 {
+            color: #1d4ed8;
+            margin-bottom: 10px;
+        }
+
+        .editor-section p {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 380px;
+            resize: vertical;
+            padding: 18px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: #111827;
+            color: #f9fafb;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+
+        /* ========================================
+           BUTTONS
+        ======================================== */
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+
+        /* ========================================
+           PREVIEW
+        ======================================== */
+
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #374151;
+        }
+
+        .output-frame {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+        }
+
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background: #111827;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #2563eb;
+        }
+
+        .home-btn {
+            background: #7c3aed;
+        }
+
+        .home-btn:hover {
+            background: #6d28d9;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+
+        /* ========================================
+           MOBILE
+        ======================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .content-card,
+            .editor-section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .condition-table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
+
+    <nav class="navbar">
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">
+                    Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript-introduction.html">
+                    JavaScript
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">
+                    About
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ========================================
+         PAGE HEADER
+    ======================================== -->
+
+    <header class="page-header">
+
+        <h1>JavaScript if Statement</h1>
+
+        <p>
+            Learn how to make decisions using conditions in JavaScript.
+        </p>
+
+    </header>
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ======================================== -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="content-card">
+
+            <h2>What is an if Statement?</h2>
+
+            <p>
+                The JavaScript <strong>if</strong> statement is used
+                to execute a block of code only when a specified
+                condition is true.
+            </p>
+
+            <p>
+                It is one of the most important concepts used for
+                making decisions in JavaScript programs.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                If a person's age is 18 or greater, the program can
+                display a message saying that the person is an adult.
+
+            </div>
+
+        </section>
+
+
+        <!-- SYNTAX -->
+
+        <section class="content-card">
+
+            <h2>Syntax of if Statement</h2>
+
+            <div class="code-block">
+<pre>
+if (condition) {
+
+    // code to execute
+
+}
+</pre>
+            </div>
+
+            <p>
+                If the condition evaluates to <strong>true</strong>,
+                the code inside the curly braces will execute.
+            </p>
+
+        </section>
+
+
+        <!-- BASIC EXAMPLE -->
+
+        <section class="content-card">
+
+            <h2>Basic if Example</h2>
+
+            <div class="code-block">
+<pre>
+let age = 20;
+
+if (age >= 18) {
+
+    console.log("You are an adult.");
+
+}
+</pre>
+            </div>
+
+            <p>
+                Since <strong>20 >= 18</strong> is true, the message
+                will be displayed.
+            </p>
+
+        </section>
+
+
+        <!-- FLOW -->
+
+        <section class="content-card">
+
+            <h2>How an if Statement Works</h2>
+
+            <div class="flow-box">
+
+                <div class="flow-item">
+                    Start
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="flow-item">
+                    Check Condition
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="flow-item">
+                    Is Condition True?
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="flow-item">
+                    Execute Code
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPARISON OPERATORS -->
+
+        <section class="content-card">
+
+            <h2>Using Comparison Operators</h2>
+
+            <p>
+                Conditions commonly use comparison operators.
+            </p>
+
+            <table class="condition-table">
+
+                <tr>
+
+                    <th>
+                        Operator
+                    </th>
+
+                    <th>
+                        Meaning
+                    </th>
+
+                    <th>
+                        Example
+                    </th>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        ==
+                    </td>
+
+                    <td>
+                        Equal value
+                    </td>
+
+                    <td>
+                        age == 18
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        ===
+                    </td>
+
+                    <td>
+                        Equal value and type
+                    </td>
+
+                    <td>
+                        age === 18
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        !=
+                    </td>
+
+                    <td>
+                        Not equal
+                    </td>
+
+                    <td>
+                        age != 18
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        !==
+                    </td>
+
+                    <td>
+                        Not equal value or type
+                    </td>
+
+                    <td>
+                        age !== 18
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        >
+                    </td>
+
+                    <td>
+                        Greater than
+                    </td>
+
+                    <td>
+                        age > 18
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        <
+                    </td>
+
+                    <td>
+                        Less than
+                    </td>
+
+                    <td>
+                        age < 18
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        >=
+                    </td>
+
+                    <td>
+                        Greater than or equal to
+                    </td>
+
+                    <td>
+                        age >= 18
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        <=
+                    </td>
+
+                    <td>
+                        Less than or equal to
+                    </td>
+
+                    <td>
+                        age <= 18
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- IF ELSE -->
+
+        <section class="content-card">
+
+            <h2>if...else Statement</h2>
+
+            <p>
+                The <strong>if...else</strong> statement executes
+                one block of code when the condition is true and
+                another block when the condition is false.
+            </p>
+
+            <div class="code-block">
+<pre>
+let age = 16;
+
+if (age >= 18) {
+
+    console.log("You are an adult.");
+
+} else {
+
+    console.log("You are not an adult.");
+
+}
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- ELSE IF -->
+
+        <section class="content-card">
+
+            <h2>else if Statement</h2>
+
+            <p>
+                The <strong>else if</strong> statement is used when
+                you need to check multiple conditions.
+            </p>
+
+            <div class="code-block">
+<pre>
+let marks = 75;
+
+if (marks >= 90) {
+
+    console.log("Grade A+");
+
+} else if (marks >= 75) {
+
+    console.log("Grade A");
+
+} else if (marks >= 60) {
+
+    console.log("Grade B");
+
+} else {
+
+    console.log("Grade C");
+
+}
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- MULTIPLE CONDITIONS -->
+
+        <section class="content-card">
+
+            <h2>Using Multiple Conditions</h2>
+
+            <p>
+                You can combine conditions using logical operators
+                such as <strong>&&</strong> and <strong>||</strong>.
+            </p>
+
+            <div class="code-block">
+<pre>
+let age = 20;
+let hasID = true;
+
+if (age >= 18 && hasID === true) {
+
+    console.log("Access allowed.");
+
+}
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- NESTED IF -->
+
+        <section class="content-card">
+
+            <h2>Nested if Statement</h2>
+
+            <p>
+                An if statement can also be placed inside another
+                if statement. This is called a nested if statement.
+            </p>
+
+            <div class="code-block">
+<pre>
+let age = 20;
+let isStudent = true;
+
+if (age >= 18) {
+
+    if (isStudent) {
+
+        console.log("You are an adult student.");
+
+    }
+
+}
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- REAL LIFE EXAMPLE -->
+
+        <section class="content-card">
+
+            <h2>Real-Life Example</h2>
+
+            <p>
+                Here is a simple example of checking whether a user
+                can access a website.
+            </p>
+
+            <div class="code-block">
+<pre>
+let loggedIn = true;
+
+if (loggedIn) {
+
+    console.log("Welcome to Code With Me!");
+
+} else {
+
+    console.log("Please login first.");
+
+}
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- IMPORTANT POINTS -->
+
+        <section class="content-card">
+
+            <h2>Important Points</h2>
+
+            <ul>
+
+                <li>
+                    Use <strong>if</strong> to check a condition.
+                </li>
+
+                <li>
+                    Use <strong>else</strong> when the if condition is false.
+                </li>
+
+                <li>
+                    Use <strong>else if</strong> to check multiple conditions.
+                </li>
+
+                <li>
+                    Conditions normally produce a true or false result.
+                </li>
+
+                <li>
+                    Comparison operators are commonly used with if statements.
+                </li>
+
+                <li>
+                    Logical operators can combine multiple conditions.
+                </li>
+
+                <li>
+                    An if statement can be placed inside another if statement.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- ========================================
+             INTERACTIVE CODE EDITOR
+        ======================================== -->
+
+        <section class="editor-section">
+
+            <h2>JavaScript if Statement - Code Editor</h2>
+
+            <p>
+                Write your JavaScript code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>JavaScript if Statement</title>
+
+</head>
+
+<body>
+
+    <h2>JavaScript if Statement</h2>
+
+    <p id="result"></p>
+
+    <script>
+
+        let age = 20;
+
+        if (age >= 18) {
+
+            document.getElementById("result").innerHTML =
+                "You are an adult.";
+
+        } else {
+
+            document.getElementById("result").innerHTML =
+                "You are not an adult.";
+
+        }
+
+    </script>
+
+</body>
+
+</html></textarea>
+
+
+            <div class="button-group">
+
+                <button
+                    class="btn run-btn"
+                    onclick="runCode()">
+
+                    ▶ Run Code
+
+                </button>
+
+                <button
+                    class="btn clear-btn"
+                    onclick="clearCode()">
+
+                    ✕ Clear
+
+                </button>
+
+            </div>
+
+
+            <h3 class="output-title">
+                Preview
+            </h3>
+
+
+            <iframe
+                id="outputFrame"
+                class="output-frame"
+                title="JavaScript if Statement Preview">
+            </iframe>
+
+        </section>
+
+
+        <!-- ========================================
+             NAVIGATION
+        ======================================== -->
+
+        <div class="lesson-navigation">
+
+
+            <!-- PREVIOUS -->
+
+            <a
+                href="javascript-data-types.html"
+                class="nav-btn">
+
+                ← Previous
+
+            </a>
+
+
+            <!-- HOME -->
+
+            <a
+                href="../index.html"
+                class="nav-btn home-btn">
+
+                🏠 Home
+
+            </a>
+
+
+            <!-- NEXT -->
+
+            <a
+                href="javascript-switch.html"
+                class="nav-btn">
+
+                Next →
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python.
+        </p>
+
+    </footer>
+
+
+    <!-- ========================================
+         CODE RUNNER
+    ======================================== -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const outputFrame =
+                document.getElementById("outputFrame");
+
+            outputFrame.srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("outputFrame").srcdoc = "";
+
+        }
+
+
+        /* Run default code when page loads */
+
+        window.addEventListener("load", function () {
+
+            runCode();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
+```
