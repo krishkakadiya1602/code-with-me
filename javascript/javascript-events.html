@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Events | Code With Me</title>
+
+    <meta name="description"
+        content="Learn JavaScript Events with simple explanations, examples, onclick, addEventListener, mouse events, keyboard events and form events.">
+
+    <meta name="keywords"
+        content="JavaScript Events, JavaScript onclick, addEventListener, mouse events, keyboard events, form events, JavaScript tutorial">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 70px 7%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           INFO BOXES
+        ========================== */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           CODE
+        ========================== */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* =========================
+           TABLE
+        ========================== */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* =========================
+           EDITOR
+        ========================== */
+
+        .editor-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .editor-section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 400px;
+            background: #111827;
+            color: #f9fafb;
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #374151;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 300px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .lesson-navigation a {
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            color: white;
+            background: #2563eb;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        .lesson-navigation .home-btn {
+            background: #7c3aed;
+        }
+
+        .lesson-navigation .home-btn:hover {
+            background: #6d28d9;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section,
+            .editor-section {
+                padding: 20px;
+            }
+
+            .section h2,
+            .editor-section h2 {
+                font-size: 24px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <div class="logo">
+            Code <span>WithMe</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="javascript-introduction.html">
+                    JavaScript
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <h1>JavaScript Events</h1>
+
+        <p>
+            Learn how JavaScript responds to user actions such as
+            clicks, mouse movements, keyboard input and form actions.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- =========================
+             WHAT ARE EVENTS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>What are JavaScript Events?</h2>
+
+            <p>
+                An event is an action or occurrence that happens
+                in the browser.
+            </p>
+
+            <p>
+                JavaScript can detect these events and execute code
+                when they happen.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Examples of Events:</strong>
+
+                <ul>
+
+                    <li>Clicking a button</li>
+
+                    <li>Moving the mouse</li>
+
+                    <li>Pressing a keyboard key</li>
+
+                    <li>Submitting a form</li>
+
+                    <li>Loading a webpage</li>
+
+                    <li>Changing an input value</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EVENT TYPES
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Common JavaScript Events</h2>
+
+            <table>
+
+                <tr>
+                    <th>Event</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>click</td>
+                    <td>Occurs when an element is clicked.</td>
+                </tr>
+
+                <tr>
+                    <td>dblclick</td>
+                    <td>Occurs when an element is double-clicked.</td>
+                </tr>
+
+                <tr>
+                    <td>mouseover</td>
+                    <td>Occurs when the mouse moves over an element.</td>
+                </tr>
+
+                <tr>
+                    <td>mouseout</td>
+                    <td>Occurs when the mouse leaves an element.</td>
+                </tr>
+
+                <tr>
+                    <td>keydown</td>
+                    <td>Occurs when a keyboard key is pressed.</td>
+                </tr>
+
+                <tr>
+                    <td>keyup</td>
+                    <td>Occurs when a keyboard key is released.</td>
+                </tr>
+
+                <tr>
+                    <td>submit</td>
+                    <td>Occurs when a form is submitted.</td>
+                </tr>
+
+                <tr>
+                    <td>change</td>
+                    <td>Occurs when an input value changes.</td>
+                </tr>
+
+                <tr>
+                    <td>load</td>
+                    <td>Occurs when a page or resource finishes loading.</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             ONCLICK
+        ========================== -->
+
+        <section class="section">
+
+            <h2>onclick Event</h2>
+
+            <p>
+                The <strong>onclick</strong> event occurs when
+                an element is clicked.
+            </p>
+
+            <pre><code>&lt;button onclick="showMessage()"&gt;
+    Click Me
+&lt;/button&gt;
+
+&lt;script&gt;
+
+function showMessage() {
+
+    alert("Hello!");
+
+}
+
+&lt;/script&gt;</code></pre>
+
+            <p>
+                When the button is clicked, the
+                <strong>showMessage()</strong> function runs.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             INLINE EVENT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Inline Event Handler</h2>
+
+            <p>
+                You can directly write JavaScript inside an HTML
+                event attribute.
+            </p>
+
+            <pre><code>&lt;button onclick="alert('Hello World!')"&gt;
+    Click Me
+&lt;/button&gt;</code></pre>
+
+            <div class="warning-box">
+
+                Inline event handlers are simple for learning,
+                but larger projects commonly use
+                <strong>addEventListener()</strong>.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ADD EVENT LISTENER
+        ========================== -->
+
+        <section class="section">
+
+            <h2>addEventListener()</h2>
+
+            <p>
+                The <strong>addEventListener()</strong> method
+                allows you to attach an event handler to an element.
+            </p>
+
+            <pre><code>const button = document.getElementById("myButton");
+
+button.addEventListener("click", function() {
+
+    alert("Button clicked!");
+
+});</code></pre>
+
+            <p>
+                The first argument specifies the event type.
+                The second argument contains the function that
+                should run.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             CLICK EVENT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Click Event Example</h2>
+
+            <pre><code>&lt;button id="btn"&gt;
+    Click Me
+&lt;/button&gt;
+
+&lt;p id="message"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", function() {
+
+    document.getElementById("message").innerHTML =
+        "You clicked the button!";
+
+});
+
+&lt;/script&gt;</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             MOUSE EVENTS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Mouse Events</h2>
+
+            <p>
+                JavaScript provides several events for mouse actions.
+            </p>
+
+            <h3>mouseover</h3>
+
+            <pre><code>element.addEventListener("mouseover", function() {
+
+    console.log("Mouse is over the element.");
+
+});</code></pre>
+
+            <h3>mouseout</h3>
+
+            <pre><code>element.addEventListener("mouseout", function() {
+
+    console.log("Mouse left the element.");
+
+});</code></pre>
+
+            <h3>dblclick</h3>
+
+            <pre><code>element.addEventListener("dblclick", function() {
+
+    console.log("Double clicked!");
+
+});</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             KEYBOARD EVENTS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Keyboard Events</h2>
+
+            <p>
+                Keyboard events happen when the user interacts
+                with the keyboard.
+            </p>
+
+            <h3>keydown</h3>
+
+            <pre><code>document.addEventListener("keydown", function(event) {
+
+    console.log("Key pressed: " + event.key);
+
+});</code></pre>
+
+            <h3>keyup</h3>
+
+            <pre><code>document.addEventListener("keyup", function(event) {
+
+    console.log("Key released: " + event.key);
+
+});</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             EVENT OBJECT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>JavaScript Event Object</h2>
+
+            <p>
+                When an event occurs, JavaScript can provide
+                information about that event through an event object.
+            </p>
+
+            <pre><code>document.addEventListener("click", function(event) {
+
+    console.log(event);
+
+});</code></pre>
+
+            <p>
+                The event object can provide useful information
+                such as the event type and the element that triggered it.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FORM EVENTS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Form Events</h2>
+
+            <p>
+                JavaScript can respond to form-related events.
+            </p>
+
+            <h3>submit Event</h3>
+
+            <pre><code>const form = document.getElementById("myForm");
+
+form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    alert("Form submitted!");
+
+});</code></pre>
+
+            <div class="info-box">
+
+                <strong>event.preventDefault()</strong> prevents
+                the browser's default form submission behavior.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INPUT EVENT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Input Event</h2>
+
+            <p>
+                The <strong>input</strong> event occurs whenever
+                the value of an input element changes.
+            </p>
+
+            <pre><code>const input = document.getElementById("name");
+
+input.addEventListener("input", function() {
+
+    console.log(input.value);
+
+});</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             CHANGE EVENT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Change Event</h2>
+
+            <p>
+                The <strong>change</strong> event occurs when the
+                value of an input or select element changes.
+            </p>
+
+            <pre><code>const select = document.getElementById("course");
+
+select.addEventListener("change", function() {
+
+    console.log(select.value);
+
+});</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             LOAD EVENT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Load Event</h2>
+
+            <p>
+                The <strong>load</strong> event occurs when a page
+                or resource has finished loading.
+            </p>
+
+            <pre><code>window.addEventListener("load", function() {
+
+    console.log("Page loaded!");
+
+});</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             EVENT HANDLER
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Event Handler</h2>
+
+            <p>
+                An event handler is a function that runs when
+                a particular event occurs.
+            </p>
+
+            <pre><code>function handleClick() {
+
+    console.log("Button was clicked!");
+
+}
+
+document
+    .getElementById("btn")
+    .addEventListener("click", handleClick);</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             REAL LIFE EXAMPLE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Real-Life Example</h2>
+
+            <p>
+                Events are commonly used in websites for interactive
+                features such as buttons, menus and forms.
+            </p>
+
+            <pre><code>&lt;button id="loginButton"&gt;
+    Login
+&lt;/button&gt;
+
+&lt;p id="result"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+
+document
+    .getElementById("loginButton")
+    .addEventListener("click", function() {
+
+        document.getElementById("result").innerHTML =
+            "Login button clicked!";
+
+    });
+
+&lt;/script&gt;</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             IMPORTANT POINTS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <ul>
+
+                <li>
+                    Events are actions that happen in the browser.
+                </li>
+
+                <li>
+                    JavaScript can respond to these events.
+                </li>
+
+                <li>
+                    <strong>click</strong> is used for click actions.
+                </li>
+
+                <li>
+                    <strong>mouseover</strong> is used for mouse movement.
+                </li>
+
+                <li>
+                    <strong>keydown</strong> is used for keyboard input.
+                </li>
+
+                <li>
+                    <strong>submit</strong> is used for form submission.
+                </li>
+
+                <li>
+                    <strong>addEventListener()</strong> is commonly used
+                    to attach event handlers.
+                </li>
+
+                <li>
+                    The event object provides information about an event.
+                </li>
+
+                <li>
+                    Events make websites interactive.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             INTERACTIVE EDITOR
+        ========================== -->
+
+        <section class="editor-section">
+
+            <h2>JavaScript Events Code Editor</h2>
+
+            <p>
+                Write your HTML and JavaScript code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>JavaScript Events</title>
+
+</head>
+
+<body>
+
+    <h2>JavaScript Events</h2>
+
+    <button id="myButton">
+        Click Me
+    </button>
+
+    <p id="message"></p>
+
+    <script>
+
+        const button =
+            document.getElementById("myButton");
+
+        button.addEventListener("click", function() {
+
+            document.getElementById("message").innerHTML =
+                "Button clicked successfully!";
+
+        });
+
+    </script>
+
+</body>
+
+</html></textarea>
+
+            <div class="button-group">
+
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearCode()">
+                    ✕ Clear
+                </button>
+
+            </div>
+
+            <h3 class="output-title">
+                Output / Preview
+            </h3>
+
+            <iframe id="outputFrame"></iframe>
+
+        </section>
+
+
+        <!-- =========================
+             NAVIGATION
+        ========================== -->
+
+        <div class="lesson-navigation">
+
+            <a href="javascript-objects.html">
+                ← Previous
+            </a>
+
+            <a href="../index.html" class="home-btn">
+                🏠 Home
+            </a>
+
+            <a href="javascript-arrays.html">
+                Next →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const outputFrame =
+                document.getElementById("outputFrame");
+
+            outputFrame.srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("outputFrame").srcdoc = "";
+
+        }
+
+
+        window.addEventListener("load", function() {
+
+            runCode();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
