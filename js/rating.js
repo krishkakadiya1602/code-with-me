@@ -2,366 +2,273 @@
 // Code With Me - Rating System
 // ========================================
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    // ----------------------------------------
-    // Get HTML elements
-    // ----------------------------------------
-
-    const stars = document.querySelectorAll(
-        ".star, .rating-star, [data-rating]"
-    );
-
-    const ratingText = document.getElementById("ratingText");
-
-    const reviewInput =
-        document.getElementById("review") ||
-        document.getElementById("reviewText") ||
-        document.querySelector("textarea");
-
-    const submitButton =
-        document.getElementById("submitRating");
-
-    const message =
-        document.getElementById("ratingMessage");
-
-    let selectedRating = 0;
+let selectedRating = 0;
 
 
-    // ----------------------------------------
-    // Check Supabase
-    // ----------------------------------------
+// ========================================
+// STAR BUTTONS
+// ========================================
 
-    if (
-        typeof supabaseClient === "undefined" ||
-        !supabaseClient
-    ) {
-
-        showMessage(
-            "Supabase is not configured yet.",
-            "error"
-        );
-
-        return;
-    }
+const starButtons =
+    document.querySelectorAll(".star-btn");
 
 
-    // ----------------------------------------
-    // Star Rating
-    // ----------------------------------------
+starButtons.forEach(function (button) {
 
-    stars.forEach(function (star) {
+    button.addEventListener("click", function () {
 
-        star.addEventListener("click", function () {
-
-            let rating =
-                parseInt(
-                    this.getAttribute("data-rating")
-                );
-
-            if (!rating) {
-                rating =
-                    parseInt(
-                        this.dataset.rating
-                    );
-            }
-
-            if (!rating) {
-                return;
-            }
-
-            selectedRating = rating;
-
-            updateStars();
-
-            updateRatingText();
-
-        });
+        selectedRating =
+            Number(
+                this.getAttribute("data-rating")
+            );
 
 
-        // Mouse hover
+        starButtons.forEach(function (star) {
 
-        star.addEventListener("mouseenter", function () {
-
-            let rating =
-                parseInt(
-                    this.getAttribute("data-rating")
-                );
-
-            if (!rating) {
-                rating =
-                    parseInt(
-                        this.dataset.rating
-                    );
-            }
-
-            highlightStars(rating);
-
-        });
-
-
-        // Mouse leave
-
-        star.addEventListener("mouseleave", function () {
-
-            updateStars();
-
-        });
-
-    });
-
-
-    // ----------------------------------------
-    // Update Stars
-    // ----------------------------------------
-
-    function updateStars() {
-
-        stars.forEach(function (star) {
-
-            let rating =
-                parseInt(
+            const rating =
+                Number(
                     star.getAttribute("data-rating")
                 );
 
-            if (!rating) {
-                rating =
-                    parseInt(
-                        star.dataset.rating
-                    );
-            }
 
             if (rating <= selectedRating) {
 
-                star.style.color = "#f59e0b";
+                star.classList.add("active");
 
             } else {
 
-                star.style.color = "#d1d5db";
+                star.classList.remove("active");
 
             }
 
         });
 
-    }
 
-
-    // ----------------------------------------
-    // Highlight Stars on Hover
-    // ----------------------------------------
-
-    function highlightStars(rating) {
-
-        stars.forEach(function (star) {
-
-            let starRating =
-                parseInt(
-                    star.getAttribute("data-rating")
-                );
-
-            if (!starRating) {
-                starRating =
-                    parseInt(
-                        star.dataset.rating
-                    );
-            }
-
-            if (starRating <= rating) {
-
-                star.style.color = "#f59e0b";
-
-            } else {
-
-                star.style.color = "#d1d5db";
-
-            }
-
-        });
-
-    }
-
-
-    // ----------------------------------------
-    // Rating Text
-    // ----------------------------------------
-
-    function updateRatingText() {
-
-        if (!ratingText) {
-            return;
-        }
-
-        ratingText.textContent =
+        document.getElementById(
+            "selectedRating"
+        ).textContent =
             "You selected " +
             selectedRating +
             " out of 5 stars.";
 
+    });
+
+});
+
+
+// ========================================
+// SUBMIT RATING
+// ========================================
+
+async function submitRating() {
+
+    const message =
+        document.getElementById(
+            "ratingMessage"
+        );
+
+
+    const review =
+        document.getElementById(
+            "review"
+        ).value.trim();
+
+
+    // Check rating
+
+    if (selectedRating === 0) {
+
+        message.textContent =
+            "Please select a rating first.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
     }
 
 
-    // ----------------------------------------
-    // Submit Rating
-    // ----------------------------------------
+    // Check Supabase
 
-    if (submitButton) {
+    if (!supabaseClient) {
 
-        submitButton.addEventListener(
-            "click",
-            async function () {
+        message.textContent =
+            "Supabase is not configured yet.";
 
-                // Check rating
+        message.style.color =
+            "#dc2626";
 
-                if (selectedRating === 0) {
+        return;
 
-                    showMessage(
-                        "Please select a rating first.",
-                        "error"
-                    );
+    }
 
-                    return;
+
+    // Show loading message
+
+    message.textContent =
+        "Submitting rating...";
+
+    message.style.color =
+        "#2563eb";
+
+
+    try {
+
+        const {
+            error
+        } = await supabaseClient
+            .from("ratings")
+            .insert([
+                {
+                    rating: selectedRating,
+                    review: review || null
                 }
+            ]);
 
 
-                // Get review
+        if (error) {
 
-                let review = "";
+            console.error(
+                "Supabase rating error:",
+                error
+            );
 
-                if (reviewInput) {
-                    review =
-                        reviewInput.value.trim();
+            message.textContent =
+                "Unable to submit rating. Please try again.";
+
+            message.style.color =
+                "#dc2626";
+
+            return;
+
+        }
+
+
+        // Success
+
+        message.textContent =
+            "Thank you for your rating! ⭐";
+
+        message.style.color =
+            "#16a34a";
+
+
+        // Clear review
+
+        document.getElementById(
+            "review"
+        ).value = "";
+
+
+        // Reset rating
+
+        selectedRating = 0;
+
+
+        starButtons.forEach(function (star) {
+
+            star.classList.remove("active");
+
+        });
+
+
+        document.getElementById(
+            "selectedRating"
+        ).textContent =
+            "Select a rating";
+
+
+    } catch (error) {
+
+        console.error(
+            "Rating error:",
+            error
+        );
+
+
+        message.textContent =
+            "Something went wrong. Please try again.";
+
+        message.style.color =
+            "#dc2626";
+
+    }
+
+}
+
+
+// ========================================
+// VISITOR TRACKING
+// ========================================
+
+async function trackVisitor() {
+
+    if (!supabaseClient) {
+
+        return;
+
+    }
+
+
+    try {
+
+        let visitorId =
+            localStorage.getItem(
+                "codeWithMeVisitorId"
+            );
+
+
+        if (!visitorId) {
+
+            visitorId =
+                "visitor-" +
+                Date.now() +
+                "-" +
+                Math.random()
+                    .toString(36)
+                    .substring(2, 10);
+
+
+            localStorage.setItem(
+                "codeWithMeVisitorId",
+                visitorId
+            );
+
+        }
+
+
+        const {
+            error
+        } = await supabaseClient
+            .from("visitors")
+            .insert([
+                {
+                    visitor_id:
+                        visitorId
                 }
+            ]);
 
 
-                // Disable button
+        if (error) {
 
-                submitButton.disabled = true;
+            console.log(
+                "Visitor tracking:",
+                error.message
+            );
 
-                submitButton.textContent =
-                    "Submitting...";
+        }
 
+    } catch (error) {
 
-                try {
-
-                    // Insert rating into Supabase
-
-                    const {
-                        data,
-                        error
-                    } = await supabaseClient
-                        .from("ratings")
-                        .insert([
-                            {
-                                rating: selectedRating,
-                                review: review
-                            }
-                        ])
-                        .select();
-
-
-                    // Check error
-
-                    if (error) {
-
-                        console.error(
-                            "Supabase Error:",
-                            error
-                        );
-
-                        showMessage(
-                            "Unable to submit rating. Please try again.",
-                            "error"
-                        );
-
-                        submitButton.disabled = false;
-
-                        submitButton.textContent =
-                            "Submit Rating";
-
-                        return;
-                    }
-
-
-                    // Success
-
-                    showMessage(
-                        "Thank you! Your rating has been submitted successfully.",
-                        "success"
-                    );
-
-
-                    // Clear selected stars
-
-                    selectedRating = 0;
-
-                    updateStars();
-
-                    updateRatingText();
-
-
-                    // Clear review
-
-                    if (reviewInput) {
-                        reviewInput.value = "";
-                    }
-
-
-                    // Reset button
-
-                    submitButton.disabled = false;
-
-                    submitButton.textContent =
-                        "Submit Rating";
-
-                }
-
-                catch (error) {
-
-                    console.error(
-                        "Rating Error:",
-                        error
-                    );
-
-                    showMessage(
-                        "Something went wrong. Please try again.",
-                        "error"
-                    );
-
-                    submitButton.disabled = false;
-
-                    submitButton.textContent =
-                        "Submit Rating";
-
-                }
-
-            }
+        console.log(
+            "Visitor tracking error:",
+            error
         );
 
     }
 
+}
 
-    // ----------------------------------------
-    // Show Message
-    // ----------------------------------------
 
-    function showMessage(text, type) {
-
-        if (!message) {
-            alert(text);
-            return;
-        }
-
-        message.textContent = text;
-
-        if (type === "success") {
-
-            message.style.color = "#16a34a";
-
-        } else {
-
-            message.style.color = "#ef4444";
-
-        }
-
-    }
-
-});
+trackVisitor();
