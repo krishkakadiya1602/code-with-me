@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Loops | Code With Me</title>
+
+    <meta name="description"
+          content="Learn JavaScript Loops with simple examples. Learn for loop, while loop, do while loop, break and continue.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #f7df1e, #f59e0b);
+            color: #111827;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        /* ================= LESSON CARD ================= */
+
+        .lesson-card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .lesson-card h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .lesson-card h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .lesson-card p {
+            margin-bottom: 15px;
+        }
+
+        .lesson-card ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .lesson-card li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= INFO BOX ================= */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* ================= CODE ================= */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            color: #dc2626;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        /* ================= TABLE ================= */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* ================= EDITOR ================= */
+
+        .editor-section {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            background: #020617;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #22c55e;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        /* ================= OUTPUT ================= */
+
+        .output-title {
+            margin-top: 20px;
+            color: #2563eb;
+        }
+
+        iframe {
+            width: 100%;
+            height: 420px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            margin-top: 10px;
+        }
+
+        /* ================= KEY POINTS ================= */
+
+        .key-points {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            border-radius: 7px;
+        }
+
+        .key-points ul {
+            margin-left: 25px;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .lesson-navigation {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 45px 0;
+        }
+
+        .lesson-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            padding: 0 24px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .lesson-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .previous-btn {
+            margin-right: auto;
+        }
+
+        .home-btn {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .next-btn {
+            margin-left: auto;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .lesson-card {
+                padding: 20px;
+            }
+
+            .lesson-card h2 {
+                font-size: 24px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .lesson-btn {
+                width: 100%;
+                min-height: 55px;
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .previous-btn,
+            .home-btn,
+            .next-btn {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul>
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <h1>JavaScript Loops</h1>
+
+        <p>
+            Learn how to repeat code using JavaScript loops such as
+            for, while, do...while, break and continue.
+        </p>
+
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="lesson-card">
+
+            <h2>What are JavaScript Loops?</h2>
+
+            <p>
+                A loop is used to execute a block of code repeatedly
+                while a particular condition is true.
+            </p>
+
+            <p>
+                Loops are useful when you need to perform the same
+                operation multiple times.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                <p>
+                    Instead of writing
+                    <span class="inline-code">console.log()</span>
+                    10 times, you can use a loop to repeat it 10 times.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- TYPES OF LOOPS -->
+
+        <section class="lesson-card">
+
+            <h2>Types of JavaScript Loops</h2>
+
+            <p>
+                JavaScript provides several types of loops:
+            </p>
+
+            <ul>
+
+                <li><strong>for loop</strong> - repeats code a specific number of times.</li>
+
+                <li><strong>while loop</strong> - repeats code while a condition is true.</li>
+
+                <li><strong>do...while loop</strong> - executes the code at least once.</li>
+
+                <li><strong>for...of loop</strong> - loops through values of an iterable.</li>
+
+                <li><strong>for...in loop</strong> - loops through object properties.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- FOR LOOP -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript for Loop</h2>
+
+            <p>
+                The <span class="inline-code">for</span> loop is commonly
+                used when you know how many times the loop should run.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>for (initialization; condition; increment) {
+    // code to execute
+}</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>for (let i = 1; i &lt;= 5; i++) {
+    console.log(i);
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+3
+4
+5</code></pre>
+
+        </section>
+
+
+        <!-- FOR LOOP PARTS -->
+
+        <section class="lesson-card">
+
+            <h2>Parts of a for Loop</h2>
+
+            <table>
+
+                <tr>
+                    <th>Part</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>Initialization</td>
+                    <td>Creates or initializes the loop variable.</td>
+                </tr>
+
+                <tr>
+                    <td>Condition</td>
+                    <td>Determines whether the loop should continue.</td>
+                </tr>
+
+                <tr>
+                    <td>Increment</td>
+                    <td>Changes the loop variable after each iteration.</td>
+                </tr>
+
+            </table>
+
+            <pre><code>for (let i = 1; i &lt;= 5; i++) {
+    console.log(i);
+}</code></pre>
+
+        </section>
+
+
+        <!-- WHILE LOOP -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript while Loop</h2>
+
+            <p>
+                The <span class="inline-code">while</span> loop executes
+                a block of code as long as the condition is true.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>while (condition) {
+    // code to execute
+}</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>let i = 1;
+
+while (i &lt;= 5) {
+    console.log(i);
+    i++;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+3
+4
+5</code></pre>
+
+            <div class="warning-box">
+
+                <strong>Important:</strong>
+
+                <p>
+                    Make sure the condition eventually becomes false.
+                    Otherwise, you may create an infinite loop.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- DO WHILE -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript do...while Loop</h2>
+
+            <p>
+                The <span class="inline-code">do...while</span> loop
+                executes the code first and checks the condition afterward.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>do {
+    // code to execute
+} while (condition);</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>let i = 1;
+
+do {
+    console.log(i);
+    i++;
+} while (i &lt;= 5);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+3
+4
+5</code></pre>
+
+        </section>
+
+
+        <!-- FOR OF -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript for...of Loop</h2>
+
+            <p>
+                The <span class="inline-code">for...of</span> loop is
+                used to iterate over values in arrays, strings and other
+                iterable objects.
+            </p>
+
+            <h3>Example with Array</h3>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+for (const fruit of fruits) {
+    console.log(fruit);
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Apple
+Banana
+Mango</code></pre>
+
+        </section>
+
+
+        <!-- FOR IN -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript for...in Loop</h2>
+
+            <p>
+                The <span class="inline-code">for...in</span> loop is
+                used to iterate over the properties of an object.
+            </p>
+
+            <h3>Example</h3>
+
+            <pre><code>const student = {
+    name: "Krish",
+    age: 20,
+    course: "JavaScript"
+};
+
+for (const key in student) {
+    console.log(key + ": " + student[key]);
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>name: Krish
+age: 20
+course: JavaScript</code></pre>
+
+        </section>
+
+
+        <!-- BREAK -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript break Statement</h2>
+
+            <p>
+                The <span class="inline-code">break</span> statement
+                stops the loop immediately.
+            </p>
+
+            <h3>Example</h3>
+
+            <pre><code>for (let i = 1; i &lt;= 10; i++) {
+
+    if (i === 6) {
+        break;
+    }
+
+    console.log(i);
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+3
+4
+5</code></pre>
+
+        </section>
+
+
+        <!-- CONTINUE -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript continue Statement</h2>
+
+            <p>
+                The <span class="inline-code">continue</span> statement
+                skips the current iteration and continues with the next one.
+            </p>
+
+            <h3>Example</h3>
+
+            <pre><code>for (let i = 1; i &lt;= 5; i++) {
+
+    if (i === 3) {
+        continue;
+    }
+
+    console.log(i);
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+4
+5</code></pre>
+
+        </section>
+
+
+        <!-- NESTED LOOPS -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript Nested Loops</h2>
+
+            <p>
+                A loop inside another loop is called a nested loop.
+            </p>
+
+            <h3>Example</h3>
+
+            <pre><code>for (let i = 1; i &lt;= 3; i++) {
+
+    for (let j = 1; j &lt;= 2; j++) {
+
+        console.log("i = " + i + ", j = " + j);
+
+    }
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>i = 1, j = 1
+i = 1, j = 2
+i = 2, j = 1
+i = 2, j = 2
+i = 3, j = 1
+i = 3, j = 2</code></pre>
+
+        </section>
+
+
+        <!-- LOOP ARRAY -->
+
+        <section class="lesson-card">
+
+            <h2>Loop Through an Array</h2>
+
+            <p>
+                You can use a loop to access every item in an array.
+            </p>
+
+            <pre><code>const students = [
+    "Krish",
+    "Rahul",
+    "Amit",
+    "Priya"
+];
+
+for (let i = 0; i &lt; students.length; i++) {
+    console.log(students[i]);
+}</code></pre>
+
+        </section>
+
+
+        <!-- PRACTICAL EXAMPLE -->
+
+        <section class="lesson-card">
+
+            <h2>Practical Example</h2>
+
+            <p>
+                The following example prints the multiplication table
+                of 5.
+            </p>
+
+            <pre><code>let number = 5;
+
+for (let i = 1; i &lt;= 10; i++) {
+
+    console.log(number + " × " + i + " = " + (number * i));
+
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>5 × 1 = 5
+5 × 2 = 10
+5 × 3 = 15
+5 × 4 = 20
+5 × 5 = 25
+5 × 6 = 30
+5 × 7 = 35
+5 × 8 = 40
+5 × 9 = 45
+5 × 10 = 50</code></pre>
+
+        </section>
+
+
+        <!-- LOOP COMPARISON -->
+
+        <section class="lesson-card">
+
+            <h2>for vs while vs do...while</h2>
+
+            <table>
+
+                <tr>
+                    <th>Loop</th>
+                    <th>When to Use</th>
+                </tr>
+
+                <tr>
+                    <td>for</td>
+                    <td>When you know approximately how many times to repeat.</td>
+                </tr>
+
+                <tr>
+                    <td>while</td>
+                    <td>When the number of repetitions depends on a condition.</td>
+                </tr>
+
+                <tr>
+                    <td>do...while</td>
+                    <td>When the code must execute at least once.</td>
+                </tr>
+
+                <tr>
+                    <td>for...of</td>
+                    <td>When you want to loop through values.</td>
+                </tr>
+
+                <tr>
+                    <td>for...in</td>
+                    <td>When you want to loop through object properties.</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript Loop Best Practices</h2>
+
+            <ul>
+
+                <li>Always make sure the loop can eventually stop.</li>
+
+                <li>Use <span class="inline-code">for</span> when the number of iterations is known.</li>
+
+                <li>Use <span class="inline-code">while</span> when the condition controls the loop.</li>
+
+                <li>Use <span class="inline-code">for...of</span> for array values.</li>
+
+                <li>Use <span class="inline-code">for...in</span> mainly for object properties.</li>
+
+                <li>Avoid unnecessary nested loops because they can reduce performance.</li>
+
+                <li>Use meaningful variable names.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- LIVE CODE EDITOR -->
+
+        <section class="lesson-card editor-section">
+
+            <h2>JavaScript Loops - Live Code Editor</h2>
+
+            <p>
+                Write your JavaScript code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Loops</title>
+</head>
+
+<body>
+
+    <h2>JavaScript Loop Example</h2>
+
+    <p id="result"></p>
+
+    <script>
+
+        let output = "";
+
+        for (let i = 1; i <= 5; i++) {
+            output += "Number: " + i + "<br>";
+        }
+
+        document.getElementById("result").innerHTML = output;
+
+    </script>
+
+</body>
+</html></textarea>
+
+            <div class="button-container">
+
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearCode()">
+                    ✕ Clear
+                </button>
+
+            </div>
+
+            <h3 class="output-title">
+                Live Preview
+            </h3>
+
+            <iframe id="output"></iframe>
+
+        </section>
+
+
+        <!-- KEY POINTS -->
+
+        <section class="lesson-card">
+
+            <h2>Key Points</h2>
+
+            <div class="key-points">
+
+                <ul>
+
+                    <li>Loops are used to repeat code.</li>
+
+                    <li>The <strong>for loop</strong> is commonly used for a known number of repetitions.</li>
+
+                    <li>The <strong>while loop</strong> runs while a condition is true.</li>
+
+                    <li>The <strong>do...while loop</strong> runs at least once.</li>
+
+                    <li><strong>for...of</strong> loops through values.</li>
+
+                    <li><strong>for...in</strong> loops through object properties.</li>
+
+                    <li><strong>break</strong> stops a loop.</li>
+
+                    <li><strong>continue</strong> skips the current iteration.</li>
+
+                    <li>Always avoid accidental infinite loops.</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <div class="lesson-navigation">
+
+            <a href="javascript-switch.html"
+               class="lesson-btn previous-btn">
+                ← Previous: JavaScript Switch
+            </a>
+
+            <a href="../index.html"
+               class="lesson-btn home-btn">
+                🏠 Home
+            </a>
+
+            <a href="javascript-for.html"
+               class="lesson-btn next-btn">
+                Next: JavaScript For →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function runCode() {
+
+            const codeEditor =
+                document.getElementById("codeEditor");
+
+            const output =
+                document.getElementById("output");
+
+            output.srcdoc = codeEditor.value;
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+        }
+
+
+        window.addEventListener("load", function () {
+
+            runCode();
+
+        });
+
+    </script>
+
+</body>
+</html>
