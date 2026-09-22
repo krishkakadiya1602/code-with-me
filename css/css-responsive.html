@@ -1,0 +1,1319 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Responsive Web Design | Code With Me</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* ================= HEADER ================= */
+
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 19px;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin: 10px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* ================= INFO BOX ================= */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .tip-box {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* ================= CODE ================= */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* ================= RESPONSIVE DEMO ================= */
+
+        .responsive-demo {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 20px;
+            background: #e5e7eb;
+            border: 2px dashed #94a3b8;
+            border-radius: 8px;
+        }
+
+        .responsive-card {
+            flex: 1 1 200px;
+            background: #2563eb;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* ================= IMAGE DEMO ================= */
+
+        .responsive-image {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        /* ================= FLEX DEMO ================= */
+
+        .flex-demo {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .flex-box {
+            flex: 1 1 250px;
+            background: #7c3aed;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* ================= GRID DEMO ================= */
+
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            background: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .grid-box {
+            background: #2563eb;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* ================= BREAKPOINT DEMO ================= */
+
+        .breakpoint-box {
+            background: #2563eb;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 20px;
+        }
+
+        @media (max-width: 768px) {
+
+            .breakpoint-box {
+                background: #7c3aed;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+
+            .breakpoint-box {
+                background: #16a34a;
+                font-size: 16px;
+            }
+
+        }
+
+        /* ================= TABLE ================= */
+
+        .responsive-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .responsive-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+        }
+
+        .responsive-table th,
+        .responsive-table td {
+            border: 1px solid #cbd5e1;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .responsive-table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* ================= EDITOR ================= */
+
+        .editor-section {
+            margin-top: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 360px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .buttons {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .page-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* ================= MAIN RESPONSIVE RULES ================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            .page-header p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .grid-demo {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+
+            .container {
+                padding: 0 12px;
+            }
+
+            .page-header {
+                padding: 50px 15px;
+            }
+
+            .page-header h1 {
+                font-size: 30px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .grid-demo {
+                grid-template-columns: 1fr;
+            }
+
+            pre {
+                padding: 15px;
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="page-header">
+
+        <h1>CSS Responsive Web Design</h1>
+
+        <p>
+            Learn how to make websites look great on
+            mobile, tablet and desktop devices
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- ================= INTRODUCTION ================= -->
+
+        <section>
+
+            <h2>Introduction to Responsive Web Design</h2>
+
+            <p>
+                Responsive Web Design means creating websites
+                that automatically adjust their layout and content
+                according to the size of the user's screen.
+            </p>
+
+            <p>
+                A responsive website should work properly on
+                mobile phones, tablets, laptops and desktop computers.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Responsive design helps websites:</strong>
+
+                <ul>
+
+                    <li>Fit different screen sizes</li>
+
+                    <li>Improve mobile usability</li>
+
+                    <li>Provide better user experience</li>
+
+                    <li>Avoid unnecessary horizontal scrolling</li>
+
+                    <li>Adapt layouts automatically</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= VIEWPORT ================= -->
+
+        <section>
+
+            <h2>1. The Viewport</h2>
+
+            <p>
+                The viewport is the visible area of a webpage
+                inside the browser window.
+            </p>
+
+            <p>
+                The following meta tag is important for responsive
+                websites:
+            </p>
+
+            <pre><code>&lt;meta name="viewport"
+      content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+            <p>
+                It tells the browser to use the device's actual
+                width and set the initial zoom level to 1.
+            </p>
+
+            <div class="tip-box">
+
+                <strong>Important:</strong>
+                Add the viewport meta tag to responsive HTML pages.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MEDIA QUERIES ================= -->
+
+        <section>
+
+            <h2>2. CSS Media Queries</h2>
+
+            <p>
+                Media queries allow you to apply different CSS
+                styles depending on screen size or other device
+                characteristics.
+            </p>
+
+            <pre><code>@media (max-width: 768px) {
+
+    body {
+        background: lightblue;
+    }
+
+}</code></pre>
+
+            <p>
+                The CSS inside this media query applies when
+                the viewport is 768px wide or narrower.
+            </p>
+
+        </section>
+
+
+        <!-- ================= MAX WIDTH ================= -->
+
+        <section>
+
+            <h2>3. max-width</h2>
+
+            <p>
+                The <strong>max-width</strong> property prevents
+                an element from becoming wider than a specified size.
+            </p>
+
+            <pre><code>.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}</code></pre>
+
+            <div class="info-box">
+
+                This technique is commonly used for website
+                content containers.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WIDTH PERCENTAGE ================= -->
+
+        <section>
+
+            <h2>4. Use Percentage Widths</h2>
+
+            <p>
+                Percentage-based widths allow elements to resize
+                according to the available space.
+            </p>
+
+            <pre><code>.box {
+    width: 80%;
+}</code></pre>
+
+            <p>
+                Compared with a fixed width such as
+                <code>width: 800px</code>, percentages are more
+                flexible on different screens.
+            </p>
+
+        </section>
+
+
+        <!-- ================= RESPONSIVE IMAGE ================= -->
+
+        <section>
+
+            <h2>5. Responsive Images</h2>
+
+            <p>
+                Images should not become wider than their container.
+            </p>
+
+            <pre><code>img {
+    max-width: 100%;
+    height: auto;
+}</code></pre>
+
+            <p>
+                This allows images to shrink when the screen becomes
+                smaller while maintaining their proportions.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Recommended:</strong>
+
+                <br>
+
+                <code>max-width: 100%;</code>
+
+                <br>
+
+                <code>height: auto;</code>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FLEXBOX ================= -->
+
+        <section>
+
+            <h2>6. Responsive Layout with Flexbox</h2>
+
+            <p>
+                Flexbox is useful for creating layouts that can
+                automatically adapt to different screen sizes.
+            </p>
+
+            <pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 250px;
+}</code></pre>
+
+            <h3>Example</h3>
+
+            <div class="flex-demo">
+
+                <div class="flex-box">
+                    HTML
+                </div>
+
+                <div class="flex-box">
+                    CSS
+                </div>
+
+                <div class="flex-box">
+                    JavaScript
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CSS GRID ================= -->
+
+        <section>
+
+            <h2>7. Responsive Layout with CSS Grid</h2>
+
+            <p>
+                CSS Grid can create responsive layouts using
+                flexible columns.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}</code></pre>
+
+            <h3>Example</h3>
+
+            <div class="grid-demo">
+
+                <div class="grid-box">
+                    Card 1
+                </div>
+
+                <div class="grid-box">
+                    Card 2
+                </div>
+
+                <div class="grid-box">
+                    Card 3
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= BREAKPOINTS ================= -->
+
+        <section>
+
+            <h2>8. Responsive Breakpoints</h2>
+
+            <p>
+                Breakpoints are screen sizes where the website
+                layout changes to provide a better experience.
+            </p>
+
+            <pre><code>/* Tablet and smaller */
+
+@media (max-width: 768px) {
+
+    /* CSS here */
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+    /* CSS here */
+
+}</code></pre>
+
+            <h3>Live Breakpoint Example</h3>
+
+            <div class="breakpoint-box">
+
+                Resize your browser window
+
+            </div>
+
+            <p>
+                On smaller screens, the box changes its appearance.
+            </p>
+
+        </section>
+
+
+        <!-- ================= MOBILE FIRST ================= -->
+
+        <section>
+
+            <h2>9. Mobile-First Design</h2>
+
+            <p>
+                Mobile-first design means creating the basic
+                design for small screens first and then adding
+                styles for larger screens.
+            </p>
+
+            <pre><code>/* Mobile styles */
+
+.card {
+    width: 100%;
+}
+
+
+/* Larger screens */
+
+@media (min-width: 768px) {
+
+    .card {
+        width: 50%;
+    }
+
+}</code></pre>
+
+            <div class="tip-box">
+
+                <strong>Tip:</strong>
+                Mobile-first design can make responsive CSS
+                easier to organize.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MIN WIDTH ================= -->
+
+        <section>
+
+            <h2>10. min-width</h2>
+
+            <p>
+                The <strong>min-width</strong> media query applies
+                styles when the viewport is at least the specified
+                width.
+            </p>
+
+            <pre><code>@media (min-width: 768px) {
+
+    .container {
+        display: flex;
+    }
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= MAX WIDTH ================= -->
+
+        <section>
+
+            <h2>11. max-width Media Query</h2>
+
+            <p>
+                The <strong>max-width</strong> media query applies
+                styles when the viewport is at or below a specified
+                width.
+            </p>
+
+            <pre><code>@media (max-width: 768px) {
+
+    .menu {
+        display: block;
+    }
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= RESPONSIVE NAVBAR ================= -->
+
+        <section>
+
+            <h2>12. Responsive Navigation</h2>
+
+            <p>
+                A navigation menu can change from a horizontal
+                layout on desktop to a vertical layout on smaller
+                screens.
+            </p>
+
+            <pre><code>.nav {
+    display: flex;
+    gap: 20px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .nav {
+        flex-direction: column;
+    }
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= RESPONSIVE TABLE ================= -->
+
+        <section>
+
+            <h2>13. Responsive Tables</h2>
+
+            <p>
+                Large tables can cause horizontal scrolling on
+                small screens. One solution is to place the table
+                inside a horizontally scrollable container.
+            </p>
+
+            <pre><code>.table-container {
+    overflow-x: auto;
+}
+
+table {
+    min-width: 600px;
+}</code></pre>
+
+            <div class="responsive-table-wrapper">
+
+                <table class="responsive-table">
+
+                    <tr>
+                        <th>Course</th>
+                        <th>Level</th>
+                        <th>Topics</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>HTML</td>
+                        <td>Beginner</td>
+                        <td>12</td>
+                        <td>Available</td>
+                    </tr>
+
+                    <tr>
+                        <td>CSS</td>
+                        <td>Beginner</td>
+                        <td>20+</td>
+                        <td>Available</td>
+                    </tr>
+
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>Intermediate</td>
+                        <td>25+</td>
+                        <td>Available</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RESPONSIVE TEXT ================= -->
+
+        <section>
+
+            <h2>14. Responsive Text</h2>
+
+            <p>
+                Text sizes can be adjusted using media queries
+                or flexible CSS units.
+            </p>
+
+            <pre><code>h1 {
+    font-size: 40px;
+}
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+}</code></pre>
+
+            <p>
+                CSS functions such as <code>clamp()</code> can
+                also be useful for fluid text sizing.
+            </p>
+
+            <pre><code>h1 {
+    font-size: clamp(28px, 5vw, 50px);
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= FLUID CONTAINER ================= -->
+
+        <section>
+
+            <h2>15. Fluid Containers</h2>
+
+            <p>
+                A fluid container can use percentage width while
+                limiting its maximum size.
+            </p>
+
+            <pre><code>.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}</code></pre>
+
+            <div class="info-box">
+
+                This pattern works well for many responsive
+                website layouts.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= COMMON TECHNIQUES ================= -->
+
+        <section>
+
+            <h2>Common Responsive Design Techniques</h2>
+
+            <ul>
+
+                <li>Use the viewport meta tag.</li>
+
+                <li>Use flexible widths.</li>
+
+                <li>Use max-width where appropriate.</li>
+
+                <li>Make images responsive.</li>
+
+                <li>Use Flexbox for flexible layouts.</li>
+
+                <li>Use CSS Grid for responsive grids.</li>
+
+                <li>Use media queries.</li>
+
+                <li>Use mobile-first design.</li>
+
+                <li>Avoid unnecessary fixed widths.</li>
+
+                <li>Test websites on different screen sizes.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- ================= RESPONSIVE EXAMPLE ================= -->
+
+        <section>
+
+            <h2>Complete Responsive Layout Example</h2>
+
+            <pre><code>.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 250px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+
+    .cards {
+        flex-direction: column;
+    }
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= LIVE EDITOR ================= -->
+
+        <section class="editor-section">
+
+            <h2>CSS Responsive Live Editor</h2>
+
+            <p>
+                Change the code below and click
+                <strong>Run Code</strong> to see how the layout
+                responds to different screen sizes.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 20px;
+    background: #f4f7fb;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 250px;
+    background: #2563eb;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .card {
+        flex: 1 1 100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Responsive Website</h1>
+
+<div class="container">
+
+    <div class="card">
+        HTML
+    </div>
+
+    <div class="card">
+        CSS
+    </div>
+
+    <div class="card">
+        JavaScript
+    </div>
+
+</div>
+
+</body>
+
+</html></textarea>
+
+
+            <div class="buttons">
+
+                <button
+                    class="run-btn"
+                    onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button
+                    class="clear-btn"
+                    onclick="clearCode()">
+                    ✖ Clear
+                </button>
+
+            </div>
+
+
+            <h3>Output</h3>
+
+            <iframe id="output"></iframe>
+
+        </section>
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <div class="page-navigation">
+
+            <a href="css-flexbox.html">
+                ← Previous: CSS Flexbox
+            </a>
+
+            <a href="css-grid.html">
+                Next: CSS Grid →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            document.getElementById("output").srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```
