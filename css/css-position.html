@@ -1,0 +1,900 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Position | Code With Me</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 19px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Position Demo */
+        .demo-area {
+            height: 230px;
+            background: #e5e7eb;
+            border: 2px dashed #94a3b8;
+            position: relative;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .demo-box {
+            width: 130px;
+            height: 70px;
+            background: #2563eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .relative-box {
+            position: relative;
+            top: 25px;
+            left: 40px;
+        }
+
+        .absolute-parent {
+            position: relative;
+        }
+
+        .absolute-box {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #7c3aed;
+        }
+
+        .fixed-demo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #16a34a;
+            width: 140px;
+            height: 55px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 999;
+        }
+
+        .sticky-container {
+            height: 180px;
+            overflow-y: auto;
+            border: 2px solid #cbd5e1;
+            padding: 10px;
+        }
+
+        .sticky-title {
+            position: sticky;
+            top: 0;
+            background: #facc15;
+            padding: 12px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .sticky-content {
+            padding: 15px;
+            height: 400px;
+        }
+
+        /* Editor */
+        .editor-section {
+            margin-top: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+        }
+
+        .buttons {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* Navigation */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .page-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- Page Header -->
+    <header class="page-header">
+
+        <h1>CSS Position</h1>
+
+        <p>
+            Learn how to position HTML elements using CSS
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+        <section>
+
+            <h2>Introduction to CSS Position</h2>
+
+            <p>
+                The CSS <strong>position</strong> property is used
+                to control how an element is positioned on a webpage.
+            </p>
+
+            <p>
+                It allows you to place elements normally,
+                move them relative to their original position,
+                position them relative to a parent element,
+                keep them fixed on the screen, or make them
+                sticky while scrolling.
+            </p>
+
+            <div class="info-box">
+
+                <strong>CSS position values:</strong>
+
+                <br>
+
+                static, relative, absolute, fixed, sticky
+
+            </div>
+
+        </section>
+
+
+        <!-- Syntax -->
+        <section>
+
+            <h2>CSS Position Syntax</h2>
+
+            <pre><code>selector {
+    position: value;
+}</code></pre>
+
+            <p>Example:</p>
+
+            <pre><code>.box {
+    position: relative;
+    top: 20px;
+    left: 30px;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Static -->
+        <section>
+
+            <h2>1. position: static</h2>
+
+            <p>
+                <strong>static</strong> is the default position
+                of every HTML element.
+            </p>
+
+            <p>
+                Static elements follow the normal flow of the document.
+            </p>
+
+            <pre><code>.box {
+    position: static;
+}</code></pre>
+
+            <div class="info-box">
+
+                With <strong>static</strong> positioning,
+                the <code>top</code>, <code>right</code>,
+                <code>bottom</code>, and <code>left</code>
+                properties do not affect the element.
+
+            </div>
+
+        </section>
+
+
+        <!-- Relative -->
+        <section>
+
+            <h2>2. position: relative</h2>
+
+            <p>
+                A relatively positioned element remains in the
+                normal document flow but can be moved from its
+                original position.
+            </p>
+
+            <pre><code>.box {
+    position: relative;
+    top: 25px;
+    left: 40px;
+}</code></pre>
+
+            <h3>Live Example</h3>
+
+            <div class="demo-area">
+
+                <div class="demo-box relative-box">
+                    Relative
+                </div>
+
+            </div>
+
+            <p>
+                The element is moved 25px down and 40px to the right
+                from its original position.
+            </p>
+
+        </section>
+
+
+        <!-- Absolute -->
+        <section>
+
+            <h2>3. position: absolute</h2>
+
+            <p>
+                An absolutely positioned element is removed from
+                the normal document flow.
+            </p>
+
+            <p>
+                It is positioned relative to its nearest positioned
+                ancestor. Usually, the parent is given
+                <code>position: relative</code>.
+            </p>
+
+            <pre><code>.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}</code></pre>
+
+            <h3>Live Example</h3>
+
+            <div class="demo-area absolute-parent">
+
+                <div class="demo-box absolute-box">
+                    Absolute
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Fixed -->
+        <section>
+
+            <h2>4. position: fixed</h2>
+
+            <p>
+                A fixed element stays in the same position
+                relative to the browser window.
+            </p>
+
+            <p>
+                Even when the page is scrolled, the fixed element
+                remains in the same place.
+            </p>
+
+            <pre><code>.box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}</code></pre>
+
+            <div class="info-box">
+
+                Fixed positioning is commonly used for:
+
+                <ul>
+
+                    <li>Floating buttons</li>
+                    <li>Chat buttons</li>
+                    <li>Back-to-top buttons</li>
+                    <li>Fixed navigation bars</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Sticky -->
+        <section>
+
+            <h2>5. position: sticky</h2>
+
+            <p>
+                The <strong>sticky</strong> position behaves like
+                a normal element until a specified scrolling position
+                is reached.
+            </p>
+
+            <p>
+                After reaching that position, the element sticks
+                to the specified location.
+            </p>
+
+            <pre><code>.title {
+    position: sticky;
+    top: 0;
+}</code></pre>
+
+            <h3>Sticky Example</h3>
+
+            <div class="sticky-container">
+
+                <div class="sticky-title">
+                    Sticky Heading
+                </div>
+
+                <div class="sticky-content">
+
+                    <p>
+                        Scroll this box to see the sticky heading.
+                    </p>
+
+                    <p>
+                        CSS sticky positioning is useful for
+                        section headings and navigation elements.
+                    </p>
+
+                    <p>
+                        The heading remains visible while scrolling.
+                    </p>
+
+                    <p>
+                        Keep scrolling to understand how sticky works.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Top Right Bottom Left -->
+        <section>
+
+            <h2>Position with Top, Right, Bottom and Left</h2>
+
+            <p>
+                When using relative, absolute, fixed, or sticky
+                positioning, you can use these properties to
+                control the element's location.
+            </p>
+
+            <pre><code>.box {
+    position: absolute;
+
+    top: 20px;
+    right: 30px;
+    bottom: 10px;
+    left: 40px;
+}</code></pre>
+
+            <div class="info-box">
+
+                <strong>top</strong> → moves the element down
+
+                <br>
+
+                <strong>right</strong> → moves the element left
+
+                <br>
+
+                <strong>bottom</strong> → moves the element up
+
+                <br>
+
+                <strong>left</strong> → moves the element right
+
+            </div>
+
+        </section>
+
+
+        <!-- Z Index -->
+        <section>
+
+            <h2>z-index with Position</h2>
+
+            <p>
+                The <strong>z-index</strong> property controls
+                which positioned element appears in front of another.
+            </p>
+
+            <pre><code>.box {
+    position: relative;
+    z-index: 10;
+}</code></pre>
+
+            <p>
+                A higher z-index generally places an element
+                above another overlapping element.
+            </p>
+
+            <div class="warning-box">
+
+                <strong>Important:</strong>
+                z-index is most useful when elements overlap.
+                It is commonly used with positioned elements.
+
+            </div>
+
+        </section>
+
+
+        <!-- Comparison -->
+        <section>
+
+            <h2>CSS Position Values Comparison</h2>
+
+            <pre><code>static    → Default position
+
+relative  → Moves relative to its original position
+
+absolute  → Positioned relative to a positioned ancestor
+
+fixed     → Fixed relative to the browser window
+
+sticky    → Sticks while scrolling after reaching a position</code></pre>
+
+        </section>
+
+
+        <!-- Common Uses -->
+        <section>
+
+            <h2>Common Uses of CSS Position</h2>
+
+            <ul>
+
+                <li>Creating dropdown menus</li>
+
+                <li>Creating badges on cards</li>
+
+                <li>Floating buttons</li>
+
+                <li>Fixed navigation bars</li>
+
+                <li>Sticky headings</li>
+
+                <li>Overlapping images and text</li>
+
+                <li>Modal windows</li>
+
+                <li>Notification badges</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Live Editor -->
+        <section class="editor-section">
+
+            <h2>CSS Position Live Editor</h2>
+
+            <p>
+                Change the code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+.container {
+    width: 400px;
+    height: 250px;
+    background: #e5e7eb;
+    position: relative;
+    border: 2px solid #2563eb;
+}
+
+.box {
+    width: 120px;
+    height: 70px;
+    background: #7c3aed;
+    color: white;
+
+    position: absolute;
+    top: 30px;
+    right: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="box">
+        Position
+    </div>
+
+</div>
+
+</body>
+
+</html></textarea>
+
+
+            <div class="buttons">
+
+                <button
+                    class="run-btn"
+                    onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button
+                    class="clear-btn"
+                    onclick="clearCode()">
+                    ✖ Clear
+                </button>
+
+            </div>
+
+
+            <h3>Output</h3>
+
+            <iframe id="output"></iframe>
+
+        </section>
+
+
+        <!-- Navigation -->
+        <div class="page-navigation">
+
+            <a href="css-tables.html">
+                ← Previous: CSS Tables
+            </a>
+
+            <a href="css-text.html">
+                Next: CSS Text →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            document.getElementById("output").srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```
