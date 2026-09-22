@@ -9,28 +9,33 @@
           content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Learn CSS Introduction with Code With Me. Understand what CSS is, how CSS works, and how to style HTML pages.">
+          content="Learn HTML Introduction with Code With Me. Learn the basics of HTML, HTML structure, tags and elements with interactive examples.">
 
     <meta name="keywords"
-          content="CSS Introduction, Learn CSS, CSS Tutorial, CSS Course, HTML CSS, Code With Me">
+          content="HTML Introduction, Learn HTML, HTML Tutorial, HTML Course, HTML Basics">
 
     <meta name="author"
           content="Code With Me">
 
-    <title>CSS Introduction | Code With Me</title>
+    <title>HTML Introduction | Code With Me</title>
 
 
     <style>
 
-        /* ========================================
-           GENERAL
-        ======================================== */
+        /* =====================================
+           RESET
+        ===================================== */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+
+        /* =====================================
+           BODY
+        ===================================== */
 
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -40,13 +45,14 @@
         }
 
 
-        /* ========================================
+        /* =====================================
            NAVBAR
-        ======================================== */
+        ===================================== */
 
         .navbar {
             background: #111827;
             color: white;
+
             padding: 15px 30px;
 
             display: flex;
@@ -55,144 +61,177 @@
 
             position: sticky;
             top: 0;
+
             z-index: 1000;
         }
+
 
         .logo {
             font-size: 24px;
             font-weight: bold;
         }
 
+
         .logo span {
             color: #60a5fa;
         }
 
+
         .nav-links {
-            display: flex;
-            gap: 25px;
             list-style: none;
+
+            display: flex;
+
+            gap: 25px;
         }
+
 
         .nav-links a {
             color: white;
+
             text-decoration: none;
+
             font-size: 16px;
         }
+
 
         .nav-links a:hover {
             color: #60a5fa;
         }
 
 
-        /* ========================================
-           HEADER
-        ======================================== */
+        /* =====================================
+           PAGE HEADER
+        ===================================== */
 
         .page-header {
-            background: linear-gradient(
-                135deg,
-                #2563eb,
-                #7c3aed
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
 
             color: white;
+
             text-align: center;
 
-            padding: 60px 20px;
+            padding: 65px 20px;
         }
 
+
         .page-header h1 {
-            font-size: 42px;
+            font-size: 44px;
+
             margin-bottom: 10px;
         }
+
 
         .page-header p {
             font-size: 18px;
         }
 
 
-        /* ========================================
+        /* =====================================
            MAIN CONTAINER
-        ======================================== */
+        ===================================== */
 
         .container {
             max-width: 1000px;
+
             margin: 40px auto;
+
             padding: 0 20px;
         }
 
 
-        /* ========================================
+        /* =====================================
            CONTENT CARD
-        ======================================== */
+        ===================================== */
 
         .content-card {
             background: white;
+
             padding: 30px;
+
             margin-bottom: 30px;
 
             border-radius: 12px;
 
             box-shadow:
-                0 4px 15px rgba(0, 0, 0, 0.08);
+                0 4px 15px
+                rgba(0, 0, 0, 0.08);
         }
+
 
         .content-card h2 {
             color: #2563eb;
-            margin-bottom: 15px;
+
             font-size: 28px;
+
+            margin-bottom: 15px;
         }
+
 
         .content-card h3 {
             color: #374151;
+
             margin-top: 20px;
+
             margin-bottom: 10px;
         }
+
 
         .content-card p {
             margin-bottom: 15px;
         }
 
 
-        /* ========================================
+        /* =====================================
            INFO BOX
-        ======================================== */
+        ===================================== */
 
         .info-box {
             background: #eff6ff;
+
             border-left: 5px solid #2563eb;
 
             padding: 18px;
+
             margin: 20px 0;
 
             border-radius: 6px;
         }
+
 
         .info-box strong {
             color: #1d4ed8;
         }
 
 
-        /* ========================================
+        /* =====================================
            LIST
-        ======================================== */
+        ===================================== */
 
         .content-card ul {
             margin-left: 25px;
+
             margin-bottom: 15px;
         }
+
 
         .content-card li {
             margin-bottom: 8px;
         }
 
 
-        /* ========================================
+        /* =====================================
            CODE BLOCK
-        ======================================== */
+        ===================================== */
 
         .code-block {
             background: #111827;
+
             color: #e5e7eb;
 
             padding: 20px;
@@ -212,9 +251,9 @@
         }
 
 
-        /* ========================================
-           EDITOR
-        ======================================== */
+        /* =====================================
+           EDITOR SECTION
+        ===================================== */
 
         .editor-section {
             background: white;
@@ -226,22 +265,38 @@
             margin-bottom: 30px;
 
             box-shadow:
-                0 4px 15px rgba(0, 0, 0, 0.08);
+                0 4px 15px
+                rgba(0, 0, 0, 0.08);
         }
+
 
         .editor-section h2 {
             color: #2563eb;
+
+            margin-bottom: 10px;
+        }
+
+
+        .editor-section p {
             margin-bottom: 15px;
         }
 
+
+        /* =====================================
+           CODE EDITOR
+        ===================================== */
+
         #codeEditor {
             width: 100%;
-            min-height: 250px;
+
+            min-height: 300px;
 
             background: #111827;
+
             color: #f9fafb;
 
             border: none;
+
             outline: none;
 
             border-radius: 8px;
@@ -255,25 +310,29 @@
 
             font-size: 15px;
 
+            line-height: 1.6;
+
             resize: vertical;
         }
 
 
-        /* ========================================
+        /* =====================================
            EDITOR BUTTONS
-        ======================================== */
+        ===================================== */
 
         .editor-buttons {
-            margin-top: 15px;
-
             display: flex;
-            gap: 10px;
+
+            gap: 12px;
+
+            margin-top: 15px;
         }
+
 
         .editor-btn {
             border: none;
 
-            padding: 12px 22px;
+            padding: 12px 24px;
 
             border-radius: 7px;
 
@@ -284,38 +343,47 @@
             font-weight: bold;
         }
 
+
         .run-btn {
             background: #16a34a;
+
             color: white;
         }
+
 
         .run-btn:hover {
             background: #15803d;
         }
 
+
         .clear-btn {
             background: #dc2626;
+
             color: white;
         }
+
 
         .clear-btn:hover {
             background: #b91c1c;
         }
 
 
-        /* ========================================
+        /* =====================================
            OUTPUT
-        ======================================== */
+        ===================================== */
 
         .output-title {
             margin-top: 25px;
+
             margin-bottom: 10px;
 
             color: #374151;
         }
 
+
         #output {
             width: 100%;
+
             height: 300px;
 
             background: white;
@@ -326,11 +394,12 @@
         }
 
 
-        /* ========================================
-           PREVIOUS / NEXT NAVIGATION
-        ======================================== */
+        /* =====================================
+           PREVIOUS / NEXT
+        ===================================== */
 
         .lesson-navigation {
+            width: 100%;
 
             display: flex;
 
@@ -338,17 +407,13 @@
 
             align-items: center;
 
-            width: 100%;
-
             margin-top: 40px;
 
             margin-bottom: 40px;
-
-            padding: 0;
         }
 
-        .nav-btn {
 
+        .nav-btn {
             display: inline-block;
 
             padding: 13px 25px;
@@ -368,30 +433,19 @@
             transition: 0.3s;
         }
 
-        .nav-btn:hover {
 
+        .nav-btn:hover {
             background: #1d4ed8;
 
             transform: translateY(-2px);
         }
 
-        .previous {
 
-            margin-right: auto;
-        }
-
-        .next {
-
-            margin-left: auto;
-        }
-
-
-        /* ========================================
+        /* =====================================
            FOOTER
-        ======================================== */
+        ===================================== */
 
         footer {
-
             background: #111827;
 
             color: white;
@@ -404,50 +458,49 @@
         }
 
 
-        /* ========================================
-           MOBILE RESPONSIVE
-        ======================================== */
+        /* =====================================
+           MOBILE
+        ===================================== */
 
         @media (max-width: 768px) {
 
             .navbar {
-
                 flex-direction: column;
 
                 gap: 15px;
             }
 
+
             .nav-links {
-
-                gap: 15px;
-
                 flex-wrap: wrap;
 
                 justify-content: center;
+
+                gap: 15px;
             }
 
-            .page-header h1 {
 
+            .page-header h1 {
                 font-size: 32px;
             }
 
-            .content-card {
 
+            .content-card {
                 padding: 20px;
             }
+
 
             .editor-section {
-
                 padding: 20px;
             }
 
-            .lesson-navigation {
 
+            .lesson-navigation {
                 width: 100%;
             }
 
-            .nav-btn {
 
+            .nav-btn {
                 padding: 10px 16px;
 
                 font-size: 14px;
@@ -463,15 +516,16 @@
 <body>
 
 
-    <!-- ========================================
+    <!-- =====================================
          NAVBAR
-    ======================================== -->
+    ===================================== -->
 
     <nav class="navbar">
 
         <div class="logo">
             Code <span>WithMe</span>
         </div>
+
 
         <ul class="nav-links">
 
@@ -481,11 +535,13 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="../index.html#courses">
                     Courses
                 </a>
             </li>
+
 
             <li>
                 <a href="../index.html#about">
@@ -499,58 +555,67 @@
 
 
 
-    <!-- ========================================
+    <!-- =====================================
          PAGE HEADER
-    ======================================== -->
+    ===================================== -->
 
     <header class="page-header">
 
         <h1>
-            CSS Introduction
+            HTML Introduction
         </h1>
 
         <p>
-            Learn the basics of CSS and start styling your websites.
+            Learn the basics of HTML and start building websites.
         </p>
 
     </header>
 
 
 
-    <!-- ========================================
-         MAIN CONTENT
-    ======================================== -->
+    <!-- =====================================
+         MAIN
+    ===================================== -->
 
     <main class="container">
 
 
-        <!-- INTRODUCTION -->
+        <!-- =================================
+             WHAT IS HTML
+        ================================== -->
 
         <section class="content-card">
 
             <h2>
-                What is CSS?
+                What is HTML?
             </h2>
 
-            <p>
-                CSS stands for
-                <strong>Cascading Style Sheets</strong>.
-            </p>
 
             <p>
-                CSS is used to style and design web pages.
-                It controls the appearance of HTML elements
-                such as colors, fonts, spacing, borders,
-                layouts, and backgrounds.
+                HTML stands for
+                <strong>HyperText Markup Language</strong>.
             </p>
+
+
+            <p>
+                HTML is the standard markup language
+                used to create and structure web pages.
+            </p>
+
+
+            <p>
+                HTML tells the browser what content
+                should appear on a webpage.
+            </p>
+
 
             <div class="info-box">
 
                 <strong>Important:</strong>
 
-                HTML is used to create the structure
-                of a webpage, while CSS is used to
-                make that webpage beautiful and attractive.
+                HTML is not a programming language.
+                It is a markup language used to
+                structure web content.
 
             </div>
 
@@ -558,47 +623,59 @@
 
 
 
-        <!-- WHY CSS -->
+        <!-- =================================
+             WHAT CAN HTML DO
+        ================================== -->
 
         <section class="content-card">
 
             <h2>
-                Why Do We Use CSS?
+                What Can HTML Do?
             </h2>
 
+
             <p>
-                CSS helps us control the visual appearance
-                of HTML documents.
+                HTML can be used to create different
+                types of content on a webpage.
             </p>
+
 
             <ul>
 
                 <li>
-                    Change text colors
+                    Headings
                 </li>
 
                 <li>
-                    Change background colors
+                    Paragraphs
                 </li>
 
                 <li>
-                    Change font size and font style
+                    Links
                 </li>
 
                 <li>
-                    Add borders
+                    Images
                 </li>
 
                 <li>
-                    Add margins and padding
+                    Lists
                 </li>
 
                 <li>
-                    Create responsive layouts
+                    Tables
                 </li>
 
                 <li>
-                    Create attractive websites
+                    Forms
+                </li>
+
+                <li>
+                    Videos and Audio
+                </li>
+
+                <li>
+                    Buttons
                 </li>
 
             </ul>
@@ -607,42 +684,43 @@
 
 
 
-        <!-- CSS EXAMPLE -->
+        <!-- =================================
+             BASIC HTML DOCUMENT
+        ================================== -->
 
         <section class="content-card">
 
             <h2>
-                Simple CSS Example
+                Basic HTML Document
             </h2>
 
+
             <p>
-                Here is a simple example of CSS:
+                A basic HTML document looks like this:
             </p>
 
+
             <div class="code-block"><pre>&lt;!DOCTYPE html&gt;
+
 &lt;html&gt;
 
 &lt;head&gt;
 
-&lt;style&gt;
-
-h1 {
-    color: blue;
-}
-
-p {
-    font-size: 20px;
-}
-
-&lt;/style&gt;
+    &lt;title&gt;
+        My First Webpage
+    &lt;/title&gt;
 
 &lt;/head&gt;
 
 &lt;body&gt;
 
-&lt;h1&gt;Hello CSS&lt;/h1&gt;
+    &lt;h1&gt;
+        Hello World
+    &lt;/h1&gt;
 
-&lt;p&gt;CSS makes websites beautiful.&lt;/p&gt;
+    &lt;p&gt;
+        Welcome to my website.
+    &lt;/p&gt;
 
 &lt;/body&gt;
 
@@ -652,144 +730,214 @@ p {
 
 
 
-        <!-- CSS SYNTAX -->
+        <!-- =================================
+             HTML STRUCTURE
+        ================================== -->
 
         <section class="content-card">
 
             <h2>
-                CSS Syntax
+                HTML Document Structure
             </h2>
 
-            <p>
-                A CSS rule contains a selector,
-                property, and value.
-            </p>
-
-            <div class="code-block"><pre>selector {
-    property: value;
-}</pre></div>
 
             <h3>
-                Example
+                &lt;!DOCTYPE html&gt;
             </h3>
 
-            <div class="code-block"><pre>p {
-    color: red;
-    font-size: 20px;
-}</pre></div>
+            <p>
+                This declaration tells the browser
+                that the document is an HTML5 document.
+            </p>
+
+
+            <h3>
+                &lt;html&gt;
+            </h3>
 
             <p>
-                In this example,
-                <strong>p</strong> is the selector,
-                <strong>color</strong> and
-                <strong>font-size</strong> are properties,
-                and <strong>red</strong> and
-                <strong>20px</strong> are values.
+                This is the root element of the HTML document.
+            </p>
+
+
+            <h3>
+                &lt;head&gt;
+            </h3>
+
+            <p>
+                The head contains information about
+                the webpage such as title, metadata,
+                CSS and other resources.
+            </p>
+
+
+            <h3>
+                &lt;body&gt;
+            </h3>
+
+            <p>
+                The body contains the visible content
+                of the webpage.
             </p>
 
         </section>
 
 
 
-        <!-- THREE WAYS -->
+        <!-- =================================
+             HTML TAGS
+        ================================== -->
 
         <section class="content-card">
 
             <h2>
-                Ways to Add CSS
+                HTML Tags
             </h2>
 
+
             <p>
-                There are three common ways to add CSS
-                to an HTML document.
+                HTML uses tags to define elements
+                on a webpage.
             </p>
 
-            <h3>
-                1. Inline CSS
-            </h3>
 
-            <div class="code-block"><pre>&lt;p style="color: red;"&gt;
+            <p>
+                For example:
+            </p>
+
+
+            <div class="code-block"><pre>&lt;h1&gt;
     Hello World
+&lt;/h1&gt;</pre></div>
+
+
+            <p>
+                Here,
+                <strong>&lt;h1&gt;</strong>
+                is a heading tag.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================
+             HTML ELEMENT
+        ================================== -->
+
+        <section class="content-card">
+
+            <h2>
+                HTML Elements
+            </h2>
+
+
+            <p>
+                An HTML element normally contains
+                an opening tag, content and a closing tag.
+            </p>
+
+
+            <div class="code-block"><pre>&lt;p&gt;
+    This is a paragraph.
 &lt;/p&gt;</pre></div>
 
 
-            <h3>
-                2. Internal CSS
-            </h3>
-
-            <div class="code-block"><pre>&lt;style&gt;
-
-p {
-    color: blue;
-}
-
-&lt;/style&gt;</pre></div>
-
-
-            <h3>
-                3. External CSS
-            </h3>
-
-            <div class="code-block"><pre>&lt;link rel="stylesheet" href="style.css"&gt;</pre></div>
+            <p>
+                The complete structure above is
+                called an HTML element.
+            </p>
 
         </section>
 
 
 
-        <!-- CSS BENEFITS -->
+        <!-- =================================
+             HTML ATTRIBUTES
+        ================================== -->
 
         <section class="content-card">
 
             <h2>
-                Benefits of CSS
+                HTML Attributes
             </h2>
 
-            <ul>
 
-                <li>
-                    Saves time
-                </li>
+            <p>
+                Attributes provide additional information
+                about HTML elements.
+            </p>
 
-                <li>
-                    Makes websites attractive
-                </li>
 
-                <li>
-                    Allows reusable styles
-                </li>
+            <div class="code-block"><pre>&lt;a href="https://example.com"&gt;
+    Visit Website
+&lt;/a&gt;</pre></div>
 
-                <li>
-                    Makes website maintenance easier
-                </li>
 
-                <li>
-                    Supports responsive design
-                </li>
-
-                <li>
-                    Separates content from presentation
-                </li>
-
-            </ul>
+            <p>
+                In this example,
+                <strong>href</strong> is an attribute.
+            </p>
 
         </section>
 
 
 
-        <!-- ========================================
-             INTERACTIVE EDITOR
-        ======================================== -->
+        <!-- =================================
+             FIRST HTML EXAMPLE
+        ================================== -->
+
+        <section class="content-card">
+
+            <h2>
+                Your First HTML Page
+            </h2>
+
+
+            <div class="code-block"><pre>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;
+        My Website
+    &lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;
+        Welcome to My Website
+    &lt;/h1&gt;
+
+    &lt;p&gt;
+        I am learning HTML with Code With Me.
+    &lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</pre></div>
+
+        </section>
+
+
+
+        <!-- =================================
+             INTERACTIVE CODE EDITOR
+        ================================== -->
 
         <section class="editor-section">
 
             <h2>
-                CSS Code Editor
+                HTML Code Editor
             </h2>
 
+
             <p>
-                Write HTML and CSS code below
-                and click <strong>Run Code</strong>
-                to see the result.
+                Write your HTML code below and click
+                <strong>Run Code</strong> to see the result.
             </p>
 
 
@@ -798,46 +946,25 @@ p {
 
 <head>
 
-<style>
-
-body {
-    font-family: Arial;
-    text-align: center;
-    background: #f3f4f6;
-}
-
-h1 {
-    color: #2563eb;
-}
-
-p {
-    color: #374151;
-    font-size: 20px;
-}
-
-button {
-    background: #2563eb;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-}
-
-</style>
+    <title>
+        My First Website
+    </title>
 
 </head>
 
 <body>
 
-<h1>Hello CSS!</h1>
+    <h1>
+        Hello World!
+    </h1>
 
-<p>
-CSS makes websites beautiful.
-</p>
+    <p>
+        Welcome to Code With Me.
+    </p>
 
-<button>
-Click Me
-</button>
+    <button>
+        Click Me
+    </button>
 
 </body>
 
@@ -873,24 +1000,25 @@ Click Me
 
             <iframe
                 id="output"
-                title="CSS Code Output">
+                title="HTML Code Output">
             </iframe>
 
         </section>
 
 
 
-        <!-- ========================================
+        <!-- =================================
              PREVIOUS / NEXT
-        ======================================== -->
+        ================================== -->
 
         <div class="lesson-navigation">
+
 
             <!-- LEFT SIDE -->
 
             <a
                 href="../index.html"
-                class="nav-btn previous">
+                class="nav-btn">
 
                 ← Previous
 
@@ -900,12 +1028,13 @@ Click Me
             <!-- RIGHT SIDE -->
 
             <a
-                href="css-syntax.html"
-                class="nav-btn next">
+                href="basic-tags.html"
+                class="nav-btn">
 
                 Next →
 
             </a>
+
 
         </div>
 
@@ -914,23 +1043,24 @@ Click Me
 
 
 
-    <!-- ========================================
+    <!-- =====================================
          FOOTER
-    ======================================== -->
+    ===================================== -->
 
     <footer>
 
         <p>
-            © 2026 Code With Me. All Rights Reserved.
+            © 2026 Code With Me.
+            All Rights Reserved.
         </p>
 
     </footer>
 
 
 
-    <!-- ========================================
+    <!-- =====================================
          JAVASCRIPT
-    ======================================== -->
+    ===================================== -->
 
     <script>
 
@@ -941,12 +1071,15 @@ Click Me
                     "codeEditor"
                 ).value;
 
+
             const output =
                 document.getElementById(
                     "output"
                 );
 
+
             output.srcdoc = code;
+
         }
 
 
@@ -956,6 +1089,7 @@ Click Me
                 "codeEditor"
             ).value = "";
 
+
             document.getElementById(
                 "output"
             ).srcdoc = "";
@@ -963,7 +1097,7 @@ Click Me
         }
 
 
-        /* Run example automatically */
+        /* Run code automatically */
 
         window.addEventListener(
             "load",
