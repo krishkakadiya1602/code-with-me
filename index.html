@@ -48,6 +48,9 @@
 
     <title>Code With Me | Learn Coding</title>
 
+    <!-- Website Logo / Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+
 
     <!-- ========================================
          GOOGLE ANALYTICS
@@ -116,16 +119,29 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
 
+        /* LOGO */
+
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             color: white;
             font-size: 25px;
             font-weight: bold;
             text-decoration: none;
         }
 
+        .logo img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
         .logo span {
             color: #3b82f6;
         }
+
 
         .nav-links {
             display: flex;
@@ -618,6 +634,15 @@
 
         @media (max-width: 480px) {
 
+            .logo {
+                font-size: 21px;
+            }
+
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+
             .hero h1 {
 
                 font-size: 34px;
@@ -653,9 +678,12 @@
 
     <nav>
 
+        <!-- WEBSITE LOGO -->
         <a href="index.html" class="logo">
-            Code <span>WithMe</span>
+            <img src="logo.png" alt="Code With Me Logo">
+            <span>Code With Me</span>
         </a>
+
 
         <ul class="nav-links">
 
@@ -761,7 +789,6 @@
                     projects.
                 </p>
 
-                <!-- CORRECT HTML PATH -->
                 <a
                     href="html/html-introduction.html"
                     class="course-btn"
@@ -792,7 +819,6 @@
                     backgrounds and responsive design.
                 </p>
 
-                <!-- CORRECT CSS PATH -->
                 <a
                     href="css/css-introduction.html"
                     class="course-btn"
@@ -823,7 +849,6 @@
                     DOM and interactive web development.
                 </p>
 
-                <!-- CORRECT JAVASCRIPT PATH -->
                 <a
                     href="javascript/javascript-introduction.html"
                     class="course-btn"
