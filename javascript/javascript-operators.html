@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Learn JavaScript Operators with simple examples including arithmetic, assignment, comparison, logical and ternary operators.">
+
+    <meta name="keywords"
+        content="JavaScript Operators, JavaScript Arithmetic Operators, JavaScript Comparison Operators, JavaScript Logical Operators, Learn JavaScript">
+
+    <meta name="author" content="Code With Me">
+
+    <title>JavaScript Operators | Code With Me</title>
+
+
+    <style>
+
+        /* ========================================
+           GENERAL
+        ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+
+        /* ========================================
+           NAVBAR
+        ======================================== */
+
+        nav {
+            width: 100%;
+            background: #111827;
+            padding: 16px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* ========================================
+           HERO
+        ======================================== */
+
+        .hero {
+            background: linear-gradient(135deg, #f7df1e, #f59e0b);
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #1f2937;
+        }
+
+
+        /* ========================================
+           MAIN CONTAINER
+        ======================================== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+
+        /* ========================================
+           LESSON CARD
+        ======================================== */
+
+        .lesson-card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .lesson-card h2 {
+            color: #2563eb;
+            margin-bottom: 18px;
+            font-size: 29px;
+        }
+
+        .lesson-card h3 {
+            color: #7c3aed;
+            margin-top: 22px;
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .lesson-card p {
+            margin-bottom: 14px;
+        }
+
+        .lesson-card ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .lesson-card li {
+            margin-bottom: 8px;
+        }
+
+
+        /* ========================================
+           INFO BOXES
+        ======================================== */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .important-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+
+        /* ========================================
+           CODE BLOCK
+        ======================================== */
+
+        pre {
+            background: #111827;
+            color: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 18px 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+
+        /* ========================================
+           INLINE CODE
+        ======================================== */
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            color: #dc2626;
+            font-family: Consolas, Monaco, monospace;
+        }
+
+
+        /* ========================================
+           TABLE
+        ======================================== */
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 13px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+
+        /* ========================================
+           CODE EDITOR
+        ======================================== */
+
+        .editor-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .editor-section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        #codeEditor {
+            width: 100%;
+            min-height: 380px;
+            resize: vertical;
+            background: #020617;
+            color: #f8fafc;
+            border: 2px solid #334155;
+            border-radius: 8px;
+            padding: 18px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            outline: none;
+        }
+
+        #codeEditor:focus {
+            border-color: #2563eb;
+        }
+
+
+        /* ========================================
+           EDITOR BUTTONS
+        ======================================== */
+
+        .editor-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #22c55e;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        .clear-btn {
+            background: #ef4444;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+
+
+        /* ========================================
+           LIVE PREVIEW
+        ======================================== */
+
+        .preview-title {
+            margin-top: 30px;
+            margin-bottom: 12px;
+            color: #7c3aed;
+        }
+
+        #output {
+            width: 100%;
+            height: 420px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+        }
+
+
+        /* ========================================
+           KEY POINTS
+        ======================================== */
+
+        .key-points {
+            background: #ecfeff;
+            border-left: 5px solid #0891b2;
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .key-points ul {
+            margin-bottom: 0;
+        }
+
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+
+        .lesson-navigation {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 45px 0;
+        }
+
+        .lesson-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            padding: 0 24px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .lesson-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .previous-btn {
+            margin-right: auto;
+        }
+
+        .home-btn {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .next-btn {
+            margin-left: auto;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 50px 15px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .lesson-card,
+            .editor-section {
+                padding: 20px;
+            }
+
+            .lesson-card h2 {
+                font-size: 24px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .lesson-btn {
+                width: 100%;
+                min-height: 55px;
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .previous-btn,
+            .home-btn,
+            .next-btn {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            #codeEditor {
+                min-height: 280px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ========================================
+         HERO
+    ======================================== -->
+
+    <section class="hero">
+
+        <h1>JavaScript Operators</h1>
+
+        <p>
+            Learn how JavaScript operators are used to calculate,
+            compare and work with values.
+        </p>
+
+    </section>
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ======================================== -->
+
+    <main class="container">
+
+
+        <!-- ========================================
+             INTRODUCTION
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>What are JavaScript Operators?</h2>
+
+            <p>
+                Operators are special symbols or keywords used to
+                perform operations on values and variables.
+            </p>
+
+            <p>
+                For example:
+            </p>
+
+            <pre><code>let a = 10;
+let b = 20;
+
+let result = a + b;
+
+console.log(result);</code></pre>
+
+            <p>
+                Here, <span class="inline-code">+</span> is an
+                arithmetic operator.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Simple idea:</strong>
+
+                <p>
+                    Operators perform actions on values and variables.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             OPERATOR TYPES
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>Types of JavaScript Operators</h2>
+
+            <p>
+                JavaScript provides many types of operators.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Operator Type</th>
+                            <th>Examples</th>
+                            <th>Purpose</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Arithmetic</td>
+                            <td>+ - * / % **</td>
+                            <td>Perform calculations</td>
+                        </tr>
+
+                        <tr>
+                            <td>Assignment</td>
+                            <td>= += -= *= /=</td>
+                            <td>Assign values</td>
+                        </tr>
+
+                        <tr>
+                            <td>Comparison</td>
+                            <td>== === != !== &gt; &lt;</td>
+                            <td>Compare values</td>
+                        </tr>
+
+                        <tr>
+                            <td>Logical</td>
+                            <td>&amp;&amp; || !</td>
+                            <td>Combine conditions</td>
+                        </tr>
+
+                        <tr>
+                            <td>Increment / Decrement</td>
+                            <td>++ --</td>
+                            <td>Increase or decrease values</td>
+                        </tr>
+
+                        <tr>
+                            <td>Ternary</td>
+                            <td>? :</td>
+                            <td>Short conditional expression</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             ARITHMETIC OPERATORS
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>Arithmetic Operators</h2>
+
+            <p>
+                Arithmetic operators are used to perform mathematical
+                calculations.
+            </p>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Operator</th>
+                            <th>Name</th>
+                            <th>Example</th>
+                            <th>Result</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>+</td>
+                            <td>Addition</td>
+                            <td>10 + 5</td>
+                            <td>15</td>
+                        </tr>
+
+                        <tr>
+                            <td>-</td>
+                            <td>Subtraction</td>
+                            <td>10 - 5</td>
+                            <td>5</td>
+                        </tr>
+
+                        <tr>
+                            <td>*</td>
+                            <td>Multiplication</td>
+                            <td>10 * 5</td>
+                            <td>50</td>
+                        </tr>
+
+                        <tr>
+                            <td>/</td>
+                            <td>Division</td>
+                            <td>10 / 5</td>
+                            <td>2</td>
+                        </tr>
+
+                        <tr>
+                            <td>%</td>
+                            <td>Modulus</td>
+                            <td>10 % 3</td>
+                            <td>1</td>
+                        </tr>
+
+                        <tr>
+                            <td>**</td>
+                            <td>Exponentiation</td>
+                            <td>2 ** 3</td>
+                            <td>8</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <h3>Addition</h3>
+
+            <pre><code>let a = 10;
+let b = 20;
+
+let result = a + b;
+
+console.log(result);</code></pre>
+
+
+            <h3>Subtraction</h3>
+
+            <pre><code>let a = 20;
+let b = 5;
+
+console.log(a - b);</code></pre>
+
+
+            <h3>Multiplication</h3>
+
+            <pre><code>let a = 10;
+let b = 5;
+
+console.log(a * b);</code></pre>
+
+
+            <h3>Division</h3>
+
+            <pre><code>let a = 20;
+let b = 5;
+
+console.log(a / b);</code></pre>
+
+
+            <h3>Modulus</h3>
+
+            <pre><code>let remainder = 10 % 3;
+
+console.log(remainder);</code></pre>
+
+        </section>
+
+
+        <!-- ========================================
+             ASSIGNMENT OPERATORS
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>Assignment Operators</h2>
+
+            <p>
+                Assignment operators are used to assign values to variables.
+            </p>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Operator</th>
+                            <th>Example</th>
+                            <th>Equivalent</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>=</td>
+                            <td>x = 10</td>
+                            <td>x = 10</td>
+                        </tr>
+
+                        <tr>
+                            <td>+=</td>
+                            <td>x += 5</td>
+                            <td>x = x + 5</td>
+                        </tr>
+
+                        <tr>
+                            <td>-=</td>
+                            <td>x -= 5</td>
+                            <td>x = x - 5</td>
+                        </tr>
+
+                        <tr>
+                            <td>*=</td>
+                            <td>x *= 5</td>
+                            <td>x = x * 5</td>
+                        </tr>
+
+                        <tr>
+                            <td>/=</td>
+                            <td>x /= 5</td>
+                            <td>x = x / 5</td>
+                        </tr>
+
+                        <tr>
+                            <td>%=</td>
+                            <td>x %= 5</td>
+                            <td>x = x % 5</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <h3>Example</h3>
+
+            <pre><code>let score = 10;
+
+score += 5;
+
+console.log(score);</code></pre>
+
+            <p>
+                The result is <strong>15</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- ========================================
+             COMPARISON OPERATORS
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>Comparison Operators</h2>
+
+            <p>
+                Comparison operators compare two values and return
+                either <span class="inline-code">true</span> or
+                <span class="inline-code">false</span>.
+            </p>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Operator</th>
+                            <th>Meaning</th>
+                            <th>Example</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>==</td>
+                            <td>Equal value</td>
+                            <td>5 == 5</td>
+                        </tr>
+
+                        <tr>
+                            <td>===</td>
+                            <td>Equal value and type</td>
+                            <td>5 === 5</td>
+                        </tr>
+
+                        <tr>
+                            <td>!=</td>
+                            <td>Not equal value</td>
+                            <td>5 != 10</td>
+                        </tr>
+
+                        <tr>
+                            <td>!==</td>
+                            <td>Not equal value or type</td>
+                            <td>5 !== "5"</td>
+                        </tr>
+
+                        <tr>
+                            <td>&gt;</td>
+                            <td>Greater than</td>
+                            <td>10 &gt; 5</td>
+                        </tr>
+
+                        <tr>
+                            <td>&lt;</td>
+                            <td>Less than</td>
+                            <td>5 &lt; 10</td>
+                        </tr>
+
+                        <tr>
+                            <td>&gt;=</td>
+                            <td>Greater than or equal</td>
+                            <td>10 &gt;= 10</td>
+                        </tr>
+
+                        <tr>
+                            <td>&lt;=</td>
+                            <td>Less than or equal</td>
+                            <td>5 &lt;= 10</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <h3>Example</h3>
+
+            <pre><code>let age = 20;
+
+console.log(age >= 18);</code></pre>
+
+            <p>
+                Output:
+            </p>
+
+            <pre><code>true</code></pre>
+
+        </section>
+
+
+        <!-- ========================================
+             == VS ===
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>== vs ===</h2>
+
+            <p>
+                The <span class="inline-code">==</span> operator
+                compares values after possible type conversion.
+            </p>
+
+            <pre><code>console.log(5 == "5");</code></pre>
+
+            <p>
+                The <span class="inline-code">===</span> operator
+                checks both value and type.
+            </p>
+
+            <pre><code>console.log(5 === "5");</code></pre>
+
+            <div class="important-box">
+
+                <strong>Important:</strong>
+
+                <p>
+                    In modern JavaScript, using
+                    <span class="inline-code">===</span>
+                    is often preferred when you want strict comparison.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             LOGICAL OPERATORS
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>Logical Operators</h2>
+
+            <p>
+                Logical operators are commonly used to combine
+                conditions.
+            </p>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Operator</th>
+                            <th>Name</th>
+                            <th>Example</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>&amp;&amp;</td>
+                            <td>AND</td>
+                            <td>age &gt;= 18 &amp;&amp; age &lt;= 60</td>
+                        </tr>
+
+                        <tr>
+                            <td>||</td>
+                            <td>OR</td>
+                            <td>age &lt; 18 || age &gt; 60</td>
+                        </tr>
+
+                        <tr>
+                            <td>!</td>
+                            <td>NOT</td>
+                            <td>!isLoggedIn</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <h3>AND Operator</h3>
+
+            <pre><code>let age = 25;
+
+console.log(age >= 18 && age <= 60);</code></pre>
+
+
+            <h3>OR Operator</h3>
+
+            <pre><code>let age = 15;
+
+console.log(age < 18 || age > 60);</code></pre>
+
+
+            <h3>NOT Operator</h3>
+
+            <pre><code>let isLoggedIn = true;
+
+console.log(!isLoggedIn);</code></pre>
+
+        </section>
+
+
+        <!-- ========================================
+             INCREMENT DECREMENT
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>Increment and Decrement Operators</h2>
+
+            <p>
+                The increment operator
+                <span class="inline-code">++</span>
+                increases a value by 1.
+            </p>
+
+            <pre><code>let count = 5;
+
+count++;
+
+console.log(count);</code></pre>
+
+
+            <p>
+                The decrement operator
+                <span class="inline-code">--</span>
+                decreases a value by 1.
+            </p>
+
+            <pre><code>let count = 5;
+
+count--;
+
+console.log(count);</code></pre>
+
+        </section>
+
+
+        <!-- ========================================
+             TERNARY
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>Ternary Operator</h2>
+
+            <p>
+                The ternary operator provides a short way to write
+                a simple conditional expression.
+            </p>
+
+            <p>
+                Syntax:
+            </p>
+
+            <pre><code>condition ? valueIfTrue : valueIfFalse;</code></pre>
+
+
+            <h3>Example</h3>
+
+            <pre><code>let age = 20;
+
+let message =
+    age >= 18
+        ? "Adult"
+        : "Minor";
+
+console.log(message);</code></pre>
+
+        </section>
+
+
+        <!-- ========================================
+             STRING OPERATOR
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>String Operator</h2>
+
+            <p>
+                The <span class="inline-code">+</span> operator can
+                also be used to join strings together.
+            </p>
+
+            <pre><code>let firstName = "Krish";
+let lastName = "Kakadiya";
+
+let fullName = firstName + " " + lastName;
+
+console.log(fullName);</code></pre>
+
+            <div class="success-box">
+
+                <strong>Output:</strong>
+
+                <p>
+                    Krish Kakadiya
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             OPERATOR PRECEDENCE
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>Operator Precedence</h2>
+
+            <p>
+                When an expression contains multiple operators,
+                JavaScript follows rules that determine which operation
+                is performed first.
+            </p>
+
+            <pre><code>let result = 10 + 5 * 2;
+
+console.log(result);</code></pre>
+
+            <p>
+                Multiplication is performed before addition,
+                so the result is <strong>20</strong>.
+            </p>
+
+            <h3>Using Parentheses</h3>
+
+            <pre><code>let result = (10 + 5) * 2;
+
+console.log(result);</code></pre>
+
+            <p>
+                Parentheses make the addition happen first,
+                producing <strong>30</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- ========================================
+             PRACTICAL EXAMPLE
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>Practical Example</h2>
+
+            <p>
+                Operators can be combined to create useful programs.
+            </p>
+
+            <pre><code>let price = 1000;
+
+let discount = 100;
+
+let finalPrice = price - discount;
+
+let isAffordable = finalPrice <= 1000;
+
+console.log("Final Price: " + finalPrice);
+
+console.log("Affordable: " + isAffordable);</code></pre>
+
+        </section>
+
+
+        <!-- ========================================
+             BEST PRACTICES
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript Operator Best Practices</h2>
+
+            <ul>
+
+                <li>
+                    Use parentheses when they make an expression easier to understand.
+                </li>
+
+                <li>
+                    Use <span class="inline-code">===</span>
+                    when strict equality is intended.
+                </li>
+
+                <li>
+                    Keep complex expressions readable.
+                </li>
+
+                <li>
+                    Use meaningful variable names.
+                </li>
+
+                <li>
+                    Avoid unnecessarily complicated expressions.
+                </li>
+
+                <li>
+                    Test calculations and conditions with different values.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- ========================================
+             CODE EDITOR
+        ======================================== -->
+
+        <section class="editor-section">
+
+            <h2>JavaScript Operators - Try It Yourself</h2>
+
+            <p>
+                Write HTML and JavaScript code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>JavaScript Operators</title>
+
+</head>
+
+<body>
+
+    <h2>JavaScript Operators</h2>
+
+    <p id="demo"></p>
+
+    <script>
+
+        let a = 20;
+        let b = 10;
+
+        let addition = a + b;
+        let subtraction = a - b;
+        let multiplication = a * b;
+        let division = a / b;
+
+        let isGreater = a > b;
+
+        document.getElementById("demo").innerHTML =
+            "Addition: " + addition +
+            "<br>Subtraction: " + subtraction +
+            "<br>Multiplication: " + multiplication +
+            "<br>Division: " + division +
+            "<br>A is greater than B: " + isGreater;
+
+    </script>
+
+</body>
+
+</html></textarea>
+
+
+            <div class="editor-buttons">
+
+                <button
+                    class="run-btn"
+                    onclick="runCode()">
+
+                    ▶ Run Code
+
+                </button>
+
+
+                <button
+                    class="clear-btn"
+                    onclick="clearCode()">
+
+                    ✕ Clear
+
+                </button>
+
+            </div>
+
+
+            <h3 class="preview-title">
+                Live Preview
+            </h3>
+
+
+            <iframe
+                id="output"
+                title="JavaScript Operators Live Preview">
+            </iframe>
+
+        </section>
+
+
+        <!-- ========================================
+             KEY POINTS
+        ======================================== -->
+
+        <section class="lesson-card">
+
+            <h2>Key Points</h2>
+
+            <div class="key-points">
+
+                <ul>
+
+                    <li>
+                        Operators perform operations on values and variables.
+                    </li>
+
+                    <li>
+                        Arithmetic operators perform mathematical calculations.
+                    </li>
+
+                    <li>
+                        Assignment operators assign values to variables.
+                    </li>
+
+                    <li>
+                        Comparison operators return true or false.
+                    </li>
+
+                    <li>
+                        Logical operators combine conditions.
+                    </li>
+
+                    <li>
+                        Increment and decrement operators change a value by one.
+                    </li>
+
+                    <li>
+                        The ternary operator provides a short conditional expression.
+                    </li>
+
+                    <li>
+                        Parentheses can be used to control the order of operations.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             PREVIOUS / HOME / NEXT
+        ======================================== -->
+
+        <div class="lesson-navigation">
+
+
+            <!-- PREVIOUS -->
+
+            <a
+                href="javascript-variables.html"
+                class="lesson-btn previous-btn">
+
+                ← Previous: JavaScript Variables
+
+            </a>
+
+
+            <!-- HOME -->
+
+            <a
+                href="../index.html"
+                class="lesson-btn home-btn">
+
+                🏠 Home
+
+            </a>
+
+
+            <!-- NEXT -->
+
+            <a
+                href="javascript-arithmetic.html"
+                class="lesson-btn next-btn">
+
+                Next: JavaScript Arithmetic →
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+        function runCode() {
+
+            const codeEditor =
+                document.getElementById("codeEditor");
+
+            const output =
+                document.getElementById("output");
+
+            output.srcdoc =
+                codeEditor.value;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+
+        window.addEventListener("load", function () {
+
+            runCode();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
