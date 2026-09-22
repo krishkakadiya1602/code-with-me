@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn CSS Text properties with simple examples and an interactive code editor.">
+
+    <meta name="keywords"
+          content="CSS text, CSS text color, CSS text alignment, CSS text decoration, CSS text transform, CSS tutorial">
+
+    <meta name="author"
+          content="Code With Me">
+
+    <title>CSS Text | Code With Me</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        /* INFO BOXES */
+
+        .info-box {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* CODE */
+
+        .code-title {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 10px 0 20px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* LIVE EDITOR */
+
+        .editor {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+            background: #111827;
+            color: white;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .run-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 300px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: white;
+        }
+
+        /* LIST */
+
+        ul {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* NAVIGATION */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .page-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <div>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../index.html#courses">
+                Courses
+            </a>
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>CSS Text</h1>
+
+        <p>
+            Learn how to style and control text using CSS.
+        </p>
+
+    </section>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="section">
+
+            <h2>1. What is CSS Text?</h2>
+
+            <p>
+                CSS provides several properties for controlling the
+                appearance and layout of text.
+            </p>
+
+            <p>
+                Using CSS text properties, you can change text color,
+                alignment, decoration, capitalization, spacing,
+                indentation and shadows.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Common CSS Text Properties:</strong>
+
+                <ul>
+
+                    <li>color</li>
+                    <li>text-align</li>
+                    <li>text-decoration</li>
+                    <li>text-transform</li>
+                    <li>text-indent</li>
+                    <li>letter-spacing</li>
+                    <li>word-spacing</li>
+                    <li>line-height</li>
+                    <li>text-shadow</li>
+                    <li>direction</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- COLOR -->
+
+        <section class="section">
+
+            <h2>2. CSS Text Color</h2>
+
+            <p>
+                The <strong>color</strong> property is used to change
+                the color of text.
+            </p>
+
+<pre><code>p {
+    color: blue;
+}</code></pre>
+
+            <p style="color: blue;">
+                This text is blue.
+            </p>
+
+            <h3>Using Hex Color</h3>
+
+<pre><code>h1 {
+    color: #2563eb;
+}</code></pre>
+
+            <h3>Using RGB Color</h3>
+
+<pre><code>p {
+    color: rgb(255, 0, 0);
+}</code></pre>
+
+        </section>
+
+
+        <!-- TEXT ALIGN -->
+
+        <section class="section">
+
+            <h2>3. CSS text-align</h2>
+
+            <p>
+                The <strong>text-align</strong> property controls the
+                horizontal alignment of text.
+            </p>
+
+<pre><code>h1 {
+    text-align: center;
+}</code></pre>
+
+            <h3>Common Values</h3>
+
+            <table>
+
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>left</td>
+                    <td>Aligns text to the left.</td>
+                </tr>
+
+                <tr>
+                    <td>right</td>
+                    <td>Aligns text to the right.</td>
+                </tr>
+
+                <tr>
+                    <td>center</td>
+                    <td>Centers the text.</td>
+                </tr>
+
+                <tr>
+                    <td>justify</td>
+                    <td>Stretches text so lines have equal width.</td>
+                </tr>
+
+            </table>
+
+<pre><code>h1 {
+    text-align: center;
+}
+
+p {
+    text-align: justify;
+}</code></pre>
+
+        </section>
+
+
+        <!-- TEXT DECORATION -->
+
+        <section class="section">
+
+            <h2>4. CSS text-decoration</h2>
+
+            <p>
+                The <strong>text-decoration</strong> property adds or
+                removes decorations from text.
+            </p>
+
+<pre><code>h1 {
+    text-decoration: underline;
+}</code></pre>
+
+            <h3>Common Values</h3>
+
+            <ul>
+
+                <li><strong>underline</strong> — adds a line below text.</li>
+
+                <li><strong>overline</strong> — adds a line above text.</li>
+
+                <li><strong>line-through</strong> — draws a line through text.</li>
+
+                <li><strong>none</strong> — removes decoration.</li>
+
+            </ul>
+
+<pre><code>.underline {
+    text-decoration: underline;
+}
+
+.overline {
+    text-decoration: overline;
+}
+
+.deleted {
+    text-decoration: line-through;
+}
+
+.no-decoration {
+    text-decoration: none;
+}</code></pre>
+
+        </section>
+
+
+        <!-- TEXT TRANSFORM -->
+
+        <section class="section">
+
+            <h2>5. CSS text-transform</h2>
+
+            <p>
+                The <strong>text-transform</strong> property controls
+                the capitalization of text.
+            </p>
+
+<pre><code>.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}</code></pre>
+
+            <table>
+
+                <tr>
+                    <th>Value</th>
+                    <th>Result</th>
+                </tr>
+
+                <tr>
+                    <td>uppercase</td>
+                    <td>ALL LETTERS BECOME UPPERCASE</td>
+                </tr>
+
+                <tr>
+                    <td>lowercase</td>
+                    <td>all letters become lowercase</td>
+                </tr>
+
+                <tr>
+                    <td>capitalize</td>
+                    <td>First Letter Of Each Word</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- TEXT INDENT -->
+
+        <section class="section">
+
+            <h2>6. CSS text-indent</h2>
+
+            <p>
+                The <strong>text-indent</strong> property is used to
+                indent the first line of a paragraph.
+            </p>
+
+<pre><code>p {
+    text-indent: 50px;
+}</code></pre>
+
+            <p style="text-indent: 50px;">
+                This paragraph has a 50px first-line indentation.
+                Text indentation is commonly used in articles,
+                documents and paragraphs.
+            </p>
+
+        </section>
+
+
+        <!-- LETTER SPACING -->
+
+        <section class="section">
+
+            <h2>7. CSS letter-spacing</h2>
+
+            <p>
+                The <strong>letter-spacing</strong> property controls
+                the space between characters.
+            </p>
+
+<pre><code>h1 {
+    letter-spacing: 5px;
+}</code></pre>
+
+            <p style="letter-spacing: 5px;">
+                SPACED TEXT
+            </p>
+
+            <div class="warning-box">
+
+                Increasing letter spacing too much can make text
+                difficult to read.
+
+            </div>
+
+        </section>
+
+
+        <!-- WORD SPACING -->
+
+        <section class="section">
+
+            <h2>8. CSS word-spacing</h2>
+
+            <p>
+                The <strong>word-spacing</strong> property controls
+                the space between words.
+            </p>
+
+<pre><code>p {
+    word-spacing: 15px;
+}</code></pre>
+
+            <p style="word-spacing: 15px;">
+                CSS makes websites beautiful.
+            </p>
+
+        </section>
+
+
+        <!-- LINE HEIGHT -->
+
+        <section class="section">
+
+            <h2>9. CSS line-height</h2>
+
+            <p>
+                The <strong>line-height</strong> property controls
+                the vertical space between lines of text.
+            </p>
+
+<pre><code>p {
+    line-height: 1.8;
+}</code></pre>
+
+            <p style="line-height: 1.8;">
+                CSS is used to style web pages.
+                Line height can make paragraphs
+                easier to read by adding space
+                between lines.
+            </p>
+
+            <div class="success-box">
+
+                A suitable line-height can improve the readability
+                of paragraphs and articles.
+
+            </div>
+
+        </section>
+
+
+        <!-- TEXT SHADOW -->
+
+        <section class="section">
+
+            <h2>10. CSS text-shadow</h2>
+
+            <p>
+                The <strong>text-shadow</strong> property adds a shadow
+                effect to text.
+            </p>
+
+<pre><code>h1 {
+    text-shadow: 2px 2px 5px gray;
+}</code></pre>
+
+            <h2 style="text-shadow: 2px 2px 5px gray;">
+                Text Shadow Example
+            </h2>
+
+            <p>
+                The first value controls the horizontal shadow position,
+                the second controls the vertical position, and the third
+                controls blur.
+            </p>
+
+        </section>
+
+
+        <!-- DIRECTION -->
+
+        <section class="section">
+
+            <h2>11. CSS direction</h2>
+
+            <p>
+                The <strong>direction</strong> property specifies the
+                text direction.
+            </p>
+
+<pre><code>.text {
+    direction: rtl;
+}</code></pre>
+
+            <p>
+                Common values are:
+            </p>
+
+            <ul>
+
+                <li><strong>ltr</strong> — left to right</li>
+
+                <li><strong>rtl</strong> — right to left</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- WHITE SPACE -->
+
+        <section class="section">
+
+            <h2>12. CSS white-space</h2>
+
+            <p>
+                The <strong>white-space</strong> property controls how
+                spaces and line breaks inside text are handled.
+            </p>
+
+<pre><code>.text {
+    white-space: nowrap;
+}</code></pre>
+
+            <p>
+                One useful value is <strong>nowrap</strong>, which
+                prevents text from automatically wrapping to a new line.
+            </p>
+
+        </section>
+
+
+        <!-- OVERFLOW -->
+
+        <section class="section">
+
+            <h2>13. Text Overflow</h2>
+
+            <p>
+                CSS can be used to control text that is too long for
+                its container.
+            </p>
+
+<pre><code>.text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}</code></pre>
+
+            <div class="info-box">
+
+                The <strong>ellipsis</strong> value can display
+                <strong>...</strong> when text is cut off.
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY TABLE -->
+
+        <section class="section">
+
+            <h2>14. CSS Text Properties Summary</h2>
+
+            <table>
+
+                <tr>
+                    <th>Property</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>color</td>
+                    <td>Changes text color</td>
+                    <td>color: blue;</td>
+                </tr>
+
+                <tr>
+                    <td>text-align</td>
+                    <td>Aligns text</td>
+                    <td>text-align: center;</td>
+                </tr>
+
+                <tr>
+                    <td>text-decoration</td>
+                    <td>Adds text decoration</td>
+                    <td>text-decoration: underline;</td>
+                </tr>
+
+                <tr>
+                    <td>text-transform</td>
+                    <td>Changes capitalization</td>
+                    <td>text-transform: uppercase;</td>
+                </tr>
+
+                <tr>
+                    <td>text-indent</td>
+                    <td>Indents first line</td>
+                    <td>text-indent: 30px;</td>
+                </tr>
+
+                <tr>
+                    <td>letter-spacing</td>
+                    <td>Controls character spacing</td>
+                    <td>letter-spacing: 2px;</td>
+                </tr>
+
+                <tr>
+                    <td>word-spacing</td>
+                    <td>Controls word spacing</td>
+                    <td>word-spacing: 10px;</td>
+                </tr>
+
+                <tr>
+                    <td>line-height</td>
+                    <td>Controls line spacing</td>
+                    <td>line-height: 1.8;</td>
+                </tr>
+
+                <tr>
+                    <td>text-shadow</td>
+                    <td>Adds shadow to text</td>
+                    <td>text-shadow: 2px 2px 4px gray;</td>
+                </tr>
+
+                <tr>
+                    <td>direction</td>
+                    <td>Controls text direction</td>
+                    <td>direction: rtl;</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- LIVE EDITOR -->
+
+        <section class="section">
+
+            <h2>15. CSS Text Live Editor</h2>
+
+            <p>
+                Edit the code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <div class="editor">
+
+<textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+h1 {
+    color: #2563eb;
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px gray;
+}
+
+p {
+    color: #333;
+    text-align: justify;
+    line-height: 1.8;
+    word-spacing: 5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>CSS Text</h1>
+
+<p>
+    CSS gives you many properties for styling
+    and controlling text. You can change colors,
+    alignment, decoration, spacing and more.
+</p>
+
+</body>
+
+</html></textarea>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+
+                        ▶ Run Code
+
+                    </button>
+
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+
+                        ✖ Clear
+
+                    </button>
+
+                </div>
+
+
+                <iframe
+                    id="output"
+                    title="CSS Text Output">
+                </iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEY POINTS -->
+
+        <section class="section">
+
+            <h2>16. Key Points to Remember</h2>
+
+            <ul>
+
+                <li>
+                    Use <strong>color</strong> to change text color.
+                </li>
+
+                <li>
+                    Use <strong>text-align</strong> to align text.
+                </li>
+
+                <li>
+                    Use <strong>text-decoration</strong> to add
+                    underline, overline or line-through.
+                </li>
+
+                <li>
+                    Use <strong>text-transform</strong> to change
+                    capitalization.
+                </li>
+
+                <li>
+                    Use <strong>text-indent</strong> to indent the
+                    first line of a paragraph.
+                </li>
+
+                <li>
+                    Use <strong>letter-spacing</strong> to control
+                    character spacing.
+                </li>
+
+                <li>
+                    Use <strong>word-spacing</strong> to control
+                    space between words.
+                </li>
+
+                <li>
+                    Use <strong>line-height</strong> to control
+                    space between lines.
+                </li>
+
+                <li>
+                    Use <strong>text-shadow</strong> to add a shadow
+                    effect.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="page-navigation">
+
+            <a href="css-height-width.html">
+                ← Previous: CSS Height and Width
+            </a>
+
+            <a href="../index.html">
+                🏠 Home
+            </a>
+
+            <a href="css-padding.html">
+                Next: CSS Padding →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            document.getElementById("output").srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+
+        window.onload = function () {
+
+            runCode();
+
+        };
+
+    </script>
+
+
+</body>
+
+</html>
