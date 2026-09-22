@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn CSS Links - styling links using CSS with examples and live editor.">
+
+    <title>CSS Links | Code With Me</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav .logo span {
+            color: #38bdf8;
+        }
+
+        nav .nav-links {
+            float: right;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        nav::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* Header */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Main */
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        /* Info box */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        /* Code */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Tables */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Link examples */
+
+        .link-demo {
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .basic-link {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .basic-link:hover {
+            color: #dc2626;
+            text-decoration: underline;
+        }
+
+        /* Live Editor */
+
+        .editor textarea {
+            width: 100%;
+            min-height: 220px;
+            padding: 15px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        .editor button {
+            padding: 12px 20px;
+            margin-top: 12px;
+            margin-right: 8px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .editor button:hover {
+            opacity: 0.85;
+        }
+
+        iframe {
+            width: 100%;
+            height: 250px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: white;
+        }
+
+        /* Navigation */
+
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-nav a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 7px;
+        }
+
+        .lesson-nav a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 700px) {
+
+            nav {
+                text-align: center;
+            }
+
+            nav .nav-links {
+                float: none;
+                margin-top: 10px;
+            }
+
+            nav .nav-links a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-nav {
+                flex-direction: column;
+            }
+
+            .lesson-nav a {
+                text-align: center;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav>
+
+        <a href="../index.html"
+           class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../index.html#courses">
+                Courses
+            </a>
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero -->
+
+    <header class="hero">
+
+        <h1>CSS Links</h1>
+
+        <p>
+            Learn how to style HTML links using CSS
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+
+        <section class="section">
+
+            <h2>1. What are CSS Links?</h2>
+
+            <p>
+                Links are used to connect one webpage to another webpage,
+                website, file, section, or resource.
+            </p>
+
+            <p>
+                In HTML, links are created using the
+                <strong>&lt;a&gt;</strong> element.
+            </p>
+
+            <pre><code>&lt;a href="https://example.com"&gt;
+    Visit Example
+&lt;/a&gt;</code></pre>
+
+            <p>
+                CSS allows us to change the color, size, decoration,
+                background, border, and other styles of links.
+            </p>
+
+        </section>
+
+
+        <!-- Basic Link -->
+
+        <section class="section">
+
+            <h2>2. Basic Link Styling</h2>
+
+            <p>
+                We can use the <strong>color</strong> property to change
+                the color of a link.
+            </p>
+
+            <pre><code>a {
+    color: blue;
+}</code></pre>
+
+            <div class="link-demo">
+
+                <a href="#"
+                   class="basic-link">
+                    This is a styled link
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Text Decoration -->
+
+        <section class="section">
+
+            <h2>3. Removing the Underline</h2>
+
+            <p>
+                By default, most browser links have an underline.
+                We can remove it using
+                <strong>text-decoration: none;</strong>
+            </p>
+
+            <pre><code>a {
+    text-decoration: none;
+}</code></pre>
+
+            <div class="link-demo">
+
+                <a href="#"
+                   style="text-decoration: none; color: #2563eb;">
+                    Link without underline
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Hover -->
+
+        <section class="section">
+
+            <h2>4. CSS Link Hover</h2>
+
+            <p>
+                The <strong>:hover</strong> pseudo-class is used when
+                the mouse pointer moves over a link.
+            </p>
+
+            <pre><code>a:hover {
+    color: red;
+    text-decoration: underline;
+}</code></pre>
+
+            <div class="link-demo">
+
+                <a href="#"
+                   class="basic-link">
+                    Move your mouse over this link
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Link States -->
+
+        <section class="section">
+
+            <h2>5. CSS Link States</h2>
+
+            <p>
+                CSS provides different states for links.
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>State</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td>:link</td>
+                    <td>A normal unvisited link</td>
+                </tr>
+
+                <tr>
+                    <td>:visited</td>
+                    <td>A link that the user has already visited</td>
+                </tr>
+
+                <tr>
+                    <td>:hover</td>
+                    <td>When the mouse pointer is over the link</td>
+                </tr>
+
+                <tr>
+                    <td>:active</td>
+                    <td>When the link is being clicked</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Link States Example -->
+
+        <section class="section">
+
+            <h2>6. Styling Different Link States</h2>
+
+            <pre><code>a:link {
+    color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    color: red;
+}
+
+a:active {
+    color: green;
+}</code></pre>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                <p>
+                    A common recommended order is:
+                    <strong>:link → :visited → :hover → :active</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Background -->
+
+        <section class="section">
+
+            <h2>7. Link Background Color</h2>
+
+            <p>
+                You can add a background color to links.
+            </p>
+
+            <pre><code>a {
+    background-color: #2563eb;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+}</code></pre>
+
+            <div class="link-demo">
+
+                <a href="#"
+                   style="
+                   background:#2563eb;
+                   color:white;
+                   padding:10px 15px;
+                   text-decoration:none;
+                   border-radius:5px;">
+                    Button Style Link
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Border -->
+
+        <section class="section">
+
+            <h2>8. Links with Borders</h2>
+
+            <p>
+                CSS borders can be used to create button-like links.
+            </p>
+
+            <pre><code>a {
+    color: #2563eb;
+    border: 2px solid #2563eb;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Padding -->
+
+        <section class="section">
+
+            <h2>9. Link Padding</h2>
+
+            <p>
+                Padding creates space inside the link.
+            </p>
+
+            <pre><code>a {
+    padding: 10px 20px;
+}</code></pre>
+
+            <div class="success-box">
+
+                <strong>Tip:</strong>
+
+                Padding is useful when creating navigation buttons
+                and menu links.
+
+            </div>
+
+        </section>
+
+
+        <!-- Display -->
+
+        <section class="section">
+
+            <h2>10. Link as a Button</h2>
+
+            <p>
+                You can style an anchor element so that it looks like
+                a button.
+            </p>
+
+            <pre><code>a.button {
+    display: inline-block;
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+a.button:hover {
+    background-color: #1d4ed8;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Navigation Links -->
+
+        <section class="section">
+
+            <h2>11. Navigation Links</h2>
+
+            <p>
+                CSS is commonly used to create navigation menus.
+            </p>
+
+            <pre><code>.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+}
+
+.navbar a:hover {
+    background-color: #2563eb;
+}</code></pre>
+
+        </section>
+
+
+        <!-- External Links -->
+
+        <section class="section">
+
+            <h2>12. External Links</h2>
+
+            <p>
+                External links point to another website.
+            </p>
+
+            <pre><code>&lt;a href="https://www.google.com"&gt;
+    Google
+&lt;/a&gt;</code></pre>
+
+        </section>
+
+
+        <!-- Internal Links -->
+
+        <section class="section">
+
+            <h2>13. Internal Links</h2>
+
+            <p>
+                Internal links connect pages within the same website.
+            </p>
+
+            <pre><code>&lt;a href="about.html"&gt;
+    About Us
+&lt;/a&gt;</code></pre>
+
+        </section>
+
+
+        <!-- Open New Tab -->
+
+        <section class="section">
+
+            <h2>14. Open Link in a New Tab</h2>
+
+            <p>
+                Use <strong>target="_blank"</strong> to open a link
+                in a new browser tab.
+            </p>
+
+            <pre><code>&lt;a href="https://example.com"
+   target="_blank"
+   rel="noopener noreferrer"&gt;
+
+    Open Website
+
+&lt;/a&gt;</code></pre>
+
+            <div class="warning-box">
+
+                <strong>Note:</strong>
+
+                When using <strong>target="_blank"</strong>,
+                using <strong>rel="noopener noreferrer"</strong>
+                is a good security practice.
+
+            </div>
+
+        </section>
+
+
+        <!-- Link with Image -->
+
+        <section class="section">
+
+            <h2>15. Image as a Link</h2>
+
+            <p>
+                An image can also be placed inside an anchor element.
+            </p>
+
+            <pre><code>&lt;a href="https://example.com"&gt;
+
+    &lt;img src="image.jpg"
+         alt="Example Image"
+         width="200"&gt;
+
+&lt;/a&gt;</code></pre>
+
+        </section>
+
+
+        <!-- Link Transition -->
+
+        <section class="section">
+
+            <h2>16. CSS Link Transition</h2>
+
+            <p>
+                The <strong>transition</strong> property can make
+                hover effects smoother.
+            </p>
+
+            <pre><code>a {
+    color: #2563eb;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #dc2626;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Live Editor -->
+
+        <section class="section editor">
+
+            <h2>17. CSS Links Live Editor</h2>
+
+            <p>
+                Try changing the CSS code and click
+                <strong>Run Code</strong>.
+            </p>
+
+            <textarea id="codeInput"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+a {
+    color: white;
+    background-color: #2563eb;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+a:hover {
+    background-color: #dc2626;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>CSS Link Example</h2>
+
+<a href="#">
+    Hover Over Me
+</a>
+
+</body>
+
+</html></textarea>
+
+            <br>
+
+            <button class="run-btn"
+                    onclick="runCode()">
+                ▶ Run Code
+            </button>
+
+            <button class="clear-btn"
+                    onclick="clearCode()">
+                Clear
+            </button>
+
+            <iframe id="output"></iframe>
+
+        </section>
+
+
+        <!-- Key Points -->
+
+        <section class="section">
+
+            <h2>18. Key Points</h2>
+
+            <ul>
+
+                <li>
+                    Use <strong>a</strong> to style links.
+                </li>
+
+                <li>
+                    Use <strong>:link</strong> for normal links.
+                </li>
+
+                <li>
+                    Use <strong>:visited</strong> for visited links.
+                </li>
+
+                <li>
+                    Use <strong>:hover</strong> for mouse hover effects.
+                </li>
+
+                <li>
+                    Use <strong>:active</strong> when a link is clicked.
+                </li>
+
+                <li>
+                    Use <strong>text-decoration: none</strong>
+                    to remove underlines.
+                </li>
+
+                <li>
+                    Use <strong>padding</strong> to create space
+                    inside links.
+                </li>
+
+                <li>
+                    Use <strong>background-color</strong> and
+                    <strong>border</strong> to create button-style links.
+                </li>
+
+                <li>
+                    Use <strong>transition</strong> for smooth effects.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Navigation -->
+
+        <div class="lesson-nav">
+
+            <a href="css-icons.html">
+                ← Previous: CSS Icons
+            </a>
+
+            <a href="../index.html">
+                🏠 Home
+            </a>
+
+            <a href="css-padding.html">
+                Next: CSS Padding →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeInput").value;
+
+            document.getElementById("output").srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeInput").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
