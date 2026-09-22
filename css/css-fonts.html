@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn CSS Fonts with simple examples, font properties and an interactive code editor.">
+
+    <meta name="keywords"
+          content="CSS fonts, CSS font family, CSS font size, CSS font style, CSS font weight, CSS tutorial">
+
+    <meta name="author"
+          content="Code With Me">
+
+    <title>CSS Fonts | Code With Me</title>
+
+
+    <!-- Google Font Example -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        /* INFO BOXES */
+
+        .info-box {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* CODE */
+
+        .code-title {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 10px 0 20px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* FONT EXAMPLES */
+
+        .font-example-1 {
+            font-family: Arial, sans-serif;
+            font-size: 22px;
+        }
+
+        .font-example-2 {
+            font-family: Georgia, serif;
+            font-size: 22px;
+        }
+
+        .font-example-3 {
+            font-family: "Courier New", monospace;
+            font-size: 22px;
+        }
+
+        .font-example-4 {
+            font-family: "Poppins", sans-serif;
+            font-size: 22px;
+        }
+
+        /* LIVE EDITOR */
+
+        .editor {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+            background: #111827;
+            color: white;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .run-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 300px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: white;
+        }
+
+        /* LIST */
+
+        ul {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* NAVIGATION */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .page-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <div>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../index.html#courses">
+                Courses
+            </a>
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>CSS Fonts</h1>
+
+        <p>
+            Learn how to style text using CSS font properties.
+        </p>
+
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="section">
+
+            <h2>1. What are CSS Fonts?</h2>
+
+            <p>
+                CSS fonts are used to control the appearance of text
+                on a web page.
+            </p>
+
+            <p>
+                You can use CSS to change the font family, font size,
+                font style, font weight and other font properties.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Common CSS Font Properties:</strong>
+
+                <ul>
+
+                    <li>font-family</li>
+
+                    <li>font-size</li>
+
+                    <li>font-style</li>
+
+                    <li>font-weight</li>
+
+                    <li>font-variant</li>
+
+                    <li>font-stretch</li>
+
+                    <li>font</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- FONT FAMILY -->
+
+        <section class="section">
+
+            <h2>2. CSS font-family</h2>
+
+            <p>
+                The <strong>font-family</strong> property specifies
+                the font used for text.
+            </p>
+
+<pre><code>body {
+    font-family: Arial, sans-serif;
+}</code></pre>
+
+            <p class="font-example-1">
+                This text uses Arial.
+            </p>
+
+            <h3>Font Family Example</h3>
+
+<pre><code>h1 {
+    font-family: Georgia, serif;
+}
+
+p {
+    font-family: Arial, sans-serif;
+}</code></pre>
+
+            <div class="warning-box">
+
+                It is a good practice to provide a fallback font
+                after the main font.
+
+            </div>
+
+        </section>
+
+
+        <!-- SERIF -->
+
+        <section class="section">
+
+            <h2>3. Serif Fonts</h2>
+
+            <p>
+                Serif fonts have small decorative strokes at the
+                ends of letters.
+            </p>
+
+<pre><code>p {
+    font-family: Georgia, serif;
+}</code></pre>
+
+            <p class="font-example-2">
+                This is an example of a serif font.
+            </p>
+
+        </section>
+
+
+        <!-- SANS SERIF -->
+
+        <section class="section">
+
+            <h2>4. Sans-serif Fonts</h2>
+
+            <p>
+                Sans-serif fonts do not have decorative strokes.
+                They are commonly used for websites.
+            </p>
+
+<pre><code>p {
+    font-family: Arial, sans-serif;
+}</code></pre>
+
+            <p class="font-example-1">
+                This is an example of a sans-serif font.
+            </p>
+
+        </section>
+
+
+        <!-- MONOSPACE -->
+
+        <section class="section">
+
+            <h2>5. Monospace Fonts</h2>
+
+            <p>
+                In a monospace font, every character has approximately
+                the same width.
+            </p>
+
+<pre><code>code {
+    font-family: "Courier New", monospace;
+}</code></pre>
+
+            <p class="font-example-3">
+                This is a monospace font.
+            </p>
+
+        </section>
+
+
+        <!-- FONT SIZE -->
+
+        <section class="section">
+
+            <h2>6. CSS font-size</h2>
+
+            <p>
+                The <strong>font-size</strong> property controls
+                the size of text.
+            </p>
+
+<pre><code>h1 {
+    font-size: 40px;
+}
+
+p {
+    font-size: 18px;
+}</code></pre>
+
+            <h1 style="font-size: 40px;">
+                Large Heading
+            </h1>
+
+            <p style="font-size: 18px;">
+                This paragraph has an 18px font size.
+            </p>
+
+            <div class="info-box">
+
+                Common font-size units include
+                <strong>px, em, rem, %, vw</strong> and more.
+
+            </div>
+
+        </section>
+
+
+        <!-- FONT STYLE -->
+
+        <section class="section">
+
+            <h2>7. CSS font-style</h2>
+
+            <p>
+                The <strong>font-style</strong> property specifies
+                whether text should be normal, italic or oblique.
+            </p>
+
+<pre><code>p {
+    font-style: italic;
+}</code></pre>
+
+            <p style="font-style: italic;">
+                This text is italic.
+            </p>
+
+            <h3>Common Values</h3>
+
+            <ul>
+
+                <li>
+                    <strong>normal</strong> — normal text
+                </li>
+
+                <li>
+                    <strong>italic</strong> — italic text
+                </li>
+
+                <li>
+                    <strong>oblique</strong> — slanted text
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- FONT WEIGHT -->
+
+        <section class="section">
+
+            <h2>8. CSS font-weight</h2>
+
+            <p>
+                The <strong>font-weight</strong> property controls
+                how thick or bold the text appears.
+            </p>
+
+<pre><code>h1 {
+    font-weight: bold;
+}
+
+p {
+    font-weight: 400;
+}</code></pre>
+
+            <h3>Common Values</h3>
+
+            <table>
+
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>normal</td>
+                    <td>Normal font weight</td>
+                </tr>
+
+                <tr>
+                    <td>bold</td>
+                    <td>Bold text</td>
+                </tr>
+
+                <tr>
+                    <td>100 - 900</td>
+                    <td>Specific font weight</td>
+                </tr>
+
+            </table>
+
+            <p style="font-weight: 700;">
+                This text uses font-weight: 700.
+            </p>
+
+        </section>
+
+
+        <!-- FONT VARIANT -->
+
+        <section class="section">
+
+            <h2>9. CSS font-variant</h2>
+
+            <p>
+                The <strong>font-variant</strong> property can be used
+                to display text using small capital letters.
+            </p>
+
+<pre><code>p {
+    font-variant: small-caps;
+}</code></pre>
+
+            <p style="font-variant: small-caps;">
+                This text uses small caps.
+            </p>
+
+        </section>
+
+
+        <!-- FONT STRETCH -->
+
+        <section class="section">
+
+            <h2>10. CSS font-stretch</h2>
+
+            <p>
+                The <strong>font-stretch</strong> property controls
+                whether a supported font appears narrower or wider.
+            </p>
+
+<pre><code>p {
+    font-stretch: expanded;
+}</code></pre>
+
+            <div class="warning-box">
+
+                <strong>Note:</strong>
+
+                <br>
+
+                The effect depends on whether the selected font
+                contains the required width variations.
+
+            </div>
+
+        </section>
+
+
+        <!-- GOOGLE FONTS -->
+
+        <section class="section">
+
+            <h2>11. Using Google Fonts</h2>
+
+            <p>
+                Google Fonts provides many free web fonts that can
+                be used on websites.
+            </p>
+
+            <p>
+                First, add the Google Fonts stylesheet inside the
+                <code>&lt;head&gt;</code> section.
+            </p>
+
+<pre><code>&lt;link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap"
+    rel="stylesheet"&gt;</code></pre>
+
+            <p>
+                Then use the font in CSS:
+            </p>
+
+<pre><code>body {
+    font-family: "Poppins", sans-serif;
+}</code></pre>
+
+            <p class="font-example-4">
+                This text uses the Poppins Google Font.
+            </p>
+
+        </section>
+
+
+        <!-- FALLBACK FONTS -->
+
+        <section class="section">
+
+            <h2>12. CSS Font Fallbacks</h2>
+
+            <p>
+                It is useful to provide multiple fonts so the browser
+                can use another font if the first one is unavailable.
+            </p>
+
+<pre><code>body {
+    font-family: Arial, Helvetica, sans-serif;
+}</code></pre>
+
+            <p>
+                The browser tries the fonts from left to right.
+            </p>
+
+            <div class="success-box">
+
+                <strong>Best Practice:</strong>
+
+                <br>
+
+                Always include a generic font family such as
+                <strong>serif</strong>, <strong>sans-serif</strong>
+                or <strong>monospace</strong> as a fallback.
+
+            </div>
+
+        </section>
+
+
+        <!-- FONT SHORTHAND -->
+
+        <section class="section">
+
+            <h2>13. CSS font Shorthand</h2>
+
+            <p>
+                The <strong>font</strong> property can combine several
+                font properties into one declaration.
+            </p>
+
+<pre><code>p {
+    font: italic bold 18px Arial, sans-serif;
+}</code></pre>
+
+            <p>
+                This example combines:
+            </p>
+
+            <ul>
+
+                <li>font-style</li>
+
+                <li>font-weight</li>
+
+                <li>font-size</li>
+
+                <li>font-family</li>
+
+            </ul>
+
+            <div class="warning-box">
+
+                The <strong>font-size</strong> and
+                <strong>font-family</strong> values are important
+                parts of the shorthand syntax.
+
+            </div>
+
+        </section>
+
+
+        <!-- RESPONSIVE FONTS -->
+
+        <section class="section">
+
+            <h2>14. Responsive Font Size</h2>
+
+            <p>
+                You can use viewport units to make font sizes responsive.
+            </p>
+
+<pre><code>h1 {
+    font-size: 5vw;
+}</code></pre>
+
+            <p>
+                The font size changes according to the width of
+                the browser window.
+            </p>
+
+            <h3>Using clamp()</h3>
+
+<pre><code>h1 {
+    font-size: clamp(28px, 5vw, 60px);
+}</code></pre>
+
+            <div class="info-box">
+
+                <strong>clamp()</strong> allows you to define a
+                minimum, preferred and maximum font size.
+
+            </div>
+
+        </section>
+
+
+        <!-- FONT PROPERTIES TABLE -->
+
+        <section class="section">
+
+            <h2>15. CSS Font Properties Summary</h2>
+
+            <table>
+
+                <tr>
+                    <th>Property</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>font-family</td>
+                    <td>Sets the font type</td>
+                    <td>font-family: Arial;</td>
+                </tr>
+
+                <tr>
+                    <td>font-size</td>
+                    <td>Sets text size</td>
+                    <td>font-size: 20px;</td>
+                </tr>
+
+                <tr>
+                    <td>font-style</td>
+                    <td>Sets normal or italic style</td>
+                    <td>font-style: italic;</td>
+                </tr>
+
+                <tr>
+                    <td>font-weight</td>
+                    <td>Controls thickness</td>
+                    <td>font-weight: bold;</td>
+                </tr>
+
+                <tr>
+                    <td>font-variant</td>
+                    <td>Controls font variation</td>
+                    <td>font-variant: small-caps;</td>
+                </tr>
+
+                <tr>
+                    <td>font-stretch</td>
+                    <td>Controls font width</td>
+                    <td>font-stretch: expanded;</td>
+                </tr>
+
+                <tr>
+                    <td>font</td>
+                    <td>Shorthand for font properties</td>
+                    <td>font: bold 20px Arial;</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- LIVE EDITOR -->
+
+        <section class="section">
+
+            <h2>16. CSS Fonts Live Editor</h2>
+
+            <p>
+                Change the CSS code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <div class="editor">
+
+<textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+h1 {
+    color: #2563eb;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 700;
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>CSS Fonts</h1>
+
+<p>
+    CSS allows you to control the font family,
+    size, style, weight and many other properties
+    of text.
+</p>
+
+</body>
+
+</html></textarea>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+
+                        ▶ Run Code
+
+                    </button>
+
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+
+                        ✖ Clear
+
+                    </button>
+
+                </div>
+
+
+                <iframe
+                    id="output"
+                    title="CSS Fonts Output">
+                </iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEY POINTS -->
+
+        <section class="section">
+
+            <h2>17. Key Points to Remember</h2>
+
+            <ul>
+
+                <li>
+                    Use <strong>font-family</strong> to choose a font.
+                </li>
+
+                <li>
+                    Use <strong>font-size</strong> to change text size.
+                </li>
+
+                <li>
+                    Use <strong>font-style</strong> for italic or
+                    oblique text.
+                </li>
+
+                <li>
+                    Use <strong>font-weight</strong> to control
+                    text thickness.
+                </li>
+
+                <li>
+                    Use <strong>font-variant</strong> for font
+                    variations such as small caps.
+                </li>
+
+                <li>
+                    Use <strong>font-stretch</strong> when the selected
+                    font supports different widths.
+                </li>
+
+                <li>
+                    Use <strong>Google Fonts</strong> to add additional
+                    web fonts.
+                </li>
+
+                <li>
+                    Use fallback fonts to improve compatibility.
+                </li>
+
+                <li>
+                    Use <strong>clamp()</strong> for responsive
+                    font sizes.
+                </li>
+
+                <li>
+                    The <strong>font</strong> property can combine
+                    several font properties.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="page-navigation">
+
+            <a href="css-text.html">
+                ← Previous: CSS Text
+            </a>
+
+            <a href="../index.html">
+                🏠 Home
+            </a>
+
+            <a href="css-padding.html">
+                Next: CSS Padding →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            document.getElementById("output").srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+
+        window.onload = function () {
+
+            runCode();
+
+        };
+
+    </script>
+
+
+</body>
+
+</html>
