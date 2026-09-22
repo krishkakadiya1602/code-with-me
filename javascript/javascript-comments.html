@@ -1,0 +1,992 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn JavaScript Comments with simple examples and an interactive code editor.">
+
+    <meta name="keywords"
+          content="JavaScript Comments, JavaScript Tutorial, Single Line Comments, Multi Line Comments">
+
+    <meta name="author"
+          content="Code With Me">
+
+    <title>JavaScript Comments | Code With Me</title>
+
+
+    <style>
+
+        /* ========================================
+           RESET
+        ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* ========================================
+           BODY
+        ======================================== */
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+
+        /* ========================================
+           NAVBAR
+        ======================================== */
+
+        .navbar {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* ========================================
+           PAGE HEADER
+        ======================================== */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #1d4ed8,
+                #7c3aed
+            );
+
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+
+        /* ========================================
+           CONTAINER
+        ======================================== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+
+        /* ========================================
+           CONTENT CARD
+        ======================================== */
+
+        .content-card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-card h2 {
+            color: #1d4ed8;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-card h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-card p {
+            margin-bottom: 15px;
+        }
+
+
+        /* ========================================
+           INFO BOX
+        ======================================== */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #1d4ed8;
+        }
+
+
+        /* ========================================
+           LIST
+        ======================================== */
+
+        .content-card ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-card li {
+            margin-bottom: 8px;
+        }
+
+
+        /* ========================================
+           CODE BLOCK
+        ======================================== */
+
+        .code-block {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0 25px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+        }
+
+
+        /* ========================================
+           EDITOR
+        ======================================== */
+
+        .editor-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .editor-section h2 {
+            color: #1d4ed8;
+            margin-bottom: 10px;
+        }
+
+        .editor-section p {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 320px;
+            resize: vertical;
+            padding: 18px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: #111827;
+            color: #f9fafb;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+
+        /* ========================================
+           BUTTONS
+        ======================================== */
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+
+        /* ========================================
+           PREVIEW
+        ======================================== */
+
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #374151;
+        }
+
+        .output-frame {
+            width: 100%;
+            height: 260px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+        }
+
+
+        /* ========================================
+           COMPARISON TABLE
+        ======================================== */
+
+        .comment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .comment-table th,
+        .comment-table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comment-table th {
+            background: #1d4ed8;
+            color: white;
+        }
+
+        .comment-table tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background: #111827;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #2563eb;
+        }
+
+        .home-btn {
+            background: #7c3aed;
+        }
+
+        .home-btn:hover {
+            background: #6d28d9;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+
+        /* ========================================
+           MOBILE
+        ======================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .content-card,
+            .editor-section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .comment-table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
+
+    <nav class="navbar">
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">
+                    Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript-introduction.html">
+                    JavaScript
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">
+                    About
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ========================================
+         PAGE HEADER
+    ======================================== -->
+
+    <header class="page-header">
+
+        <h1>JavaScript Comments</h1>
+
+        <p>
+            Learn how to write comments in JavaScript.
+        </p>
+
+    </header>
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ======================================== -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="content-card">
+
+            <h2>What are JavaScript Comments?</h2>
+
+            <p>
+                Comments are notes written inside JavaScript code.
+                They are ignored by the JavaScript engine and are not
+                executed as code.
+            </p>
+
+            <p>
+                Comments help programmers explain what the code does
+                and make programs easier to understand and maintain.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                Comments do not affect the execution of your
+                JavaScript program.
+
+            </div>
+
+        </section>
+
+
+        <!-- WHY USE COMMENTS -->
+
+        <section class="content-card">
+
+            <h2>Why Use Comments?</h2>
+
+            <ul>
+
+                <li>
+                    To explain difficult code.
+                </li>
+
+                <li>
+                    To make code easier to understand.
+                </li>
+
+                <li>
+                    To document your program.
+                </li>
+
+                <li>
+                    To temporarily disable code.
+                </li>
+
+                <li>
+                    To help other developers understand your code.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- SINGLE LINE COMMENT -->
+
+        <section class="content-card">
+
+            <h2>1. Single-Line Comments</h2>
+
+            <p>
+                A single-line comment starts with two forward slashes:
+                <strong>//</strong>
+            </p>
+
+            <p>
+                Everything after <strong>//</strong> on that line
+                is treated as a comment.
+            </p>
+
+            <div class="code-block">
+<pre>
+// This is a JavaScript comment
+
+let name = "Krish";
+
+console.log(name);
+</pre>
+            </div>
+
+            <p>
+                The comment will not be executed.
+                Only the JavaScript statement will run.
+            </p>
+
+        </section>
+
+
+        <!-- COMMENT AFTER CODE -->
+
+        <section class="content-card">
+
+            <h2>Comment After a Statement</h2>
+
+            <p>
+                You can also place a comment after a JavaScript statement.
+            </p>
+
+            <div class="code-block">
+<pre>
+let age = 20; // Store the user's age
+
+console.log(age);
+</pre>
+            </div>
+
+            <div class="info-box">
+
+                <strong>Tip:</strong>
+
+                Short comments can be placed at the end of a line
+                to explain what that particular line does.
+
+            </div>
+
+        </section>
+
+
+        <!-- MULTI LINE COMMENT -->
+
+        <section class="content-card">
+
+            <h2>2. Multi-Line Comments</h2>
+
+            <p>
+                Multi-line comments start with
+                <strong>/*</strong> and end with
+                <strong>*/</strong>.
+            </p>
+
+            <div class="code-block">
+<pre>
+/*
+    This is a multi-line comment.
+
+    It can contain multiple lines
+    of text.
+*/
+
+let message = "Hello JavaScript!";
+
+console.log(message);
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- MULTI LINE EXAMPLE -->
+
+        <section class="content-card">
+
+            <h2>Multi-Line Comment Example</h2>
+
+            <div class="code-block">
+<pre>
+/*
+    Student Information
+    Name: Krish
+    Course: JavaScript
+    Website: Code With Me
+*/
+
+let student = "Krish";
+
+console.log(student);
+</pre>
+            </div>
+
+        </section>
+
+
+        <!-- DISABLE CODE -->
+
+        <section class="content-card">
+
+            <h2>Using Comments to Disable Code</h2>
+
+            <p>
+                Comments can also be used to temporarily prevent
+                JavaScript code from running.
+            </p>
+
+            <div class="code-block">
+<pre>
+let firstName = "Krish";
+
+// let lastName = "Kakadiya";
+
+console.log(firstName);
+</pre>
+            </div>
+
+            <p>
+                The <strong>lastName</strong> line will not execute
+                because it has been commented out.
+            </p>
+
+        </section>
+
+
+        <!-- DIFFERENCE -->
+
+        <section class="content-card">
+
+            <h2>Single-Line vs Multi-Line Comments</h2>
+
+            <table class="comment-table">
+
+                <tr>
+
+                    <th>
+                        Type
+                    </th>
+
+                    <th>
+                        Syntax
+                    </th>
+
+                    <th>
+                        Use
+                    </th>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Single-Line
+                    </td>
+
+                    <td>
+                        <code>// comment</code>
+                    </td>
+
+                    <td>
+                        Used for a single line.
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Multi-Line
+                    </td>
+
+                    <td>
+                        <code>/* comment */</code>
+                    </td>
+
+                    <td>
+                        Used for multiple lines.
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- IMPORTANT -->
+
+        <section class="content-card">
+
+            <h2>Important Points</h2>
+
+            <ul>
+
+                <li>
+                    JavaScript comments are ignored by the browser.
+                </li>
+
+                <li>
+                    Use <strong>//</strong> for single-line comments.
+                </li>
+
+                <li>
+                    Use <strong>/* */</strong> for multi-line comments.
+                </li>
+
+                <li>
+                    Comments make code easier to read.
+                </li>
+
+                <li>
+                    Comments can be used to temporarily disable code.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- ========================================
+             CODE EDITOR
+        ======================================== -->
+
+        <section class="editor-section">
+
+            <h2>JavaScript Comments - Code Editor</h2>
+
+            <p>
+                Write your JavaScript code below and click
+                <strong>Run Code</strong>.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>JavaScript Comments</title>
+
+</head>
+
+<body>
+
+    <h2 id="result"></h2>
+
+    <script>
+
+        // This is a single-line comment
+
+        /*
+            This is a multi-line comment.
+            JavaScript ignores these lines.
+        */
+
+        let name = "Code With Me";
+
+        document.getElementById("result").innerHTML =
+            "Welcome to " + name + "!";
+
+        console.log("JavaScript comments example.");
+
+    </script>
+
+</body>
+
+</html></textarea>
+
+
+            <div class="button-group">
+
+                <button
+                    class="btn run-btn"
+                    onclick="runCode()">
+
+                    ▶ Run Code
+
+                </button>
+
+                <button
+                    class="btn clear-btn"
+                    onclick="clearCode()">
+
+                    ✕ Clear
+
+                </button>
+
+            </div>
+
+
+            <h3 class="output-title">
+                Preview
+            </h3>
+
+
+            <iframe
+                id="outputFrame"
+                class="output-frame"
+                title="JavaScript Code Preview">
+            </iframe>
+
+        </section>
+
+
+        <!-- ========================================
+             NAVIGATION
+        ======================================== -->
+
+        <div class="lesson-navigation">
+
+
+            <!-- PREVIOUS -->
+
+            <a
+                href="javascript-output.html"
+                class="nav-btn">
+
+                ← Previous
+
+            </a>
+
+
+            <!-- HOME -->
+
+            <a
+                href="../index.html"
+                class="nav-btn home-btn">
+
+                🏠 Home
+
+            </a>
+
+
+            <!-- NEXT -->
+
+            <a
+                href="javascript-statements.html"
+                class="nav-btn">
+
+                Next →
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python.
+        </p>
+
+    </footer>
+
+
+    <!-- ========================================
+         JAVASCRIPT CODE RUNNER
+    ======================================== -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const outputFrame =
+                document.getElementById("outputFrame");
+
+            outputFrame.srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("outputFrame").srcdoc = "";
+
+        }
+
+
+        window.addEventListener("load", function () {
+
+            runCode();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
+```
