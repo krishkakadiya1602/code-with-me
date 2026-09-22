@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Arrays | Code With Me</title>
+
+    <meta name="description"
+          content="Learn JavaScript Arrays with simple examples. Learn how to create, access, modify and work with arrays in JavaScript.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #f7df1e, #f59e0b);
+            color: #111827;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        /* ================= LESSON CARD ================= */
+
+        .lesson-card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .lesson-card h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .lesson-card h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .lesson-card p {
+            margin-bottom: 15px;
+        }
+
+        .lesson-card ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .lesson-card li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= INFO BOX ================= */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* ================= CODE ================= */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            color: #dc2626;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        /* ================= TABLE ================= */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* ================= EDITOR ================= */
+
+        .editor-section {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 320px;
+            background: #020617;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #22c55e;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        /* ================= OUTPUT ================= */
+
+        .output-title {
+            margin-top: 20px;
+            color: #2563eb;
+        }
+
+        iframe {
+            width: 100%;
+            height: 420px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            margin-top: 10px;
+        }
+
+        /* ================= KEY POINTS ================= */
+
+        .key-points {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            border-radius: 7px;
+        }
+
+        .key-points ul {
+            margin-left: 25px;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .lesson-navigation {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin: 45px 0;
+        }
+
+        .lesson-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            padding: 0 24px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .lesson-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .previous-btn {
+            margin-right: auto;
+        }
+
+        .home-btn {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .next-btn {
+            margin-left: auto;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .lesson-card {
+                padding: 20px;
+            }
+
+            .lesson-card h2 {
+                font-size: 24px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .lesson-btn {
+                width: 100%;
+                min-height: 55px;
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .previous-btn,
+            .home-btn,
+            .next-btn {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul>
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <h1>JavaScript Arrays</h1>
+
+        <p>
+            Learn how to create, access, change and work with
+            arrays in JavaScript.
+        </p>
+
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="lesson-card">
+
+            <h2>What is a JavaScript Array?</h2>
+
+            <p>
+                An array is a special variable that can store multiple
+                values in a single variable.
+            </p>
+
+            <p>
+                For example, instead of creating separate variables
+                for different fruits, you can store all the fruits
+                inside one array.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];</code></pre>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                <p>
+                    The array above contains three values:
+                    Apple, Banana and Mango.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATE ARRAY -->
+
+        <section class="lesson-card">
+
+            <h2>Creating an Array</h2>
+
+            <p>
+                You can create an array using square brackets
+                <span class="inline-code">[]</span>.
+            </p>
+
+            <pre><code>const cars = ["BMW", "Audi", "Toyota"];</code></pre>
+
+            <p>
+                Each value inside the array is called an
+                <strong>element</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- ARRAY INDEX -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript Array Index</h2>
+
+            <p>
+                Array indexes start from <strong>0</strong>.
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>Index</th>
+                    <th>Value</th>
+                </tr>
+
+                <tr>
+                    <td>0</td>
+                    <td>Apple</td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Banana</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Mango</td>
+                </tr>
+
+            </table>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits[0]);
+console.log(fruits[1]);
+console.log(fruits[2]);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Apple
+Banana
+Mango</code></pre>
+
+        </section>
+
+
+        <!-- ACCESS ARRAY -->
+
+        <section class="lesson-card">
+
+            <h2>Accessing Array Elements</h2>
+
+            <p>
+                You can access an array element by using its index.
+            </p>
+
+            <pre><code>const colors = ["Red", "Green", "Blue"];
+
+console.log(colors[0]);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Red</code></pre>
+
+        </section>
+
+
+        <!-- CHANGE ARRAY -->
+
+        <section class="lesson-card">
+
+            <h2>Changing Array Elements</h2>
+
+            <p>
+                You can change an array element by assigning a new value
+                to its index.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+fruits[1] = "Orange";
+
+console.log(fruits);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>["Apple", "Orange", "Mango"]</code></pre>
+
+        </section>
+
+
+        <!-- ARRAY LENGTH -->
+
+        <section class="lesson-card">
+
+            <h2>JavaScript Array Length</h2>
+
+            <p>
+                The <span class="inline-code">length</span> property
+                returns the number of elements in an array.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits.length);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>3</code></pre>
+
+        </section>
+
+
+        <!-- ADD ELEMENT -->
+
+        <section class="lesson-card">
+
+            <h2>Adding Elements to an Array</h2>
+
+            <h3>Using push()</h3>
+
+            <p>
+                The <span class="inline-code">push()</span> method adds
+                an element to the end of an array.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana"];
+
+fruits.push("Mango");
+
+console.log(fruits);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>["Apple", "Banana", "Mango"]</code></pre>
+
+        </section>
+
+
+        <!-- REMOVE ELEMENT -->
+
+        <section class="lesson-card">
+
+            <h2>Removing Elements from an Array</h2>
+
+            <h3>Using pop()</h3>
+
+            <p>
+                The <span class="inline-code">pop()</span> method removes
+                the last element from an array.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+fruits.pop();
+
+console.log(fruits);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>["Apple", "Banana"]</code></pre>
+
+        </section>
+
+
+        <!-- UNSHIFT -->
+
+        <section class="lesson-card">
+
+            <h2>Adding an Element at the Beginning</h2>
+
+            <p>
+                The <span class="inline-code">unshift()</span> method
+                adds an element to the beginning of an array.
+            </p>
+
+            <pre><code>const fruits = ["Banana", "Mango"];
+
+fruits.unshift("Apple");
+
+console.log(fruits);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>["Apple", "Banana", "Mango"]</code></pre>
+
+        </section>
+
+
+        <!-- SHIFT -->
+
+        <section class="lesson-card">
+
+            <h2>Removing the First Element</h2>
+
+            <p>
+                The <span class="inline-code">shift()</span> method
+                removes the first element from an array.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+fruits.shift();
+
+console.log(fruits);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>["Banana", "Mango"]</code></pre>
+
+        </section>
+
+
+        <!-- LOOP ARRAY -->
+
+        <section class="lesson-card">
+
+            <h2>Looping Through an Array</h2>
+
+            <p>
+                You can use a <span class="inline-code">for</span> loop
+                to access every element in an array.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+for (let i = 0; i &lt; fruits.length; i++) {
+
+    console.log(fruits[i]);
+
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Apple
+Banana
+Mango</code></pre>
+
+        </section>
+
+
+        <!-- FOR OF -->
+
+        <section class="lesson-card">
+
+            <h2>Using for...of with Arrays</h2>
+
+            <p>
+                The <span class="inline-code">for...of</span> loop
+                makes it easy to access array values.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+for (const fruit of fruits) {
+
+    console.log(fruit);
+
+}</code></pre>
+
+        </section>
+
+
+        <!-- ARRAY WITH NUMBERS -->
+
+        <section class="lesson-card">
+
+            <h2>Array of Numbers</h2>
+
+            <p>
+                Arrays can store numbers as well.
+            </p>
+
+            <pre><code>const numbers = [10, 20, 30, 40, 50];
+
+console.log(numbers[2]);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>30</code></pre>
+
+        </section>
+
+
+        <!-- MIXED ARRAY -->
+
+        <section class="lesson-card">
+
+            <h2>Array with Different Data Types</h2>
+
+            <p>
+                JavaScript arrays can contain different types of values.
+            </p>
+
+            <pre><code>const data = [
+    "Krish",
+    20,
+    true,
+    25.5
+];
+
+console.log(data);</code></pre>
+
+        </section>
+
+
+        <!-- NESTED ARRAY -->
+
+        <section class="lesson-card">
+
+            <h2>Nested Arrays</h2>
+
+            <p>
+                An array can contain another array. This is called
+                a nested array.
+            </p>
+
+            <pre><code>const numbers = [
+    [1, 2, 3],
+    [4, 5, 6]
+];
+
+console.log(numbers[0][1]);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>2</code></pre>
+
+        </section>
+
+
+        <!-- ARRAY OF OBJECTS -->
+
+        <section class="lesson-card">
+
+            <h2>Array of Objects</h2>
+
+            <p>
+                Arrays can also contain objects.
+            </p>
+
+            <pre><code>const students = [
+    {
+        name: "Krish",
+        age: 20
+    },
+    {
+        name: "Rahul",
+        age: 21
+    }
+];
+
+console.log(students[0].name);</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Krish</code></pre>
+
+        </section>
+
+
+        <!-- ARRAY METHODS -->
+
+        <section class="lesson-card">
+
+            <h2>Common JavaScript Array Methods</h2>
+
+            <table>
+
+                <tr>
+                    <th>Method</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>push()</td>
+                    <td>Adds an element to the end.</td>
+                </tr>
+
+                <tr>
+                    <td>pop()</td>
+                    <td>Removes the last element.</td>
+                </tr>
+
+                <tr>
+                    <td>shift()</td>
+                    <td>Removes the first element.</td>
+                </tr>
+
+                <tr>
+                    <td>unshift()</td>
+                    <td>Adds an element to the beginning.</td>
+                </tr>
+
+                <tr>
+                    <td>length</td>
+                    <td>Returns the number of elements.</td>
+                </tr>
+
+                <tr>
+                    <td>includes()</td>
+                    <td>Checks whether an element exists.</td>
+                </tr>
+
+                <tr>
+                    <td>indexOf()</td>
+                    <td>Returns the index of an element.</td>
+                </tr>
+
+                <tr>
+                    <td>join()</td>
+                    <td>Converts array elements into a string.</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- INCLUDES -->
+
+        <section class="lesson-card">
+
+            <h2>Checking if an Element Exists</h2>
+
+            <p>
+                The <span class="inline-code">includes()</span> method
+                checks whether an array contains a particular value.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits.includes("Banana"));
+console.log(fruits.includes("Orange"));</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>true
+false</code></pre>
+
+        </section>
+
+
+        <!-- INDEXOF -->
+
+        <section class="lesson-card">
+
+            <h2>Finding an Array Element</h2>
+
+            <p>
+                The <span class="inline-code">indexOf()</span> method
+                returns the index of an element.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits.indexOf("Mango"));</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>2</code></pre>
+
+        </section>
+
+
+        <!-- JOIN -->
+
+        <section class="lesson-card">
+
+            <h2>Joining Array Elements</h2>
+
+            <p>
+                The <span class="inline-code">join()</span> method
+                combines array elements into a string.
+            </p>
+
+            <pre><code>const fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits.join(", "));</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Apple, Banana, Mango</code></pre>
+
+        </section>
+
+
+        <!-- PRACTICAL EXAMPLE -->
+
+        <section class="lesson-card">
+
+            <h2>Practical Example</h2>
+
+            <p>
+                Here is a simple student list using a JavaScript array.
+            </p>
+
+            <pre><code>const students = [
+    "Krish",
+    "Rahul",
+    "Amit",
+    "Priya"
+];
+
+let output = "";
+
+for (let i = 0; i &lt; students.length; i++) {
+
+    output += (i + 1) + ". " + students[i] + "&lt;br&gt;";
+
+}
+
+document.getElementById("students").innerHTML = output;</code></pre>
+
+        </section>
+
+
+        <!-- LIVE CODE EDITOR -->
+
+        <section class="lesson-card editor-section">
+
+            <h2>JavaScript Arrays - Live Code Editor</h2>
+
+            <p>
+                Write your JavaScript array code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Arrays</title>
+</head>
+
+<body>
+
+    <h2>My Favorite Fruits</h2>
+
+    <p id="result"></p>
+
+    <script>
+
+        const fruits = [
+            "Apple",
+            "Banana",
+            "Mango",
+            "Orange"
+        ];
+
+        let output = "";
+
+        for (const fruit of fruits) {
+            output += fruit + "<br>";
+        }
+
+        document.getElementById("result").innerHTML = output;
+
+    </script>
+
+</body>
+
+</html></textarea>
+
+            <div class="button-container">
+
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearCode()">
+                    ✕ Clear
+                </button>
+
+            </div>
+
+            <h3 class="output-title">
+                Live Preview
+            </h3>
+
+            <iframe id="output"></iframe>
+
+        </section>
+
+
+        <!-- KEY POINTS -->
+
+        <section class="lesson-card">
+
+            <h2>Key Points</h2>
+
+            <div class="key-points">
+
+                <ul>
+
+                    <li>An array stores multiple values in one variable.</li>
+
+                    <li>Array indexes start from <strong>0</strong>.</li>
+
+                    <li>Use <strong>length</strong> to find the number of elements.</li>
+
+                    <li>Use <strong>push()</strong> to add an element at the end.</li>
+
+                    <li>Use <strong>pop()</strong> to remove the last element.</li>
+
+                    <li>Use <strong>unshift()</strong> to add an element at the beginning.</li>
+
+                    <li>Use <strong>shift()</strong> to remove the first element.</li>
+
+                    <li>Use <strong>includes()</strong> to check whether a value exists.</li>
+
+                    <li>Use <strong>indexOf()</strong> to find an element's index.</li>
+
+                    <li>Arrays can contain strings, numbers, booleans, objects and other arrays.</li>
+
+                    <li>You can use loops to process array elements.</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <div class="lesson-navigation">
+
+            <a href="javascript-objects.html"
+               class="lesson-btn previous-btn">
+                ← Previous: JavaScript Objects
+            </a>
+
+            <a href="../index.html"
+               class="lesson-btn home-btn">
+                🏠 Home
+            </a>
+
+            <a href="javascript-array-methods.html"
+               class="lesson-btn next-btn">
+                Next: JavaScript Array Methods →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function runCode() {
+
+            const codeEditor =
+                document.getElementById("codeEditor");
+
+            const output =
+                document.getElementById("output");
+
+            output.srcdoc = codeEditor.value;
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+        }
+
+
+        window.addEventListener("load", function () {
+
+            runCode();
+
+        });
+
+    </script>
+
+</body>
+</html>
