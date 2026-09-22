@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn CSS Icons with Font Awesome, icon styling, sizing, colors and examples.">
+
+    <meta name="keywords"
+          content="CSS icons, Font Awesome, CSS icon size, CSS icon color, CSS tutorial">
+
+    <meta name="author"
+          content="Code With Me">
+
+    <title>CSS Icons | Code With Me</title>
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        /* INFO BOX */
+
+        .info-box {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* CODE */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 10px 0 20px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* ICON EXAMPLES */
+
+        .icon-demo {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .icon-box {
+            text-align: center;
+            padding: 20px;
+            min-width: 120px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .icon-box i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .blue-icon {
+            color: #2563eb;
+        }
+
+        .green-icon {
+            color: #16a34a;
+        }
+
+        .red-icon {
+            color: #dc2626;
+        }
+
+        .purple-icon {
+            color: #7c3aed;
+        }
+
+        .orange-icon {
+            color: #f97316;
+        }
+
+        /* ICON BUTTON */
+
+        .icon-button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .icon-button:hover {
+            background: #1d4ed8;
+        }
+
+        /* ICON LINKS */
+
+        .icon-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .icon-link:hover {
+            color: #7c3aed;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* LIVE EDITOR */
+
+        .editor {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+            background: #111827;
+            color: white;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .run-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 300px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: white;
+        }
+
+        /* LIST */
+
+        ul {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* NAVIGATION */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .page-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <div>
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../index.html#courses">
+                Courses
+            </a>
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>CSS Icons</h1>
+
+        <p>
+            Learn how to add and style icons using CSS and Font Awesome.
+        </p>
+
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="section">
+
+            <h2>1. What are CSS Icons?</h2>
+
+            <p>
+                Icons are small graphical symbols used to represent
+                actions, objects or information on a website.
+            </p>
+
+            <p>
+                Examples include home, search, user, heart, email,
+                phone and social media icons.
+            </p>
+
+            <div class="info-box">
+
+                CSS can be used to control the
+                <strong>size, color, spacing and position</strong>
+                of icons.
+
+            </div>
+
+        </section>
+
+
+        <!-- FONT AWESOME -->
+
+        <section class="section">
+
+            <h2>2. Using Font Awesome Icons</h2>
+
+            <p>
+                Font Awesome is a popular icon library that provides
+                thousands of icons.
+            </p>
+
+            <p>
+                Add the Font Awesome CSS file inside the
+                <code>&lt;head&gt;</code> section:
+            </p>
+
+<pre><code>&lt;link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"&gt;</code></pre>
+
+            <p>
+                Then use an icon with an
+                <code>&lt;i&gt;</code> element:
+            </p>
+
+<pre><code>&lt;i class="fa-solid fa-house"&gt;&lt;/i&gt;</code></pre>
+
+            <div class="icon-demo">
+
+                <div class="icon-box">
+
+                    <i class="fa-solid fa-house blue-icon"></i>
+
+                    <p>Home</p>
+
+                </div>
+
+                <div class="icon-box">
+
+                    <i class="fa-solid fa-user green-icon"></i>
+
+                    <p>User</p>
+
+                </div>
+
+                <div class="icon-box">
+
+                    <i class="fa-solid fa-heart red-icon"></i>
+
+                    <p>Heart</p>
+
+                </div>
+
+                <div class="icon-box">
+
+                    <i class="fa-solid fa-envelope purple-icon"></i>
+
+                    <p>Email</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ICON SIZE -->
+
+        <section class="section">
+
+            <h2>3. Changing Icon Size</h2>
+
+            <p>
+                You can change the size of an icon using the
+                CSS <strong>font-size</strong> property.
+            </p>
+
+<pre><code>.icon {
+    font-size: 40px;
+}</code></pre>
+
+            <div>
+
+                <i class="fa-solid fa-star"
+                   style="font-size: 20px;">
+                </i>
+
+                <i class="fa-solid fa-star"
+                   style="font-size: 35px;">
+                </i>
+
+                <i class="fa-solid fa-star"
+                   style="font-size: 50px;">
+                </i>
+
+                <i class="fa-solid fa-star"
+                   style="font-size: 70px;">
+                </i>
+
+            </div>
+
+        </section>
+
+
+        <!-- ICON COLOR -->
+
+        <section class="section">
+
+            <h2>4. Changing Icon Color</h2>
+
+            <p>
+                Use the CSS <strong>color</strong> property to
+                change an icon's color.
+            </p>
+
+<pre><code>.icon {
+    color: blue;
+}</code></pre>
+
+            <div class="icon-demo">
+
+                <i class="fa-solid fa-circle-check"
+                   style="font-size: 45px; color: green;">
+                </i>
+
+                <i class="fa-solid fa-circle-xmark"
+                   style="font-size: 45px; color: red;">
+                </i>
+
+                <i class="fa-solid fa-circle-info"
+                   style="font-size: 45px; color: blue;">
+                </i>
+
+            </div>
+
+        </section>
+
+
+        <!-- ICON SPACING -->
+
+        <section class="section">
+
+            <h2>5. Adding Space Between Icons</h2>
+
+            <p>
+                You can use <strong>margin</strong> to create space
+                between icons.
+            </p>
+
+<pre><code>.icon {
+    margin-right: 15px;
+}</code></pre>
+
+            <div>
+
+                <i class="fa-brands fa-facebook"
+                   style="font-size: 35px; margin-right: 15px;">
+                </i>
+
+                <i class="fa-brands fa-instagram"
+                   style="font-size: 35px; margin-right: 15px;">
+                </i>
+
+                <i class="fa-brands fa-youtube"
+                   style="font-size: 35px; margin-right: 15px;">
+                </i>
+
+                <i class="fa-brands fa-github"
+                   style="font-size: 35px;">
+                </i>
+
+            </div>
+
+        </section>
+
+
+        <!-- ICON BUTTONS -->
+
+        <section class="section">
+
+            <h2>6. Icons Inside Buttons</h2>
+
+            <p>
+                Icons can be combined with text inside buttons.
+            </p>
+
+<pre><code>&lt;button&gt;
+    &lt;i class="fa-solid fa-download"&gt;&lt;/i&gt;
+    Download
+&lt;/button&gt;</code></pre>
+
+            <button class="icon-button">
+
+                <i class="fa-solid fa-download"></i>
+
+                Download
+
+            </button>
+
+            <button class="icon-button">
+
+                <i class="fa-solid fa-user"></i>
+
+                Login
+
+            </button>
+
+            <button class="icon-button">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Send
+
+            </button>
+
+        </section>
+
+
+        <!-- ICON LINKS -->
+
+        <section class="section">
+
+            <h2>7. Icons Inside Links</h2>
+
+            <p>
+                Icons can also be used with navigation links.
+            </p>
+
+<pre><code>&lt;a href="#"&gt;
+    &lt;i class="fa-solid fa-house"&gt;&lt;/i&gt;
+    Home
+&lt;/a&gt;</code></pre>
+
+            <div>
+
+                <a href="#"
+                   class="icon-link">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Home
+
+                </a>
+
+                <a href="#"
+                   class="icon-link">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    Profile
+
+                </a>
+
+                <a href="#"
+                   class="icon-link">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    Contact
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMMON ICONS -->
+
+        <section class="section">
+
+            <h2>8. Common Font Awesome Icons</h2>
+
+            <table>
+
+                <tr>
+                    <th>Icon</th>
+                    <th>Class</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-house"></i>
+                    </td>
+
+                    <td>fa-solid fa-house</td>
+
+                    <td>Home</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-user"></i>
+                    </td>
+
+                    <td>fa-solid fa-user</td>
+
+                    <td>User/Profile</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </td>
+
+                    <td>fa-solid fa-magnifying-glass</td>
+
+                    <td>Search</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-envelope"></i>
+                    </td>
+
+                    <td>fa-solid fa-envelope</td>
+
+                    <td>Email</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-phone"></i>
+                    </td>
+
+                    <td>fa-solid fa-phone</td>
+
+                    <td>Phone</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-heart"></i>
+                    </td>
+
+                    <td>fa-solid fa-heart</td>
+
+                    <td>Like/Favorite</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-star"></i>
+                    </td>
+
+                    <td>fa-solid fa-star</td>
+
+                    <td>Rating/Favorite</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-download"></i>
+                    </td>
+
+                    <td>fa-solid fa-download</td>
+
+                    <td>Download</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+
+                    <td>fa-solid fa-trash</td>
+
+                    <td>Delete</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-gear"></i>
+                    </td>
+
+                    <td>fa-solid fa-gear</td>
+
+                    <td>Settings</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- SOCIAL MEDIA -->
+
+        <section class="section">
+
+            <h2>9. Social Media Icons</h2>
+
+            <p>
+                Font Awesome also provides many social media icons.
+            </p>
+
+            <div class="icon-demo">
+
+                <div class="icon-box">
+
+                    <i class="fa-brands fa-facebook"
+                       style="font-size: 45px;">
+                    </i>
+
+                    <p>Facebook</p>
+
+                </div>
+
+                <div class="icon-box">
+
+                    <i class="fa-brands fa-instagram"
+                       style="font-size: 45px;">
+                    </i>
+
+                    <p>Instagram</p>
+
+                </div>
+
+                <div class="icon-box">
+
+                    <i class="fa-brands fa-youtube"
+                       style="font-size: 45px;">
+                    </i>
+
+                    <p>YouTube</p>
+
+                </div>
+
+                <div class="icon-box">
+
+                    <i class="fa-brands fa-github"
+                       style="font-size: 45px;">
+                    </i>
+
+                    <p>GitHub</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ICONS WITH HOVER -->
+
+        <section class="section">
+
+            <h2>10. Icon Hover Effect</h2>
+
+            <p>
+                CSS pseudo-classes such as <strong>:hover</strong>
+                can be used to change an icon when the user moves
+                the mouse over it.
+            </p>
+
+<pre><code>.icon {
+    color: gray;
+    font-size: 40px;
+}
+
+.icon:hover {
+    color: blue;
+}</code></pre>
+
+            <style>
+
+                .hover-icon {
+                    color: #777;
+                    font-size: 45px;
+                    transition: 0.3s;
+                    cursor: pointer;
+                    margin-right: 20px;
+                }
+
+                .hover-icon:hover {
+                    color: #2563eb;
+                    transform: scale(1.2);
+                }
+
+            </style>
+
+            <i class="fa-solid fa-house hover-icon"></i>
+
+            <i class="fa-solid fa-heart hover-icon"></i>
+
+            <i class="fa-solid fa-star hover-icon"></i>
+
+            <i class="fa-solid fa-bell hover-icon"></i>
+
+        </section>
+
+
+        <!-- ICON ANIMATION -->
+
+        <section class="section">
+
+            <h2>11. Animated Icons</h2>
+
+            <p>
+                Font Awesome provides animation classes such as
+                spinning icons.
+            </p>
+
+<pre><code>&lt;i class="fa-solid fa-spinner fa-spin"&gt;&lt;/i&gt;</code></pre>
+
+            <div class="icon-demo">
+
+                <div class="icon-box">
+
+                    <i class="fa-solid fa-spinner fa-spin"
+                       style="font-size: 40px;">
+                    </i>
+
+                    <p>Loading</p>
+
+                </div>
+
+                <div class="icon-box">
+
+                    <i class="fa-solid fa-circle-notch fa-spin"
+                       style="font-size: 40px;">
+                    </i>
+
+                    <p>Loading</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ICON SIZES -->
+
+        <section class="section">
+
+            <h2>12. Font Awesome Icon Sizes</h2>
+
+            <p>
+                Font Awesome provides predefined size classes.
+            </p>
+
+<pre><code>&lt;i class="fa-solid fa-house fa-xs"&gt;&lt;/i&gt;
+
+&lt;i class="fa-solid fa-house fa-sm"&gt;&lt;/i&gt;
+
+&lt;i class="fa-solid fa-house fa-lg"&gt;&lt;/i&gt;
+
+&lt;i class="fa-solid fa-house fa-2x"&gt;&lt;/i&gt;
+
+&lt;i class="fa-solid fa-house fa-3x"&gt;&lt;/i&gt;</code></pre>
+
+            <div class="icon-demo">
+
+                <i class="fa-solid fa-house fa-xs"></i>
+
+                <i class="fa-solid fa-house fa-sm"></i>
+
+                <i class="fa-solid fa-house fa-lg"></i>
+
+                <i class="fa-solid fa-house fa-2x"></i>
+
+                <i class="fa-solid fa-house fa-3x"></i>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACCESSIBILITY -->
+
+        <section class="section">
+
+            <h2>13. Accessibility and Icons</h2>
+
+            <p>
+                When an icon communicates important information,
+                make sure its meaning is available to users who
+                cannot see the icon.
+            </p>
+
+            <p>
+                For decorative icons, you can use
+                <code>aria-hidden="true"</code>.
+            </p>
+
+<pre><code>&lt;i class="fa-solid fa-house"
+   aria-hidden="true"&gt;
+&lt;/i&gt;</code></pre>
+
+            <div class="success-box">
+
+                <strong>Best Practice:</strong>
+
+                <br>
+
+                Do not rely only on an icon to communicate an
+                important action. Add text or an accessible label
+                when appropriate.
+
+            </div>
+
+        </section>
+
+
+        <!-- LIVE EDITOR -->
+
+        <section class="section">
+
+            <h2>14. CSS Icons Live Editor</h2>
+
+            <p>
+                Edit the code below and click
+                <strong>Run Code</strong>.
+            </p>
+
+            <div class="editor">
+
+<textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    color: #2563eb;
+}
+
+.icon {
+    font-size: 60px;
+    color: #2563eb;
+    margin: 20px;
+    transition: 0.3s;
+}
+
+.icon:hover {
+    color: #7c3aed;
+    transform: scale(1.2);
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>My CSS Icons</h1>
+
+<i class="fa-solid fa-house icon"></i>
+
+<i class="fa-solid fa-heart icon"></i>
+
+<i class="fa-solid fa-star icon"></i>
+
+<i class="fa-solid fa-user icon"></i>
+
+<br>
+
+<button>
+
+    <i class="fa-solid fa-download"></i>
+
+    Download
+
+</button>
+
+</body>
+
+</html></textarea>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+
+                        ▶ Run Code
+
+                    </button>
+
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+
+                        ✖ Clear
+
+                    </button>
+
+                </div>
+
+
+                <iframe
+                    id="output"
+                    title="CSS Icons Output">
+                </iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEY POINTS -->
+
+        <section class="section">
+
+            <h2>15. Key Points to Remember</h2>
+
+            <ul>
+
+                <li>
+                    Icons can make websites easier to understand
+                    and navigate.
+                </li>
+
+                <li>
+                    Font Awesome provides a large collection of icons.
+                </li>
+
+                <li>
+                    Use <strong>font-size</strong> to change icon size.
+                </li>
+
+                <li>
+                    Use <strong>color</strong> to change icon color.
+                </li>
+
+                <li>
+                    Use <strong>margin</strong> to add space between icons.
+                </li>
+
+                <li>
+                    Icons can be placed inside buttons and links.
+                </li>
+
+                <li>
+                    CSS <strong>:hover</strong> can create interactive
+                    icon effects.
+                </li>
+
+                <li>
+                    Font Awesome supports animated icons.
+                </li>
+
+                <li>
+                    Use accessible labels or text when an icon
+                    represents an important action.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="page-navigation">
+
+            <a href="css-fonts.html">
+                ← Previous: CSS Fonts
+            </a>
+
+            <a href="../index.html">
+                🏠 Home
+            </a>
+
+            <a href="css-padding.html">
+                Next: CSS Padding →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            document.getElementById("output").srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+
+        window.onload = function () {
+
+            runCode();
+
+        };
+
+    </script>
+
+
+</body>
+
+</html>
