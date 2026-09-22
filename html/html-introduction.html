@@ -5,273 +5,452 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>HTML Introduction | Code With Me</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Learn HTML in depth. Understand HTML structure, elements, tags, attributes, HTML5, semantic HTML, DOM, SEO, accessibility and how browsers render HTML.">
+          content="Learn CSS Introduction with Code With Me. Understand what CSS is, how CSS works, and how to style HTML pages.">
+
+    <meta name="keywords"
+          content="CSS Introduction, Learn CSS, CSS Tutorial, CSS Course, HTML CSS, Code With Me">
+
+    <meta name="author"
+          content="Code With Me">
+
+    <title>CSS Introduction | Code With Me</title>
+
 
     <style>
+
+        /* ========================================
+           GENERAL
+        ======================================== */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
 
         body {
-            background: #f5f7fb;
-            color: #222;
-            line-height: 1.8;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
         }
 
-        /* ================= HEADER ================= */
 
-        header {
+        /* ========================================
+           NAVBAR
+        ======================================== */
+
+        .navbar {
             background: #111827;
             color: white;
-            padding: 20px 8%;
+            padding: 15px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
         }
 
         .logo span {
-            color: #38bdf8;
+            color: #60a5fa;
         }
 
-        /* ================= CONTAINER ================= */
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* ========================================
+           HEADER
+        ======================================== */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
+            color: white;
+            text-align: center;
+
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+
+        /* ========================================
+           MAIN CONTAINER
+        ======================================== */
 
         .container {
-            max-width: 1050px;
+            max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        /* ================= HERO ================= */
 
-        .hero {
-            background: linear-gradient(135deg, #0f172a, #1e3a8a);
-            color: white;
-            padding: 50px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
+        /* ========================================
+           CONTENT CARD
+        ======================================== */
 
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            color: #dbeafe;
-            font-size: 19px;
-        }
-
-        /* ================= LESSON ================= */
-
-        .lesson {
+        .content-card {
             background: white;
-            margin-bottom: 25px;
             padding: 30px;
-            border-radius: 13px;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+            margin-bottom: 30px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
-        .lesson h2 {
-            color: #1e3a8a;
-            margin-bottom: 15px;
-            font-size: 27px;
-        }
-
-        .lesson h3 {
+        .content-card h2 {
             color: #2563eb;
-            margin-top: 22px;
-            margin-bottom: 8px;
-        }
-
-        .lesson p {
-            color: #444;
-            margin-bottom: 12px;
-        }
-
-        .lesson ul,
-        .lesson ol {
-            margin-left: 25px;
             margin-bottom: 15px;
+            font-size: 28px;
         }
 
-        .lesson li {
-            margin-bottom: 7px;
-        }
-
-        /* ================= INFO BOX ================= */
-
-        .info-box {
-            background: #eff6ff;
-            border-left: 5px solid #2563eb;
-            padding: 18px;
-            margin: 18px 0;
-            border-radius: 7px;
-        }
-
-        .warning-box {
-            background: #fff7ed;
-            border-left: 5px solid #f97316;
-            padding: 18px;
-            margin: 18px 0;
-            border-radius: 7px;
-        }
-
-        /* ================= TABLE ================= */
-
-        .table-container {
-            overflow-x: auto;
-            margin-top: 15px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background: #1e3a8a;
-            color: white;
-        }
-
-        /* ================= CODE EDITOR ================= */
-
-        .code-title {
-            font-weight: bold;
-            color: #1e3a8a;
+        .content-card h3 {
+            color: #374151;
             margin-top: 20px;
             margin-bottom: 10px;
         }
 
-        textarea {
-            width: 100%;
-            min-height: 320px;
-            background: #020617;
-            color: #e5e7eb;
-            border: none;
-            border-radius: 10px;
-            padding: 20px;
-            font-family: Consolas, monospace;
-            font-size: 15px;
-            line-height: 1.6;
-            resize: vertical;
-            outline: none;
+        .content-card p {
+            margin-bottom: 15px;
         }
 
-        /* ================= RUN BUTTON ================= */
+
+        /* ========================================
+           INFO BOX
+        ======================================== */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+
+            padding: 18px;
+            margin: 20px 0;
+
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #1d4ed8;
+        }
+
+
+        /* ========================================
+           LIST
+        ======================================== */
+
+        .content-card ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-card li {
+            margin-bottom: 8px;
+        }
+
+
+        /* ========================================
+           CODE BLOCK
+        ======================================== */
+
+        .code-block {
+            background: #111827;
+            color: #e5e7eb;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            overflow-x: auto;
+
+            margin: 20px 0;
+
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            font-size: 15px;
+        }
+
+
+        /* ========================================
+           EDITOR
+        ======================================== */
+
+        .editor-section {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .editor-section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        #codeEditor {
+            width: 100%;
+            min-height: 250px;
+
+            background: #111827;
+            color: #f9fafb;
+
+            border: none;
+            outline: none;
+
+            border-radius: 8px;
+
+            padding: 20px;
+
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            font-size: 15px;
+
+            resize: vertical;
+        }
+
+
+        /* ========================================
+           EDITOR BUTTONS
+        ======================================== */
+
+        .editor-buttons {
+            margin-top: 15px;
+
+            display: flex;
+            gap: 10px;
+        }
+
+        .editor-btn {
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            font-weight: bold;
+        }
 
         .run-btn {
-            margin-top: 15px;
             background: #16a34a;
             color: white;
-            border: none;
-            padding: 13px 25px;
-            border-radius: 7px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
         }
 
         .run-btn:hover {
             background: #15803d;
         }
 
-        /* ================= OUTPUT ================= */
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+
+        /* ========================================
+           OUTPUT
+        ======================================== */
 
         .output-title {
-            font-weight: bold;
-            color: #1e3a8a;
             margin-top: 25px;
             margin-bottom: 10px;
+
+            color: #374151;
         }
 
-        iframe {
+        #output {
             width: 100%;
-            min-height: 280px;
+            height: 300px;
+
             background: white;
-            border: 2px solid #dbeafe;
-            border-radius: 10px;
+
+            border: 2px solid #d1d5db;
+
+            border-radius: 8px;
         }
 
-        /* ================= NAVIGATION ================= */
 
-        .buttons {
+        /* ========================================
+           PREVIOUS / NEXT NAVIGATION
+        ======================================== */
+
+        .lesson-navigation {
+
             display: flex;
+
             justify-content: space-between;
-            gap: 15px;
-            margin: 35px 0;
-            flex-wrap: wrap;
+
+            align-items: center;
+
+            width: 100%;
+
+            margin-top: 40px;
+
+            margin-bottom: 40px;
+
+            padding: 0;
         }
 
-        .btn {
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            padding: 13px 22px;
-            border-radius: 7px;
-            font-weight: bold;
+        .nav-btn {
+
             display: inline-block;
+
+            padding: 13px 25px;
+
+            background: #2563eb;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
         }
 
-        .btn:hover {
+        .nav-btn:hover {
+
             background: #1d4ed8;
+
+            transform: translateY(-2px);
         }
 
-        /* ================= FOOTER ================= */
+        .previous {
+
+            margin-right: auto;
+        }
+
+        .next {
+
+            margin-left: auto;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
 
         footer {
+
             background: #111827;
-            color: #cbd5e1;
+
+            color: white;
+
             text-align: center;
+
             padding: 25px;
+
             margin-top: 40px;
         }
 
-        /* ================= MOBILE ================= */
 
-        @media (max-width: 600px) {
+        /* ========================================
+           MOBILE RESPONSIVE
+        ======================================== */
 
-            .hero {
-                padding: 30px 20px;
-            }
+        @media (max-width: 768px) {
 
-            .hero h1 {
-                font-size: 31px;
-            }
+            .navbar {
 
-            .lesson {
-                padding: 21px;
-            }
-
-            .lesson h2 {
-                font-size: 23px;
-            }
-
-            .buttons {
                 flex-direction: column;
+
+                gap: 15px;
             }
 
-            .btn {
+            .nav-links {
+
+                gap: 15px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .page-header h1 {
+
+                font-size: 32px;
+            }
+
+            .content-card {
+
+                padding: 20px;
+            }
+
+            .editor-section {
+
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+
                 width: 100%;
-                text-align: center;
+            }
+
+            .nav-btn {
+
+                padding: 10px 16px;
+
+                font-size: 14px;
             }
 
         }
@@ -284,63 +463,94 @@
 <body>
 
 
-    <!-- ================= HEADER ================= -->
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
 
-    <header>
+    <nav class="navbar">
 
         <div class="logo">
-            Code<span>WithMe</span>
+            Code <span>WithMe</span>
         </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">
+                    Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">
+                    About
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- ========================================
+         PAGE HEADER
+    ======================================== -->
+
+    <header class="page-header">
+
+        <h1>
+            CSS Introduction
+        </h1>
+
+        <p>
+            Learn the basics of CSS and start styling your websites.
+        </p>
 
     </header>
 
 
 
-    <!-- ================= MAIN ================= -->
+    <!-- ========================================
+         MAIN CONTENT
+    ======================================== -->
 
     <main class="container">
 
 
-        <!-- HERO -->
+        <!-- INTRODUCTION -->
 
-        <section class="hero">
+        <section class="content-card">
 
-            <h1>1. HTML Introduction</h1>
-
-            <p>
-                Learn HTML from the beginning and understand how web pages
-                are created, structured and displayed in a web browser.
-            </p>
-
-        </section>
-
-
-
-        <!-- ================= WHAT IS HTML ================= -->
-
-        <section class="lesson">
-
-            <h2>What is HTML?</h2>
+            <h2>
+                What is CSS?
+            </h2>
 
             <p>
-                HTML stands for
-                <strong>HyperText Markup Language</strong>.
-                HTML is the standard markup language used to structure
-                content on web pages.
+                CSS stands for
+                <strong>Cascading Style Sheets</strong>.
             </p>
 
             <p>
-                HTML allows developers to define different types of
-                content such as headings, paragraphs, images, links,
-                lists, tables, forms, videos and more.
+                CSS is used to style and design web pages.
+                It controls the appearance of HTML elements
+                such as colors, fonts, spacing, borders,
+                layouts, and backgrounds.
             </p>
 
             <div class="info-box">
 
                 <strong>Important:</strong>
 
-                HTML is a markup language, not a programming language.
-                HTML describes the structure and meaning of web content.
+                HTML is used to create the structure
+                of a webpage, while CSS is used to
+                make that webpage beautiful and attractive.
 
             </div>
 
@@ -348,44 +558,48 @@
 
 
 
-        <!-- ================= WHY HTML ================= -->
+        <!-- WHY CSS -->
 
-        <section class="lesson">
+        <section class="content-card">
 
-            <h2>Why Do We Need HTML?</h2>
-
-            <p>
-                A web browser needs a structured document to understand
-                what content should appear on a webpage.
-            </p>
+            <h2>
+                Why Do We Use CSS?
+            </h2>
 
             <p>
-                HTML provides that structure.
+                CSS helps us control the visual appearance
+                of HTML documents.
             </p>
-
-            <h3>HTML can be used to create:</h3>
 
             <ul>
 
-                <li>Headings</li>
+                <li>
+                    Change text colors
+                </li>
 
-                <li>Paragraphs</li>
+                <li>
+                    Change background colors
+                </li>
 
-                <li>Links</li>
+                <li>
+                    Change font size and font style
+                </li>
 
-                <li>Images</li>
+                <li>
+                    Add borders
+                </li>
 
-                <li>Lists</li>
+                <li>
+                    Add margins and padding
+                </li>
 
-                <li>Tables</li>
+                <li>
+                    Create responsive layouts
+                </li>
 
-                <li>Forms</li>
-
-                <li>Audio and video</li>
-
-                <li>Navigation menus</li>
-
-                <li>Webpage sections</li>
+                <li>
+                    Create attractive websites
+                </li>
 
             </ul>
 
@@ -393,527 +607,167 @@
 
 
 
-        <!-- ================= HISTORY ================= -->
+        <!-- CSS EXAMPLE -->
 
-        <section class="lesson">
+        <section class="content-card">
 
-            <h2>Brief History of HTML</h2>
-
-            <p>
-                HTML was created for sharing and linking documents
-                over the early World Wide Web.
-            </p>
+            <h2>
+                Simple CSS Example
+            </h2>
 
             <p>
-                Over time, HTML evolved and gained support for more
-                features and richer web applications.
+                Here is a simple example of CSS:
             </p>
 
-            <h3>Important stages</h3>
-
-            <ul>
-
-                <li>
-                    Early HTML provided basic document structure
-                    and hyperlinks.
-                </li>
-
-                <li>
-                    Later versions introduced additional elements
-                    and improved capabilities.
-                </li>
-
-                <li>
-                    HTML5 introduced many modern elements and APIs
-                    used by today's web applications.
-                </li>
-
-            </ul>
-
-            <div class="info-box">
-
-                <strong>Today:</strong>
-
-                Modern HTML is developed as a living standard and
-                works together with CSS and JavaScript to build
-                modern websites and web applications.
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ================= HOW HTML WORKS ================= -->
-
-        <section class="lesson">
-
-            <h2>How Does HTML Work?</h2>
-
-            <p>
-                When you create an HTML file, the browser reads the
-                HTML markup and builds a representation of the
-                document.
-            </p>
-
-            <p>
-                The browser then uses that structure to display the
-                webpage.
-            </p>
-
-            <h3>Basic process</h3>
-
-            <ol>
-
-                <li>You create an HTML file.</li>
-
-                <li>The browser loads the file.</li>
-
-                <li>The browser parses the HTML.</li>
-
-                <li>The browser creates the document structure.</li>
-
-                <li>The browser displays the content.</li>
-
-            </ol>
-
-        </section>
-
-
-
-        <!-- ================= BASIC STRUCTURE ================= -->
-
-        <section class="lesson">
-
-            <h2>Basic HTML Document Structure</h2>
-
-            <p>
-                A typical HTML document contains a document type
-                declaration, an HTML root element, a head section
-                and a body section.
-            </p>
-
-            <div class="code-title">
-                Basic Structure:
-            </div>
-
-            <textarea readonly>
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
-    <title>My Webpage</title>
-
-</head>
-
-<body>
-
-    <h1>Hello World</h1>
-
-    <p>This is my webpage.</p>
-
-</body>
-
-</html>
-            </textarea>
-
-        </section>
-
-
-
-        <!-- ================= DOCTYPE ================= -->
-
-        <section class="lesson">
-
-            <h2>Understanding DOCTYPE</h2>
-
-            <p>
-                The declaration
-                <strong>&lt;!DOCTYPE html&gt;</strong>
-                tells the browser that the document uses the modern
-                HTML standard.
-            </p>
-
-            <p>
-                It appears at the beginning of an HTML document.
-            </p>
-
-        </section>
-
-
-
-        <!-- ================= HTML ELEMENT ================= -->
-
-        <section class="lesson">
-
-            <h2>The HTML Element</h2>
-
-            <p>
-                The
-                <strong>&lt;html&gt;</strong>
-                element is the root element of the document.
-            </p>
-
-            <p>
-                Other HTML elements are placed inside it.
-            </p>
-
-            <pre>
+            <div class="code-block"><pre>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 
-    ...
+&lt;head&gt;
 
-&lt;/html&gt;
-            </pre>
+&lt;style&gt;
 
-        </section>
+h1 {
+    color: blue;
+}
 
+p {
+    font-size: 20px;
+}
 
+&lt;/style&gt;
 
-        <!-- ================= HEAD ================= -->
+&lt;/head&gt;
 
-        <section class="lesson">
+&lt;body&gt;
 
-            <h2>The &lt;head&gt; Section</h2>
+&lt;h1&gt;Hello CSS&lt;/h1&gt;
 
-            <p>
-                The head section contains information about the
-                document that is generally not displayed as the
-                main page content.
-            </p>
+&lt;p&gt;CSS makes websites beautiful.&lt;/p&gt;
 
-            <h3>Common elements inside head:</h3>
+&lt;/body&gt;
 
-            <ul>
-
-                <li>&lt;title&gt;</li>
-
-                <li>&lt;meta&gt;</li>
-
-                <li>&lt;link&gt;</li>
-
-                <li>&lt;style&gt;</li>
-
-                <li>&lt;script&gt;</li>
-
-            </ul>
+&lt;/html&gt;</pre></div>
 
         </section>
 
 
 
-        <!-- ================= BODY ================= -->
+        <!-- CSS SYNTAX -->
 
-        <section class="lesson">
+        <section class="content-card">
 
-            <h2>The &lt;body&gt; Section</h2>
+            <h2>
+                CSS Syntax
+            </h2>
 
             <p>
-                The body contains the content that users normally
-                see and interact with on the webpage.
+                A CSS rule contains a selector,
+                property, and value.
             </p>
 
-            <p>
-                Examples include headings, paragraphs, images,
-                buttons, links, forms and other visible content.
-            </p>
+            <div class="code-block"><pre>selector {
+    property: value;
+}</pre></div>
 
-        </section>
+            <h3>
+                Example
+            </h3>
 
-
-
-        <!-- ================= TAGS ================= -->
-
-        <section class="lesson">
-
-            <h2>HTML Tags</h2>
+            <div class="code-block"><pre>p {
+    color: red;
+    font-size: 20px;
+}</pre></div>
 
             <p>
-                HTML uses tags to describe elements in a document.
-            </p>
-
-            <p>
-                For example:
-            </p>
-
-            <pre>
-&lt;h1&gt;Welcome&lt;/h1&gt;
-
-&lt;p&gt;This is a paragraph.&lt;/p&gt;
-            </pre>
-
-            <p>
-                Here, <strong>&lt;h1&gt;</strong> represents a
-                heading element and <strong>&lt;p&gt;</strong>
-                represents a paragraph element.
+                In this example,
+                <strong>p</strong> is the selector,
+                <strong>color</strong> and
+                <strong>font-size</strong> are properties,
+                and <strong>red</strong> and
+                <strong>20px</strong> are values.
             </p>
 
         </section>
 
 
 
-        <!-- ================= ELEMENTS ================= -->
+        <!-- THREE WAYS -->
 
-        <section class="lesson">
+        <section class="content-card">
 
-            <h2>HTML Elements</h2>
-
-            <p>
-                An HTML element generally consists of an opening tag,
-                content and a closing tag.
-            </p>
-
-            <pre>
-&lt;p&gt;Hello World&lt;/p&gt;
-            </pre>
+            <h2>
+                Ways to Add CSS
+            </h2>
 
             <p>
-                In this example:
+                There are three common ways to add CSS
+                to an HTML document.
             </p>
 
-            <ul>
+            <h3>
+                1. Inline CSS
+            </h3>
 
-                <li>
-                    <strong>&lt;p&gt;</strong> is the opening tag.
-                </li>
+            <div class="code-block"><pre>&lt;p style="color: red;"&gt;
+    Hello World
+&lt;/p&gt;</pre></div>
 
-                <li>
-                    <strong>Hello World</strong> is the content.
-                </li>
 
-                <li>
-                    <strong>&lt;/p&gt;</strong> is the closing tag.
-                </li>
+            <h3>
+                2. Internal CSS
+            </h3>
 
-            </ul>
+            <div class="code-block"><pre>&lt;style&gt;
+
+p {
+    color: blue;
+}
+
+&lt;/style&gt;</pre></div>
+
+
+            <h3>
+                3. External CSS
+            </h3>
+
+            <div class="code-block"><pre>&lt;link rel="stylesheet" href="style.css"&gt;</pre></div>
 
         </section>
 
 
 
-        <!-- ================= ATTRIBUTES ================= -->
+        <!-- CSS BENEFITS -->
 
-        <section class="lesson">
+        <section class="content-card">
 
-            <h2>HTML Attributes</h2>
-
-            <p>
-                Attributes provide additional information about
-                an HTML element.
-            </p>
-
-            <pre>
-&lt;a href="https://example.com"&gt;
-    Visit Website
-&lt;/a&gt;
-            </pre>
-
-            <p>
-                Here, <strong>href</strong> is an attribute of
-                the anchor element.
-            </p>
-
-        </section>
-
-
-
-        <!-- ================= HTML5 ================= -->
-
-        <section class="lesson">
-
-            <h2>What is HTML5?</h2>
-
-            <p>
-                HTML5 is the modern generation of HTML and includes
-                many elements and capabilities useful for modern
-                websites and applications.
-            </p>
-
-            <h3>Examples of modern HTML elements:</h3>
-
-            <ul>
-
-                <li>&lt;header&gt;</li>
-
-                <li>&lt;nav&gt;</li>
-
-                <li>&lt;main&gt;</li>
-
-                <li>&lt;section&gt;</li>
-
-                <li>&lt;article&gt;</li>
-
-                <li>&lt;aside&gt;</li>
-
-                <li>&lt;footer&gt;</li>
-
-                <li>&lt;video&gt;</li>
-
-                <li>&lt;audio&gt;</li>
-
-                <li>&lt;canvas&gt;</li>
-
-            </ul>
-
-        </section>
-
-
-
-        <!-- ================= SEMANTIC HTML ================= -->
-
-        <section class="lesson">
-
-            <h2>Semantic HTML</h2>
-
-            <p>
-                Semantic elements communicate the meaning or role
-                of content more clearly.
-            </p>
-
-            <pre>
-&lt;header&gt;
-
-&lt;nav&gt;
-
-&lt;main&gt;
-
-&lt;section&gt;
-
-&lt;article&gt;
-
-&lt;footer&gt;
-            </pre>
-
-            <p>
-                Semantic HTML can make documents easier for people,
-                search engines and assistive technologies to understand.
-            </p>
-
-        </section>
-
-
-
-        <!-- ================= HTML CSS JS ================= -->
-
-        <section class="lesson">
-
-            <h2>HTML, CSS and JavaScript</h2>
-
-            <p>
-                Modern websites commonly use three core technologies.
-            </p>
-
-            <div class="table-container">
-
-                <table>
-
-                    <tr>
-                        <th>Technology</th>
-                        <th>Main Purpose</th>
-                    </tr>
-
-                    <tr>
-                        <td>HTML</td>
-                        <td>Structure and content</td>
-                    </tr>
-
-                    <tr>
-                        <td>CSS</td>
-                        <td>Design and presentation</td>
-                    </tr>
-
-                    <tr>
-                        <td>JavaScript</td>
-                        <td>Behavior and interactivity</td>
-                    </tr>
-
-                </table>
-
-            </div>
-
-            <div class="info-box">
-
-                Think of it simply as:
-
-                <br><br>
-
-                <strong>HTML = Structure</strong><br>
-                <strong>CSS = Design</strong><br>
-                <strong>JavaScript = Behavior</strong>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ================= DOM ================= -->
-
-        <section class="lesson">
-
-            <h2>What is the DOM?</h2>
-
-            <p>
-                DOM stands for
-                <strong>Document Object Model</strong>.
-            </p>
-
-            <p>
-                When a browser loads an HTML document, it creates
-                an object-based representation of the document.
-                JavaScript can use this representation to read
-                and modify webpage content and structure.
-            </p>
-
-            <pre>
-HTML Document
-      ↓
-Browser parses HTML
-      ↓
-DOM
-      ↓
-JavaScript can interact with it
-            </pre>
-
-        </section>
-
-
-
-        <!-- ================= SEO ================= -->
-
-        <section class="lesson">
-
-            <h2>HTML and SEO</h2>
-
-            <p>
-                HTML structure can also provide important information
-                that helps search engines understand webpage content.
-            </p>
-
-            <h3>Examples:</h3>
+            <h2>
+                Benefits of CSS
+            </h2>
 
             <ul>
 
                 <li>
-                    Meaningful page titles
+                    Saves time
                 </li>
 
                 <li>
-                    Proper heading structure
+                    Makes websites attractive
                 </li>
 
                 <li>
-                    Descriptive links
+                    Allows reusable styles
                 </li>
 
                 <li>
-                    Semantic HTML
+                    Makes website maintenance easier
                 </li>
 
                 <li>
-                    Alternative text for meaningful images
+                    Supports responsive design
+                </li>
+
+                <li>
+                    Separates content from presentation
                 </li>
 
             </ul>
@@ -922,193 +776,135 @@ JavaScript can interact with it
 
 
 
-        <!-- ================= ACCESSIBILITY ================= -->
+        <!-- ========================================
+             INTERACTIVE EDITOR
+        ======================================== -->
 
-        <section class="lesson">
+        <section class="editor-section">
 
-            <h2>HTML and Accessibility</h2>
-
-            <p>
-                Accessible HTML helps people using assistive
-                technologies navigate and understand webpages.
-            </p>
-
-            <p>
-                Using appropriate elements, labels, headings,
-                link text and image alternative text can improve
-                the accessibility of a webpage.
-            </p>
-
-        </section>
-
-
-
-        <!-- ================= COMMON MISTAKES ================= -->
-
-        <section class="lesson">
-
-            <h2>Common Beginner Mistakes</h2>
-
-            <ol>
-
-                <li>
-                    Forgetting to close elements when a closing tag
-                    is required.
-                </li>
-
-                <li>
-                    Incorrectly nesting HTML elements.
-                </li>
-
-                <li>
-                    Using headings only for visual size instead of
-                    document structure.
-                </li>
-
-                <li>
-                    Forgetting meaningful alternative text for
-                    informative images.
-                </li>
-
-                <li>
-                    Writing incorrect file paths for links and images.
-                </li>
-
-                <li>
-                    Forgetting the viewport meta tag for responsive pages.
-                </li>
-
-            </ol>
-
-            <div class="warning-box">
-
-                <strong>Tip:</strong>
-
-                Always keep your HTML properly structured and
-                indented. Clean HTML is easier to read, debug
-                and maintain.
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ================= PRACTICAL EXAMPLE ================= -->
-
-        <section class="lesson">
-
-            <h2>Practice: Create Your First Webpage</h2>
+            <h2>
+                CSS Code Editor
+            </h2>
 
             <p>
-                Edit the code below and click
-                <strong>Run Code</strong> to see the result.
+                Write HTML and CSS code below
+                and click <strong>Run Code</strong>
+                to see the result.
             </p>
 
-            <div class="code-title">
-                Write your HTML code:
-            </div>
 
-            <textarea id="code"><!DOCTYPE html>
+            <textarea id="codeEditor"><!DOCTYPE html>
 <html>
 
 <head>
 
-    <title>My First Website</title>
+<style>
+
+body {
+    font-family: Arial;
+    text-align: center;
+    background: #f3f4f6;
+}
+
+h1 {
+    color: #2563eb;
+}
+
+p {
+    color: #374151;
+    font-size: 20px;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+}
+
+</style>
 
 </head>
 
 <body>
 
-    <h1>Welcome to My Website</h1>
+<h1>Hello CSS!</h1>
 
-    <p>
-        I am learning HTML with Code With Me.
-    </p>
+<p>
+CSS makes websites beautiful.
+</p>
 
-    <h2>My Skills</h2>
-
-    <ul>
-
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-
-    </ul>
-
-    <a href="https://example.com">
-        Visit Example
-    </a>
+<button>
+Click Me
+</button>
 
 </body>
 
 </html></textarea>
 
 
-            <button class="run-btn" onclick="runCode()">
-                ▶ Run Code
-            </button>
+            <div class="editor-buttons">
+
+                <button
+                    class="editor-btn run-btn"
+                    onclick="runCode()">
+
+                    ▶ Run Code
+
+                </button>
 
 
-            <div class="output-title">
-                Output:
+                <button
+                    class="editor-btn clear-btn"
+                    onclick="clearCode()">
+
+                    Clear
+
+                </button>
+
             </div>
 
 
-            <iframe id="output"></iframe>
+            <h3 class="output-title">
+                Output
+            </h3>
+
+
+            <iframe
+                id="output"
+                title="CSS Code Output">
+            </iframe>
 
         </section>
 
 
 
-        <!-- ================= SUMMARY ================= -->
+        <!-- ========================================
+             PREVIOUS / NEXT
+        ======================================== -->
 
-        <section class="lesson">
+        <div class="lesson-navigation">
 
-            <h2>HTML Introduction Summary</h2>
+            <!-- LEFT SIDE -->
 
-            <p>
-                In this lesson, you learned the foundation of HTML.
-            </p>
+            <a
+                href="../index.html"
+                class="nav-btn previous">
 
-            <ul>
-
-                <li>HTML stands for HyperText Markup Language.</li>
-
-                <li>HTML is used to structure webpage content.</li>
-
-                <li>HTML documents contain elements.</li>
-
-                <li>Elements can have attributes.</li>
-
-                <li>The head contains document metadata and resources.</li>
-
-                <li>The body contains the main webpage content.</li>
-
-                <li>HTML works together with CSS and JavaScript.</li>
-
-                <li>Semantic HTML gives meaning to document structure.</li>
-
-                <li>The browser builds a DOM from HTML.</li>
-
-                <li>Good HTML can support accessibility and SEO.</li>
-
-            </ul>
-
-        </section>
-
-
-
-        <!-- ================= NAVIGATION ================= -->
-
-        <div class="buttons">
-
-            <a class="btn" href="../index.html">
                 ← Previous
+
             </a>
 
-            <a class="btn" href="html-tags.html">
-                Next: HTML Basic Tags →
+
+            <!-- RIGHT SIDE -->
+
+            <a
+                href="css-syntax.html"
+                class="nav-btn next">
+
+                Next →
+
             </a>
 
         </div>
@@ -1118,29 +914,65 @@ JavaScript can interact with it
 
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
 
     <footer>
 
-        © 2026 Code With Me. All Rights Reserved.
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
 
     </footer>
 
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
 
     <script>
 
         function runCode() {
 
-            const code = document.getElementById("code").value;
+            const code =
+                document.getElementById(
+                    "codeEditor"
+                ).value;
 
-            const output = document.getElementById("output");
+            const output =
+                document.getElementById(
+                    "output"
+                );
 
             output.srcdoc = code;
+        }
+
+
+        function clearCode() {
+
+            document.getElementById(
+                "codeEditor"
+            ).value = "";
+
+            document.getElementById(
+                "output"
+            ).srcdoc = "";
 
         }
+
+
+        /* Run example automatically */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                runCode();
+
+            }
+        );
 
     </script>
 
