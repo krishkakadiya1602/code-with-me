@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn CSS Lists with examples. Learn list-style-type, list-style-position, list-style-image, list-style and custom CSS lists.">
+
+    <title>CSS Lists | Code With Me</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav .logo span {
+            color: #38bdf8;
+        }
+
+        nav .nav-links {
+            float: right;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        nav::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* Hero */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Container */
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        /* Info boxes */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        /* Code */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Lists Demo */
+
+        .list-demo {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .list-demo ul,
+        .list-demo ol {
+            margin-left: 30px;
+        }
+
+        /* Tables */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Live Editor */
+
+        .editor textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        .editor button {
+            padding: 12px 20px;
+            margin-top: 12px;
+            margin-right: 8px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .editor button:hover {
+            opacity: 0.85;
+        }
+
+        iframe {
+            width: 100%;
+            height: 320px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: white;
+        }
+
+        /* Navigation */
+
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-nav a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 7px;
+        }
+
+        .lesson-nav a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 700px) {
+
+            nav {
+                text-align: center;
+            }
+
+            nav .nav-links {
+                float: none;
+                margin-top: 10px;
+            }
+
+            nav .nav-links a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-nav {
+                flex-direction: column;
+            }
+
+            .lesson-nav a {
+                text-align: center;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- Navbar -->
+
+    <nav>
+
+        <a href="../index.html"
+           class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="../index.html#courses">
+                Courses
+            </a>
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero -->
+
+    <header class="hero">
+
+        <h1>CSS Lists</h1>
+
+        <p>
+            Learn how to style HTML lists using CSS
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+
+        <section class="section">
+
+            <h2>1. What are CSS Lists?</h2>
+
+            <p>
+                HTML lists are used to display a collection of related
+                items. CSS allows us to change the appearance of these
+                lists.
+            </p>
+
+            <p>
+                CSS can change list markers, positions, spacing,
+                colors, backgrounds, and more.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                HTML creates the list structure, while CSS controls
+                how the list looks.
+
+            </div>
+
+        </section>
+
+
+        <!-- Types -->
+
+        <section class="section">
+
+            <h2>2. Types of HTML Lists</h2>
+
+            <p>
+                There are three commonly used types of HTML lists.
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>List Type</th>
+                    <th>HTML Element</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>Unordered List</td>
+                    <td>&lt;ul&gt;</td>
+                    <td>• Item</td>
+                </tr>
+
+                <tr>
+                    <td>Ordered List</td>
+                    <td>&lt;ol&gt;</td>
+                    <td>1. Item</td>
+                </tr>
+
+                <tr>
+                    <td>Description List</td>
+                    <td>&lt;dl&gt;</td>
+                    <td>Term - Description</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Unordered -->
+
+        <section class="section">
+
+            <h2>3. Unordered Lists</h2>
+
+            <p>
+                An unordered list normally displays items using
+                bullet points.
+            </p>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+            <div class="list-demo">
+
+                <ul>
+
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Ordered -->
+
+        <section class="section">
+
+            <h2>4. Ordered Lists</h2>
+
+            <p>
+                Ordered lists display items using numbers by default.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+
+    &lt;li&gt;Learn HTML&lt;/li&gt;
+    &lt;li&gt;Learn CSS&lt;/li&gt;
+    &lt;li&gt;Learn JavaScript&lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+            <div class="list-demo">
+
+                <ol>
+
+                    <li>Learn HTML</li>
+                    <li>Learn CSS</li>
+                    <li>Learn JavaScript</li>
+
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- List Style Type -->
+
+        <section class="section">
+
+            <h2>5. list-style-type</h2>
+
+            <p>
+                The <strong>list-style-type</strong> property specifies
+                the type of marker used for a list.
+            </p>
+
+            <h3>Unordered List Markers</h3>
+
+            <pre><code>ul {
+    list-style-type: disc;
+}</code></pre>
+
+            <p>
+                Common values include:
+            </p>
+
+            <ul>
+
+                <li>disc</li>
+                <li>circle</li>
+                <li>square</li>
+                <li>none</li>
+
+            </ul>
+
+            <h3>Example</h3>
+
+            <pre><code>ul {
+    list-style-type: square;
+}</code></pre>
+
+            <div class="list-demo">
+
+                <ul style="list-style-type: square;">
+
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Python</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Circle -->
+
+        <section class="section">
+
+            <h2>6. Circle List Style</h2>
+
+            <p>
+                Use <strong>circle</strong> to display hollow circular
+                markers.
+            </p>
+
+            <pre><code>ul {
+    list-style-type: circle;
+}</code></pre>
+
+            <div class="list-demo">
+
+                <ul style="list-style-type: circle;">
+
+                    <li>Frontend</li>
+                    <li>Backend</li>
+                    <li>Database</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Square -->
+
+        <section class="section">
+
+            <h2>7. Square List Style</h2>
+
+            <p>
+                Use <strong>square</strong> to display square markers.
+            </p>
+
+            <pre><code>ul {
+    list-style-type: square;
+}</code></pre>
+
+            <div class="list-demo">
+
+                <ul style="list-style-type: square;">
+
+                    <li>React</li>
+                    <li>Node.js</li>
+                    <li>MongoDB</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- None -->
+
+        <section class="section">
+
+            <h2>8. Remove List Markers</h2>
+
+            <p>
+                You can remove bullets and numbers using
+                <strong>list-style-type: none;</strong>
+            </p>
+
+            <pre><code>ul {
+    list-style-type: none;
+}</code></pre>
+
+            <div class="list-demo">
+
+                <ul style="list-style-type: none;">
+
+                    <li>Home</li>
+                    <li>Courses</li>
+                    <li>About</li>
+                    <li>Contact</li>
+
+                </ul>
+
+            </div>
+
+            <div class="success-box">
+
+                This technique is commonly used for navigation menus.
+
+            </div>
+
+        </section>
+
+
+        <!-- Ordered Markers -->
+
+        <section class="section">
+
+            <h2>9. Ordered List Marker Types</h2>
+
+            <p>
+                Ordered lists can use different marker styles.
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>Value</th>
+                    <th>Result</th>
+                </tr>
+
+                <tr>
+                    <td>decimal</td>
+                    <td>1, 2, 3</td>
+                </tr>
+
+                <tr>
+                    <td>decimal-leading-zero</td>
+                    <td>01, 02, 03</td>
+                </tr>
+
+                <tr>
+                    <td>lower-alpha</td>
+                    <td>a, b, c</td>
+                </tr>
+
+                <tr>
+                    <td>upper-alpha</td>
+                    <td>A, B, C</td>
+                </tr>
+
+                <tr>
+                    <td>lower-roman</td>
+                    <td>i, ii, iii</td>
+                </tr>
+
+                <tr>
+                    <td>upper-roman</td>
+                    <td>I, II, III</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Alpha -->
+
+        <section class="section">
+
+            <h2>10. Alphabetical Lists</h2>
+
+            <p>
+                Use <strong>lower-alpha</strong> or
+                <strong>upper-alpha</strong> for alphabetical markers.
+            </p>
+
+            <pre><code>ol {
+    list-style-type: upper-alpha;
+}</code></pre>
+
+            <div class="list-demo">
+
+                <ol style="list-style-type: upper-alpha;">
+
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- Roman -->
+
+        <section class="section">
+
+            <h2>11. Roman Number Lists</h2>
+
+            <p>
+                Use <strong>lower-roman</strong> or
+                <strong>upper-roman</strong>.
+            </p>
+
+            <pre><code>ol {
+    list-style-type: lower-roman;
+}</code></pre>
+
+            <div class="list-demo">
+
+                <ol style="list-style-type: lower-roman;">
+
+                    <li>Introduction</li>
+                    <li>Syntax</li>
+                    <li>Selectors</li>
+
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- List Style Position -->
+
+        <section class="section">
+
+            <h2>12. list-style-position</h2>
+
+            <p>
+                The <strong>list-style-position</strong> property
+                controls where the list marker appears.
+            </p>
+
+            <h3>Outside</h3>
+
+            <pre><code>ul {
+    list-style-position: outside;
+}</code></pre>
+
+            <h3>Inside</h3>
+
+            <pre><code>ul {
+    list-style-position: inside;
+}</code></pre>
+
+            <div class="list-demo">
+
+                <ul style="list-style-position: inside;">
+
+                    <li>
+                        This is an example of a list item with the
+                        marker positioned inside the content area.
+                    </li>
+
+                    <li>
+                        Another list item.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- List Style Image -->
+
+        <section class="section">
+
+            <h2>13. list-style-image</h2>
+
+            <p>
+                The <strong>list-style-image</strong> property allows
+                you to use an image as a list marker.
+            </p>
+
+            <pre><code>ul {
+    list-style-image: url("icon.png");
+}</code></pre>
+
+            <div class="warning-box">
+
+                Make sure the image path is correct when using an image
+                as a list marker.
+
+            </div>
+
+        </section>
+
+
+        <!-- Shorthand -->
+
+        <section class="section">
+
+            <h2>14. list-style Shorthand</h2>
+
+            <p>
+                The <strong>list-style</strong> property is a shorthand
+                property for list styling.
+            </p>
+
+            <pre><code>ul {
+    list-style: square inside;
+}</code></pre>
+
+            <p>
+                You can combine list-style properties in one declaration.
+            </p>
+
+        </section>
+
+
+        <!-- Spacing -->
+
+        <section class="section">
+
+            <h2>15. Adding Space to Lists</h2>
+
+            <p>
+                You can use <strong>margin</strong> and
+                <strong>padding</strong> to control spacing.
+            </p>
+
+            <pre><code>ul {
+    padding-left: 30px;
+}
+
+li {
+    margin-bottom: 10px;
+}</code></pre>
+
+            <div class="list-demo">
+
+                <ul style="padding-left: 30px;">
+
+                    <li style="margin-bottom: 10px;">
+                        HTML
+                    </li>
+
+                    <li style="margin-bottom: 10px;">
+                        CSS
+                    </li>
+
+                    <li style="margin-bottom: 10px;">
+                        JavaScript
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Custom List -->
+
+        <section class="section">
+
+            <h2>16. Custom Styled Lists</h2>
+
+            <p>
+                CSS can be used to create attractive custom lists.
+            </p>
+
+            <pre><code>ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+}</code></pre>
+
+            <div class="list-demo">
+
+                <ul style="list-style:none; padding:0;">
+
+                    <li style="
+                        background:#2563eb;
+                        color:white;
+                        padding:12px;
+                        margin-bottom:8px;
+                        border-radius:6px;">
+                        HTML
+                    </li>
+
+                    <li style="
+                        background:#2563eb;
+                        color:white;
+                        padding:12px;
+                        margin-bottom:8px;
+                        border-radius:6px;">
+                        CSS
+                    </li>
+
+                    <li style="
+                        background:#2563eb;
+                        color:white;
+                        padding:12px;
+                        margin-bottom:8px;
+                        border-radius:6px;">
+                        JavaScript
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Horizontal List -->
+
+        <section class="section">
+
+            <h2>17. Horizontal List</h2>
+
+            <p>
+                Lists can be displayed horizontally using
+                <strong>display: inline</strong> or
+                <strong>display: inline-block</strong>.
+            </p>
+
+            <pre><code>ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+    margin-right: 20px;
+}</code></pre>
+
+            <div class="list-demo">
+
+                <ul style="list-style:none;">
+
+                    <li style="
+                        display:inline-block;
+                        margin-right:20px;">
+                        Home
+                    </li>
+
+                    <li style="
+                        display:inline-block;
+                        margin-right:20px;">
+                        Courses
+                    </li>
+
+                    <li style="
+                        display:inline-block;
+                        margin-right:20px;">
+                        About
+                    </li>
+
+                    <li style="
+                        display:inline-block;">
+                        Contact
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Navigation Menu -->
+
+        <section class="section">
+
+            <h2>18. Lists for Navigation Menus</h2>
+
+            <p>
+                HTML lists are frequently used to create navigation menus.
+            </p>
+
+            <pre><code>&lt;ul class="menu"&gt;
+
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Courses&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+            <pre><code>.menu {
+    list-style: none;
+}
+
+.menu li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #2563eb;
+}
+
+.menu a:hover {
+    color: #dc2626;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Nested Lists -->
+
+        <section class="section">
+
+            <h2>19. Nested Lists</h2>
+
+            <p>
+                A list can contain another list inside it.
+            </p>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Frontend
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;Backend&lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+            <div class="list-demo">
+
+                <ul>
+
+                    <li>
+                        Frontend
+
+                        <ul>
+
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+
+                        </ul>
+
+                    </li>
+
+                    <li>Backend</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- List Hover -->
+
+        <section class="section">
+
+            <h2>20. List Hover Effect</h2>
+
+            <p>
+                CSS hover effects can make list items interactive.
+            </p>
+
+            <pre><code>li {
+    padding: 10px;
+    transition: 0.3s;
+}
+
+li:hover {
+    background-color: #eff6ff;
+    padding-left: 20px;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Summary -->
+
+        <section class="section">
+
+            <h2>21. CSS List Properties Summary</h2>
+
+            <table>
+
+                <tr>
+                    <th>Property</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>list-style-type</td>
+                    <td>Changes the list marker</td>
+                </tr>
+
+                <tr>
+                    <td>list-style-position</td>
+                    <td>Controls marker position</td>
+                </tr>
+
+                <tr>
+                    <td>list-style-image</td>
+                    <td>Uses an image as the marker</td>
+                </tr>
+
+                <tr>
+                    <td>list-style</td>
+                    <td>Shorthand for list properties</td>
+                </tr>
+
+                <tr>
+                    <td>margin</td>
+                    <td>Controls outside spacing</td>
+                </tr>
+
+                <tr>
+                    <td>padding</td>
+                    <td>Controls inside spacing</td>
+                </tr>
+
+                <tr>
+                    <td>display</td>
+                    <td>Controls list item layout</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Live Editor -->
+
+        <section class="section editor">
+
+            <h2>22. CSS Lists Live Editor</h2>
+
+            <p>
+                Edit the CSS below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeInput"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+ul {
+    list-style-type: square;
+    padding-left: 30px;
+}
+
+li {
+    background-color: #eff6ff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+li:hover {
+    background-color: #dbeafe;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>My Favorite Technologies</h2>
+
+<ul>
+
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+    <li>Python</li>
+
+</ul>
+
+</body>
+
+</html></textarea>
+
+            <br>
+
+            <button class="run-btn"
+                    onclick="runCode()">
+                ▶ Run Code
+            </button>
+
+            <button class="clear-btn"
+                    onclick="clearCode()">
+                Clear
+            </button>
+
+            <iframe id="output"></iframe>
+
+        </section>
+
+
+        <!-- Key Points -->
+
+        <section class="section">
+
+            <h2>23. Key Points</h2>
+
+            <ul>
+
+                <li>
+                    CSS can control the appearance of HTML lists.
+                </li>
+
+                <li>
+                    Use <strong>list-style-type</strong> to change
+                    list markers.
+                </li>
+
+                <li>
+                    Use <strong>list-style-position</strong> to control
+                    marker position.
+                </li>
+
+                <li>
+                    Use <strong>list-style-image</strong> to use an
+                    image as a marker.
+                </li>
+
+                <li>
+                    Use <strong>list-style</strong> as a shorthand
+                    property.
+                </li>
+
+                <li>
+                    Use <strong>list-style: none;</strong> to remove
+                    default markers.
+                </li>
+
+                <li>
+                    CSS lists are commonly used for navigation menus.
+                </li>
+
+                <li>
+                    Lists can be displayed vertically or horizontally.
+                </li>
+
+                <li>
+                    Lists can be customized using colors, padding,
+                    margins, borders, and hover effects.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Navigation -->
+
+        <div class="lesson-nav">
+
+            <a href="css-links.html">
+                ← Previous: CSS Links
+            </a>
+
+            <a href="../index.html">
+                🏠 Home
+            </a>
+
+            <a href="css-padding.html">
+                Next: CSS Padding →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeInput").value;
+
+            document.getElementById("output").srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeInput").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
