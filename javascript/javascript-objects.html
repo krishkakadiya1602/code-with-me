@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Objects | Code With Me</title>
+
+    <meta name="description"
+        content="Learn JavaScript Objects with simple explanations, properties, methods, object access, object modification and interactive examples.">
+
+    <meta name="keywords"
+        content="JavaScript Objects, JavaScript object, JavaScript object examples, JavaScript tutorial, learn JavaScript">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 70px 7%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           INFO BOXES
+        ========================== */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           CODE BLOCKS
+        ========================== */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* =========================
+           TABLE
+        ========================== */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* =========================
+           LIST
+        ========================== */
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           EDITOR
+        ========================== */
+
+        .editor-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .editor-section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 380px;
+            background: #111827;
+            color: #f9fafb;
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #374151;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 280px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .lesson-navigation a {
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            color: white;
+            background: #2563eb;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        .lesson-navigation .home-btn {
+            background: #7c3aed;
+        }
+
+        .lesson-navigation .home-btn:hover {
+            background: #6d28d9;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section,
+            .editor-section {
+                padding: 20px;
+            }
+
+            .section h2,
+            .editor-section h2 {
+                font-size: 24px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <div class="logo">
+            Code <span>WithMe</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="javascript-introduction.html">
+                    JavaScript
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <h1>JavaScript Objects</h1>
+
+        <p>
+            Learn how to create, access, modify and use objects
+            in JavaScript with simple examples.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- =========================
+             WHAT IS OBJECT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>What is a JavaScript Object?</h2>
+
+            <p>
+                A JavaScript object is a collection of related
+                data and functionality stored as
+                <strong>key-value pairs</strong>.
+            </p>
+
+            <p>
+                Objects are commonly used to represent real-world
+                things such as a person, car, student, product,
+                or computer.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                A student object can contain a name, age, course,
+                and marks.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OBJECT SYNTAX
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Creating an Object</h2>
+
+            <p>
+                You can create a JavaScript object using curly
+                braces <strong>{ }</strong>.
+            </p>
+
+            <pre><code>const student = {
+    name: "Krish",
+    age: 20,
+    course: "JavaScript"
+};</code></pre>
+
+            <p>
+                Here:
+            </p>
+
+            <ul>
+
+                <li><strong>name</strong> is a property.</li>
+
+                <li><strong>age</strong> is a property.</li>
+
+                <li><strong>course</strong> is a property.</li>
+
+                <li>The values are stored using key-value pairs.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             OBJECT PROPERTIES
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Object Properties</h2>
+
+            <p>
+                Properties are the values associated with an object.
+            </p>
+
+            <pre><code>const person = {
+    name: "Krish",
+    age: 20,
+    city: "Vadodara"
+};</code></pre>
+
+            <p>
+                This object has three properties:
+            </p>
+
+            <ul>
+
+                <li>name</li>
+
+                <li>age</li>
+
+                <li>city</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             ACCESS PROPERTIES
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Accessing Object Properties</h2>
+
+            <p>
+                There are two common ways to access object properties.
+            </p>
+
+            <h3>1. Dot Notation</h3>
+
+            <pre><code>const person = {
+    name: "Krish",
+    age: 20
+};
+
+console.log(person.name);
+console.log(person.age);</code></pre>
+
+            <h3>2. Bracket Notation</h3>
+
+            <pre><code>const person = {
+    name: "Krish",
+    age: 20
+};
+
+console.log(person["name"]);
+console.log(person["age"]);</code></pre>
+
+            <div class="success-box">
+
+                Both dot notation and bracket notation can be used
+                to access object properties.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MODIFY OBJECT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Changing Object Properties</h2>
+
+            <p>
+                You can change the value of an existing property.
+            </p>
+
+            <pre><code>const person = {
+    name: "Krish",
+    age: 20
+};
+
+person.age = 21;
+
+console.log(person.age);</code></pre>
+
+            <div class="info-box">
+
+                <strong>Output:</strong> 21
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ADD PROPERTY
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Adding New Properties</h2>
+
+            <p>
+                You can add a new property to an existing object.
+            </p>
+
+            <pre><code>const person = {
+    name: "Krish",
+    age: 20
+};
+
+person.city = "Vadodara";
+
+console.log(person);</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             DELETE PROPERTY
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Deleting Object Properties</h2>
+
+            <p>
+                The <strong>delete</strong> keyword can be used
+                to remove a property from an object.
+            </p>
+
+            <pre><code>const person = {
+    name: "Krish",
+    age: 20,
+    city: "Vadodara"
+};
+
+delete person.city;
+
+console.log(person);</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             OBJECT WITH DIFFERENT DATA
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Objects Can Store Different Data Types</h2>
+
+            <p>
+                Object properties can contain different types of values.
+            </p>
+
+            <pre><code>const student = {
+
+    name: "Krish",
+
+    age: 20,
+
+    isStudent: true,
+
+    marks: 85,
+
+    subjects: ["HTML", "CSS", "JavaScript"]
+
+};</code></pre>
+
+            <p>
+                An object can contain strings, numbers, booleans,
+                arrays, and even other objects.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             OBJECT METHODS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>JavaScript Object Methods</h2>
+
+            <p>
+                A function stored as an object property is called
+                a <strong>method</strong>.
+            </p>
+
+            <pre><code>const person = {
+
+    name: "Krish",
+
+    greet: function() {
+        console.log("Hello!");
+    }
+
+};
+
+person.greet();</code></pre>
+
+            <p>
+                Here, <strong>greet()</strong> is a method of the
+                person object.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             THIS KEYWORD
+        ========================== -->
+
+        <section class="section">
+
+            <h2>The JavaScript this Keyword</h2>
+
+            <p>
+                The <strong>this</strong> keyword refers to the
+                object that is calling the method in this example.
+            </p>
+
+            <pre><code>const person = {
+
+    firstName: "Krish",
+
+    lastName: "Kakadiya",
+
+    fullName: function() {
+        return this.firstName + " " + this.lastName;
+    }
+
+};
+
+console.log(person.fullName());</code></pre>
+
+            <div class="success-box">
+
+                <strong>Output:</strong> Krish Kakadiya
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             NESTED OBJECT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Nested Objects</h2>
+
+            <p>
+                An object can contain another object.
+                This is called a nested object.
+            </p>
+
+            <pre><code>const student = {
+
+    name: "Krish",
+
+    address: {
+
+        city: "Vadodara",
+
+        country: "India"
+
+    }
+
+};
+
+console.log(student.address.city);</code></pre>
+
+            <div class="info-box">
+
+                You can access nested properties using multiple
+                dot operators.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OBJECT CONSTRUCTOR
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Object Constructor</h2>
+
+            <p>
+                JavaScript also provides the
+                <strong>new Object()</strong> syntax for creating
+                an object.
+            </p>
+
+            <pre><code>const person = new Object();
+
+person.name = "Krish";
+person.age = 20;
+
+console.log(person.name);
+console.log(person.age);</code></pre>
+
+            <p>
+                However, object literal syntax using
+                <strong>{ }</strong> is commonly used.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             OBJECT KEYS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Object.keys()</h2>
+
+            <p>
+                The <strong>Object.keys()</strong> method returns
+                an array containing the property names of an object.
+            </p>
+
+            <pre><code>const person = {
+    name: "Krish",
+    age: 20,
+    city: "Vadodara"
+};
+
+console.log(Object.keys(person));</code></pre>
+
+            <div class="info-box">
+
+                <strong>Output:</strong>
+
+                ["name", "age", "city"]
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OBJECT VALUES
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Object.values()</h2>
+
+            <p>
+                The <strong>Object.values()</strong> method returns
+                an array containing the values of an object.
+            </p>
+
+            <pre><code>const person = {
+    name: "Krish",
+    age: 20,
+    city: "Vadodara"
+};
+
+console.log(Object.values(person));</code></pre>
+
+            <div class="info-box">
+
+                <strong>Output:</strong>
+
+                ["Krish", 20, "Vadodara"]
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OBJECT ENTRIES
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Object.entries()</h2>
+
+            <p>
+                The <strong>Object.entries()</strong> method returns
+                an array containing key-value pairs.
+            </p>
+
+            <pre><code>const person = {
+    name: "Krish",
+    age: 20
+};
+
+console.log(Object.entries(person));</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             OBJECT TABLE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Common Object Features</h2>
+
+            <table>
+
+                <tr>
+                    <th>Feature</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>Object Properties</td>
+                    <td>Store data</td>
+                </tr>
+
+                <tr>
+                    <td>Methods</td>
+                    <td>Store functions</td>
+                </tr>
+
+                <tr>
+                    <td>Dot Notation</td>
+                    <td>Access properties</td>
+                </tr>
+
+                <tr>
+                    <td>Bracket Notation</td>
+                    <td>Access properties dynamically</td>
+                </tr>
+
+                <tr>
+                    <td>Object.keys()</td>
+                    <td>Get property names</td>
+                </tr>
+
+                <tr>
+                    <td>Object.values()</td>
+                    <td>Get property values</td>
+                </tr>
+
+                <tr>
+                    <td>Object.entries()</td>
+                    <td>Get key-value pairs</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             REAL LIFE EXAMPLE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Real-Life Example</h2>
+
+            <p>
+                Objects are useful for storing information about
+                real-world entities.
+            </p>
+
+            <pre><code>const product = {
+
+    name: "Laptop",
+
+    brand: "Dell",
+
+    price: 50000,
+
+    available: true,
+
+    showProduct: function() {
+
+        return this.name + " - ₹" + this.price;
+
+    }
+
+};
+
+console.log(product.showProduct());</code></pre>
+
+            <div class="success-box">
+
+                <strong>Output:</strong>
+
+                Laptop - ₹50000
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             IMPORTANT POINTS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <ul>
+
+                <li>
+                    Objects store data using key-value pairs.
+                </li>
+
+                <li>
+                    Object properties can contain different data types.
+                </li>
+
+                <li>
+                    You can access properties using dot notation.
+                </li>
+
+                <li>
+                    You can also use bracket notation.
+                </li>
+
+                <li>
+                    Object properties can be changed.
+                </li>
+
+                <li>
+                    New properties can be added.
+                </li>
+
+                <li>
+                    Properties can be deleted using delete.
+                </li>
+
+                <li>
+                    A function stored inside an object is called a method.
+                </li>
+
+                <li>
+                    Objects can contain other objects.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             INTERACTIVE EDITOR
+        ========================== -->
+
+        <section class="editor-section">
+
+            <h2>JavaScript Objects Code Editor</h2>
+
+            <p>
+                Write your HTML and JavaScript code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>JavaScript Objects</title>
+
+</head>
+
+<body>
+
+    <h2>JavaScript Objects</h2>
+
+    <p id="result"></p>
+
+    <script>
+
+        const student = {
+
+            name: "Krish",
+
+            age: 20,
+
+            course: "JavaScript",
+
+            greet: function() {
+                return "Hello, my name is " + this.name;
+            }
+
+        };
+
+        document.getElementById("result").innerHTML =
+            student.greet() +
+            "<br>Age: " + student.age +
+            "<br>Course: " + student.course;
+
+    </script>
+
+</body>
+
+</html></textarea>
+
+            <div class="button-group">
+
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearCode()">
+                    ✕ Clear
+                </button>
+
+            </div>
+
+            <h3 class="output-title">
+                Output / Preview
+            </h3>
+
+            <iframe id="outputFrame"></iframe>
+
+        </section>
+
+
+        <!-- =========================
+             NAVIGATION
+        ========================== -->
+
+        <div class="lesson-navigation">
+
+            <a href="javascript-functions.html">
+                ← Previous
+            </a>
+
+            <a href="../index.html" class="home-btn">
+                🏠 Home
+            </a>
+
+            <a href="javascript-arrays.html">
+                Next →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const outputFrame =
+                document.getElementById("outputFrame");
+
+            outputFrame.srcdoc = code;
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("outputFrame").srcdoc = "";
+        }
+
+
+        window.addEventListener("load", function () {
+
+            runCode();
+
+        });
+
+    </script>
+
+</body>
+</html>
