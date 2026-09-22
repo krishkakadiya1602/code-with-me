@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Functions | Code With Me</title>
+
+    <meta name="description"
+        content="Learn JavaScript Functions with simple explanations, examples, syntax, parameters, return values and interactive code examples.">
+
+    <meta name="keywords"
+        content="JavaScript Functions, JavaScript function, JavaScript function examples, JavaScript tutorial, learn JavaScript">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 70px 7%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           INFO BOX
+        ========================== */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           CODE
+        ========================== */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* =========================
+           TABLE
+        ========================== */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* =========================
+           LIST
+        ========================== */
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           EDITOR
+        ========================== */
+
+        .editor-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .editor-section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 350px;
+            background: #111827;
+            color: #f9fafb;
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #374151;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 250px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* =========================
+           NAVIGATION BUTTONS
+        ========================== */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .lesson-navigation a {
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            color: white;
+            background: #2563eb;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        .lesson-navigation .home-btn {
+            background: #7c3aed;
+        }
+
+        .lesson-navigation .home-btn:hover {
+            background: #6d28d9;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section,
+            .editor-section {
+                padding: 20px;
+            }
+
+            .section h2,
+            .editor-section h2 {
+                font-size: 24px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+        <div class="logo">
+            Code <span>WithMe</span>
+        </div>
+
+        <ul>
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="javascript-introduction.html">JavaScript</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <h1>JavaScript Functions</h1>
+
+        <p>
+            Learn how to create and use functions in JavaScript
+            with simple examples and an interactive code editor.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+        <!-- =========================
+             INTRODUCTION
+        ========================== -->
+
+        <section class="section">
+
+            <h2>What is a Function?</h2>
+
+            <p>
+                A function is a block of reusable code designed to
+                perform a particular task.
+            </p>
+
+            <p>
+                Instead of writing the same code multiple times,
+                you can put the code inside a function and call the
+                function whenever you need it.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                A function can be used to calculate a sum, display
+                a message, validate a form, or perform any other task.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WHY FUNCTIONS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Why Use Functions?</h2>
+
+            <p>Functions are useful because they help you:</p>
+
+            <ul>
+
+                <li>Reuse code</li>
+
+                <li>Reduce duplicate code</li>
+
+                <li>Organize your program</li>
+
+                <li>Make code easier to understand</li>
+
+                <li>Make debugging easier</li>
+
+                <li>Divide a large program into smaller tasks</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             FUNCTION SYNTAX
+        ========================== -->
+
+        <section class="section">
+
+            <h2>JavaScript Function Syntax</h2>
+
+            <p>
+                A normal JavaScript function can be created using
+                the <strong>function</strong> keyword.
+            </p>
+
+            <pre><code>function functionName() {
+    // code to execute
+}</code></pre>
+
+            <h3>Calling the Function</h3>
+
+            <pre><code>functionName();</code></pre>
+
+            <div class="success-box">
+
+                The function code runs when you call the function.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BASIC FUNCTION
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Basic Function Example</h2>
+
+            <pre><code>function greet() {
+    console.log("Hello World!");
+}
+
+greet();</code></pre>
+
+            <p>
+                In this example, <strong>greet()</strong> is the
+                function name.
+            </p>
+
+            <p>
+                When we call <strong>greet()</strong>, the message
+                "Hello World!" is displayed.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FUNCTION PARAMETERS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Function Parameters</h2>
+
+            <p>
+                Parameters allow us to pass information into a function.
+            </p>
+
+            <pre><code>function greet(name) {
+    console.log("Hello " + name);
+}
+
+greet("Krish");</code></pre>
+
+            <p>
+                Here, <strong>name</strong> is a parameter.
+            </p>
+
+            <p>
+                The value <strong>"Krish"</strong> is passed to the
+                function when it is called.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             MULTIPLE PARAMETERS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Multiple Parameters</h2>
+
+            <p>
+                A function can have more than one parameter.
+            </p>
+
+            <pre><code>function add(a, b) {
+    console.log(a + b);
+}
+
+add(10, 20);</code></pre>
+
+            <p>
+                In this example, the values 10 and 20 are passed
+                to the parameters <strong>a</strong> and <strong>b</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             RETURN VALUE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>JavaScript Return Statement</h2>
+
+            <p>
+                The <strong>return</strong> statement sends a value
+                back from a function.
+            </p>
+
+            <pre><code>function add(a, b) {
+    return a + b;
+}
+
+let result = add(10, 20);
+
+console.log(result);</code></pre>
+
+            <p>
+                The result of the function is stored in the
+                <strong>result</strong> variable.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Output:</strong>
+
+                30
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FUNCTION EXPRESSIONS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Function Expression</h2>
+
+            <p>
+                A function can also be stored inside a variable.
+                This is called a function expression.
+            </p>
+
+            <pre><code>const greet = function() {
+    console.log("Hello!");
+};
+
+greet();</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             ARROW FUNCTIONS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Arrow Functions</h2>
+
+            <p>
+                Arrow functions provide a shorter syntax for writing
+                functions.
+            </p>
+
+            <pre><code>const greet = () => {
+    console.log("Hello World!");
+};
+
+greet();</code></pre>
+
+            <h3>Arrow Function with Parameters</h3>
+
+            <pre><code>const add = (a, b) => {
+    return a + b;
+};
+
+console.log(add(10, 20));</code></pre>
+
+            <h3>Short Arrow Function</h3>
+
+            <pre><code>const add = (a, b) => a + b;
+
+console.log(add(5, 10));</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             DEFAULT PARAMETERS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Default Parameters</h2>
+
+            <p>
+                You can provide a default value for a function parameter.
+            </p>
+
+            <pre><code>function greet(name = "Guest") {
+    console.log("Hello " + name);
+}
+
+greet();
+greet("Krish");</code></pre>
+
+            <p>
+                If no value is provided, the default value
+                <strong>"Guest"</strong> is used.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FUNCTION SCOPE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Function Scope</h2>
+
+            <p>
+                Variables created inside a function are generally
+                accessible only inside that function.
+            </p>
+
+            <pre><code>function test() {
+
+    let message = "Hello";
+
+    console.log(message);
+}
+
+test();</code></pre>
+
+            <div class="warning-box">
+
+                A variable declared inside a function cannot normally
+                be accessed from outside that function.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FUNCTION TYPES
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Common Types of JavaScript Functions</h2>
+
+            <table>
+
+                <tr>
+                    <th>Function Type</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>Regular Function</td>
+                    <td>function greet() { }</td>
+                </tr>
+
+                <tr>
+                    <td>Function with Parameters</td>
+                    <td>function add(a, b) { }</td>
+                </tr>
+
+                <tr>
+                    <td>Function with Return</td>
+                    <td>return a + b;</td>
+                </tr>
+
+                <tr>
+                    <td>Function Expression</td>
+                    <td>const x = function() { }</td>
+                </tr>
+
+                <tr>
+                    <td>Arrow Function</td>
+                    <td>const x = () => { }</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             REAL LIFE EXAMPLE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Real-Life Example</h2>
+
+            <p>
+                Suppose we want to calculate the area of a rectangle.
+                We can create a reusable function.
+            </p>
+
+            <pre><code>function rectangleArea(length, width) {
+
+    return length * width;
+
+}
+
+let area = rectangleArea(10, 5);
+
+console.log("Area = " + area);</code></pre>
+
+            <div class="success-box">
+
+                <strong>Output:</strong> Area = 50
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             IMPORTANT POINTS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <ul>
+
+                <li>Functions are reusable blocks of code.</li>
+
+                <li>Functions are created using the <strong>function</strong> keyword.</li>
+
+                <li>A function can accept parameters.</li>
+
+                <li>A function can return a value.</li>
+
+                <li>Functions can be stored in variables.</li>
+
+                <li>Arrow functions provide shorter syntax.</li>
+
+                <li>Functions help organize large programs.</li>
+
+                <li>A function runs when it is called.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             INTERACTIVE EDITOR
+        ========================== -->
+
+        <section class="editor-section">
+
+            <h2>JavaScript Function Code Editor</h2>
+
+            <p>
+                Write your HTML and JavaScript code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Functions</title>
+</head>
+
+<body>
+
+    <h2>JavaScript Functions</h2>
+
+    <p id="result"></p>
+
+    <script>
+
+        function add(a, b) {
+            return a + b;
+        }
+
+        let result = add(10, 20);
+
+        document.getElementById("result").innerHTML =
+            "The result is: " + result;
+
+    </script>
+
+</body>
+</html></textarea>
+
+            <div class="button-group">
+
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearCode()">
+                    ✕ Clear
+                </button>
+
+            </div>
+
+            <h3 class="output-title">
+                Output / Preview
+            </h3>
+
+            <iframe id="outputFrame"></iframe>
+
+        </section>
+
+
+        <!-- =========================
+             NAVIGATION
+        ========================== -->
+
+        <div class="lesson-navigation">
+
+            <a href="javascript-if.html">
+                ← Previous
+            </a>
+
+            <a href="../index.html" class="home-btn">
+                🏠 Home
+            </a>
+
+            <a href="javascript-switch.html">
+                Next →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const outputFrame =
+                document.getElementById("outputFrame");
+
+            outputFrame.srcdoc = code;
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("outputFrame").srcdoc = "";
+        }
+
+
+        window.addEventListener("load", function () {
+
+            runCode();
+
+        });
+
+    </script>
+
+</body>
+</html>
