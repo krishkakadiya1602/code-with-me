@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ========================================
+         BASIC META
+    ======================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn CSS Introduction with simple explanations, examples and an interactive CSS code editor.">
+
+    <meta name="keywords"
+          content="CSS Introduction, CSS Tutorial, Learn CSS, CSS Basics, Code With Me">
+
+    <meta name="author"
+          content="Code With Me">
+
+    <title>CSS Introduction | Code With Me</title>
+
+
+    <!-- ========================================
+         CSS
+    ======================================== -->
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #111827;
+            line-height: 1.7;
+        }
+
+
+        /* ========================================
+           NAVBAR
+        ======================================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: #111827;
+
+            padding: 15px 6%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+
+            font-size: 16px;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* ========================================
+           PAGE HEADER
+        ======================================== */
+
+        .page-header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            color: white;
+
+            text-align: center;
+
+            padding: 65px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            font-size: 19px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+
+        /* ========================================
+           MAIN CONTAINER
+        ======================================== */
+
+        .container {
+            max-width: 1050px;
+
+            margin: 40px auto;
+
+            padding: 0 20px;
+        }
+
+
+        /* ========================================
+           CONTENT CARD
+        ======================================== */
+
+        .content-card {
+            background: white;
+
+            padding: 30px;
+
+            margin-bottom: 30px;
+
+            border-radius: 12px;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .content-card h2 {
+            color: #2563eb;
+
+            font-size: 30px;
+
+            margin-bottom: 18px;
+        }
+
+        .content-card h3 {
+            color: #111827;
+
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        .content-card p {
+            color: #4b5563;
+
+            font-size: 17px;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* ========================================
+           MAIN POINTS
+        ======================================== */
+
+        .points-box {
+            background: #eff6ff;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 20px 25px;
+
+            border-radius: 8px;
+        }
+
+        .points-box ul {
+            padding-left: 22px;
+        }
+
+        .points-box li {
+            margin-bottom: 8px;
+
+            color: #374151;
+        }
+
+
+        /* ========================================
+           CODE BLOCK
+        ======================================== */
+
+        pre {
+            background: #111827;
+
+            color: #e5e7eb;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            overflow-x: auto;
+
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+
+            padding: 3px 7px;
+
+            border-radius: 5px;
+
+            font-family: monospace;
+        }
+
+
+        /* ========================================
+           EDITOR
+        ======================================== */
+
+        .editor-label {
+            display: block;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+            color: #111827;
+        }
+
+        #codeEditor {
+            width: 100%;
+
+            min-height: 300px;
+
+            resize: vertical;
+
+            padding: 18px;
+
+            border: 2px solid #d1d5db;
+
+            border-radius: 8px;
+
+            background: #111827;
+
+            color: #f9fafb;
+
+            font-family: Consolas, Monaco, monospace;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            outline: none;
+        }
+
+        #codeEditor:focus {
+            border-color: #2563eb;
+        }
+
+
+        /* ========================================
+           BUTTONS
+        ======================================== */
+
+        .editor-buttons {
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            margin-top: 15px;
+        }
+
+        .btn {
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #2563eb;
+
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+
+        /* ========================================
+           PREVIEW
+        ======================================== */
+
+        .preview-title {
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+        #preview {
+            width: 100%;
+
+            min-height: 300px;
+
+            border: 2px solid #d1d5db;
+
+            border-radius: 8px;
+
+            background: white;
+        }
+
+
+        /* ========================================
+           TIP BOX
+        ======================================== */
+
+        .tip-box {
+            background: #ecfdf5;
+
+            border-left: 5px solid #10b981;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            margin-top: 20px;
+        }
+
+        .tip-box strong {
+            color: #047857;
+        }
+
+
+        /* ========================================
+           NAVIGATION BUTTONS
+        ======================================== */
+
+        .lesson-navigation {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr 1fr;
+
+            gap: 15px;
+
+            margin-top: 40px;
+
+            margin-bottom: 50px;
+        }
+
+        .lesson-navigation a {
+            display: block;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 14px 15px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+            background: #111827;
+
+            color: #d1d5db;
+
+            text-align: center;
+
+            padding: 25px 15px;
+
+            margin-top: 30px;
+        }
+
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 38px;
+            }
+
+            .content-card {
+                padding: 22px;
+            }
+
+            .lesson-navigation {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .page-header p {
+                font-size: 17px;
+            }
+
+            .content-card h2 {
+                font-size: 25px;
+            }
+
+            #codeEditor {
+                min-height: 250px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
+
+    <nav class="navbar">
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">
+                    Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">
+                    About
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ========================================
+         PAGE HEADER
+    ======================================== -->
+
+    <header class="page-header">
+
+        <h1>
+            CSS Introduction
+        </h1>
+
+        <p>
+            Learn what CSS is, why we use it,
+            how CSS works and how to style HTML pages.
+        </p>
+
+    </header>
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ======================================== -->
+
+    <main class="container">
+
+
+        <!-- ====================================
+             INTRODUCTION
+        ===================================== -->
+
+        <section class="content-card">
+
+            <h2>
+                What is CSS?
+            </h2>
+
+            <p>
+                CSS stands for
+                <strong>Cascading Style Sheets</strong>.
+            </p>
+
+            <p>
+                CSS is a stylesheet language used to
+                describe how HTML elements should look
+                on a web page.
+            </p>
+
+            <p>
+                With CSS, we can control colors,
+                fonts, spacing, borders, backgrounds,
+                layouts, animations and responsive
+                designs.
+            </p>
+
+        </section>
+
+
+        <!-- ====================================
+             MAIN POINTS
+        ===================================== -->
+
+        <section class="content-card">
+
+            <h2>
+                Main Points
+            </h2>
+
+            <div class="points-box">
+
+                <ul>
+
+                    <li>
+                        CSS stands for Cascading Style Sheets.
+                    </li>
+
+                    <li>
+                        CSS is used to style HTML elements.
+                    </li>
+
+                    <li>
+                        CSS can change colors and fonts.
+                    </li>
+
+                    <li>
+                        CSS can control spacing and sizing.
+                    </li>
+
+                    <li>
+                        CSS can create page layouts.
+                    </li>
+
+                    <li>
+                        CSS can make websites responsive.
+                    </li>
+
+                    <li>
+                        CSS can add visual effects and animations.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             WHY CSS
+        ===================================== -->
+
+        <section class="content-card">
+
+            <h2>
+                Why Do We Use CSS?
+            </h2>
+
+            <p>
+                HTML is mainly used to create the
+                structure of a web page.
+            </p>
+
+            <p>
+                CSS is used to make that structure
+                beautiful and visually attractive.
+            </p>
+
+            <h3>
+                Example
+            </h3>
+
+            <p>
+                Without CSS:
+            </p>
+
+            <pre><code>&lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+&lt;p&gt;This is my website.&lt;/p&gt;</code></pre>
+
+            <p>
+                With CSS we can change the color,
+                size, font and alignment of these
+                elements.
+            </p>
+
+        </section>
+
+
+        <!-- ====================================
+             CSS SYNTAX
+        ===================================== -->
+
+        <section class="content-card">
+
+            <h2>
+                CSS Syntax
+            </h2>
+
+            <p>
+                A CSS rule consists of a selector,
+                property and value.
+            </p>
+
+            <pre><code>selector {
+    property: value;
+}</code></pre>
+
+            <h3>
+                Example
+            </h3>
+
+            <pre><code>p {
+    color: blue;
+    font-size: 20px;
+}</code></pre>
+
+            <p>
+                In this example,
+                <span class="inline-code">p</span>
+                is the selector.
+            </p>
+
+            <p>
+                <span class="inline-code">color</span>
+                and
+                <span class="inline-code">font-size</span>
+                are properties.
+            </p>
+
+            <p>
+                <span class="inline-code">blue</span>
+                and
+                <span class="inline-code">20px</span>
+                are their values.
+            </p>
+
+        </section>
+
+
+        <!-- ====================================
+             CSS EXAMPLE
+        ===================================== -->
+
+        <section class="content-card">
+
+            <h2>
+                Simple CSS Example
+            </h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+&lt;style&gt;
+
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+p {
+    color: green;
+    font-size: 18px;
+}
+
+&lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;Hello CSS!&lt;/h1&gt;
+
+&lt;p&gt;
+    I am learning CSS.
+&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+        </section>
+
+
+        <!-- ====================================
+             WAYS TO ADD CSS
+        ===================================== -->
+
+        <section class="content-card">
+
+            <h2>
+                Ways to Add CSS
+            </h2>
+
+            <h3>
+                1. Inline CSS
+            </h3>
+
+            <pre><code>&lt;p style="color: red;"&gt;
+    Hello World
+&lt;/p&gt;</code></pre>
+
+
+            <h3>
+                2. Internal CSS
+            </h3>
+
+            <pre><code>&lt;style&gt;
+
+p {
+    color: red;
+}
+
+&lt;/style&gt;</code></pre>
+
+
+            <h3>
+                3. External CSS
+            </h3>
+
+            <pre><code>&lt;link rel="stylesheet"
+      href="style.css"&gt;</code></pre>
+
+        </section>
+
+
+        <!-- ====================================
+             INTERACTIVE EDITOR
+        ===================================== -->
+
+        <section class="content-card">
+
+            <h2>
+                CSS Code Editor
+            </h2>
+
+            <p>
+                Write HTML and CSS code below and
+                click <strong>Run Code</strong> to
+                see the result.
+            </p>
+
+
+            <label
+                for="codeEditor"
+                class="editor-label"
+            >
+                Write Your Code:
+            </label>
+
+
+            <textarea
+                id="codeEditor"
+                spellcheck="false"
+            ><!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body {
+    font-family: Arial;
+    background: lightblue;
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    color: darkblue;
+}
+
+p {
+    color: #333;
+    font-size: 18px;
+}
+
+button {
+    background: blue;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>
+    Hello CSS!
+</h1>
+
+<p>
+    I am learning CSS with Code With Me.
+</p>
+
+<button>
+    My Button
+</button>
+
+</body>
+</html></textarea>
+
+
+            <div class="editor-buttons">
+
+                <button
+                    class="btn run-btn"
+                    onclick="runCode()"
+                >
+                    ▶ Run Code
+                </button>
+
+                <button
+                    class="btn clear-btn"
+                    onclick="clearCode()"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+
+            <div class="preview-title">
+                Preview:
+            </div>
+
+
+            <iframe
+                id="preview"
+                title="CSS Code Preview"
+            ></iframe>
+
+        </section>
+
+
+        <!-- ====================================
+             TIP
+        ===================================== -->
+
+        <section class="content-card">
+
+            <h2>
+                Beginner Tip
+            </h2>
+
+            <div class="tip-box">
+
+                <p>
+                    <strong>Tip:</strong>
+                    First learn HTML structure and then
+                    use CSS to style your HTML elements.
+                    Practice small examples every day.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             LESSON NAVIGATION
+        ===================================== -->
+
+        <div class="lesson-navigation">
+
+            <!-- Previous -->
+
+            <a href="../index.html#courses">
+                ← Previous
+            </a>
+
+
+            <!-- Home -->
+
+            <a href="../index.html#courses">
+                🏠 Home
+            </a>
+
+
+            <!-- Next -->
+
+            <a href="css-syntax.html">
+                Next →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById(
+                    "codeEditor"
+                ).value;
+
+            document.getElementById(
+                "preview"
+            ).srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById(
+                "codeEditor"
+            ).value = "";
+
+            document.getElementById(
+                "preview"
+            ).srcdoc = "";
+
+        }
+
+
+        /*
+         * Automatically show the example
+         * when the page opens.
+         */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                runCode();
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
