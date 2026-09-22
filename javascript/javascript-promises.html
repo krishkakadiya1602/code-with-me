@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Promises | Code With Me</title>
+
+    <meta name="description"
+        content="Learn JavaScript Promises with simple explanations, examples, then, catch, finally, promise chaining and error handling.">
+
+    <meta name="keywords"
+        content="JavaScript Promises, JavaScript Promise, then catch finally, Promise chaining, JavaScript tutorial">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 70px 7%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           INFO BOXES
+        ========================== */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           CODE BLOCKS
+        ========================== */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* =========================
+           TABLE
+        ========================== */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* =========================
+           EDITOR
+        ========================== */
+
+        .editor-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .editor-section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 430px;
+            background: #111827;
+            color: #f9fafb;
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #374151;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 300px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .lesson-navigation a {
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            color: white;
+            background: #2563eb;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        .lesson-navigation .home-btn {
+            background: #7c3aed;
+        }
+
+        .lesson-navigation .home-btn:hover {
+            background: #6d28d9;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section,
+            .editor-section {
+                padding: 20px;
+            }
+
+            .section h2,
+            .editor-section h2 {
+                font-size: 24px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <div class="logo">
+            Code <span>WithMe</span>
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="javascript-introduction.html">
+                    JavaScript
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <h1>JavaScript Promises</h1>
+
+        <p>
+            Learn how JavaScript Promises work with simple examples,
+            states, then(), catch(), finally(), chaining and error handling.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- =========================
+             WHAT IS PROMISE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>What is a JavaScript Promise?</h2>
+
+            <p>
+                A Promise is an object that represents the eventual
+                completion or failure of an asynchronous operation.
+            </p>
+
+            <p>
+                Promises are commonly used when JavaScript needs to
+                wait for an operation such as fetching data,
+                loading information, or performing another
+                asynchronous task.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Simple idea:</strong>
+
+                A Promise means that a result will be available
+                later, either successfully or unsuccessfully.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROMISE STATES
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Promise States</h2>
+
+            <p>
+                A Promise can have three states.
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>State</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>Pending</td>
+                    <td>The operation has not finished yet.</td>
+                </tr>
+
+                <tr>
+                    <td>Fulfilled</td>
+                    <td>The operation completed successfully.</td>
+                </tr>
+
+                <tr>
+                    <td>Rejected</td>
+                    <td>The operation failed.</td>
+                </tr>
+
+            </table>
+
+            <div class="success-box">
+
+                A Promise starts in the <strong>pending</strong>
+                state and eventually becomes either
+                <strong>fulfilled</strong> or <strong>rejected</strong>.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CREATE PROMISE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Creating a Promise</h2>
+
+            <p>
+                A Promise can be created using the
+                <strong>new Promise()</strong> constructor.
+            </p>
+
+            <pre><code>const myPromise = new Promise(function(resolve, reject) {
+
+    // asynchronous operation
+
+});</code></pre>
+
+            <p>
+                The Promise constructor receives a function containing
+                two parameters:
+            </p>
+
+            <ul>
+
+                <li><strong>resolve</strong> - used when the operation succeeds.</li>
+
+                <li><strong>reject</strong> - used when the operation fails.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             RESOLVE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Promise resolve()</h2>
+
+            <p>
+                The <strong>resolve()</strong> function is used when
+                the asynchronous operation is successful.
+            </p>
+
+            <pre><code>const myPromise = new Promise(function(resolve, reject) {
+
+    resolve("Operation successful!");
+
+});</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             REJECT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Promise reject()</h2>
+
+            <p>
+                The <strong>reject()</strong> function is used when
+                an operation fails.
+            </p>
+
+            <pre><code>const myPromise = new Promise(function(resolve, reject) {
+
+    reject("Something went wrong!");
+
+});</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             THEN
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Using then()</h2>
+
+            <p>
+                The <strong>then()</strong> method is used to handle
+                a successfully fulfilled Promise.
+            </p>
+
+            <pre><code>const myPromise = new Promise(function(resolve, reject) {
+
+    resolve("Success!");
+
+});
+
+myPromise.then(function(result) {
+
+    console.log(result);
+
+});</code></pre>
+
+            <div class="success-box">
+
+                <strong>Output:</strong> Success!
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CATCH
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Using catch()</h2>
+
+            <p>
+                The <strong>catch()</strong> method is used to handle
+                a rejected Promise.
+            </p>
+
+            <pre><code>const myPromise = new Promise(function(resolve, reject) {
+
+    reject("Something went wrong!");
+
+});
+
+myPromise.catch(function(error) {
+
+    console.log(error);
+
+});</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             FINALLY
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Using finally()</h2>
+
+            <p>
+                The <strong>finally()</strong> method runs after the
+                Promise has completed, regardless of whether it was
+                fulfilled or rejected.
+            </p>
+
+            <pre><code>const myPromise = new Promise(function(resolve, reject) {
+
+    resolve("Success!");
+
+});
+
+myPromise
+    .then(function(result) {
+
+        console.log(result);
+
+    })
+    .finally(function() {
+
+        console.log("Promise completed.");
+
+    });</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             THEN CATCH FINALLY
+        ========================== -->
+
+        <section class="section">
+
+            <h2>then(), catch() and finally()</h2>
+
+            <p>
+                These methods can be chained together.
+            </p>
+
+            <pre><code>const myPromise = new Promise(function(resolve, reject) {
+
+    resolve("Data loaded successfully!");
+
+});
+
+myPromise
+
+    .then(function(result) {
+
+        console.log(result);
+
+    })
+
+    .catch(function(error) {
+
+        console.log(error);
+
+    })
+
+    .finally(function() {
+
+        console.log("Finished!");
+
+    });</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             PROMISE CHAINING
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Promise Chaining</h2>
+
+            <p>
+                Promise chaining allows multiple asynchronous
+                operations to be performed one after another.
+            </p>
+
+            <pre><code>Promise.resolve(10)
+
+    .then(function(value) {
+
+        return value * 2;
+
+    })
+
+    .then(function(value) {
+
+        return value + 5;
+
+    })
+
+    .then(function(value) {
+
+        console.log(value);
+
+    });</code></pre>
+
+            <div class="info-box">
+
+                <strong>Output:</strong> 25
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SETTIMEOUT PROMISE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Promise with setTimeout()</h2>
+
+            <p>
+                A Promise can be used with
+                <strong>setTimeout()</strong> to simulate an
+                asynchronous operation.
+            </p>
+
+            <pre><code>const myPromise = new Promise(function(resolve, reject) {
+
+    setTimeout(function() {
+
+        resolve("Data received!");
+
+    }, 2000);
+
+});
+
+myPromise.then(function(result) {
+
+    console.log(result);
+
+});</code></pre>
+
+            <p>
+                In this example, the Promise is resolved after
+                approximately two seconds.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             ERROR HANDLING
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Promise Error Handling</h2>
+
+            <p>
+                The <strong>catch()</strong> method can be used
+                to handle errors.
+            </p>
+
+            <pre><code>const myPromise = new Promise(function(resolve, reject) {
+
+    const success = false;
+
+    if (success) {
+
+        resolve("Operation successful!");
+
+    } else {
+
+        reject("Operation failed!");
+
+    }
+
+});
+
+myPromise
+    .then(function(result) {
+
+        console.log(result);
+
+    })
+    .catch(function(error) {
+
+        console.log(error);
+
+    });</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             PROMISE RESOLVE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Promise.resolve()</h2>
+
+            <p>
+                <strong>Promise.resolve()</strong> creates a
+                fulfilled Promise with a specified value.
+            </p>
+
+            <pre><code>Promise.resolve("Hello!")
+
+    .then(function(value) {
+
+        console.log(value);
+
+    });</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             PROMISE REJECT
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Promise.reject()</h2>
+
+            <p>
+                <strong>Promise.reject()</strong> creates a
+                rejected Promise.
+            </p>
+
+            <pre><code>Promise.reject("Error!")
+
+    .catch(function(error) {
+
+        console.log(error);
+
+    });</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             PROMISE.ALL
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Promise.all()</h2>
+
+            <p>
+                <strong>Promise.all()</strong> waits for multiple
+                Promises to complete successfully.
+            </p>
+
+            <pre><code>const promise1 = Promise.resolve("First");
+const promise2 = Promise.resolve("Second");
+const promise3 = Promise.resolve("Third");
+
+Promise.all([promise1, promise2, promise3])
+
+    .then(function(results) {
+
+        console.log(results);
+
+    });</code></pre>
+
+            <div class="info-box">
+
+                Promise.all() fulfills when all supplied Promises
+                fulfill. If one rejects, the combined Promise rejects.
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROMISE VS CALLBACK
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Promise vs Callback</h2>
+
+            <table>
+
+                <tr>
+                    <th>Promise</th>
+                    <th>Callback</th>
+                </tr>
+
+                <tr>
+                    <td>Uses then(), catch()</td>
+                    <td>Uses callback functions</td>
+                </tr>
+
+                <tr>
+                    <td>Supports chaining</td>
+                    <td>Can become difficult to manage when deeply nested</td>
+                </tr>
+
+                <tr>
+                    <td>Provides structured error handling</td>
+                    <td>Error handling depends on the callback design</td>
+                </tr>
+
+                <tr>
+                    <td>Useful for asynchronous operations</td>
+                    <td>Also useful for asynchronous operations</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             REAL LIFE EXAMPLE
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Real-Life Example</h2>
+
+            <p>
+                Imagine ordering a product online.
+                The order can be represented as a Promise:
+            </p>
+
+            <ol>
+
+                <li>Order is placed - Pending</li>
+
+                <li>Order is confirmed - Fulfilled</li>
+
+                <li>Order fails - Rejected</li>
+
+            </ol>
+
+            <pre><code>const order = new Promise(function(resolve, reject) {
+
+    const orderPlaced = true;
+
+    if (orderPlaced) {
+
+        resolve("Order confirmed!");
+
+    } else {
+
+        reject("Order failed!");
+
+    }
+
+});
+
+order
+
+    .then(function(message) {
+
+        console.log(message);
+
+    })
+
+    .catch(function(error) {
+
+        console.log(error);
+
+    })
+
+    .finally(function() {
+
+        console.log("Order process finished.");
+
+    });</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             IMPORTANT POINTS
+        ========================== -->
+
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <ul>
+
+                <li>
+                    A Promise represents the eventual result
+                    of an asynchronous operation.
+                </li>
+
+                <li>
+                    A Promise has three states:
+                    pending, fulfilled and rejected.
+                </li>
+
+                <li>
+                    <strong>resolve()</strong> represents success.
+                </li>
+
+                <li>
+                    <strong>reject()</strong> represents failure.
+                </li>
+
+                <li>
+                    <strong>then()</strong> handles successful results.
+                </li>
+
+                <li>
+                    <strong>catch()</strong> handles errors.
+                </li>
+
+                <li>
+                    <strong>finally()</strong> runs after completion.
+                </li>
+
+                <li>
+                    Promises can be chained together.
+                </li>
+
+                <li>
+                    Promise.all() can work with multiple Promises.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             INTERACTIVE EDITOR
+        ========================== -->
+
+        <section class="editor-section">
+
+            <h2>JavaScript Promises Code Editor</h2>
+
+            <p>
+                Write your HTML and JavaScript code below and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>JavaScript Promises</title>
+
+</head>
+
+<body>
+
+    <h2>JavaScript Promise Example</h2>
+
+    <p id="result">Waiting...</p>
+
+    <script>
+
+        const myPromise = new Promise(function(resolve, reject) {
+
+            setTimeout(function() {
+
+                resolve("Promise completed successfully!");
+
+            }, 1500);
+
+        });
+
+        myPromise
+
+            .then(function(message) {
+
+                document.getElementById("result").innerHTML =
+                    message;
+
+            })
+
+            .catch(function(error) {
+
+                document.getElementById("result").innerHTML =
+                    error;
+
+            })
+
+            .finally(function() {
+
+                console.log("Promise finished.");
+
+            });
+
+    </script>
+
+</body>
+
+</html></textarea>
+
+            <div class="button-group">
+
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearCode()">
+                    ✕ Clear
+                </button>
+
+            </div>
+
+            <h3 class="output-title">
+                Output / Preview
+            </h3>
+
+            <iframe id="outputFrame"></iframe>
+
+        </section>
+
+
+        <!-- =========================
+             NAVIGATION
+        ========================== -->
+
+        <div class="lesson-navigation">
+
+            <a href="javascript-events.html">
+                ← Previous
+            </a>
+
+            <a href="../index.html" class="home-btn">
+                🏠 Home
+            </a>
+
+            <a href="javascript-async.html">
+                Next →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const outputFrame =
+                document.getElementById("outputFrame");
+
+            outputFrame.srcdoc = code;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("outputFrame").srcdoc = "";
+
+        }
+
+
+        window.addEventListener("load", function() {
+
+            runCode();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
