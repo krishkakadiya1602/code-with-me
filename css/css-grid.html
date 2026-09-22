@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Grid | Code With Me</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.7;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* Navbar */
+
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav .logo span {
+            color: #38bdf8;
+        }
+
+        nav .nav-links {
+            float: right;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        nav .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        nav::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* Header */
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Main Container */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        .section ul,
+        .section ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* Info Boxes */
+
+        .info-box {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* Code */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Grid Examples */
+
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .grid-item {
+            background: #2563eb;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .grid-two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .grid-four {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .grid-gap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: 20px;
+            column-gap: 30px;
+            margin: 20px 0;
+        }
+
+        .grid-span {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .grid-span .wide {
+            grid-column: span 2;
+        }
+
+        .grid-area-demo {
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+            grid-template-columns: 200px 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .area-header {
+            grid-area: header;
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .area-sidebar {
+            grid-area: sidebar;
+            background: #7c3aed;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .area-main {
+            grid-area: main;
+            background: #0891b2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .area-footer {
+            grid-area: footer;
+            background: #16a34a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Table */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Editor */
+
+        .editor {
+            background: #1f2937;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .editor textarea {
+            width: 100%;
+            min-height: 300px;
+            resize: vertical;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            outline: none;
+            background: #111827;
+            color: #f9fafb;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .buttons button:hover {
+            opacity: 0.85;
+        }
+
+        .output {
+            width: 100%;
+            min-height: 250px;
+            border: 2px solid #ddd;
+            margin-top: 20px;
+            background: white;
+            border-radius: 6px;
+        }
+
+        /* Navigation */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 768px) {
+
+            nav .nav-links {
+                float: none;
+                margin-top: 10px;
+            }
+
+            nav .nav-links a {
+                margin: 0 10px 0 0;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .grid-demo,
+            .grid-four,
+            .grid-two,
+            .grid-gap {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-area-demo {
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "main"
+                    "footer";
+
+                grid-template-columns: 1fr;
+            }
+
+            .grid-span .wide {
+                grid-column: span 1;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="../index.html">Home</a>
+            <a href="../index.html#courses">Courses</a>
+            <a href="../index.html#about">About</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero -->
+
+    <header class="hero">
+
+        <h1>CSS Grid</h1>
+
+        <p>
+            Learn how to create powerful two-dimensional layouts
+            using CSS Grid.
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+
+        <section class="section">
+
+            <h2>1. What is CSS Grid?</h2>
+
+            <p>
+                CSS Grid is a powerful CSS layout system used to
+                create rows and columns on a web page.
+            </p>
+
+            <p>
+                Grid makes it easy to create complex and responsive
+                website layouts without using floats or complicated
+                positioning.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                CSS Grid is a two-dimensional layout system because
+                it can control both rows and columns.
+
+            </div>
+
+        </section>
+
+
+        <!-- Grid Container -->
+
+        <section class="section">
+
+            <h2>2. CSS Grid Container</h2>
+
+            <p>
+                To create a grid, first set the
+                <code>display</code> property to
+                <code>grid</code>.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+}</code></pre>
+
+            <p>
+                The element with
+                <code>display: grid</code> becomes the
+                grid container.
+            </p>
+
+        </section>
+
+
+        <!-- Grid Columns -->
+
+        <section class="section">
+
+            <h2>3. Grid Columns</h2>
+
+            <p>
+                The <code>grid-template-columns</code> property
+                defines the number and size of columns.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}</code></pre>
+
+            <p>
+                The <code>fr</code> unit represents a fraction
+                of the available space.
+            </p>
+
+            <div class="grid-demo">
+
+                <div class="grid-item">Column 1</div>
+                <div class="grid-item">Column 2</div>
+                <div class="grid-item">Column 3</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Repeat -->
+
+        <section class="section">
+
+            <h2>4. Using repeat()</h2>
+
+            <p>
+                The <code>repeat()</code> function allows you to
+                create multiple columns easily.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}</code></pre>
+
+            <div class="success-box">
+
+                <strong>Tip:</strong>
+
+                <code>repeat(3, 1fr)</code> means three equal columns.
+
+            </div>
+
+        </section>
+
+
+        <!-- Two Columns -->
+
+        <section class="section">
+
+            <h2>5. Creating Two Columns</h2>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}</code></pre>
+
+            <div class="grid-two">
+
+                <div class="grid-item">Left Column</div>
+                <div class="grid-item">Right Column</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Four Columns -->
+
+        <section class="section">
+
+            <h2>6. Creating Four Columns</h2>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}</code></pre>
+
+            <div class="grid-four">
+
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Grid Rows -->
+
+        <section class="section">
+
+            <h2>7. Grid Rows</h2>
+
+            <p>
+                The <code>grid-template-rows</code> property
+                defines the size of rows.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-rows: 100px 200px;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Gap -->
+
+        <section class="section">
+
+            <h2>8. CSS Grid Gap</h2>
+
+            <p>
+                The <code>gap</code> property creates space between
+                rows and columns.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}</code></pre>
+
+            <h3>Row Gap</h3>
+
+            <pre><code>row-gap: 20px;</code></pre>
+
+            <h3>Column Gap</h3>
+
+            <pre><code>column-gap: 30px;</code></pre>
+
+            <div class="grid-gap">
+
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+                <div class="grid-item">6</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Grid Lines -->
+
+        <section class="section">
+
+            <h2>9. CSS Grid Lines</h2>
+
+            <p>
+                Grid items can be positioned using grid lines.
+            </p>
+
+            <pre><code>.item {
+    grid-column: 1 / 3;
+}</code></pre>
+
+            <p>
+                This makes the item occupy columns from line 1
+                to line 3.
+            </p>
+
+        </section>
+
+
+        <!-- Grid Column Span -->
+
+        <section class="section">
+
+            <h2>10. Grid Column Span</h2>
+
+            <p>
+                The <code>span</code> keyword allows an item to
+                occupy multiple columns.
+            </p>
+
+            <pre><code>.item {
+    grid-column: span 2;
+}</code></pre>
+
+            <div class="grid-span">
+
+                <div class="grid-item wide">
+                    Wide Item - 2 Columns
+                </div>
+
+                <div class="grid-item">
+                    Item 2
+                </div>
+
+                <div class="grid-item">
+                    Item 3
+                </div>
+
+                <div class="grid-item">
+                    Item 4
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Grid Row Span -->
+
+        <section class="section">
+
+            <h2>11. Grid Row Span</h2>
+
+            <p>
+                The <code>grid-row</code> property can be used
+                to make an item occupy multiple rows.
+            </p>
+
+            <pre><code>.item {
+    grid-row: span 2;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Grid Areas -->
+
+        <section class="section">
+
+            <h2>12. CSS Grid Template Areas</h2>
+
+            <p>
+                <code>grid-template-areas</code> allows you to
+                create named areas for your layout.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+}</code></pre>
+
+            <p>
+                Then assign areas to individual elements:
+            </p>
+
+            <pre><code>.header {
+    grid-area: header;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.main {
+    grid-area: main;
+}
+
+.footer {
+    grid-area: footer;
+}</code></pre>
+
+            <div class="grid-area-demo">
+
+                <div class="area-header">
+                    Header
+                </div>
+
+                <div class="area-sidebar">
+                    Sidebar
+                </div>
+
+                <div class="area-main">
+                    Main Content
+                </div>
+
+                <div class="area-footer">
+                    Footer
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Auto Columns -->
+
+        <section class="section">
+
+            <h2>13. Auto Grid Columns</h2>
+
+            <p>
+                The <code>auto</code> value allows the browser
+                to determine the size automatically.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Fraction Unit -->
+
+        <section class="section">
+
+            <h2>14. The fr Unit</h2>
+
+            <p>
+                The <code>fr</code> unit represents a fraction
+                of the available space.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}</code></pre>
+
+            <p>
+                In this example, the second column gets twice
+                as much space as the first column.
+            </p>
+
+        </section>
+
+
+        <!-- Minmax -->
+
+        <section class="section">
+
+            <h2>15. minmax()</h2>
+
+            <p>
+                The <code>minmax()</code> function defines a
+                minimum and maximum size for a grid track.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(150px, 1fr));
+}</code></pre>
+
+        </section>
+
+
+        <!-- Responsive Grid -->
+
+        <section class="section">
+
+            <h2>16. Responsive CSS Grid</h2>
+
+            <p>
+                CSS Grid can automatically create responsive
+                layouts using <code>auto-fit</code> and
+                <code>minmax()</code>.
+            </p>
+
+            <pre><code>.container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 20px;
+}</code></pre>
+
+            <div class="info-box">
+
+                This technique is commonly used for responsive
+                cards, product grids, image galleries and
+                dashboard layouts.
+
+            </div>
+
+        </section>
+
+
+        <!-- Alignment -->
+
+        <section class="section">
+
+            <h2>17. Aligning Grid Items</h2>
+
+            <h3>justify-items</h3>
+
+            <pre><code>.container {
+    justify-items: center;
+}</code></pre>
+
+            <h3>align-items</h3>
+
+            <pre><code>.container {
+    align-items: center;
+}</code></pre>
+
+            <h3>place-items</h3>
+
+            <pre><code>.container {
+    place-items: center;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Justify Content -->
+
+        <section class="section">
+
+            <h2>18. justify-content</h2>
+
+            <p>
+                The <code>justify-content</code> property controls
+                the horizontal position of the entire grid.
+            </p>
+
+            <pre><code>.container {
+    justify-content: center;
+}</code></pre>
+
+            <p>Common values:</p>
+
+            <ul>
+
+                <li>start</li>
+                <li>end</li>
+                <li>center</li>
+                <li>space-between</li>
+                <li>space-around</li>
+                <li>space-evenly</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Align Content -->
+
+        <section class="section">
+
+            <h2>19. align-content</h2>
+
+            <p>
+                The <code>align-content</code> property controls
+                the vertical position of the entire grid.
+            </p>
+
+            <pre><code>.container {
+    align-content: center;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Grid vs Flexbox -->
+
+        <section class="section">
+
+            <h2>20. CSS Grid vs Flexbox</h2>
+
+            <table>
+
+                <tr>
+                    <th>CSS Grid</th>
+                    <th>Flexbox</th>
+                </tr>
+
+                <tr>
+                    <td>Two-dimensional layout</td>
+                    <td>One-dimensional layout</td>
+                </tr>
+
+                <tr>
+                    <td>Rows and columns</td>
+                    <td>Row or column</td>
+                </tr>
+
+                <tr>
+                    <td>Useful for page layouts</td>
+                    <td>Useful for component layouts</td>
+                </tr>
+
+                <tr>
+                    <td>Controls both dimensions</td>
+                    <td>Primarily controls one dimension</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Common Uses -->
+
+        <section class="section">
+
+            <h2>21. Common Uses of CSS Grid</h2>
+
+            <ul>
+
+                <li>Website layouts</li>
+
+                <li>Card layouts</li>
+
+                <li>Image galleries</li>
+
+                <li>Product grids</li>
+
+                <li>Dashboard layouts</li>
+
+                <li>Portfolio websites</li>
+
+                <li>Blog layouts</li>
+
+                <li>Responsive designs</li>
+
+                <li>Admin panels</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Properties Summary -->
+
+        <section class="section">
+
+            <h2>22. CSS Grid Properties</h2>
+
+            <table>
+
+                <tr>
+                    <th>Property</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>display: grid</td>
+                    <td>Creates a grid container</td>
+                </tr>
+
+                <tr>
+                    <td>grid-template-columns</td>
+                    <td>Defines columns</td>
+                </tr>
+
+                <tr>
+                    <td>grid-template-rows</td>
+                    <td>Defines rows</td>
+                </tr>
+
+                <tr>
+                    <td>gap</td>
+                    <td>Creates space between grid items</td>
+                </tr>
+
+                <tr>
+                    <td>grid-column</td>
+                    <td>Controls column position</td>
+                </tr>
+
+                <tr>
+                    <td>grid-row</td>
+                    <td>Controls row position</td>
+                </tr>
+
+                <tr>
+                    <td>grid-area</td>
+                    <td>Assigns an item to a named area</td>
+                </tr>
+
+                <tr>
+                    <td>grid-template-areas</td>
+                    <td>Creates named layout areas</td>
+                </tr>
+
+                <tr>
+                    <td>justify-items</td>
+                    <td>Aligns items horizontally</td>
+                </tr>
+
+                <tr>
+                    <td>align-items</td>
+                    <td>Aligns items vertically</td>
+                </tr>
+
+                <tr>
+                    <td>justify-content</td>
+                    <td>Aligns the complete grid horizontally</td>
+                </tr>
+
+                <tr>
+                    <td>align-content</td>
+                    <td>Aligns the complete grid vertically</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Live Editor -->
+
+        <section class="section">
+
+            <h2>23. CSS Grid Live Editor</h2>
+
+            <p>
+                Write your own HTML and CSS code and click
+                <strong>Run Code</strong> to see the result.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor"><!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.box {
+    background: #2563eb;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>My CSS Grid</h2>
+
+<div class="grid">
+
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+    <div class="box">Box 4</div>
+    <div class="box">Box 5</div>
+    <div class="box">Box 6</div>
+
+</div>
+
+</body>
+</html></textarea>
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+                        ✖ Clear
+                    </button>
+
+                </div>
+
+            </div>
+
+            <iframe
+                id="output"
+                class="output">
+            </iframe>
+
+        </section>
+
+
+        <!-- Key Points -->
+
+        <section class="section">
+
+            <h2>24. Key Points</h2>
+
+            <div class="success-box">
+
+                <ul>
+
+                    <li>
+                        CSS Grid is a two-dimensional layout system.
+                    </li>
+
+                    <li>
+                        Use <code>display: grid</code> to create
+                        a grid container.
+                    </li>
+
+                    <li>
+                        Use <code>grid-template-columns</code>
+                        to create columns.
+                    </li>
+
+                    <li>
+                        Use <code>grid-template-rows</code>
+                        to create rows.
+                    </li>
+
+                    <li>
+                        Use <code>gap</code> to add space between
+                        grid items.
+                    </li>
+
+                    <li>
+                        Use <code>grid-column</code> and
+                        <code>grid-row</code> to position items.
+                    </li>
+
+                    <li>
+                        Use <code>grid-template-areas</code>
+                        for named layouts.
+                    </li>
+
+                    <li>
+                        Use <code>auto-fit</code> and
+                        <code>minmax()</code> for responsive grids.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Lesson Navigation -->
+
+        <div class="lesson-navigation">
+
+            <a href="css-overflow.html">
+                ← Previous: CSS Overflow
+            </a>
+
+            <a href="../index.html">
+                🏠 Home
+            </a>
+
+            <a href="css-flexbox.html">
+                Next: CSS Flexbox →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+            output.srcdoc = code;
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").srcdoc = "";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
