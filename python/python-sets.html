@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Python Sets | Code With Me</title>
+
+<meta name="description" content="Learn Python Sets with examples. Learn how to create, add, remove and perform union, intersection and difference operations on sets.">
+<meta name="keywords" content="Python Sets, Python set methods, Python union, Python intersection, Python difference, Python tutorial">
+<meta name="author" content="Code With Me">
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #1f2937;
+        line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+        background: #111827;
+        color: white;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .nav-links a:hover {
+        color: #38bdf8;
+    }
+
+    /* HERO */
+    .hero {
+        background: linear-gradient(135deg, #3776ab, #1f2937);
+        color: white;
+        text-align: center;
+        padding: 70px 20px;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    /* CONTAINER */
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    /* CONTENT */
+    .content-box {
+        background: white;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .content-box h2 {
+        color: #3776ab;
+        margin-bottom: 15px;
+        font-size: 28px;
+    }
+
+    .content-box h3 {
+        color: #1f2937;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    .content-box p {
+        margin-bottom: 15px;
+    }
+
+    .content-box ul,
+    .content-box ol {
+        margin-left: 25px;
+        margin-bottom: 15px;
+    }
+
+    .content-box li {
+        margin-bottom: 8px;
+    }
+
+    /* BOXES */
+    .highlight {
+        background: #e0f2fe;
+        border-left: 5px solid #0284c7;
+        padding: 18px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    .success-box {
+        background: #dcfce7;
+        border-left: 5px solid #16a34a;
+        padding: 18px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    .warning-box {
+        background: #fef3c7;
+        border-left: 5px solid #f59e0b;
+        padding: 18px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    /* CODE */
+    pre {
+        background: #111827;
+        color: #e5e7eb;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 15px 0;
+    }
+
+    code {
+        font-family: Consolas, "Courier New", monospace;
+    }
+
+    /* TABLE */
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th,
+    td {
+        border: 1px solid #d1d5db;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background: #3776ab;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background: #f3f4f6;
+    }
+
+    /* EDITOR */
+    .editor {
+        margin-top: 20px;
+    }
+
+    .editor textarea {
+        width: 100%;
+        min-height: 280px;
+        padding: 18px;
+        background: #111827;
+        color: #e5e7eb;
+        border: none;
+        border-radius: 8px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 15px;
+        resize: vertical;
+        outline: none;
+    }
+
+    .button-group {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .button-group button {
+        border: none;
+        padding: 12px 22px;
+        border-radius: 7px;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .run-btn {
+        background: #3776ab;
+    }
+
+    .run-btn:hover {
+        background: #285a85;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+    }
+
+    .clear-btn:hover {
+        background: #b91c1c;
+    }
+
+    #outputBox {
+        background: #111827;
+        color: #22c55e;
+        min-height: 100px;
+        padding: 18px;
+        border-radius: 8px;
+        white-space: pre-wrap;
+        font-family: Consolas, "Courier New", monospace;
+        margin-top: 15px;
+    }
+
+    /* NAVIGATION */
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 40px 0;
+    }
+
+    .page-navigation a {
+        text-decoration: none;
+        background: #3776ab;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .page-navigation a:hover {
+        background: #285a85;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 50px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+
+        nav {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-links {
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+        }
+
+        .content-box {
+            padding: 20px;
+        }
+
+        .page-navigation {
+            flex-direction: column;
+        }
+
+        .page-navigation a {
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- NAVBAR -->
+<nav>
+
+    <a href="../index.html" class="logo">
+        Code <span>With Me</span>
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <h1>Python Sets</h1>
+
+    <p>
+        Learn how to create, modify and perform operations on Python Sets
+    </p>
+
+</section>
+
+
+<main class="container">
+
+
+    <!-- INTRODUCTION -->
+    <section class="content-box">
+
+        <h2>What is a Set in Python?</h2>
+
+        <p>
+            A set is a collection used to store multiple values in a
+            single variable.
+        </p>
+
+        <p>
+            Sets are unordered, unindexed and do not allow duplicate
+            values.
+        </p>
+
+        <div class="highlight">
+
+            <strong>Important:</strong>
+
+            A set is created using curly brackets
+            <strong>{ }</strong> or the <strong>set()</strong> function.
+
+        </div>
+
+        <pre><code>fruits = {"Apple", "Banana", "Mango"}
+```
+
+print(fruits)</code></pre>
+
+```
+        <p>
+            The order of items displayed in a set is not guaranteed.
+        </p>
+
+    </section>
+
+
+    <!-- CREATE SET -->
+    <section class="content-box">
+
+        <h2>Creating a Set</h2>
+
+        <p>
+            You can create a set by placing items inside curly brackets.
+        </p>
+
+        <pre><code>numbers = {10, 20, 30, 40}
+```
+
+print(numbers)</code></pre>
+
+```
+        <p>Output contains:</p>
+
+        <pre><code>10
+```
+
+20
+30
+40</code></pre>
+
+```
+        <div class="warning-box">
+
+            <strong>Note:</strong>
+
+            Sets are unordered, so you should not rely on a particular
+            display order.
+
+        </div>
+
+    </section>
+
+
+    <!-- DUPLICATES -->
+    <section class="content-box">
+
+        <h2>Sets Do Not Allow Duplicate Values</h2>
+
+        <p>
+            If duplicate values are added to a set, Python keeps only
+            one copy of each value.
+        </p>
+
+        <pre><code>numbers = {10, 20, 20, 30, 30, 30}
+```
+
+print(numbers)</code></pre>
+
+```
+        <p>
+            The result contains only unique values.
+        </p>
+
+        <pre><code>{10, 20, 30}</code></pre>
+
+        <div class="success-box">
+
+            <strong>Useful:</strong>
+
+            Sets are commonly used when you need to remove duplicate
+            values from a collection.
+
+        </div>
+
+    </section>
+
+
+    <!-- SET LENGTH -->
+    <section class="content-box">
+
+        <h2>Finding Set Length</h2>
+
+        <p>
+            The <strong>len()</strong> function returns the number of
+            unique items in a set.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana", "Mango"}
+```
+
+print(len(fruits))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>3</code></pre>
+
+    </section>
+
+
+    <!-- DATA TYPES -->
+    <section class="content-box">
+
+        <h2>Different Data Types in a Set</h2>
+
+        <p>
+            A set can contain values of different data types.
+        </p>
+
+        <pre><code>my_set = {
+"Python",
+100,
+25.5,
+True
+```
+
+}
+
+print(my_set)</code></pre>
+
+```
+        <p>
+            Sets can contain values such as strings, integers, floats
+            and Boolean values.
+        </p>
+
+    </section>
+
+
+    <!-- SET FUNCTION -->
+    <section class="content-box">
+
+        <h2>Using the set() Function</h2>
+
+        <p>
+            You can use the <strong>set()</strong> function to create
+            a set from another iterable.
+        </p>
+
+        <pre><code>numbers = [10, 20, 20, 30, 30]
+```
+
+unique_numbers = set(numbers)
+
+print(unique_numbers)</code></pre>
+
+```
+        <p>Output contains:</p>
+
+        <pre><code>{10, 20, 30}</code></pre>
+
+    </section>
+
+
+    <!-- EMPTY SET -->
+    <section class="content-box">
+
+        <h2>Creating an Empty Set</h2>
+
+        <p>
+            To create an empty set, use <strong>set()</strong>.
+        </p>
+
+        <pre><code>my_set = set()
+```
+
+print(my_set)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>set()</code></pre>
+
+        <div class="warning-box">
+
+            <strong>Important:</strong>
+
+            <code>{}</code> creates an empty dictionary, not an empty set.
+
+        </div>
+
+    </section>
+
+
+    <!-- ADD -->
+    <section class="content-box">
+
+        <h2>Adding Items to a Set</h2>
+
+        <p>
+            The <strong>add()</strong> method adds one item to a set.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana"}
+```
+
+fruits.add("Mango")
+
+print(fruits)</code></pre>
+
+```
+        <p>
+            The set now contains Apple, Banana and Mango.
+        </p>
+
+    </section>
+
+
+    <!-- UPDATE -->
+    <section class="content-box">
+
+        <h2>Adding Multiple Items</h2>
+
+        <p>
+            The <strong>update()</strong> method adds multiple items
+            from another iterable.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana"}
+```
+
+more_fruits = {"Mango", "Orange"}
+
+fruits.update(more_fruits)
+
+print(fruits)</code></pre>
+
+```
+        <p>
+            Both sets are combined and duplicate values are ignored.
+        </p>
+
+    </section>
+
+
+    <!-- REMOVE -->
+    <section class="content-box">
+
+        <h2>Removing Items from a Set</h2>
+
+        <h3>Using remove()</h3>
+
+        <p>
+            The <strong>remove()</strong> method removes a specified
+            item.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana", "Mango"}
+```
+
+fruits.remove("Banana")
+
+print(fruits)</code></pre>
+
+```
+        <div class="warning-box">
+
+            <strong>Note:</strong>
+
+            <code>remove()</code> raises a KeyError if the specified
+            item does not exist.
+
+        </div>
+
+
+        <h3>Using discard()</h3>
+
+        <p>
+            The <strong>discard()</strong> method also removes an item,
+            but it does not raise an error if the item does not exist.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana", "Mango"}
+```
+
+fruits.discard("Orange")
+
+print(fruits)</code></pre>
+
+```
+    </section>
+
+
+    <!-- POP -->
+    <section class="content-box">
+
+        <h2>Using pop()</h2>
+
+        <p>
+            The <strong>pop()</strong> method removes and returns an
+            arbitrary item from a set.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana", "Mango"}
+```
+
+item = fruits.pop()
+
+print(item)
+print(fruits)</code></pre>
+
+```
+        <div class="warning-box">
+
+            <strong>Important:</strong>
+
+            Because sets are unordered, you should not assume which
+            item <code>pop()</code> will remove.
+
+        </div>
+
+    </section>
+
+
+    <!-- CLEAR -->
+    <section class="content-box">
+
+        <h2>Clear a Set</h2>
+
+        <p>
+            The <strong>clear()</strong> method removes all items from
+            a set.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana", "Mango"}
+```
+
+fruits.clear()
+
+print(fruits)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>set()</code></pre>
+
+    </section>
+
+
+    <!-- DELETE -->
+    <section class="content-box">
+
+        <h2>Delete a Set</h2>
+
+        <p>
+            The <strong>del</strong> keyword can delete the entire
+            set variable.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana", "Mango"}
+```
+
+del fruits</code></pre>
+
+```
+        <p>
+            After deletion, the variable <code>fruits</code> no longer
+            exists.
+        </p>
+
+    </section>
+
+
+    <!-- MEMBERSHIP -->
+    <section class="content-box">
+
+        <h2>Checking if an Item Exists</h2>
+
+        <p>
+            You can use the <strong>in</strong> keyword to check whether
+            an item exists in a set.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana", "Mango"}
+```
+
+print("Banana" in fruits)
+print("Orange" in fruits)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False</code></pre>
+
+```
+        <h3>Using not in</h3>
+
+        <pre><code>print("Orange" not in fruits)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>True</code></pre>
+
+    </section>
+
+
+    <!-- LOOP -->
+    <section class="content-box">
+
+        <h2>Loop Through a Set</h2>
+
+        <p>
+            You can use a <strong>for</strong> loop to access each item
+            in a set.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana", "Mango"}
+```
+
+for fruit in fruits:
+print(fruit)</code></pre>
+
+```
+        <div class="warning-box">
+
+            <strong>Remember:</strong>
+
+            Because sets are unordered, the order in which the items
+            are printed is not guaranteed.
+
+        </div>
+
+    </section>
+
+
+    <!-- UNION -->
+    <section class="content-box">
+
+        <h2>Set Union</h2>
+
+        <p>
+            Union combines all unique items from two sets.
+        </p>
+
+        <h3>Using | Operator</h3>
+
+        <pre><code>set1 = {1, 2, 3}
+```
+
+set2 = {3, 4, 5}
+
+result = set1 | set2
+
+print(result)</code></pre>
+
+```
+        <p>Result contains:</p>
+
+        <pre><code>{1, 2, 3, 4, 5}</code></pre>
+
+
+        <h3>Using union()</h3>
+
+        <pre><code>result = set1.union(set2)
+```
+
+print(result)</code></pre>
+
+```
+    </section>
+
+
+    <!-- INTERSECTION -->
+    <section class="content-box">
+
+        <h2>Set Intersection</h2>
+
+        <p>
+            Intersection returns items that exist in both sets.
+        </p>
+
+        <pre><code>set1 = {1, 2, 3, 4}
+```
+
+set2 = {3, 4, 5, 6}
+
+result = set1 & set2
+
+print(result)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>{3, 4}</code></pre>
+
+
+        <h3>Using intersection()</h3>
+
+        <pre><code>result = set1.intersection(set2)
+```
+
+print(result)</code></pre>
+
+```
+    </section>
+
+
+    <!-- DIFFERENCE -->
+    <section class="content-box">
+
+        <h2>Set Difference</h2>
+
+        <p>
+            Difference returns items that are present in the first set
+            but not in the second set.
+        </p>
+
+        <pre><code>set1 = {1, 2, 3, 4}
+```
+
+set2 = {3, 4, 5, 6}
+
+result = set1 - set2
+
+print(result)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>{1, 2}</code></pre>
+
+        <h3>Using difference()</h3>
+
+        <pre><code>result = set1.difference(set2)
+```
+
+print(result)</code></pre>
+
+```
+    </section>
+
+
+    <!-- SYMMETRIC DIFFERENCE -->
+    <section class="content-box">
+
+        <h2>Symmetric Difference</h2>
+
+        <p>
+            Symmetric difference returns items that are in either set,
+            but not in both.
+        </p>
+
+        <pre><code>set1 = {1, 2, 3, 4}
+```
+
+set2 = {3, 4, 5, 6}
+
+result = set1 ^ set2
+
+print(result)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>{1, 2, 5, 6}</code></pre>
+
+        <h3>Using symmetric_difference()</h3>
+
+        <pre><code>result = set1.symmetric_difference(set2)
+```
+
+print(result)</code></pre>
+
+```
+    </section>
+
+
+    <!-- SUBSET -->
+    <section class="content-box">
+
+        <h2>Checking Subsets</h2>
+
+        <p>
+            A set is a subset of another set when every item in the
+            first set also exists in the second set.
+        </p>
+
+        <pre><code>set1 = {1, 2}
+```
+
+set2 = {1, 2, 3, 4}
+
+print(set1.issubset(set2))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True</code></pre>
+
+    </section>
+
+
+    <!-- SUPERSET -->
+    <section class="content-box">
+
+        <h2>Checking Supersets</h2>
+
+        <p>
+            A set is a superset when it contains every item of another
+            set.
+        </p>
+
+        <pre><code>set1 = {1, 2, 3, 4}
+```
+
+set2 = {1, 2}
+
+print(set1.issuperset(set2))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True</code></pre>
+
+    </section>
+
+
+    <!-- DISJOINT -->
+    <section class="content-box">
+
+        <h2>Checking Disjoint Sets</h2>
+
+        <p>
+            Two sets are disjoint when they have no common items.
+        </p>
+
+        <pre><code>set1 = {1, 2, 3}
+```
+
+set2 = {4, 5, 6}
+
+print(set1.isdisjoint(set2))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True</code></pre>
+
+    </section>
+
+
+    <!-- COPY -->
+    <section class="content-box">
+
+        <h2>Copying a Set</h2>
+
+        <p>
+            The <strong>copy()</strong> method creates a shallow copy
+            of a set.
+        </p>
+
+        <pre><code>fruits = {"Apple", "Banana", "Mango"}
+```
+
+new_fruits = fruits.copy()
+
+print(new_fruits)</code></pre>
+
+```
+        <p>
+            You can also use the <strong>set()</strong> constructor.
+        </p>
+
+        <pre><code>new_fruits = set(fruits)
+```
+
+print(new_fruits)</code></pre>
+
+```
+    </section>
+
+
+    <!-- SET METHODS TABLE -->
+    <section class="content-box">
+
+        <h2>Common Python Set Methods</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <tr>
+                    <th>Method</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>add()</td>
+                    <td>Adds an item to the set.</td>
+                </tr>
+
+                <tr>
+                    <td>update()</td>
+                    <td>Adds items from another iterable.</td>
+                </tr>
+
+                <tr>
+                    <td>remove()</td>
+                    <td>Removes a specified item.</td>
+                </tr>
+
+                <tr>
+                    <td>discard()</td>
+                    <td>Removes an item without raising an error if absent.</td>
+                </tr>
+
+                <tr>
+                    <td>pop()</td>
+                    <td>Removes and returns an arbitrary item.</td>
+                </tr>
+
+                <tr>
+                    <td>clear()</td>
+                    <td>Removes all items.</td>
+                </tr>
+
+                <tr>
+                    <td>union()</td>
+                    <td>Returns all unique items from both sets.</td>
+                </tr>
+
+                <tr>
+                    <td>intersection()</td>
+                    <td>Returns common items.</td>
+                </tr>
+
+                <tr>
+                    <td>difference()</td>
+                    <td>Returns items only in the first set.</td>
+                </tr>
+
+                <tr>
+                    <td>symmetric_difference()</td>
+                    <td>Returns items that are in either set, but not both.</td>
+                </tr>
+
+                <tr>
+                    <td>issubset()</td>
+                    <td>Checks whether a set is a subset.</td>
+                </tr>
+
+                <tr>
+                    <td>issuperset()</td>
+                    <td>Checks whether a set is a superset.</td>
+                </tr>
+
+                <tr>
+                    <td>isdisjoint()</td>
+                    <td>Checks whether two sets have no common items.</td>
+                </tr>
+
+                <tr>
+                    <td>copy()</td>
+                    <td>Creates a copy of the set.</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- SET CHARACTERISTICS -->
+    <section class="content-box">
+
+        <h2>Important Characteristics of Sets</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <tr>
+                    <th>Feature</th>
+                    <th>Python Set</th>
+                </tr>
+
+                <tr>
+                    <td>Ordered</td>
+                    <td>No</td>
+                </tr>
+
+                <tr>
+                    <td>Indexed</td>
+                    <td>No</td>
+                </tr>
+
+                <tr>
+                    <td>Changeable</td>
+                    <td>Yes</td>
+                </tr>
+
+                <tr>
+                    <td>Allows duplicates</td>
+                    <td>No</td>
+                </tr>
+
+                <tr>
+                    <td>Allows unique values</td>
+                    <td>Yes</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- LIST TO SET -->
+    <section class="content-box">
+
+        <h2>Removing Duplicates from a List</h2>
+
+        <p>
+            A common use of sets is removing duplicate values from a
+            list.
+        </p>
+
+        <pre><code>numbers = [10, 20, 20, 30, 30, 40]
+```
+
+unique_numbers = list(set(numbers))
+
+print(unique_numbers)</code></pre>
+
+```
+        <div class="warning-box">
+
+            <strong>Note:</strong>
+
+            Converting a list to a set removes duplicates, but because
+            sets are unordered, the original ordering should not be
+            relied upon.
+
+        </div>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+    <section class="content-box">
+
+        <h2>Practice Example</h2>
+
+        <p>
+            The following example finds common subjects between two
+            students.
+        </p>
+
+        <pre><code>student1 = {
+"Python",
+"HTML",
+"CSS",
+"JavaScript"
+```
+
+}
+
+student2 = {
+"Python",
+"CSS",
+"Java"
+}
+
+common = student1 & student2
+
+print(common)</code></pre>
+
+```
+        <p>
+            The result contains the subjects common to both sets.
+        </p>
+
+        <pre><code>{'Python', 'CSS'}</code></pre>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section class="content-box">
+
+        <h2>Python Sets - Summary</h2>
+
+        <ul>
+
+            <li>Sets are collections of unique values.</li>
+
+            <li>Sets are unordered and do not use indexes.</li>
+
+            <li>Sets do not allow duplicate values.</li>
+
+            <li>Sets are created using <strong>{ }</strong>.</li>
+
+            <li>An empty set is created using <strong>set()</strong>.</li>
+
+            <li><strong>add()</strong> adds one item.</li>
+
+            <li><strong>update()</strong> adds multiple items.</li>
+
+            <li><strong>remove()</strong> removes a specified item.</li>
+
+            <li><strong>discard()</strong> safely removes an item.</li>
+
+            <li><strong>union()</strong> combines sets.</li>
+
+            <li><strong>intersection()</strong> finds common items.</li>
+
+            <li><strong>difference()</strong> finds items unique to one set.</li>
+
+            <li><strong>symmetric_difference()</strong> finds items in either set but not both.</li>
+
+            <li>Sets are useful for removing duplicates and performing mathematical set operations.</li>
+
+        </ul>
+
+        <div class="highlight">
+
+            <strong>Next Topic:</strong>
+
+            In the next lesson, you will learn about
+            <strong>Python Dictionaries</strong>.
+
+        </div>
+
+    </section>
+
+
+    <!-- INTERACTIVE EDITOR -->
+    <section class="content-box">
+
+        <h2>Try Python Sets</h2>
+
+        <p>
+            Try simple Python set examples below and click
+            <strong>Run Code</strong>.
+        </p>
+
+        <div class="editor">
+
+            <textarea id="codeEditor">set1 = {1, 2, 3}
+```
+
+set2 = {3, 4, 5}
+
+print(set1)
+print(set2)
+
+print(set1.union(set2))
+print(set1.intersection(set2))</textarea>
+
+```
+            <div class="button-group">
+
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearCode()">
+                    Clear
+                </button>
+
+            </div>
+
+            <div id="outputBox">
+                Output will appear here...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+
+        <a href="python-tuples.html">
+            ← Previous: Python Tuples
+        </a>
+
+        <a href="python-dictionaries.html">
+            Next: Python Dictionaries →
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 Code With Me. All Rights Reserved.
+    </p>
+
+    <p>
+        Learn HTML, CSS, JavaScript and Python.
+    </p>
+
+</footer>
+
+
+<!-- SIMPLE SET DEMO -->
+<script>
+
+    function parseSet(value) {
+
+        value = value.trim();
+
+        if (
+            value.startsWith("{") &&
+            value.endsWith("}")
+        ) {
+
+            value = value.substring(
+                1,
+                value.length - 1
+            );
+
+            if (value.trim() === "") {
+                return [];
+            }
+
+            return value
+                .split(",")
+                .map(function(item) {
+
+                    item = item.trim();
+
+                    if (
+                        (item.startsWith('"') &&
+                         item.endsWith('"')) ||
+                        (item.startsWith("'") &&
+                         item.endsWith("'"))
+                    ) {
+                        return item.substring(
+                            1,
+                            item.length - 1
+                        );
+                    }
+
+                    if (!isNaN(item)) {
+                        return Number(item);
+                    }
+
+                    if (item === "True") {
+                        return true;
+                    }
+
+                    if (item === "False") {
+                        return false;
+                    }
+
+                    return item;
+
+                });
+
+        }
+
+        return [];
+    }
+
+
+    function unique(array) {
+
+        return [...new Set(array)];
+    }
+
+
+    function union(set1, set2) {
+
+        return unique(
+            set1.concat(set2)
+        );
+
+    }
+
+
+    function intersection(set1, set2) {
+
+        return set1.filter(function(item) {
+
+            return set2.includes(item);
+
+        });
+
+    }
+
+
+    function difference(set1, set2) {
+
+        return set1.filter(function(item) {
+
+            return !set2.includes(item);
+
+        });
+
+    }
+
+
+    function formatSet(set) {
+
+        return "{" +
+            set.map(function(item) {
+
+                if (typeof item === "string") {
+                    return "'" + item + "'";
+                }
+
+                return item;
+
+            }).join(", ") +
+            "}";
+
+    }
+
+
+    function runCode() {
+
+        const code =
+            document.getElementById(
+                "codeEditor"
+            ).value;
+
+        const output =
+            document.getElementById(
+                "outputBox"
+            );
+
+        let variables = {};
+
+        let result = "";
+
+        try {
+
+            const lines =
+                code.split("\n");
+
+
+            lines.forEach(function(line) {
+
+                line = line.trim();
+
+
+                if (
+                    line === "" ||
+                    line.startsWith("#")
+                ) {
+                    return;
+                }
+
+
+                /* SET ASSIGNMENT */
+
+                if (
+                    line.includes("=") &&
+                    !line.includes("==") &&
+                    !line.startsWith("print")
+                ) {
+
+                    const parts =
+                        line.split("=");
+
+                    const variableName =
+                        parts[0].trim();
+
+                    const value =
+                        parts
+                            .slice(1)
+                            .join("=")
+                            .trim();
+
+
+                    if (
+                        value.startsWith("{") &&
+                        value.endsWith("}")
+                    ) {
+
+                        variables[
+                            variableName
+                        ] = unique(
+                            parseSet(value)
+                        );
+
+                    }
+
+                    return;
+
+                }
+
+
+                /* PRINT */
+
+                if (line.startsWith("print")) {
+
+                    let content =
+                        line.substring(5).trim();
+
+
+                    if (
+                        content.startsWith("(") &&
+                        content.endsWith(")")
+                    ) {
+
+                        content =
+                            content.substring(
+                                1,
+                                content.length - 1
+                            );
+
+                    }
+
+
+                    /*
+                     * Handle union()
+                     */
+
+                    const unionMatch =
+                        content.match(
+                            /^([a-zA-Z_][a-zA-Z0-9_]*)\.union\(([^)]+)\)$/
+                        );
+
+
+                    if (unionMatch) {
+
+                        const first =
+                            variables[
+                                unionMatch[1]
+                            ] || [];
+
+                        const second =
+                            variables[
+                                unionMatch[2].trim()
+                            ] || [];
+
+
+                        result +=
+                            formatSet(
+                                union(first, second)
+                            ) +
+                            "\n";
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Handle intersection()
+                     */
+
+                    const intersectionMatch =
+                        content.match(
+                            /^([a-zA-Z_][a-zA-Z0-9_]*)\.intersection\(([^)]+)\)$/
+                        );
+
+
+                    if (intersectionMatch) {
+
+                        const first =
+                            variables[
+                                intersectionMatch[1]
+                            ] || [];
+
+                        const second =
+                            variables[
+                                intersectionMatch[2].trim()
+                            ] || [];
+
+
+                        result +=
+                            formatSet(
+                                intersection(
+                                    first,
+                                    second
+                                )
+                            ) +
+                            "\n";
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Handle variables
+                     */
+
+                    if (
+                        variables.hasOwnProperty(
+                            content
+                        )
+                    ) {
+
+                        result +=
+                            formatSet(
+                                variables[content]
+                            ) +
+                            "\n";
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Handle simple strings/numbers
+                     */
+
+                    result +=
+                        content +
+                        "\n";
+
+                }
+
+            });
+
+
+            if (
+                result.trim() === ""
+            ) {
+
+                output.textContent =
+                    "Code executed, but there is no print() output.";
+
+            } else {
+
+                output.textContent =
+                    result;
+
+            }
+
+        }
+        catch (error) {
+
+            output.textContent =
+                "Error: " +
+                error.message;
+
+        }
+
+    }
+
+
+    function clearCode() {
+
+        document.getElementById(
+            "codeEditor"
+        ).value = "";
+
+        document.getElementById(
+            "outputBox"
+        ).textContent =
+            "Output will appear here...";
+
+    }
+
+</script>
+```
+
+</body>
+</html>
