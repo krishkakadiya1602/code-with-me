@@ -1,0 +1,608 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Introduction | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python programming from scratch with Code With Me. Understand Python, its features, uses, syntax and write your first Python program.">
+
+    <meta name="keywords"
+          content="Python introduction, learn Python, Python tutorial, Python programming, Code With Me">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Main container */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        /* Highlight */
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .highlight strong {
+            color: #0369a1;
+        }
+
+        /* Lists */
+        ul {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        .editor textarea {
+            width: 100%;
+            min-height: 220px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #3776ab;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #2b5f89;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* Output */
+        .output {
+            margin-top: 20px;
+        }
+
+        .output h3 {
+            margin-bottom: 10px;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #2b5f89;
+        }
+
+        .disabled {
+            visibility: hidden;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Python Introduction</h1>
+        <p>
+            Learn what Python is, why it is popular, where it is used,
+            and how to write your first Python program.
+        </p>
+    </section>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="content-box">
+            <h2>What is Python?</h2>
+
+            <p>
+                Python is a high-level, interpreted programming language
+                that is easy to learn and easy to read.
+            </p>
+
+            <p>
+                Python was created by
+                <strong>Guido van Rossum</strong> and was first released
+                in 1991.
+            </p>
+
+            <p>
+                Today, Python is widely used for web development,
+                software development, data analysis, artificial intelligence,
+                machine learning, automation and many other applications.
+            </p>
+
+            <div class="highlight">
+                <strong>Remember:</strong>
+                Python focuses on simple and readable code, which makes it
+                a good programming language for beginners.
+            </div>
+        </section>
+
+
+        <!-- Why Learn Python -->
+        <section class="content-box">
+            <h2>Why Learn Python?</h2>
+
+            <p>
+                Python is one of the most popular programming languages.
+                Here are some reasons why people learn Python:
+            </p>
+
+            <ul>
+                <li>Python has simple and readable syntax.</li>
+                <li>It is beginner-friendly.</li>
+                <li>Python is open-source and free.</li>
+                <li>It has a large community.</li>
+                <li>It has thousands of libraries and frameworks.</li>
+                <li>Python is used in Artificial Intelligence.</li>
+                <li>Python is used in Machine Learning.</li>
+                <li>Python is useful for automation and scripting.</li>
+                <li>Python can be used for web development.</li>
+                <li>Python is widely used for data analysis.</li>
+            </ul>
+        </section>
+
+
+        <!-- Features -->
+        <section class="content-box">
+            <h2>Features of Python</h2>
+
+            <ul>
+                <li><strong>Easy to Learn:</strong> Python syntax is simple.</li>
+
+                <li>
+                    <strong>Interpreted:</strong>
+                    Python code is executed by the Python interpreter.
+                </li>
+
+                <li>
+                    <strong>Object-Oriented:</strong>
+                    Python supports object-oriented programming.
+                </li>
+
+                <li>
+                    <strong>Cross-Platform:</strong>
+                    Python programs can run on different operating systems.
+                </li>
+
+                <li>
+                    <strong>Open Source:</strong>
+                    Python is freely available.
+                </li>
+
+                <li>
+                    <strong>Large Library:</strong>
+                    Python provides many useful built-in and external libraries.
+                </li>
+            </ul>
+        </section>
+
+
+        <!-- Uses -->
+        <section class="content-box">
+            <h2>Where is Python Used?</h2>
+
+            <p>Python is used in many different areas, including:</p>
+
+            <ul>
+                <li>Web Development</li>
+                <li>Artificial Intelligence</li>
+                <li>Machine Learning</li>
+                <li>Data Science</li>
+                <li>Data Analysis</li>
+                <li>Automation</li>
+                <li>Game Development</li>
+                <li>Desktop Applications</li>
+                <li>Cybersecurity</li>
+                <li>Scientific Computing</li>
+            </ul>
+        </section>
+
+
+        <!-- First Program -->
+        <section class="content-box">
+            <h2>Your First Python Program</h2>
+
+            <p>
+                One of the simplest Python programs uses the
+                <strong>print()</strong> function.
+            </p>
+
+            <pre><code>print("Hello, World!")</code></pre>
+
+            <p>
+                The <strong>print()</strong> function displays information
+                on the screen.
+            </p>
+
+            <div class="highlight">
+                <strong>Output:</strong><br>
+                Hello, World!
+            </div>
+        </section>
+
+
+        <!-- Python Syntax -->
+        <section class="content-box">
+            <h2>Basic Python Syntax</h2>
+
+            <p>
+                Python uses indentation to define blocks of code.
+                Unlike some programming languages, Python does not require
+                curly brackets for blocks.
+            </p>
+
+            <pre><code>if 10 &gt; 5:
+    print("10 is greater than 5")</code></pre>
+
+            <p>
+                Notice the indentation before the
+                <strong>print()</strong> statement.
+            </p>
+        </section>
+
+
+        <!-- Interactive Editor -->
+        <section class="content-box">
+            <h2>Python Code Editor</h2>
+
+            <p>
+                Write a simple Python program below and click
+                <strong>Run Code</strong>.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="pythonCode">print("Hello, Code With Me!")
+print("Welcome to Python!")</textarea>
+
+                <div class="buttons">
+                    <button class="run-btn" onclick="runPython()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearEditor()">
+                        Clear
+                    </button>
+                </div>
+
+                <div class="output">
+                    <h3>Output</h3>
+
+                    <div id="outputBox">
+                        Click "Run Code" to see the output.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Important Points -->
+        <section class="content-box">
+            <h2>Important Points</h2>
+
+            <div class="highlight">
+                <ul>
+                    <li>Python was created by Guido van Rossum.</li>
+                    <li>Python was first released in 1991.</li>
+                    <li>Python is a high-level programming language.</li>
+                    <li>Python is beginner-friendly.</li>
+                    <li>Python supports object-oriented programming.</li>
+                    <li>Python is used in AI, ML, web development and data science.</li>
+                    <li>The <strong>print()</strong> function displays output.</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- Navigation -->
+        <div class="page-navigation">
+
+            <a href="../index.html" class="disabled">
+                ← Previous
+            </a>
+
+            <a href="python-syntax.html">
+                Next: Python Syntax →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function runPython() {
+
+            const code = document.getElementById("pythonCode").value;
+            const outputBox = document.getElementById("outputBox");
+
+            if (code.trim() === "") {
+                outputBox.textContent = "Please write some Python code.";
+                return;
+            }
+
+            let output = [];
+
+            /*
+             * This is a simple browser-based Python demonstration.
+             * It supports basic print() statements.
+             */
+
+            const printRegex = /print\s*\(\s*(["'])(.*?)\1\s*\)/g;
+
+            let match;
+
+            while ((match = printRegex.exec(code)) !== null) {
+                output.push(match[2]);
+            }
+
+            if (output.length > 0) {
+                outputBox.textContent = output.join("\n");
+            } else {
+                outputBox.textContent =
+                    "This simple editor currently supports basic print() statements.\n\n" +
+                    "Example:\nprint(\"Hello World!\")";
+            }
+        }
+
+
+        function clearEditor() {
+
+            document.getElementById("pythonCode").value = "";
+
+            document.getElementById("outputBox").textContent =
+                "Editor cleared.";
+        }
+
+    </script>
+
+</body>
+</html>
+```
