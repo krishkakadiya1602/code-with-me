@@ -1,0 +1,1107 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Tuples | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python Tuples with simple explanations, examples, tuple methods, indexing, slicing, packing and unpacking.">
+
+    <meta name="keywords"
+          content="Python Tuples, Python tuple, tuple indexing, tuple slicing, tuple methods, tuple packing, tuple unpacking">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1e3a8a);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Main */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #2563eb;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        .section ul,
+        .section ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #075985;
+        }
+
+        /* Cards */
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .type-card {
+            background: #f8fafc;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .type-card h3 {
+            margin-top: 0;
+            color: #1d4ed8;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 320px;
+            resize: vertical;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #cbd5e1;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #15803d;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        .output-title {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: #1e3a8a;
+        }
+
+        #output {
+            background: #020617;
+            color: #22c55e;
+            min-height: 120px;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1>Python Tuples</h1>
+        <p>Learn how to create, access and work with tuples in Python</p>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2>What is a Tuple?</h2>
+
+            <p>
+                A tuple is a collection of values in Python. Tuples are
+                ordered and immutable, which means that their elements cannot
+                be changed after the tuple is created.
+            </p>
+
+            <p>
+                Tuples are written using round brackets
+                <strong>()</strong>.
+            </p>
+
+            <div class="info-box">
+                <strong>Example:</strong>
+                <br><br>
+                <code>numbers = (10, 20, 30)</code>
+            </div>
+        </section>
+
+
+        <!-- Tuple Characteristics -->
+        <section class="section">
+            <h2>Characteristics of Tuples</h2>
+
+            <div class="types-grid">
+
+                <div class="type-card">
+                    <h3>Ordered</h3>
+                    <p>
+                        Tuple elements maintain their order.
+                    </p>
+                </div>
+
+                <div class="type-card">
+                    <h3>Immutable</h3>
+                    <p>
+                        Tuple elements cannot be changed after creation.
+                    </p>
+                </div>
+
+                <div class="type-card">
+                    <h3>Allow Duplicates</h3>
+                    <p>
+                        A tuple can contain duplicate values.
+                    </p>
+                </div>
+
+                <div class="type-card">
+                    <h3>Different Data Types</h3>
+                    <p>
+                        A tuple can contain different types of values.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Creating Tuple -->
+        <section class="section">
+            <h2>Creating a Tuple</h2>
+
+            <p>
+                A tuple can be created by placing values inside parentheses.
+            </p>
+
+            <pre><code>fruits = ("Apple", "Banana", "Mango")
+
+print(fruits)</code></pre>
+        </section>
+
+
+        <!-- Tuple Without Parentheses -->
+        <section class="section">
+            <h2>Creating a Tuple Without Parentheses</h2>
+
+            <p>
+                Parentheses are optional in many tuple assignments. Python
+                recognizes comma-separated values as a tuple.
+            </p>
+
+            <pre><code>numbers = 10, 20, 30
+
+print(numbers)
+print(type(numbers))</code></pre>
+        </section>
+
+
+        <!-- Single Item Tuple -->
+        <section class="section">
+            <h2>Single Item Tuple</h2>
+
+            <p>
+                When creating a tuple with only one item, you must include a
+                comma after the item.
+            </p>
+
+            <pre><code>number = (10,)
+
+print(number)
+print(type(number))</code></pre>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                <br><br>
+                <code>(10)</code> is an integer, while
+                <code>(10,)</code> is a tuple.
+            </div>
+        </section>
+
+
+        <!-- Different Data Types -->
+        <section class="section">
+            <h2>Tuple with Different Data Types</h2>
+
+            <p>
+                A tuple can contain strings, integers, floats, booleans and
+                other Python objects.
+            </p>
+
+            <pre><code>student = (
+    "Krish",
+    20,
+    7.5,
+    True
+)
+
+print(student)</code></pre>
+        </section>
+
+
+        <!-- Indexing -->
+        <section class="section">
+            <h2>Tuple Indexing</h2>
+
+            <p>
+                Tuple elements can be accessed using their index number.
+                Python uses zero-based indexing.
+            </p>
+
+            <pre><code>fruits = ("Apple", "Banana", "Mango")
+
+print(fruits[0])
+print(fruits[1])
+print(fruits[2])</code></pre>
+        </section>
+
+
+        <!-- Negative Indexing -->
+        <section class="section">
+            <h2>Negative Indexing</h2>
+
+            <p>
+                Negative indexes can be used to access elements from the end
+                of a tuple.
+            </p>
+
+            <pre><code>fruits = ("Apple", "Banana", "Mango")
+
+print(fruits[-1])
+print(fruits[-2])
+print(fruits[-3])</code></pre>
+        </section>
+
+
+        <!-- Slicing -->
+        <section class="section">
+            <h2>Tuple Slicing</h2>
+
+            <p>
+                Slicing is used to extract a portion of a tuple.
+            </p>
+
+            <pre><code>numbers = (10, 20, 30, 40, 50)
+
+print(numbers[1:4])
+print(numbers[:3])
+print(numbers[2:])
+print(numbers[-3:])</code></pre>
+
+            <div class="info-box">
+                The ending index is not included in the slice.
+            </div>
+        </section>
+
+
+        <!-- Length -->
+        <section class="section">
+            <h2>Finding Tuple Length</h2>
+
+            <p>
+                The <strong>len()</strong> function returns the number of
+                elements in a tuple.
+            </p>
+
+            <pre><code>numbers = (10, 20, 30, 40)
+
+print(len(numbers))</code></pre>
+        </section>
+
+
+        <!-- Check Item -->
+        <section class="section">
+            <h2>Checking if an Item Exists</h2>
+
+            <p>
+                The <strong>in</strong> operator can be used to check whether
+                a value exists inside a tuple.
+            </p>
+
+            <pre><code>fruits = ("Apple", "Banana", "Mango")
+
+print("Apple" in fruits)
+print("Orange" in fruits)</code></pre>
+        </section>
+
+
+        <!-- Tuple Methods -->
+        <section class="section">
+            <h2>Tuple Methods</h2>
+
+            <p>
+                Since tuples are immutable, they have fewer methods than
+                lists. Two commonly used tuple methods are
+                <strong>count()</strong> and <strong>index()</strong>.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+
+                    <tr>
+                        <td>count()</td>
+                        <td>Counts how many times a value occurs.</td>
+                        <td>numbers.count(10)</td>
+                    </tr>
+
+                    <tr>
+                        <td>index()</td>
+                        <td>Returns the index of the first occurrence.</td>
+                        <td>numbers.index(10)</td>
+                    </tr>
+                </table>
+
+            </div>
+        </section>
+
+
+        <!-- Count -->
+        <section class="section">
+            <h2>count() Method</h2>
+
+            <p>
+                The <strong>count()</strong> method returns the number of
+                times a value appears in a tuple.
+            </p>
+
+            <pre><code>numbers = (10, 20, 10, 30, 10)
+
+print(numbers.count(10))</code></pre>
+        </section>
+
+
+        <!-- Index -->
+        <section class="section">
+            <h2>index() Method</h2>
+
+            <p>
+                The <strong>index()</strong> method returns the position of
+                the first occurrence of a value.
+            </p>
+
+            <pre><code>fruits = ("Apple", "Banana", "Mango")
+
+print(fruits.index("Banana"))</code></pre>
+        </section>
+
+
+        <!-- Immutability -->
+        <section class="section">
+            <h2>Tuples are Immutable</h2>
+
+            <p>
+                Once a tuple has been created, its elements cannot be changed.
+            </p>
+
+            <pre><code>numbers = (10, 20, 30)
+
+# This will cause an error:
+# numbers[0] = 100
+
+print(numbers)</code></pre>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                <br><br>
+                Lists are mutable, while tuples are immutable.
+            </div>
+        </section>
+
+
+        <!-- Tuple Concatenation -->
+        <section class="section">
+            <h2>Tuple Concatenation</h2>
+
+            <p>
+                You can join two tuples using the <strong>+</strong>
+                operator.
+            </p>
+
+            <pre><code>tuple1 = (1, 2, 3)
+tuple2 = (4, 5, 6)
+
+result = tuple1 + tuple2
+
+print(result)</code></pre>
+        </section>
+
+
+        <!-- Tuple Repetition -->
+        <section class="section">
+            <h2>Tuple Repetition</h2>
+
+            <p>
+                The <strong>*</strong> operator can be used to repeat a
+                tuple.
+            </p>
+
+            <pre><code>numbers = (1, 2)
+
+result = numbers * 3
+
+print(result)</code></pre>
+        </section>
+
+
+        <!-- Tuple Packing -->
+        <section class="section">
+            <h2>Tuple Packing</h2>
+
+            <p>
+                Tuple packing means putting multiple values into a single
+                tuple.
+            </p>
+
+            <pre><code>student = "Krish", 20, "BSc IT"
+
+print(student)</code></pre>
+        </section>
+
+
+        <!-- Tuple Unpacking -->
+        <section class="section">
+            <h2>Tuple Unpacking</h2>
+
+            <p>
+                Tuple unpacking means assigning the elements of a tuple to
+                separate variables.
+            </p>
+
+            <pre><code>student = ("Krish", 20, "BSc IT")
+
+name, age, course = student
+
+print(name)
+print(age)
+print(course)</code></pre>
+        </section>
+
+
+        <!-- Asterisk Unpacking -->
+        <section class="section">
+            <h2>Using * for Unpacking</h2>
+
+            <p>
+                An asterisk can be used to collect multiple remaining values
+                into a list during tuple unpacking.
+            </p>
+
+            <pre><code>numbers = (10, 20, 30, 40, 50)
+
+first, *middle, last = numbers
+
+print(first)
+print(middle)
+print(last)</code></pre>
+        </section>
+
+
+        <!-- Loop -->
+        <section class="section">
+            <h2>Loop Through a Tuple</h2>
+
+            <p>
+                You can use a <strong>for</strong> loop to access every item
+                in a tuple.
+            </p>
+
+            <pre><code>fruits = ("Apple", "Banana", "Mango")
+
+for fruit in fruits:
+    print(fruit)</code></pre>
+        </section>
+
+
+        <!-- Nested Tuple -->
+        <section class="section">
+            <h2>Nested Tuples</h2>
+
+            <p>
+                A tuple can contain another tuple. This is called a nested
+                tuple.
+            </p>
+
+            <pre><code>numbers = (
+    (1, 2),
+    (3, 4),
+    (5, 6)
+)
+
+print(numbers[0])
+print(numbers[1][1])</code></pre>
+        </section>
+
+
+        <!-- Tuple vs List -->
+        <section class="section">
+            <h2>Tuple vs List</h2>
+
+            <div class="table-container">
+
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Tuple</th>
+                        <th>List</th>
+                    </tr>
+
+                    <tr>
+                        <td>Syntax</td>
+                        <td>(1, 2, 3)</td>
+                        <td>[1, 2, 3]</td>
+                    </tr>
+
+                    <tr>
+                        <td>Mutable</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ordered</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Duplicates</td>
+                        <td>Allowed</td>
+                        <td>Allowed</td>
+                    </tr>
+
+                    <tr>
+                        <td>Methods</td>
+                        <td>Fewer</td>
+                        <td>More</td>
+                    </tr>
+                </table>
+
+            </div>
+        </section>
+
+
+        <!-- Tuple Conversion -->
+        <section class="section">
+            <h2>Converting List to Tuple</h2>
+
+            <p>
+                The <strong>tuple()</strong> function can convert an iterable
+                such as a list into a tuple.
+            </p>
+
+            <pre><code>numbers_list = [10, 20, 30]
+
+numbers_tuple = tuple(numbers_list)
+
+print(numbers_tuple)
+print(type(numbers_tuple))</code></pre>
+        </section>
+
+
+        <!-- Tuple Conversion to List -->
+        <section class="section">
+            <h2>Converting Tuple to List</h2>
+
+            <p>
+                The <strong>list()</strong> function can convert a tuple into
+                a list.
+            </p>
+
+            <pre><code>numbers_tuple = (10, 20, 30)
+
+numbers_list = list(numbers_tuple)
+
+print(numbers_list)
+print(type(numbers_list))</code></pre>
+        </section>
+
+
+        <!-- Interactive Editor -->
+        <section class="section">
+
+            <h2>Python Tuples - Code Editor</h2>
+
+            <p>
+                Try the following Python program. You can edit the code and
+                run it directly in your browser.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="code">fruits = ("Apple", "Banana", "Mango", "Apple")
+
+print("Tuple:", fruits)
+
+print("First item:", fruits[0])
+print("Last item:", fruits[-1])
+
+print("Length:", len(fruits))
+
+print("Apple count:", fruits.count("Apple"))
+
+print("Banana index:", fruits.index("Banana"))
+
+print("Apple exists:", "Apple" in fruits)
+
+name, age, course = ("Krish", 20, "BSc IT")
+
+print("Name:", name)
+print("Age:", age)
+print("Course:", course)</textarea>
+
+                <div class="buttons">
+
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <h3 class="output-title">
+                    Output
+                </h3>
+
+                <div id="output">
+Click "Run Code" to see the output.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Important Points -->
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <ul>
+                <li>Tuples are ordered collections.</li>
+                <li>Tuples are immutable.</li>
+                <li>Tuples are created using parentheses.</li>
+                <li>A single-item tuple requires a trailing comma.</li>
+                <li>Tuples allow duplicate values.</li>
+                <li>Tuples can contain different data types.</li>
+                <li>Tuple indexes start from 0.</li>
+                <li>Negative indexing can be used.</li>
+                <li>Tuples support slicing.</li>
+                <li>The <strong>count()</strong> method counts occurrences.</li>
+                <li>The <strong>index()</strong> method finds an item's index.</li>
+                <li>Tuples support packing and unpacking.</li>
+                <li>The <strong>tuple()</strong> function converts values to a tuple.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="python-lists.html" class="nav-btn">
+                ← Previous
+            </a>
+
+            <a href="python-dictionaries.html" class="nav-btn">
+                Next →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+
+    <!-- Python Runtime -->
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("code").value;
+
+            const output =
+                document.getElementById("output");
+
+            output.textContent =
+                "Loading Python interpreter...\nPlease wait...";
+
+            if (!window.pyodide) {
+
+                loadPyodideAndRun(code);
+
+            } else {
+
+                executePython(code);
+
+            }
+        }
+
+
+        async function loadPyodideAndRun(code) {
+
+            try {
+
+                const script =
+                    document.createElement("script");
+
+                script.src =
+                    "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+                script.onload = async function () {
+
+                    try {
+
+                        window.pyodide =
+                            await loadPyodide();
+
+                        executePython(code);
+
+                    } catch (error) {
+
+                        document.getElementById("output").textContent =
+                            "Error loading Python:\n" + error;
+
+                    }
+
+                };
+
+                script.onerror = function () {
+
+                    document.getElementById("output").textContent =
+                        "Unable to load Python interpreter. Please check your internet connection.";
+
+                };
+
+                document.head.appendChild(script);
+
+            } catch (error) {
+
+                document.getElementById("output").textContent =
+                    "Error:\n" + error;
+
+            }
+        }
+
+
+        async function executePython(code) {
+
+            const output =
+                document.getElementById("output");
+
+            try {
+
+                let printedOutput = "";
+
+                window.pyodide.setStdout({
+
+                    batched: function (text) {
+                        printedOutput += text;
+                    }
+
+                });
+
+                window.pyodide.setStderr({
+
+                    batched: function (text) {
+                        printedOutput += text;
+                    }
+
+                });
+
+                await window.pyodide.runPythonAsync(code);
+
+                output.textContent =
+                    printedOutput ||
+                    "Program executed successfully.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Python Error:\n" + error;
+
+            }
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").textContent =
+                "Editor cleared.";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
