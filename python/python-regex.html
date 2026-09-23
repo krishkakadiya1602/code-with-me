@@ -1,0 +1,1243 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Regex | Code With Me</title>
+    <meta name="description" content="Learn Python Regular Expressions (Regex) with re.search, re.match, re.findall, re.split, re.sub and practical examples.">
+    <meta name="keywords" content="Python Regex, Python Regular Expressions, Python re module, re.search, re.findall, re.sub, Regex Tutorial">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        /* Main */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin: 20px 0 10px;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 5px;
+            font-family: Consolas, monospace;
+            color: #b91c1c;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Editor */
+        .editor {
+            background: #111827;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .editor h3 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 340px;
+            resize: vertical;
+            background: #1f2937;
+            color: #f9fafb;
+            border: 1px solid #4b5563;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .editor-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        .output {
+            background: white;
+            color: #111827;
+            min-height: 100px;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 35px 0;
+        }
+
+        .page-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#courses">Courses</a>
+            <a href="../index.html#about">About</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1>Python Regular Expressions</h1>
+        <p>Learn how to search, match, extract, split, and replace text using Regex.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2>What is Regex?</h2>
+
+            <p>
+                <strong>Regex</strong> stands for
+                <strong>Regular Expression</strong>.
+            </p>
+
+            <p>
+                A regular expression is a pattern used to search and manipulate
+                text. Python provides the built-in <strong>re</strong> module
+                for working with regular expressions.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Definition:</strong>
+                Regex is a pattern that helps you find specific text or
+                patterns inside a string.
+            </div>
+
+            <h3>Example</h3>
+
+            <pre><code>import re
+
+text = "I am learning Python."
+
+result = re.search("Python", text)
+
+print(result)</code></pre>
+        </section>
+
+        <!-- Import re -->
+        <section class="section">
+            <h2>Importing the re Module</h2>
+
+            <p>
+                Python's regular expression functionality is available through
+                the built-in <span class="inline-code">re</span> module.
+            </p>
+
+            <pre><code>import re</code></pre>
+
+            <p>
+                You do not need to install the module separately.
+            </p>
+        </section>
+
+        <!-- Search -->
+        <section class="section">
+            <h2>re.search()</h2>
+
+            <p>
+                The <span class="inline-code">re.search()</span> function
+                searches the entire string for the first location where
+                the pattern matches.
+            </p>
+
+            <pre><code>import re
+
+text = "I am learning Python."
+
+result = re.search("Python", text)
+
+if result:
+    print("Python found!")
+else:
+    print("Python not found.")</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Python found!</code></pre>
+        </section>
+
+        <!-- Match -->
+        <section class="section">
+            <h2>re.match()</h2>
+
+            <p>
+                The <span class="inline-code">re.match()</span> function
+                checks for a match only at the beginning of the string.
+            </p>
+
+            <pre><code>import re
+
+text = "Python is easy."
+
+result = re.match("Python", text)
+
+if result:
+    print("Match found!")
+else:
+    print("No match.")</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Match found!</code></pre>
+
+            <div class="info-box">
+                <strong>Difference:</strong>
+                <span class="inline-code">re.match()</span> checks the
+                beginning, while <span class="inline-code">re.search()</span>
+                searches throughout the string.
+            </div>
+        </section>
+
+        <!-- Findall -->
+        <section class="section">
+            <h2>re.findall()</h2>
+
+            <p>
+                The <span class="inline-code">re.findall()</span> function
+                returns all non-overlapping matches as a list.
+            </p>
+
+            <pre><code>import re
+
+text = "Python is powerful. Python is easy."
+
+result = re.findall("Python", text)
+
+print(result)</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>['Python', 'Python']</code></pre>
+        </section>
+
+        <!-- Finditer -->
+        <section class="section">
+            <h2>re.finditer()</h2>
+
+            <p>
+                The <span class="inline-code">re.finditer()</span> function
+                returns an iterator containing match objects.
+            </p>
+
+            <pre><code>import re
+
+text = "Python Python"
+
+matches = re.finditer("Python", text)
+
+for match in matches:
+    print(match.start(), match.end())</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>0 6
+7 13</code></pre>
+        </section>
+
+        <!-- Split -->
+        <section class="section">
+            <h2>re.split()</h2>
+
+            <p>
+                The <span class="inline-code">re.split()</span> function
+                splits a string wherever the pattern matches.
+            </p>
+
+            <pre><code>import re
+
+text = "Python,HTML,CSS,JavaScript"
+
+result = re.split(",", text)
+
+print(result)</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>['Python', 'HTML', 'CSS', 'JavaScript']</code></pre>
+        </section>
+
+        <!-- Sub -->
+        <section class="section">
+            <h2>re.sub()</h2>
+
+            <p>
+                The <span class="inline-code">re.sub()</span> function
+                replaces matching text with another value.
+            </p>
+
+            <pre><code>import re
+
+text = "I like Java."
+
+result = re.sub("Java", "Python", text)
+
+print(result)</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>I like Python.</code></pre>
+        </section>
+
+        <!-- Special Characters -->
+        <section class="section">
+            <h2>Regex Special Characters</h2>
+
+            <p>
+                Regular expressions use special characters to define patterns.
+            </p>
+
+            <table>
+                <tr>
+                    <th>Pattern</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td>.</td>
+                    <td>Matches any character except newline.</td>
+                </tr>
+
+                <tr>
+                    <td>^</td>
+                    <td>Matches the beginning of a string.</td>
+                </tr>
+
+                <tr>
+                    <td>$</td>
+                    <td>Matches the end of a string.</td>
+                </tr>
+
+                <tr>
+                    <td>*</td>
+                    <td>Matches zero or more repetitions.</td>
+                </tr>
+
+                <tr>
+                    <td>+</td>
+                    <td>Matches one or more repetitions.</td>
+                </tr>
+
+                <tr>
+                    <td>?</td>
+                    <td>Matches zero or one repetition.</td>
+                </tr>
+
+                <tr>
+                    <td>{m,n}</td>
+                    <td>Matches between m and n repetitions.</td>
+                </tr>
+
+                <tr>
+                    <td>[]</td>
+                    <td>Matches one character from a set.</td>
+                </tr>
+
+                <tr>
+                    <td>|</td>
+                    <td>Represents OR.</td>
+                </tr>
+
+                <tr>
+                    <td>()</td>
+                    <td>Creates a group.</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Character Sets -->
+        <section class="section">
+            <h2>Character Sets</h2>
+
+            <p>
+                Square brackets <span class="inline-code">[]</span> are used
+                to define a set of characters.
+            </p>
+
+            <h3>Example</h3>
+
+            <pre><code>import re
+
+text = "cat bat rat"
+
+result = re.findall("[cbr]at", text)
+
+print(result)</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>['cat', 'bat', 'rat']</code></pre>
+
+            <h3>Common Character Sets</h3>
+
+            <table>
+                <tr>
+                    <th>Pattern</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td>[abc]</td>
+                    <td>Matches a, b, or c.</td>
+                </tr>
+
+                <tr>
+                    <td>[a-z]</td>
+                    <td>Matches lowercase letters.</td>
+                </tr>
+
+                <tr>
+                    <td>[A-Z]</td>
+                    <td>Matches uppercase letters.</td>
+                </tr>
+
+                <tr>
+                    <td>[0-9]</td>
+                    <td>Matches digits.</td>
+                </tr>
+
+                <tr>
+                    <td>[^abc]</td>
+                    <td>Matches characters except a, b, and c.</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Metacharacters -->
+        <section class="section">
+            <h2>Regex Metacharacters</h2>
+
+            <table>
+                <tr>
+                    <th>Pattern</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>\d</td>
+                    <td>Any digit</td>
+                    <td>0-9</td>
+                </tr>
+
+                <tr>
+                    <td>\D</td>
+                    <td>Any non-digit</td>
+                    <td>abc</td>
+                </tr>
+
+                <tr>
+                    <td>\w</td>
+                    <td>Word character</td>
+                    <td>A-Z, a-z, 0-9, _</td>
+                </tr>
+
+                <tr>
+                    <td>\W</td>
+                    <td>Non-word character</td>
+                    <td>@, #, !</td>
+                </tr>
+
+                <tr>
+                    <td>\s</td>
+                    <td>Whitespace character</td>
+                    <td>Space</td>
+                </tr>
+
+                <tr>
+                    <td>\S</td>
+                    <td>Non-whitespace character</td>
+                    <td>A, 1, @</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Digits -->
+        <section class="section">
+            <h2>Finding Digits</h2>
+
+            <p>
+                The <span class="inline-code">\d</span> pattern matches digits.
+            </p>
+
+            <pre><code>import re
+
+text = "My age is 20 and my score is 95."
+
+numbers = re.findall(r"\d+", text)
+
+print(numbers)</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>['20', '95']</code></pre>
+
+            <div class="info-box">
+                The <span class="inline-code">r</span> before the string
+                creates a raw string, which is useful when writing regex
+                patterns containing backslashes.
+            </div>
+        </section>
+
+        <!-- Word -->
+        <section class="section">
+            <h2>Finding Words</h2>
+
+            <p>
+                The <span class="inline-code">\w</span> pattern matches
+                word characters.
+            </p>
+
+            <pre><code>import re
+
+text = "Hello Python_123!"
+
+result = re.findall(r"\w+", text)
+
+print(result)</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>['Hello', 'Python_123']</code></pre>
+        </section>
+
+        <!-- Whitespace -->
+        <section class="section">
+            <h2>Finding Whitespace</h2>
+
+            <pre><code>import re
+
+text = "Python is easy"
+
+result = re.findall(r"\s", text)
+
+print(len(result))</code></pre>
+
+            <p>
+                The pattern <span class="inline-code">\s</span> matches
+                whitespace characters such as spaces and tabs.
+            </p>
+        </section>
+
+        <!-- Quantifiers -->
+        <section class="section">
+            <h2>Regex Quantifiers</h2>
+
+            <p>
+                Quantifiers specify how many times a pattern should occur.
+            </p>
+
+            <table>
+                <tr>
+                    <th>Quantifier</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td>*</td>
+                    <td>Zero or more</td>
+                </tr>
+
+                <tr>
+                    <td>+</td>
+                    <td>One or more</td>
+                </tr>
+
+                <tr>
+                    <td>?</td>
+                    <td>Zero or one</td>
+                </tr>
+
+                <tr>
+                    <td>{3}</td>
+                    <td>Exactly 3 times</td>
+                </tr>
+
+                <tr>
+                    <td>{2,5}</td>
+                    <td>Between 2 and 5 times</td>
+                </tr>
+            </table>
+
+            <h3>Example</h3>
+
+            <pre><code>import re
+
+text = "aa aaa aaaa"
+
+result = re.findall(r"a{2,4}", text)
+
+print(result)</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>['aa', 'aaa', 'aaaa']</code></pre>
+        </section>
+
+        <!-- Start End -->
+        <section class="section">
+            <h2>^ and $</h2>
+
+            <p>
+                The <span class="inline-code">^</span> symbol matches the
+                beginning of a string.
+            </p>
+
+            <p>
+                The <span class="inline-code">$</span> symbol matches the
+                end of a string.
+            </p>
+
+            <pre><code>import re
+
+text = "Python is easy"
+
+result = re.search(r"^Python", text)
+
+if result:
+    print("String starts with Python")</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>String starts with Python</code></pre>
+        </section>
+
+        <!-- Groups -->
+        <section class="section">
+            <h2>Regex Groups</h2>
+
+            <p>
+                Parentheses <span class="inline-code">()</span> are used
+                to create groups.
+            </p>
+
+            <pre><code>import re
+
+text = "Name: Krish, Age: 20"
+
+result = re.search(r"Name: (\w+), Age: (\d+)", text)
+
+if result:
+    print("Name:", result.group(1))
+    print("Age:", result.group(2))</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Name: Krish
+Age: 20</code></pre>
+        </section>
+
+        <!-- Email -->
+        <section class="section">
+            <h2>Email Validation Example</h2>
+
+            <p>
+                Regex can be used to check whether text follows a basic
+                email pattern.
+            </p>
+
+            <pre><code>import re
+
+email = "student@example.com"
+
+pattern = r"^[\w.-]+@[\w.-]+\.\w+$"
+
+if re.match(pattern, email):
+    print("Valid email")
+else:
+    print("Invalid email")</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Valid email</code></pre>
+
+            <div class="warning-box">
+                Regex-based email checks can validate a basic format, but
+                they do not prove that an email address actually exists.
+            </div>
+        </section>
+
+        <!-- Phone -->
+        <section class="section">
+            <h2>Phone Number Example</h2>
+
+            <pre><code>import re
+
+phone = "9876543210"
+
+pattern = r"^\d{10}$"
+
+if re.match(pattern, phone):
+    print("Valid 10-digit phone number")
+else:
+    print("Invalid phone number")</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Valid 10-digit phone number</code></pre>
+        </section>
+
+        <!-- Flags -->
+        <section class="section">
+            <h2>Regex Flags</h2>
+
+            <p>
+                Flags modify how a regular expression behaves.
+            </p>
+
+            <h3>re.IGNORECASE</h3>
+
+            <p>
+                It makes matching case-insensitive.
+            </p>
+
+            <pre><code>import re
+
+text = "Python PYTHON python"
+
+result = re.findall("python", text, re.IGNORECASE)
+
+print(result)</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>['Python', 'PYTHON', 'python']</code></pre>
+
+            <h3>Common Flags</h3>
+
+            <table>
+                <tr>
+                    <th>Flag</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>re.IGNORECASE</td>
+                    <td>Ignore uppercase/lowercase differences.</td>
+                </tr>
+
+                <tr>
+                    <td>re.MULTILINE</td>
+                    <td>Change how ^ and $ work with multiple lines.</td>
+                </tr>
+
+                <tr>
+                    <td>re.DOTALL</td>
+                    <td>Allow . to match newline characters.</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Compile -->
+        <section class="section">
+            <h2>re.compile()</h2>
+
+            <p>
+                The <span class="inline-code">re.compile()</span> function
+                creates a reusable regular expression pattern.
+            </p>
+
+            <pre><code>import re
+
+pattern = re.compile(r"\d+")
+
+text = "My numbers are 10 and 20."
+
+result = pattern.findall(text)
+
+print(result)</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>['10', '20']</code></pre>
+        </section>
+
+        <!-- Practical -->
+        <section class="section">
+            <h2>Practical Example: Extract Numbers</h2>
+
+            <pre><code>import re
+
+text = """
+Product A costs 500 rupees.
+Product B costs 750 rupees.
+Product C costs 1200 rupees.
+"""
+
+prices = re.findall(r"\d+", text)
+
+print(prices)</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>['500', '750', '1200']</code></pre>
+        </section>
+
+        <!-- Quick Reference -->
+        <section class="section">
+            <h2>Python Regex Quick Reference</h2>
+
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>re.search()</td>
+                    <td>Search for a pattern anywhere in a string.</td>
+                </tr>
+
+                <tr>
+                    <td>re.match()</td>
+                    <td>Match a pattern at the beginning.</td>
+                </tr>
+
+                <tr>
+                    <td>re.findall()</td>
+                    <td>Find all matching results.</td>
+                </tr>
+
+                <tr>
+                    <td>re.finditer()</td>
+                    <td>Return an iterator of match objects.</td>
+                </tr>
+
+                <tr>
+                    <td>re.split()</td>
+                    <td>Split a string using a pattern.</td>
+                </tr>
+
+                <tr>
+                    <td>re.sub()</td>
+                    <td>Replace matching text.</td>
+                </tr>
+
+                <tr>
+                    <td>re.compile()</td>
+                    <td>Create a reusable regex pattern.</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Important Points -->
+        <section class="section">
+            <h2>Important Points to Remember</h2>
+
+            <div class="info-box">
+                <ul>
+                    <li>Regex means Regular Expression.</li>
+                    <li>Python provides the built-in <span class="inline-code">re</span> module.</li>
+                    <li>Use <span class="inline-code">re.search()</span> to search for a pattern.</li>
+                    <li>Use <span class="inline-code">re.match()</span> to check the beginning.</li>
+                    <li>Use <span class="inline-code">re.findall()</span> to find all matches.</li>
+                    <li>Use <span class="inline-code">re.split()</span> to split text.</li>
+                    <li>Use <span class="inline-code">re.sub()</span> to replace text.</li>
+                    <li>Use raw strings such as <span class="inline-code">r"\d+"</span> for regex patterns containing backslashes.</li>
+                    <li>Regex is useful for searching, extracting, validating, and replacing text.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="section">
+            <h2>Try Python Regex Yourself</h2>
+
+            <p>
+                Write Python Regex code below and click
+                <strong>Run Code</strong> to execute it in your browser.
+            </p>
+
+            <div class="editor">
+
+                <h3>Python Code Editor</h3>
+
+                <textarea id="codeEditor">import re
+
+text = """
+My name is Krish.
+My phone number is 9876543210.
+I am learning Python.
+My marks are 85 and 92.
+"""
+
+numbers = re.findall(r"\d+", text)
+
+print("Numbers found:")
+print(numbers)
+
+words = re.findall(r"\w+", text)
+
+print("\nWords found:")
+print(words)</textarea>
+
+                <div class="editor-buttons">
+
+                    <button class="run-btn" onclick="runPython()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div class="output" id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="page-navigation">
+
+            <a href="python-json.html">
+                ← Previous: Python JSON
+            </a>
+
+            <a href="python-modules.html">
+                Next: Python Modules →
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <!-- Pyodide -->
+    <script>
+        let pyodide = null;
+
+        async function loadPyodideLibrary() {
+
+            if (!pyodide) {
+
+                document.getElementById("output").textContent =
+                    "Loading Python... Please wait.";
+
+                const script = document.createElement("script");
+
+                script.src =
+                    "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+                document.head.appendChild(script);
+
+                await new Promise((resolve, reject) => {
+                    script.onload = resolve;
+                    script.onerror = reject;
+                });
+
+                pyodide = await loadPyodide();
+            }
+        }
+
+        async function runPython() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+            output.textContent = "Running...";
+
+            try {
+
+                await loadPyodideLibrary();
+
+                let printedOutput = "";
+
+                pyodide.setStdout({
+                    batched: (text) => {
+                        printedOutput += text;
+                    }
+                });
+
+                pyodide.setStderr({
+                    batched: (text) => {
+                        printedOutput += text;
+                    }
+                });
+
+                await pyodide.runPythonAsync(code);
+
+                output.textContent =
+                    printedOutput ||
+                    "Code executed successfully.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Error:\n" + error;
+            }
+        }
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+        }
+    </script>
+
+</body>
+</html>
+```
