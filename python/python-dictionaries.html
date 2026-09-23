@@ -1,0 +1,1125 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Dictionaries | Code With Me</title>
+
+    <meta name="description" content="Learn Python Dictionaries with examples, methods, operations and an interactive Python dictionary editor.">
+    <meta name="keywords" content="Python Dictionaries, Python dict, Python dictionary methods, Python tutorial">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        .content-box ul,
+        .content-box ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-box li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3776ab;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+        .editor textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .run-btn {
+            background: #3776ab;
+        }
+
+        .run-btn:hover {
+            background: #285a85;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, "Courier New", monospace;
+            margin-top: 15px;
+        }
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #285a85;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Python Dictionaries</h1>
+        <p>Learn how to store and manage data using Python dictionaries.</p>
+    </section>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="content-box">
+            <h2>What is a Python Dictionary?</h2>
+
+            <p>
+                A <strong>dictionary</strong> in Python is a collection used to store
+                data in <strong>key-value pairs</strong>.
+            </p>
+
+            <p>
+                Dictionaries are written using curly brackets
+                <code>{ }</code>.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20,
+    "course": "BSc IT"
+}
+
+print(student)</code></pre>
+
+            <div class="highlight">
+                <strong>Important:</strong>
+                Dictionary keys must be unique. Values can be of different data types.
+            </div>
+        </section>
+
+        <!-- Creating Dictionary -->
+        <section class="content-box">
+            <h2>Creating a Dictionary</h2>
+
+            <p>
+                You can create a dictionary by placing key-value pairs inside
+                curly brackets.
+            </p>
+
+            <pre><code>person = {
+    "name": "Krish",
+    "age": 20,
+    "city": "Surat"
+}
+
+print(person)</code></pre>
+
+            <h3>Empty Dictionary</h3>
+
+            <pre><code>my_dict = {}
+
+print(my_dict)</code></pre>
+
+            <h3>Using dict()</h3>
+
+            <pre><code>student = dict(
+    name="Krish",
+    age=20,
+    course="BSc IT"
+)
+
+print(student)</code></pre>
+        </section>
+
+        <!-- Key Value -->
+        <section class="content-box">
+            <h2>Dictionary Key-Value Pairs</h2>
+
+            <p>
+                Every item in a dictionary contains two parts:
+            </p>
+
+            <ul>
+                <li><strong>Key</strong> - identifies the data.</li>
+                <li><strong>Value</strong> - stores the actual data.</li>
+            </ul>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}</code></pre>
+
+            <p>
+                Here, <code>name</code> and <code>age</code> are keys,
+                while <code>Krish</code> and <code>20</code> are values.
+            </p>
+        </section>
+
+        <!-- Accessing Values -->
+        <section class="content-box">
+            <h2>Access Dictionary Values</h2>
+
+            <p>
+                You can access a dictionary value by using its key.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20,
+    "course": "BSc IT"
+}
+
+print(student["name"])
+print(student["age"])</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                Krish<br>
+                20
+            </div>
+
+            <h3>Using get()</h3>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+print(student.get("name"))
+print(student.get("age"))</code></pre>
+
+            <div class="highlight">
+                <strong>Tip:</strong>
+                The <code>get()</code> method can return <code>None</code>
+                instead of raising an error when a key does not exist.
+            </div>
+        </section>
+
+        <!-- Change Values -->
+        <section class="content-box">
+            <h2>Change Dictionary Values</h2>
+
+            <p>
+                Dictionary values can be changed by referring to their keys.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+student["age"] = 21
+
+print(student)</code></pre>
+
+            <h3>Using update()</h3>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+student.update({"age": 21})
+
+print(student)</code></pre>
+        </section>
+
+        <!-- Add Items -->
+        <section class="content-box">
+            <h2>Add Dictionary Items</h2>
+
+            <p>
+                You can add a new key-value pair by assigning a value to a new key.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+student["city"] = "Surat"
+
+print(student)</code></pre>
+
+            <h3>Add Multiple Items</h3>
+
+            <pre><code>student.update({
+    "course": "BSc IT",
+    "year": 2026
+})
+
+print(student)</code></pre>
+        </section>
+
+        <!-- Remove Items -->
+        <section class="content-box">
+            <h2>Remove Dictionary Items</h2>
+
+            <h3>Using pop()</h3>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20,
+    "city": "Surat"
+}
+
+student.pop("age")
+
+print(student)</code></pre>
+
+            <h3>Using popitem()</h3>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20,
+    "city": "Surat"
+}
+
+student.popitem()
+
+print(student)</code></pre>
+
+            <h3>Using del</h3>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+del student["age"]
+
+print(student)</code></pre>
+
+            <h3>Using clear()</h3>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+student.clear()
+
+print(student)</code></pre>
+        </section>
+
+        <!-- Dictionary Length -->
+        <section class="content-box">
+            <h2>Dictionary Length</h2>
+
+            <p>
+                Use the <code>len()</code> function to find the number of
+                key-value pairs.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20,
+    "city": "Surat"
+}
+
+print(len(student))</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> 3
+            </div>
+        </section>
+
+        <!-- Check Key -->
+        <section class="content-box">
+            <h2>Check if a Key Exists</h2>
+
+            <p>
+                Use the <code>in</code> keyword to check whether a key exists.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+if "name" in student:
+    print("Name exists")</code></pre>
+
+            <h3>Using not in</h3>
+
+            <pre><code>if "city" not in student:
+    print("City does not exist")</code></pre>
+        </section>
+
+        <!-- Dictionary Loop -->
+        <section class="content-box">
+            <h2>Loop Through a Dictionary</h2>
+
+            <h3>Loop Through Keys</h3>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20,
+    "city": "Surat"
+}
+
+for key in student:
+    print(key)</code></pre>
+
+            <h3>Loop Through Values</h3>
+
+            <pre><code>for value in student.values():
+    print(value)</code></pre>
+
+            <h3>Loop Through Keys and Values</h3>
+
+            <pre><code>for key, value in student.items():
+    print(key, value)</code></pre>
+        </section>
+
+        <!-- Dictionary Methods -->
+        <section class="content-box">
+            <h2>Python Dictionary Methods</h2>
+
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+
+                    <tr>
+                        <td><code>clear()</code></td>
+                        <td>Removes all dictionary items.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>copy()</code></td>
+                        <td>Returns a copy of the dictionary.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>fromkeys()</code></td>
+                        <td>Creates a dictionary using specified keys.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>get()</code></td>
+                        <td>Returns the value of a specified key.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>items()</code></td>
+                        <td>Returns key-value pairs.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>keys()</code></td>
+                        <td>Returns all keys.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>pop()</code></td>
+                        <td>Removes an item using its key.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>popitem()</code></td>
+                        <td>Removes the last inserted item.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>setdefault()</code></td>
+                        <td>Returns a value and inserts the key if it does not exist.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>update()</code></td>
+                        <td>Updates the dictionary with new items.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>values()</code></td>
+                        <td>Returns all values.</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Keys Values Items -->
+        <section class="content-box">
+            <h2>keys(), values() and items()</h2>
+
+            <h3>keys()</h3>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+print(student.keys())</code></pre>
+
+            <h3>values()</h3>
+
+            <pre><code>print(student.values())</code></pre>
+
+            <h3>items()</h3>
+
+            <pre><code>print(student.items())</code></pre>
+        </section>
+
+        <!-- Copy -->
+        <section class="content-box">
+            <h2>Copy a Dictionary</h2>
+
+            <p>
+                Use the <code>copy()</code> method to create a copy of a dictionary.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+student2 = student.copy()
+
+print(student2)</code></pre>
+
+            <h3>Using dict()</h3>
+
+            <pre><code>student2 = dict(student)
+
+print(student2)</code></pre>
+        </section>
+
+        <!-- Nested Dictionaries -->
+        <section class="content-box">
+            <h2>Nested Dictionaries</h2>
+
+            <p>
+                A dictionary can contain another dictionary.
+                This is called a <strong>nested dictionary</strong>.
+            </p>
+
+            <pre><code>students = {
+    "student1": {
+        "name": "Krish",
+        "age": 20
+    },
+
+    "student2": {
+        "name": "Rahul",
+        "age": 21
+    }
+}
+
+print(students)</code></pre>
+
+            <h3>Access Nested Dictionary</h3>
+
+            <pre><code>print(students["student1"]["name"])
+print(students["student2"]["age"])</code></pre>
+        </section>
+
+        <!-- Dictionary with Different Data Types -->
+        <section class="content-box">
+            <h2>Dictionary with Different Data Types</h2>
+
+            <p>
+                Dictionary values can contain different types of data.
+            </p>
+
+            <pre><code>person = {
+    "name": "Krish",
+    "age": 20,
+    "marks": 85.5,
+    "is_student": True,
+    "subjects": ["Python", "JavaScript", "CSS"]
+}
+
+print(person)</code></pre>
+        </section>
+
+        <!-- Duplicate Keys -->
+        <section class="content-box">
+            <h2>Duplicate Dictionary Keys</h2>
+
+            <p>
+                Dictionary keys must be unique. If the same key is used more
+                than once, the last value replaces the previous value.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20,
+    "age": 21
+}
+
+print(student)</code></pre>
+
+            <div class="warning-box">
+                <strong>Remember:</strong>
+                Duplicate keys are not stored as separate dictionary items.
+            </div>
+        </section>
+
+        <!-- Setdefault -->
+        <section class="content-box">
+            <h2>setdefault()</h2>
+
+            <p>
+                The <code>setdefault()</code> method returns the value of a key.
+                If the key does not exist, it adds the key with a specified value.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+student.setdefault("city", "Surat")
+
+print(student)</code></pre>
+        </section>
+
+        <!-- Fromkeys -->
+        <section class="content-box">
+            <h2>fromkeys()</h2>
+
+            <p>
+                The <code>fromkeys()</code> method creates a new dictionary
+                from a sequence of keys.
+            </p>
+
+            <pre><code>keys = ("name", "age", "city")
+
+student = dict.fromkeys(keys)
+
+print(student)</code></pre>
+
+            <h3>Using a Default Value</h3>
+
+            <pre><code>keys = ("name", "age", "city")
+
+student = dict.fromkeys(keys, "Unknown")
+
+print(student)</code></pre>
+        </section>
+
+        <!-- Dictionary Characteristics -->
+        <section class="content-box">
+            <h2>Characteristics of Python Dictionaries</h2>
+
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Supported?</th>
+                    </tr>
+
+                    <tr>
+                        <td>Key-Value Structure</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ordered</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Changeable</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Duplicate Keys</td>
+                        <td>No</td>
+                    </tr>
+
+                    <tr>
+                        <td>Different Data Types</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Nested Dictionaries</td>
+                        <td>Yes</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Practical Example -->
+        <section class="content-box">
+            <h2>Practical Example</h2>
+
+            <p>
+                The following example stores student information using a dictionary.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20,
+    "course": "BSc IT",
+    "city": "Surat",
+    "marks": 85
+}
+
+print("Name:", student["name"])
+print("Course:", student["course"])
+print("Marks:", student["marks"])</code></pre>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="content-box editor">
+            <h2>Python Dictionary Editor</h2>
+
+            <p>
+                Try writing simple dictionary programs below.
+            </p>
+
+            <textarea id="codeEditor">student = {"name": "Krish", "age": 20, "city": "Surat"}
+
+print(student)
+print(student["name"])
+print(student["age"])</textarea>
+
+            <div class="button-group">
+                <button class="run-btn" onclick="runCode()">▶ Run Code</button>
+                <button class="clear-btn" onclick="clearCode()">Clear</button>
+            </div>
+
+            <div id="outputBox">Output will appear here...</div>
+        </section>
+
+        <!-- Summary -->
+        <section class="content-box">
+            <h2>Python Dictionaries Summary</h2>
+
+            <ul>
+                <li>Dictionaries store data in key-value pairs.</li>
+                <li>Dictionaries use curly brackets <code>{ }</code>.</li>
+                <li>Each key should be unique.</li>
+                <li>Dictionary values can have different data types.</li>
+                <li>Dictionaries are changeable.</li>
+                <li>Use <code>keys()</code> to get keys.</li>
+                <li>Use <code>values()</code> to get values.</li>
+                <li>Use <code>items()</code> to get key-value pairs.</li>
+                <li>Use <code>update()</code> to add or update items.</li>
+                <li>Use <code>pop()</code> to remove an item.</li>
+                <li>Use <code>get()</code> to safely access a value.</li>
+                <li>Dictionaries can contain other dictionaries.</li>
+            </ul>
+
+            <div class="success-box">
+                <strong>Next Topic:</strong>
+                In the next lesson, you will learn about Python
+                <strong>if, elif and else statements</strong>.
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="page-navigation">
+            <a href="python-sets.html">← Previous: Sets</a>
+            <a href="python-if-else.html">Next: If Else →</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <script>
+        function runCode() {
+            const code = document.getElementById("codeEditor").value;
+            const output = document.getElementById("outputBox");
+
+            let result = "";
+
+            try {
+                let dictionaries = {};
+
+                // Find simple dictionary assignments
+                const dictionaryRegex =
+                    /(\w+)\s*=\s*\{([\s\S]*?)\}/g;
+
+                let match;
+
+                while ((match = dictionaryRegex.exec(code)) !== null) {
+                    const variableName = match[1];
+                    const content = match[2];
+
+                    let obj = {};
+
+                    const pairs = content.split(",");
+
+                    pairs.forEach(pair => {
+                        const parts = pair.split(":");
+
+                        if (parts.length >= 2) {
+                            let key = parts[0].trim();
+                            let value = parts.slice(1).join(":").trim();
+
+                            key = key.replace(/^["']|["']$/g, "");
+
+                            if (
+                                (value.startsWith('"') && value.endsWith('"')) ||
+                                (value.startsWith("'") && value.endsWith("'"))
+                            ) {
+                                value = value.slice(1, -1);
+                            } else if (!isNaN(value)) {
+                                value = Number(value);
+                            }
+
+                            obj[key] = value;
+                        }
+                    });
+
+                    dictionaries[variableName] = obj;
+                }
+
+                const lines = code.split("\n");
+
+                lines.forEach(line => {
+                    line = line.trim();
+
+                    if (!line || line.startsWith("#")) {
+                        return;
+                    }
+
+                    // print(dictionary)
+                    let printMatch = line.match(
+                        /^print\s*\(\s*(\w+)\s*\)\s*$/
+                    );
+
+                    if (printMatch) {
+                        const variable = printMatch[1];
+
+                        if (dictionaries[variable]) {
+                            result += JSON.stringify(
+                                dictionaries[variable]
+                            ) + "\n";
+                        }
+
+                        return;
+                    }
+
+                    // print(dictionary["key"])
+                    let keyMatch = line.match(
+                        /^print\s*\(\s*(\w+)\s*\[\s*["'](.+?)["']\s*\]\s*\)\s*$/
+                    );
+
+                    if (keyMatch) {
+                        const variable = keyMatch[1];
+                        const key = keyMatch[2];
+
+                        if (
+                            dictionaries[variable] &&
+                            Object.prototype.hasOwnProperty.call(
+                                dictionaries[variable],
+                                key
+                            )
+                        ) {
+                            result +=
+                                dictionaries[variable][key] + "\n";
+                        } else {
+                            result += "Key not found\n";
+                        }
+
+                        return;
+                    }
+
+                    // print(len(dictionary))
+                    let lenMatch = line.match(
+                        /^print\s*\(\s*len\s*\(\s*(\w+)\s*\)\s*\)\s*$/
+                    );
+
+                    if (lenMatch) {
+                        const variable = lenMatch[1];
+
+                        if (dictionaries[variable]) {
+                            result +=
+                                Object.keys(
+                                    dictionaries[variable]
+                                ).length + "\n";
+                        }
+
+                        return;
+                    }
+                });
+
+                if (result.trim() === "") {
+                    result =
+                        "Demo editor supports simple dictionary creation and print statements.";
+                }
+
+                output.textContent = result.trim();
+
+            } catch (error) {
+                output.textContent = "Error: " + error.message;
+            }
+        }
+
+        function clearCode() {
+            document.getElementById("codeEditor").value = "";
+            document.getElementById("outputBox").textContent =
+                "Output will appear here...";
+        }
+    </script>
+
+</body>
+</html>
+```
