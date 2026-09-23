@@ -1,0 +1,871 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Match | Code With Me</title>
+
+    <meta name="description" content="Learn Python match statements with examples, patterns, guards and practical programs.">
+    <meta name="keywords" content="Python match statement, Python match case, Python tutorial, Python pattern matching">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        .content-box ul,
+        .content-box ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-box li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3776ab;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+        .editor textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .run-btn {
+            background: #3776ab;
+        }
+
+        .run-btn:hover {
+            background: #285a85;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, "Courier New", monospace;
+            margin-top: 15px;
+        }
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #285a85;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Python Match Statement</h1>
+        <p>Learn pattern matching with match and case in Python.</p>
+    </section>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="content-box">
+            <h2>What is the Python Match Statement?</h2>
+
+            <p>
+                The <strong>match</strong> statement is used for pattern matching
+                in Python. It was introduced in <strong>Python 3.10</strong>.
+            </p>
+
+            <p>
+                It can be used when you want to compare a value against multiple
+                possible patterns.
+            </p>
+
+            <pre><code>day = 2
+
+match day:
+    case 1:
+        print("Monday")
+    case 2:
+        print("Tuesday")
+    case 3:
+        print("Wednesday")
+    case _:
+        print("Invalid day")</code></pre>
+
+            <div class="highlight">
+                <strong>Important:</strong>
+                The <code>_</code> pattern works like a default case when no
+                other pattern matches.
+            </div>
+        </section>
+
+        <!-- Basic Syntax -->
+        <section class="content-box">
+            <h2>Basic Syntax</h2>
+
+            <p>
+                The basic structure of a match statement is:
+            </p>
+
+            <pre><code>match expression:
+    case pattern1:
+        # code
+    case pattern2:
+        # code
+    case _:
+        # default code</code></pre>
+
+            <ul>
+                <li><code>match</code> evaluates an expression.</li>
+                <li><code>case</code> defines a pattern.</li>
+                <li>The matching case is executed.</li>
+                <li><code>_</code> can be used as a default pattern.</li>
+            </ul>
+        </section>
+
+        <!-- Match Numbers -->
+        <section class="content-box">
+            <h2>Match with Numbers</h2>
+
+            <p>
+                You can use match to compare numbers.
+            </p>
+
+            <pre><code>number = 10
+
+match number:
+    case 5:
+        print("Number is 5")
+    case 10:
+        print("Number is 10")
+    case 15:
+        print("Number is 15")
+    case _:
+        print("Unknown number")</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> Number is 10
+            </div>
+        </section>
+
+        <!-- Match Strings -->
+        <section class="content-box">
+            <h2>Match with Strings</h2>
+
+            <p>
+                Match statements can also compare strings.
+            </p>
+
+            <pre><code>command = "start"
+
+match command:
+    case "start":
+        print("Starting program")
+    case "stop":
+        print("Stopping program")
+    case "pause":
+        print("Pausing program")
+    case _:
+        print("Unknown command")</code></pre>
+        </section>
+
+        <!-- Default Case -->
+        <section class="content-box">
+            <h2>Default Case</h2>
+
+            <p>
+                The underscore <code>_</code> is commonly used as the default
+                pattern.
+            </p>
+
+            <pre><code>color = "purple"
+
+match color:
+    case "red":
+        print("Red color")
+    case "blue":
+        print("Blue color")
+    case "green":
+        print("Green color")
+    case _:
+        print("Other color")</code></pre>
+
+            <div class="warning-box">
+                The <code>_</code> pattern matches when none of the previous
+                cases match.
+            </div>
+        </section>
+
+        <!-- Multiple Patterns -->
+        <section class="content-box">
+            <h2>Multiple Patterns in One Case</h2>
+
+            <p>
+                You can use <code>|</code> to match multiple patterns in one case.
+            </p>
+
+            <pre><code>day = "Saturday"
+
+match day:
+    case "Saturday" | "Sunday":
+        print("Weekend")
+    case "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday":
+        print("Weekday")
+    case _:
+        print("Invalid day")</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> Weekend
+            </div>
+        </section>
+
+        <!-- Match Lists -->
+        <section class="content-box">
+            <h2>Match Lists</h2>
+
+            <p>
+                Python pattern matching can also work with sequences such as lists.
+            </p>
+
+            <pre><code>numbers = [1, 2, 3]
+
+match numbers:
+    case [1, 2, 3]:
+        print("Numbers are 1, 2, 3")
+    case [4, 5, 6]:
+        print("Numbers are 4, 5, 6")
+    case _:
+        print("Different list")</code></pre>
+        </section>
+
+        <!-- Capture Values -->
+        <section class="content-box">
+            <h2>Capture Values with Match</h2>
+
+            <p>
+                A pattern can capture values into variables.
+            </p>
+
+            <pre><code>point = (10, 20)
+
+match point:
+    case (x, y):
+        print("X =", x)
+        print("Y =", y)</code></pre>
+
+            <div class="highlight">
+                Here, <code>x</code> receives <code>10</code> and
+                <code>y</code> receives <code>20</code>.
+            </div>
+        </section>
+
+        <!-- Match Dictionary -->
+        <section class="content-box">
+            <h2>Match Dictionaries</h2>
+
+            <p>
+                Match statements can also be used with dictionary patterns.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20
+}
+
+match student:
+    case {"name": name, "age": age}:
+        print("Name:", name)
+        print("Age:", age)
+    case _:
+        print("Student data not found")</code></pre>
+        </section>
+
+        <!-- Guards -->
+        <section class="content-box">
+            <h2>Match with Guards</h2>
+
+            <p>
+                A <strong>guard</strong> is an additional condition using
+                <code>if</code>.
+            </p>
+
+            <pre><code>number = 15
+
+match number:
+    case n if n > 10:
+        print("Number is greater than 10")
+    case n if n == 10:
+        print("Number is 10")
+    case _:
+        print("Number is less than 10")</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong>
+                Number is greater than 10
+            </div>
+        </section>
+
+        <!-- Match Classes -->
+        <section class="content-box">
+            <h2>Match with Classes</h2>
+
+            <p>
+                Pattern matching can also be used with objects and classes.
+            </p>
+
+            <pre><code>class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+student = Student("Krish", 20)
+
+match student:
+    case Student(name, age):
+        print(name)
+        print(age)</code></pre>
+
+            <p>
+                This feature is useful when working with structured objects.
+            </p>
+        </section>
+
+        <!-- Match vs If -->
+        <section class="content-box">
+            <h2>Match vs If-Else</h2>
+
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>match</th>
+                        <th>if-else</th>
+                    </tr>
+
+                    <tr>
+                        <td>Pattern Matching</td>
+                        <td>Yes</td>
+                        <td>Limited</td>
+                    </tr>
+
+                    <tr>
+                        <td>Simple Conditions</td>
+                        <td>Possible</td>
+                        <td>Excellent</td>
+                    </tr>
+
+                    <tr>
+                        <td>Multiple Patterns</td>
+                        <td>Easy</td>
+                        <td>Can become lengthy</td>
+                    </tr>
+
+                    <tr>
+                        <td>Sequence Matching</td>
+                        <td>Yes</td>
+                        <td>Manual checks required</td>
+                    </tr>
+
+                    <tr>
+                        <td>Dictionary Patterns</td>
+                        <td>Yes</td>
+                        <td>Manual checks required</td>
+                    </tr>
+
+                    <tr>
+                        <td>Introduced</td>
+                        <td>Python 3.10</td>
+                        <td>Older Python versions</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Practical Example -->
+        <section class="content-box">
+            <h2>Practical Example: Calculator</h2>
+
+            <p>
+                A match statement can be useful for creating a simple calculator.
+            </p>
+
+            <pre><code>operator = "+"
+a = 10
+b = 5
+
+match operator:
+    case "+":
+        print(a + b)
+    case "-":
+        print(a - b)
+    case "*":
+        print(a * b)
+    case "/":
+        print(a / b)
+    case _:
+        print("Invalid operator")</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> 15
+            </div>
+        </section>
+
+        <!-- Practical Example 2 -->
+        <section class="content-box">
+            <h2>Practical Example: Traffic Light</h2>
+
+            <pre><code>light = "red"
+
+match light:
+    case "red":
+        print("Stop")
+    case "yellow":
+        print("Wait")
+    case "green":
+        print("Go")
+    case _:
+        print("Invalid signal")</code></pre>
+        </section>
+
+        <!-- Important Rules -->
+        <section class="content-box">
+            <h2>Important Rules</h2>
+
+            <ul>
+                <li>Python match statements require Python 3.10 or newer.</li>
+                <li>Use <code>case</code> inside a <code>match</code> block.</li>
+                <li>Indentation is important.</li>
+                <li>The first matching case is selected.</li>
+                <li><code>_</code> can be used as a default pattern.</li>
+                <li><code>|</code> can combine multiple patterns.</li>
+                <li>Guards can be added using <code>if</code>.</li>
+                <li>Match can work with numbers and strings.</li>
+                <li>Match can also work with sequences and dictionaries.</li>
+            </ul>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="content-box editor">
+            <h2>Python Match Editor</h2>
+
+            <p>
+                Try a simple match-case program below.
+            </p>
+
+            <textarea id="codeEditor">day = 2
+
+match day:
+    case 1:
+        print("Monday")
+    case 2:
+        print("Tuesday")
+    case 3:
+        print("Wednesday")
+    case _:
+        print("Invalid day")</textarea>
+
+            <div class="button-group">
+                <button class="run-btn" onclick="runCode()">▶ Run Code</button>
+                <button class="clear-btn" onclick="clearCode()">Clear</button>
+            </div>
+
+            <div id="outputBox">Output will appear here...</div>
+        </section>
+
+        <!-- Summary -->
+        <section class="content-box">
+            <h2>Python Match Summary</h2>
+
+            <ul>
+                <li><code>match</code> is used for pattern matching.</li>
+                <li><code>case</code> defines possible patterns.</li>
+                <li>The first matching case is executed.</li>
+                <li><code>_</code> acts as a default pattern.</li>
+                <li><code>|</code> allows multiple patterns in one case.</li>
+                <li>Guards can be created using <code>if</code>.</li>
+                <li>Match can work with numbers, strings, lists and dictionaries.</li>
+                <li>Pattern matching was introduced in Python 3.10.</li>
+            </ul>
+
+            <div class="success-box">
+                <strong>Next Topic:</strong>
+                In the next lesson, you will learn about
+                <strong>Python For Loops</strong>.
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="page-navigation">
+            <a href="python-if-else.html">← Previous: If Else</a>
+            <a href="python-for-loop.html">Next: For Loop →</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <script>
+        function runCode() {
+            const code = document.getElementById("codeEditor").value;
+            const output = document.getElementById("outputBox");
+
+            let result = "";
+
+            try {
+                /*
+                    This is a simple browser demo.
+                    It supports basic match-case examples with
+                    numbers and strings.
+                */
+
+                const valueMatch = code.match(
+                    /(?:^|\n)\s*(?:\w+)\s*=\s*["']([^"']+)["']/
+                );
+
+                const numberMatch = code.match(
+                    /(?:^|\n)\s*(?:\w+)\s*=\s*(-?\d+(?:\.\d+)?)/
+                );
+
+                let value = null;
+
+                if (valueMatch) {
+                    value = valueMatch[1];
+                } else if (numberMatch) {
+                    value = Number(numberMatch[1]);
+                }
+
+                const caseRegex =
+                    /case\s+((?:"[^"]*"|'[^']*'|-?\d+(?:\.\d+)?))\s*:\s*([\s\S]*?)(?=\n\s*case\s+|\s*$)/g;
+
+                let matched = false;
+                let match;
+
+                while ((match = caseRegex.exec(code)) !== null) {
+                    let caseValue = match[1];
+                    let caseBody = match[2];
+
+                    if (
+                        (caseValue.startsWith('"') &&
+                            caseValue.endsWith('"')) ||
+                        (caseValue.startsWith("'") &&
+                            caseValue.endsWith("'"))
+                    ) {
+                        caseValue = caseValue.slice(1, -1);
+                    } else if (!isNaN(caseValue)) {
+                        caseValue = Number(caseValue);
+                    }
+
+                    if (value === caseValue) {
+                        const printMatch = caseBody.match(
+                            /print\s*\(\s*["'](.+?)["']\s*\)/
+                        );
+
+                        if (printMatch) {
+                            result = printMatch[1];
+                        }
+
+                        matched = true;
+                        break;
+                    }
+                }
+
+                // Default case
+                if (!matched) {
+                    const defaultMatch = code.match(
+                        /case\s+_+\s*:\s*([\s\S]*)$/
+                    );
+
+                    if (defaultMatch) {
+                        const printMatch = defaultMatch[1].match(
+                            /print\s*\(\s*["'](.+?)["']\s*\)/
+                        );
+
+                        if (printMatch) {
+                            result = printMatch[1];
+                        }
+                    }
+                }
+
+                if (result === "") {
+                    result =
+                        "Demo editor supports basic match-case examples.";
+                }
+
+                output.textContent = result;
+
+            } catch (error) {
+                output.textContent = "Error: " + error.message;
+            }
+        }
+
+        function clearCode() {
+            document.getElementById("codeEditor").value = "";
+            document.getElementById("outputBox").textContent =
+                "Output will appear here...";
+        }
+    </script>
+
+</body>
+</html>
+```
