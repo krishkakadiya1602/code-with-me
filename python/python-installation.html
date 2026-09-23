@@ -1,0 +1,838 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Installation | Code With Me</title>
+
+    <meta name="description"
+          content="Learn how to install Python on your computer. Follow the step-by-step Python installation guide from Code With Me.">
+
+    <meta name="keywords"
+          content="Python installation, install Python, Python setup, Python tutorial, Code With Me">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        /* ================= HIGHLIGHT ================= */
+
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .highlight strong {
+            color: #0369a1;
+        }
+
+        /* ================= LIST ================= */
+
+        ul,
+        ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 9px;
+        }
+
+        /* ================= CODE ================= */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        /* ================= STEP BOX ================= */
+
+        .step {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 22px;
+            margin: 20px 0;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #3776ab;
+            color: white;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .step h3 {
+            display: inline;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .download-button {
+            display: inline-block;
+            background: #3776ab;
+            color: white;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .download-button:hover {
+            background: #2b5f89;
+        }
+
+        /* ================= TERMINAL ================= */
+
+        .terminal {
+            background: #111827;
+            color: #22c55e;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .terminal .command {
+            color: #e5e7eb;
+        }
+
+        /* ================= CHECK LIST ================= */
+
+        .check-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .check-list li {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #2b5f89;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+
+            .step h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul class="nav-links">
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <h1>Python Installation</h1>
+
+        <p>
+            Learn how to download and install Python on your computer
+            and verify that Python is working correctly.
+        </p>
+
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="content-box">
+
+            <h2>Installing Python</h2>
+
+            <p>
+                Before you start writing Python programs on your computer,
+                you need to install Python.
+            </p>
+
+            <p>
+                Python is available for major operating systems including
+                Windows, macOS and Linux.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Important:</strong>
+
+                When installing Python on Windows, make sure you select
+                the option to add Python to the PATH environment variable
+                during installation.
+
+            </div>
+
+        </section>
+
+
+        <!-- REQUIREMENTS -->
+
+        <section class="content-box">
+
+            <h2>What You Need</h2>
+
+            <ul class="check-list">
+
+                <li>✔ A computer or laptop</li>
+
+                <li>✔ Internet connection</li>
+
+                <li>✔ Windows, macOS or Linux</li>
+
+                <li>✔ Enough storage space for Python</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- WINDOWS -->
+
+        <section class="content-box">
+
+            <h2>Install Python on Windows</h2>
+
+            <p>
+                Follow these steps to install Python on a Windows computer.
+            </p>
+
+
+            <!-- STEP 1 -->
+
+            <div class="step">
+
+                <span class="step-number">1</span>
+
+                <h3>Visit the Python Website</h3>
+
+                <p>
+                    Open your web browser and visit the official Python website.
+                </p>
+
+                <a
+                    href="https://www.python.org/downloads/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="download-button"
+                >
+                    Download Python
+                </a>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+            <div class="step">
+
+                <span class="step-number">2</span>
+
+                <h3>Download Python</h3>
+
+                <p>
+                    On the Python downloads page, choose the latest
+                    Python version available for your operating system.
+                </p>
+
+                <p>
+                    Click the Windows download option to download the
+                    Python installer.
+                </p>
+
+            </div>
+
+
+            <!-- STEP 3 -->
+
+            <div class="step">
+
+                <span class="step-number">3</span>
+
+                <h3>Open the Installer</h3>
+
+                <p>
+                    After the download is complete, open the Python
+                    installer.
+                </p>
+
+                <p>
+                    You will see the Python setup window.
+                </p>
+
+            </div>
+
+
+            <!-- STEP 4 -->
+
+            <div class="step">
+
+                <span class="step-number">4</span>
+
+                <h3>Add Python to PATH</h3>
+
+                <p>
+                    Before starting the installation, look for the option:
+                </p>
+
+                <div class="highlight">
+
+                    <strong>
+                        Add python.exe to PATH
+                    </strong>
+
+                    <br>
+
+                    Select this option if it is available.
+
+                </div>
+
+                <p>
+                    Adding Python to PATH makes it easier to run Python
+                    commands from the Command Prompt or terminal.
+                </p>
+
+            </div>
+
+
+            <!-- STEP 5 -->
+
+            <div class="step">
+
+                <span class="step-number">5</span>
+
+                <h3>Install Python</h3>
+
+                <p>
+                    Click the installation button and wait for the
+                    installation process to finish.
+                </p>
+
+                <p>
+                    When the installation is completed, close the installer.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- VERIFY -->
+
+        <section class="content-box">
+
+            <h2>Check Python Installation</h2>
+
+            <p>
+                After installing Python, you should verify that it is
+                installed correctly.
+            </p>
+
+            <p>
+                Open Command Prompt on Windows and type:
+            </p>
+
+            <div class="terminal">
+
+                <span class="command">python --version</span>
+
+            </div>
+
+            <p>
+                If Python is installed correctly, the command will display
+                the installed Python version.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Example:</strong>
+
+                <pre><code>Python 3.x.x</code></pre>
+
+                <p>
+                    The exact version number may be different depending
+                    on the Python version installed on your computer.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PYTHON COMMAND -->
+
+        <section class="content-box">
+
+            <h2>Open the Python Interpreter</h2>
+
+            <p>
+                You can start the Python interpreter from the terminal
+                by entering:
+            </p>
+
+            <div class="terminal">
+
+                <span class="command">python</span>
+
+            </div>
+
+            <p>
+                You should then see the Python prompt:
+            </p>
+
+            <pre><code>&gt;&gt;&gt;</code></pre>
+
+        </section>
+
+
+        <!-- FIRST PROGRAM -->
+
+        <section class="content-box">
+
+            <h2>Run Your First Python Program</h2>
+
+            <p>
+                After opening the Python interpreter, type:
+            </p>
+
+            <pre><code>print("Hello, World!")</code></pre>
+
+            <p>
+                Press Enter.
+            </p>
+
+            <p>
+                Python will display:
+            </p>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <pre><code>Hello, World!</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- PYTHON IDLE -->
+
+        <section class="content-box">
+
+            <h2>Python IDLE</h2>
+
+            <p>
+                Python also includes an application called
+                <strong>IDLE</strong>.
+            </p>
+
+            <p>
+                IDLE provides a simple environment where beginners can
+                write and run Python programs.
+            </p>
+
+            <h3>What can you do with IDLE?</h3>
+
+            <ul>
+
+                <li>Write Python code.</li>
+
+                <li>Run Python programs.</li>
+
+                <li>Test small Python commands.</li>
+
+                <li>Learn Python interactively.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- EDITOR -->
+
+        <section class="content-box">
+
+            <h2>Using a Code Editor</h2>
+
+            <p>
+                As you learn Python, you may also use a code editor or
+                integrated development environment (IDE).
+            </p>
+
+            <p>
+                Popular choices include editors and IDEs that support
+                Python development.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Tip:</strong>
+
+                Beginners can start with a simple editor and later
+                explore more advanced development environments.
+
+            </div>
+
+        </section>
+
+
+        <!-- MACOS -->
+
+        <section class="content-box">
+
+            <h2>Python on macOS and Linux</h2>
+
+            <p>
+                Python is also available for macOS and Linux.
+            </p>
+
+            <p>
+                The installation process can be different depending on
+                your operating system and distribution.
+            </p>
+
+            <p>
+                After installation, you can verify Python from a terminal
+                using:
+            </p>
+
+            <div class="terminal">
+
+                <span class="command">python3 --version</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMMON PROBLEMS -->
+
+        <section class="content-box">
+
+            <h2>Common Installation Problems</h2>
+
+            <h3>1. 'python' is not recognized</h3>
+
+            <p>
+                If Windows cannot find the Python command, Python may not
+                have been added to PATH.
+            </p>
+
+            <h3>2. Python version is not displayed</h3>
+
+            <p>
+                Check that Python was installed correctly and try opening
+                a new Command Prompt window.
+            </p>
+
+            <h3>3. Multiple Python versions</h3>
+
+            <p>
+                If more than one Python installation exists on your
+                computer, the command used to start Python can depend
+                on your operating-system configuration.
+            </p>
+
+        </section>
+
+
+        <!-- IMPORTANT POINTS -->
+
+        <section class="content-box">
+
+            <h2>Important Points</h2>
+
+            <div class="highlight">
+
+                <ul>
+
+                    <li>
+                        Python can be installed on Windows, macOS and Linux.
+                    </li>
+
+                    <li>
+                        Download Python from the official Python website.
+                    </li>
+
+                    <li>
+                        On Windows, adding Python to PATH can make terminal
+                        usage easier.
+                    </li>
+
+                    <li>
+                        Use <strong>python --version</strong> to check
+                        Python on many Windows installations.
+                    </li>
+
+                    <li>
+                        Use <strong>python3 --version</strong> on systems
+                        where Python 3 is invoked with the python3 command.
+                    </li>
+
+                    <li>
+                        The <strong>print()</strong> function can be used
+                        to test your Python installation.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PAGE NAVIGATION ================= -->
+
+        <div class="page-navigation">
+
+            <a href="python-introduction.html">
+                ← Previous: Python Introduction
+            </a>
+
+            <a href="python-syntax.html">
+                Next: Python Syntax →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python.
+        </p>
+
+    </footer>
+
+</body>
+</html>
+```
