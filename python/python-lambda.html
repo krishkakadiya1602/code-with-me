@@ -1,0 +1,911 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Lambda | Code With Me</title>
+
+    <meta name="description" content="Learn Python Lambda functions with syntax, examples, arguments, map, filter, reduce and practical programs.">
+    <meta name="keywords" content="Python Lambda, Lambda function Python, Python map filter reduce, Python tutorial">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        .content-box ul,
+        .content-box ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-box li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3776ab;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+        .editor textarea {
+            width: 100%;
+            min-height: 340px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .run-btn {
+            background: #3776ab;
+        }
+
+        .run-btn:hover {
+            background: #285a85;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, "Courier New", monospace;
+            margin-top: 15px;
+        }
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #285a85;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Python Lambda</h1>
+        <p>Learn small anonymous functions using the lambda expression.</p>
+    </section>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="content-box">
+            <h2>What is a Lambda Function?</h2>
+
+            <p>
+                A <strong>lambda function</strong> is a small anonymous function
+                in Python. It can have any number of arguments, but it can contain
+                only one expression.
+            </p>
+
+            <p>
+                Lambda functions are useful when you need a simple function for
+                a short period of time.
+            </p>
+
+            <pre><code>square = lambda x: x * x
+
+print(square(5))</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> 25
+            </div>
+        </section>
+
+        <!-- Syntax -->
+        <section class="content-box">
+            <h2>Lambda Syntax</h2>
+
+            <pre><code>lambda arguments: expression</code></pre>
+
+            <p>For example:</p>
+
+            <pre><code>add = lambda a, b: a + b
+
+print(add(10, 5))</code></pre>
+
+            <ul>
+                <li><code>lambda</code> is the keyword.</li>
+                <li><code>a, b</code> are the arguments.</li>
+                <li><code>a + b</code> is the expression.</li>
+                <li>The result of the expression is returned automatically.</li>
+            </ul>
+        </section>
+
+        <!-- Lambda vs Normal -->
+        <section class="content-box">
+            <h2>Lambda vs Normal Function</h2>
+
+            <h3>Normal Function</h3>
+
+            <pre><code>def square(x):
+    return x * x
+
+print(square(5))</code></pre>
+
+            <h3>Lambda Function</h3>
+
+            <pre><code>square = lambda x: x * x
+
+print(square(5))</code></pre>
+
+            <div class="highlight">
+                Lambda functions are generally used for short and simple operations.
+                Use a normal <code>def</code> function when the logic is larger or
+                needs to be reused clearly.
+            </div>
+        </section>
+
+        <!-- One Argument -->
+        <section class="content-box">
+            <h2>Lambda with One Argument</h2>
+
+            <pre><code>double = lambda x: x * 2
+
+print(double(10))</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> 20
+            </div>
+        </section>
+
+        <!-- Multiple Arguments -->
+        <section class="content-box">
+            <h2>Lambda with Multiple Arguments</h2>
+
+            <p>
+                A lambda function can accept multiple arguments.
+            </p>
+
+            <pre><code>add = lambda a, b: a + b
+
+print(add(10, 20))</code></pre>
+
+            <h3>Three Arguments</h3>
+
+            <pre><code>multiply = lambda a, b, c: a * b * c
+
+print(multiply(2, 3, 4))</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> 24
+            </div>
+        </section>
+
+        <!-- Conditional -->
+        <section class="content-box">
+            <h2>Lambda with if-else</h2>
+
+            <p>
+                A lambda expression can contain a conditional expression.
+            </p>
+
+            <pre><code>check = lambda x: "Positive" if x > 0 else "Negative"
+
+print(check(10))
+print(check(-5))</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                Positive<br>
+                Negative
+            </div>
+        </section>
+
+        <!-- Even Odd -->
+        <section class="content-box">
+            <h2>Lambda for Even and Odd</h2>
+
+            <pre><code>check = lambda x: "Even" if x % 2 == 0 else "Odd"
+
+print(check(10))
+print(check(7))</code></pre>
+        </section>
+
+        <!-- Map -->
+        <section class="content-box">
+            <h2>Lambda with map()</h2>
+
+            <p>
+                The <code>map()</code> function applies a function to every item
+                in an iterable.
+            </p>
+
+            <pre><code>numbers = [1, 2, 3, 4, 5]
+
+squares = list(map(lambda x: x * x, numbers))
+
+print(squares)</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> [1, 4, 9, 16, 25]
+            </div>
+        </section>
+
+        <!-- Filter -->
+        <section class="content-box">
+            <h2>Lambda with filter()</h2>
+
+            <p>
+                The <code>filter()</code> function selects items that satisfy
+                a condition.
+            </p>
+
+            <pre><code>numbers = [1, 2, 3, 4, 5, 6]
+
+even_numbers = list(
+    filter(lambda x: x % 2 == 0, numbers)
+)
+
+print(even_numbers)</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> [2, 4, 6]
+            </div>
+        </section>
+
+        <!-- Reduce -->
+        <section class="content-box">
+            <h2>Lambda with reduce()</h2>
+
+            <p>
+                The <code>reduce()</code> function repeatedly applies a function
+                to the items of an iterable and produces a single result.
+            </p>
+
+            <p>
+                It is available from Python's <code>functools</code> module.
+            </p>
+
+            <pre><code>from functools import reduce
+
+numbers = [1, 2, 3, 4, 5]
+
+total = reduce(
+    lambda a, b: a + b,
+    numbers
+)
+
+print(total)</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> 15
+            </div>
+        </section>
+
+        <!-- Sorting -->
+        <section class="content-box">
+            <h2>Lambda with sorted()</h2>
+
+            <p>
+                Lambda functions can be used as the <code>key</code> argument
+                of <code>sorted()</code>.
+            </p>
+
+            <pre><code>students = [
+    ("Krish", 85),
+    ("Rahul", 72),
+    ("Amit", 91)
+]
+
+students.sort(key=lambda student: student[1])
+
+print(students)</code></pre>
+
+            <div class="highlight">
+                The list is sorted according to the marks stored at index 1.
+            </div>
+        </section>
+
+        <!-- Dictionary -->
+        <section class="content-box">
+            <h2>Lambda with Dictionaries</h2>
+
+            <p>
+                Lambda functions are useful when sorting dictionaries or
+                dictionary items.
+            </p>
+
+            <pre><code>students = {
+    "Krish": 85,
+    "Rahul": 72,
+    "Amit": 91
+}
+
+result = sorted(
+    students.items(),
+    key=lambda item: item[1]
+)
+
+print(result)</code></pre>
+        </section>
+
+        <!-- Lambda Returning Lambda -->
+        <section class="content-box">
+            <h2>Lambda Returning Another Lambda</h2>
+
+            <p>
+                A lambda function can return another function.
+            </p>
+
+            <pre><code>def multiplier(n):
+    return lambda x: x * n
+
+double = multiplier(2)
+
+print(double(10))</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> 20
+            </div>
+        </section>
+
+        <!-- Practical Examples -->
+        <section class="content-box">
+            <h2>Practical Example: Calculate Square</h2>
+
+            <pre><code>square = lambda number: number * number
+
+number = 8
+
+print("Square:", square(number))</code></pre>
+        </section>
+
+        <section class="content-box">
+            <h2>Practical Example: Find Maximum</h2>
+
+            <pre><code>maximum = lambda a, b: a if a > b else b
+
+print(maximum(20, 15))</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> 20
+            </div>
+        </section>
+
+        <section class="content-box">
+            <h2>Practical Example: Calculate Price with Tax</h2>
+
+            <pre><code>price_with_tax = lambda price: price + (price * 0.18)
+
+print(price_with_tax(1000))</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> 1180.0
+            </div>
+        </section>
+
+        <!-- Lambda Characteristics -->
+        <section class="content-box">
+            <h2>Characteristics of Lambda Functions</h2>
+
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Lambda Function</th>
+                    </tr>
+
+                    <tr>
+                        <td>Keyword</td>
+                        <td><code>lambda</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Function Name</td>
+                        <td>Usually anonymous</td>
+                    </tr>
+
+                    <tr>
+                        <td>Number of Arguments</td>
+                        <td>Can have multiple arguments</td>
+                    </tr>
+
+                    <tr>
+                        <td>Expressions</td>
+                        <td>One expression</td>
+                    </tr>
+
+                    <tr>
+                        <td>Return</td>
+                        <td>Automatically returns expression result</td>
+                    </tr>
+
+                    <tr>
+                        <td>Common Uses</td>
+                        <td>map(), filter(), sorted(), reduce()</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Advantages -->
+        <section class="content-box">
+            <h2>Advantages of Lambda Functions</h2>
+
+            <ul>
+                <li>Useful for short functions.</li>
+                <li>Can make simple operations concise.</li>
+                <li>Useful with <code>map()</code>.</li>
+                <li>Useful with <code>filter()</code>.</li>
+                <li>Useful with <code>sorted()</code>.</li>
+                <li>Useful with <code>reduce()</code>.</li>
+                <li>Can be passed as a function argument.</li>
+            </ul>
+        </section>
+
+        <!-- Limitations -->
+        <section class="content-box">
+            <h2>Limitations of Lambda Functions</h2>
+
+            <ul>
+                <li>Only one expression is allowed.</li>
+                <li>Complex logic can become difficult to read.</li>
+                <li>They are not suitable for large functions.</li>
+                <li>Normal <code>def</code> functions are often clearer for complex logic.</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>Tip:</strong>
+                Use lambda functions when they make the code simpler. Do not
+                use them just to make every function shorter.
+            </div>
+        </section>
+
+        <!-- Important Rules -->
+        <section class="content-box">
+            <h2>Important Lambda Rules</h2>
+
+            <ul>
+                <li>Use the <code>lambda</code> keyword.</li>
+                <li>Arguments are written before the colon.</li>
+                <li>The expression is written after the colon.</li>
+                <li>A lambda can accept multiple arguments.</li>
+                <li>A lambda contains one expression.</li>
+                <li>The expression result is returned automatically.</li>
+                <li>Lambda functions are often used with built-in functions.</li>
+            </ul>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="content-box editor">
+            <h2>Python Lambda Editor</h2>
+
+            <p>
+                Try a simple lambda program below.
+            </p>
+
+            <textarea id="codeEditor">square = lambda x: x * x
+
+print(square(5))
+
+add = lambda a, b: a + b
+
+print(add(10, 20))</textarea>
+
+            <div class="button-group">
+                <button class="run-btn" onclick="runCode()">▶ Run Code</button>
+                <button class="clear-btn" onclick="clearCode()">Clear</button>
+            </div>
+
+            <div id="outputBox">Output will appear here...</div>
+        </section>
+
+        <!-- Summary -->
+        <section class="content-box">
+            <h2>Python Lambda Summary</h2>
+
+            <ul>
+                <li>A lambda is a small anonymous function.</li>
+                <li>Lambda functions use the <code>lambda</code> keyword.</li>
+                <li>They can accept multiple arguments.</li>
+                <li>They contain one expression.</li>
+                <li>The expression result is returned automatically.</li>
+                <li>Lambda functions are commonly used with <code>map()</code>.</li>
+                <li>Lambda functions are commonly used with <code>filter()</code>.</li>
+                <li>Lambda functions can be used with <code>sorted()</code>.</li>
+                <li><code>reduce()</code> can be used with lambda functions.</li>
+                <li>Use normal functions for complex logic.</li>
+            </ul>
+
+            <div class="success-box">
+                <strong>Next Topic:</strong>
+                In the next lesson, you will learn about
+                <strong>Python Arrays</strong>.
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="page-navigation">
+            <a href="python-functions.html">← Previous: Functions</a>
+            <a href="python-arrays.html">Next: Arrays →</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <script>
+        function runCode() {
+            const code = document.getElementById("codeEditor").value;
+            const output = document.getElementById("outputBox");
+
+            let result = [];
+
+            try {
+                /*
+                    Simple browser-based Lambda demo.
+
+                    Supported examples:
+                    square = lambda x: x * x
+                    print(square(5))
+
+                    add = lambda a, b: a + b
+                    print(add(10, 20))
+                */
+
+                const lambdaFunctions = {};
+
+                const lines = code.split("\n");
+
+                lines.forEach(line => {
+                    line = line.trim();
+
+                    const match = line.match(
+                        /^(\w+)\s*=\s*lambda\s+(.+?)\s*:\s*(.+)$/
+                    );
+
+                    if (match) {
+                        const functionName = match[1];
+                        const parameters = match[2]
+                            .split(",")
+                            .map(item => item.trim());
+
+                        const expression = match[3].trim();
+
+                        lambdaFunctions[functionName] = {
+                            parameters,
+                            expression
+                        };
+                    }
+                });
+
+                lines.forEach(line => {
+                    line = line.trim();
+
+                    const printMatch = line.match(
+                        /^print\s*\(\s*(\w+)\s*\(\s*(.*?)\s*\)\s*\)$/
+                    );
+
+                    if (!printMatch) {
+                        return;
+                    }
+
+                    const functionName = printMatch[1];
+                    const argumentsText = printMatch[2];
+
+                    const func = lambdaFunctions[functionName];
+
+                    if (!func) {
+                        return;
+                    }
+
+                    const args = argumentsText
+                        .split(",")
+                        .map(item => Number(item.trim()));
+
+                    let expression = func.expression;
+
+                    func.parameters.forEach((parameter, index) => {
+                        const value = args[index];
+
+                        const regex = new RegExp(
+                            "\\b" + parameter + "\\b",
+                            "g"
+                        );
+
+                        expression = expression.replace(
+                            regex,
+                            value
+                        );
+                    });
+
+                    /*
+                        This evaluator is intentionally limited to simple
+                        arithmetic expressions for the browser demo.
+                    */
+                    const safeExpression = expression.replace(
+                        /[^0-9+\-*/().% ]/g,
+                        ""
+                    );
+
+                    const value = Function(
+                        '"use strict"; return (' +
+                        safeExpression +
+                        ')'
+                    )();
+
+                    result.push(value);
+                });
+
+                if (result.length === 0) {
+                    output.textContent =
+                        "Demo editor supports simple lambda arithmetic examples.";
+                } else {
+                    output.textContent = result.join("\n");
+                }
+
+            } catch (error) {
+                output.textContent = "Error: " + error.message;
+            }
+        }
+
+        function clearCode() {
+            document.getElementById("codeEditor").value = "";
+            document.getElementById("outputBox").textContent =
+                "Output will appear here...";
+        }
+    </script>
+
+</body>
+</html>
+```
