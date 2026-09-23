@@ -1,0 +1,1244 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Variables | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python variables with simple examples. Understand variable creation, naming rules, multiple variables, assigning values and type checking.">
+
+    <meta name="keywords"
+          content="Python variables, Python variable examples, Python tutorial, Python programming, learn Python, Code With Me">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        /* ================= HIGHLIGHT ================= */
+
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .highlight strong {
+            color: #0369a1;
+        }
+
+        /* ================= LIST ================= */
+
+        ul,
+        ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= CODE ================= */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            color: #111827;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        /* ================= VARIABLE BOX ================= */
+
+        .variable-box {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3776ab;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* ================= EDITOR ================= */
+
+        .editor {
+            margin-top: 20px;
+        }
+
+        .editor textarea {
+            width: 100%;
+            min-height: 260px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #3776ab;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #2b5f89;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* ================= OUTPUT ================= */
+
+        .output {
+            margin-top: 20px;
+        }
+
+        .output h3 {
+            margin-bottom: 10px;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #2b5f89;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <h1>Python Variables</h1>
+
+        <p>
+            Learn how to create, assign, change and use variables
+            in Python programs.
+        </p>
+
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="content-box">
+
+            <h2>What is a Variable?</h2>
+
+            <p>
+                A variable is a name that refers to a value stored by
+                a Python program.
+            </p>
+
+            <p>
+                Variables are useful for storing information such as
+                names, ages, prices, numbers and other data.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Example:</strong>
+
+                <pre><code>name = "Krish"</code></pre>
+
+                <p>
+                    Here, <strong>name</strong> is the variable and
+                    <strong>"Krish"</strong> is the value assigned to it.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATING VARIABLES -->
+
+        <section class="content-box">
+
+            <h2>Creating Variables</h2>
+
+            <p>
+                In Python, you can create a variable by assigning a value
+                to a name using the <strong>=</strong> operator.
+            </p>
+
+            <pre><code>name = "Krish"
+age = 20
+country = "India"</code></pre>
+
+            <p>
+                Python automatically determines the type of value being
+                assigned.
+            </p>
+
+        </section>
+
+
+        <!-- PRINT VARIABLES -->
+
+        <section class="content-box">
+
+            <h2>Printing Variables</h2>
+
+            <p>
+                You can use the <strong>print()</strong> function to
+                display the value of a variable.
+            </p>
+
+            <pre><code>name = "Krish"
+
+print(name)</code></pre>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <pre><code>Krish</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- DIFFERENT TYPES -->
+
+        <section class="content-box">
+
+            <h2>Variables Can Store Different Types of Data</h2>
+
+            <p>
+                A variable can store different types of values.
+            </p>
+
+            <pre><code>name = "Krish"
+age = 20
+height = 5.8
+is_student = True</code></pre>
+
+            <p>
+                These variables store a string, integer, floating-point
+                number and Boolean value.
+            </p>
+
+        </section>
+
+
+        <!-- STRINGS -->
+
+        <section class="content-box">
+
+            <h2>String Variables</h2>
+
+            <p>
+                A string variable stores text.
+            </p>
+
+            <pre><code>name = "Code With Me"
+
+print(name)</code></pre>
+
+            <p>
+                Strings can use either single or double quotation marks.
+            </p>
+
+            <pre><code>name1 = "Python"
+name2 = 'Programming'
+
+print(name1)
+print(name2)</code></pre>
+
+        </section>
+
+
+        <!-- INTEGER -->
+
+        <section class="content-box">
+
+            <h2>Integer Variables</h2>
+
+            <p>
+                Integer variables store whole numbers.
+            </p>
+
+            <pre><code>age = 20
+year = 2026
+
+print(age)
+print(year)</code></pre>
+
+        </section>
+
+
+        <!-- FLOAT -->
+
+        <section class="content-box">
+
+            <h2>Float Variables</h2>
+
+            <p>
+                Float variables store numbers that contain decimal values.
+            </p>
+
+            <pre><code>price = 99.99
+height = 5.8
+
+print(price)
+print(height)</code></pre>
+
+        </section>
+
+
+        <!-- BOOLEAN -->
+
+        <section class="content-box">
+
+            <h2>Boolean Variables</h2>
+
+            <p>
+                Boolean variables have one of two values:
+                <strong>True</strong> or <strong>False</strong>.
+            </p>
+
+            <pre><code>is_student = True
+is_logged_in = False
+
+print(is_student)
+print(is_logged_in)</code></pre>
+
+        </section>
+
+
+        <!-- MULTIPLE VARIABLES -->
+
+        <section class="content-box">
+
+            <h2>Creating Multiple Variables</h2>
+
+            <p>
+                Python allows you to create multiple variables in
+                different ways.
+            </p>
+
+            <h3>Separate Assignment</h3>
+
+            <pre><code>name = "Krish"
+age = 20
+city = "Ahmedabad"</code></pre>
+
+            <h3>Multiple Assignment</h3>
+
+            <pre><code>name, age, city = "Krish", 20, "Ahmedabad"
+
+print(name)
+print(age)
+print(city)</code></pre>
+
+        </section>
+
+
+        <!-- SAME VALUE -->
+
+        <section class="content-box">
+
+            <h2>Assigning the Same Value to Multiple Variables</h2>
+
+            <p>
+                You can assign the same value to multiple variables
+                in one statement.
+            </p>
+
+            <pre><code>x = y = z = 100
+
+print(x)
+print(y)
+print(z)</code></pre>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <pre><code>100
+100
+100</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHANGING VALUE -->
+
+        <section class="content-box">
+
+            <h2>Changing Variable Values</h2>
+
+            <p>
+                A variable's value can be changed after it has been created.
+            </p>
+
+            <pre><code>age = 20
+
+print(age)
+
+age = 21
+
+print(age)</code></pre>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <pre><code>20
+21</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- VARIABLE TYPE -->
+
+        <section class="content-box">
+
+            <h2>Checking Variable Type</h2>
+
+            <p>
+                The <strong>type()</strong> function can be used to find
+                the type of a value.
+            </p>
+
+            <pre><code>name = "Krish"
+age = 20
+height = 5.8
+
+print(type(name))
+print(type(age))
+print(type(height))</code></pre>
+
+            <div class="highlight">
+
+                <strong>Example Output:</strong>
+
+                <pre><code>&lt;class 'str'&gt;
+&lt;class 'int'&gt;
+&lt;class 'float'&gt;</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- VARIABLE NAMES -->
+
+        <section class="content-box">
+
+            <h2>Python Variable Names</h2>
+
+            <p>
+                Variable names should clearly describe the data they store.
+            </p>
+
+            <pre><code>student_name = "Krish"
+student_age = 20</code></pre>
+
+            <p>
+                Using descriptive names makes your program easier to read.
+            </p>
+
+        </section>
+
+
+        <!-- NAMING RULES -->
+
+        <section class="content-box">
+
+            <h2>Rules for Python Variable Names</h2>
+
+            <ul>
+
+                <li>
+                    A variable name must start with a letter or underscore.
+                </li>
+
+                <li>
+                    A variable name cannot start with a number.
+                </li>
+
+                <li>
+                    A variable name can contain letters, numbers and
+                    underscores.
+                </li>
+
+                <li>
+                    Variable names are case-sensitive.
+                </li>
+
+                <li>
+                    Python keywords cannot be used as variable names.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- VALID NAMES -->
+
+        <section class="content-box">
+
+            <h2>Valid Variable Names</h2>
+
+            <pre><code>name = "Krish"
+student_name = "Krish"
+age2 = 20
+_student = "Python"
+student123 = "Code"</code></pre>
+
+        </section>
+
+
+        <!-- INVALID NAMES -->
+
+        <section class="content-box">
+
+            <h2>Invalid Variable Names</h2>
+
+            <p>
+                The following examples are invalid variable names:
+            </p>
+
+            <pre><code>2name = "Krish"
+student-name = "Krish"
+student name = "Krish"</code></pre>
+
+            <div class="highlight">
+
+                <strong>Tip:</strong>
+
+                Use underscores instead of spaces or hyphens.
+
+                <pre><code>student_name = "Krish"</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- CASE SENSITIVE -->
+
+        <section class="content-box">
+
+            <h2>Variables are Case-Sensitive</h2>
+
+            <p>
+                Python treats uppercase and lowercase letters as different.
+            </p>
+
+            <pre><code>name = "Krish"
+Name = "Patel"
+
+print(name)
+print(Name)</code></pre>
+
+            <div class="highlight">
+
+                <strong>Remember:</strong>
+
+                <span class="inline-code">name</span> and
+                <span class="inline-code">Name</span> are two different
+                variables.
+
+            </div>
+
+        </section>
+
+
+        <!-- GLOBAL / LOCAL -->
+
+        <section class="content-box">
+
+            <h2>Local and Global Variables</h2>
+
+            <p>
+                Variables created outside a function are generally
+                available in the surrounding/global scope.
+            </p>
+
+            <pre><code>name = "Krish"
+
+def greet():
+    print(name)
+
+greet()</code></pre>
+
+            <p>
+                A variable created inside a function normally belongs
+                to that function's local scope.
+            </p>
+
+            <pre><code>def greet():
+    message = "Hello"
+    print(message)
+
+greet()</code></pre>
+
+        </section>
+
+
+        <!-- TABLE -->
+
+        <section class="content-box">
+
+            <h2>Python Variable Examples</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Variable</th>
+                        <th>Value</th>
+                        <th>Type</th>
+                    </tr>
+
+                    <tr>
+                        <td><code>name</code></td>
+                        <td><code>"Krish"</code></td>
+                        <td>String</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>age</code></td>
+                        <td><code>20</code></td>
+                        <td>Integer</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>price</code></td>
+                        <td><code>99.99</code></td>
+                        <td>Float</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>is_student</code></td>
+                        <td><code>True</code></td>
+                        <td>Boolean</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERACTIVE EDITOR -->
+
+        <section class="content-box">
+
+            <h2>Python Code Editor</h2>
+
+            <p>
+                Try creating your own variables below.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="pythonCode">name = "Code With Me"
+age = 20
+
+print(name)
+print(age)</textarea>
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runPython()">
+                        ▶ Run Code
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearEditor()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div class="output">
+
+                    <h3>Output</h3>
+
+                    <div id="outputBox">
+                        Click "Run Code" to see the output.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- IMPORTANT POINTS -->
+
+        <section class="content-box">
+
+            <h2>Important Points</h2>
+
+            <div class="highlight">
+
+                <ul>
+
+                    <li>
+                        Variables are used to store and reference values.
+                    </li>
+
+                    <li>
+                        Use <strong>=</strong> to assign a value to a variable.
+                    </li>
+
+                    <li>
+                        Python automatically determines the value's type.
+                    </li>
+
+                    <li>
+                        Use <strong>type()</strong> to check the type of a value.
+                    </li>
+
+                    <li>
+                        Variable names are case-sensitive.
+                    </li>
+
+                    <li>
+                        Variable names can contain letters, numbers and
+                        underscores.
+                    </li>
+
+                    <li>
+                        A variable name cannot start with a number.
+                    </li>
+
+                    <li>
+                        Use descriptive variable names to make code easier
+                        to understand.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PAGE NAVIGATION ================= -->
+
+        <div class="page-navigation">
+
+            <a href="python-comments.html">
+                ← Previous: Python Comments
+            </a>
+
+            <a href="python-data-types.html">
+                Next: Python Data Types →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function runPython() {
+
+            const code =
+                document.getElementById("pythonCode").value;
+
+            const outputBox =
+                document.getElementById("outputBox");
+
+            if (code.trim() === "") {
+
+                outputBox.textContent =
+                    "Please write some Python code.";
+
+                return;
+            }
+
+            let variables = {};
+            let output = [];
+
+            const lines = code.split("\n");
+
+            lines.forEach(function(line) {
+
+                line = line.trim();
+
+                if (line === "") {
+                    return;
+                }
+
+                /* Ignore comments */
+
+                if (line.startsWith("#")) {
+                    return;
+                }
+
+                /* Remove simple inline comments */
+
+                const commentIndex = line.indexOf("#");
+
+                if (commentIndex !== -1) {
+                    line = line
+                        .substring(0, commentIndex)
+                        .trim();
+                }
+
+                /*
+                 * String variable
+                 *
+                 * name = "Krish"
+                 */
+
+                const stringVariable =
+                    line.match(
+                        /^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*["'](.*?)["']$/
+                    );
+
+                if (stringVariable) {
+
+                    variables[stringVariable[1]] =
+                        stringVariable[2];
+
+                    return;
+                }
+
+                /*
+                 * Number variable
+                 *
+                 * age = 20
+                 */
+
+                const numberVariable =
+                    line.match(
+                        /^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(-?\d+(?:\.\d+)?)$/
+                    );
+
+                if (numberVariable) {
+
+                    variables[numberVariable[1]] =
+                        numberVariable[2];
+
+                    return;
+                }
+
+                /*
+                 * Boolean variable
+                 */
+
+                const booleanVariable =
+                    line.match(
+                        /^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(True|False)$/
+                    );
+
+                if (booleanVariable) {
+
+                    variables[booleanVariable[1]] =
+                        booleanVariable[2];
+
+                    return;
+                }
+
+                /*
+                 * print("text")
+                 */
+
+                const printString =
+                    line.match(
+                        /^print\s*\(\s*["'](.*?)["']\s*\)$/
+                    );
+
+                if (printString) {
+
+                    output.push(
+                        printString[1]
+                    );
+
+                    return;
+                }
+
+                /*
+                 * print(variable)
+                 */
+
+                const printVariable =
+                    line.match(
+                        /^print\s*\(\s*([A-Za-z_][A-Za-z0-9_]*)\s*\)$/
+                    );
+
+                if (printVariable) {
+
+                    const variableName =
+                        printVariable[1];
+
+                    if (
+                        Object.prototype.hasOwnProperty.call(
+                            variables,
+                            variableName
+                        )
+                    ) {
+
+                        output.push(
+                            String(variables[variableName])
+                        );
+
+                    } else {
+
+                        output.push(
+                            "NameError: variable '" +
+                            variableName +
+                            "' is not defined"
+                        );
+
+                    }
+
+                    return;
+                }
+
+            });
+
+
+            if (output.length > 0) {
+
+                outputBox.textContent =
+                    output.join("\n");
+
+            } else {
+
+                outputBox.textContent =
+                    "No printable output found.\n\n" +
+                    "Try this example:\n\n" +
+                    'name = "Krish"\n' +
+                    'age = 20\n' +
+                    'print(name)\n' +
+                    'print(age)';
+
+            }
+
+        }
+
+
+        function clearEditor() {
+
+            document.getElementById("pythonCode").value = "";
+
+            document.getElementById("outputBox").textContent =
+                "Editor cleared.";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
