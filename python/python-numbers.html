@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Python Numbers | Code With Me</title>
+
+<meta name="description" content="Learn Python Numbers including integers, floats, complex numbers, arithmetic operations, type conversion and useful number functions.">
+<meta name="keywords" content="Python Numbers, Python int, Python float, Python complex, Python arithmetic operators, Python tutorial">
+<meta name="author" content="Code With Me">
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #1f2937;
+        line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+        background: #111827;
+        color: white;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .nav-links a:hover {
+        color: #38bdf8;
+    }
+
+    /* HERO */
+    .hero {
+        background: linear-gradient(135deg, #3776ab, #1f2937);
+        color: white;
+        text-align: center;
+        padding: 70px 20px;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    /* CONTAINER */
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    /* CONTENT BOX */
+    .content-box {
+        background: white;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .content-box h2 {
+        color: #3776ab;
+        margin-bottom: 15px;
+        font-size: 28px;
+    }
+
+    .content-box h3 {
+        color: #1f2937;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    .content-box p {
+        margin-bottom: 15px;
+    }
+
+    .content-box ul,
+    .content-box ol {
+        margin-left: 25px;
+        margin-bottom: 15px;
+    }
+
+    .content-box li {
+        margin-bottom: 8px;
+    }
+
+    /* HIGHLIGHT */
+    .highlight {
+        background: #e0f2fe;
+        border-left: 5px solid #0284c7;
+        padding: 18px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    .success-box {
+        background: #dcfce7;
+        border-left: 5px solid #16a34a;
+        padding: 18px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    .warning-box {
+        background: #fef3c7;
+        border-left: 5px solid #f59e0b;
+        padding: 18px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    /* CODE */
+    pre {
+        background: #111827;
+        color: #e5e7eb;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 15px 0;
+    }
+
+    code {
+        font-family: Consolas, "Courier New", monospace;
+    }
+
+    /* TABLE */
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th,
+    td {
+        border: 1px solid #d1d5db;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background: #3776ab;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background: #f3f4f6;
+    }
+
+    /* EDITOR */
+    .editor {
+        margin-top: 20px;
+    }
+
+    .editor textarea {
+        width: 100%;
+        min-height: 240px;
+        padding: 18px;
+        background: #111827;
+        color: #e5e7eb;
+        border: none;
+        border-radius: 8px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 15px;
+        resize: vertical;
+        outline: none;
+    }
+
+    .button-group {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .button-group button {
+        border: none;
+        padding: 12px 22px;
+        border-radius: 7px;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .run-btn {
+        background: #3776ab;
+    }
+
+    .run-btn:hover {
+        background: #285a85;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+    }
+
+    .clear-btn:hover {
+        background: #b91c1c;
+    }
+
+    #outputBox {
+        background: #111827;
+        color: #22c55e;
+        min-height: 100px;
+        padding: 18px;
+        border-radius: 8px;
+        white-space: pre-wrap;
+        font-family: Consolas, "Courier New", monospace;
+        margin-top: 15px;
+    }
+
+    /* NAVIGATION */
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 40px 0;
+    }
+
+    .page-navigation a {
+        text-decoration: none;
+        background: #3776ab;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .page-navigation a:hover {
+        background: #285a85;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 50px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-links {
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+        }
+
+        .content-box {
+            padding: 20px;
+        }
+
+        .page-navigation {
+            flex-direction: column;
+        }
+
+        .page-navigation a {
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- NAVBAR -->
+<nav>
+    <a href="../index.html" class="logo">
+        Code <span>With Me</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#courses">Courses</a></li>
+        <li><a href="../index.html#about">About</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Python Numbers</h1>
+    <p>Learn Integers, Floats, Complex Numbers and Number Operations</p>
+</section>
+
+<main class="container">
+
+    <!-- INTRODUCTION -->
+    <section class="content-box">
+        <h2>What Are Numbers in Python?</h2>
+
+        <p>
+            Numbers are one of the most important data types in Python.
+            They are used to store numerical values and perform mathematical
+            calculations.
+        </p>
+
+        <p>
+            Python mainly provides three types of numbers:
+        </p>
+
+        <ul>
+            <li><strong>int</strong> - Integer numbers</li>
+            <li><strong>float</strong> - Decimal numbers</li>
+            <li><strong>complex</strong> - Complex numbers</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>Example:</strong>
+            Python can work with positive numbers, negative numbers,
+            decimal numbers and complex numbers.
+        </div>
+    </section>
+
+    <!-- INTEGER -->
+    <section class="content-box">
+        <h2>1. Integer (int)</h2>
+
+        <p>
+            An integer is a whole number without a decimal point.
+            Integers can be positive, negative or zero.
+        </p>
+
+        <pre><code>x = 10
+```
+
+y = -20
+z = 0
+
+print(x)
+print(y)
+print(z)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>10
+```
+
+-20
+0</code></pre>
+
+```
+        <div class="success-box">
+            <strong>Remember:</strong>
+            Python integers do not have a fixed small size like some
+            other programming languages. They can grow to very large
+            values, limited mainly by available memory.
+        </div>
+    </section>
+
+    <!-- FLOAT -->
+    <section class="content-box">
+        <h2>2. Float (float)</h2>
+
+        <p>
+            A float represents a number containing a decimal point.
+        </p>
+
+        <pre><code>price = 99.99
+```
+
+temperature = 36.5
+height = 5.8
+
+print(price)
+print(temperature)
+print(height)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>99.99
+```
+
+36.5
+5.8</code></pre>
+
+```
+        <h3>Negative Float</h3>
+
+        <pre><code>x = -25.75
+```
+
+print(x)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>-25.75</code></pre>
+    </section>
+
+    <!-- COMPLEX -->
+    <section class="content-box">
+        <h2>3. Complex Numbers</h2>
+
+        <p>
+            A complex number contains a real part and an imaginary part.
+            Python uses <strong>j</strong> to represent the imaginary part.
+        </p>
+
+        <pre><code>x = 3 + 5j
+```
+
+print(x)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>(3+5j)</code></pre>
+
+        <h3>Real and Imaginary Parts</h3>
+
+        <pre><code>x = 3 + 5j
+```
+
+print(x.real)
+print(x.imag)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>3.0
+```
+
+5.0</code></pre> </section>
+
+```
+    <!-- TYPE -->
+    <section class="content-box">
+        <h2>Checking Number Type</h2>
+
+        <p>
+            You can use the <strong>type()</strong> function to find the
+            data type of a number.
+        </p>
+
+        <pre><code>x = 100
+```
+
+y = 25.5
+z = 2 + 3j
+
+print(type(x))
+print(type(y))
+print(type(z))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>&lt;class 'int'&gt;
+```
+
+<class 'float'>
+<class 'complex'></code></pre> </section>
+
+```
+    <!-- ARITHMETIC -->
+    <section class="content-box">
+        <h2>Arithmetic Operations</h2>
+
+        <p>
+            Python provides several operators for performing mathematical
+            calculations.
+        </p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Name</th>
+                    <th>Example</th>
+                    <th>Result</th>
+                </tr>
+
+                <tr>
+                    <td>+</td>
+                    <td>Addition</td>
+                    <td>10 + 5</td>
+                    <td>15</td>
+                </tr>
+
+                <tr>
+                    <td>-</td>
+                    <td>Subtraction</td>
+                    <td>10 - 5</td>
+                    <td>5</td>
+                </tr>
+
+                <tr>
+                    <td>*</td>
+                    <td>Multiplication</td>
+                    <td>10 * 5</td>
+                    <td>50</td>
+                </tr>
+
+                <tr>
+                    <td>/</td>
+                    <td>Division</td>
+                    <td>10 / 5</td>
+                    <td>2.0</td>
+                </tr>
+
+                <tr>
+                    <td>//</td>
+                    <td>Floor Division</td>
+                    <td>10 // 3</td>
+                    <td>3</td>
+                </tr>
+
+                <tr>
+                    <td>%</td>
+                    <td>Modulus</td>
+                    <td>10 % 3</td>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <td>**</td>
+                    <td>Exponentiation</td>
+                    <td>2 ** 3</td>
+                    <td>8</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- ADDITION -->
+    <section class="content-box">
+        <h2>Addition</h2>
+
+        <pre><code>a = 20
+```
+
+b = 30
+
+result = a + b
+
+print(result)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>50</code></pre>
+    </section>
+
+    <!-- SUBTRACTION -->
+    <section class="content-box">
+        <h2>Subtraction</h2>
+
+        <pre><code>a = 50
+```
+
+b = 20
+
+result = a - b
+
+print(result)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>30</code></pre>
+    </section>
+
+    <!-- MULTIPLICATION -->
+    <section class="content-box">
+        <h2>Multiplication</h2>
+
+        <pre><code>a = 10
+```
+
+b = 5
+
+result = a * b
+
+print(result)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>50</code></pre>
+    </section>
+
+    <!-- DIVISION -->
+    <section class="content-box">
+        <h2>Division</h2>
+
+        <p>
+            The <strong>/</strong> operator performs division and returns
+            a float value.
+        </p>
+
+        <pre><code>a = 10
+```
+
+b = 4
+
+result = a / b
+
+print(result)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>2.5</code></pre>
+    </section>
+
+    <!-- FLOOR DIVISION -->
+    <section class="content-box">
+        <h2>Floor Division</h2>
+
+        <p>
+            The <strong>//</strong> operator performs floor division.
+            It returns the floor of the division result.
+        </p>
+
+        <pre><code>a = 10
+```
+
+b = 3
+
+print(a // b)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>3</code></pre>
+
+        <div class="warning-box">
+            <strong>Note:</strong>
+            Floor division is not simply "remove the decimal part".
+            For negative values, Python floors toward negative infinity.
+        </div>
+
+        <pre><code>print(-10 // 3)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>-4</code></pre>
+    </section>
+
+    <!-- MODULUS -->
+    <section class="content-box">
+        <h2>Modulus Operator (%)</h2>
+
+        <p>
+            The modulus operator returns the remainder after division.
+        </p>
+
+        <pre><code>a = 10
+```
+
+b = 3
+
+print(a % b)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>1</code></pre>
+
+        <h3>Checking Even and Odd Numbers</h3>
+
+        <pre><code>number = 10
+```
+
+if number % 2 == 0:
+print("Even number")
+else:
+print("Odd number")</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>Even number</code></pre>
+    </section>
+
+    <!-- EXPONENT -->
+    <section class="content-box">
+        <h2>Exponentiation (**)</h2>
+
+        <p>
+            The <strong>**</strong> operator is used to calculate powers.
+        </p>
+
+        <pre><code>result = 2 ** 3
+```
+
+print(result)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>8</code></pre>
+
+        <p>
+            This means:
+        </p>
+
+        <pre><code>2 × 2 × 2 = 8</code></pre>
+    </section>
+
+    <!-- TYPE CONVERSION -->
+    <section class="content-box">
+        <h2>Number Type Conversion</h2>
+
+        <p>
+            Python provides functions such as <strong>int()</strong>,
+            <strong>float()</strong> and <strong>complex()</strong>
+            to convert values between number types.
+        </p>
+
+        <h3>Convert Float to Integer</h3>
+
+        <pre><code>x = 10.8
+```
+
+y = int(x)
+
+print(y)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>10</code></pre>
+
+        <div class="warning-box">
+            <strong>Important:</strong>
+            Converting a float to int removes the fractional part.
+            It does not round the number.
+        </div>
+
+        <h3>Convert Integer to Float</h3>
+
+        <pre><code>x = 10
+```
+
+y = float(x)
+
+print(y)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>10.0</code></pre>
+
+        <h3>Convert Integer to Complex</h3>
+
+        <pre><code>x = 10
+```
+
+y = complex(x)
+
+print(y)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>(10+0j)</code></pre>
+    </section>
+
+    <!-- USEFUL FUNCTIONS -->
+    <section class="content-box">
+        <h2>Useful Number Functions</h2>
+
+        <h3>abs()</h3>
+
+        <p>
+            The <strong>abs()</strong> function returns the absolute value
+            of a number.
+        </p>
+
+        <pre><code>number = -25
+```
+
+print(abs(number))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>25</code></pre>
+
+        <h3>round()</h3>
+
+        <p>
+            The <strong>round()</strong> function rounds a number.
+        </p>
+
+        <pre><code>number = 15.678
+```
+
+print(round(number))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>16</code></pre>
+
+        <h3>pow()</h3>
+
+        <p>
+            The <strong>pow()</strong> function can be used to calculate
+            powers.
+        </p>
+
+        <pre><code>result = pow(2, 4)
+```
+
+print(result)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>16</code></pre>
+
+        <h3>min() and max()</h3>
+
+        <pre><code>numbers = [10, 25, 5, 40, 15]
+```
+
+print(min(numbers))
+print(max(numbers))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>5
+```
+
+40</code></pre>
+
+```
+        <h3>sum()</h3>
+
+        <pre><code>numbers = [10, 20, 30]
+```
+
+print(sum(numbers))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>60</code></pre>
+    </section>
+
+    <!-- UNDERSCORE -->
+    <section class="content-box">
+        <h2>Large Numbers and Underscores</h2>
+
+        <p>
+            Python allows underscores inside numeric literals to make
+            large numbers easier to read.
+        </p>
+
+        <pre><code>population = 1_000_000
+```
+
+print(population)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>1000000</code></pre>
+
+        <p>
+            The underscores do not change the value of the number.
+        </p>
+    </section>
+
+    <!-- SCIENTIFIC NOTATION -->
+    <section class="content-box">
+        <h2>Scientific Notation</h2>
+
+        <p>
+            Python supports scientific notation using
+            <strong>e</strong> or <strong>E</strong>.
+        </p>
+
+        <pre><code>x = 5e3
+```
+
+print(x)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>5000.0</code></pre>
+
+        <p>Another example:</p>
+
+        <pre><code>x = 2.5e2
+```
+
+print(x)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>250.0</code></pre>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="content-box">
+        <h2>Comparing Numbers</h2>
+
+        <p>
+            Numbers can be compared using comparison operators.
+        </p>
+
+        <pre><code>a = 20
+```
+
+b = 10
+
+print(a > b)
+print(a < b)
+print(a == b)
+print(a != b)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False
+False
+True</code></pre>
+
+```
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td>==</td>
+                    <td>Equal to</td>
+                </tr>
+
+                <tr>
+                    <td>!=</td>
+                    <td>Not equal to</td>
+                </tr>
+
+                <tr>
+                    <td>&gt;</td>
+                    <td>Greater than</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;</td>
+                    <td>Less than</td>
+                </tr>
+
+                <tr>
+                    <td>&gt;=</td>
+                    <td>Greater than or equal to</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;=</td>
+                    <td>Less than or equal to</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- PRACTICE -->
+    <section class="content-box">
+        <h2>Practice Example</h2>
+
+        <p>
+            The following program calculates the total, average and
+            remainder of two numbers.
+        </p>
+
+        <pre><code>a = 25
+```
+
+b = 10
+
+print("Addition:", a + b)
+print("Subtraction:", a - b)
+print("Multiplication:", a * b)
+print("Division:", a / b)
+print("Remainder:", a % b)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>Addition: 35
+```
+
+Subtraction: 15
+Multiplication: 250
+Division: 2.5
+Remainder: 5</code></pre> </section>
+
+```
+    <!-- SUMMARY -->
+    <section class="content-box">
+        <h2>Python Numbers - Summary</h2>
+
+        <ul>
+            <li><strong>int</strong> is used for whole numbers.</li>
+            <li><strong>float</strong> is used for decimal numbers.</li>
+            <li><strong>complex</strong> is used for complex numbers.</li>
+            <li><strong>+</strong> performs addition.</li>
+            <li><strong>-</strong> performs subtraction.</li>
+            <li><strong>*</strong> performs multiplication.</li>
+            <li><strong>/</strong> performs division.</li>
+            <li><strong>//</strong> performs floor division.</li>
+            <li><strong>%</strong> returns the remainder.</li>
+            <li><strong>**</strong> calculates powers.</li>
+            <li><strong>type()</strong> checks the type of a value.</li>
+            <li><strong>int(), float(), complex()</strong> can convert numeric values.</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>Next Topic:</strong>
+            In the next lesson, you will learn about
+            <strong>Python Strings</strong>.
+        </div>
+    </section>
+
+    <!-- INTERACTIVE EDITOR -->
+    <section class="content-box">
+        <h2>Try Python Numbers</h2>
+
+        <p>
+            Write a simple Python number example below and click
+            <strong>Run Code</strong>.
+        </p>
+
+        <div class="editor">
+
+            <textarea id="codeEditor">a = 20
+```
+
+b = 5
+
+print("Addition:", a + b)
+print("Subtraction:", a - b)
+print("Multiplication:", a * b)
+print("Division:", a / b)
+print("Remainder:", a % b)</textarea>
+
+```
+            <div class="button-group">
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearCode()">
+                    Clear
+                </button>
+            </div>
+
+            <div id="outputBox">Output will appear here...</div>
+
+        </div>
+    </section>
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+
+        <a href="python-data-types.html">
+            ← Previous: Python Data Types
+        </a>
+
+        <a href="python-strings.html">
+            Next: Python Strings →
+        </a>
+
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Code With Me. All Rights Reserved.</p>
+    <p>Learn HTML, CSS, JavaScript and Python.</p>
+</footer>
+
+<script>
+    function runCode() {
+
+        const code = document.getElementById("codeEditor").value;
+        const output = document.getElementById("outputBox");
+
+        let result = "";
+
+        try {
+
+            /*
+             * This is a simple demo interpreter for common
+             * Python number examples.
+             */
+
+            const lines = code.split("\n");
+
+            let variables = {};
+
+            lines.forEach(function(line) {
+
+                line = line.trim();
+
+                if (line === "" || line.startsWith("#")) {
+                    return;
+                }
+
+                /* Variable assignment */
+                if (
+                    line.includes("=") &&
+                    !line.includes("==") &&
+                    !line.startsWith("print")
+                ) {
+
+                    let parts = line.split("=");
+
+                    let variableName = parts[0].trim();
+                    let expression = parts.slice(1).join("=").trim();
+
+                    expression = expression.replace(
+                        /([a-zA-Z_][a-zA-Z0-9_]*)/g,
+                        function(match) {
+                            if (variables.hasOwnProperty(match)) {
+                                return variables[match];
+                            }
+
+                            return match;
+                        }
+                    );
+
+                    try {
+                        variables[variableName] = Function(
+                            '"use strict"; return (' + expression + ')'
+                        )();
+                    } catch {
+                        variables[variableName] = expression;
+                    }
+
+                    return;
+                }
+
+                /* Print statement */
+                if (line.startsWith("print")) {
+
+                    let content = line.substring(5).trim();
+
+                    if (content.startsWith("(") && content.endsWith(")")) {
+                        content = content.substring(
+                            1,
+                            content.length - 1
+                        );
+                    }
+
+                    /*
+                     * Handle comma-separated print values.
+                     */
+                    let parts = content.split(",");
+
+                    let values = parts.map(function(part) {
+
+                        part = part.trim();
+
+                        /*
+                         * Remove quotes from strings.
+                         */
+                        if (
+                            (part.startsWith('"') && part.endsWith('"')) ||
+                            (part.startsWith("'") && part.endsWith("'"))
+                        ) {
+                            return part.substring(
+                                1,
+                                part.length - 1
+                            );
+                        }
+
+                        /*
+                         * Replace known variables.
+                         */
+                        if (variables.hasOwnProperty(part)) {
+                            return variables[part];
+                        }
+
+                        /*
+                         * Try mathematical expression.
+                         */
+                        try {
+
+                            let expression = part.replace(
+                                /([a-zA-Z_][a-zA-Z0-9_]*)/g,
+                                function(match) {
+
+                                    if (
+                                        variables.hasOwnProperty(match)
+                                    ) {
+                                        return variables[match];
+                                    }
+
+                                    return match;
+                                }
+                            );
+
+                            return Function(
+                                '"use strict"; return (' +
+                                expression +
+                                ')'
+                            )();
+
+                        } catch {
+
+                            return part;
+                        }
+
+                    });
+
+                    result += values.join(" ") + "\n";
+                }
+
+            });
+
+            if (result.trim() === "") {
+                output.textContent =
+                    "Code executed, but there is no print() output.";
+            } else {
+                output.textContent = result;
+            }
+
+        } catch (error) {
+
+            output.textContent =
+                "Error: " + error.message;
+        }
+    }
+
+    function clearCode() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("outputBox").textContent =
+            "Output will appear here...";
+    }
+</script>
+```
+
+</body>
+</html>
