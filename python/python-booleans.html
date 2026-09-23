@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Python Booleans | Code With Me</title>
+
+<meta name="description" content="Learn Python Booleans, True and False values, comparison operators, logical operators, bool() function and Boolean conditions.">
+<meta name="keywords" content="Python Booleans, Python True False, Python bool, Python Boolean operators, Python tutorial">
+<meta name="author" content="Code With Me">
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #1f2937;
+        line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+        background: #111827;
+        color: white;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .nav-links a:hover {
+        color: #38bdf8;
+    }
+
+    /* HERO */
+    .hero {
+        background: linear-gradient(135deg, #3776ab, #1f2937);
+        color: white;
+        text-align: center;
+        padding: 70px 20px;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    /* CONTAINER */
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    /* CONTENT BOX */
+    .content-box {
+        background: white;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .content-box h2 {
+        color: #3776ab;
+        margin-bottom: 15px;
+        font-size: 28px;
+    }
+
+    .content-box h3 {
+        color: #1f2937;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    .content-box p {
+        margin-bottom: 15px;
+    }
+
+    .content-box ul,
+    .content-box ol {
+        margin-left: 25px;
+        margin-bottom: 15px;
+    }
+
+    .content-box li {
+        margin-bottom: 8px;
+    }
+
+    /* HIGHLIGHT */
+    .highlight {
+        background: #e0f2fe;
+        border-left: 5px solid #0284c7;
+        padding: 18px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    .success-box {
+        background: #dcfce7;
+        border-left: 5px solid #16a34a;
+        padding: 18px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    .warning-box {
+        background: #fef3c7;
+        border-left: 5px solid #f59e0b;
+        padding: 18px;
+        margin: 20px 0;
+        border-radius: 6px;
+    }
+
+    /* CODE */
+    pre {
+        background: #111827;
+        color: #e5e7eb;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 15px 0;
+    }
+
+    code {
+        font-family: Consolas, "Courier New", monospace;
+    }
+
+    /* TABLE */
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th,
+    td {
+        border: 1px solid #d1d5db;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background: #3776ab;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background: #f3f4f6;
+    }
+
+    /* EDITOR */
+    .editor {
+        margin-top: 20px;
+    }
+
+    .editor textarea {
+        width: 100%;
+        min-height: 250px;
+        padding: 18px;
+        background: #111827;
+        color: #e5e7eb;
+        border: none;
+        border-radius: 8px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 15px;
+        resize: vertical;
+        outline: none;
+    }
+
+    .button-group {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .button-group button {
+        border: none;
+        padding: 12px 22px;
+        border-radius: 7px;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .run-btn {
+        background: #3776ab;
+    }
+
+    .run-btn:hover {
+        background: #285a85;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+    }
+
+    .clear-btn:hover {
+        background: #b91c1c;
+    }
+
+    #outputBox {
+        background: #111827;
+        color: #22c55e;
+        min-height: 100px;
+        padding: 18px;
+        border-radius: 8px;
+        white-space: pre-wrap;
+        font-family: Consolas, "Courier New", monospace;
+        margin-top: 15px;
+    }
+
+    /* NAVIGATION */
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 40px 0;
+    }
+
+    .page-navigation a {
+        text-decoration: none;
+        background: #3776ab;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .page-navigation a:hover {
+        background: #285a85;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 50px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-links {
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+        }
+
+        .content-box {
+            padding: 20px;
+        }
+
+        .page-navigation {
+            flex-direction: column;
+        }
+
+        .page-navigation a {
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- NAVBAR -->
+<nav>
+    <a href="../index.html" class="logo">
+        Code <span>With Me</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#courses">Courses</a></li>
+        <li><a href="../index.html#about">About</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Python Booleans</h1>
+    <p>Learn True, False, Boolean Operators and Conditions</p>
+</section>
+
+<main class="container">
+
+    <!-- INTRODUCTION -->
+    <section class="content-box">
+        <h2>What Are Booleans in Python?</h2>
+
+        <p>
+            A Boolean is a data type that can have only two values:
+            <strong>True</strong> or <strong>False</strong>.
+        </p>
+
+        <p>
+            Booleans are commonly used when making decisions in a
+            Python program.
+        </p>
+
+        <pre><code>is_student = True
+```
+
+is_teacher = False
+
+print(is_student)
+print(is_teacher)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False</code></pre>
+
+```
+        <div class="highlight">
+            <strong>Important:</strong>
+            Python Boolean values must be written as
+            <strong>True</strong> and <strong>False</strong>
+            with a capital first letter.
+        </div>
+    </section>
+
+    <!-- BOOL TYPE -->
+    <section class="content-box">
+        <h2>Boolean Data Type</h2>
+
+        <p>
+            The Boolean data type in Python is called
+            <strong>bool</strong>.
+        </p>
+
+        <pre><code>x = True
+```
+
+y = False
+
+print(type(x))
+print(type(y))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>&lt;class 'bool'&gt;
+```
+
+<class 'bool'></code></pre> </section>
+
+```
+    <!-- COMPARISON -->
+    <section class="content-box">
+        <h2>Booleans from Comparisons</h2>
+
+        <p>
+            Comparison operators return a Boolean value.
+        </p>
+
+        <pre><code>print(10 > 5)
+```
+
+print(10 < 5)
+print(10 == 10)
+print(10 != 10)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False
+True
+False</code></pre>
+
+```
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                    <th>Result</th>
+                </tr>
+
+                <tr>
+                    <td>==</td>
+                    <td>Equal to</td>
+                    <td>10 == 10</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>!=</td>
+                    <td>Not equal to</td>
+                    <td>10 != 5</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>&gt;</td>
+                    <td>Greater than</td>
+                    <td>10 &gt; 5</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;</td>
+                    <td>Less than</td>
+                    <td>10 &lt; 5</td>
+                    <td>False</td>
+                </tr>
+
+                <tr>
+                    <td>&gt;=</td>
+                    <td>Greater than or equal to</td>
+                    <td>10 &gt;= 10</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;=</td>
+                    <td>Less than or equal to</td>
+                    <td>5 &lt;= 10</td>
+                    <td>True</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- IF STATEMENT -->
+    <section class="content-box">
+        <h2>Booleans with if Statements</h2>
+
+        <p>
+            Boolean values are commonly used with
+            <strong>if</strong> statements.
+        </p>
+
+        <pre><code>age = 20
+```
+
+if age >= 18:
+print("You are an adult.")</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>You are an adult.</code></pre>
+
+        <p>
+            The comparison <code>age &gt;= 18</code> returns
+            <strong>True</strong>, so the code inside the
+            <code>if</code> block executes.
+        </p>
+    </section>
+
+    <!-- TRUE FALSE VARIABLES -->
+    <section class="content-box">
+        <h2>Boolean Variables</h2>
+
+        <p>
+            You can store Boolean values inside variables.
+        </p>
+
+        <pre><code>is_logged_in = True
+```
+
+is_admin = False
+
+print(is_logged_in)
+print(is_admin)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False</code></pre>
+
+```
+        <p>
+            Boolean variables are useful for representing states such as
+            logged in/not logged in, active/inactive and available/unavailable.
+        </p>
+    </section>
+
+    <!-- AND -->
+    <section class="content-box">
+        <h2>and Operator</h2>
+
+        <p>
+            The <strong>and</strong> operator returns True only when
+            both conditions are True.
+        </p>
+
+        <pre><code>age = 20
+```
+
+has_id = True
+
+print(age >= 18 and has_id)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True</code></pre>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>A and B</th>
+                </tr>
+
+                <tr>
+                    <td>True</td>
+                    <td>True</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>True</td>
+                    <td>False</td>
+                    <td>False</td>
+                </tr>
+
+                <tr>
+                    <td>False</td>
+                    <td>True</td>
+                    <td>False</td>
+                </tr>
+
+                <tr>
+                    <td>False</td>
+                    <td>False</td>
+                    <td>False</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- OR -->
+    <section class="content-box">
+        <h2>or Operator</h2>
+
+        <p>
+            The <strong>or</strong> operator returns True when at least
+            one condition is True.
+        </p>
+
+        <pre><code>has_email = True
+```
+
+has_phone = False
+
+print(has_email or has_phone)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True</code></pre>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>A or B</th>
+                </tr>
+
+                <tr>
+                    <td>True</td>
+                    <td>True</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>True</td>
+                    <td>False</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>False</td>
+                    <td>True</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>False</td>
+                    <td>False</td>
+                    <td>False</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- NOT -->
+    <section class="content-box">
+        <h2>not Operator</h2>
+
+        <p>
+            The <strong>not</strong> operator reverses a Boolean value.
+        </p>
+
+        <pre><code>is_logged_in = False
+```
+
+print(not is_logged_in)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True</code></pre>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>A</th>
+                    <th>not A</th>
+                </tr>
+
+                <tr>
+                    <td>True</td>
+                    <td>False</td>
+                </tr>
+
+                <tr>
+                    <td>False</td>
+                    <td>True</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- BOOL FUNCTION -->
+    <section class="content-box">
+        <h2>Python bool() Function</h2>
+
+        <p>
+            The <strong>bool()</strong> function converts a value into
+            a Boolean value.
+        </p>
+
+        <pre><code>print(bool(1))
+```
+
+print(bool(0))
+print(bool("Hello"))
+print(bool(""))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False
+True
+False</code></pre>
+
+```
+        <div class="highlight">
+            <strong>Simple rule:</strong>
+            Many non-empty and non-zero values are treated as
+            <strong>True</strong>, while zero, empty values and
+            <strong>None</strong> are treated as <strong>False</strong>.
+        </div>
+    </section>
+
+    <!-- TRUTHY FALSY -->
+    <section class="content-box">
+        <h2>Truthy and Falsy Values</h2>
+
+        <p>
+            Python automatically treats certain values as False when
+            they are used in a Boolean context.
+        </p>
+
+        <h3>Common Falsy Values</h3>
+
+        <ul>
+            <li><code>False</code></li>
+            <li><code>None</code></li>
+            <li><code>0</code></li>
+            <li><code>0.0</code></li>
+            <li><code>""</code> - empty string</li>
+            <li>Empty lists, tuples, sets and dictionaries</li>
+        </ul>
+
+        <pre><code>print(bool(0))
+```
+
+print(bool(""))
+print(bool([]))
+print(bool(None))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>False
+```
+
+False
+False
+False</code></pre>
+
+```
+        <h3>Common Truthy Values</h3>
+
+        <pre><code>print(bool(1))
+```
+
+print(bool("Python"))
+print(bool([1, 2, 3]))</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+True
+True</code></pre> </section>
+
+```
+    <!-- BOOLEAN WITH STRINGS -->
+    <section class="content-box">
+        <h2>Booleans with Strings</h2>
+
+        <p>
+            You can compare strings to produce Boolean results.
+        </p>
+
+        <pre><code>name = "Krish"
+```
+
+print(name == "Krish")
+print(name == "Rahul")</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False</code></pre> </section>
+
+```
+    <!-- BOOLEAN WITH NUMBERS -->
+    <section class="content-box">
+        <h2>Booleans with Numbers</h2>
+
+        <pre><code>marks = 85
+```
+
+print(marks >= 40)
+print(marks >= 90)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False</code></pre>
+
+```
+        <p>
+            This can be used to determine whether a student has passed
+            or achieved a particular score.
+        </p>
+
+        <pre><code>marks = 85
+```
+
+if marks >= 40:
+print("Pass")
+else:
+print("Fail")</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>Pass</code></pre>
+    </section>
+
+    <!-- BOOLEAN EXPRESSIONS -->
+    <section class="content-box">
+        <h2>Boolean Expressions</h2>
+
+        <p>
+            A Boolean expression is an expression that produces either
+            True or False.
+        </p>
+
+        <pre><code>x = 10
+```
+
+y = 20
+
+result = x < y
+
+print(result)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True</code></pre>
+
+        <h3>More Examples</h3>
+
+        <pre><code>print(5 == 5)
+```
+
+print(10 > 20)
+print(15 <= 20)
+print(25 != 25)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False
+True
+False</code></pre> </section>
+
+```
+    <!-- COMBINING -->
+    <section class="content-box">
+        <h2>Combining Boolean Operators</h2>
+
+        <p>
+            You can combine multiple conditions using
+            <strong>and</strong>, <strong>or</strong> and
+            <strong>not</strong>.
+        </p>
+
+        <pre><code>age = 20
+```
+
+has_id = True
+
+if age >= 18 and has_id:
+print("Entry allowed")
+else:
+print("Entry denied")</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>Entry allowed</code></pre>
+    </section>
+
+    <!-- IDENTITY -->
+    <section class="content-box">
+        <h2>Boolean Results from is and is not</h2>
+
+        <p>
+            The <strong>is</strong> and <strong>is not</strong> operators
+            test object identity and return Boolean results.
+        </p>
+
+        <pre><code>x = None
+```
+
+print(x is None)
+print(x is not None)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False</code></pre>
+
+```
+        <div class="warning-box">
+            <strong>Note:</strong>
+            <code>is</code> checks whether two references point to the
+            same object. For comparing values, use operators such as
+            <code>==</code>.
+        </div>
+    </section>
+
+    <!-- MEMBERSHIP -->
+    <section class="content-box">
+        <h2>Boolean Results from Membership Operators</h2>
+
+        <p>
+            The <strong>in</strong> and <strong>not in</strong> operators
+            also return Boolean values.
+        </p>
+
+        <pre><code>languages = ["Python", "JavaScript", "HTML"]
+```
+
+print("Python" in languages)
+print("Java" in languages)</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>True
+```
+
+False</code></pre> </section>
+
+```
+    <!-- PRACTICE -->
+    <section class="content-box">
+        <h2>Practice Example</h2>
+
+        <p>
+            Let's create a simple program that checks whether a student
+            has passed.
+        </p>
+
+        <pre><code>marks = 75
+```
+
+passed = marks >= 40
+
+print("Passed:", passed)
+
+if passed:
+print("Congratulations!")
+else:
+print("Try again.")</code></pre>
+
+```
+        <p>Output:</p>
+
+        <pre><code>Passed: True
+```
+
+Congratulations!</code></pre> </section>
+
+```
+    <!-- SUMMARY -->
+    <section class="content-box">
+        <h2>Python Booleans - Summary</h2>
+
+        <ul>
+            <li>Python has two Boolean values: <strong>True</strong> and <strong>False</strong>.</li>
+            <li>The Boolean data type is called <strong>bool</strong>.</li>
+            <li>Comparison operations return Boolean values.</li>
+            <li><strong>and</strong> requires both conditions to be true.</li>
+            <li><strong>or</strong> requires at least one condition to be true.</li>
+            <li><strong>not</strong> reverses a Boolean value.</li>
+            <li><strong>bool()</strong> converts a value to a Boolean.</li>
+            <li>Zero, empty values and <strong>None</strong> are commonly falsy.</li>
+            <li>Non-zero and non-empty values are commonly truthy.</li>
+            <li>Booleans are frequently used with <strong>if</strong> statements.</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>Next Topic:</strong>
+            In the next lesson, you will learn about
+            <strong>Python Operators</strong>.
+        </div>
+    </section>
+
+    <!-- INTERACTIVE EDITOR -->
+    <section class="content-box">
+        <h2>Try Python Booleans</h2>
+
+        <p>
+            Try simple Boolean expressions below.
+            This browser demo supports common Boolean examples such as
+            comparisons, True/False values, and basic
+            <code>and</code>, <code>or</code>, and <code>not</code>
+            expressions.
+        </p>
+
+        <div class="editor">
+
+            <textarea id="codeEditor">age = 20
+```
+
+has_id = True
+
+print(age >= 18)
+print(has_id)
+print(age >= 18 and has_id)</textarea>
+
+```
+            <div class="button-group">
+                <button class="run-btn" onclick="runCode()">
+                    ▶ Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearCode()">
+                    Clear
+                </button>
+            </div>
+
+            <div id="outputBox">
+                Output will appear here...
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+
+        <a href="python-strings.html">
+            ← Previous: Python Strings
+        </a>
+
+        <a href="python-operators.html">
+            Next: Python Operators →
+        </a>
+
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Code With Me. All Rights Reserved.</p>
+    <p>Learn HTML, CSS, JavaScript and Python.</p>
+</footer>
+
+<script>
+    function runCode() {
+
+        const code = document.getElementById("codeEditor").value;
+        const output = document.getElementById("outputBox");
+
+        let variables = {};
+        let result = "";
+
+        try {
+
+            const lines = code.split("\n");
+
+            lines.forEach(function(line) {
+
+                line = line.trim();
+
+                if (line === "" || line.startsWith("#")) {
+                    return;
+                }
+
+                /* Variable assignment */
+                if (
+                    line.includes("=") &&
+                    !line.includes("==") &&
+                    !line.includes(">=") &&
+                    !line.includes("<=") &&
+                    !line.includes("!=") &&
+                    !line.startsWith("print")
+                ) {
+
+                    let parts = line.split("=");
+
+                    let variableName = parts[0].trim();
+                    let value = parts.slice(1).join("=").trim();
+
+                    if (value === "True") {
+                        variables[variableName] = true;
+                    }
+                    else if (value === "False") {
+                        variables[variableName] = false;
+                    }
+                    else if (
+                        (value.startsWith('"') && value.endsWith('"')) ||
+                        (value.startsWith("'") && value.endsWith("'"))
+                    ) {
+                        variables[variableName] =
+                            value.substring(1, value.length - 1);
+                    }
+                    else if (!isNaN(value)) {
+                        variables[variableName] = Number(value);
+                    }
+
+                    return;
+                }
+
+                /* Print statement */
+                if (line.startsWith("print")) {
+
+                    let content = line.substring(5).trim();
+
+                    if (
+                        content.startsWith("(") &&
+                        content.endsWith(")")
+                    ) {
+                        content = content.substring(
+                            1,
+                            content.length - 1
+                        );
+                    }
+
+                    let parts = content.split(",");
+
+                    let values = parts.map(function(part) {
+
+                        part = part.trim();
+
+                        if (variables.hasOwnProperty(part)) {
+                            return variables[part];
+                        }
+
+                        if (part === "True") {
+                            return true;
+                        }
+
+                        if (part === "False") {
+                            return false;
+                        }
+
+                        if (part === "None") {
+                            return null;
+                        }
+
+                        if (
+                            (part.startsWith('"') &&
+                            part.endsWith('"')) ||
+                            (part.startsWith("'") &&
+                            part.endsWith("'"))
+                        ) {
+                            return part.substring(
+                                1,
+                                part.length - 1
+                            );
+                        }
+
+                        /*
+                         * Convert Python Boolean operators
+                         * to JavaScript equivalents.
+                         */
+                        let expression = part
+                            .replace(/\band\b/g, "&&")
+                            .replace(/\bor\b/g, "||")
+                            .replace(/\bnot\b/g, "!")
+                            .replace(/\bTrue\b/g, "true")
+                            .replace(/\bFalse\b/g, "false")
+                            .replace(/\bNone\b/g, "null");
+
+                        Object.keys(variables).forEach(function(key) {
+
+                            const value = variables[key];
+
+                            expression = expression.replace(
+                                new RegExp(
+                                    "\\b" +
+                                    key.replace(
+                                        /[.*+?^${}()|[\]\\]/g,
+                                        "\\$&"
+                                    ) +
+                                    "\\b",
+                                    "g"
+                                ),
+                                JSON.stringify(value)
+                            );
+
+                        });
+
+                        try {
+                            return Function(
+                                '"use strict"; return (' +
+                                expression +
+                                ')'
+                            )();
+                        }
+                        catch {
+                            return part;
+                        }
+
+                    });
+
+                    result += values.join(" ") + "\n";
+                }
+
+            });
+
+            if (result.trim() === "") {
+                output.textContent =
+                    "Code executed, but there is no print() output.";
+            }
+            else {
+                output.textContent = result;
+            }
+
+        }
+        catch (error) {
+
+            output.textContent =
+                "Error: " + error.message;
+        }
+    }
+
+    function clearCode() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("outputBox").textContent =
+            "Output will appear here...";
+    }
+</script>
+```
+
+</body>
+</html>
