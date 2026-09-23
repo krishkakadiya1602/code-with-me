@@ -1,0 +1,1141 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Arrays | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python arrays with examples including indexing, adding, removing, updating, looping, searching and sorting.">
+
+    <meta name="keywords"
+          content="Python arrays, Python array examples, Python lists, Python array methods, learn Python arrays">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Highlight */
+        .highlight {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            color: #be185d;
+            font-family: Consolas, monospace;
+        }
+
+        /* Lists */
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Editor */
+        .editor {
+            background: #1f2937;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .editor h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            resize: vertical;
+            background: #111827;
+            color: #e5e7eb;
+            border: 1px solid #4b5563;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        #output {
+            background: white;
+            color: #111827;
+            min-height: 100px;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 35px 0;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            padding: 13px 22px;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Python Arrays</h1>
+        <p>Learn how to store and work with multiple values in Python.</p>
+    </section>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="card">
+            <h2>Introduction to Python Arrays</h2>
+
+            <p>
+                An array is a collection of multiple values stored together.
+                In Python, <strong>lists</strong> are commonly used for
+                array-like operations.
+            </p>
+
+            <p>
+                Python also provides an
+                <span class="inline-code">array</span> module for storing
+                elements of the same type.
+            </p>
+
+            <div class="highlight">
+                <strong>Important:</strong>
+                For most beginner Python programs, lists are the easiest
+                and most commonly used way to store collections of values.
+            </div>
+        </section>
+
+        <!-- List as Array -->
+        <section class="card">
+            <h2>1. Creating an Array Using a List</h2>
+
+            <p>
+                You can create a list using square brackets
+                <span class="inline-code">[]</span>.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40, 50]
+
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[10, 20, 30, 40, 50]</code></pre>
+        </section>
+
+        <!-- Array Module -->
+        <section class="card">
+            <h2>2. Python array Module</h2>
+
+            <p>
+                Python's built-in
+                <span class="inline-code">array</span> module can be used
+                when you want an array containing values of the same type.
+            </p>
+
+            <pre><code>from array import array
+
+numbers = array("i", [10, 20, 30, 40])
+
+print(numbers)</code></pre>
+
+            <p>
+                Here, <span class="inline-code">"i"</span> represents
+                signed integers.
+            </p>
+
+            <div class="highlight">
+                For general-purpose programming, Python lists are usually
+                more flexible than arrays from the array module.
+            </div>
+        </section>
+
+        <!-- Indexing -->
+        <section class="card">
+            <h2>3. Array Indexing</h2>
+
+            <p>
+                Each element has an index. Python indexes start from
+                <strong>0</strong>.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+print(numbers[0])
+print(numbers[1])
+print(numbers[2])
+print(numbers[3])</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>10
+20
+30
+40</code></pre>
+        </section>
+
+        <!-- Negative Index -->
+        <section class="card">
+            <h2>4. Negative Indexing</h2>
+
+            <p>
+                Negative indexes allow you to access elements from the end
+                of an array-like list.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+print(numbers[-1])
+print(numbers[-2])</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>40
+30</code></pre>
+        </section>
+
+        <!-- Updating -->
+        <section class="card">
+            <h2>5. Updating an Array Element</h2>
+
+            <p>
+                You can change a list element by using its index.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+numbers[1] = 25
+
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[10, 25, 30, 40]</code></pre>
+        </section>
+
+        <!-- Append -->
+        <section class="card">
+            <h2>6. Adding an Element with append()</h2>
+
+            <p>
+                The <span class="inline-code">append()</span> method adds
+                an element to the end of a list.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30]
+
+numbers.append(40)
+
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[10, 20, 30, 40]</code></pre>
+        </section>
+
+        <!-- Insert -->
+        <section class="card">
+            <h2>7. Adding an Element with insert()</h2>
+
+            <p>
+                The <span class="inline-code">insert()</span> method adds
+                an element at a specific position.
+            </p>
+
+            <pre><code>numbers = [10, 20, 40]
+
+numbers.insert(2, 30)
+
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[10, 20, 30, 40]</code></pre>
+        </section>
+
+        <!-- Extend -->
+        <section class="card">
+            <h2>8. Adding Multiple Elements with extend()</h2>
+
+            <pre><code>numbers = [10, 20, 30]
+
+numbers.extend([40, 50, 60])
+
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[10, 20, 30, 40, 50, 60]</code></pre>
+        </section>
+
+        <!-- Remove -->
+        <section class="card">
+            <h2>9. Removing an Element with remove()</h2>
+
+            <p>
+                The <span class="inline-code">remove()</span> method removes
+                the first matching value.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+numbers.remove(30)
+
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[10, 20, 40]</code></pre>
+        </section>
+
+        <!-- Pop -->
+        <section class="card">
+            <h2>10. Removing an Element with pop()</h2>
+
+            <p>
+                The <span class="inline-code">pop()</span> method removes
+                an element using its index.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+removed = numbers.pop(2)
+
+print("Removed:", removed)
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Removed: 30
+[10, 20, 40]</code></pre>
+        </section>
+
+        <!-- Del -->
+        <section class="card">
+            <h2>11. Using del</h2>
+
+            <p>
+                The <span class="inline-code">del</span> keyword can remove
+                an element or a range of elements.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+del numbers[1]
+
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[10, 30, 40]</code></pre>
+        </section>
+
+        <!-- Clear -->
+        <section class="card">
+            <h2>12. Clear an Array</h2>
+
+            <p>
+                The <span class="inline-code">clear()</span> method removes
+                all elements from a list.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30]
+
+numbers.clear()
+
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[]</code></pre>
+        </section>
+
+        <!-- Length -->
+        <section class="card">
+            <h2>13. Find Array Length</h2>
+
+            <p>
+                Use <span class="inline-code">len()</span> to find the
+                number of elements.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40, 50]
+
+print(len(numbers))</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>5</code></pre>
+        </section>
+
+        <!-- Loop -->
+        <section class="card">
+            <h2>14. Loop Through an Array</h2>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+for number in numbers:
+    print(number)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>10
+20
+30
+40</code></pre>
+        </section>
+
+        <!-- Index Loop -->
+        <section class="card">
+            <h2>15. Loop Using Index</h2>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+for i in range(len(numbers)):
+    print(numbers[i])</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>10
+20
+30
+40</code></pre>
+        </section>
+
+        <!-- Enumerate -->
+        <section class="card">
+            <h2>16. Using enumerate()</h2>
+
+            <p>
+                The <span class="inline-code">enumerate()</span> function
+                gives both the index and value.
+            </p>
+
+            <pre><code>fruits = ["Apple", "Banana", "Mango"]
+
+for index, fruit in enumerate(fruits):
+    print(index, fruit)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>0 Apple
+1 Banana
+2 Mango</code></pre>
+        </section>
+
+        <!-- Search -->
+        <section class="card">
+            <h2>17. Searching an Array</h2>
+
+            <p>
+                The <span class="inline-code">in</span> operator checks
+                whether a value exists.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+if 30 in numbers:
+    print("30 is present")
+else:
+    print("30 is not present")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>30 is present</code></pre>
+        </section>
+
+        <!-- Index Method -->
+        <section class="card">
+            <h2>18. Finding an Element's Index</h2>
+
+            <p>
+                The <span class="inline-code">index()</span> method returns
+                the position of a value.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+position = numbers.index(30)
+
+print(position)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>2</code></pre>
+        </section>
+
+        <!-- Count -->
+        <section class="card">
+            <h2>19. Counting Elements</h2>
+
+            <p>
+                The <span class="inline-code">count()</span> method returns
+                how many times a value occurs.
+            </p>
+
+            <pre><code>numbers = [10, 20, 10, 30, 10]
+
+print(numbers.count(10))</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>3</code></pre>
+        </section>
+
+        <!-- Sort -->
+        <section class="card">
+            <h2>20. Sorting an Array</h2>
+
+            <p>
+                The <span class="inline-code">sort()</span> method sorts
+                a list in ascending order.
+            </p>
+
+            <pre><code>numbers = [50, 20, 40, 10, 30]
+
+numbers.sort()
+
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[10, 20, 30, 40, 50]</code></pre>
+        </section>
+
+        <!-- Reverse -->
+        <section class="card">
+            <h2>21. Reverse an Array</h2>
+
+            <pre><code>numbers = [10, 20, 30, 40]
+
+numbers.reverse()
+
+print(numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[40, 30, 20, 10]</code></pre>
+        </section>
+
+        <!-- Copy -->
+        <section class="card">
+            <h2>22. Copying an Array</h2>
+
+            <p>
+                Use <span class="inline-code">copy()</span> to create a
+                shallow copy of a list.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30]
+
+new_numbers = numbers.copy()
+
+print(new_numbers)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[10, 20, 30]</code></pre>
+        </section>
+
+        <!-- Slicing -->
+        <section class="card">
+            <h2>23. Array Slicing</h2>
+
+            <p>
+                Slicing allows you to access a portion of a list.
+            </p>
+
+            <pre><code>numbers = [10, 20, 30, 40, 50]
+
+print(numbers[1:4])</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[20, 30, 40]</code></pre>
+        </section>
+
+        <!-- Negative Slice -->
+        <section class="card">
+            <h2>24. Reverse Using Slicing</h2>
+
+            <pre><code>numbers = [10, 20, 30, 40, 50]
+
+print(numbers[::-1])</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>[50, 40, 30, 20, 10]</code></pre>
+        </section>
+
+        <!-- Array Methods -->
+        <section class="card">
+            <h2>25. Common Array/List Methods</h2>
+
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>append()</td>
+                    <td>Add an item at the end</td>
+                    <td>numbers.append(60)</td>
+                </tr>
+
+                <tr>
+                    <td>insert()</td>
+                    <td>Add an item at a position</td>
+                    <td>numbers.insert(1, 20)</td>
+                </tr>
+
+                <tr>
+                    <td>extend()</td>
+                    <td>Add multiple items</td>
+                    <td>numbers.extend([70, 80])</td>
+                </tr>
+
+                <tr>
+                    <td>remove()</td>
+                    <td>Remove a value</td>
+                    <td>numbers.remove(20)</td>
+                </tr>
+
+                <tr>
+                    <td>pop()</td>
+                    <td>Remove using index</td>
+                    <td>numbers.pop(0)</td>
+                </tr>
+
+                <tr>
+                    <td>clear()</td>
+                    <td>Remove all items</td>
+                    <td>numbers.clear()</td>
+                </tr>
+
+                <tr>
+                    <td>index()</td>
+                    <td>Find position</td>
+                    <td>numbers.index(30)</td>
+                </tr>
+
+                <tr>
+                    <td>count()</td>
+                    <td>Count occurrences</td>
+                    <td>numbers.count(10)</td>
+                </tr>
+
+                <tr>
+                    <td>sort()</td>
+                    <td>Sort items</td>
+                    <td>numbers.sort()</td>
+                </tr>
+
+                <tr>
+                    <td>reverse()</td>
+                    <td>Reverse items</td>
+                    <td>numbers.reverse()</td>
+                </tr>
+
+                <tr>
+                    <td>copy()</td>
+                    <td>Copy the list</td>
+                    <td>numbers.copy()</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- List vs Array -->
+        <section class="card">
+            <h2>26. Python List vs Array</h2>
+
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>List</th>
+                    <th>array Module</th>
+                </tr>
+
+                <tr>
+                    <td>Syntax</td>
+                    <td>[10, 20, 30]</td>
+                    <td>array("i", [10, 20, 30])</td>
+                </tr>
+
+                <tr>
+                    <td>Data Types</td>
+                    <td>Can contain different types</td>
+                    <td>Same type</td>
+                </tr>
+
+                <tr>
+                    <td>Flexibility</td>
+                    <td>High</td>
+                    <td>More type-specific</td>
+                </tr>
+
+                <tr>
+                    <td>Common Usage</td>
+                    <td>Very common</td>
+                    <td>Specialized cases</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Practical Example -->
+        <section class="card">
+            <h2>27. Practical Example: Find Largest Number</h2>
+
+            <pre><code>numbers = [25, 10, 45, 30, 60]
+
+largest = numbers[0]
+
+for number in numbers:
+
+    if number > largest:
+        largest = number
+
+print("Largest:", largest)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Largest: 60</code></pre>
+        </section>
+
+        <!-- Practical Example 2 -->
+        <section class="card">
+            <h2>28. Practical Example: Calculate Average</h2>
+
+            <pre><code>marks = [70, 80, 65, 90, 75]
+
+total = sum(marks)
+
+average = total / len(marks)
+
+print("Total:", total)
+print("Average:", average)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Total: 380
+Average: 76.0</code></pre>
+        </section>
+
+        <!-- Important Points -->
+        <section class="card">
+            <h2>Important Points</h2>
+
+            <ul>
+                <li>Python lists are commonly used for array-like collections.</li>
+                <li>List indexes start from 0.</li>
+                <li>Negative indexes access elements from the end.</li>
+                <li>Use <span class="inline-code">append()</span> to add an item.</li>
+                <li>Use <span class="inline-code">remove()</span> to remove a value.</li>
+                <li>Use <span class="inline-code">pop()</span> to remove an item by index.</li>
+                <li>Use <span class="inline-code">len()</span> to find the number of elements.</li>
+                <li>Use <span class="inline-code">sort()</span> to sort a list.</li>
+                <li>Use <span class="inline-code">reverse()</span> to reverse a list.</li>
+                <li>Use <span class="inline-code">in</span> to check whether a value exists.</li>
+                <li>The <span class="inline-code">array</span> module provides typed arrays.</li>
+            </ul>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="card">
+            <h2>Interactive Python Code Editor</h2>
+
+            <p>
+                Write Python array/list code below and click
+                <strong>Run Code</strong>.
+            </p>
+
+            <div class="editor">
+
+                <h3>Try It Yourself</h3>
+
+                <textarea id="code">numbers = [10, 20, 30, 40, 50]
+
+numbers.append(60)
+
+for number in numbers:
+    print(number)</textarea>
+
+                <div class="buttons">
+
+                    <button class="run-btn" onclick="runPython()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="python-functions.html">
+                ← Previous: Functions
+            </a>
+
+            <a href="python-dictionaries.html">
+                Next: Dictionaries →
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <!-- Pyodide -->
+    <script>
+        let pyodide = null;
+
+        async function loadPython() {
+
+            const output = document.getElementById("output");
+
+            output.textContent = "Loading Python...";
+
+            try {
+
+                pyodide = await loadPyodide();
+
+                output.textContent =
+                    "Python is ready! Click Run Code.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Error loading Python: " + error;
+            }
+        }
+
+        async function runPython() {
+
+            const output = document.getElementById("output");
+            const code = document.getElementById("code").value;
+
+            if (!pyodide) {
+
+                output.textContent =
+                    "Python is still loading. Please wait a moment.";
+
+                return;
+            }
+
+            output.textContent = "";
+
+            try {
+
+                let printedOutput = "";
+
+                pyodide.setStdout({
+                    batched: (text) => {
+                        printedOutput += text;
+                    }
+                });
+
+                await pyodide.runPythonAsync(code);
+
+                output.textContent =
+                    printedOutput || "Code executed successfully.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Error:\n" + error;
+            }
+        }
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+        }
+
+        const script = document.createElement("script");
+
+        script.src =
+            "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+        script.onload = loadPython;
+
+        document.head.appendChild(script);
+    </script>
+
+</body>
+</html>
+```
