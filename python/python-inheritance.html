@@ -1,0 +1,994 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Inheritance | Code With Me</title>
+    <meta name="description" content="Learn Python Inheritance with simple explanations, examples, and interactive Python programs.">
+    <meta name="keywords" content="Python Inheritance, Python OOP, Python Parent Class, Python Child Class, Python Tutorials">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        /* Main */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin: 20px 0 10px;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 5px;
+            font-family: Consolas, monospace;
+            color: #b91c1c;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Editor */
+        .editor {
+            background: #111827;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .editor h3 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 280px;
+            resize: vertical;
+            background: #1f2937;
+            color: #f9fafb;
+            border: 1px solid #4b5563;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .editor-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        .output {
+            background: white;
+            color: #111827;
+            min-height: 100px;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 35px 0;
+        }
+
+        .page-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#courses">Courses</a>
+            <a href="../index.html#about">About</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1>Python Inheritance</h1>
+        <p>Learn how one class can inherit properties and methods from another class.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2>What is Inheritance?</h2>
+
+            <p>
+                <strong>Inheritance</strong> is an important concept of
+                Object-Oriented Programming (OOP) in Python.
+            </p>
+
+            <p>
+                It allows a child class to use the properties and methods
+                of another class called the parent class.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Definition:</strong>
+                Inheritance allows a new class to reuse code from an existing class.
+            </div>
+
+            <h3>Basic Structure</h3>
+
+            <pre><code>class Parent:
+    def method(self):
+        print("Parent method")
+
+
+class Child(Parent):
+    pass
+
+
+obj = Child()
+obj.method()</code></pre>
+        </section>
+
+        <!-- Parent and Child -->
+        <section class="section">
+            <h2>Parent Class and Child Class</h2>
+
+            <p>
+                The class whose properties and methods are inherited is called
+                the <strong>Parent Class</strong>.
+            </p>
+
+            <p>
+                The class that inherits from the parent class is called the
+                <strong>Child Class</strong>.
+            </p>
+
+            <pre><code>class Animal:
+    def eat(self):
+        print("Animal is eating")
+
+
+class Dog(Animal):
+    pass
+
+
+dog = Dog()
+dog.eat()</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Animal is eating</code></pre>
+        </section>
+
+        <!-- Simple Example -->
+        <section class="section">
+            <h2>Simple Inheritance Example</h2>
+
+            <pre><code>class Person:
+    def show_name(self):
+        print("My name is Krish")
+
+
+class Student(Person):
+    def study(self):
+        print("I am studying Python")
+
+
+student = Student()
+
+student.show_name()
+student.study()</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>My name is Krish
+I am studying Python</code></pre>
+
+            <div class="info-box">
+                The <span class="inline-code">Student</span> class can use both
+                its own method and the inherited method from
+                <span class="inline-code">Person</span>.
+            </div>
+        </section>
+
+        <!-- Types -->
+        <section class="section">
+            <h2>Types of Inheritance</h2>
+
+            <p>Python supports several types of inheritance:</p>
+
+            <ol>
+                <li>Single Inheritance</li>
+                <li>Multiple Inheritance</li>
+                <li>Multilevel Inheritance</li>
+                <li>Hierarchical Inheritance</li>
+                <li>Hybrid Inheritance</li>
+            </ol>
+        </section>
+
+        <!-- Single -->
+        <section class="section">
+            <h2>1. Single Inheritance</h2>
+
+            <p>
+                Single inheritance means one child class inherits from one
+                parent class.
+            </p>
+
+            <pre><code>class Parent:
+    def parent_method(self):
+        print("Parent method")
+
+
+class Child(Parent):
+    def child_method(self):
+        print("Child method")
+
+
+obj = Child()
+
+obj.parent_method()
+obj.child_method()</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Parent method
+Child method</code></pre>
+        </section>
+
+        <!-- Multiple -->
+        <section class="section">
+            <h2>2. Multiple Inheritance</h2>
+
+            <p>
+                Multiple inheritance means one child class inherits from
+                more than one parent class.
+            </p>
+
+            <pre><code>class Father:
+    def father_method(self):
+        print("Father method")
+
+
+class Mother:
+    def mother_method(self):
+        print("Mother method")
+
+
+class Child(Father, Mother):
+    pass
+
+
+obj = Child()
+
+obj.father_method()
+obj.mother_method()</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Father method
+Mother method</code></pre>
+        </section>
+
+        <!-- Multilevel -->
+        <section class="section">
+            <h2>3. Multilevel Inheritance</h2>
+
+            <p>
+                In multilevel inheritance, a class inherits from another
+                class which itself inherits from another class.
+            </p>
+
+            <pre><code>class Grandparent:
+    def grandparent_method(self):
+        print("Grandparent")
+
+
+class Parent(Grandparent):
+    def parent_method(self):
+        print("Parent")
+
+
+class Child(Parent):
+    def child_method(self):
+        print("Child")
+
+
+obj = Child()
+
+obj.grandparent_method()
+obj.parent_method()
+obj.child_method()</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Grandparent
+Parent
+Child</code></pre>
+        </section>
+
+        <!-- Hierarchical -->
+        <section class="section">
+            <h2>4. Hierarchical Inheritance</h2>
+
+            <p>
+                Hierarchical inheritance occurs when multiple child classes
+                inherit from the same parent class.
+            </p>
+
+            <pre><code>class Animal:
+    def eat(self):
+        print("Animal eats")
+
+
+class Dog(Animal):
+    def bark(self):
+        print("Dog barks")
+
+
+class Cat(Animal):
+    def meow(self):
+        print("Cat meows")
+
+
+dog = Dog()
+dog.eat()
+dog.bark()
+
+cat = Cat()
+cat.eat()
+cat.meow()</code></pre>
+        </section>
+
+        <!-- Hybrid -->
+        <section class="section">
+            <h2>5. Hybrid Inheritance</h2>
+
+            <p>
+                Hybrid inheritance is a combination of two or more types
+                of inheritance.
+            </p>
+
+            <pre><code>class A:
+    def method_a(self):
+        print("Class A")
+
+
+class B(A):
+    def method_b(self):
+        print("Class B")
+
+
+class C(A):
+    def method_c(self):
+        print("Class C")
+
+
+class D(B, C):
+    def method_d(self):
+        print("Class D")
+
+
+obj = D()
+
+obj.method_a()
+obj.method_b()
+obj.method_c()
+obj.method_d()</code></pre>
+        </section>
+
+        <!-- Constructor -->
+        <section class="section">
+            <h2>Inheritance with Constructor</h2>
+
+            <p>
+                A child class can define its own constructor using
+                <span class="inline-code">__init__()</span>.
+            </p>
+
+            <pre><code>class Person:
+    def __init__(self, name):
+        self.name = name
+
+
+class Student(Person):
+    def show(self):
+        print("Name:", self.name)
+
+
+student = Student("Krish")
+student.show()</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Name: Krish</code></pre>
+        </section>
+
+        <!-- super -->
+        <section class="section">
+            <h2>Using super()</h2>
+
+            <p>
+                The <span class="inline-code">super()</span> function is used
+                to call methods or the constructor of the parent class.
+            </p>
+
+            <pre><code>class Person:
+    def __init__(self, name):
+        self.name = name
+
+
+class Student(Person):
+    def __init__(self, name, course):
+        super().__init__(name)
+        self.course = course
+
+    def display(self):
+        print("Name:", self.name)
+        print("Course:", self.course)
+
+
+student = Student("Krish", "B.Sc IT")
+student.display()</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Name: Krish
+Course: B.Sc IT</code></pre>
+        </section>
+
+        <!-- Method Overriding -->
+        <section class="section">
+            <h2>Method Overriding</h2>
+
+            <p>
+                Method overriding happens when a child class provides its
+                own version of a method that already exists in the parent class.
+            </p>
+
+            <pre><code>class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+
+
+class Dog(Animal):
+    def sound(self):
+        print("Dog barks")
+
+
+dog = Dog()
+dog.sound()</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Dog barks</code></pre>
+        </section>
+
+        <!-- Practical Example -->
+        <section class="section">
+            <h2>Practical Example</h2>
+
+            <p>
+                Here is a simple example of inheritance using employees.
+            </p>
+
+            <pre><code>class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+    def display(self):
+        print("Name:", self.name)
+        print("Salary:", self.salary)
+
+
+class Manager(Employee):
+    def display_role(self):
+        print("Role: Manager")
+
+
+manager = Manager("Krish", 50000)
+
+manager.display()
+manager.display_role()</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>Name: Krish
+Salary: 50000
+Role: Manager</code></pre>
+        </section>
+
+        <!-- MRO -->
+        <section class="section">
+            <h2>Method Resolution Order (MRO)</h2>
+
+            <p>
+                When multiple inheritance is used, Python needs to determine
+                the order in which classes are searched for a method.
+            </p>
+
+            <p>
+                This order is called <strong>Method Resolution Order (MRO)</strong>.
+            </p>
+
+            <pre><code>class A:
+    pass
+
+
+class B(A):
+    pass
+
+
+class C(A):
+    pass
+
+
+class D(B, C):
+    pass
+
+
+print(D.mro())</code></pre>
+
+            <p><strong>Output:</strong></p>
+
+            <pre><code>[&lt;class '__main__.D'&gt;,
+ &lt;class '__main__.B'&gt;,
+ &lt;class '__main__.C'&gt;,
+ &lt;class '__main__.A'&gt;,
+ &lt;class 'object'&gt;]</code></pre>
+        </section>
+
+        <!-- Benefits -->
+        <section class="section">
+            <h2>Advantages of Inheritance</h2>
+
+            <ul>
+                <li>Code can be reused.</li>
+                <li>Reduces duplicate code.</li>
+                <li>Makes programs easier to organize.</li>
+                <li>Supports code extension.</li>
+                <li>Helps implement Object-Oriented Programming.</li>
+                <li>Makes large applications easier to maintain.</li>
+            </ul>
+        </section>
+
+        <!-- Important Points -->
+        <section class="section">
+            <h2>Important Points to Remember</h2>
+
+            <div class="info-box">
+                <ul>
+                    <li>Inheritance allows a child class to reuse parent class code.</li>
+                    <li>Parent class is also called a base or superclass.</li>
+                    <li>Child class is also called a derived or subclass.</li>
+                    <li>Use <span class="inline-code">class Child(Parent):</span> for inheritance.</li>
+                    <li>Use <span class="inline-code">super()</span> to access parent functionality.</li>
+                    <li>Python supports multiple inheritance.</li>
+                    <li>Child classes can override parent methods.</li>
+                    <li>Python uses MRO to determine method lookup order.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Quick Reference -->
+        <section class="section">
+            <h2>Python Inheritance Quick Reference</h2>
+
+            <table>
+                <tr>
+                    <th>Concept</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td>Parent Class</td>
+                    <td>Class whose functionality is inherited</td>
+                </tr>
+
+                <tr>
+                    <td>Child Class</td>
+                    <td>Class that inherits functionality</td>
+                </tr>
+
+                <tr>
+                    <td>Single Inheritance</td>
+                    <td>One child inherits from one parent</td>
+                </tr>
+
+                <tr>
+                    <td>Multiple Inheritance</td>
+                    <td>One child inherits from multiple parents</td>
+                </tr>
+
+                <tr>
+                    <td>Multilevel Inheritance</td>
+                    <td>Inheritance through multiple levels</td>
+                </tr>
+
+                <tr>
+                    <td>Hierarchical Inheritance</td>
+                    <td>Multiple children inherit from one parent</td>
+                </tr>
+
+                <tr>
+                    <td>Hybrid Inheritance</td>
+                    <td>Combination of inheritance types</td>
+                </tr>
+
+                <tr>
+                    <td>super()</td>
+                    <td>Access parent class functionality</td>
+                </tr>
+
+                <tr>
+                    <td>MRO</td>
+                    <td>Method Resolution Order</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="section">
+            <h2>Try Python Inheritance Yourself</h2>
+
+            <p>
+                Write Python code below and click <strong>Run Code</strong>
+                to execute it directly in your browser.
+            </p>
+
+            <div class="editor">
+
+                <h3>Python Code Editor</h3>
+
+                <textarea id="codeEditor">class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+
+
+class Dog(Animal):
+    def sound(self):
+        print("Dog barks")
+
+
+dog = Dog()
+dog.sound()</textarea>
+
+                <div class="editor-buttons">
+                    <button class="run-btn" onclick="runPython()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+                </div>
+
+                <div class="output" id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="page-navigation">
+            <a href="python-arrays.html">
+                ← Previous: Python Arrays
+            </a>
+
+            <a href="python-dictionaries.html">
+                Next: Python Dictionaries →
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <!-- Pyodide -->
+    <script>
+        let pyodide = null;
+
+        async function loadPyodideLibrary() {
+            if (!pyodide) {
+                document.getElementById("output").textContent =
+                    "Loading Python... Please wait.";
+
+                const script = document.createElement("script");
+                script.src =
+                    "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+                document.head.appendChild(script);
+
+                await new Promise((resolve, reject) => {
+                    script.onload = resolve;
+                    script.onerror = reject;
+                });
+
+                pyodide = await loadPyodide();
+            }
+        }
+
+        async function runPython() {
+            const code = document.getElementById("codeEditor").value;
+            const output = document.getElementById("output");
+
+            output.textContent = "Running...";
+
+            try {
+                await loadPyodideLibrary();
+
+                let printedOutput = "";
+
+                pyodide.setStdout({
+                    batched: (text) => {
+                        printedOutput += text;
+                    }
+                });
+
+                pyodide.setStderr({
+                    batched: (text) => {
+                        printedOutput += text;
+                    }
+                });
+
+                await pyodide.runPythonAsync(code);
+
+                output.textContent =
+                    printedOutput || "Code executed successfully.";
+            } catch (error) {
+                output.textContent = "Error:\n" + error;
+            }
+        }
+
+        function clearCode() {
+            document.getElementById("codeEditor").value = "";
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+        }
+    </script>
+
+</body>
+</html>
+```
