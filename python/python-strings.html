@@ -1,0 +1,1060 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Strings | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python Strings with simple explanations, examples, string methods and an interactive Python code editor.">
+
+    <meta name="keywords"
+          content="Python Strings, Python String Methods, Python String Slicing, Python String Indexing, Python Programming">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1e3a8a);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #2563eb;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #075985;
+        }
+
+        /* Cards */
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .type-card {
+            background: #f8fafc;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .type-card h3 {
+            margin-top: 0;
+            color: #1d4ed8;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            resize: vertical;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #cbd5e1;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #15803d;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        .output-title {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: #1e3a8a;
+        }
+
+        #output {
+            background: #020617;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1>Python Strings</h1>
+        <p>Learn how to create, access and manipulate strings in Python</p>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2>What is a String?</h2>
+
+            <p>
+                A string is a sequence of characters used to store text in
+                Python. Strings can contain letters, numbers, symbols and
+                spaces.
+            </p>
+
+            <p>
+                Strings are written inside single quotes, double quotes or
+                triple quotes.
+            </p>
+
+            <div class="info-box">
+                <strong>Example:</strong>
+                <br><br>
+                <code>name = "Krish"</code><br>
+                <code>language = 'Python'</code>
+            </div>
+        </section>
+
+
+        <!-- Creating Strings -->
+        <section class="section">
+            <h2>Creating Strings</h2>
+
+            <p>
+                You can create a string using single quotes or double quotes.
+            </p>
+
+            <pre><code>name = "Krish"
+city = 'Surat'
+
+print(name)
+print(city)</code></pre>
+        </section>
+
+
+        <!-- Single and Double -->
+        <section class="section">
+            <h2>Single Quotes and Double Quotes</h2>
+
+            <p>
+                Python allows you to use both single and double quotation
+                marks to create strings.
+            </p>
+
+            <pre><code>name1 = "Krish"
+name2 = 'Krish'
+
+print(name1)
+print(name2)</code></pre>
+
+            <div class="info-box">
+                Both examples create a string. The choice between single and
+                double quotes is mostly a matter of style and context.
+            </div>
+        </section>
+
+
+        <!-- Triple Quotes -->
+        <section class="section">
+            <h2>Triple Quotes</h2>
+
+            <p>
+                Triple quotes can be used to create strings that span multiple
+                lines.
+            </p>
+
+            <pre><code>message = """Hello!
+Welcome to Code With Me.
+Learn Python step by step."""
+
+print(message)</code></pre>
+        </section>
+
+
+        <!-- String Indexing -->
+        <section class="section">
+            <h2>String Indexing</h2>
+
+            <p>
+                Each character in a string has an index number. Python uses
+                zero-based indexing, which means the first character has index
+                <strong>0</strong>.
+            </p>
+
+            <pre><code>name = "Python"
+
+print(name[0])
+print(name[1])
+print(name[2])
+print(name[5])</code></pre>
+
+            <div class="info-box">
+                <strong>Output:</strong>
+                <br><br>
+                P<br>
+                y<br>
+                t<br>
+                n
+            </div>
+        </section>
+
+
+        <!-- Negative Index -->
+        <section class="section">
+            <h2>Negative Indexing</h2>
+
+            <p>
+                Python also supports negative indexing. The last character
+                has index <strong>-1</strong>.
+            </p>
+
+            <pre><code>name = "Python"
+
+print(name[-1])
+print(name[-2])
+print(name[-3])</code></pre>
+        </section>
+
+
+        <!-- Slicing -->
+        <section class="section">
+            <h2>String Slicing</h2>
+
+            <p>
+                String slicing allows you to extract a part of a string.
+            </p>
+
+            <p>
+                The basic syntax is:
+            </p>
+
+            <pre><code>string[start:end]</code></pre>
+
+            <pre><code>name = "Python"
+
+print(name[0:3])
+print(name[2:6])
+print(name[:4])
+print(name[2:])</code></pre>
+
+            <div class="info-box">
+                The ending index is not included in the result.
+            </div>
+        </section>
+
+
+        <!-- String Length -->
+        <section class="section">
+            <h2>String Length</h2>
+
+            <p>
+                The <strong>len()</strong> function returns the number of
+                characters in a string.
+            </p>
+
+            <pre><code>name = "Python"
+
+print(len(name))</code></pre>
+        </section>
+
+
+        <!-- Concatenation -->
+        <section class="section">
+            <h2>String Concatenation</h2>
+
+            <p>
+                Concatenation means joining two or more strings together.
+                The <strong>+</strong> operator can be used for this.
+            </p>
+
+            <pre><code>first_name = "Krish"
+last_name = "Kakadiya"
+
+full_name = first_name + " " + last_name
+
+print(full_name)</code></pre>
+        </section>
+
+
+        <!-- Repetition -->
+        <section class="section">
+            <h2>String Repetition</h2>
+
+            <p>
+                You can repeat a string using the <strong>*</strong>
+                operator.
+            </p>
+
+            <pre><code>message = "Hello "
+
+print(message * 3)</code></pre>
+        </section>
+
+
+        <!-- Upper Lower -->
+        <section class="section">
+            <h2>Changing Letter Case</h2>
+
+            <h3>upper()</h3>
+
+            <p>
+                Converts all characters to uppercase.
+            </p>
+
+            <pre><code>text = "hello python"
+
+print(text.upper())</code></pre>
+
+            <h3>lower()</h3>
+
+            <p>
+                Converts all characters to lowercase.
+            </p>
+
+            <pre><code>text = "HELLO PYTHON"
+
+print(text.lower())</code></pre>
+
+            <h3>title()</h3>
+
+            <p>
+                Converts the first letter of each word to uppercase.
+            </p>
+
+            <pre><code>text = "learn python programming"
+
+print(text.title())</code></pre>
+        </section>
+
+
+        <!-- Common Methods -->
+        <section class="section">
+            <h2>Common Python String Methods</h2>
+
+            <div class="table-container">
+
+                <table>
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+
+                    <tr>
+                        <td>upper()</td>
+                        <td>Converts string to uppercase</td>
+                        <td>"hello".upper()</td>
+                    </tr>
+
+                    <tr>
+                        <td>lower()</td>
+                        <td>Converts string to lowercase</td>
+                        <td>"HELLO".lower()</td>
+                    </tr>
+
+                    <tr>
+                        <td>title()</td>
+                        <td>Capitalizes each word</td>
+                        <td>"hello world".title()</td>
+                    </tr>
+
+                    <tr>
+                        <td>strip()</td>
+                        <td>Removes spaces from beginning and end</td>
+                        <td>" hello ".strip()</td>
+                    </tr>
+
+                    <tr>
+                        <td>replace()</td>
+                        <td>Replaces text</td>
+                        <td>"Hi".replace("Hi", "Hello")</td>
+                    </tr>
+
+                    <tr>
+                        <td>split()</td>
+                        <td>Splits a string into a list</td>
+                        <td>"A B C".split()</td>
+                    </tr>
+
+                    <tr>
+                        <td>find()</td>
+                        <td>Finds the position of text</td>
+                        <td>"Python".find("t")</td>
+                    </tr>
+
+                    <tr>
+                        <td>count()</td>
+                        <td>Counts occurrences</td>
+                        <td>"banana".count("a")</td>
+                    </tr>
+
+                    <tr>
+                        <td>startswith()</td>
+                        <td>Checks the beginning of a string</td>
+                        <td>"Python".startswith("Py")</td>
+                    </tr>
+
+                    <tr>
+                        <td>endswith()</td>
+                        <td>Checks the ending of a string</td>
+                        <td>"Python".endswith("on")</td>
+                    </tr>
+                </table>
+
+            </div>
+        </section>
+
+
+        <!-- strip -->
+        <section class="section">
+            <h2>strip() Method</h2>
+
+            <p>
+                The <strong>strip()</strong> method removes whitespace from
+                the beginning and end of a string.
+            </p>
+
+            <pre><code>name = "   Krish   "
+
+print(name)
+print(name.strip())</code></pre>
+        </section>
+
+
+        <!-- Replace -->
+        <section class="section">
+            <h2>replace() Method</h2>
+
+            <p>
+                The <strong>replace()</strong> method replaces one piece of
+                text with another.
+            </p>
+
+            <pre><code>text = "I like Java"
+
+new_text = text.replace("Java", "Python")
+
+print(new_text)</code></pre>
+        </section>
+
+
+        <!-- Split -->
+        <section class="section">
+            <h2>split() Method</h2>
+
+            <p>
+                The <strong>split()</strong> method divides a string into a
+                list.
+            </p>
+
+            <pre><code>text = "Python is easy"
+
+words = text.split()
+
+print(words)</code></pre>
+        </section>
+
+
+        <!-- Find -->
+        <section class="section">
+            <h2>find() Method</h2>
+
+            <p>
+                The <strong>find()</strong> method returns the position of
+                the first occurrence of a specified value.
+            </p>
+
+            <pre><code>text = "Hello Python"
+
+print(text.find("Python"))</code></pre>
+        </section>
+
+
+        <!-- f strings -->
+        <section class="section">
+            <h2>Python f-Strings</h2>
+
+            <p>
+                f-strings provide a convenient way to insert variables and
+                expressions inside strings.
+            </p>
+
+            <pre><code>name = "Krish"
+age = 20
+
+message = f"My name is {name} and I am {age} years old."
+
+print(message)</code></pre>
+
+            <div class="info-box">
+                <strong>Tip:</strong>
+                Put <code>f</code> before the opening quotation mark and use
+                curly brackets <code>{}</code> for variables.
+            </div>
+        </section>
+
+
+        <!-- Escape Characters -->
+        <section class="section">
+            <h2>Escape Characters</h2>
+
+            <p>
+                Escape characters are special characters used inside strings.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+                    <tr>
+                        <th>Escape Character</th>
+                        <th>Meaning</th>
+                    </tr>
+
+                    <tr>
+                        <td>\n</td>
+                        <td>New line</td>
+                    </tr>
+
+                    <tr>
+                        <td>\t</td>
+                        <td>Tab</td>
+                    </tr>
+
+                    <tr>
+                        <td>\\</td>
+                        <td>Backslash</td>
+                    </tr>
+
+                    <tr>
+                        <td>\"</td>
+                        <td>Double quotation mark</td>
+                    </tr>
+
+                    <tr>
+                        <td>\'</td>
+                        <td>Single quotation mark</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <pre><code>print("Hello\nPython")
+print("Name:\tKrish")</code></pre>
+        </section>
+
+
+        <!-- String Check -->
+        <section class="section">
+            <h2>Checking Text in a String</h2>
+
+            <p>
+                The <strong>in</strong> operator checks whether a value exists
+                inside a string.
+            </p>
+
+            <pre><code>text = "Python is easy"
+
+print("Python" in text)
+print("Java" in text)</code></pre>
+        </section>
+
+
+        <!-- String Immutability -->
+        <section class="section">
+            <h2>Strings are Immutable</h2>
+
+            <p>
+                Strings in Python are immutable. This means that individual
+                characters of an existing string cannot be changed directly.
+            </p>
+
+            <pre><code>text = "Python"
+
+# This will cause an error:
+# text[0] = "J"
+
+print(text)</code></pre>
+
+            <p>
+                Instead, you can create a new string.
+            </p>
+
+            <pre><code>text = "Python"
+
+new_text = "J" + text[1:]
+
+print(new_text)</code></pre>
+        </section>
+
+
+        <!-- Interactive Editor -->
+        <section class="section">
+
+            <h2>Python Strings - Code Editor</h2>
+
+            <p>
+                Try the following Python code. You can edit the code and run
+                it directly in your browser.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="code">name = "Krish"
+language = "Python"
+
+print("Name:", name)
+print("Language:", language)
+
+print("Length:", len(name))
+print("Uppercase:", name.upper())
+print("Lowercase:", name.lower())
+
+message = f"Hello {name}! Welcome to {language}."
+
+print(message)</textarea>
+
+                <div class="buttons">
+
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <h3 class="output-title">Output</h3>
+
+                <div id="output">
+Click "Run Code" to see the output.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Important Points -->
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <ul>
+                <li>Strings are used to store text.</li>
+                <li>Strings can use single or double quotes.</li>
+                <li>Triple quotes can be used for multi-line strings.</li>
+                <li>Python uses zero-based string indexing.</li>
+                <li>Negative indexes can access characters from the end.</li>
+                <li>String slicing extracts part of a string.</li>
+                <li>The <strong>len()</strong> function returns string length.</li>
+                <li>Strings support concatenation using <strong>+</strong>.</li>
+                <li>Strings can be repeated using <strong>*</strong>.</li>
+                <li>Strings are immutable in Python.</li>
+                <li>Python provides many useful string methods.</li>
+                <li>f-strings make formatted strings easier to create.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="python-data-types.html" class="nav-btn">
+                ← Previous
+            </a>
+
+            <a href="python-operators.html" class="nav-btn">
+                Next →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+
+    <!-- Python Runtime -->
+    <script>
+
+        function runCode() {
+
+            const code = document.getElementById("code").value;
+            const output = document.getElementById("output");
+
+            output.textContent =
+                "Loading Python interpreter...\nPlease wait...";
+
+            if (!window.pyodide) {
+
+                loadPyodideAndRun(code);
+
+            } else {
+
+                executePython(code);
+
+            }
+        }
+
+
+        async function loadPyodideAndRun(code) {
+
+            try {
+
+                const script = document.createElement("script");
+
+                script.src =
+                    "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+                script.onload = async function () {
+
+                    try {
+
+                        window.pyodide = await loadPyodide();
+
+                        executePython(code);
+
+                    } catch (error) {
+
+                        document.getElementById("output").textContent =
+                            "Error loading Python:\n" + error;
+
+                    }
+
+                };
+
+                script.onerror = function () {
+
+                    document.getElementById("output").textContent =
+                        "Unable to load Python interpreter. Please check your internet connection.";
+
+                };
+
+                document.head.appendChild(script);
+
+            } catch (error) {
+
+                document.getElementById("output").textContent =
+                    "Error:\n" + error;
+
+            }
+
+        }
+
+
+        async function executePython(code) {
+
+            const output = document.getElementById("output");
+
+            try {
+
+                let printedOutput = "";
+
+                window.pyodide.setStdout({
+                    batched: function (text) {
+                        printedOutput += text;
+                    }
+                });
+
+                window.pyodide.setStderr({
+                    batched: function (text) {
+                        printedOutput += text;
+                    }
+                });
+
+                await window.pyodide.runPythonAsync(code);
+
+                output.textContent =
+                    printedOutput || "Program executed successfully.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Python Error:\n" + error;
+
+            }
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").textContent =
+                "Editor cleared.";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
