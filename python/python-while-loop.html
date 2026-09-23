@@ -1,0 +1,932 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python While Loop | Code With Me</title>
+
+    <meta name="description" content="Learn Python while loops with syntax, examples, break, continue, nested loops and practical programs.">
+    <meta name="keywords" content="Python while loop, Python loops, while statement, Python tutorial">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        .content-box ul,
+        .content-box ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-box li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3776ab;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+        .editor textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .run-btn {
+            background: #3776ab;
+        }
+
+        .run-btn:hover {
+            background: #285a85;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, "Courier New", monospace;
+            margin-top: 15px;
+        }
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #285a85;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Python While Loop</h1>
+        <p>Learn how to repeat code while a condition is true.</p>
+    </section>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="content-box">
+            <h2>What is a While Loop?</h2>
+
+            <p>
+                A <strong>while loop</strong> repeatedly executes a block of code
+                as long as a specified condition is <strong>True</strong>.
+            </p>
+
+            <p>
+                It is useful when you do not know exactly how many times a loop
+                should execute.
+            </p>
+
+            <pre><code>count = 1
+
+while count <= 5:
+    print(count)
+    count += 1</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                1<br>
+                2<br>
+                3<br>
+                4<br>
+                5
+            </div>
+        </section>
+
+        <!-- Syntax -->
+        <section class="content-box">
+            <h2>While Loop Syntax</h2>
+
+            <pre><code>while condition:
+    # code to execute
+    # update the condition</code></pre>
+
+            <p>
+                The condition is checked before every iteration of the loop.
+                If it is <code>True</code>, the loop body runs.
+            </p>
+
+            <div class="highlight">
+                <strong>Important:</strong>
+                Make sure the condition eventually becomes False.
+                Otherwise, the loop can continue forever.
+            </div>
+        </section>
+
+        <!-- Simple Example -->
+        <section class="content-box">
+            <h2>Simple While Loop Example</h2>
+
+            <pre><code>number = 1
+
+while number <= 5:
+    print("Number:", number)
+    number += 1</code></pre>
+
+            <p>
+                The variable <code>number</code> starts at 1. After every
+                iteration, its value increases by 1.
+            </p>
+        </section>
+
+        <!-- Counter -->
+        <section class="content-box">
+            <h2>Using a Counter</h2>
+
+            <p>
+                A counter variable is commonly used with while loops.
+            </p>
+
+            <pre><code>count = 0
+
+while count < 5:
+    print("Hello")
+    count += 1</code></pre>
+
+            <p>
+                Here, <code>Hello</code> is printed five times.
+            </p>
+        </section>
+
+        <!-- Countdown -->
+        <section class="content-box">
+            <h2>Countdown Example</h2>
+
+            <p>
+                A while loop can also be used to count backwards.
+            </p>
+
+            <pre><code>number = 5
+
+while number >= 1:
+    print(number)
+    number -= 1
+
+print("Blast Off!")</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                5<br>
+                4<br>
+                3<br>
+                2<br>
+                1<br>
+                Blast Off!
+            </div>
+        </section>
+
+        <!-- Break -->
+        <section class="content-box">
+            <h2>Using break</h2>
+
+            <p>
+                The <code>break</code> statement immediately stops a loop.
+            </p>
+
+            <pre><code>number = 1
+
+while number <= 10:
+    print(number)
+
+    if number == 5:
+        break
+
+    number += 1</code></pre>
+
+            <div class="highlight">
+                The loop stops when <code>number</code> becomes 5.
+            </div>
+        </section>
+
+        <!-- Continue -->
+        <section class="content-box">
+            <h2>Using continue</h2>
+
+            <p>
+                The <code>continue</code> statement skips the current iteration
+                and moves to the next iteration.
+            </p>
+
+            <pre><code>number = 0
+
+while number < 5:
+    number += 1
+
+    if number == 3:
+        continue
+
+    print(number)</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                1<br>
+                2<br>
+                4<br>
+                5
+            </div>
+        </section>
+
+        <!-- Else -->
+        <section class="content-box">
+            <h2>While Loop with else</h2>
+
+            <p>
+                Python allows an <code>else</code> block with a while loop.
+                The else block executes when the loop finishes normally.
+            </p>
+
+            <pre><code>number = 1
+
+while number <= 3:
+    print(number)
+    number += 1
+else:
+    print("Loop completed")</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                1<br>
+                2<br>
+                3<br>
+                Loop completed
+            </div>
+        </section>
+
+        <!-- Break and Else -->
+        <section class="content-box">
+            <h2>While else with break</h2>
+
+            <p>
+                If the loop ends because of <code>break</code>, the
+                <code>else</code> block does not execute.
+            </p>
+
+            <pre><code>number = 1
+
+while number <= 5:
+    print(number)
+
+    if number == 3:
+        break
+
+    number += 1
+else:
+    print("Loop completed")</code></pre>
+
+            <div class="warning-box">
+                Because the loop ends with <code>break</code>, the
+                <code>else</code> block is skipped.
+            </div>
+        </section>
+
+        <!-- Infinite Loop -->
+        <section class="content-box">
+            <h2>Infinite While Loop</h2>
+
+            <p>
+                An infinite loop occurs when the condition never becomes
+                <code>False</code>.
+            </p>
+
+            <pre><code>while True:
+    print("This is an infinite loop")</code></pre>
+
+            <div class="warning-box">
+                <strong>Warning:</strong>
+                Do not run an infinite loop unless you intentionally use
+                <code>break</code> or another mechanism to stop it.
+            </div>
+
+            <h3>Stopping an Infinite Loop</h3>
+
+            <pre><code>while True:
+    command = input("Enter quit to stop: ")
+
+    if command == "quit":
+        break</code></pre>
+        </section>
+
+        <!-- User Input -->
+        <section class="content-box">
+            <h2>While Loop with User Input</h2>
+
+            <p>
+                A while loop can repeatedly ask the user for input.
+            </p>
+
+            <pre><code>password = ""
+
+while password != "1234":
+    password = input("Enter password: ")
+
+print("Access granted")</code></pre>
+        </section>
+
+        <!-- Sum -->
+        <section class="content-box">
+            <h2>Calculate Sum Using While Loop</h2>
+
+            <pre><code>number = 1
+total = 0
+
+while number <= 5:
+    total += number
+    number += 1
+
+print("Total:", total)</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong> Total: 15
+            </div>
+        </section>
+
+        <!-- Multiplication Table -->
+        <section class="content-box">
+            <h2>Multiplication Table</h2>
+
+            <p>
+                A while loop can be used to generate a multiplication table.
+            </p>
+
+            <pre><code>number = 5
+i = 1
+
+while i <= 10:
+    print(number, "x", i, "=", number * i)
+    i += 1</code></pre>
+        </section>
+
+        <!-- Nested While -->
+        <section class="content-box">
+            <h2>Nested While Loops</h2>
+
+            <p>
+                A while loop inside another while loop is called a
+                <strong>nested while loop</strong>.
+            </p>
+
+            <pre><code>i = 1
+
+while i <= 3:
+    j = 1
+
+    while j <= 3:
+        print(i, j)
+        j += 1
+
+    i += 1</code></pre>
+        </section>
+
+        <!-- While vs For -->
+        <section class="content-box">
+            <h2>While Loop vs For Loop</h2>
+
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>While Loop</th>
+                        <th>For Loop</th>
+                    </tr>
+
+                    <tr>
+                        <td>Condition Based</td>
+                        <td>Yes</td>
+                        <td>Usually sequence/range based</td>
+                    </tr>
+
+                    <tr>
+                        <td>Known Number of Iterations</td>
+                        <td>Not always necessary</td>
+                        <td>Usually known</td>
+                    </tr>
+
+                    <tr>
+                        <td>Counter Required</td>
+                        <td>Often</td>
+                        <td>Usually handled automatically</td>
+                    </tr>
+
+                    <tr>
+                        <td>Infinite Loop Possibility</td>
+                        <td>Yes</td>
+                        <td>Possible with suitable conditions</td>
+                    </tr>
+
+                    <tr>
+                        <td>Best Use</td>
+                        <td>Repeat until a condition changes</td>
+                        <td>Iterate over a sequence/range</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Common Mistakes -->
+        <section class="content-box">
+            <h2>Common While Loop Mistakes</h2>
+
+            <h3>1. Forgetting to Update the Variable</h3>
+
+            <pre><code>number = 1
+
+while number <= 5:
+    print(number)
+
+# number never changes</code></pre>
+
+            <div class="warning-box">
+                This can create an infinite loop.
+            </div>
+
+            <h3>2. Wrong Condition</h3>
+
+            <pre><code>number = 10
+
+while number < 5:
+    print(number)
+    number += 1</code></pre>
+
+            <p>
+                The loop does not execute because the condition is initially False.
+            </p>
+
+            <h3>3. Incorrect Indentation</h3>
+
+            <pre><code>number = 1
+
+while number <= 5:
+    print(number)
+    number += 1</code></pre>
+
+            <p>
+                Python uses indentation to define the loop body.
+            </p>
+        </section>
+
+        <!-- Important Rules -->
+        <section class="content-box">
+            <h2>Important Rules of While Loops</h2>
+
+            <ul>
+                <li>The <code>while</code> keyword starts the loop.</li>
+                <li>The condition must evaluate to True or False.</li>
+                <li>Use a colon <code>:</code> after the condition.</li>
+                <li>Indent the code inside the loop.</li>
+                <li>Update the loop variable when necessary.</li>
+                <li><code>break</code> stops the loop.</li>
+                <li><code>continue</code> skips an iteration.</li>
+                <li>An <code>else</code> block can be used with while.</li>
+                <li>Be careful with infinite loops.</li>
+            </ul>
+        </section>
+
+        <!-- Practical Example -->
+        <section class="content-box">
+            <h2>Practical Example: Number Guessing</h2>
+
+            <p>
+                A while loop is useful for repeatedly asking the user to guess
+                a number.
+            </p>
+
+            <pre><code>secret = 7
+guess = 0
+
+while guess != secret:
+    guess = int(input("Guess the number: "))
+
+    if guess < secret:
+        print("Too low")
+    elif guess > secret:
+        print("Too high")
+
+print("Correct!")</code></pre>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="content-box editor">
+            <h2>Python While Loop Editor</h2>
+
+            <p>
+                Try a simple while loop program below.
+            </p>
+
+            <textarea id="codeEditor">number = 1
+
+while number <= 5:
+    print(number)
+    number += 1</textarea>
+
+            <div class="button-group">
+                <button class="run-btn" onclick="runCode()">▶ Run Code</button>
+                <button class="clear-btn" onclick="clearCode()">Clear</button>
+            </div>
+
+            <div id="outputBox">Output will appear here...</div>
+        </section>
+
+        <!-- Summary -->
+        <section class="content-box">
+            <h2>Python While Loop Summary</h2>
+
+            <ul>
+                <li>A while loop repeats code while a condition is True.</li>
+                <li>The condition is checked before every iteration.</li>
+                <li>Use a counter to control the number of repetitions.</li>
+                <li>Use <code>break</code> to stop a loop.</li>
+                <li>Use <code>continue</code> to skip an iteration.</li>
+                <li>A while loop can have an <code>else</code> block.</li>
+                <li>Nested while loops are possible.</li>
+                <li>Always avoid accidental infinite loops.</li>
+            </ul>
+
+            <div class="success-box">
+                <strong>Next Topic:</strong>
+                Continue learning Python with
+                <strong>Functions</strong>.
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="page-navigation">
+            <a href="python-for-loop.html">← Previous: For Loop</a>
+            <a href="python-functions.html">Next: Functions →</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <script>
+        function runCode() {
+            const code = document.getElementById("codeEditor").value;
+            const output = document.getElementById("outputBox");
+
+            let result = "";
+
+            try {
+                /*
+                    Simple browser-based Python while-loop demo.
+                    It supports basic examples such as:
+
+                    number = 1
+                    while number <= 5:
+                        print(number)
+                        number += 1
+                */
+
+                const numberMatch = code.match(
+                    /(?:^|\n)\s*(\w+)\s*=\s*(-?\d+)/
+                );
+
+                const conditionMatch = code.match(
+                    /while\s+(\w+)\s*(<=|>=|<|>)\s*(-?\d+)\s*:/
+                );
+
+                const printMatch = code.match(
+                    /print\s*\(\s*(\w+)\s*\)/
+                );
+
+                const updateMatch = code.match(
+                    /(\w+)\s*(\+=|-=)\s*(\d+)/
+                );
+
+                if (
+                    numberMatch &&
+                    conditionMatch &&
+                    printMatch &&
+                    updateMatch
+                ) {
+                    let variable = numberMatch[1];
+                    let value = Number(numberMatch[2]);
+
+                    const operator = conditionMatch[2];
+                    const limit = Number(conditionMatch[3]);
+
+                    const updateOperator = updateMatch[2];
+                    const updateValue = Number(updateMatch[3]);
+
+                    let iterations = 0;
+
+                    function conditionIsTrue() {
+                        if (operator === "<=") {
+                            return value <= limit;
+                        }
+
+                        if (operator === ">=") {
+                            return value >= limit;
+                        }
+
+                        if (operator === "<") {
+                            return value < limit;
+                        }
+
+                        if (operator === ">") {
+                            return value > limit;
+                        }
+
+                        return false;
+                    }
+
+                    while (conditionIsTrue() && iterations < 1000) {
+                        result += value + "\n";
+
+                        if (updateOperator === "+=") {
+                            value += updateValue;
+                        } else {
+                            value -= updateValue;
+                        }
+
+                        iterations++;
+                    }
+
+                    if (iterations >= 1000) {
+                        result += "\nLoop stopped for safety.";
+                    }
+                } else {
+                    result =
+                        "Demo editor supports basic numeric while-loop examples.";
+                }
+
+                output.textContent = result.trim();
+
+            } catch (error) {
+                output.textContent = "Error: " + error.message;
+            }
+        }
+
+        function clearCode() {
+            document.getElementById("codeEditor").value = "";
+            document.getElementById("outputBox").textContent =
+                "Output will appear here...";
+        }
+    </script>
+
+</body>
+</html>
+```
