@@ -1,0 +1,976 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Virtual Environment | Code With Me</title>
+
+    <meta name="description" content="Learn Python Virtual Environments, how to create, activate, deactivate and use virtual environments with pip.">
+    <meta name="keywords" content="Python virtual environment, venv, Python venv, virtualenv, pip, Python packages">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 18px;
+            border-left: 5px solid #2563eb;
+            padding-left: 12px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        .section ul,
+        .section ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0 20px;
+            font-size: 14px;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            color: #dc2626;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Editor */
+        .editor {
+            background: #1f2937;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .editor h3 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 250px;
+            background: #111827;
+            color: #e5e7eb;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #60a5fa;
+        }
+
+        .editor-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .editor button {
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        #output {
+            background: #000;
+            color: #22c55e;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            min-height: 70px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+            overflow-x: auto;
+        }
+
+        /* Navigation */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Python Virtual Environment</h1>
+        <p>
+            Learn how to create, activate, use and manage isolated Python environments
+            for your projects.
+        </p>
+    </section>
+
+    <div class="container">
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2>What is a Virtual Environment?</h2>
+
+            <p>
+                A <strong>virtual environment</strong> is an isolated environment
+                that allows you to install Python packages separately for each project.
+            </p>
+
+            <p>
+                Instead of installing every package globally on your computer,
+                you can create a separate environment for each Python project.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Definition:</strong>
+                A Python virtual environment is an isolated folder containing
+                a Python interpreter and packages for a particular project.
+            </div>
+        </section>
+
+        <!-- Why use -->
+        <section class="section">
+            <h2>Why Use a Virtual Environment?</h2>
+
+            <p>
+                Virtual environments are useful when you work on multiple Python
+                projects that require different package versions.
+            </p>
+
+            <ul>
+                <li>Keep project dependencies isolated.</li>
+                <li>Avoid package version conflicts.</li>
+                <li>Keep the global Python installation clean.</li>
+                <li>Make projects easier to share.</li>
+                <li>Make dependency management easier.</li>
+                <li>Use different package versions in different projects.</li>
+            </ul>
+
+            <div class="success-box">
+                <strong>Example:</strong>
+                Project A may require Django 4.x while Project B requires Django 5.x.
+                Virtual environments allow both projects to use their required versions.
+            </div>
+        </section>
+
+        <!-- venv -->
+        <section class="section">
+            <h2>Python's Built-in venv Module</h2>
+
+            <p>
+                Python provides a built-in module called
+                <span class="inline-code">venv</span> for creating virtual environments.
+            </p>
+
+            <p>
+                You usually do not need to install a separate package to use
+                <span class="inline-code">venv</span>.
+            </p>
+
+            <pre><code>python -m venv myenv</code></pre>
+
+            <p>
+                Here:
+            </p>
+
+            <ul>
+                <li><span class="inline-code">python</span> runs Python.</li>
+                <li><span class="inline-code">-m venv</span> runs the venv module.</li>
+                <li><span class="inline-code">myenv</span> is the name of the environment.</li>
+            </ul>
+        </section>
+
+        <!-- Create -->
+        <section class="section">
+            <h2>Creating a Virtual Environment</h2>
+
+            <p>
+                First open your terminal or command prompt and navigate to your
+                project folder.
+            </p>
+
+            <pre><code>mkdir my-python-project
+cd my-python-project</code></pre>
+
+            <p>
+                Now create the virtual environment:
+            </p>
+
+            <pre><code>python -m venv venv</code></pre>
+
+            <p>
+                A folder named <span class="inline-code">venv</span> will be created
+                inside your project.
+            </p>
+
+            <pre><code>my-python-project/
+│
+├── venv/
+└── main.py</code></pre>
+        </section>
+
+        <!-- Windows -->
+        <section class="section">
+            <h2>Activating Virtual Environment on Windows</h2>
+
+            <p>
+                On Windows Command Prompt, use:
+            </p>
+
+            <pre><code>venv\Scripts\activate</code></pre>
+
+            <p>
+                On Windows PowerShell, use:
+            </p>
+
+            <pre><code>.\venv\Scripts\Activate.ps1</code></pre>
+
+            <div class="success-box">
+                After activation, you may see
+                <span class="inline-code">(venv)</span>
+                at the beginning of your terminal prompt.
+            </div>
+
+            <pre><code>(venv) C:\my-python-project&gt;</code></pre>
+        </section>
+
+        <!-- macOS Linux -->
+        <section class="section">
+            <h2>Activating on macOS and Linux</h2>
+
+            <p>
+                On macOS and Linux, use:
+            </p>
+
+            <pre><code>source venv/bin/activate</code></pre>
+
+            <p>
+                After activation, your terminal may look like:
+            </p>
+
+            <pre><code>(venv) user@computer:~/my-python-project$</code></pre>
+        </section>
+
+        <!-- Installing packages -->
+        <section class="section">
+            <h2>Installing Packages in a Virtual Environment</h2>
+
+            <p>
+                After activating the environment, you can install packages using
+                <span class="inline-code">pip</span>.
+            </p>
+
+            <pre><code>pip install requests</code></pre>
+
+            <p>
+                You can also install multiple packages:
+            </p>
+
+            <pre><code>pip install requests flask</code></pre>
+
+            <div class="info-box">
+                Packages installed while the virtual environment is active are
+                normally installed for that environment rather than into the
+                global Python environment.
+            </div>
+        </section>
+
+        <!-- Check packages -->
+        <section class="section">
+            <h2>Checking Installed Packages</h2>
+
+            <p>
+                To see the packages installed in the active environment:
+            </p>
+
+            <pre><code>pip list</code></pre>
+
+            <p>
+                To show information about a particular package:
+            </p>
+
+            <pre><code>pip show requests</code></pre>
+        </section>
+
+        <!-- requirements -->
+        <section class="section">
+            <h2>requirements.txt</h2>
+
+            <p>
+                A <span class="inline-code">requirements.txt</span> file is commonly
+                used to store the packages required by a Python project.
+            </p>
+
+            <p>
+                Create it using:
+            </p>
+
+            <pre><code>pip freeze &gt; requirements.txt</code></pre>
+
+            <p>
+                The file may contain entries such as:
+            </p>
+
+            <pre><code>requests==2.32.3
+flask==3.1.0</code></pre>
+
+            <p>
+                Another developer can install the same listed dependencies with:
+            </p>
+
+            <pre><code>pip install -r requirements.txt</code></pre>
+
+            <div class="success-box">
+                This makes it easier to recreate the project's Python dependencies
+                on another computer.
+            </div>
+        </section>
+
+        <!-- Deactivate -->
+        <section class="section">
+            <h2>Deactivating a Virtual Environment</h2>
+
+            <p>
+                When you finish working on your project, you can leave the virtual
+                environment using:
+            </p>
+
+            <pre><code>deactivate</code></pre>
+
+            <p>
+                The <span class="inline-code">(venv)</span> prefix will disappear
+                from your terminal.
+            </p>
+        </section>
+
+        <!-- Delete -->
+        <section class="section">
+            <h2>Deleting a Virtual Environment</h2>
+
+            <p>
+                A virtual environment is just a folder. You can delete the
+                environment folder when you no longer need it.
+            </p>
+
+            <p><strong>Windows Command Prompt:</strong></p>
+
+            <pre><code>rmdir /s /q venv</code></pre>
+
+            <p><strong>macOS/Linux:</strong></p>
+
+            <pre><code>rm -rf venv</code></pre>
+
+            <div class="warning-box">
+                Be careful when using delete commands. Make sure you are deleting
+                the correct virtual environment folder.
+            </div>
+        </section>
+
+        <!-- Gitignore -->
+        <section class="section">
+            <h2>Virtual Environment and Git</h2>
+
+            <p>
+                You normally should not upload the entire
+                <span class="inline-code">venv</span> folder to GitHub.
+            </p>
+
+            <p>
+                Instead, add the environment folder to
+                <span class="inline-code">.gitignore</span>.
+            </p>
+
+            <pre><code>venv/
+.venv/</code></pre>
+
+            <p>
+                Then keep your dependencies in:
+            </p>
+
+            <pre><code>requirements.txt</code></pre>
+
+            <div class="info-box">
+                A common Python project structure is:
+            </div>
+
+            <pre><code>my-python-project/
+│
+├── venv/
+├── main.py
+├── requirements.txt
+└── .gitignore</code></pre>
+        </section>
+
+        <!-- .venv -->
+        <section class="section">
+            <h2>Using .venv as the Environment Name</h2>
+
+            <p>
+                Many Python projects use <span class="inline-code">.venv</span>
+                instead of <span class="inline-code">venv</span>.
+            </p>
+
+            <pre><code>python -m venv .venv</code></pre>
+
+            <p>
+                On Windows:
+            </p>
+
+            <pre><code>.venv\Scripts\activate</code></pre>
+
+            <p>
+                On macOS/Linux:
+            </p>
+
+            <pre><code>source .venv/bin/activate</code></pre>
+
+            <p>
+                The leading dot is commonly used to make the environment directory
+                less prominent in project listings.
+            </p>
+        </section>
+
+        <!-- Python version -->
+        <section class="section">
+            <h2>Checking Python Version</h2>
+
+            <p>
+                You can check the Python version before creating an environment:
+            </p>
+
+            <pre><code>python --version</code></pre>
+
+            <p>
+                On some systems, you may need:
+            </p>
+
+            <pre><code>python3 --version</code></pre>
+
+            <p>
+                You can also check the Python executable being used:
+            </p>
+
+            <pre><code>python -c "import sys; print(sys.executable)"</code></pre>
+        </section>
+
+        <!-- Complete workflow -->
+        <section class="section">
+            <h2>Complete Virtual Environment Workflow</h2>
+
+            <p>
+                A typical Python project workflow looks like this:
+            </p>
+
+            <ol>
+                <li>Create a project folder.</li>
+                <li>Open the terminal inside the project folder.</li>
+                <li>Create a virtual environment.</li>
+                <li>Activate the environment.</li>
+                <li>Install required packages.</li>
+                <li>Create your Python program.</li>
+                <li>Save dependencies in requirements.txt.</li>
+                <li>Deactivate the environment when finished.</li>
+            </ol>
+
+            <pre><code>mkdir my-project
+cd my-project
+
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
+# macOS/Linux
+source .venv/bin/activate
+
+pip install requests
+
+pip freeze &gt; requirements.txt
+
+deactivate</code></pre>
+        </section>
+
+        <!-- Commands table -->
+        <section class="section">
+            <h2>Important Virtual Environment Commands</h2>
+
+            <table>
+                <tr>
+                    <th>Command</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td><span class="inline-code">python -m venv venv</span></td>
+                    <td>Create a virtual environment</td>
+                </tr>
+
+                <tr>
+                    <td><span class="inline-code">venv\Scripts\activate</span></td>
+                    <td>Activate on Windows CMD</td>
+                </tr>
+
+                <tr>
+                    <td><span class="inline-code">.\\venv\Scripts\Activate.ps1</span></td>
+                    <td>Activate on Windows PowerShell</td>
+                </tr>
+
+                <tr>
+                    <td><span class="inline-code">source venv/bin/activate</span></td>
+                    <td>Activate on macOS/Linux</td>
+                </tr>
+
+                <tr>
+                    <td><span class="inline-code">pip install package</span></td>
+                    <td>Install a package</td>
+                </tr>
+
+                <tr>
+                    <td><span class="inline-code">pip list</span></td>
+                    <td>Show installed packages</td>
+                </tr>
+
+                <tr>
+                    <td><span class="inline-code">pip freeze</span></td>
+                    <td>Show installed packages and versions</td>
+                </tr>
+
+                <tr>
+                    <td><span class="inline-code">pip freeze &gt; requirements.txt</span></td>
+                    <td>Save dependencies</td>
+                </tr>
+
+                <tr>
+                    <td><span class="inline-code">pip install -r requirements.txt</span></td>
+                    <td>Install dependencies from a file</td>
+                </tr>
+
+                <tr>
+                    <td><span class="inline-code">deactivate</span></td>
+                    <td>Deactivate the environment</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Best practices -->
+        <section class="section">
+            <h2>Best Practices</h2>
+
+            <ul>
+                <li>Create a separate virtual environment for each project.</li>
+                <li>Use <span class="inline-code">.venv</span> or <span class="inline-code">venv</span> as the environment folder.</li>
+                <li>Add the environment folder to <span class="inline-code">.gitignore</span>.</li>
+                <li>Keep project dependencies in <span class="inline-code">requirements.txt</span>.</li>
+                <li>Activate the correct environment before installing packages.</li>
+                <li>Use compatible package versions for your project.</li>
+                <li>Do not upload the complete virtual environment to GitHub.</li>
+            </ul>
+        </section>
+
+        <!-- Important points -->
+        <section class="section">
+            <h2>Important Points</h2>
+
+            <div class="info-box">
+                <ul>
+                    <li>Virtual environments isolate project dependencies.</li>
+                    <li>Python provides the built-in <span class="inline-code">venv</span> module.</li>
+                    <li>Use <span class="inline-code">python -m venv .venv</span> to create one.</li>
+                    <li>Activate the environment before installing project packages.</li>
+                    <li>Use <span class="inline-code">pip</span> to install packages.</li>
+                    <li>Use <span class="inline-code">requirements.txt</span> to record dependencies.</li>
+                    <li>Use <span class="inline-code">deactivate</span> when finished.</li>
+                    <li>Do not commit the <span class="inline-code">venv</span> or <span class="inline-code">.venv</span> folder to Git.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="section">
+            <h2>Try Python Online</h2>
+
+            <p>
+                You can practice Python code directly in your browser.
+                Note that browser-based Python execution does not create a real
+                operating-system virtual environment.
+            </p>
+
+            <div class="editor">
+                <h3>Python Code Editor</h3>
+
+                <textarea id="code">import sys
+
+print("Python Virtual Environment Demo")
+print("Python version:", sys.version.split()[0])
+
+project = "Code With Me"
+print("Project:", project)</textarea>
+
+                <div class="editor-buttons">
+                    <button class="run-btn" onclick="runPython()">▶ Run Code</button>
+                    <button class="clear-btn" onclick="clearCode()">✕ Clear</button>
+                </div>
+
+                <div id="output">Output will appear here...</div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="page-navigation">
+            <a href="python-modules.html">← Previous</a>
+            <a href="python-projects.html">Next →</a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <!-- Pyodide -->
+    <script>
+        let pyodide = null;
+        let pyodideLoading = null;
+
+        async function loadPyodideLibrary() {
+            if (pyodide) {
+                return pyodide;
+            }
+
+            if (pyodideLoading) {
+                return pyodideLoading;
+            }
+
+            pyodideLoading = new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+
+                script.src = "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+                script.onload = async () => {
+                    try {
+                        pyodide = await loadPyodide();
+                        resolve(pyodide);
+                    } catch (error) {
+                        reject(error);
+                    }
+                };
+
+                script.onerror = () => {
+                    reject(new Error("Could not load Python engine."));
+                };
+
+                document.head.appendChild(script);
+            });
+
+            return pyodideLoading;
+        }
+
+        async function runPython() {
+            const code = document.getElementById("code").value;
+            const output = document.getElementById("output");
+
+            output.textContent = "Loading Python...";
+
+            try {
+                const python = await loadPyodideLibrary();
+
+                let result = "";
+
+                python.setStdout({
+                    batched: (text) => {
+                        result += text;
+                    }
+                });
+
+                python.setStderr({
+                    batched: (text) => {
+                        result += text;
+                    }
+                });
+
+                await python.runPythonAsync(code);
+
+                if (result.trim() === "") {
+                    result = "Code executed successfully.";
+                }
+
+                output.textContent = result;
+
+            } catch (error) {
+                output.textContent = "Error:\n" + error;
+            }
+        }
+
+        function clearCode() {
+            document.getElementById("code").value = "";
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+        }
+    </script>
+
+</body>
+</html>
+```
