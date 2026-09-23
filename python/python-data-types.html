@@ -1,0 +1,916 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Data Types | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python Data Types with simple explanations, examples and an interactive Python code editor.">
+
+    <meta name="keywords"
+          content="Python Data Types, Python int, Python float, Python string, Python list, Python tuple, Python dictionary, Python set">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1e3a8a);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Main */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #2563eb;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #075985;
+        }
+
+        /* Data type cards */
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .type-card {
+            background: #f8fafc;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .type-card h3 {
+            margin-top: 0;
+            color: #1d4ed8;
+        }
+
+        .type-card code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 280px;
+            resize: vertical;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #cbd5e1;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #15803d;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        .output-title {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: #1e3a8a;
+        }
+
+        #output {
+            background: #020617;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1>Python Data Types</h1>
+        <p>Learn the different types of data used in Python</p>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2>What are Data Types?</h2>
+
+            <p>
+                In Python, a data type defines the kind of value stored in a
+                variable. For example, a number, text, list, or dictionary
+                can have different data types.
+            </p>
+
+            <p>
+                Python automatically determines the data type when you assign
+                a value to a variable.
+            </p>
+
+            <div class="info-box">
+                <strong>Example:</strong>
+                <br>
+                <code>age = 20</code>
+                is an integer, while
+                <code>name = "Krish"</code>
+                is a string.
+            </div>
+        </section>
+
+
+        <!-- Main Data Types -->
+        <section class="section">
+            <h2>Main Python Data Types</h2>
+
+            <div class="types-grid">
+
+                <div class="type-card">
+                    <h3>1. int</h3>
+                    <p>Used for whole numbers.</p>
+                    <code>age = 20</code>
+                </div>
+
+                <div class="type-card">
+                    <h3>2. float</h3>
+                    <p>Used for decimal numbers.</p>
+                    <code>price = 99.50</code>
+                </div>
+
+                <div class="type-card">
+                    <h3>3. str</h3>
+                    <p>Used for text.</p>
+                    <code>name = "Krish"</code>
+                </div>
+
+                <div class="type-card">
+                    <h3>4. bool</h3>
+                    <p>Used for True or False values.</p>
+                    <code>is_student = True</code>
+                </div>
+
+                <div class="type-card">
+                    <h3>5. list</h3>
+                    <p>Ordered and changeable collection.</p>
+                    <code>numbers = [1, 2, 3]</code>
+                </div>
+
+                <div class="type-card">
+                    <h3>6. tuple</h3>
+                    <p>Ordered and unchangeable collection.</p>
+                    <code>data = (10, 20, 30)</code>
+                </div>
+
+                <div class="type-card">
+                    <h3>7. set</h3>
+                    <p>Unordered collection of unique values.</p>
+                    <code>items = {1, 2, 3}</code>
+                </div>
+
+                <div class="type-card">
+                    <h3>8. dict</h3>
+                    <p>Stores data using key-value pairs.</p>
+                    <code>student = {"name": "Krish"}</code>
+                </div>
+
+                <div class="type-card">
+                    <h3>9. NoneType</h3>
+                    <p>Represents the absence of a value.</p>
+                    <code>result = None</code>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Integer -->
+        <section class="section">
+            <h2>1. Integer (int)</h2>
+
+            <p>
+                The <strong>int</strong> data type is used to store whole
+                numbers without decimal points.
+            </p>
+
+            <pre><code>age = 20
+year = 2026
+marks = 85
+
+print(age)
+print(year)
+print(marks)</code></pre>
+        </section>
+
+
+        <!-- Float -->
+        <section class="section">
+            <h2>2. Float (float)</h2>
+
+            <p>
+                The <strong>float</strong> data type is used to store numbers
+                containing decimal points.
+            </p>
+
+            <pre><code>price = 99.50
+height = 5.8
+percentage = 87.5
+
+print(price)
+print(height)
+print(percentage)</code></pre>
+        </section>
+
+
+        <!-- String -->
+        <section class="section">
+            <h2>3. String (str)</h2>
+
+            <p>
+                A <strong>string</strong> is a sequence of characters.
+                Strings are written inside single or double quotation marks.
+            </p>
+
+            <pre><code>name = "Krish"
+language = 'Python'
+
+print(name)
+print(language)</code></pre>
+        </section>
+
+
+        <!-- Boolean -->
+        <section class="section">
+            <h2>4. Boolean (bool)</h2>
+
+            <p>
+                The Boolean data type has only two possible values:
+                <strong>True</strong> and <strong>False</strong>.
+            </p>
+
+            <pre><code>is_student = True
+is_logged_in = False
+
+print(is_student)
+print(is_logged_in)</code></pre>
+        </section>
+
+
+        <!-- List -->
+        <section class="section">
+            <h2>5. List</h2>
+
+            <p>
+                A list is an ordered and changeable collection of values.
+                Lists are written using square brackets.
+            </p>
+
+            <pre><code>fruits = ["Apple", "Banana", "Mango"]
+
+print(fruits)
+print(fruits[0])</code></pre>
+        </section>
+
+
+        <!-- Tuple -->
+        <section class="section">
+            <h2>6. Tuple</h2>
+
+            <p>
+                A tuple is an ordered collection that cannot be changed after
+                it is created.
+            </p>
+
+            <pre><code>numbers = (10, 20, 30)
+
+print(numbers)
+print(numbers[1])</code></pre>
+        </section>
+
+
+        <!-- Set -->
+        <section class="section">
+            <h2>7. Set</h2>
+
+            <p>
+                A set is an unordered collection of unique values.
+                Duplicate values are automatically removed.
+            </p>
+
+            <pre><code>numbers = {10, 20, 20, 30, 30}
+
+print(numbers)</code></pre>
+
+            <div class="info-box">
+                <strong>Note:</strong>
+                Sets do not store duplicate values.
+            </div>
+        </section>
+
+
+        <!-- Dictionary -->
+        <section class="section">
+            <h2>8. Dictionary</h2>
+
+            <p>
+                A dictionary stores data in
+                <strong>key-value pairs</strong>.
+            </p>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20,
+    "course": "BSc IT"
+}
+
+print(student)
+print(student["name"])</code></pre>
+        </section>
+
+
+        <!-- None -->
+        <section class="section">
+            <h2>9. NoneType</h2>
+
+            <p>
+                <strong>None</strong> represents the absence of a value.
+            </p>
+
+            <pre><code>result = None
+
+print(result)</code></pre>
+        </section>
+
+
+        <!-- Type Function -->
+        <section class="section">
+            <h2>Checking Data Type with type()</h2>
+
+            <p>
+                Python provides the <strong>type()</strong> function to find
+                the data type of a value.
+            </p>
+
+            <pre><code>age = 20
+price = 99.50
+name = "Krish"
+student = True
+
+print(type(age))
+print(type(price))
+print(type(name))
+print(type(student))</code></pre>
+
+            <div class="info-box">
+                <strong>Output:</strong>
+                <br><br>
+                &lt;class 'int'&gt;<br>
+                &lt;class 'float'&gt;<br>
+                &lt;class 'str'&gt;<br>
+                &lt;class 'bool'&gt;
+            </div>
+        </section>
+
+
+        <!-- Summary Table -->
+        <section class="section">
+            <h2>Python Data Types Summary</h2>
+
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Example</th>
+                        <th>Description</th>
+                    </tr>
+
+                    <tr>
+                        <td>int</td>
+                        <td>20</td>
+                        <td>Whole numbers</td>
+                    </tr>
+
+                    <tr>
+                        <td>float</td>
+                        <td>20.5</td>
+                        <td>Decimal numbers</td>
+                    </tr>
+
+                    <tr>
+                        <td>str</td>
+                        <td>"Hello"</td>
+                        <td>Text</td>
+                    </tr>
+
+                    <tr>
+                        <td>bool</td>
+                        <td>True</td>
+                        <td>True or False</td>
+                    </tr>
+
+                    <tr>
+                        <td>list</td>
+                        <td>[1, 2, 3]</td>
+                        <td>Ordered and changeable collection</td>
+                    </tr>
+
+                    <tr>
+                        <td>tuple</td>
+                        <td>(1, 2, 3)</td>
+                        <td>Ordered and unchangeable collection</td>
+                    </tr>
+
+                    <tr>
+                        <td>set</td>
+                        <td>{1, 2, 3}</td>
+                        <td>Unique values</td>
+                    </tr>
+
+                    <tr>
+                        <td>dict</td>
+                        <td>{"name": "Krish"}</td>
+                        <td>Key-value pairs</td>
+                    </tr>
+
+                    <tr>
+                        <td>NoneType</td>
+                        <td>None</td>
+                        <td>No value</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- Interactive Editor -->
+        <section class="section">
+            <h2>Python Data Types - Code Editor</h2>
+
+            <p>
+                Try the following Python code. You can change the values and
+                run the program.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="code">age = 20
+price = 99.50
+name = "Krish"
+is_student = True
+
+numbers = [10, 20, 30]
+
+print("Age:", age)
+print("Price:", price)
+print("Name:", name)
+print("Student:", is_student)
+print("Numbers:", numbers)
+
+print("Age data type:", type(age))
+print("Name data type:", type(name))</textarea>
+
+                <div class="buttons">
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+                </div>
+
+                <h3 class="output-title">Output</h3>
+
+                <div id="output">
+Click "Run Code" to see the output.
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Important Points -->
+        <section class="section">
+            <h2>Important Points</h2>
+
+            <ul>
+                <li>Python automatically determines the data type.</li>
+                <li>Use <strong>type()</strong> to check a value's data type.</li>
+                <li><strong>int</strong> stores whole numbers.</li>
+                <li><strong>float</strong> stores decimal numbers.</li>
+                <li><strong>str</strong> stores text.</li>
+                <li><strong>bool</strong> stores True or False.</li>
+                <li><strong>list</strong> is ordered and changeable.</li>
+                <li><strong>tuple</strong> is ordered and unchangeable.</li>
+                <li><strong>set</strong> stores unique values.</li>
+                <li><strong>dict</strong> stores key-value pairs.</li>
+            </ul>
+        </section>
+
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="python-variables.html" class="nav-btn">
+                ← Previous
+            </a>
+
+            <a href="python-comments.html" class="nav-btn">
+                Next →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+
+    <script>
+        function runCode() {
+
+            const code = document.getElementById("code").value;
+            const output = document.getElementById("output");
+
+            output.textContent = "Running Python code...\n\n";
+
+            /*
+             * Browser cannot execute Python directly.
+             * This page uses Pyodide to run Python in the browser.
+             */
+
+            if (!window.pyodide) {
+
+                output.textContent =
+                    "Loading Python interpreter...\nPlease wait a moment and click Run Code again.";
+
+                loadPyodideAndRun(code);
+
+            } else {
+
+                executePython(code);
+
+            }
+        }
+
+
+        async function loadPyodideAndRun(code) {
+
+            try {
+
+                const script = document.createElement("script");
+
+                script.src =
+                    "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+                script.onload = async function () {
+
+                    try {
+
+                        window.pyodide =
+                            await loadPyodide();
+
+                        executePython(code);
+
+                    } catch (error) {
+
+                        document.getElementById("output").textContent =
+                            "Error loading Python:\n" + error;
+
+                    }
+
+                };
+
+                script.onerror = function () {
+
+                    document.getElementById("output").textContent =
+                        "Unable to load Python interpreter. Please check your internet connection.";
+
+                };
+
+                document.head.appendChild(script);
+
+            } catch (error) {
+
+                document.getElementById("output").textContent =
+                    "Error:\n" + error;
+
+            }
+        }
+
+
+        async function executePython(code) {
+
+            const output = document.getElementById("output");
+
+            try {
+
+                let printedOutput = "";
+
+                window.pyodide.setStdout({
+                    batched: function (text) {
+                        printedOutput += text;
+                    }
+                });
+
+                window.pyodide.setStderr({
+                    batched: function (text) {
+                        printedOutput += text;
+                    }
+                });
+
+                await window.pyodide.runPythonAsync(code);
+
+                output.textContent =
+                    printedOutput || "Program executed successfully.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Python Error:\n" + error;
+
+            }
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").textContent =
+                "Editor cleared.";
+
+        }
+    </script>
+
+</body>
+</html>
+```
