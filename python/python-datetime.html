@@ -1,0 +1,1108 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Datetime | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python datetime with simple examples for dates, times, formatting, timedelta and date calculations.">
+
+    <meta name="keywords"
+          content="Python datetime, Python date, Python time, Python timedelta, Python date formatting">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* CONTENT */
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        .content-box ul,
+        .content-box ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-box li {
+            margin-bottom: 8px;
+        }
+
+        /* INFO BOXES */
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* CODE */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        /* TABLE */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3776ab;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+        /* EDITOR */
+        .editor textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .run-btn {
+            background: #3776ab;
+        }
+
+        .run-btn:hover {
+            background: #285a85;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, "Courier New", monospace;
+            margin-top: 15px;
+        }
+
+        /* NAVIGATION */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #285a85;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="../index.html" class="logo">
+        Code <span>With Me</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#courses">Courses</a></li>
+        <li><a href="../index.html#about">About</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Python Datetime</h1>
+    <p>Learn how to work with dates, times and time differences in Python</p>
+</section>
+
+
+<div class="container">
+
+    <!-- INTRODUCTION -->
+    <section class="content-box">
+        <h2>What is the datetime Module?</h2>
+
+        <p>
+            Python provides the <strong>datetime</strong> module for working
+            with dates and times.
+        </p>
+
+        <p>
+            It can be used to get the current date and time, create specific
+            dates, format dates, compare dates and calculate differences
+            between dates.
+        </p>
+
+        <div class="highlight">
+            <strong>Simple idea:</strong>
+            The <code>datetime</code> module helps Python programs work
+            with dates and times.
+        </div>
+
+        <h3>Importing datetime</h3>
+
+        <pre><code>import datetime</code></pre>
+    </section>
+
+
+    <!-- CURRENT DATE -->
+    <section class="content-box">
+        <h2>Getting the Current Date</h2>
+
+        <p>
+            Use <code>datetime.date.today()</code> to get today's date.
+        </p>
+
+        <pre><code>import datetime
+
+today = datetime.date.today()
+
+print(today)</code></pre>
+
+        <p>Example output:</p>
+
+        <pre><code>2026-09-23</code></pre>
+    </section>
+
+
+    <!-- CURRENT DATETIME -->
+    <section class="content-box">
+        <h2>Getting the Current Date and Time</h2>
+
+        <p>
+            Use <code>datetime.datetime.now()</code> to get the current
+            local date and time.
+        </p>
+
+        <pre><code>import datetime
+
+current = datetime.datetime.now()
+
+print(current)</code></pre>
+
+        <p>
+            The exact output depends on the date and time when the program
+            is executed.
+        </p>
+    </section>
+
+
+    <!-- DATE OBJECT -->
+    <section class="content-box">
+        <h2>Creating a Date Object</h2>
+
+        <p>
+            You can create a specific date using the
+            <code>date()</code> constructor.
+        </p>
+
+        <pre><code>import datetime
+
+birthday = datetime.date(2005, 5, 15)
+
+print(birthday)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>2005-05-15</code></pre>
+
+        <p>
+            The order is:
+            <strong>year, month, day</strong>.
+        </p>
+    </section>
+
+
+    <!-- DATE ATTRIBUTES -->
+    <section class="content-box">
+        <h2>Accessing Date Information</h2>
+
+        <p>
+            You can access individual parts of a date using attributes.
+        </p>
+
+        <pre><code>import datetime
+
+date = datetime.date(2026, 9, 23)
+
+print(date.year)
+print(date.month)
+print(date.day)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>2026
+9
+23</code></pre>
+    </section>
+
+
+    <!-- TIME -->
+    <section class="content-box">
+        <h2>Creating a Time Object</h2>
+
+        <p>
+            The <code>time()</code> class can represent a time.
+        </p>
+
+        <pre><code>import datetime
+
+time = datetime.time(14, 30, 45)
+
+print(time)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>14:30:45</code></pre>
+
+        <h3>Accessing Time Values</h3>
+
+        <pre><code>import datetime
+
+time = datetime.time(14, 30, 45)
+
+print(time.hour)
+print(time.minute)
+print(time.second)</code></pre>
+    </section>
+
+
+    <!-- DATETIME OBJECT -->
+    <section class="content-box">
+        <h2>Creating a datetime Object</h2>
+
+        <p>
+            The <code>datetime()</code> class can represent both date and
+            time.
+        </p>
+
+        <pre><code>import datetime
+
+event = datetime.datetime(2026, 12, 25, 10, 30, 0)
+
+print(event)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>2026-12-25 10:30:00</code></pre>
+    </section>
+
+
+    <!-- FORMAT -->
+    <section class="content-box">
+        <h2>Formatting Dates with strftime()</h2>
+
+        <p>
+            The <code>strftime()</code> method converts a date or datetime
+            into a formatted string.
+        </p>
+
+        <pre><code>import datetime
+
+now = datetime.datetime.now()
+
+formatted = now.strftime("%d-%m-%Y")
+
+print(formatted)</code></pre>
+
+        <h3>Common Formatting Codes</h3>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Code</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td><code>%Y</code></td>
+                    <td>Four-digit year</td>
+                </tr>
+
+                <tr>
+                    <td><code>%y</code></td>
+                    <td>Two-digit year</td>
+                </tr>
+
+                <tr>
+                    <td><code>%m</code></td>
+                    <td>Month as a number</td>
+                </tr>
+
+                <tr>
+                    <td><code>%d</code></td>
+                    <td>Day of the month</td>
+                </tr>
+
+                <tr>
+                    <td><code>%A</code></td>
+                    <td>Full weekday name</td>
+                </tr>
+
+                <tr>
+                    <td><code>%a</code></td>
+                    <td>Short weekday name</td>
+                </tr>
+
+                <tr>
+                    <td><code>%B</code></td>
+                    <td>Full month name</td>
+                </tr>
+
+                <tr>
+                    <td><code>%b</code></td>
+                    <td>Short month name</td>
+                </tr>
+
+                <tr>
+                    <td><code>%H</code></td>
+                    <td>Hour in 24-hour format</td>
+                </tr>
+
+                <tr>
+                    <td><code>%M</code></td>
+                    <td>Minute</td>
+                </tr>
+
+                <tr>
+                    <td><code>%S</code></td>
+                    <td>Second</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- EXAMPLES FORMAT -->
+    <section class="content-box">
+        <h2>More Date Formatting Examples</h2>
+
+        <pre><code>import datetime
+
+now = datetime.datetime.now()
+
+print(now.strftime("%Y-%m-%d"))
+print(now.strftime("%d/%m/%Y"))
+print(now.strftime("%B %d, %Y"))
+print(now.strftime("%A"))
+print(now.strftime("%H:%M:%S"))</code></pre>
+
+        <p>
+            Formatting is useful when displaying dates in a user-friendly
+            format.
+        </p>
+    </section>
+
+
+    <!-- STRPTIME -->
+    <section class="content-box">
+        <h2>Converting a String to a Date</h2>
+
+        <p>
+            The <code>strptime()</code> method converts a string into a
+            datetime object.
+        </p>
+
+        <pre><code>import datetime
+
+date_string = "23-09-2026"
+
+date = datetime.datetime.strptime(
+    date_string,
+    "%d-%m-%Y"
+)
+
+print(date)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>2026-09-23 00:00:00</code></pre>
+    </section>
+
+
+    <!-- TIMEDELTA -->
+    <section class="content-box">
+        <h2>Using timedelta</h2>
+
+        <p>
+            <code>timedelta</code> represents a duration or difference
+            between dates and times.
+        </p>
+
+        <pre><code>import datetime
+
+today = datetime.date.today()
+
+future_date = today + datetime.timedelta(days=7)
+
+print(today)
+print(future_date)</code></pre>
+
+        <p>
+            This example calculates the date seven days from today.
+        </p>
+    </section>
+
+
+    <!-- SUBTRACT -->
+    <section class="content-box">
+        <h2>Subtracting Dates</h2>
+
+        <pre><code>import datetime
+
+date1 = datetime.date(2026, 9, 23)
+date2 = datetime.date(2026, 9, 30)
+
+difference = date2 - date1
+
+print(difference.days)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>7</code></pre>
+    </section>
+
+
+    <!-- ADD DAYS -->
+    <section class="content-box">
+        <h2>Adding Days</h2>
+
+        <pre><code>import datetime
+
+today = datetime.date.today()
+
+tomorrow = today + datetime.timedelta(days=1)
+
+print("Today:", today)
+print("Tomorrow:", tomorrow)</code></pre>
+    </section>
+
+
+    <!-- ADD WEEKS -->
+    <section class="content-box">
+        <h2>Adding Weeks</h2>
+
+        <pre><code>import datetime
+
+today = datetime.date.today()
+
+next_week = today + datetime.timedelta(weeks=1)
+
+print(next_week)</code></pre>
+    </section>
+
+
+    <!-- ADD MONTH APPROACH -->
+    <section class="content-box">
+        <h2>Working with Months</h2>
+
+        <p>
+            A month does not have a fixed number of days, so adding a month
+            is different from adding a fixed number of days.
+        </p>
+
+        <p>
+            For many simple programs, you can use
+            <code>timedelta</code> for day-based calculations.
+        </p>
+
+        <pre><code>import datetime
+
+date = datetime.date(2026, 9, 23)
+
+after_30_days = date + datetime.timedelta(days=30)
+
+print(after_30_days)</code></pre>
+
+        <div class="highlight">
+            <strong>Note:</strong>
+            Thirty days is not always the same as one calendar month.
+        </div>
+    </section>
+
+
+    <!-- COMPARING -->
+    <section class="content-box">
+        <h2>Comparing Dates</h2>
+
+        <p>
+            Date objects can be compared using comparison operators.
+        </p>
+
+        <pre><code>import datetime
+
+date1 = datetime.date(2026, 9, 23)
+date2 = datetime.date(2026, 12, 25)
+
+if date1 < date2:
+    print("date1 comes before date2")
+else:
+    print("date1 comes after date2")</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>date1 comes before date2</code></pre>
+    </section>
+
+
+    <!-- WEEKDAY -->
+    <section class="content-box">
+        <h2>Finding the Day of the Week</h2>
+
+        <p>
+            The <code>weekday()</code> method returns a number representing
+            the day of the week.
+        </p>
+
+        <pre><code>import datetime
+
+date = datetime.date(2026, 9, 23)
+
+print(date.weekday())</code></pre>
+
+        <p>
+            The result is between <code>0</code> and <code>6</code>,
+            where Monday is <code>0</code>.
+        </p>
+
+        <h3>Using isoweekday()</h3>
+
+        <pre><code>print(date.isoweekday())</code></pre>
+
+        <p>
+            Here, Monday is <code>1</code> and Sunday is <code>7</code>.
+        </p>
+    </section>
+
+
+    <!-- REPLACE -->
+    <section class="content-box">
+        <h2>Replacing Date or Time Values</h2>
+
+        <p>
+            The <code>replace()</code> method can create a new datetime
+            object with selected values changed.
+        </p>
+
+        <pre><code>import datetime
+
+date = datetime.datetime(2026, 9, 23)
+
+new_date = date.replace(year=2027)
+
+print(new_date)</code></pre>
+    </section>
+
+
+    <!-- UTC -->
+    <section class="content-box">
+        <h2>UTC Date and Time</h2>
+
+        <p>
+            Python also provides ways to work with UTC date and time.
+        </p>
+
+        <pre><code>from datetime import datetime, timezone
+
+current_utc = datetime.now(timezone.utc)
+
+print(current_utc)</code></pre>
+
+        <div class="highlight">
+            UTC is a common reference time used by applications and
+            computer systems around the world.
+        </div>
+    </section>
+
+
+    <!-- DATETIME CLASSES -->
+    <section class="content-box">
+        <h2>Important datetime Classes</h2>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Class</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td><code>date</code></td>
+                    <td>Represents a date</td>
+                </tr>
+
+                <tr>
+                    <td><code>time</code></td>
+                    <td>Represents a time</td>
+                </tr>
+
+                <tr>
+                    <td><code>datetime</code></td>
+                    <td>Represents date and time together</td>
+                </tr>
+
+                <tr>
+                    <td><code>timedelta</code></td>
+                    <td>Represents a duration or time difference</td>
+                </tr>
+
+                <tr>
+                    <td><code>timezone</code></td>
+                    <td>Represents a timezone</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- PRACTICAL -->
+    <section class="content-box">
+        <h2>Practical Example: Age Calculator</h2>
+
+        <p>
+            The datetime module can be used to calculate someone's age.
+        </p>
+
+        <pre><code>from datetime import date
+
+birth_date = date(2005, 5, 15)
+today = date.today()
+
+age = today.year - birth_date.year
+
+if (today.month, today.day) < (birth_date.month, birth_date.day):
+    age -= 1
+
+print("Age:", age)</code></pre>
+
+        <p>
+            This compares the birthday with today's date to calculate the
+            completed age.
+        </p>
+    </section>
+
+
+    <!-- PRACTICAL EVENT -->
+    <section class="content-box">
+        <h2>Practical Example: Event Countdown</h2>
+
+        <pre><code>from datetime import date
+
+today = date.today()
+event_date = date(2026, 12, 25)
+
+remaining = event_date - today
+
+print("Days remaining:", remaining.days)</code></pre>
+
+        <div class="success-box">
+            This technique can be used for countdowns, deadlines,
+            appointments and event management systems.
+        </div>
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+    <section class="content-box">
+        <h2>Common Mistakes</h2>
+
+        <ul>
+            <li>Forgetting to import the datetime module.</li>
+            <li>Using the wrong date format with <code>strptime()</code>.</li>
+            <li>Confusing <code>date</code>, <code>time</code> and <code>datetime</code>.</li>
+            <li>Using a string when a date object is required.</li>
+            <li>Forgetting that months and days have different ranges.</li>
+            <li>Confusing local time with UTC.</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>Tip:</strong>
+            Always check the expected date format before converting strings
+            into datetime objects.
+        </div>
+    </section>
+
+
+    <!-- IMPORTANT RULES -->
+    <section class="content-box">
+        <h2>Important Rules to Remember</h2>
+
+        <ol>
+            <li>Import the datetime module before using it.</li>
+            <li>Use <code>date</code> when you only need a date.</li>
+            <li>Use <code>time</code> when you only need a time.</li>
+            <li>Use <code>datetime</code> when you need both date and time.</li>
+            <li>Use <code>strftime()</code> to format datetime values.</li>
+            <li>Use <code>strptime()</code> to convert formatted strings to datetime.</li>
+            <li>Use <code>timedelta</code> for date and time differences.</li>
+            <li>Use timezone-aware datetime values when timezone information matters.</li>
+        </ol>
+    </section>
+
+
+    <!-- PRACTICE -->
+    <section class="content-box">
+        <h2>Practice Exercise</h2>
+
+        <p>
+            Create a Python program that:
+        </p>
+
+        <ol>
+            <li>Displays today's date.</li>
+            <li>Displays the current date and time.</li>
+            <li>Displays the current year and month.</li>
+            <li>Calculates the date after 30 days.</li>
+            <li>Calculates the number of days between two dates.</li>
+        </ol>
+
+        <div class="highlight">
+            <strong>Challenge:</strong>
+            Create an event countdown that calculates how many days remain
+            until your next birthday.
+        </div>
+    </section>
+
+
+    <!-- INTERACTIVE EDITOR -->
+    <section class="content-box">
+        <h2>Python Datetime Practice Editor</h2>
+
+        <p>
+            Try the example below and click <strong>Run Demo</strong>.
+        </p>
+
+        <div class="editor">
+
+            <textarea id="codeEditor">from datetime import date, timedelta
+
+today = date(2026, 9, 23)
+
+print("Today:", today)
+
+tomorrow = today + timedelta(days=1)
+
+print("Tomorrow:", tomorrow)
+
+next_week = today + timedelta(days=7)
+
+print("Next week:", next_week)</textarea>
+
+            <div class="button-group">
+
+                <button class="run-btn" onclick="runDemo()">
+                    Run Demo
+                </button>
+
+                <button class="clear-btn" onclick="clearEditor()">
+                    Clear
+                </button>
+
+            </div>
+
+            <div id="outputBox">
+Click "Run Demo" to see the expected output.
+            </div>
+
+        </div>
+
+        <div class="warning-box">
+            <strong>Note:</strong>
+            This is a browser-based demonstration. It does not execute real
+            Python code.
+        </div>
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section class="content-box">
+        <h2>Summary</h2>
+
+        <ul>
+            <li>The <code>datetime</code> module is used for dates and times.</li>
+            <li><code>date.today()</code> returns today's date.</li>
+            <li><code>datetime.now()</code> returns the current local date and time.</li>
+            <li><code>strftime()</code> formats dates and times.</li>
+            <li><code>strptime()</code> converts strings into datetime objects.</li>
+            <li><code>timedelta</code> is used for date and time differences.</li>
+            <li>Date objects can be compared and calculated.</li>
+            <li>Timezone-aware datetime values are useful when timezone matters.</li>
+        </ul>
+
+        <div class="success-box">
+            <strong>Next:</strong>
+            Continue to the Python Regular Expressions lesson to learn how
+            to search and work with text patterns.
+        </div>
+    </section>
+
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+
+        <a href="python-json.html">
+            ← Previous: JSON
+        </a>
+
+        <a href="python-regex.html">
+            Next: Regular Expressions →
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Code With Me. All Rights Reserved.</p>
+    <p>Learn HTML, CSS, JavaScript and Python.</p>
+</footer>
+
+
+<script>
+    function runDemo() {
+
+        const output = document.getElementById("outputBox");
+
+        output.textContent =
+`Today: 2026-09-23
+Tomorrow: 2026-09-24
+Next week: 2026-09-30`;
+    }
+
+
+    function clearEditor() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("outputBox").textContent =
+            "Editor cleared.";
+    }
+</script>
+
+</body>
+</html>
+```
