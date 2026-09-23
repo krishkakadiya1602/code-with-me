@@ -1,0 +1,894 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python If Else | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python if, else, and elif statements with examples and an interactive Python code editor.">
+
+    <meta name="keywords"
+          content="Python if else, Python elif, Python conditions, Python conditional statements, learn Python">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Highlight */
+        .highlight {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            color: #be185d;
+            font-family: Consolas, monospace;
+        }
+
+        /* Lists */
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Editor */
+        .editor {
+            background: #1f2937;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .editor h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 250px;
+            resize: vertical;
+            background: #111827;
+            color: #e5e7eb;
+            border: 1px solid #4b5563;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        #output {
+            background: white;
+            color: #111827;
+            min-height: 100px;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 35px 0;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            padding: 13px 22px;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Python If Else</h1>
+        <p>Learn how to make decisions in Python using conditional statements.</p>
+    </section>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="card">
+            <h2>Introduction to Python If Else</h2>
+
+            <p>
+                In Python, conditional statements are used to make decisions
+                based on conditions.
+            </p>
+
+            <p>
+                The most commonly used conditional statements are:
+            </p>
+
+            <ul>
+                <li><strong>if</strong></li>
+                <li><strong>elif</strong></li>
+                <li><strong>else</strong></li>
+            </ul>
+
+            <div class="highlight">
+                <strong>Example:</strong> If a student's marks are greater than
+                or equal to 40, the student passes. Otherwise, the student fails.
+            </div>
+        </section>
+
+        <!-- If Statement -->
+        <section class="card">
+            <h2>1. Python if Statement</h2>
+
+            <p>
+                The <span class="inline-code">if</span> statement executes a
+                block of code when a condition is true.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>if condition:
+    # code to execute</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>age = 18
+
+if age >= 18:
+    print("You are an adult.")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>You are an adult.</code></pre>
+        </section>
+
+        <!-- Indentation -->
+        <section class="card">
+            <h2>2. Indentation in Python</h2>
+
+            <p>
+                Python uses indentation to define a block of code.
+                Usually, four spaces are used.
+            </p>
+
+            <pre><code>age = 20
+
+if age >= 18:
+    print("Adult")
+    print("You can vote.")</code></pre>
+
+            <div class="highlight">
+                <strong>Important:</strong>
+                Do not forget indentation after an
+                <span class="inline-code">if</span> statement.
+            </div>
+        </section>
+
+        <!-- If Else -->
+        <section class="card">
+            <h2>3. Python if...else Statement</h2>
+
+            <p>
+                The <span class="inline-code">else</span> block runs when
+                the <span class="inline-code">if</span> condition is false.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>if condition:
+    # if block
+else:
+    # else block</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>age = 15
+
+if age >= 18:
+    print("You are an adult.")
+else:
+    print("You are a minor.")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>You are a minor.</code></pre>
+        </section>
+
+        <!-- If Elif Else -->
+        <section class="card">
+            <h2>4. Python if...elif...else</h2>
+
+            <p>
+                The <span class="inline-code">elif</span> statement is used
+                when you want to check multiple conditions.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>if condition1:
+    # code
+elif condition2:
+    # code
+else:
+    # code</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>marks = 75
+
+if marks >= 90:
+    print("Grade A+")
+elif marks >= 75:
+    print("Grade A")
+elif marks >= 60:
+    print("Grade B")
+else:
+    print("Grade C")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Grade A</code></pre>
+        </section>
+
+        <!-- Multiple elif -->
+        <section class="card">
+            <h2>5. Multiple elif Statements</h2>
+
+            <p>
+                You can use multiple <span class="inline-code">elif</span>
+                statements when there are many conditions.
+            </p>
+
+            <pre><code>marks = 82
+
+if marks >= 90:
+    print("Excellent")
+elif marks >= 80:
+    print("Very Good")
+elif marks >= 70:
+    print("Good")
+elif marks >= 60:
+    print("Average")
+else:
+    print("Need Improvement")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Very Good</code></pre>
+        </section>
+
+        <!-- Comparison -->
+        <section class="card">
+            <h2>6. If Else with Comparison Operators</h2>
+
+            <p>
+                Comparison operators are commonly used with conditions.
+            </p>
+
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>==</td>
+                    <td>Equal to</td>
+                    <td>5 == 5</td>
+                </tr>
+
+                <tr>
+                    <td>!=</td>
+                    <td>Not equal to</td>
+                    <td>5 != 3</td>
+                </tr>
+
+                <tr>
+                    <td>&gt;</td>
+                    <td>Greater than</td>
+                    <td>8 &gt; 5</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;</td>
+                    <td>Less than</td>
+                    <td>3 &lt; 7</td>
+                </tr>
+
+                <tr>
+                    <td>&gt;=</td>
+                    <td>Greater than or equal to</td>
+                    <td>10 &gt;= 10</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;=</td>
+                    <td>Less than or equal to</td>
+                    <td>5 &lt;= 10</td>
+                </tr>
+            </table>
+
+            <h3>Example</h3>
+
+            <pre><code>number = 10
+
+if number > 5:
+    print("Number is greater than 5")</code></pre>
+        </section>
+
+        <!-- Logical Operators -->
+        <section class="card">
+            <h2>7. If Else with Logical Operators</h2>
+
+            <p>
+                Python provides logical operators such as
+                <span class="inline-code">and</span>,
+                <span class="inline-code">or</span>, and
+                <span class="inline-code">not</span>.
+            </p>
+
+            <h3>Using and</h3>
+
+            <pre><code>age = 20
+has_id = True
+
+if age >= 18 and has_id:
+    print("Access allowed")
+else:
+    print("Access denied")</code></pre>
+
+            <h3>Using or</h3>
+
+            <pre><code>day = "Sunday"
+
+if day == "Saturday" or day == "Sunday":
+    print("Weekend")
+else:
+    print("Weekday")</code></pre>
+
+            <h3>Using not</h3>
+
+            <pre><code>logged_in = False
+
+if not logged_in:
+    print("Please login.")</code></pre>
+        </section>
+
+        <!-- Nested If -->
+        <section class="card">
+            <h2>8. Nested if Statement</h2>
+
+            <p>
+                An <strong>if statement inside another if statement</strong>
+                is called a nested if statement.
+            </p>
+
+            <pre><code>age = 20
+has_id = True
+
+if age >= 18:
+    if has_id:
+        print("You can enter.")
+    else:
+        print("ID is required.")
+else:
+    print("You are under 18.")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>You can enter.</code></pre>
+        </section>
+
+        <!-- Even Odd -->
+        <section class="card">
+            <h2>9. Check Even or Odd</h2>
+
+            <p>
+                We can use an if...else statement to check whether a number
+                is even or odd.
+            </p>
+
+            <pre><code>number = 8
+
+if number % 2 == 0:
+    print("Even number")
+else:
+    print("Odd number")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Even number</code></pre>
+        </section>
+
+        <!-- Positive Negative -->
+        <section class="card">
+            <h2>10. Check Positive, Negative or Zero</h2>
+
+            <pre><code>number = -5
+
+if number > 0:
+    print("Positive")
+elif number < 0:
+    print("Negative")
+else:
+    print("Zero")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Negative</code></pre>
+        </section>
+
+        <!-- Ternary -->
+        <section class="card">
+            <h2>11. Python One-Line if...else</h2>
+
+            <p>
+                Python allows you to write a simple if...else statement
+                in one line.
+            </p>
+
+            <pre><code>age = 20
+
+message = "Adult" if age >= 18 else "Minor"
+
+print(message)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Adult</code></pre>
+        </section>
+
+        <!-- String Conditions -->
+        <section class="card">
+            <h2>12. If Else with Strings</h2>
+
+            <pre><code>username = "admin"
+
+if username == "admin":
+    print("Welcome Admin")
+else:
+    print("Welcome User")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Welcome Admin</code></pre>
+        </section>
+
+        <!-- Membership -->
+        <section class="card">
+            <h2>13. If Else with Membership Operators</h2>
+
+            <p>
+                The <span class="inline-code">in</span> operator can be used
+                to check whether an item exists in a sequence.
+            </p>
+
+            <pre><code>fruits = ["apple", "banana", "mango"]
+
+if "mango" in fruits:
+    print("Mango is available.")
+else:
+    print("Mango is not available.")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Mango is available.</code></pre>
+        </section>
+
+        <!-- Input -->
+        <section class="card">
+            <h2>14. If Else with User Input</h2>
+
+            <p>
+                You can use conditional statements together with
+                <span class="inline-code">input()</span>.
+            </p>
+
+            <pre><code>age = int(input("Enter your age: "))
+
+if age >= 18:
+    print("You are eligible.")
+else:
+    print("You are not eligible.")</code></pre>
+
+            <div class="highlight">
+                <strong>Note:</strong>
+                <span class="inline-code">input()</span> returns text,
+                so <span class="inline-code">int()</span> is used when
+                we need a number.
+            </div>
+        </section>
+
+        <!-- Important Points -->
+        <section class="card">
+            <h2>Important Points</h2>
+
+            <ul>
+                <li>Use <strong>if</strong> to test a condition.</li>
+                <li>Use <strong>elif</strong> to test additional conditions.</li>
+                <li>Use <strong>else</strong> when all previous conditions are false.</li>
+                <li>Python uses indentation to define code blocks.</li>
+                <li>Conditions usually return either True or False.</li>
+                <li>You can combine conditions using <strong>and</strong>, <strong>or</strong>, and <strong>not</strong>.</li>
+                <li>You can use nested if statements for more complex decisions.</li>
+                <li>Python also supports a one-line conditional expression.</li>
+            </ul>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="card">
+            <h2>Interactive Python Code Editor</h2>
+
+            <p>
+                Write Python code below and click
+                <strong>Run Code</strong> to execute it directly in your browser.
+            </p>
+
+            <div class="editor">
+
+                <h3>Try It Yourself</h3>
+
+                <textarea id="code">age = 20
+
+if age >= 18:
+    print("You are an adult.")
+else:
+    print("You are a minor.")</textarea>
+
+                <div class="buttons">
+                    <button class="run-btn" onclick="runPython()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+                </div>
+
+                <div id="output">Output will appear here...</div>
+
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="python-tuples.html">
+                ← Previous: Tuples
+            </a>
+
+            <a href="python-dictionaries.html">
+                Next: Dictionaries →
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <!-- Pyodide -->
+    <script>
+        let pyodide = null;
+
+        async function loadPython() {
+            const output = document.getElementById("output");
+
+            output.textContent = "Loading Python...";
+
+            try {
+                pyodide = await loadPyodide();
+
+                output.textContent =
+                    "Python is ready! Click Run Code.";
+            } catch (error) {
+                output.textContent =
+                    "Error loading Python: " + error;
+            }
+        }
+
+        async function runPython() {
+
+            const output = document.getElementById("output");
+            const code = document.getElementById("code").value;
+
+            if (!pyodide) {
+                output.textContent =
+                    "Python is still loading. Please wait a moment.";
+                return;
+            }
+
+            output.textContent = "";
+
+            try {
+
+                let printedOutput = "";
+
+                pyodide.setStdout({
+                    batched: (text) => {
+                        printedOutput += text;
+                    }
+                });
+
+                await pyodide.runPythonAsync(code);
+
+                output.textContent =
+                    printedOutput || "Code executed successfully.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Error:\n" + error;
+            }
+        }
+
+        function clearCode() {
+            document.getElementById("code").value = "";
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+        }
+
+        const script = document.createElement("script");
+
+        script.src =
+            "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+        script.onload = loadPython;
+
+        document.head.appendChild(script);
+    </script>
+
+</body>
+</html>
+```
