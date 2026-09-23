@@ -1,0 +1,1132 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Functions | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python functions with examples including parameters, arguments, return values, default arguments, recursion and lambda functions.">
+
+    <meta name="keywords"
+          content="Python functions, Python def, Python parameters, Python arguments, Python return, Python lambda, Python recursion">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Highlight */
+        .highlight {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            color: #be185d;
+            font-family: Consolas, monospace;
+        }
+
+        /* Lists */
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Editor */
+        .editor {
+            background: #1f2937;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .editor h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            resize: vertical;
+            background: #111827;
+            color: #e5e7eb;
+            border: 1px solid #4b5563;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        #output {
+            background: white;
+            color: #111827;
+            min-height: 100px;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 35px 0;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            padding: 13px 22px;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Python Functions</h1>
+        <p>Learn how to create reusable blocks of code using Python functions.</p>
+    </section>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="card">
+            <h2>Introduction to Python Functions</h2>
+
+            <p>
+                A <strong>function</strong> is a reusable block of code that
+                performs a specific task.
+            </p>
+
+            <p>
+                Functions help make programs:
+            </p>
+
+            <ul>
+                <li>Reusable</li>
+                <li>Organized</li>
+                <li>Easier to understand</li>
+                <li>Easier to maintain</li>
+                <li>Less repetitive</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>Example:</strong>
+                Instead of writing the same code multiple times, you can
+                place it inside a function and call that function whenever
+                you need it.
+            </div>
+        </section>
+
+        <!-- Syntax -->
+        <section class="card">
+            <h2>1. Creating a Function</h2>
+
+            <p>
+                Python uses the <span class="inline-code">def</span> keyword
+                to create a function.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>def function_name():
+    # code to execute</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>def greet():
+    print("Hello, welcome to Python!")
+
+greet()</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Hello, welcome to Python!</code></pre>
+        </section>
+
+        <!-- Calling -->
+        <section class="card">
+            <h2>2. Calling a Function</h2>
+
+            <p>
+                After creating a function, you need to call it to execute
+                its code.
+            </p>
+
+            <pre><code>def message():
+    print("Learning Python is fun!")
+
+message()</code></pre>
+
+            <p>
+                Here, <span class="inline-code">message()</span> calls the
+                function.
+            </p>
+        </section>
+
+        <!-- Parameters -->
+        <section class="card">
+            <h2>3. Function Parameters</h2>
+
+            <p>
+                Parameters are variables written inside the function
+                definition.
+            </p>
+
+            <pre><code>def greet(name):
+    print("Hello", name)
+
+greet("Krish")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Hello Krish</code></pre>
+        </section>
+
+        <!-- Multiple Parameters -->
+        <section class="card">
+            <h2>4. Multiple Parameters</h2>
+
+            <p>
+                A function can have multiple parameters.
+            </p>
+
+            <pre><code>def add(a, b):
+    print(a + b)
+
+add(10, 20)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>30</code></pre>
+        </section>
+
+        <!-- Arguments -->
+        <section class="card">
+            <h2>5. Function Arguments</h2>
+
+            <p>
+                Values passed to a function when it is called are called
+                <strong>arguments</strong>.
+            </p>
+
+            <pre><code>def student(name, age):
+    print("Name:", name)
+    print("Age:", age)
+
+student("Krish", 20)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Name: Krish
+Age: 20</code></pre>
+        </section>
+
+        <!-- Return -->
+        <section class="card">
+            <h2>6. Return Statement</h2>
+
+            <p>
+                The <span class="inline-code">return</span> statement sends
+                a value back from a function.
+            </p>
+
+            <pre><code>def add(a, b):
+    return a + b
+
+result = add(10, 20)
+
+print(result)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>30</code></pre>
+        </section>
+
+        <!-- Return Multiple -->
+        <section class="card">
+            <h2>7. Returning Multiple Values</h2>
+
+            <p>
+                Python functions can return multiple values.
+            </p>
+
+            <pre><code>def calculate(a, b):
+    return a + b, a - b, a * b
+
+addition, subtraction, multiplication = calculate(10, 5)
+
+print(addition)
+print(subtraction)
+print(multiplication)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>15
+5
+50</code></pre>
+        </section>
+
+        <!-- Default -->
+        <section class="card">
+            <h2>8. Default Parameter</h2>
+
+            <p>
+                A parameter can have a default value.
+            </p>
+
+            <pre><code>def greet(name="Guest"):
+    print("Hello", name)
+
+greet()
+greet("Krish")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Hello Guest
+Hello Krish</code></pre>
+        </section>
+
+        <!-- Keyword -->
+        <section class="card">
+            <h2>9. Keyword Arguments</h2>
+
+            <p>
+                Keyword arguments allow you to specify parameter names
+                when calling a function.
+            </p>
+
+            <pre><code>def student(name, age):
+    print("Name:", name)
+    print("Age:", age)
+
+student(age=20, name="Krish")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Name: Krish
+Age: 20</code></pre>
+        </section>
+
+        <!-- Positional -->
+        <section class="card">
+            <h2>10. Positional Arguments</h2>
+
+            <p>
+                Positional arguments are matched according to their position.
+            </p>
+
+            <pre><code>def student(name, age):
+    print(name)
+    print(age)
+
+student("Krish", 20)</code></pre>
+        </section>
+
+        <!-- *args -->
+        <section class="card">
+            <h2>11. Arbitrary Arguments: *args</h2>
+
+            <p>
+                Use <span class="inline-code">*args</span> when you don't
+                know how many positional arguments will be passed.
+            </p>
+
+            <pre><code>def total(*numbers):
+
+    result = 0
+
+    for number in numbers:
+        result += number
+
+    return result
+
+print(total(10, 20, 30, 40))</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>100</code></pre>
+        </section>
+
+        <!-- **kwargs -->
+        <section class="card">
+            <h2>12. Arbitrary Keyword Arguments: **kwargs</h2>
+
+            <p>
+                Use <span class="inline-code">**kwargs</span> when you want
+                to accept multiple keyword arguments.
+            </p>
+
+            <pre><code>def student_info(**details):
+
+    for key, value in details.items():
+        print(key, ":", value)
+
+student_info(
+    name="Krish",
+    age=20,
+    course="BSc IT"
+)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>name : Krish
+age : 20
+course : BSc IT</code></pre>
+        </section>
+
+        <!-- Function with List -->
+        <section class="card">
+            <h2>13. Passing a List to a Function</h2>
+
+            <pre><code>def show_fruits(fruits):
+
+    for fruit in fruits:
+        print(fruit)
+
+my_fruits = ["Apple", "Banana", "Mango"]
+
+show_fruits(my_fruits)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Apple
+Banana
+Mango</code></pre>
+        </section>
+
+        <!-- Function with Condition -->
+        <section class="card">
+            <h2>14. Function with if...else</h2>
+
+            <pre><code>def check_age(age):
+
+    if age >= 18:
+        return "Adult"
+    else:
+        return "Minor"
+
+print(check_age(20))</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Adult</code></pre>
+        </section>
+
+        <!-- Scope -->
+        <section class="card">
+            <h2>15. Local and Global Variables</h2>
+
+            <h3>Local Variable</h3>
+
+            <p>
+                A variable created inside a function is generally local
+                to that function.
+            </p>
+
+            <pre><code>def example():
+
+    message = "Hello"
+
+    print(message)
+
+example()</code></pre>
+
+            <h3>Global Variable</h3>
+
+            <p>
+                A variable created outside a function has global scope.
+            </p>
+
+            <pre><code>message = "Hello Python"
+
+def show_message():
+    print(message)
+
+show_message()</code></pre>
+        </section>
+
+        <!-- Global Keyword -->
+        <section class="card">
+            <h2>16. global Keyword</h2>
+
+            <p>
+                The <span class="inline-code">global</span> keyword can be
+                used when you need to modify a global variable inside a
+                function.
+            </p>
+
+            <pre><code>count = 0
+
+def increase():
+
+    global count
+
+    count += 1
+
+increase()
+
+print(count)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1</code></pre>
+        </section>
+
+        <!-- Recursion -->
+        <section class="card">
+            <h2>17. Recursion</h2>
+
+            <p>
+                A function that calls itself is called a
+                <strong>recursive function</strong>.
+            </p>
+
+            <pre><code>def countdown(number):
+
+    if number == 0:
+        return
+
+    print(number)
+
+    countdown(number - 1)
+
+countdown(5)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>5
+4
+3
+2
+1</code></pre>
+
+            <div class="highlight">
+                Recursive functions must have a condition that eventually
+                stops the recursion.
+            </div>
+        </section>
+
+        <!-- Factorial -->
+        <section class="card">
+            <h2>18. Factorial Using Function</h2>
+
+            <pre><code>def factorial(number):
+
+    result = 1
+
+    for i in range(1, number + 1):
+        result *= i
+
+    return result
+
+print(factorial(5))</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>120</code></pre>
+        </section>
+
+        <!-- Lambda -->
+        <section class="card">
+            <h2>19. Lambda Function</h2>
+
+            <p>
+                A lambda function is a small anonymous function.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>lambda arguments: expression</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>square = lambda x: x * x
+
+print(square(5))</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>25</code></pre>
+        </section>
+
+        <!-- Lambda Multiple -->
+        <section class="card">
+            <h2>20. Lambda with Multiple Arguments</h2>
+
+            <pre><code>add = lambda a, b: a + b
+
+print(add(10, 20))</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>30</code></pre>
+        </section>
+
+        <!-- Built-in Functions -->
+        <section class="card">
+            <h2>21. Built-in Python Functions</h2>
+
+            <p>
+                Python already provides many useful built-in functions.
+            </p>
+
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>print()</td>
+                    <td>Displays output</td>
+                    <td>print("Hello")</td>
+                </tr>
+
+                <tr>
+                    <td>len()</td>
+                    <td>Returns length</td>
+                    <td>len("Python")</td>
+                </tr>
+
+                <tr>
+                    <td>max()</td>
+                    <td>Returns largest value</td>
+                    <td>max(10, 20)</td>
+                </tr>
+
+                <tr>
+                    <td>min()</td>
+                    <td>Returns smallest value</td>
+                    <td>min(10, 20)</td>
+                </tr>
+
+                <tr>
+                    <td>sum()</td>
+                    <td>Returns total</td>
+                    <td>sum([1, 2, 3])</td>
+                </tr>
+
+                <tr>
+                    <td>type()</td>
+                    <td>Returns data type</td>
+                    <td>type(10)</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Docstring -->
+        <section class="card">
+            <h2>22. Function Documentation</h2>
+
+            <p>
+                A function can contain a documentation string called a
+                <strong>docstring</strong>.
+            </p>
+
+            <pre><code>def greet(name):
+    """This function greets a person."""
+    print("Hello", name)
+
+greet("Krish")</code></pre>
+        </section>
+
+        <!-- Practical Example -->
+        <section class="card">
+            <h2>23. Practical Example</h2>
+
+            <p>
+                The following function calculates a student's result.
+            </p>
+
+            <pre><code>def calculate_result(marks):
+
+    total = sum(marks)
+    average = total / len(marks)
+
+    if average >= 40:
+        result = "Pass"
+    else:
+        result = "Fail"
+
+    return total, average, result
+
+
+marks = [70, 80, 65, 75]
+
+total, average, result = calculate_result(marks)
+
+print("Total:", total)
+print("Average:", average)
+print("Result:", result)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Total: 290
+Average: 72.5
+Result: Pass</code></pre>
+        </section>
+
+        <!-- Quick Reference -->
+        <section class="card">
+            <h2>Python Functions Quick Reference</h2>
+
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Syntax</th>
+                </tr>
+
+                <tr>
+                    <td>Create function</td>
+                    <td>def function():</td>
+                </tr>
+
+                <tr>
+                    <td>Parameter</td>
+                    <td>def greet(name):</td>
+                </tr>
+
+                <tr>
+                    <td>Return value</td>
+                    <td>return value</td>
+                </tr>
+
+                <tr>
+                    <td>Default parameter</td>
+                    <td>def greet(name="Guest"):</td>
+                </tr>
+
+                <tr>
+                    <td>Multiple arguments</td>
+                    <td>*args</td>
+                </tr>
+
+                <tr>
+                    <td>Keyword arguments</td>
+                    <td>**kwargs</td>
+                </tr>
+
+                <tr>
+                    <td>Anonymous function</td>
+                    <td>lambda</td>
+                </tr>
+
+                <tr>
+                    <td>Recursive function</td>
+                    <td>Function calling itself</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Important Points -->
+        <section class="card">
+            <h2>Important Points</h2>
+
+            <ul>
+                <li>Use <span class="inline-code">def</span> to define a function.</li>
+                <li>Call a function using its name followed by parentheses.</li>
+                <li>Parameters receive values passed to a function.</li>
+                <li>Arguments are the actual values passed during a function call.</li>
+                <li>Use <span class="inline-code">return</span> to return a result.</li>
+                <li>Functions can have default parameters.</li>
+                <li><span class="inline-code">*args</span> accepts multiple positional arguments.</li>
+                <li><span class="inline-code">**kwargs</span> accepts multiple keyword arguments.</li>
+                <li>Variables inside functions can have local scope.</li>
+                <li>Lambda functions are small anonymous functions.</li>
+                <li>A recursive function calls itself.</li>
+            </ul>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="card">
+            <h2>Interactive Python Code Editor</h2>
+
+            <p>
+                Write your Python function below and click
+                <strong>Run Code</strong>.
+            </p>
+
+            <div class="editor">
+
+                <h3>Try It Yourself</h3>
+
+                <textarea id="code">def greet(name):
+    return "Hello " + name
+
+message = greet("Krish")
+
+print(message)</textarea>
+
+                <div class="buttons">
+
+                    <button class="run-btn" onclick="runPython()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="python-while-loop.html">
+                ← Previous: While Loop
+            </a>
+
+            <a href="python-modules.html">
+                Next: Modules →
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <!-- Pyodide -->
+    <script>
+        let pyodide = null;
+
+        async function loadPython() {
+
+            const output = document.getElementById("output");
+
+            output.textContent = "Loading Python...";
+
+            try {
+
+                pyodide = await loadPyodide();
+
+                output.textContent =
+                    "Python is ready! Click Run Code.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Error loading Python: " + error;
+            }
+        }
+
+        async function runPython() {
+
+            const output = document.getElementById("output");
+            const code = document.getElementById("code").value;
+
+            if (!pyodide) {
+
+                output.textContent =
+                    "Python is still loading. Please wait a moment.";
+
+                return;
+            }
+
+            output.textContent = "";
+
+            try {
+
+                let printedOutput = "";
+
+                pyodide.setStdout({
+                    batched: (text) => {
+                        printedOutput += text;
+                    }
+                });
+
+                await pyodide.runPythonAsync(code);
+
+                output.textContent =
+                    printedOutput || "Code executed successfully.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Error:\n" + error;
+            }
+        }
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+        }
+
+        const script = document.createElement("script");
+
+        script.src =
+            "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+        script.onload = loadPython;
+
+        document.head.appendChild(script);
+    </script>
+
+</body>
+</html>
+```
