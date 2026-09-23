@@ -1,0 +1,1031 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python For Loop | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python for loops with range, lists, strings, nested loops, break, continue and practical examples.">
+
+    <meta name="keywords"
+          content="Python for loop, Python range, Python loops, Python nested loop, Python break continue">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Highlight */
+        .highlight {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            color: #be185d;
+            font-family: Consolas, monospace;
+        }
+
+        /* Lists */
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Editor */
+        .editor {
+            background: #1f2937;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .editor h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 280px;
+            resize: vertical;
+            background: #111827;
+            color: #e5e7eb;
+            border: 1px solid #4b5563;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        #output {
+            background: white;
+            color: #111827;
+            min-height: 100px;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 35px 0;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            padding: 13px 22px;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Python For Loop</h1>
+        <p>Learn how to repeat code using Python for loops.</p>
+    </section>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="card">
+            <h2>Introduction to Python For Loop</h2>
+
+            <p>
+                A <strong>for loop</strong> is used to repeat a block of code
+                for each item in a sequence or iterable.
+            </p>
+
+            <p>
+                Python for loops can be used with:
+            </p>
+
+            <ul>
+                <li>Lists</li>
+                <li>Tuples</li>
+                <li>Strings</li>
+                <li>Dictionaries</li>
+                <li>Sets</li>
+                <li>Ranges</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>Example:</strong>
+                If you have a list of five fruits, a for loop can
+                automatically process each fruit one by one.
+            </div>
+        </section>
+
+        <!-- Syntax -->
+        <section class="card">
+            <h2>1. Python For Loop Syntax</h2>
+
+            <p>
+                The basic syntax of a Python for loop is:
+            </p>
+
+            <pre><code>for variable in sequence:
+    # code to execute</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>fruits = ["apple", "banana", "mango"]
+
+for fruit in fruits:
+    print(fruit)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>apple
+banana
+mango</code></pre>
+        </section>
+
+        <!-- Range -->
+        <section class="card">
+            <h2>2. Using range()</h2>
+
+            <p>
+                The <span class="inline-code">range()</span> function
+                generates a sequence of numbers.
+            </p>
+
+            <h3>Example</h3>
+
+            <pre><code>for number in range(5):
+    print(number)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>0
+1
+2
+3
+4</code></pre>
+
+            <div class="highlight">
+                <strong>Remember:</strong>
+                <span class="inline-code">range(5)</span> starts from
+                0 and stops before 5.
+            </div>
+        </section>
+
+        <!-- Range Start -->
+        <section class="card">
+            <h2>3. range() with Start and Stop</h2>
+
+            <p>
+                You can provide a starting value and an ending value.
+            </p>
+
+            <pre><code>for number in range(1, 6):
+    print(number)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+3
+4
+5</code></pre>
+
+            <p>
+                The ending value is not included.
+            </p>
+        </section>
+
+        <!-- Range Step -->
+        <section class="card">
+            <h2>4. range() with Step</h2>
+
+            <p>
+                The third argument of <span class="inline-code">range()</span>
+                specifies the step.
+            </p>
+
+            <pre><code>for number in range(0, 11, 2):
+    print(number)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>0
+2
+4
+6
+8
+10</code></pre>
+        </section>
+
+        <!-- Reverse Range -->
+        <section class="card">
+            <h2>5. Reverse For Loop</h2>
+
+            <p>
+                A negative step can be used to count backwards.
+            </p>
+
+            <pre><code>for number in range(5, 0, -1):
+    print(number)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>5
+4
+3
+2
+1</code></pre>
+        </section>
+
+        <!-- String -->
+        <section class="card">
+            <h2>6. Loop Through a String</h2>
+
+            <p>
+                A for loop can process each character of a string.
+            </p>
+
+            <pre><code>word = "Python"
+
+for character in word:
+    print(character)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>P
+y
+t
+h
+o
+n</code></pre>
+        </section>
+
+        <!-- List -->
+        <section class="card">
+            <h2>7. Loop Through a List</h2>
+
+            <pre><code>numbers = [10, 20, 30, 40, 50]
+
+for number in numbers:
+    print(number)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>10
+20
+30
+40
+50</code></pre>
+        </section>
+
+        <!-- Tuple -->
+        <section class="card">
+            <h2>8. Loop Through a Tuple</h2>
+
+            <pre><code>colors = ("red", "green", "blue")
+
+for color in colors:
+    print(color)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>red
+green
+blue</code></pre>
+        </section>
+
+        <!-- Set -->
+        <section class="card">
+            <h2>9. Loop Through a Set</h2>
+
+            <pre><code>numbers = {10, 20, 30}
+
+for number in numbers:
+    print(number)</code></pre>
+
+            <div class="highlight">
+                <strong>Note:</strong>
+                Sets are unordered, so the output order is not guaranteed.
+            </div>
+        </section>
+
+        <!-- Dictionary -->
+        <section class="card">
+            <h2>10. Loop Through a Dictionary</h2>
+
+            <h3>Loop Through Keys</h3>
+
+            <pre><code>student = {
+    "name": "Krish",
+    "age": 20,
+    "course": "BSc IT"
+}
+
+for key in student:
+    print(key)</code></pre>
+
+            <h3>Loop Through Values</h3>
+
+            <pre><code>for value in student.values():
+    print(value)</code></pre>
+
+            <h3>Loop Through Keys and Values</h3>
+
+            <pre><code>for key, value in student.items():
+    print(key, ":", value)</code></pre>
+        </section>
+
+        <!-- Enumerate -->
+        <section class="card">
+            <h2>11. Using enumerate()</h2>
+
+            <p>
+                The <span class="inline-code">enumerate()</span> function
+                provides both the index and the value.
+            </p>
+
+            <pre><code>fruits = ["apple", "banana", "mango"]
+
+for index, fruit in enumerate(fruits):
+    print(index, fruit)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>0 apple
+1 banana
+2 mango</code></pre>
+        </section>
+
+        <!-- Break -->
+        <section class="card">
+            <h2>12. Using break</h2>
+
+            <p>
+                The <span class="inline-code">break</span> statement stops
+                the loop immediately.
+            </p>
+
+            <pre><code>for number in range(1, 10):
+
+    if number == 5:
+        break
+
+    print(number)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+3
+4</code></pre>
+        </section>
+
+        <!-- Continue -->
+        <section class="card">
+            <h2>13. Using continue</h2>
+
+            <p>
+                The <span class="inline-code">continue</span> statement
+                skips the current iteration and continues with the next one.
+            </p>
+
+            <pre><code>for number in range(1, 6):
+
+    if number == 3:
+        continue
+
+    print(number)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+4
+5</code></pre>
+        </section>
+
+        <!-- Else -->
+        <section class="card">
+            <h2>14. For Loop with else</h2>
+
+            <p>
+                Python allows an <span class="inline-code">else</span>
+                block with a for loop.
+            </p>
+
+            <pre><code>for number in range(5):
+    print(number)
+else:
+    print("Loop completed.")</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>0
+1
+2
+3
+4
+Loop completed.</code></pre>
+
+            <div class="highlight">
+                The <strong>else</strong> block runs when the loop finishes
+                normally.
+            </div>
+        </section>
+
+        <!-- Nested Loop -->
+        <section class="card">
+            <h2>15. Nested For Loop</h2>
+
+            <p>
+                A loop inside another loop is called a
+                <strong>nested loop</strong>.
+            </p>
+
+            <pre><code>for i in range(1, 4):
+
+    for j in range(1, 4):
+        print(i, j)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1 1
+1 2
+1 3
+2 1
+2 2
+2 3
+3 1
+3 2
+3 3</code></pre>
+        </section>
+
+        <!-- Multiplication Table -->
+        <section class="card">
+            <h2>16. Multiplication Table</h2>
+
+            <p>
+                A for loop can be used to create a multiplication table.
+            </p>
+
+            <pre><code>number = 5
+
+for i in range(1, 11):
+    print(number, "x", i, "=", number * i)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50</code></pre>
+        </section>
+
+        <!-- Sum -->
+        <section class="card">
+            <h2>17. Calculate Sum Using For Loop</h2>
+
+            <pre><code>numbers = [10, 20, 30, 40, 50]
+
+total = 0
+
+for number in numbers:
+    total = total + number
+
+print("Total:", total)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Total: 150</code></pre>
+        </section>
+
+        <!-- Even Numbers -->
+        <section class="card">
+            <h2>18. Print Even Numbers</h2>
+
+            <pre><code>for number in range(1, 11):
+
+    if number % 2 == 0:
+        print(number)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>2
+4
+6
+8
+10</code></pre>
+        </section>
+
+        <!-- Odd Numbers -->
+        <section class="card">
+            <h2>19. Print Odd Numbers</h2>
+
+            <pre><code>for number in range(1, 11):
+
+    if number % 2 != 0:
+        print(number)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+3
+5
+7
+9</code></pre>
+        </section>
+
+        <!-- Star Pattern -->
+        <section class="card">
+            <h2>20. Simple Star Pattern</h2>
+
+            <pre><code>for i in range(1, 6):
+    print("*" * i)</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>*
+**
+***
+****
+*****</code></pre>
+        </section>
+
+        <!-- Search -->
+        <section class="card">
+            <h2>21. Search for an Item</h2>
+
+            <pre><code>numbers = [10, 20, 30, 40, 50]
+
+search = 30
+
+for number in numbers:
+
+    if number == search:
+        print("Number found!")
+        break</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Number found!</code></pre>
+        </section>
+
+        <!-- Comparison Table -->
+        <section class="card">
+            <h2>For Loop Quick Reference</h2>
+
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Example</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>Basic loop</td>
+                    <td>for x in items:</td>
+                    <td>Loop through items</td>
+                </tr>
+
+                <tr>
+                    <td>range()</td>
+                    <td>range(5)</td>
+                    <td>Generate numbers</td>
+                </tr>
+
+                <tr>
+                    <td>break</td>
+                    <td>break</td>
+                    <td>Stop the loop</td>
+                </tr>
+
+                <tr>
+                    <td>continue</td>
+                    <td>continue</td>
+                    <td>Skip an iteration</td>
+                </tr>
+
+                <tr>
+                    <td>else</td>
+                    <td>for...else</td>
+                    <td>Run after normal completion</td>
+                </tr>
+
+                <tr>
+                    <td>Nested loop</td>
+                    <td>for inside for</td>
+                    <td>Repeat loops inside loops</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Important Points -->
+        <section class="card">
+            <h2>Important Points</h2>
+
+            <ul>
+                <li>A for loop repeats code for each item in an iterable.</li>
+                <li>Python for loops use indentation.</li>
+                <li><span class="inline-code">range()</span> is commonly used with for loops.</li>
+                <li><span class="inline-code">break</span> stops a loop.</li>
+                <li><span class="inline-code">continue</span> skips the current iteration.</li>
+                <li>A for loop can have an <span class="inline-code">else</span> block.</li>
+                <li>For loops can be nested inside other loops.</li>
+                <li>Lists, tuples, strings, sets and dictionaries can be iterated.</li>
+            </ul>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="card">
+            <h2>Interactive Python Code Editor</h2>
+
+            <p>
+                Write your Python for-loop code below and click
+                <strong>Run Code</strong>.
+            </p>
+
+            <div class="editor">
+
+                <h3>Try It Yourself</h3>
+
+                <textarea id="code">for number in range(1, 6):
+    print(number)</textarea>
+
+                <div class="buttons">
+
+                    <button class="run-btn" onclick="runPython()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="python-if-else.html">
+                ← Previous: If Else
+            </a>
+
+            <a href="python-while-loop.html">
+                Next: While Loop →
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript and Python.</p>
+    </footer>
+
+    <!-- Pyodide -->
+    <script>
+        let pyodide = null;
+
+        async function loadPython() {
+
+            const output = document.getElementById("output");
+
+            output.textContent = "Loading Python...";
+
+            try {
+
+                pyodide = await loadPyodide();
+
+                output.textContent =
+                    "Python is ready! Click Run Code.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Error loading Python: " + error;
+            }
+        }
+
+        async function runPython() {
+
+            const output = document.getElementById("output");
+            const code = document.getElementById("code").value;
+
+            if (!pyodide) {
+
+                output.textContent =
+                    "Python is still loading. Please wait a moment.";
+
+                return;
+            }
+
+            output.textContent = "";
+
+            try {
+
+                let printedOutput = "";
+
+                pyodide.setStdout({
+                    batched: (text) => {
+                        printedOutput += text;
+                    }
+                });
+
+                await pyodide.runPythonAsync(code);
+
+                output.textContent =
+                    printedOutput || "Code executed successfully.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Error:\n" + error;
+            }
+        }
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+        }
+
+        const script = document.createElement("script");
+
+        script.src =
+            "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+        script.onload = loadPython;
+
+        document.head.appendChild(script);
+    </script>
+
+</body>
+</html>
+```
