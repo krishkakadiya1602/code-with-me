@@ -48,9 +48,6 @@
 
     <title>Code With Me | Learn Coding</title>
 
-    <!-- Website Logo / Favicon -->
-    <link rel="icon" type="image/png" href="logo.png">
-
 
     <!-- ========================================
          GOOGLE ANALYTICS
@@ -119,29 +116,16 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
 
-        /* LOGO */
-
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
             color: white;
             font-size: 25px;
             font-weight: bold;
             text-decoration: none;
         }
 
-        .logo img {
-            width: 45px;
-            height: 45px;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
         .logo span {
             color: #3b82f6;
         }
-
 
         .nav-links {
             display: flex;
@@ -634,15 +618,6 @@
 
         @media (max-width: 480px) {
 
-            .logo {
-                font-size: 21px;
-            }
-
-            .logo img {
-                width: 40px;
-                height: 40px;
-            }
-
             .hero h1 {
 
                 font-size: 34px;
@@ -678,12 +653,9 @@
 
     <nav>
 
-        <!-- WEBSITE LOGO -->
         <a href="index.html" class="logo">
-            <img src="logo.png" alt="Code With Me Logo">
-            <span>Code With Me</span>
+            Code <span>WithMe</span>
         </a>
-
 
         <ul class="nav-links">
 
@@ -879,27 +851,12 @@
                     programming examples.
                 </p>
 
-                <!--
-                    Keep Coming Soon until this file exists.
-                    When you create:
-                    python/python-introduction.html
-
-                    replace this button with the link below:
-
-                    <a
-                        href="python/python-introduction.html"
-                        class="course-btn"
-                    >
-                        Start Python Course
-                    </a>
-                -->
-
+                <!-- PYTHON COURSE BUTTON -->
                 <a
-                    href="#"
-                    class="course-btn coming-soon"
-                    onclick="return false;"
+                    href="python/python-introduction.html"
+                    class="course-btn"
                 >
-                    Coming Soon
+                    Start Python Course
                 </a>
 
             </div>
