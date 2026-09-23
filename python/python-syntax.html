@@ -1,0 +1,1047 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Syntax | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python syntax with simple examples. Understand indentation, statements, comments, strings and basic Python syntax with Code With Me.">
+
+    <meta name="keywords"
+          content="Python syntax, Python tutorial, Python statements, Python indentation, learn Python, Code With Me">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        /* ================= HIGHLIGHT ================= */
+
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .highlight strong {
+            color: #0369a1;
+        }
+
+        /* ================= LIST ================= */
+
+        ul,
+        ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= CODE ================= */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            color: #111827;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+
+        /* ================= SYNTAX BOX ================= */
+
+        .syntax-box {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3776ab;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* ================= EDITOR ================= */
+
+        .editor {
+            margin-top: 20px;
+        }
+
+        .editor textarea {
+            width: 100%;
+            min-height: 230px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #3776ab;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #2b5f89;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* ================= OUTPUT ================= */
+
+        .output {
+            margin-top: 20px;
+        }
+
+        .output h3 {
+            margin-bottom: 10px;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #2b5f89;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <h1>Python Syntax</h1>
+
+        <p>
+            Learn the basic rules and structure of Python code
+            with simple examples.
+        </p>
+
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="content-box">
+
+            <h2>What is Python Syntax?</h2>
+
+            <p>
+                Python syntax refers to the rules that define how Python
+                programs should be written.
+            </p>
+
+            <p>
+                Python is designed to have a simple and readable syntax.
+                This makes it easier for beginners to understand and write
+                programs.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Remember:</strong>
+
+                Python uses indentation to organize blocks of code.
+                Correct indentation is an important part of Python syntax.
+
+            </div>
+
+        </section>
+
+
+        <!-- FIRST PROGRAM -->
+
+        <section class="content-box">
+
+            <h2>Simple Python Program</h2>
+
+            <p>
+                The following program displays a message on the screen:
+            </p>
+
+            <pre><code>print("Hello, World!")</code></pre>
+
+            <p>
+                The <span class="inline-code">print()</span> function
+                displays the text inside the parentheses.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <pre><code>Hello, World!</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATEMENTS -->
+
+        <section class="content-box">
+
+            <h2>Python Statements</h2>
+
+            <p>
+                A statement is an instruction that Python can execute.
+            </p>
+
+            <pre><code>name = "Krish"
+print(name)</code></pre>
+
+            <p>
+                Here, the first line stores a value in a variable and
+                the second line displays the value.
+            </p>
+
+        </section>
+
+
+        <!-- MULTIPLE STATEMENTS -->
+
+        <section class="content-box">
+
+            <h2>Multiple Statements</h2>
+
+            <p>
+                Python programs can contain multiple statements.
+                Normally, each statement is written on a separate line.
+            </p>
+
+            <pre><code>name = "Krish"
+age = 20
+
+print(name)
+print(age)</code></pre>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <pre><code>Krish
+20</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- INDENTATION -->
+
+        <section class="content-box">
+
+            <h2>Python Indentation</h2>
+
+            <p>
+                Indentation means adding spaces at the beginning of a line
+                of code.
+            </p>
+
+            <p>
+                Python uses indentation to define a block of code.
+            </p>
+
+            <h3>Correct Indentation</h3>
+
+            <pre><code>if 10 &gt; 5:
+    print("10 is greater than 5")</code></pre>
+
+            <h3>Incorrect Indentation</h3>
+
+            <pre><code>if 10 &gt; 5:
+print("10 is greater than 5")</code></pre>
+
+            <div class="highlight">
+
+                <strong>Important:</strong>
+
+                The code inside an <span class="inline-code">if</span>
+                block must be indented.
+
+            </div>
+
+        </section>
+
+
+        <!-- FOUR SPACES -->
+
+        <section class="content-box">
+
+            <h2>How Much Indentation?</h2>
+
+            <p>
+                Four spaces are commonly used for each indentation level.
+            </p>
+
+            <pre><code>if True:
+    print("This is inside the if block")</code></pre>
+
+            <p>
+                Be consistent with indentation throughout your program.
+            </p>
+
+        </section>
+
+
+        <!-- COMMENTS -->
+
+        <section class="content-box">
+
+            <h2>Python Comments</h2>
+
+            <p>
+                Comments are notes written inside a program.
+                Python ignores comments when executing the code.
+            </p>
+
+            <p>
+                A single-line comment starts with the
+                <span class="inline-code">#</span> symbol.
+            </p>
+
+            <pre><code># This is a comment
+print("Hello")</code></pre>
+
+            <p>
+                Comments can help explain what your code does.
+            </p>
+
+        </section>
+
+
+        <!-- MULTILINE COMMENTS -->
+
+        <section class="content-box">
+
+            <h2>Multi-Line Comments</h2>
+
+            <p>
+                Python does not have a special multi-line comment syntax.
+                Triple-quoted strings are sometimes used for documentation
+                or multi-line text.
+            </p>
+
+            <pre><code>"""
+This is a multi-line
+string used as documentation.
+"""
+
+print("Python")</code></pre>
+
+            <div class="highlight">
+
+                <strong>Tip:</strong>
+
+                For normal comments, use <span class="inline-code">#</span>.
+                For documentation, Python provides docstrings.
+
+            </div>
+
+        </section>
+
+
+        <!-- VARIABLES -->
+
+        <section class="content-box">
+
+            <h2>Python Variables</h2>
+
+            <p>
+                Variables are used to store data.
+            </p>
+
+            <pre><code>name = "Krish"
+age = 20
+
+print(name)
+print(age)</code></pre>
+
+            <p>
+                Python does not require you to declare the variable type
+                separately.
+            </p>
+
+        </section>
+
+
+        <!-- STRINGS -->
+
+        <section class="content-box">
+
+            <h2>Python Strings</h2>
+
+            <p>
+                A string is a sequence of characters.
+                Strings can be written using single or double quotation marks.
+            </p>
+
+            <pre><code>name = "Code With Me"
+
+print(name)</code></pre>
+
+            <p>
+                Single quotes can also be used:
+            </p>
+
+            <pre><code>name = 'Code With Me'
+
+print(name)</code></pre>
+
+        </section>
+
+
+        <!-- CODE BLOCK -->
+
+        <section class="content-box">
+
+            <h2>Python Code Blocks</h2>
+
+            <p>
+                A code block is a group of statements that belong together.
+                Python uses indentation to identify these blocks.
+            </p>
+
+            <pre><code>age = 20
+
+if age &gt;= 18:
+    print("You are an adult.")
+    print("You can continue learning Python.")</code></pre>
+
+            <p>
+                Both print statements belong to the
+                <span class="inline-code">if</span> block because they
+                have the same indentation.
+            </p>
+
+        </section>
+
+
+        <!-- CASE SENSITIVE -->
+
+        <section class="content-box">
+
+            <h2>Python is Case-Sensitive</h2>
+
+            <p>
+                Python is case-sensitive. This means uppercase and lowercase
+                letters are treated as different characters.
+            </p>
+
+            <pre><code>name = "Krish"
+Name = "Patel"
+
+print(name)
+print(Name)</code></pre>
+
+            <div class="highlight">
+
+                <strong>Important:</strong>
+
+                <span class="inline-code">name</span> and
+                <span class="inline-code">Name</span> are two different
+                variable names.
+
+            </div>
+
+        </section>
+
+
+        <!-- SYNTAX RULES -->
+
+        <section class="content-box">
+
+            <h2>Basic Python Syntax Rules</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Rule</th>
+                        <th>Example</th>
+                    </tr>
+
+                    <tr>
+                        <td>Use indentation</td>
+                        <td><code>if x &gt; 0:</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Use colon for blocks</td>
+                        <td><code>if x &gt; 0:</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Use # for comments</td>
+                        <td><code># Comment</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Strings use quotes</td>
+                        <td><code>"Hello"</code></td>
+                    </tr>
+
+                    <tr>
+                        <td>Python is case-sensitive</td>
+                        <td><code>name</code> ≠ <code>Name</code></td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERACTIVE EDITOR -->
+
+        <section class="content-box">
+
+            <h2>Python Code Editor</h2>
+
+            <p>
+                Try writing a simple Python program below.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="pythonCode">name = "Code With Me"
+print(name)
+print("Welcome to Python!")</textarea>
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runPython()">
+                        ▶ Run Code
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearEditor()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div class="output">
+
+                    <h3>Output</h3>
+
+                    <div id="outputBox">
+                        Click "Run Code" to see the output.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- IMPORTANT POINTS -->
+
+        <section class="content-box">
+
+            <h2>Important Points</h2>
+
+            <div class="highlight">
+
+                <ul>
+
+                    <li>
+                        Python syntax is designed to be simple and readable.
+                    </li>
+
+                    <li>
+                        Python uses indentation to define code blocks.
+                    </li>
+
+                    <li>
+                        Four spaces are commonly used for indentation.
+                    </li>
+
+                    <li>
+                        The <strong>#</strong> symbol is used for comments.
+                    </li>
+
+                    <li>
+                        Python is case-sensitive.
+                    </li>
+
+                    <li>
+                        Strings can be written using single or double quotes.
+                    </li>
+
+                    <li>
+                        Variables can be created by assigning a value to a name.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PAGE NAVIGATION ================= -->
+
+        <div class="page-navigation">
+
+            <a href="python-installation.html">
+                ← Previous: Python Installation
+            </a>
+
+            <a href="python-comments.html">
+                Next: Python Comments →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function runPython() {
+
+            const code =
+                document.getElementById("pythonCode").value;
+
+            const outputBox =
+                document.getElementById("outputBox");
+
+            if (code.trim() === "") {
+
+                outputBox.textContent =
+                    "Please write some Python code.";
+
+                return;
+            }
+
+            let output = [];
+
+            /*
+             * Simple browser demonstration.
+             * This supports basic print() statements
+             * and simple string variables.
+             */
+
+            const variables = {};
+
+            const lines = code.split("\n");
+
+            lines.forEach(function(line) {
+
+                line = line.trim();
+
+                /*
+                 * Variable assignment
+                 */
+
+                const variableMatch =
+                    line.match(
+                        /^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*["'](.*?)["']$/
+                    );
+
+                if (variableMatch) {
+
+                    variables[variableMatch[1]] =
+                        variableMatch[2];
+
+                    return;
+                }
+
+
+                /*
+                 * print("text")
+                 */
+
+                const stringPrintMatch =
+                    line.match(
+                        /^print\s*\(\s*["'](.*?)["']\s*\)$/
+                    );
+
+                if (stringPrintMatch) {
+
+                    output.push(
+                        stringPrintMatch[1]
+                    );
+
+                    return;
+                }
+
+
+                /*
+                 * print(variable)
+                 */
+
+                const variablePrintMatch =
+                    line.match(
+                        /^print\s*\(\s*([A-Za-z_][A-Za-z0-9_]*)\s*\)$/
+                    );
+
+                if (variablePrintMatch) {
+
+                    const variableName =
+                        variablePrintMatch[1];
+
+                    if (
+                        Object.prototype.hasOwnProperty.call(
+                            variables,
+                            variableName
+                        )
+                    ) {
+
+                        output.push(
+                            variables[variableName]
+                        );
+
+                    } else {
+
+                        output.push(
+                            "NameError: variable '" +
+                            variableName +
+                            "' is not defined"
+                        );
+
+                    }
+
+                    return;
+                }
+
+            });
+
+
+            if (output.length > 0) {
+
+                outputBox.textContent =
+                    output.join("\n");
+
+            } else {
+
+                outputBox.textContent =
+                    "This simple editor supports basic print() " +
+                    "statements and string variables.\n\n" +
+                    "Example:\n\n" +
+                    'name = "Krish"\n' +
+                    "print(name)";
+
+            }
+
+        }
+
+
+        function clearEditor() {
+
+            document.getElementById("pythonCode").value = "";
+
+            document.getElementById("outputBox").textContent =
+                "Editor cleared.";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
