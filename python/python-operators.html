@@ -1,0 +1,1413 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Operators | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python Operators including arithmetic, comparison, logical, assignment, identity, membership and bitwise operators with examples.">
+
+    <meta name="keywords"
+          content="Python Operators, Python Arithmetic Operators, Python Comparison Operators, Python Logical Operators, Python Assignment Operators, Python Bitwise Operators">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1e3a8a);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #2563eb;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #075985;
+        }
+
+        /* =========================
+           OPERATOR CARDS
+        ========================= */
+
+        .operator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .operator-card {
+            background: #f8fafc;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .operator-card h3 {
+            margin-top: 0;
+            color: #1d4ed8;
+        }
+
+        .operator-card p {
+            margin-bottom: 0;
+        }
+
+        /* =========================
+           CODE
+        ========================= */
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* =========================
+           EDITOR
+        ========================= */
+
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 320px;
+            resize: vertical;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #cbd5e1;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #15803d;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        .output-title {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: #1e3a8a;
+        }
+
+        #output {
+            background: #020617;
+            color: #22c55e;
+            min-height: 120px;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>With Me</span>
+        </a>
+
+        <ul>
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <header class="hero">
+
+        <h1>Python Operators</h1>
+
+        <p>
+            Learn how to perform operations and make decisions in Python
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- =========================
+             INTRODUCTION
+        ========================= -->
+
+        <section class="section">
+
+            <h2>What are Python Operators?</h2>
+
+            <p>
+                Operators are special symbols or keywords that are used to
+                perform operations on values and variables.
+            </p>
+
+            <p>
+                For example, the <strong>+</strong> operator is used to add
+                two numbers.
+            </p>
+
+            <pre><code>a = 10
+b = 5
+
+result = a + b
+
+print(result)</code></pre>
+
+            <div class="info-box">
+
+                <strong>Output:</strong>
+
+                <br><br>
+
+                15
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TYPES
+        ========================= -->
+
+        <section class="section">
+
+            <h2>Types of Python Operators</h2>
+
+            <div class="operator-grid">
+
+                <div class="operator-card">
+                    <h3>Arithmetic</h3>
+                    <p>Used for mathematical calculations.</p>
+                </div>
+
+                <div class="operator-card">
+                    <h3>Comparison</h3>
+                    <p>Used to compare two values.</p>
+                </div>
+
+                <div class="operator-card">
+                    <h3>Logical</h3>
+                    <p>Used to combine conditions.</p>
+                </div>
+
+                <div class="operator-card">
+                    <h3>Assignment</h3>
+                    <p>Used to assign values to variables.</p>
+                </div>
+
+                <div class="operator-card">
+                    <h3>Identity</h3>
+                    <p>Used to compare object identity.</p>
+                </div>
+
+                <div class="operator-card">
+                    <h3>Membership</h3>
+                    <p>Used to check whether a value exists in a sequence.</p>
+                </div>
+
+                <div class="operator-card">
+                    <h3>Bitwise</h3>
+                    <p>Used to perform operations on individual bits.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ARITHMETIC
+        ========================= -->
+
+        <section class="section">
+
+            <h2>1. Arithmetic Operators</h2>
+
+            <p>
+                Arithmetic operators are used to perform mathematical
+                calculations.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Name</th>
+                        <th>Example</th>
+                        <th>Result</th>
+                    </tr>
+
+                    <tr>
+                        <td>+</td>
+                        <td>Addition</td>
+                        <td>10 + 3</td>
+                        <td>13</td>
+                    </tr>
+
+                    <tr>
+                        <td>-</td>
+                        <td>Subtraction</td>
+                        <td>10 - 3</td>
+                        <td>7</td>
+                    </tr>
+
+                    <tr>
+                        <td>*</td>
+                        <td>Multiplication</td>
+                        <td>10 * 3</td>
+                        <td>30</td>
+                    </tr>
+
+                    <tr>
+                        <td>/</td>
+                        <td>Division</td>
+                        <td>10 / 3</td>
+                        <td>3.333...</td>
+                    </tr>
+
+                    <tr>
+                        <td>%</td>
+                        <td>Modulus</td>
+                        <td>10 % 3</td>
+                        <td>1</td>
+                    </tr>
+
+                    <tr>
+                        <td>**</td>
+                        <td>Exponentiation</td>
+                        <td>10 ** 3</td>
+                        <td>1000</td>
+                    </tr>
+
+                    <tr>
+                        <td>//</td>
+                        <td>Floor Division</td>
+                        <td>10 // 3</td>
+                        <td>3</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>Example</h3>
+
+            <pre><code>a = 10
+b = 3
+
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a % b)
+print(a ** b)
+print(a // b)</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             COMPARISON
+        ========================= -->
+
+        <section class="section">
+
+            <h2>2. Comparison Operators</h2>
+
+            <p>
+                Comparison operators compare two values and return either
+                <strong>True</strong> or <strong>False</strong>.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                    </tr>
+
+                    <tr>
+                        <td>==</td>
+                        <td>Equal to</td>
+                        <td>10 == 10</td>
+                    </tr>
+
+                    <tr>
+                        <td>!=</td>
+                        <td>Not equal to</td>
+                        <td>10 != 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>&gt;</td>
+                        <td>Greater than</td>
+                        <td>10 &gt; 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;</td>
+                        <td>Less than</td>
+                        <td>5 &lt; 10</td>
+                    </tr>
+
+                    <tr>
+                        <td>&gt;=</td>
+                        <td>Greater than or equal to</td>
+                        <td>10 &gt;= 10</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;=</td>
+                        <td>Less than or equal to</td>
+                        <td>5 &lt;= 10</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>Example</h3>
+
+            <pre><code>a = 10
+b = 5
+
+print(a == b)
+print(a != b)
+print(a > b)
+print(a < b)
+print(a >= b)
+print(a <= b)</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             LOGICAL
+        ========================= -->
+
+        <section class="section">
+
+            <h2>3. Logical Operators</h2>
+
+            <p>
+                Logical operators are used to combine multiple conditions.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                    </tr>
+
+                    <tr>
+                        <td>and</td>
+                        <td>Returns True if both conditions are True.</td>
+                    </tr>
+
+                    <tr>
+                        <td>or</td>
+                        <td>Returns True if at least one condition is True.</td>
+                    </tr>
+
+                    <tr>
+                        <td>not</td>
+                        <td>Reverses the result of a condition.</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>and</h3>
+
+            <pre><code>age = 20
+
+print(age >= 18 and age <= 60)</code></pre>
+
+
+            <h3>or</h3>
+
+            <pre><code>age = 16
+
+print(age < 18 or age > 60)</code></pre>
+
+
+            <h3>not</h3>
+
+            <pre><code>is_student = True
+
+print(not is_student)</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             ASSIGNMENT
+        ========================= -->
+
+        <section class="section">
+
+            <h2>4. Assignment Operators</h2>
+
+            <p>
+                Assignment operators are used to assign and update values in
+                variables.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Example</th>
+                        <th>Equivalent To</th>
+                    </tr>
+
+                    <tr>
+                        <td>=</td>
+                        <td>x = 10</td>
+                        <td>x = 10</td>
+                    </tr>
+
+                    <tr>
+                        <td>+=</td>
+                        <td>x += 5</td>
+                        <td>x = x + 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>-=</td>
+                        <td>x -= 5</td>
+                        <td>x = x - 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>*=</td>
+                        <td>x *= 5</td>
+                        <td>x = x * 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>/=</td>
+                        <td>x /= 5</td>
+                        <td>x = x / 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>%=</td>
+                        <td>x %= 5</td>
+                        <td>x = x % 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>//=</td>
+                        <td>x //= 5</td>
+                        <td>x = x // 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>**=</td>
+                        <td>x **= 2</td>
+                        <td>x = x ** 2</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>Example</h3>
+
+            <pre><code>x = 10
+
+x += 5
+print(x)
+
+x -= 3
+print(x)
+
+x *= 2
+print(x)</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             IDENTITY
+        ========================= -->
+
+        <section class="section">
+
+            <h2>5. Identity Operators</h2>
+
+            <p>
+                Identity operators are used to check whether two variables
+                refer to the same object.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                    </tr>
+
+                    <tr>
+                        <td>is</td>
+                        <td>Returns True if both variables refer to the same object.</td>
+                    </tr>
+
+                    <tr>
+                        <td>is not</td>
+                        <td>Returns True if they refer to different objects.</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>Example</h3>
+
+            <pre><code>a = [1, 2, 3]
+b = a
+
+print(a is b)
+print(a is not b)</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             MEMBERSHIP
+        ========================= -->
+
+        <section class="section">
+
+            <h2>6. Membership Operators</h2>
+
+            <p>
+                Membership operators are used to check whether a value exists
+                inside a sequence such as a string, list or tuple.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                    </tr>
+
+                    <tr>
+                        <td>in</td>
+                        <td>Returns True if a value exists in a sequence.</td>
+                    </tr>
+
+                    <tr>
+                        <td>not in</td>
+                        <td>Returns True if a value does not exist.</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>Example</h3>
+
+            <pre><code>fruits = ["Apple", "Banana", "Mango"]
+
+print("Apple" in fruits)
+print("Orange" in fruits)
+print("Orange" not in fruits)</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             BITWISE
+        ========================= -->
+
+        <section class="section">
+
+            <h2>7. Bitwise Operators</h2>
+
+            <p>
+                Bitwise operators perform operations on the binary
+                representation of integers.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Name</th>
+                    </tr>
+
+                    <tr>
+                        <td>&amp;</td>
+                        <td>AND</td>
+                    </tr>
+
+                    <tr>
+                        <td>|</td>
+                        <td>OR</td>
+                    </tr>
+
+                    <tr>
+                        <td>^</td>
+                        <td>XOR</td>
+                    </tr>
+
+                    <tr>
+                        <td>~</td>
+                        <td>NOT</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;&lt;</td>
+                        <td>Left Shift</td>
+                    </tr>
+
+                    <tr>
+                        <td>&gt;&gt;</td>
+                        <td>Right Shift</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>Example</h3>
+
+            <pre><code>a = 5
+b = 3
+
+print(a &amp; b)
+print(a | b)
+print(a ^ b)
+print(a &lt;&lt; 1)
+print(a &gt;&gt; 1)</code></pre>
+
+        </section>
+
+
+        <!-- =========================
+             OPERATOR PRECEDENCE
+        ========================= -->
+
+        <section class="section">
+
+            <h2>Operator Precedence</h2>
+
+            <p>
+                When an expression contains multiple operators, Python follows
+                a specific order to evaluate them.
+            </p>
+
+            <pre><code>result = 10 + 5 * 2
+
+print(result)</code></pre>
+
+            <div class="info-box">
+
+                <strong>Output:</strong>
+
+                <br><br>
+
+                20
+
+                <br><br>
+
+                Multiplication is performed before addition.
+
+            </div>
+
+
+            <h3>Using Parentheses</h3>
+
+            <p>
+                Parentheses can be used to control the order of evaluation.
+            </p>
+
+            <pre><code>result = (10 + 5) * 2
+
+print(result)</code></pre>
+
+            <div class="info-box">
+
+                <strong>Output:</strong>
+
+                <br><br>
+
+                30
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             QUICK SUMMARY
+        ========================= -->
+
+        <section class="section">
+
+            <h2>Python Operators Summary</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Type</th>
+                        <th>Operators</th>
+                    </tr>
+
+                    <tr>
+                        <td>Arithmetic</td>
+                        <td>+, -, *, /, %, **, //</td>
+                    </tr>
+
+                    <tr>
+                        <td>Comparison</td>
+                        <td>==, !=, &gt;, &lt;, &gt;=, &lt;=</td>
+                    </tr>
+
+                    <tr>
+                        <td>Logical</td>
+                        <td>and, or, not</td>
+                    </tr>
+
+                    <tr>
+                        <td>Assignment</td>
+                        <td>=, +=, -=, *=, /=, %=, //=, **=</td>
+                    </tr>
+
+                    <tr>
+                        <td>Identity</td>
+                        <td>is, is not</td>
+                    </tr>
+
+                    <tr>
+                        <td>Membership</td>
+                        <td>in, not in</td>
+                    </tr>
+
+                    <tr>
+                        <td>Bitwise</td>
+                        <td>&amp;, |, ^, ~, &lt;&lt;, &gt;&gt;</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INTERACTIVE EDITOR
+        ========================= -->
+
+        <section class="section">
+
+            <h2>Python Operators - Code Editor</h2>
+
+            <p>
+                Try the following Python program. You can edit the code and
+                run it directly in your browser.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="code">a = 10
+b = 3
+
+print("Arithmetic Operators")
+print("Addition:", a + b)
+print("Subtraction:", a - b)
+print("Multiplication:", a * b)
+print("Division:", a / b)
+print("Modulus:", a % b)
+print("Power:", a ** b)
+print("Floor Division:", a // b)
+
+print("\nComparison Operators")
+print("a == b:", a == b)
+print("a != b:", a != b)
+print("a > b:", a > b)
+print("a < b:", a < b)
+
+print("\nLogical Operators")
+print("True and False:", True and False)
+print("True or False:", True or False)
+print("not True:", not True)</textarea>
+
+
+                <div class="buttons">
+
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <h3 class="output-title">
+                    Output
+                </h3>
+
+
+                <div id="output">
+Click "Run Code" to see the output.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             IMPORTANT POINTS
+        ========================= -->
+
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <ul>
+
+                <li>
+                    Operators perform operations on values and variables.
+                </li>
+
+                <li>
+                    Arithmetic operators are used for mathematical
+                    calculations.
+                </li>
+
+                <li>
+                    Comparison operators return True or False.
+                </li>
+
+                <li>
+                    Logical operators combine conditions.
+                </li>
+
+                <li>
+                    Assignment operators assign or update values.
+                </li>
+
+                <li>
+                    Identity operators compare object identity.
+                </li>
+
+                <li>
+                    Membership operators check whether a value exists in a
+                    sequence.
+                </li>
+
+                <li>
+                    Bitwise operators work with the binary representation of
+                    integers.
+                </li>
+
+                <li>
+                    Parentheses can be used to control the order of
+                    operations.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             LESSON NAVIGATION
+        ========================= -->
+
+        <div class="lesson-navigation">
+
+            <a href="python-strings.html" class="nav-btn">
+                ← Previous
+            </a>
+
+            <a href="python-input-output.html" class="nav-btn">
+                Next →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Code With Me. All Rights Reserved.
+        </p>
+
+        <p>
+            Learn HTML, CSS, JavaScript and Python.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         PYTHON RUNTIME
+    ========================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("code").value;
+
+            const output =
+                document.getElementById("output");
+
+            output.textContent =
+                "Loading Python interpreter...\nPlease wait...";
+
+
+            if (!window.pyodide) {
+
+                loadPyodideAndRun(code);
+
+            } else {
+
+                executePython(code);
+
+            }
+
+        }
+
+
+        async function loadPyodideAndRun(code) {
+
+            try {
+
+                const script =
+                    document.createElement("script");
+
+                script.src =
+                    "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js";
+
+
+                script.onload = async function () {
+
+                    try {
+
+                        window.pyodide =
+                            await loadPyodide();
+
+                        executePython(code);
+
+                    } catch (error) {
+
+                        document.getElementById("output").textContent =
+                            "Error loading Python:\n" + error;
+
+                    }
+
+                };
+
+
+                script.onerror = function () {
+
+                    document.getElementById("output").textContent =
+                        "Unable to load Python interpreter. Please check your internet connection.";
+
+                };
+
+
+                document.head.appendChild(script);
+
+            } catch (error) {
+
+                document.getElementById("output").textContent =
+                    "Error:\n" + error;
+
+            }
+
+        }
+
+
+        async function executePython(code) {
+
+            const output =
+                document.getElementById("output");
+
+
+            try {
+
+                let printedOutput = "";
+
+
+                window.pyodide.setStdout({
+
+                    batched: function (text) {
+
+                        printedOutput += text;
+
+                    }
+
+                });
+
+
+                window.pyodide.setStderr({
+
+                    batched: function (text) {
+
+                        printedOutput += text;
+
+                    }
+
+                });
+
+
+                await window.pyodide.runPythonAsync(code);
+
+
+                output.textContent =
+                    printedOutput ||
+                    "Program executed successfully.";
+
+            } catch (error) {
+
+                output.textContent =
+                    "Python Error:\n" + error;
+
+            }
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").textContent =
+                "Editor cleared.";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
