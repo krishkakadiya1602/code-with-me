@@ -1,0 +1,1093 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Modules | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python Modules with simple examples, importing modules, built-in modules, creating modules and using aliases.">
+
+    <meta name="keywords"
+          content="Python modules, Python import, Python math module, Python random module, Python datetime, Python modules tutorial">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* CONTENT */
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        .content-box ul,
+        .content-box ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-box li {
+            margin-bottom: 8px;
+        }
+
+        /* INFO BOXES */
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* CODE */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        /* TABLE */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3776ab;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+        /* EDITOR */
+        .editor textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .run-btn {
+            background: #3776ab;
+        }
+
+        .run-btn:hover {
+            background: #285a85;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, "Courier New", monospace;
+            margin-top: 15px;
+        }
+
+        /* NAVIGATION */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #285a85;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="../index.html" class="logo">
+        Code <span>With Me</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#courses">Courses</a></li>
+        <li><a href="../index.html#about">About</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Python Modules</h1>
+    <p>Learn how to organize and reuse Python code with modules</p>
+</section>
+
+
+<div class="container">
+
+    <!-- INTRODUCTION -->
+    <section class="content-box">
+        <h2>What is a Python Module?</h2>
+
+        <p>
+            A <strong>module</strong> is a Python file containing code that
+            can be reused in another Python program.
+        </p>
+
+        <p>
+            A module can contain functions, variables, classes and other
+            Python code.
+        </p>
+
+        <div class="highlight">
+            <strong>Simple definition:</strong>
+            A Python module is simply a <strong>.py file</strong> containing
+            reusable Python code.
+        </div>
+
+        <h3>Example</h3>
+
+        <pre><code># mymodule.py
+
+def greeting(name):
+    print("Hello", name)</code></pre>
+
+        <p>
+            The file <code>mymodule.py</code> is a Python module.
+        </p>
+    </section>
+
+
+    <!-- WHY MODULES -->
+    <section class="content-box">
+        <h2>Why Use Modules?</h2>
+
+        <p>
+            Modules help developers organize large Python programs into
+            smaller and reusable files.
+        </p>
+
+        <ul>
+            <li>Code can be reused.</li>
+            <li>Large programs become easier to manage.</li>
+            <li>Code can be organized into separate files.</li>
+            <li>Functions and classes can be shared between programs.</li>
+            <li>It becomes easier to maintain the project.</li>
+            <li>Modules help avoid repeating the same code.</li>
+        </ul>
+    </section>
+
+
+    <!-- IMPORT -->
+    <section class="content-box">
+        <h2>Importing a Module</h2>
+
+        <p>
+            We use the <code>import</code> keyword to use a module.
+        </p>
+
+        <h3>mymodule.py</h3>
+
+        <pre><code>def greeting(name):
+    print("Hello", name)</code></pre>
+
+        <h3>main.py</h3>
+
+        <pre><code>import mymodule
+
+mymodule.greeting("Krish")</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Hello Krish</code></pre>
+    </section>
+
+
+    <!-- ACCESS FUNCTIONS -->
+    <section class="content-box">
+        <h2>Accessing Functions from a Module</h2>
+
+        <p>
+            After importing a module, use the module name followed by a
+            dot <code>.</code> and the function name.
+        </p>
+
+        <pre><code>import mymodule
+
+mymodule.greeting("Rahul")</code></pre>
+
+        <p>
+            Here, <code>greeting()</code> belongs to the
+            <code>mymodule</code> module.
+        </p>
+    </section>
+
+
+    <!-- VARIABLES -->
+    <section class="content-box">
+        <h2>Variables in a Module</h2>
+
+        <p>
+            A module can also contain variables.
+        </p>
+
+        <h3>mymodule.py</h3>
+
+        <pre><code>name = "Krish"
+age = 20</code></pre>
+
+        <h3>main.py</h3>
+
+        <pre><code>import mymodule
+
+print(mymodule.name)
+print(mymodule.age)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Krish
+20</code></pre>
+    </section>
+
+
+    <!-- CLASSES -->
+    <section class="content-box">
+        <h2>Classes in a Module</h2>
+
+        <p>
+            Modules can contain classes as well as functions and variables.
+        </p>
+
+        <h3>mymodule.py</h3>
+
+        <pre><code>class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def show_name(self):
+        print(self.name)</code></pre>
+
+        <h3>main.py</h3>
+
+        <pre><code>import mymodule
+
+student = mymodule.Student("Krish")
+
+student.show_name()</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Krish</code></pre>
+    </section>
+
+
+    <!-- ALIAS -->
+    <section class="content-box">
+        <h2>Creating an Alias</h2>
+
+        <p>
+            You can create a shorter name for a module using the
+            <code>as</code> keyword.
+        </p>
+
+        <pre><code>import mymodule as mm
+
+mm.greeting("Krish")</code></pre>
+
+        <p>
+            In this example, <code>mm</code> is an alias for
+            <code>mymodule</code>.
+        </p>
+
+        <div class="success-box">
+            Aliases are useful when a module has a long name or when you
+            want to make your code shorter.
+        </div>
+    </section>
+
+
+    <!-- FROM IMPORT -->
+    <section class="content-box">
+        <h2>Using from ... import</h2>
+
+        <p>
+            You can import only a specific function or variable from a module.
+        </p>
+
+        <pre><code>from mymodule import greeting
+
+greeting("Krish")</code></pre>
+
+        <p>
+            When using <code>from ... import</code>, you can call the imported
+            function directly without writing the module name.
+        </p>
+    </section>
+
+
+    <!-- MULTIPLE -->
+    <section class="content-box">
+        <h2>Importing Multiple Items</h2>
+
+        <p>
+            Multiple functions or variables can be imported from a module.
+        </p>
+
+        <pre><code>from mymodule import greeting, name
+
+print(name)
+greeting("Krish")</code></pre>
+
+        <p>
+            You can also import multiple modules.
+        </p>
+
+        <pre><code>import math
+import random
+import datetime</code></pre>
+    </section>
+
+
+    <!-- BUILT IN MODULES -->
+    <section class="content-box">
+        <h2>Built-in Python Modules</h2>
+
+        <p>
+            Python provides many modules that are already available.
+            These are called built-in or standard-library modules.
+        </p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Module</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>math</td>
+                    <td>Mathematical operations</td>
+                    <td>sqrt(), pi</td>
+                </tr>
+
+                <tr>
+                    <td>random</td>
+                    <td>Generate random values</td>
+                    <td>randint()</td>
+                </tr>
+
+                <tr>
+                    <td>datetime</td>
+                    <td>Work with dates and times</td>
+                    <td>datetime.now()</td>
+                </tr>
+
+                <tr>
+                    <td>os</td>
+                    <td>Operating system operations</td>
+                    <td>getcwd()</td>
+                </tr>
+
+                <tr>
+                    <td>json</td>
+                    <td>Work with JSON data</td>
+                    <td>dumps()</td>
+                </tr>
+
+                <tr>
+                    <td>statistics</td>
+                    <td>Statistical calculations</td>
+                    <td>mean()</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- MATH -->
+    <section class="content-box">
+        <h2>Python math Module</h2>
+
+        <p>
+            The <code>math</code> module provides mathematical functions
+            and constants.
+        </p>
+
+        <pre><code>import math
+
+print(math.sqrt(25))
+print(math.pi)
+print(math.ceil(4.2))
+print(math.floor(4.8))</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>5.0
+3.141592653589793
+5
+4</code></pre>
+    </section>
+
+
+    <!-- RANDOM -->
+    <section class="content-box">
+        <h2>Python random Module</h2>
+
+        <p>
+            The <code>random</code> module is used to generate random values.
+        </p>
+
+        <pre><code>import random
+
+number = random.randint(1, 10)
+
+print(number)</code></pre>
+
+        <p>
+            The number will be randomly selected between 1 and 10.
+        </p>
+
+        <h3>Random Choice</h3>
+
+        <pre><code>import random
+
+colors = ["Red", "Blue", "Green"]
+
+print(random.choice(colors))</code></pre>
+    </section>
+
+
+    <!-- DATETIME -->
+    <section class="content-box">
+        <h2>Python datetime Module</h2>
+
+        <p>
+            The <code>datetime</code> module is useful for working with
+            dates and times.
+        </p>
+
+        <pre><code>import datetime
+
+current_time = datetime.datetime.now()
+
+print(current_time)</code></pre>
+
+        <p>
+            This displays the current date and time.
+        </p>
+    </section>
+
+
+    <!-- OS -->
+    <section class="content-box">
+        <h2>Python os Module</h2>
+
+        <p>
+            The <code>os</code> module provides functions for interacting
+            with the operating system.
+        </p>
+
+        <pre><code>import os
+
+print(os.getcwd())</code></pre>
+
+        <p>
+            <code>getcwd()</code> returns the current working directory.
+        </p>
+    </section>
+
+
+    <!-- JSON -->
+    <section class="content-box">
+        <h2>Python json Module</h2>
+
+        <p>
+            The <code>json</code> module is used to work with JSON data.
+        </p>
+
+        <pre><code>import json
+
+student = {
+    "name": "Krish",
+    "age": 20
+}
+
+data = json.dumps(student)
+
+print(data)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>{"name": "Krish", "age": 20}</code></pre>
+    </section>
+
+
+    <!-- DIR -->
+    <section class="content-box">
+        <h2>Using dir()</h2>
+
+        <p>
+            The <code>dir()</code> function can be used to find the names
+            defined inside a module.
+        </p>
+
+        <pre><code>import math
+
+print(dir(math))</code></pre>
+
+        <p>
+            This returns a list of names such as functions, constants and
+            other attributes available in the module.
+        </p>
+    </section>
+
+
+    <!-- CUSTOM MODULE -->
+    <section class="content-box">
+        <h2>Creating Your Own Module</h2>
+
+        <p>
+            You can create your own Python module by creating a file ending
+            with <code>.py</code>.
+        </p>
+
+        <h3>Step 1: Create mymodule.py</h3>
+
+        <pre><code>def add(a, b):
+    return a + b
+
+
+def multiply(a, b):
+    return a * b</code></pre>
+
+        <h3>Step 2: Create main.py</h3>
+
+        <pre><code>import mymodule
+
+print(mymodule.add(10, 5))
+print(mymodule.multiply(10, 5))</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>15
+50</code></pre>
+    </section>
+
+
+    <!-- RELOAD -->
+    <section class="content-box">
+        <h2>Reloading a Module</h2>
+
+        <p>
+            Python normally imports a module once during a program run.
+            The <code>importlib</code> module can be used to reload a module.
+        </p>
+
+        <pre><code>import mymodule
+import importlib
+
+importlib.reload(mymodule)</code></pre>
+
+        <div class="warning-box">
+            Module reloading is mainly useful during development when you
+            change a module and want to load the updated version.
+        </div>
+    </section>
+
+
+    <!-- MODULE SEARCH -->
+    <section class="content-box">
+        <h2>Where Python Searches for Modules</h2>
+
+        <p>
+            When Python imports a module, it searches locations available
+            through Python's module search path.
+        </p>
+
+        <pre><code>import sys
+
+print(sys.path)</code></pre>
+
+        <p>
+            The <code>sys.path</code> list shows directories where Python
+            looks for modules.
+        </p>
+    </section>
+
+
+    <!-- MODULE VS FUNCTION -->
+    <section class="content-box">
+        <h2>Module vs Function</h2>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Module</th>
+                    <th>Function</th>
+                </tr>
+
+                <tr>
+                    <td>A Python file containing reusable code</td>
+                    <td>A block of reusable code that performs a task</td>
+                </tr>
+
+                <tr>
+                    <td>Can contain functions, classes and variables</td>
+                    <td>Usually performs one specific operation</td>
+                </tr>
+
+                <tr>
+                    <td>Example: math</td>
+                    <td>Example: sqrt()</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- IMPORTANT RULES -->
+    <section class="content-box">
+        <h2>Important Rules to Remember</h2>
+
+        <ol>
+            <li>A module is usually a Python <code>.py</code> file.</li>
+            <li>Use <code>import</code> to import a module.</li>
+            <li>Use <code>from ... import</code> to import specific items.</li>
+            <li>Use <code>as</code> to create a module alias.</li>
+            <li>Python provides many useful standard-library modules.</li>
+            <li>You can create your own custom modules.</li>
+            <li>Modules help organize and reuse code.</li>
+        </ol>
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+    <section class="content-box">
+        <h2>Common Mistakes</h2>
+
+        <ul>
+            <li>Using the wrong module name.</li>
+            <li>Forgetting to import the module.</li>
+            <li>Using a function that does not exist in the module.</li>
+            <li>Saving the module with the wrong filename.</li>
+            <li>Using a filename that conflicts with a standard module.</li>
+            <li>Forgetting the module name when accessing its functions.</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>Example:</strong>
+            If you write <code>import math</code>, use
+            <code>math.sqrt(25)</code>, not just <code>sqrt(25)</code>,
+            unless you specifically imported <code>sqrt</code>.
+        </div>
+    </section>
+
+
+    <!-- PRACTICAL PROJECT -->
+    <section class="content-box">
+        <h2>Practical Example: Calculator Module</h2>
+
+        <p>
+            Let's create a simple calculator module.
+        </p>
+
+        <h3>calculator.py</h3>
+
+        <pre><code>def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    return a / b</code></pre>
+
+        <h3>main.py</h3>
+
+        <pre><code>import calculator
+
+print("Addition:", calculator.add(10, 5))
+print("Subtraction:", calculator.subtract(10, 5))
+print("Multiplication:", calculator.multiply(10, 5))
+print("Division:", calculator.divide(10, 5))</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Addition: 15
+Subtraction: 5
+Multiplication: 50
+Division: 2.0</code></pre>
+
+        <div class="success-box">
+            This approach allows the calculator functions to be reused in
+            multiple Python programs.
+        </div>
+    </section>
+
+
+    <!-- PRACTICE -->
+    <section class="content-box">
+        <h2>Practice Exercise</h2>
+
+        <p>
+            Create a module named <code>student.py</code> containing:
+        </p>
+
+        <ul>
+            <li>A variable containing a student's name.</li>
+            <li>A function to display the student's name.</li>
+            <li>A function to calculate the student's total marks.</li>
+        </ul>
+
+        <p>
+            Then import the module into another Python file and use its
+            functions.
+        </p>
+
+        <div class="highlight">
+            <strong>Challenge:</strong>
+            Add another function that calculates the student's percentage.
+        </div>
+    </section>
+
+
+    <!-- INTERACTIVE EDITOR -->
+    <section class="content-box">
+        <h2>Python Modules Practice Editor</h2>
+
+        <p>
+            Try the example below. This is a browser demonstration of the
+            expected Python output.
+        </p>
+
+        <div class="editor">
+
+            <textarea id="codeEditor"># calculator.py
+
+def add(a, b):
+    return a + b
+
+def multiply(a, b):
+    return a * b
+
+
+# main.py
+
+print("Addition:", add(10, 5))
+print("Multiplication:", multiply(10, 5))</textarea>
+
+            <div class="button-group">
+                <button class="run-btn" onclick="runDemo()">
+                    Run Demo
+                </button>
+
+                <button class="clear-btn" onclick="clearEditor()">
+                    Clear
+                </button>
+            </div>
+
+            <div id="outputBox">
+Click "Run Demo" to see the expected output.
+            </div>
+
+        </div>
+
+        <div class="warning-box">
+            <strong>Note:</strong>
+            This editor does not execute real Python code in the browser.
+            It displays a sample output for learning purposes.
+        </div>
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section class="content-box">
+        <h2>Summary</h2>
+
+        <ul>
+            <li>A module is a Python file containing reusable code.</li>
+            <li>The <code>import</code> keyword is used to import modules.</li>
+            <li>You can import functions, variables and classes.</li>
+            <li>You can create aliases using <code>as</code>.</li>
+            <li>Python provides many built-in modules.</li>
+            <li>You can create your own custom modules.</li>
+            <li>Modules make programs easier to organize and maintain.</li>
+        </ul>
+
+        <div class="success-box">
+            <strong>Next:</strong>
+            Continue to the Python Exceptions lesson to learn how to handle
+            errors safely in your programs.
+        </div>
+    </section>
+
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+
+        <a href="python-inheritance.html">
+            ← Previous: Inheritance
+        </a>
+
+        <a href="python-exceptions.html">
+            Next: Exceptions →
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Code With Me. All Rights Reserved.</p>
+    <p>Learn HTML, CSS, JavaScript and Python.</p>
+</footer>
+
+
+<script>
+    function runDemo() {
+
+        const output = document.getElementById("outputBox");
+
+        output.textContent =
+`Addition: 15
+Multiplication: 50`;
+    }
+
+
+    function clearEditor() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("outputBox").textContent =
+            "Editor cleared.";
+    }
+</script>
+
+</body>
+</html>
+```
