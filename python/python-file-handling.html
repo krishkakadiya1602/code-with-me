@@ -1,0 +1,1125 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python File Handling | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python File Handling with simple examples of reading, writing, appending and working with files.">
+
+    <meta name="keywords"
+          content="Python file handling, Python open file, Python read file, Python write file, Python append file">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* CONTENT */
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        .content-box ul,
+        .content-box ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-box li {
+            margin-bottom: 8px;
+        }
+
+        /* INFO BOXES */
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* CODE */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        /* TABLE */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3776ab;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+        /* EDITOR */
+        .editor textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .run-btn {
+            background: #3776ab;
+        }
+
+        .run-btn:hover {
+            background: #285a85;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, "Courier New", monospace;
+            margin-top: 15px;
+        }
+
+        /* NAVIGATION */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #285a85;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="../index.html" class="logo">
+        Code <span>With Me</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#courses">Courses</a></li>
+        <li><a href="../index.html#about">About</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Python File Handling</h1>
+    <p>Learn how to create, read, write, append and manage files with Python</p>
+</section>
+
+
+<div class="container">
+
+    <!-- INTRODUCTION -->
+    <section class="content-box">
+        <h2>What is File Handling?</h2>
+
+        <p>
+            <strong>File handling</strong> is the process of creating,
+            reading, writing, updating and deleting files using Python.
+        </p>
+
+        <p>
+            Files allow programs to store information permanently so that
+            the data can be used again after the program finishes.
+        </p>
+
+        <div class="highlight">
+            <strong>Simple idea:</strong>
+            Variables store data temporarily while files can store data
+            permanently on a storage device.
+        </div>
+
+        <h3>Common File Operations</h3>
+
+        <ul>
+            <li>Create a file</li>
+            <li>Open a file</li>
+            <li>Read a file</li>
+            <li>Write to a file</li>
+            <li>Append data to a file</li>
+            <li>Close a file</li>
+            <li>Delete a file</li>
+        </ul>
+    </section>
+
+
+    <!-- OPEN -->
+    <section class="content-box">
+        <h2>Opening a File</h2>
+
+        <p>
+            Python provides the built-in <code>open()</code> function for
+            opening files.
+        </p>
+
+        <h3>Syntax</h3>
+
+        <pre><code>open("filename", "mode")</code></pre>
+
+        <h3>Example</h3>
+
+        <pre><code>file = open("example.txt", "r")
+
+print(file.read())
+
+file.close()</code></pre>
+
+        <p>
+            Here, <code>example.txt</code> is opened in read mode.
+        </p>
+    </section>
+
+
+    <!-- FILE MODES -->
+    <section class="content-box">
+        <h2>Python File Modes</h2>
+
+        <p>
+            The mode tells Python what you want to do with the file.
+        </p>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Mode</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td><code>r</code></td>
+                    <td>Read the file</td>
+                </tr>
+
+                <tr>
+                    <td><code>w</code></td>
+                    <td>Write to the file</td>
+                </tr>
+
+                <tr>
+                    <td><code>a</code></td>
+                    <td>Append data to the file</td>
+                </tr>
+
+                <tr>
+                    <td><code>x</code></td>
+                    <td>Create a new file</td>
+                </tr>
+
+                <tr>
+                    <td><code>b</code></td>
+                    <td>Binary mode</td>
+                </tr>
+
+                <tr>
+                    <td><code>t</code></td>
+                    <td>Text mode</td>
+                </tr>
+
+                <tr>
+                    <td><code>+</code></td>
+                    <td>Read and write mode</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <strong>Important:</strong>
+            Opening an existing file with <code>w</code> mode can overwrite
+            its existing contents.
+        </div>
+    </section>
+
+
+    <!-- READ -->
+    <section class="content-box">
+        <h2>Reading a File</h2>
+
+        <p>
+            Use <code>read()</code> to read the contents of a file.
+        </p>
+
+        <pre><code>file = open("example.txt", "r")
+
+content = file.read()
+
+print(content)
+
+file.close()</code></pre>
+    </section>
+
+
+    <!-- READ CHARACTERS -->
+    <section class="content-box">
+        <h2>Reading a Specific Number of Characters</h2>
+
+        <p>
+            You can provide a number to <code>read()</code> to read a
+            specific number of characters.
+        </p>
+
+        <pre><code>file = open("example.txt", "r")
+
+content = file.read(10)
+
+print(content)
+
+file.close()</code></pre>
+
+        <p>
+            The example reads the first 10 characters from the file.
+        </p>
+    </section>
+
+
+    <!-- READLINE -->
+    <section class="content-box">
+        <h2>Using readline()</h2>
+
+        <p>
+            The <code>readline()</code> method reads one line from a file.
+        </p>
+
+        <pre><code>file = open("example.txt", "r")
+
+print(file.readline())
+
+file.close()</code></pre>
+
+        <h3>Reading Multiple Lines</h3>
+
+        <pre><code>file = open("example.txt", "r")
+
+print(file.readline())
+print(file.readline())
+print(file.readline())
+
+file.close()</code></pre>
+    </section>
+
+
+    <!-- READLINES -->
+    <section class="content-box">
+        <h2>Using readlines()</h2>
+
+        <p>
+            The <code>readlines()</code> method returns all lines as a list.
+        </p>
+
+        <pre><code>file = open("example.txt", "r")
+
+lines = file.readlines()
+
+print(lines)
+
+file.close()</code></pre>
+    </section>
+
+
+    <!-- LOOP -->
+    <section class="content-box">
+        <h2>Reading a File Using a Loop</h2>
+
+        <p>
+            You can loop through a file to read it line by line.
+        </p>
+
+        <pre><code>file = open("example.txt", "r")
+
+for line in file:
+    print(line)
+
+file.close()</code></pre>
+
+        <div class="success-box">
+            Reading a file line by line can be useful when working with
+            large files.
+        </div>
+    </section>
+
+
+    <!-- WRITE -->
+    <section class="content-box">
+        <h2>Writing to a File</h2>
+
+        <p>
+            Use <code>w</code> mode to write data to a file.
+        </p>
+
+        <pre><code>file = open("example.txt", "w")
+
+file.write("Hello from Python!")
+
+file.close()</code></pre>
+
+        <p>
+            If the file does not exist, Python can create it.
+        </p>
+
+        <div class="warning-box">
+            <strong>Warning:</strong>
+            <code>w</code> mode replaces the existing contents of a file.
+        </div>
+    </section>
+
+
+    <!-- WRITE MULTIPLE -->
+    <section class="content-box">
+        <h2>Writing Multiple Lines</h2>
+
+        <p>
+            You can use <code>\n</code> to create new lines.
+        </p>
+
+        <pre><code>file = open("students.txt", "w")
+
+file.write("Krish\n")
+file.write("Rahul\n")
+file.write("Amit\n")
+
+file.close()</code></pre>
+
+        <p>
+            The file will contain:
+        </p>
+
+        <pre><code>Krish
+Rahul
+Amit</code></pre>
+    </section>
+
+
+    <!-- APPEND -->
+    <section class="content-box">
+        <h2>Appending to a File</h2>
+
+        <p>
+            Use <code>a</code> mode to add new content to the end of a file.
+        </p>
+
+        <pre><code>file = open("students.txt", "a")
+
+file.write("Neha\n")
+
+file.close()</code></pre>
+
+        <p>
+            Existing content remains unchanged and the new data is added
+            at the end.
+        </p>
+    </section>
+
+
+    <!-- CREATE -->
+    <section class="content-box">
+        <h2>Creating a New File</h2>
+
+        <p>
+            The <code>x</code> mode is used to create a new file.
+        </p>
+
+        <pre><code>file = open("newfile.txt", "x")
+
+file.close()</code></pre>
+
+        <div class="warning-box">
+            If the file already exists, using <code>x</code> mode will
+            cause an error.
+        </div>
+    </section>
+
+
+    <!-- WITH -->
+    <section class="content-box">
+        <h2>Using the with Statement</h2>
+
+        <p>
+            The <code>with</code> statement is the recommended way to work
+            with files in Python.
+        </p>
+
+        <pre><code>with open("example.txt", "r") as file:
+    content = file.read()
+
+print(content)</code></pre>
+
+        <p>
+            Python automatically closes the file when the
+            <code>with</code> block finishes.
+        </p>
+
+        <div class="success-box">
+            <strong>Best practice:</strong>
+            Prefer <code>with open(...)</code> when working with files because
+            it handles closing the file automatically.
+        </div>
+    </section>
+
+
+    <!-- WRITE WITH -->
+    <section class="content-box">
+        <h2>Writing Using with</h2>
+
+        <pre><code>with open("example.txt", "w") as file:
+    file.write("Python File Handling")</code></pre>
+    </section>
+
+
+    <!-- APPEND WITH -->
+    <section class="content-box">
+        <h2>Appending Using with</h2>
+
+        <pre><code>with open("example.txt", "a") as file:
+    file.write("\nThis is another line.")</code></pre>
+    </section>
+
+
+    <!-- FILE POSITION -->
+    <section class="content-box">
+        <h2>File Position</h2>
+
+        <p>
+            Python keeps track of the current position inside an open file.
+        </p>
+
+        <h3>tell()</h3>
+
+        <p>
+            The <code>tell()</code> method returns the current file position.
+        </p>
+
+        <pre><code>with open("example.txt", "r") as file:
+
+    print(file.tell())
+
+    file.read(5)
+
+    print(file.tell())</code></pre>
+
+        <h3>seek()</h3>
+
+        <p>
+            The <code>seek()</code> method changes the current file position.
+        </p>
+
+        <pre><code>with open("example.txt", "r") as file:
+
+    file.seek(0)
+
+    print(file.read())</code></pre>
+    </section>
+
+
+    <!-- ENCODING -->
+    <section class="content-box">
+        <h2>File Encoding</h2>
+
+        <p>
+            You can specify an encoding when opening a text file.
+        </p>
+
+        <pre><code>with open("example.txt", "r", encoding="utf-8") as file:
+    content = file.read()
+
+print(content)</code></pre>
+
+        <p>
+            UTF-8 is commonly used for text files because it supports many
+            languages and characters.
+        </p>
+    </section>
+
+
+    <!-- EXCEPTION -->
+    <section class="content-box">
+        <h2>Handling File Errors</h2>
+
+        <p>
+            A file may not exist or may not be accessible. You can handle
+            these errors using <code>try</code> and <code>except</code>.
+        </p>
+
+        <pre><code>try:
+
+    with open("example.txt", "r") as file:
+        print(file.read())
+
+except FileNotFoundError:
+
+    print("File not found.")</code></pre>
+
+        <div class="highlight">
+            Error handling makes your program safer when working with
+            files that may be missing or unavailable.
+        </div>
+    </section>
+
+
+    <!-- OS DELETE -->
+    <section class="content-box">
+        <h2>Deleting a File</h2>
+
+        <p>
+            The <code>os</code> module can be used to delete files.
+        </p>
+
+        <pre><code>import os
+
+os.remove("example.txt")</code></pre>
+
+        <div class="warning-box">
+            <strong>Be careful:</strong>
+            Make sure the file is the correct file before deleting it.
+        </div>
+    </section>
+
+
+    <!-- CHECK EXISTS -->
+    <section class="content-box">
+        <h2>Checking Whether a File Exists</h2>
+
+        <p>
+            You can use <code>os.path.exists()</code> to check whether a
+            file exists.
+        </p>
+
+        <pre><code>import os
+
+if os.path.exists("example.txt"):
+    print("File exists")
+else:
+    print("File does not exist")</code></pre>
+    </section>
+
+
+    <!-- RENAME -->
+    <section class="content-box">
+        <h2>Renaming a File</h2>
+
+        <p>
+            The <code>os.rename()</code> function can be used to rename
+            a file.
+        </p>
+
+        <pre><code>import os
+
+os.rename("oldname.txt", "newname.txt")</code></pre>
+    </section>
+
+
+    <!-- COPY -->
+    <section class="content-box">
+        <h2>Copying a File</h2>
+
+        <p>
+            The <code>shutil</code> module provides functions for copying
+            files.
+        </p>
+
+        <pre><code>import shutil
+
+shutil.copy("example.txt", "backup.txt")</code></pre>
+
+        <p>
+            This creates a copy of <code>example.txt</code> named
+            <code>backup.txt</code>.
+        </p>
+    </section>
+
+
+    <!-- FILE METHODS -->
+    <section class="content-box">
+        <h2>Common File Methods</h2>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td><code>read()</code></td>
+                    <td>Reads file contents</td>
+                </tr>
+
+                <tr>
+                    <td><code>readline()</code></td>
+                    <td>Reads one line</td>
+                </tr>
+
+                <tr>
+                    <td><code>readlines()</code></td>
+                    <td>Reads lines into a list</td>
+                </tr>
+
+                <tr>
+                    <td><code>write()</code></td>
+                    <td>Writes data to a file</td>
+                </tr>
+
+                <tr>
+                    <td><code>writelines()</code></td>
+                    <td>Writes multiple strings</td>
+                </tr>
+
+                <tr>
+                    <td><code>seek()</code></td>
+                    <td>Changes file position</td>
+                </tr>
+
+                <tr>
+                    <td><code>tell()</code></td>
+                    <td>Returns current file position</td>
+                </tr>
+
+                <tr>
+                    <td><code>close()</code></td>
+                    <td>Closes the file</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- PRACTICAL PROJECT -->
+    <section class="content-box">
+        <h2>Practical Example: Student File</h2>
+
+        <p>
+            The following program stores student information in a file.
+        </p>
+
+        <pre><code>student_name = "Krish"
+student_age = 20
+student_course = "BSc IT"
+
+with open("student.txt", "w") as file:
+
+    file.write("Student Name: " + student_name + "\n")
+    file.write("Age: " + str(student_age) + "\n")
+    file.write("Course: " + student_course)
+
+print("Student information saved successfully.")</code></pre>
+
+        <p>
+            The program creates a file named <code>student.txt</code> and
+            stores the student's information inside it.
+        </p>
+
+        <div class="success-box">
+            File handling is commonly used for saving configuration,
+            reports, logs, user information and other persistent data.
+        </div>
+    </section>
+
+
+    <!-- IMPORTANT RULES -->
+    <section class="content-box">
+        <h2>Important Rules to Remember</h2>
+
+        <ol>
+            <li>Use <code>open()</code> to open a file.</li>
+            <li>Use the correct file mode for the operation.</li>
+            <li>Use <code>read()</code> to read file contents.</li>
+            <li>Use <code>write()</code> to write data.</li>
+            <li>Use <code>a</code> mode to append data.</li>
+            <li>Use <code>with</code> for safer file handling.</li>
+            <li>Use <code>os</code> for operations such as deleting and renaming files.</li>
+            <li>Handle possible file errors using exception handling.</li>
+        </ol>
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+    <section class="content-box">
+        <h2>Common Mistakes</h2>
+
+        <ul>
+            <li>Forgetting to close a file when not using <code>with</code>.</li>
+            <li>Using <code>w</code> mode when you actually want to preserve existing data.</li>
+            <li>Trying to read a file that does not exist.</li>
+            <li>Using an incorrect file path.</li>
+            <li>Forgetting to convert numbers to strings before concatenating them.</li>
+            <li>Deleting a file without checking its name or path.</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>Remember:</strong>
+            Always be careful when using <code>w</code> mode because it can
+            replace existing file contents.
+        </div>
+    </section>
+
+
+    <!-- PRACTICE -->
+    <section class="content-box">
+        <h2>Practice Exercise</h2>
+
+        <p>
+            Create a Python program that:
+        </p>
+
+        <ol>
+            <li>Creates a file named <code>notes.txt</code>.</li>
+            <li>Writes three lines into the file.</li>
+            <li>Reads and displays the file contents.</li>
+            <li>Adds another line using append mode.</li>
+            <li>Reads the updated file again.</li>
+        </ol>
+
+        <div class="highlight">
+            <strong>Challenge:</strong>
+            Add exception handling so the program displays a friendly
+            message if the file cannot be opened.
+        </div>
+    </section>
+
+
+    <!-- INTERACTIVE EDITOR -->
+    <section class="content-box">
+        <h2>Python File Handling Practice Editor</h2>
+
+        <p>
+            Try the example below and click <strong>Run Demo</strong>.
+        </p>
+
+        <div class="editor">
+
+            <textarea id="codeEditor"># File Handling Example
+
+student_name = "Krish"
+student_course = "BSc IT"
+
+print("Student Name:", student_name)
+print("Course:", student_course)
+
+print("Student information saved successfully.")</textarea>
+
+            <div class="button-group">
+
+                <button class="run-btn" onclick="runDemo()">
+                    Run Demo
+                </button>
+
+                <button class="clear-btn" onclick="clearEditor()">
+                    Clear
+                </button>
+
+            </div>
+
+            <div id="outputBox">
+Click "Run Demo" to see the expected output.
+            </div>
+
+        </div>
+
+        <div class="warning-box">
+            <strong>Note:</strong>
+            This is a browser-based demonstration. It does not execute
+            real Python file operations on your computer.
+        </div>
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section class="content-box">
+        <h2>Summary</h2>
+
+        <ul>
+            <li>Python provides the <code>open()</code> function for files.</li>
+            <li><code>r</code> is used for reading.</li>
+            <li><code>w</code> is used for writing.</li>
+            <li><code>a</code> is used for appending.</li>
+            <li><code>x</code> is used for creating a new file.</li>
+            <li><code>read()</code> reads file contents.</li>
+            <li><code>write()</code> writes data to a file.</li>
+            <li><code>with</code> automatically handles closing the file.</li>
+            <li>The <code>os</code> module can be used for file operations.</li>
+        </ul>
+
+        <div class="success-box">
+            <strong>Next:</strong>
+            Continue to the Python JSON lesson to learn how to work with
+            JSON data in Python.
+        </div>
+    </section>
+
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+
+        <a href="python-exceptions.html">
+            ← Previous: Exceptions
+        </a>
+
+        <a href="python-json.html">
+            Next: JSON →
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Code With Me. All Rights Reserved.</p>
+    <p>Learn HTML, CSS, JavaScript and Python.</p>
+</footer>
+
+
+<script>
+    function runDemo() {
+
+        const output = document.getElementById("outputBox");
+
+        output.textContent =
+`Student Name: Krish
+Course: BSc IT
+Student information saved successfully.`;
+    }
+
+
+    function clearEditor() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("outputBox").textContent =
+            "Editor cleared.";
+    }
+</script>
+
+</body>
+</html>
+```
