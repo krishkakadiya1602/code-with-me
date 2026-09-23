@@ -1,0 +1,1025 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Classes | Code With Me</title>
+
+    <meta name="description"
+          content="Learn Python Classes and Object-Oriented Programming with simple examples on Code With Me.">
+
+    <meta name="keywords"
+          content="Python classes, Python objects, OOP Python, Python constructor, Python methods">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #3776ab, #1f2937);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* CONTENT BOX */
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box h2 {
+            color: #3776ab;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-box h3 {
+            color: #1f2937;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        .content-box ul,
+        .content-box ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-box li {
+            margin-bottom: 8px;
+        }
+
+        /* INFO BOXES */
+        .highlight {
+            background: #e0f2fe;
+            border-left: 5px solid #0284c7;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #dcfce7;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* CODE */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        /* TABLE */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #3776ab;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+
+        /* EDITOR */
+        .editor textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .run-btn {
+            background: #3776ab;
+        }
+
+        .run-btn:hover {
+            background: #285a85;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #outputBox {
+            background: #111827;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, "Courier New", monospace;
+            margin-top: 15px;
+        }
+
+        /* NAVIGATION */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #3776ab;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #285a85;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <a href="../index.html" class="logo">
+        Code <span>With Me</span>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#courses">Courses</a></li>
+        <li><a href="../index.html#about">About</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Python Classes</h1>
+    <p>Learn Classes and Object-Oriented Programming in Python</p>
+</section>
+
+
+<div class="container">
+
+    <!-- INTRODUCTION -->
+    <section class="content-box">
+        <h2>What are Python Classes?</h2>
+
+        <p>
+            A <strong>class</strong> in Python is a blueprint for creating objects.
+            It defines the properties and behaviors that objects created from the
+            class can have.
+        </p>
+
+        <p>
+            Python supports <strong>Object-Oriented Programming (OOP)</strong>.
+            Classes and objects are important parts of OOP.
+        </p>
+
+        <div class="highlight">
+            <strong>Simple idea:</strong>
+            A class is like a blueprint, while an object is something created
+            from that blueprint.
+        </div>
+
+        <h3>Example</h3>
+
+        <pre><code>class Student:
+    name = "Krish"
+    age = 20
+
+student1 = Student()
+
+print(student1.name)
+print(student1.age)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Krish
+20</code></pre>
+    </section>
+
+
+    <!-- CREATING CLASS -->
+    <section class="content-box">
+        <h2>Creating a Class</h2>
+
+        <p>
+            We use the <strong>class</strong> keyword to create a class.
+        </p>
+
+        <pre><code>class Car:
+    brand = "Toyota"
+    color = "White"</code></pre>
+
+        <p>
+            Here, <code>Car</code> is the name of the class.
+        </p>
+
+        <div class="success-box">
+            Class names are commonly written using PascalCase,
+            such as <code>Student</code>, <code>Car</code>, and
+            <code>BankAccount</code>.
+        </div>
+    </section>
+
+
+    <!-- OBJECT -->
+    <section class="content-box">
+        <h2>Creating an Object</h2>
+
+        <p>
+            An object is an instance of a class.
+        </p>
+
+        <pre><code>class Student:
+    name = "Krish"
+
+student1 = Student()
+
+print(student1.name)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Krish</code></pre>
+
+        <p>
+            In this example, <code>student1</code> is an object of the
+            <code>Student</code> class.
+        </p>
+    </section>
+
+
+    <!-- __INIT__ -->
+    <section class="content-box">
+        <h2>The __init__() Method</h2>
+
+        <p>
+            The <code>__init__()</code> method is a special method that is
+            automatically called when a new object is created.
+        </p>
+
+        <p>
+            It is commonly used to initialize object attributes.
+        </p>
+
+        <pre><code>class Student:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+student1 = Student("Krish", 20)
+
+print(student1.name)
+print(student1.age)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Krish
+20</code></pre>
+    </section>
+
+
+    <!-- SELF -->
+    <section class="content-box">
+        <h2>The self Parameter</h2>
+
+        <p>
+            The <code>self</code> parameter refers to the current object.
+        </p>
+
+        <pre><code>class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+student1 = Student("Krish")
+
+print(student1.name)</code></pre>
+
+        <div class="highlight">
+            <strong>Important:</strong>
+            <code>self</code> is used to access attributes and methods
+            belonging to the current object.
+        </div>
+    </section>
+
+
+    <!-- ATTRIBUTES -->
+    <section class="content-box">
+        <h2>Class Attributes and Instance Attributes</h2>
+
+        <h3>Class Attribute</h3>
+
+        <p>
+            A class attribute is shared by all objects of the class.
+        </p>
+
+        <pre><code>class Student:
+    school = "ABC School"
+
+student1 = Student()
+student2 = Student()
+
+print(student1.school)
+print(student2.school)</code></pre>
+
+        <h3>Instance Attribute</h3>
+
+        <p>
+            Instance attributes belong to individual objects.
+        </p>
+
+        <pre><code>class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+student1 = Student("Krish")
+student2 = Student("Rahul")
+
+print(student1.name)
+print(student2.name)</code></pre>
+    </section>
+
+
+    <!-- METHODS -->
+    <section class="content-box">
+        <h2>Methods in a Class</h2>
+
+        <p>
+            A method is a function that belongs to a class.
+        </p>
+
+        <pre><code>class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def introduce(self):
+        print("My name is", self.name)
+
+student1 = Student("Krish")
+
+student1.introduce()</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>My name is Krish</code></pre>
+    </section>
+
+
+    <!-- MULTIPLE METHODS -->
+    <section class="content-box">
+        <h2>Multiple Methods</h2>
+
+        <p>
+            A class can contain multiple methods.
+        </p>
+
+        <pre><code>class Calculator:
+
+    def add(self, a, b):
+        return a + b
+
+    def subtract(self, a, b):
+        return a - b
+
+calculator = Calculator()
+
+print(calculator.add(10, 5))
+print(calculator.subtract(10, 5))</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>15
+5</code></pre>
+    </section>
+
+
+    <!-- MODIFY -->
+    <section class="content-box">
+        <h2>Modifying Object Properties</h2>
+
+        <p>
+            You can change the value of an object's attribute.
+        </p>
+
+        <pre><code>class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+student1 = Student("Krish")
+
+print(student1.name)
+
+student1.name = "Rahul"
+
+print(student1.name)</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Krish
+Rahul</code></pre>
+    </section>
+
+
+    <!-- DELETE -->
+    <section class="content-box">
+        <h2>Deleting Object Properties</h2>
+
+        <p>
+            The <code>del</code> keyword can be used to delete an object
+            property.
+        </p>
+
+        <pre><code>class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+student1 = Student("Krish")
+
+del student1.name</code></pre>
+
+        <div class="warning-box">
+            After deleting the property, trying to access
+            <code>student1.name</code> will produce an error.
+        </div>
+    </section>
+
+
+    <!-- DELETE OBJECT -->
+    <section class="content-box">
+        <h2>Deleting an Object</h2>
+
+        <p>
+            You can delete an entire object using the <code>del</code> keyword.
+        </p>
+
+        <pre><code>class Student:
+    pass
+
+student1 = Student()
+
+del student1</code></pre>
+    </section>
+
+
+    <!-- PASS -->
+    <section class="content-box">
+        <h2>Empty Classes</h2>
+
+        <p>
+            If you want to create a class without adding any properties or
+            methods yet, use the <code>pass</code> statement.
+        </p>
+
+        <pre><code>class Student:
+    pass</code></pre>
+
+        <p>
+            The <code>pass</code> statement prevents Python from producing
+            an error because the class body is empty.
+        </p>
+    </section>
+
+
+    <!-- INHERITANCE PREVIEW -->
+    <section class="content-box">
+        <h2>Inheritance</h2>
+
+        <p>
+            Inheritance allows one class to inherit properties and methods
+            from another class.
+        </p>
+
+        <pre><code>class Animal:
+
+    def speak(self):
+        print("Animal makes a sound")
+
+
+class Dog(Animal):
+
+    def bark(self):
+        print("Dog barks")
+
+
+dog = Dog()
+
+dog.speak()
+dog.bark()</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Animal makes a sound
+Dog barks</code></pre>
+
+        <div class="highlight">
+            Inheritance is an important Object-Oriented Programming concept.
+            You will learn more about it in the next Python inheritance lesson.
+        </div>
+    </section>
+
+
+    <!-- CLASS EXAMPLE -->
+    <section class="content-box">
+        <h2>Real-World Example</h2>
+
+        <p>
+            Suppose we want to represent a bank account using Python.
+            We can create a class containing account information and methods.
+        </p>
+
+        <pre><code>class BankAccount:
+
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def show_balance(self):
+        print("Owner:", self.owner)
+        print("Balance:", self.balance)
+
+
+account = BankAccount("Krish", 5000)
+
+account.deposit(2000)
+
+account.show_balance()</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Owner: Krish
+Balance: 7000</code></pre>
+    </section>
+
+
+    <!-- IMPORTANT CONCEPTS -->
+    <section class="content-box">
+        <h2>Important Python Class Concepts</h2>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Concept</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td>Class</td>
+                    <td>Blueprint for creating objects</td>
+                </tr>
+
+                <tr>
+                    <td>Object</td>
+                    <td>Instance of a class</td>
+                </tr>
+
+                <tr>
+                    <td>__init__()</td>
+                    <td>Initializes an object</td>
+                </tr>
+
+                <tr>
+                    <td>self</td>
+                    <td>Refers to the current object</td>
+                </tr>
+
+                <tr>
+                    <td>Attribute</td>
+                    <td>Data stored inside an object or class</td>
+                </tr>
+
+                <tr>
+                    <td>Method</td>
+                    <td>Function defined inside a class</td>
+                </tr>
+
+                <tr>
+                    <td>Inheritance</td>
+                    <td>Allows a class to inherit from another class</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- CLASS VS OBJECT -->
+    <section class="content-box">
+        <h2>Class vs Object</h2>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Class</th>
+                    <th>Object</th>
+                </tr>
+
+                <tr>
+                    <td>Blueprint</td>
+                    <td>Instance created from the blueprint</td>
+                </tr>
+
+                <tr>
+                    <td>Defines properties and methods</td>
+                    <td>Uses those properties and methods</td>
+                </tr>
+
+                <tr>
+                    <td>Example: Student</td>
+                    <td>Example: student1</td>
+                </tr>
+
+                <tr>
+                    <td>Can create many objects</td>
+                    <td>Represents one instance</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- OOP -->
+    <section class="content-box">
+        <h2>Object-Oriented Programming</h2>
+
+        <p>
+            Python classes are used to build object-oriented programs.
+            Important OOP concepts include:
+        </p>
+
+        <ul>
+            <li><strong>Class</strong> - Blueprint for objects</li>
+            <li><strong>Object</strong> - Instance of a class</li>
+            <li><strong>Encapsulation</strong> - Combining data and methods</li>
+            <li><strong>Inheritance</strong> - Reusing code from another class</li>
+            <li><strong>Polymorphism</strong> - Same interface with different behavior</li>
+            <li><strong>Abstraction</strong> - Hiding unnecessary implementation details</li>
+        </ul>
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+    <section class="content-box">
+        <h2>Common Mistakes</h2>
+
+        <ul>
+            <li>Forgetting the colon after the class declaration.</li>
+            <li>Incorrect indentation inside the class.</li>
+            <li>Forgetting <code>self</code> in instance methods.</li>
+            <li>Using an attribute that has not been created.</li>
+            <li>Confusing a class with an object.</li>
+            <li>Calling an instance method without creating an object.</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>Tip:</strong>
+            Python uses indentation to define blocks of code, so indentation
+            is especially important when working with classes.
+        </div>
+    </section>
+
+
+    <!-- IMPORTANT RULES -->
+    <section class="content-box">
+        <h2>Important Rules to Remember</h2>
+
+        <ol>
+            <li>Use the <code>class</code> keyword to define a class.</li>
+            <li>Create objects by calling the class.</li>
+            <li>Use <code>__init__()</code> to initialize object data.</li>
+            <li>Use <code>self</code> to access instance attributes and methods.</li>
+            <li>Methods are functions defined inside a class.</li>
+            <li>One class can create many objects.</li>
+            <li>Classes are the foundation of Python OOP.</li>
+        </ol>
+    </section>
+
+
+    <!-- PRACTICE -->
+    <section class="content-box">
+        <h2>Practice Example</h2>
+
+        <p>
+            Create a Python class named <code>Person</code> with a name and age.
+            Then create an object and display its information.
+        </p>
+
+        <pre><code>class Person:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def show_info(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+
+
+person1 = Person("Krish", 20)
+
+person1.show_info()</code></pre>
+
+        <p>Output:</p>
+
+        <pre><code>Name: Krish
+Age: 20</code></pre>
+
+        <div class="success-box">
+            <strong>Practice:</strong>
+            Try creating a <code>Car</code>, <code>Student</code>,
+            or <code>Employee</code> class with your own properties and methods.
+        </div>
+    </section>
+
+
+    <!-- INTERACTIVE EDITOR -->
+    <section class="content-box">
+        <h2>Python Classes Practice Editor</h2>
+
+        <p>
+            Write or modify the example below and click
+            <strong>Run Demo</strong>.
+        </p>
+
+        <div class="editor">
+            <textarea id="codeEditor">class Student:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def show_info(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+
+
+student = Student("Krish", 20)
+
+student.show_info()</textarea>
+
+            <div class="button-group">
+                <button class="run-btn" onclick="runDemo()">Run Demo</button>
+                <button class="clear-btn" onclick="clearEditor()">Clear</button>
+            </div>
+
+            <div id="outputBox">
+Click "Run Demo" to see the expected output.
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>Note:</strong>
+            This is a simple browser demonstration. It does not execute real
+            Python code in the browser.
+        </div>
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section class="content-box">
+        <h2>Summary</h2>
+
+        <ul>
+            <li>A class is a blueprint for creating objects.</li>
+            <li>An object is an instance of a class.</li>
+            <li>The <code>__init__()</code> method initializes objects.</li>
+            <li>The <code>self</code> parameter refers to the current object.</li>
+            <li>Classes can contain attributes and methods.</li>
+            <li>Python classes are used for Object-Oriented Programming.</li>
+            <li>Inheritance allows classes to reuse code.</li>
+        </ul>
+
+        <div class="success-box">
+            <strong>Next:</strong>
+            Continue to the Python Inheritance lesson to learn how one class
+            can inherit properties and methods from another class.
+        </div>
+    </section>
+
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+        <a href="python-lambda.html">← Previous: Lambda</a>
+
+        <a href="python-inheritance.html">Next: Inheritance →</a>
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Code With Me. All Rights Reserved.</p>
+    <p>Learn HTML, CSS, JavaScript and Python.</p>
+</footer>
+
+
+<script>
+    function runDemo() {
+
+        const output = document.getElementById("outputBox");
+
+        output.textContent =
+`Name: Krish
+Age: 20`;
+    }
+
+    function clearEditor() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("outputBox").textContent =
+            "Editor cleared.";
+    }
+</script>
+
+</body>
+</html>
+```
