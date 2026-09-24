@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Programming | Code With Me</title>
+
+    <meta name="description"
+        content="Learn C programming from basics to advanced concepts with simple examples and projects.">
+
+    <meta name="keywords"
+        content="C programming, C language, learn C, C tutorial, C programming course">
+
+    <meta name="author" content="Code With Me">
+
+    <!-- Devicon -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #111827;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+
+            height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+
+            font-size: 26px;
+
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            list-style: none;
+
+            display: flex;
+
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+
+            font-size: 16px;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background:
+                linear-gradient(
+                    135deg,
+                    #e0f2fe,
+                    #f8fafc
+                );
+
+            padding: 70px 20px;
+
+            text-align: center;
+        }
+
+        .language-logo {
+            font-size: 90px;
+
+            color: #A8B9CC;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+
+            color: #172554;
+
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 750px;
+
+            margin: auto;
+
+            color: #64748b;
+
+            font-size: 19px;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section {
+            background: white;
+
+            margin: 35px 0;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .section h2 {
+            color: #172554;
+
+            font-size: 30px;
+
+            margin-bottom: 18px;
+        }
+
+        .section p {
+            color: #475569;
+
+            font-size: 17px;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           MAIN POINTS
+        ========================= */
+
+        .points {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+            margin-top: 20px;
+        }
+
+        .point-box {
+            background: #f8fafc;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+        .point-box h3 {
+            color: #1e3a8a;
+
+            margin-bottom: 8px;
+        }
+
+        .point-box p {
+            margin: 0;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           CODE BLOCK
+        ========================= */
+
+        .code-box {
+            background: #111827;
+
+            color: #e5e7eb;
+
+            padding: 25px;
+
+            border-radius: 10px;
+
+            overflow-x: auto;
+
+            margin-top: 20px;
+        }
+
+        .code-box pre {
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           EDITOR
+        ========================= */
+
+        .editor {
+            margin-top: 25px;
+        }
+
+        .editor textarea {
+            width: 100%;
+
+            min-height: 280px;
+
+            resize: vertical;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            border: 2px solid #cbd5e1;
+
+            background: #0f172a;
+
+            color: #e2e8f0;
+
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .editor textarea:focus {
+            border-color: #2563eb;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #e2e8f0;
+
+            color: #111827;
+        }
+
+        .clear-btn:hover {
+            background: #cbd5e1;
+        }
+
+
+        /* =========================
+           OUTPUT
+        ========================= */
+
+        .output {
+            margin-top: 20px;
+
+            background: #020617;
+
+            color: #22c55e;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            min-height: 100px;
+
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            white-space: pre-wrap;
+        }
+
+
+        /* =========================
+           NAVIGATION BUTTONS
+        ========================= */
+
+        .lesson-navigation {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin: 40px 0;
+        }
+
+        .navigation-btn {
+            background: #2563eb;
+
+            color: white;
+
+            padding: 13px 25px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .navigation-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .language-logo {
+                font-size: 70px;
+            }
+
+            .points {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 25px 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .navigation-btn {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">
+                    Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">
+                    About
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="language-logo">
+
+            <i class="devicon-c-plain"></i>
+
+        </div>
+
+        <h1>
+            C Programming
+        </h1>
+
+        <p>
+            Learn C programming from the basics
+            and build a strong foundation in programming.
+        </p>
+
+    </section>
+
+
+
+    <main class="container">
+
+
+        <!-- =========================
+             INTRODUCTION
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Introduction to C
+            </h2>
+
+            <p>
+                C is a general-purpose programming language
+                that is widely used for system programming,
+                embedded systems, operating systems and
+                application development.
+            </p>
+
+            <p>
+                Learning C helps you understand important
+                programming concepts such as variables,
+                data types, conditions, loops, functions,
+                arrays, pointers and memory management.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             MAIN POINTS
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                What You Will Learn
+            </h2>
+
+            <div class="points">
+
+
+                <div class="point-box">
+
+                    <h3>
+                        C Basics
+                    </h3>
+
+                    <p>
+                        Learn syntax, variables, data types
+                        and basic C programs.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Operators
+                    </h3>
+
+                    <p>
+                        Learn arithmetic, relational,
+                        logical and assignment operators.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Conditions
+                    </h3>
+
+                    <p>
+                        Learn if, else, else-if and
+                        switch statements.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Loops
+                    </h3>
+
+                    <p>
+                        Learn for, while and do-while
+                        loops.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Functions
+                    </h3>
+
+                    <p>
+                        Learn how to create and use
+                        reusable functions.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Arrays
+                    </h3>
+
+                    <p>
+                        Learn one-dimensional and
+                        multi-dimensional arrays.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Pointers
+                    </h3>
+
+                    <p>
+                        Understand pointers and
+                        memory addresses.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Structures
+                    </h3>
+
+                    <p>
+                        Learn structures and how to
+                        organize complex data.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FIRST PROGRAM
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                Your First C Program
+            </h2>
+
+            <p>
+                Here is a simple C program that prints
+                "Hello, World!".
+            </p>
+
+
+            <div class="code-box">
+
+<pre>#include &lt;stdio.h&gt;
+
+int main() {
+
+    printf("Hello, World!");
+
+    return 0;
+}</pre>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CODE EDITOR
+        ========================= -->
+
+        <section class="section">
+
+            <h2>
+                C Code Editor
+            </h2>
+
+            <p>
+                Write your C code in the editor below.
+            </p>
+
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include &lt;stdio.h&gt;
+
+int main() {
+
+    printf("Hello, World!");
+
+    return 0;
+}</textarea>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+
+                        Run Code
+
+                    </button>
+
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="output"
+                    id="output">
+
+                    Output will appear here...
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             NAVIGATION
+        ========================= -->
+
+        <div class="lesson-navigation">
+
+            <a
+                href="../python/python-introduction.html"
+                class="navigation-btn">
+
+                ← Previous
+
+            </a>
+
+
+            <a
+                href="c-basic-syntax.html"
+                class="navigation-btn">
+
+                Next →
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById(
+                    "codeEditor"
+                ).value;
+
+            const output =
+                document.getElementById(
+                    "output"
+                );
+
+
+            if (code.trim() === "") {
+
+                output.textContent =
+                    "Please write some C code first.";
+
+                return;
+
+            }
+
+
+            /*
+             * Browser cannot directly compile C code.
+             * This demo displays a message instead.
+             */
+
+            output.textContent =
+                "C code received successfully!\n\n" +
+                "To execute C code online, a C compiler " +
+                "or backend compiler is required.";
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById(
+                "codeEditor"
+            ).value = "";
+
+            document.getElementById(
+                "output"
+            ).textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
