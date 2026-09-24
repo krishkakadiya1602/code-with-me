@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+
     // Submit rating
     submitButton.addEventListener("click", async function () {
 
@@ -67,11 +68,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
+
+            // Success message
             message.textContent =
                 "Thank you! Your rating has been submitted.";
 
             message.style.color = "green";
 
+
+            // Reset rating
             selectedRating = 0;
 
             stars.forEach((star) => {
@@ -83,12 +88,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             submitButton.textContent = "Submitted ✓";
 
+
         } catch (error) {
 
-            console.error(error);
+            // Show the actual error
+            console.error("FULL RATING ERROR:", error);
 
             message.textContent =
-                "Something went wrong. Please try again.";
+                "Something went wrong: " + error.message;
 
             message.style.color = "red";
 
