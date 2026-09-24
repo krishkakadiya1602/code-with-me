@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             selectedRating = Number(this.dataset.rating);
 
             stars.forEach((s) => {
+
                 const rating = Number(s.dataset.rating);
 
                 if (rating <= selectedRating) {
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     s.classList.remove("selected");
                     s.textContent = "☆";
                 }
+
             });
 
         });
@@ -35,30 +37,40 @@ document.addEventListener("DOMContentLoaded", function () {
     submitButton.addEventListener("click", async function () {
 
         if (selectedRating === 0) {
-            message.textContent = "Please select a star rating first.";
+
+            message.textContent =
+                "Please select a star rating first.";
+
             message.style.color = "red";
+
             return;
         }
 
+
         const review = reviewInput.value.trim();
+
 
         submitButton.disabled = true;
         submitButton.textContent = "Submitting...";
 
+
         try {
 
             const { error } = await supabaseClient
-    .from("ratings")
-    .insert({
-        rating: selectedRating,
-        review: review || null
-    });
+                .from("ratings")
+                .insert({
+                    rating: selectedRating,
+                    review: review || null
+                });
+
 
             if (error) {
+
                 console.error("Rating error:", error);
 
                 message.textContent =
-                    "Rating could not be submitted: " + error.message;
+                    "Rating could not be submitted: " +
+                    error.message;
 
                 message.style.color = "red";
 
@@ -69,20 +81,25 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            // Success message
+            // Success
             message.textContent =
                 "Thank you! Your rating has been submitted.";
 
             message.style.color = "green";
 
 
-            // Reset rating
+            // Reset
             selectedRating = 0;
 
+
             stars.forEach((star) => {
+
                 star.classList.remove("selected");
+
                 star.textContent = "☆";
+
             });
+
 
             reviewInput.value = "";
 
@@ -91,16 +108,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } catch (error) {
 
-            // Show the actual error
-            console.error("FULL RATING ERROR:", error);
+            console.error(
+                "FULL RATING ERROR:",
+                error
+            );
 
             message.textContent =
-                "Something went wrong: " + error.message;
+                "Something went wrong: " +
+                error.message;
 
             message.style.color = "red";
 
             submitButton.disabled = false;
-            submitButton.textContent = "Submit Rating";
+
+            submitButton.textContent =
+                "Submit Rating";
         }
 
     });
