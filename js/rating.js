@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let selectedRating = 0;
 
-    // Star selection
+
+    // ================= STAR SELECTION =================
+
     stars.forEach((star) => {
 
         star.addEventListener("click", function () {
@@ -19,11 +21,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 const rating = Number(s.dataset.rating);
 
                 if (rating <= selectedRating) {
+
                     s.classList.add("selected");
                     s.textContent = "★";
+
                 } else {
+
                     s.classList.remove("selected");
                     s.textContent = "☆";
+
                 }
 
             });
@@ -33,7 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // Submit rating
+    // ================= SUBMIT RATING =================
+
     submitButton.addEventListener("click", async function () {
 
         if (selectedRating === 0) {
@@ -56,7 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
 
-            const { error } = await supabaseClient
+            // Send rating to Supabase
+            const { error } = await supabase
                 .from("ratings")
                 .insert({
                     rating: selectedRating,
@@ -64,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
 
+            // Check Supabase error
             if (error) {
 
                 console.error("Rating error:", error);
@@ -81,28 +90,31 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            // Success
+            // ================= SUCCESS =================
+
             message.textContent =
                 "Thank you! Your rating has been submitted.";
 
             message.style.color = "green";
 
 
-            // Reset
+            // Reset selected rating
             selectedRating = 0;
 
 
             stars.forEach((star) => {
 
                 star.classList.remove("selected");
-
                 star.textContent = "☆";
 
             });
 
 
+            // Clear review
             reviewInput.value = "";
 
+
+            // Change button text
             submitButton.textContent = "Submitted ✓";
 
 
