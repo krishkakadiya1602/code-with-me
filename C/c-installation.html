@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Installation | Code With Me</title>
+
+    <meta name="description"
+        content="Learn how to install C programming compiler GCC and set up C development environment on Windows.">
+
+    <meta name="keywords"
+        content="C installation, install C, GCC installation, MinGW, C compiler, C programming">
+
+    <meta name="author" content="Code With Me">
+
+    <!-- Devicon -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #111827;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #eaf2ff,
+                #f8fbff
+            );
+
+            text-align: center;
+
+            padding: 60px 20px;
+        }
+
+        .c-logo {
+            font-size: 75px;
+            color: #A8B9CC;
+            margin-bottom: 15px;
+        }
+
+        .page-header h1 {
+            font-size: 44px;
+            color: #172554;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #64748b;
+            font-size: 18px;
+        }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1000px;
+
+            margin: 50px auto;
+
+            padding: 0 20px;
+        }
+
+        /* =========================
+           CONTENT CARD
+        ========================= */
+
+        .content-card {
+            background: white;
+
+            padding: 35px;
+
+            margin-bottom: 30px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-card h2 {
+            color: #172554;
+
+            font-size: 30px;
+
+            margin-bottom: 20px;
+        }
+
+        .content-card h3 {
+            color: #1e40af;
+
+            font-size: 22px;
+
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        .content-card p {
+            color: #475569;
+
+            font-size: 17px;
+
+            margin-bottom: 15px;
+        }
+
+        .content-card ul,
+        .content-card ol {
+            margin-left: 25px;
+
+            color: #475569;
+
+            font-size: 17px;
+        }
+
+        .content-card li {
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           STEP BOX
+        ========================= */
+
+        .step {
+            background: #f8fafc;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 20px;
+
+            margin: 20px 0;
+
+            border-radius: 6px;
+        }
+
+        .step h3 {
+            margin-top: 0;
+
+            color: #2563eb;
+        }
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #eff6ff;
+
+            border-left: 5px solid #3b82f6;
+
+            padding: 20px;
+
+            margin: 20px 0;
+
+            border-radius: 6px;
+
+            color: #1e3a8a;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+
+            border-left: 5px solid #f97316;
+
+            padding: 20px;
+
+            margin: 20px 0;
+
+            border-radius: 6px;
+
+            color: #7c2d12;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+
+            border-left: 5px solid #22c55e;
+
+            padding: 20px;
+
+            margin: 20px 0;
+
+            border-radius: 6px;
+
+            color: #166534;
+        }
+
+        /* =========================
+           CODE BLOCK
+        ========================= */
+
+        pre {
+            background: #111827;
+
+            color: #e5e7eb;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            overflow-x: auto;
+
+            margin: 15px 0;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        /* =========================
+           COMMAND
+        ========================= */
+
+        .command {
+            background: #111827;
+
+            color: #22c55e;
+
+            padding: 16px 20px;
+
+            border-radius: 8px;
+
+            font-family: Consolas, Monaco, monospace;
+
+            font-size: 16px;
+
+            margin: 15px 0;
+
+            overflow-x: auto;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #e2e8f0;
+
+            padding: 12px;
+
+            text-align: left;
+        }
+
+        th {
+            background: #eff6ff;
+
+            color: #172554;
+        }
+
+        td {
+            color: #475569;
+        }
+
+        /* =========================
+           EDITOR
+        ========================= */
+
+        .editor-section {
+            margin-top: 25px;
+        }
+
+        .editor-section h3 {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+
+            min-height: 250px;
+
+            resize: vertical;
+
+            background: #111827;
+
+            color: #e5e7eb;
+
+            border: none;
+
+            border-radius: 8px;
+
+            padding: 20px;
+
+            font-family: Consolas, Monaco, monospace;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .editor-buttons {
+            margin-top: 15px;
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #64748b;
+
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #475569;
+        }
+
+        .output {
+            margin-top: 15px;
+
+            padding: 20px;
+
+            background: #f1f5f9;
+
+            border-radius: 8px;
+
+            color: #334155;
+
+            min-height: 60px;
+        }
+
+        /* =========================
+           NAVIGATION BUTTONS
+        ========================= */
+
+        .page-navigation {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin: 40px 0;
+        }
+
+        .nav-btn {
+            background: #2563eb;
+
+            color: white;
+
+            padding: 13px 25px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .page-header h1 {
+                font-size: 34px;
+            }
+
+            .content-card {
+                padding: 25px 20px;
+            }
+
+            .content-card h2 {
+                font-size: 26px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">
+                    Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="c-introduction.html">
+                    C
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">
+                    About
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         PAGE HEADER
+    ========================= -->
+
+    <header class="page-header">
+
+        <div class="c-logo">
+            <i class="devicon-c-plain"></i>
+        </div>
+
+        <h1>
+            C Installation
+        </h1>
+
+        <p>
+            Learn how to install a C compiler and start programming in C.
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="content-card">
+
+            <h2>
+                What Do We Need to Run C?
+            </h2>
+
+            <p>
+                C is a compiled programming language. This means that
+                your C source code needs to be converted into machine
+                code before it can run.
+            </p>
+
+            <p>
+                To write and run C programs, you need a
+                <strong>C compiler</strong>.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                A compiler translates your C program into a form
+                that the computer can execute.
+
+            </div>
+
+            <h3>
+                Common C Compilers
+            </h3>
+
+            <ul>
+
+                <li>GCC (GNU Compiler Collection)</li>
+
+                <li>Clang</li>
+
+                <li>Microsoft Visual C Compiler</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- WINDOWS INSTALLATION -->
+
+        <section class="content-card">
+
+            <h2>
+                Install C on Windows
+            </h2>
+
+            <p>
+                One common way to get GCC on Windows is by installing
+                a GCC-based toolchain such as MinGW-w64.
+            </p>
+
+            <div class="step">
+
+                <h3>
+                    Step 1: Install a C Compiler
+                </h3>
+
+                <p>
+                    Install a GCC/MinGW-w64 toolchain suitable for
+                    your Windows system.
+                </p>
+
+                <p>
+                    During installation, note the folder where the
+                    compiler is installed.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <h3>
+                    Step 2: Find the Compiler Folder
+                </h3>
+
+                <p>
+                    After installation, locate the folder containing
+                    the GCC executable.
+                </p>
+
+                <p>
+                    A typical installation contains a folder similar to:
+                </p>
+
+                <div class="command">
+                    C:\mingw64\bin
+                </div>
+
+                <p>
+                    The exact folder can be different depending on
+                    the toolchain you installed.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <h3>
+                    Step 3: Add GCC to PATH
+                </h3>
+
+                <p>
+                    Windows needs to know where the GCC compiler is
+                    located so that you can run it from Command Prompt.
+                </p>
+
+                <ol>
+
+                    <li>
+                        Open Windows Search.
+                    </li>
+
+                    <li>
+                        Search for
+                        <strong>Environment Variables</strong>.
+                    </li>
+
+                    <li>
+                        Select
+                        <strong>Edit the system environment variables</strong>.
+                    </li>
+
+                    <li>
+                        Open
+                        <strong>Environment Variables</strong>.
+                    </li>
+
+                    <li>
+                        Find the
+                        <strong>Path</strong>
+                        variable.
+                    </li>
+
+                    <li>
+                        Add the path to the compiler's
+                        <strong>bin</strong>
+                        folder.
+                    </li>
+
+                    <li>
+                        Save the changes.
+                    </li>
+
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHECK INSTALLATION -->
+
+        <section class="content-card">
+
+            <h2>
+                Check C Installation
+            </h2>
+
+            <p>
+                After installing GCC and configuring PATH,
+                open Command Prompt.
+            </p>
+
+            <p>
+                Type:
+            </p>
+
+            <div class="command">
+                gcc --version
+            </div>
+
+            <p>
+                Press <strong>Enter</strong>.
+            </p>
+
+            <div class="success-box">
+
+                If GCC is installed correctly and available in PATH,
+                the command should display information about the
+                installed GCC compiler.
+
+            </div>
+
+            <div class="warning-box">
+
+                <strong>If you see:</strong>
+
+                <br><br>
+
+                'gcc' is not recognized as an internal or external command
+
+                <br><br>
+
+                then GCC may not be installed correctly or its
+                <strong>bin</strong> directory may not be in PATH.
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATE FIRST PROGRAM -->
+
+        <section class="content-card">
+
+            <h2>
+                Create Your First C Program
+            </h2>
+
+            <p>
+                Once the compiler is installed, create a file named:
+            </p>
+
+            <div class="command">
+                hello.c
+            </div>
+
+            <p>
+                Add the following code:
+            </p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    printf("Hello, World!");
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- COMPILE PROGRAM -->
+
+        <section class="content-card">
+
+            <h2>
+                Compile Your C Program
+            </h2>
+
+            <p>
+                Open Command Prompt or Terminal in the folder
+                containing your <strong>hello.c</strong> file.
+            </p>
+
+            <p>
+                Run the following command:
+            </p>
+
+            <div class="command">
+                gcc hello.c -o hello
+            </div>
+
+            <p>
+                This command compiles the C source file and creates
+                an executable program.
+            </p>
+
+            <h3>
+                Run the Program
+            </h3>
+
+            <p>
+                On Windows, run:
+            </p>
+
+            <div class="command">
+                hello
+            </div>
+
+            <p>
+                You should see:
+            </p>
+
+<pre><code>Hello, World!</code></pre>
+
+        </section>
+
+
+        <!-- COMMAND EXPLANATION -->
+
+        <section class="content-card">
+
+            <h2>
+                Understanding the GCC Command
+            </h2>
+
+            <table>
+
+                <tr>
+                    <th>
+                        Command
+                    </th>
+
+                    <th>
+                        Meaning
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        gcc
+                    </td>
+
+                    <td>
+                        Runs the GCC compiler.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        hello.c
+                    </td>
+
+                    <td>
+                        Your C source-code file.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        -o
+                    </td>
+
+                    <td>
+                        Specifies the name of the output file.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        hello
+                    </td>
+
+                    <td>
+                        Name of the generated executable.
+                    </td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- VS CODE -->
+
+        <section class="content-card">
+
+            <h2>
+                Using C with Visual Studio Code
+            </h2>
+
+            <p>
+                You can also use Visual Studio Code as your code editor.
+            </p>
+
+            <h3>
+                Basic Setup
+            </h3>
+
+            <ol>
+
+                <li>
+                    Install a C compiler such as GCC.
+                </li>
+
+                <li>
+                    Install Visual Studio Code.
+                </li>
+
+                <li>
+                    Open your C project folder.
+                </li>
+
+                <li>
+                    Create a file named
+                    <strong>hello.c</strong>.
+                </li>
+
+                <li>
+                    Write your C program.
+                </li>
+
+                <li>
+                    Compile the program using GCC.
+                </li>
+
+            </ol>
+
+            <div class="info-box">
+
+                <strong>Remember:</strong>
+
+                Visual Studio Code is primarily a code editor.
+                The C compiler is a separate tool that actually
+                compiles your C program.
+
+            </div>
+
+        </section>
+
+
+        <!-- ONLINE COMPILER -->
+
+        <section class="content-card">
+
+            <h2>
+                Can I Learn C Without Installing a Compiler?
+            </h2>
+
+            <p>
+                Yes. You can practice basic C programming using
+                online C compilers.
+            </p>
+
+            <p>
+                However, installing a compiler on your computer
+                helps you understand how C programs are compiled
+                and executed locally.
+            </p>
+
+            <div class="success-box">
+
+                <strong>For beginners:</strong>
+
+                Learn the C syntax first, then practice by writing,
+                compiling and running programs regularly.
+
+            </div>
+
+        </section>
+
+
+        <!-- MINI EDITOR -->
+
+        <section class="content-card">
+
+            <h2>
+                C Code Practice
+            </h2>
+
+            <p>
+                Write a C program below.
+            </p>
+
+            <div class="editor-section">
+
+                <textarea id="cCode">#include <stdio.h>
+
+int main()
+{
+    printf("Hello, World!");
+
+    return 0;
+}</textarea>
+
+                <div class="editor-buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+
+                        Run Code
+
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+                <div
+                    id="output"
+                    class="output">
+
+                    Click "Run Code" to check your code.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEY POINTS -->
+
+        <section class="content-card">
+
+            <h2>
+                Key Points
+            </h2>
+
+            <ul>
+
+                <li>
+                    C programs require a compiler to execute.
+                </li>
+
+                <li>
+                    GCC is a commonly used C compiler.
+                </li>
+
+                <li>
+                    The compiler converts C source code into
+                    executable machine code.
+                </li>
+
+                <li>
+                    The <strong>gcc --version</strong> command
+                    can be used to check GCC installation.
+                </li>
+
+                <li>
+                    The <strong>gcc hello.c -o hello</strong>
+                    command compiles a C program.
+                </li>
+
+                <li>
+                    Visual Studio Code can be used as a C code editor,
+                    but a compiler is still required.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- PREVIOUS NEXT -->
+
+        <div class="page-navigation">
+
+            <a
+                href="c-introduction.html"
+                class="nav-btn">
+
+                ← Previous
+
+            </a>
+
+            <a
+                href="c-basic-syntax.html"
+                class="nav-btn">
+
+                Next → 
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("cCode").value;
+
+            const output =
+                document.getElementById("output");
+
+            if (code.trim() === "") {
+
+                output.innerHTML =
+                    "Please write some C code first.";
+
+                return;
+
+            }
+
+            output.innerHTML =
+                "<strong>C code submitted!</strong><br><br>" +
+                "This browser page does not contain a C compiler. " +
+                "To actually execute the program, compile it using GCC " +
+                "with a command such as:<br><br>" +
+                "<code>gcc hello.c -o hello</code>";
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("cCode").value = "";
+
+            document.getElementById("output").innerHTML =
+                "Editor cleared.";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
