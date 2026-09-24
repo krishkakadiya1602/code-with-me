@@ -47,12 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
 
-            const { error } = await supabase
-                .from("ratings")
-                .insert({
-                    rating: selectedRating,
-                    review: review || null
-                });
+            const { error } = await supabaseClient
+    .from("ratings")
+    .insert({
+        rating: selectedRating,
+        review: review || null
+    });
 
             if (error) {
                 console.error("Rating error:", error);
