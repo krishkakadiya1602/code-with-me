@@ -1,0 +1,565 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Comments | Code With Me</title>
+
+    <meta name="description" content="Learn C comments with simple examples. Understand single-line and multi-line comments in C programming.">
+    <meta name="keywords" content="C comments, C programming comments, single line comments, multi line comments, C language">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #111827, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-section h2 {
+            color: #1d4ed8;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .content-section h3 {
+            color: #111827;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .content-section ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .info-box strong {
+            color: #1d4ed8;
+        }
+
+        /* Code Block */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        .editor textarea {
+            width: 100%;
+            height: 280px;
+            padding: 18px;
+            background: #111827;
+            color: #f8fafc;
+            border: none;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .buttons button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* Output */
+        .output-title {
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        #output {
+            background: #020617;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 35px 0;
+        }
+
+        .lesson-navigation a {
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code<span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#c-topics">C</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>C Comments</h1>
+        <p>Learn how to write comments in C programming</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="content-section">
+            <h2>What are Comments in C?</h2>
+
+            <p>
+                Comments are notes written inside a C program to explain the code.
+                Comments are ignored by the C compiler, so they do not affect the
+                execution of the program.
+            </p>
+
+            <p>
+                Comments are very useful for making your code easier to understand,
+                especially when working on large programs or working with other
+                developers.
+            </p>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                Comments are not executed by the C compiler.
+                They are only used to explain or document your code.
+            </div>
+        </section>
+
+        <!-- Types -->
+        <section class="content-section">
+            <h2>Types of Comments in C</h2>
+
+            <p>
+                C provides two main types of comments:
+            </p>
+
+            <ul>
+                <li><strong>Single-line comments</strong></li>
+                <li><strong>Multi-line comments</strong></li>
+            </ul>
+        </section>
+
+        <!-- Single Line -->
+        <section class="content-section">
+            <h2>1. Single-Line Comments</h2>
+
+            <p>
+                A single-line comment starts with two forward slashes
+                <strong>//</strong>.
+            </p>
+
+            <p>
+                Everything after <strong>//</strong> on that line is treated as
+                a comment.
+            </p>
+
+            <h3>Example:</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    // This is a single-line comment
+
+    printf("Hello World!");
+
+    return 0;
+}</code></pre>
+
+            <div class="info-box">
+                <strong>Note:</strong>
+                The compiler ignores the line beginning with
+                <strong>//</strong>.
+            </div>
+        </section>
+
+        <!-- Multi Line -->
+        <section class="content-section">
+            <h2>2. Multi-Line Comments</h2>
+
+            <p>
+                Multi-line comments are used when you want to write comments
+                across multiple lines.
+            </p>
+
+            <p>
+                Multi-line comments start with <strong>/*</strong> and end with
+                <strong>*/</strong>.
+            </p>
+
+            <h3>Example:</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    /*
+       This is a multi-line comment.
+       It can contain multiple lines.
+    */
+
+    printf("Hello World!");
+
+    return 0;
+}</code></pre>
+        </section>
+
+        <!-- Comments with Code -->
+        <section class="content-section">
+            <h2>Comments with C Code</h2>
+
+            <p>
+                You can also use comments to temporarily disable a line of code.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    printf("Hello World!");
+
+    // printf("This line will not execute");
+
+    return 0;
+}</code></pre>
+
+            <p>
+                In this example, the second <strong>printf()</strong> statement
+                is commented out, so it will not be executed.
+            </p>
+        </section>
+
+        <!-- Why Comments -->
+        <section class="content-section">
+            <h2>Why Use Comments?</h2>
+
+            <ul>
+                <li>To explain what your code does.</li>
+                <li>To make code easier to understand.</li>
+                <li>To document complex logic.</li>
+                <li>To temporarily disable code.</li>
+                <li>To make large programs easier to maintain.</li>
+            </ul>
+        </section>
+
+        <!-- Important Points -->
+        <section class="content-section">
+            <h2>Main Points</h2>
+
+            <ul>
+                <li>Comments are ignored by the C compiler.</li>
+                <li>Use <strong>//</strong> for single-line comments.</li>
+                <li>Use <strong>/* */</strong> for multi-line comments.</li>
+                <li>Comments make programs easier to understand.</li>
+                <li>Comments can be used to temporarily disable code.</li>
+            </ul>
+        </section>
+
+        <!-- Code Editor -->
+        <section class="content-section">
+            <h2>C Code Editor</h2>
+
+            <p>
+                Write your C code below and click <strong>Run Code</strong>.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include <stdio.h>
+
+int main() {
+
+    // This is a single-line comment
+
+    /*
+       This is a multi-line comment
+    */
+
+    printf("Hello from Code With Me!");
+
+    return 0;
+}</textarea>
+
+                <div class="buttons">
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+                </div>
+
+                <h3 class="output-title">Output</h3>
+
+                <div id="output">
+Click "Run Code" to see the output.
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="c-syntax.html">
+                ← Previous: C Syntax
+            </a>
+
+            <a href="c-variables.html">
+                Next: C Variables →
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+        <p>Learn HTML, CSS, JavaScript, Python and C Programming.</p>
+    </footer>
+
+    <script>
+        function runCode() {
+
+            const code = document.getElementById("codeEditor").value;
+            const output = document.getElementById("output");
+
+            /*
+             * This is a simple demonstration.
+             * A real C compiler is required to execute C code.
+             */
+
+            const printfMatch = code.match(
+                /printf\s*\(\s*"([^"]*)"\s*\)/
+            );
+
+            if (printfMatch) {
+                output.textContent = printfMatch[1];
+            } else {
+                output.textContent =
+                    "Code entered successfully.\n\n" +
+                    "A C compiler is required to execute this program.";
+            }
+        }
+
+        function clearCode() {
+            document.getElementById("codeEditor").value = "";
+            document.getElementById("output").textContent =
+                "Editor cleared.";
+        }
+    </script>
+
+</body>
+</html>
+```
