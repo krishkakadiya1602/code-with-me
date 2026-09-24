@@ -8,10 +8,8 @@ const SUPABASE_URL =
 const SUPABASE_ANON_KEY =
     "sb_publishable_zCzBS1o-NxP6KyZ7JCT53g_1qRd5reQ";
 
-    supabaseClient =
+    const supabase =
         window.supabase.createClient(
             SUPABASE_URL,
             SUPABASE_ANON_KEY
         );
-
-}
