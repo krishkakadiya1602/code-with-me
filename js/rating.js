@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
     // Submit rating
     submitButton.addEventListener("click", async function () {
 
@@ -68,10 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            message.textContent = "Thank you! Your rating has been submitted.";
+            message.textContent =
+                "Thank you! Your rating has been submitted.";
+
             message.style.color = "green";
 
-            // Reset
             selectedRating = 0;
 
             stars.forEach((star) => {
