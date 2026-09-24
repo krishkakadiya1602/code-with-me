@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,10 @@
     <title>Code With Me | Learn Coding</title>
 
     <meta name="description"
-        content="Learn HTML, CSS, JavaScript and Python with simple coding tutorials and examples">
+        content="Learn HTML, CSS, JavaScript, Python and C with simple coding tutorials and examples">
 
     <meta name="keywords"
-        content="HTML, CSS, JavaScript, Python, coding, programming, web development">
+        content="HTML, CSS, JavaScript, Python, C, coding, programming, web development">
 
     <meta name="author" content="Code With Me">
 
@@ -181,7 +182,8 @@
         .course-container {
             display: grid;
 
-            grid-template-columns: repeat(4, 1fr);
+            /* Changed from 4 to 5 so all courses can fit on large screens */
+            grid-template-columns: repeat(5, 1fr);
 
             gap: 30px;
 
@@ -239,11 +241,13 @@
             font-size: 70px;
         }
 
+
         /* HTML Logo */
 
         .html-logo {
             color: #e34f26;
         }
+
 
         /* CSS Logo */
 
@@ -251,16 +255,25 @@
             color: #1572b6;
         }
 
+
         /* JavaScript Logo */
 
         .javascript-logo {
             color: #f7df1e;
         }
 
+
         /* Python Logo */
 
         .python-logo {
             color: #3776ab;
+        }
+
+
+        /* C Logo */
+
+        .c-logo {
+            color: #A8B9CC;
         }
 
 
@@ -401,7 +414,20 @@
            RESPONSIVE
         ========================= */
 
-        @media (max-width: 1100px) {
+        /* Laptop / Tablet */
+
+        @media (max-width: 1300px) {
+
+            .course-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* Tablet */
+
+        @media (max-width: 900px) {
 
             .course-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -409,6 +435,8 @@
 
         }
 
+
+        /* Mobile */
 
         @media (max-width: 700px) {
 
@@ -500,7 +528,7 @@
             </h1>
 
             <p>
-                Learn HTML, CSS, JavaScript and Python
+                Learn HTML, CSS, JavaScript, Python and C
                 with simple tutorials and practical examples.
             </p>
 
@@ -647,6 +675,38 @@
                     class="course-btn">
 
                     Start Python Course
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =========================
+                 C COURSE
+            ========================= -->
+
+            <div class="course-card">
+
+                <div class="course-logo c-logo">
+
+                    <i class="devicon-c-plain"></i>
+
+                </div>
+
+                <h3>C Programming</h3>
+
+                <p>
+                    Learn C programming from basic syntax
+                    to variables, loops, functions, arrays,
+                    pointers and projects.
+                </p>
+
+                <a
+                    href="c/c-introduction.html"
+                    class="course-btn">
+
+                    Start C Course
 
                 </a>
 
