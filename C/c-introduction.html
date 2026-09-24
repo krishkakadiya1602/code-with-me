@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Introduction | Code With Me</title>
+
+    <meta name="description"
+        content="Learn C programming introduction, features, history and your first C program with Code With Me.">
+
+    <meta name="keywords"
+        content="C introduction, C programming, C language, learn C, C tutorial">
+
+    <meta name="author" content="Code With Me">
+
+    <!-- Devicon -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #111827;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+            background: linear-gradient(
+                135deg,
+                #dbeafe,
+                #eff6ff
+            );
+
+            text-align: center;
+
+            padding: 60px 20px;
+        }
+
+        .c-logo {
+            font-size: 85px;
+            color: #659ad2;
+            margin-bottom: 15px;
+        }
+
+        .page-header h1 {
+            font-size: 45px;
+            color: #172554;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           CONTENT SECTION
+        ========================= */
+
+        .lesson-section {
+            background: white;
+
+            margin: 35px 0;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .lesson-section h2 {
+            font-size: 30px;
+
+            color: #172554;
+
+            margin-bottom: 18px;
+        }
+
+        .lesson-section h3 {
+            font-size: 22px;
+
+            color: #1e3a8a;
+
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        .lesson-section p {
+            color: #475569;
+
+            font-size: 17px;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           MAIN POINTS
+        ========================= */
+
+        .points-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+            margin-top: 20px;
+        }
+
+        .point-box {
+            background: #f8fafc;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+        .point-box h3 {
+            margin-top: 0;
+
+            color: #1e3a8a;
+
+            font-size: 20px;
+        }
+
+        .point-box p {
+            margin-bottom: 0;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           LIST
+        ========================= */
+
+        .lesson-list {
+            margin-left: 25px;
+
+            margin-top: 15px;
+
+            color: #475569;
+        }
+
+        .lesson-list li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           CODE BLOCK
+        ========================= */
+
+        .code-container {
+            margin-top: 20px;
+
+            background: #111827;
+
+            border-radius: 10px;
+
+            overflow-x: auto;
+        }
+
+        .code-container pre {
+            padding: 25px;
+
+            color: #e5e7eb;
+
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           CODE EXPLANATION
+        ========================= */
+
+        .explanation-table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 20px;
+        }
+
+        .explanation-table th,
+        .explanation-table td {
+            border: 1px solid #e2e8f0;
+
+            padding: 13px;
+
+            text-align: left;
+        }
+
+        .explanation-table th {
+            background: #eff6ff;
+
+            color: #1e3a8a;
+        }
+
+        .explanation-table td {
+            color: #475569;
+        }
+
+
+        /* =========================
+           EDITOR
+        ========================= */
+
+        .editor {
+            margin-top: 20px;
+        }
+
+        .editor textarea {
+            width: 100%;
+
+            min-height: 280px;
+
+            resize: vertical;
+
+            padding: 20px;
+
+            background: #0f172a;
+
+            color: #e2e8f0;
+
+            border: 2px solid #334155;
+
+            border-radius: 8px;
+
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            outline: none;
+        }
+
+        .editor textarea:focus {
+            border-color: #2563eb;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .editor-buttons {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .run-button,
+        .clear-button {
+            border: none;
+
+            padding: 12px 24px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            font-weight: bold;
+        }
+
+        .run-button {
+            background: #2563eb;
+
+            color: white;
+        }
+
+        .run-button:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-button {
+            background: #e2e8f0;
+
+            color: #111827;
+        }
+
+        .clear-button:hover {
+            background: #cbd5e1;
+        }
+
+
+        /* =========================
+           OUTPUT
+        ========================= */
+
+        .output {
+            margin-top: 20px;
+
+            background: #020617;
+
+            color: #22c55e;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            min-height: 100px;
+
+            font-family:
+                Consolas,
+                Monaco,
+                monospace;
+
+            white-space: pre-wrap;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .lesson-navigation {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin: 40px 0;
+        }
+
+        .navigation-button {
+            background: #2563eb;
+
+            color: white;
+
+            padding: 13px 25px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .navigation-button:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .c-logo {
+                font-size: 70px;
+            }
+
+            .points-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lesson-section {
+                padding: 25px 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .navigation-button {
+                text-align: center;
+            }
+
+            .explanation-table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">
+                    Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">
+                    About
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =========================
+         PAGE HEADER
+    ========================= -->
+
+    <header class="page-header">
+
+        <div class="c-logo">
+
+            <i class="devicon-c-plain"></i>
+
+        </div>
+
+        <h1>
+            C Introduction
+        </h1>
+
+        <p>
+            Learn the basics of C programming
+            and understand how C programs work.
+        </p>
+
+    </header>
+
+
+
+    <main class="container">
+
+
+        <!-- =========================
+             INTRODUCTION
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Introduction to C
+            </h2>
+
+            <p>
+                C is a general-purpose programming language
+                that was developed to create efficient and
+                powerful software.
+            </p>
+
+            <p>
+                C is one of the most important programming
+                languages for learning fundamental programming
+                concepts. It is also used in operating systems,
+                embedded systems, compilers and many other
+                types of software.
+            </p>
+
+            <p>
+                C provides low-level memory access while also
+                providing features that make it suitable for
+                developing complex applications.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             HISTORY
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                History of C
+            </h2>
+
+            <p>
+                The C programming language was developed by
+                Dennis Ritchie at Bell Labs in the early
+                1970s.
+            </p>
+
+            <p>
+                C was designed as a successor to earlier
+                programming languages such as B and BCPL.
+            </p>
+
+            <p>
+                C became widely used because it was efficient,
+                portable and suitable for system programming.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             FEATURES
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Features of C
+            </h2>
+
+            <div class="points-grid">
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Simple
+                    </h3>
+
+                    <p>
+                        C has a relatively small set of
+                        keywords and a straightforward syntax.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Fast
+                    </h3>
+
+                    <p>
+                        C programs can be compiled into
+                        efficient machine code.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Portable
+                    </h3>
+
+                    <p>
+                        C programs can often be moved between
+                        different systems with limited changes.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Structured
+                    </h3>
+
+                    <p>
+                        C supports functions, loops,
+                        conditions and structured programming.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Middle-Level Language
+                    </h3>
+
+                    <p>
+                        C provides both high-level programming
+                        features and low-level memory access.
+                    </p>
+
+                </div>
+
+
+                <div class="point-box">
+
+                    <h3>
+                        Powerful
+                    </h3>
+
+                    <p>
+                        C is suitable for system software,
+                        embedded systems and applications.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             USES
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Where is C Used?
+            </h2>
+
+            <p>
+                C is used in many areas of software development.
+            </p>
+
+            <ul class="lesson-list">
+
+                <li>
+                    Operating systems
+                </li>
+
+                <li>
+                    Embedded systems
+                </li>
+
+                <li>
+                    Device drivers
+                </li>
+
+                <li>
+                    Compilers
+                </li>
+
+                <li>
+                    System software
+                </li>
+
+                <li>
+                    Database systems
+                </li>
+
+                <li>
+                    Game development
+                </li>
+
+                <li>
+                    Networking software
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- =========================
+             FIRST PROGRAM
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Your First C Program
+            </h2>
+
+            <p>
+                Let's create a simple C program that prints
+                "Hello, World!" on the screen.
+            </p>
+
+
+            <div class="code-container">
+
+<pre>#include &lt;stdio.h&gt;
+
+int main() {
+
+    printf("Hello, World!");
+
+    return 0;
+}</pre>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CODE EXPLANATION
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Understanding the Program
+            </h2>
+
+            <table class="explanation-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Code</th>
+                        <th>Explanation</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            #include &lt;stdio.h&gt;
+                        </td>
+
+                        <td>
+                            Includes the standard input/output
+                            library.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            int main()
+                        </td>
+
+                        <td>
+                            Defines the main function where
+                            program execution begins.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            printf()
+                        </td>
+
+                        <td>
+                            Prints text or other output
+                            to the screen.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            return 0;
+                        </td>
+
+                        <td>
+                            Indicates that the program
+                            completed successfully.
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+
+        <!-- =========================
+             CODE EDITOR
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                C Code Editor
+            </h2>
+
+            <p>
+                Try writing your own C code below.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include &lt;stdio.h&gt;
+
+int main() {
+
+    printf("Hello, World!");
+
+    return 0;
+}</textarea>
+
+
+                <div class="editor-buttons">
+
+                    <button
+                        class="run-button"
+                        onclick="runCode()">
+
+                        Run Code
+
+                    </button>
+
+
+                    <button
+                        class="clear-button"
+                        onclick="clearCode()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="output"
+                    class="output">
+
+                    Output will appear here...
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             KEY POINTS
+        ========================= -->
+
+        <section class="lesson-section">
+
+            <h2>
+                Key Points
+            </h2>
+
+            <ul class="lesson-list">
+
+                <li>
+                    C is a general-purpose programming language.
+                </li>
+
+                <li>
+                    C was developed by Dennis Ritchie.
+                </li>
+
+                <li>
+                    C is widely used for system programming.
+                </li>
+
+                <li>
+                    C supports functions, arrays, pointers
+                    and structures.
+                </li>
+
+                <li>
+                    C helps build strong programming fundamentals.
+                </li>
+
+                <li>
+                    C programs are generally compiled before execution.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+        <!-- =========================
+             PREVIOUS / NEXT
+        ========================= -->
+
+        <div class="lesson-navigation">
+
+            <a
+                href="../index.html#courses"
+                class="navigation-button">
+
+                ← Previous
+
+            </a>
+
+
+            <a
+                href="c-basic-syntax.html"
+                class="navigation-button">
+
+                Next →
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById(
+                    "codeEditor"
+                ).value;
+
+            const output =
+                document.getElementById(
+                    "output"
+                );
+
+
+            if (code.trim() === "") {
+
+                output.textContent =
+                    "Please write some C code first.";
+
+                return;
+
+            }
+
+
+            /*
+             * A browser cannot directly compile C code.
+             * This editor currently demonstrates
+             * the code input area.
+             */
+
+            output.textContent =
+                "C code submitted successfully!\n\n" +
+                "A C compiler is required to execute " +
+                "this code.";
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById(
+                "codeEditor"
+            ).value = "";
+
+            document.getElementById(
+                "output"
+            ).textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
