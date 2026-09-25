@@ -1,0 +1,748 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Constants | Code With Me</title>
+
+    <meta name="description" content="Learn C constants with simple examples. Understand const variables and #define constants in C programming.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Main */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #2563eb;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* Code */
+        .code-title {
+            background: #111827;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+        }
+
+        pre {
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 20px;
+            overflow-x: auto;
+            border-radius: 0 0 8px 8px;
+            font-family: Consolas, monospace;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 280px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            background: #111827;
+            color: #f8fafc;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .output {
+            margin-top: 15px;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 80px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Navigation */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0 50px;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+
+        <h1>C Constants</h1>
+
+        <p>
+            Learn how to create and use constants in C programming
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+        <section class="section">
+
+            <h2>What are Constants in C?</h2>
+
+            <p>
+                A constant is a value that cannot be changed during the
+                execution of a C program.
+            </p>
+
+            <p>
+                For example, if you have a constant value representing
+                the number of days in a week, that value should remain
+                unchanged.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Important:</strong>
+
+                Once a constant is defined, you should not change
+                its value during program execution.
+
+            </div>
+
+        </section>
+
+
+        <!-- Types -->
+        <section class="section">
+
+            <h2>Types of Constants in C</h2>
+
+            <p>
+                There are several types of constants used in C programming.
+            </p>
+
+            <ul>
+
+                <li>Integer Constants</li>
+
+                <li>Floating-Point Constants</li>
+
+                <li>Character Constants</li>
+
+                <li>String Constants</li>
+
+                <li>Symbolic Constants</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Integer -->
+        <section class="section">
+
+            <h2>1. Integer Constants</h2>
+
+            <p>
+                Integer constants are whole numbers without a decimal point.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age = 20;
+
+    printf("Age = %d", age);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Float -->
+        <section class="section">
+
+            <h2>2. Floating-Point Constants</h2>
+
+            <p>
+                Floating-point constants contain decimal values.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    float pi = 3.14;
+
+    printf("Value of pi = %.2f", pi);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Character -->
+        <section class="section">
+
+            <h2>3. Character Constants</h2>
+
+            <p>
+                A character constant represents a single character and
+                is written inside single quotes.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    char grade = 'A';
+
+    printf("Grade = %c", grade);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- String -->
+        <section class="section">
+
+            <h2>4. String Constants</h2>
+
+            <p>
+                A string constant is a sequence of characters written
+                inside double quotation marks.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    printf("Welcome to Code With Me!");
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- const keyword -->
+        <section class="section">
+
+            <h2>5. Using the const Keyword</h2>
+
+            <p>
+                The <strong>const</strong> keyword can be used to create
+                a variable whose value should not be modified.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    const int DAYS = 7;
+
+    printf("Days in a week = %d", DAYS);
+
+    return 0;
+}</code></pre>
+
+            <div class="highlight">
+
+                <strong>Note:</strong>
+
+                Trying to modify a const variable will result in
+                a compilation error.
+
+            </div>
+
+        </section>
+
+
+        <!-- Define -->
+        <section class="section">
+
+            <h2>6. Using #define</h2>
+
+            <p>
+                The <strong>#define</strong> preprocessor directive can
+                also be used to create symbolic constants.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+#define PI 3.14159
+
+int main() {
+
+    printf("PI = %.5f", PI);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Difference -->
+        <section class="section">
+
+            <h2>const vs #define</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>const</th>
+                        <th>#define</th>
+                    </tr>
+
+                    <tr>
+                        <td>Uses the const keyword</td>
+                        <td>Uses the #define directive</td>
+                    </tr>
+
+                    <tr>
+                        <td>Has a data type</td>
+                        <td>Does not have a data type</td>
+                    </tr>
+
+                    <tr>
+                        <td>Handled by the compiler</td>
+                        <td>Handled by the preprocessor</td>
+                    </tr>
+
+                    <tr>
+                        <td>Example: const int AGE = 18;</td>
+                        <td>Example: #define AGE 18</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Important Points -->
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <div class="highlight">
+
+                <p>
+                    <strong>const</strong> is used to create
+                    read-only variables.
+                </p>
+
+                <p>
+                    <strong>#define</strong> creates symbolic constants.
+                </p>
+
+                <p>
+                    Constants are useful for values that should not change.
+                </p>
+
+                <p>
+                    Constants make programs easier to understand and maintain.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Editor -->
+        <section class="section">
+
+            <h2>Try C Code</h2>
+
+            <p>
+                Write your C code below and click the Run button.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include <stdio.h>
+
+#define PI 3.14159
+
+int main() {
+
+    const int DAYS = 7;
+
+    printf("PI = %.5f\n", PI);
+    printf("Days in a week = %d", DAYS);
+
+    return 0;
+}</textarea>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="output"
+                    id="output">
+
+                    Output will appear here...
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Navigation -->
+        <div class="page-navigation">
+
+            <a href="c-comments.html">
+                ← Previous: C Comments
+            </a>
+
+            <a href="c-data-types.html">
+                Next: C Data Types →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+
+            if (code.trim() === "") {
+
+                output.textContent =
+                    "Please enter some C code.";
+
+                return;
+            }
+
+
+            output.textContent =
+                "C code submitted successfully!\n\n" +
+                "Note: To actually execute C code in the browser, " +
+                "you need a C compiler/backend.";
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
