@@ -1,0 +1,1015 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Input and Output | Code With Me</title>
+
+    <meta name="description" content="Learn input and output in C programming using printf and scanf with simple examples.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #2563eb;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        .section ul {
+            padding-left: 25px;
+        }
+
+        .highlight {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* ================= CODE ================= */
+
+        .code-title {
+            background: #111827;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+        }
+
+        pre {
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 20px;
+            overflow-x: auto;
+            border-radius: 0 0 8px 8px;
+            font-family: Consolas, monospace;
+            margin-bottom: 20px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* ================= EDITOR ================= */
+
+        .editor {
+            margin-top: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            background: #111827;
+            color: #f8fafc;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .output {
+            margin-top: 15px;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0 50px;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="hero">
+
+        <h1>C Input and Output</h1>
+
+        <p>
+            Learn how to take input and display output in C
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- ================= INTRODUCTION ================= -->
+
+        <section class="section">
+
+            <h2>What is Input and Output in C?</h2>
+
+            <p>
+                Input and output are important parts of almost every
+                C program.
+            </p>
+
+            <p>
+                <strong>Input</strong> means taking data from the user,
+                while <strong>output</strong> means displaying information
+                to the user.
+            </p>
+
+            <div class="highlight">
+
+                <strong>In simple words:</strong>
+
+                <br>
+
+                Input → User gives data to the program.
+
+                <br>
+
+                Output → Program displays information to the user.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STDIO ================= -->
+
+        <section class="section">
+
+            <h2>&lt;stdio.h&gt; Header File</h2>
+
+            <p>
+                C provides input and output functions through the
+                <strong>stdio.h</strong> header file.
+            </p>
+
+            <p>
+                The most commonly used functions are:
+            </p>
+
+            <ul>
+
+                <li><strong>printf()</strong> – used to display output.</li>
+
+                <li><strong>scanf()</strong> – used to take input.</li>
+
+                <li><strong>getchar()</strong> – reads one character.</li>
+
+                <li><strong>putchar()</strong> – displays one character.</li>
+
+            </ul>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    printf("Hello World!");
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= PRINTF ================= -->
+
+        <section class="section">
+
+            <h2>1. printf() Function</h2>
+
+            <p>
+                The <strong>printf()</strong> function is used to display
+                text, numbers, and other values on the screen.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    printf("Welcome to Code With Me!");
+
+    return 0;
+}</code></pre>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <br>
+
+                Welcome to Code With Me!
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PRINT VARIABLES ================= -->
+
+        <section class="section">
+
+            <h2>Printing Variables</h2>
+
+            <p>
+                We can use format specifiers to display variables
+                using printf().
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age = 20;
+
+    printf("Age = %d", age);
+
+    return 0;
+}</code></pre>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <br>
+
+                Age = 20
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SCANF ================= -->
+
+        <section class="section">
+
+            <h2>2. scanf() Function</h2>
+
+            <p>
+                The <strong>scanf()</strong> function is used to take
+                input from the user.
+            </p>
+
+            <p>
+                When using scanf(), we normally use the
+                <strong>&amp;</strong> symbol before a variable.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age;
+
+    printf("Enter your age: ");
+
+    scanf("%d", &amp;age);
+
+    printf("Your age is %d", age);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= INTEGER INPUT ================= -->
+
+        <section class="section">
+
+            <h2>Taking Integer Input</h2>
+
+            <p>
+                Use <strong>%d</strong> with scanf() to take an integer.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number;
+
+    printf("Enter a number: ");
+
+    scanf("%d", &amp;number);
+
+    printf("You entered: %d", number);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= FLOAT INPUT ================= -->
+
+        <section class="section">
+
+            <h2>Taking Float Input</h2>
+
+            <p>
+                Use <strong>%f</strong> to take a floating-point number.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    float price;
+
+    printf("Enter price: ");
+
+    scanf("%f", &amp;price);
+
+    printf("Price = %.2f", price);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= CHARACTER INPUT ================= -->
+
+        <section class="section">
+
+            <h2>Taking Character Input</h2>
+
+            <p>
+                Use <strong>%c</strong> to take a single character.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    char grade;
+
+    printf("Enter your grade: ");
+
+    scanf(" %c", &amp;grade);
+
+    printf("Your grade is %c", grade);
+
+    return 0;
+}</code></pre>
+
+            <div class="highlight">
+
+                Notice the space before <strong>%c</strong>:
+
+                <br><br>
+
+                <strong>scanf(" %c", &amp;grade);</strong>
+
+                <br><br>
+
+                This helps ignore leftover whitespace characters.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MULTIPLE INPUT ================= -->
+
+        <section class="section">
+
+            <h2>Taking Multiple Inputs</h2>
+
+            <p>
+                You can take multiple values using one scanf() statement.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age;
+    float marks;
+
+    printf("Enter age and marks: ");
+
+    scanf("%d %f", &amp;age, &amp;marks);
+
+    printf("Age = %d\n", age);
+    printf("Marks = %.2f", marks);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= GETCHAR ================= -->
+
+        <section class="section">
+
+            <h2>3. getchar()</h2>
+
+            <p>
+                The <strong>getchar()</strong> function is used to read
+                a single character from the keyboard.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    char ch;
+
+    printf("Enter a character: ");
+
+    ch = getchar();
+
+    printf("You entered: %c", ch);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= PUTCHAR ================= -->
+
+        <section class="section">
+
+            <h2>4. putchar()</h2>
+
+            <p>
+                The <strong>putchar()</strong> function is used to display
+                a single character.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    char ch = 'A';
+
+    putchar(ch);
+
+    return 0;
+}</code></pre>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <br>
+
+                A
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FORMAT SPECIFIERS ================= -->
+
+        <section class="section">
+
+            <h2>Common Format Specifiers</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Specifier</th>
+                        <th>Used For</th>
+                        <th>Example</th>
+                    </tr>
+
+                    <tr>
+                        <td>%d</td>
+                        <td>Integer</td>
+                        <td>10</td>
+                    </tr>
+
+                    <tr>
+                        <td>%f</td>
+                        <td>Float</td>
+                        <td>10.50</td>
+                    </tr>
+
+                    <tr>
+                        <td>%c</td>
+                        <td>Character</td>
+                        <td>A</td>
+                    </tr>
+
+                    <tr>
+                        <td>%s</td>
+                        <td>String</td>
+                        <td>Hello</td>
+                    </tr>
+
+                    <tr>
+                        <td>%lf</td>
+                        <td>Double</td>
+                        <td>10.50</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NEWLINE ================= -->
+
+        <section class="section">
+
+            <h2>Using \n in Output</h2>
+
+            <p>
+                The <strong>\n</strong> escape sequence moves the cursor
+                to a new line.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    printf("Hello\n");
+    printf("Welcome to C");
+
+    return 0;
+}</code></pre>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <br>
+
+                Hello
+
+                <br>
+
+                Welcome to C
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= IMPORTANT POINTS ================= -->
+
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <div class="highlight">
+
+                <p>
+                    <strong>printf()</strong> is mainly used for output.
+                </p>
+
+                <p>
+                    <strong>scanf()</strong> is mainly used for input.
+                </p>
+
+                <p>
+                    <strong>getchar()</strong> reads one character.
+                </p>
+
+                <p>
+                    <strong>putchar()</strong> displays one character.
+                </p>
+
+                <p>
+                    <strong>&lt;stdio.h&gt;</strong> provides these
+                    standard input/output functions.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EDITOR ================= -->
+
+        <section class="section">
+
+            <h2>Try C Code</h2>
+
+            <p>
+                Write your C code below and click the Run button.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include <stdio.h>
+
+int main() {
+
+    int age;
+
+    printf("Enter your age: ");
+
+    scanf("%d", &age);
+
+    printf("Your age is %d", age);
+
+    return 0;
+}</textarea>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="output"
+                    id="output">
+
+                    Output will appear here...
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <div class="page-navigation">
+
+            <a href="c-data-types.html">
+                ← Previous: C Data Types
+            </a>
+
+            <a href="c-operators.html">
+                Next: C Operators →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+
+            if (code.trim() === "") {
+
+                output.textContent =
+                    "Please enter some C code.";
+
+                return;
+            }
+
+
+            output.textContent =
+                "C code submitted successfully!\n\n" +
+                "Note: To actually execute C code in the browser, " +
+                "you need a C compiler/backend.";
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
