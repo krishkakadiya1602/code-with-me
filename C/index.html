@@ -8,10 +8,19 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>C Programming Course | Code With Me</title>
+    <title>Code With Me | Learn Coding</title>
 
     <meta name="description"
-        content="Learn C Programming from beginner to advanced with simple examples and practical programs.">
+        content="Learn HTML, CSS, JavaScript, Python and C with simple coding tutorials and examples">
+
+    <meta name="keywords"
+        content="HTML, CSS, JavaScript, Python, C, coding, programming, web development">
+
+    <meta name="author" content="Code With Me">
+
+    <!-- Devicon - Programming Language Logos -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
     <style>
 
@@ -33,7 +42,7 @@
             font-family: Arial, Helvetica, sans-serif;
             background: #f4f7fb;
             color: #111827;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         a {
@@ -72,17 +81,18 @@
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 30px;
             list-style: none;
         }
 
         .nav-links a {
             color: white;
-            font-size: 15px;
+            font-size: 16px;
+            transition: 0.3s;
         }
 
         .nav-links a:hover {
-            color: #60a5fa;
+            color: #3b82f6;
         }
 
 
@@ -91,239 +101,293 @@
         ========================= */
 
         .hero {
-            background: linear-gradient(
-                135deg,
-                #172554,
-                #2563eb
-            );
+            min-height: 420px;
 
-            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             text-align: center;
 
-            padding: 80px 20px;
+            padding: 60px 20px;
+
+            background: linear-gradient(
+                135deg,
+                #eaf2ff,
+                #f8fbff
+            );
+        }
+
+        .hero-content {
+            max-width: 800px;
         }
 
         .hero h1 {
             font-size: 48px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            color: #111827;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
         }
 
         .hero p {
             font-size: 19px;
-            max-width: 800px;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+
+            background: #2563eb;
+            color: white;
+
+            padding: 13px 25px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           COURSES
+        ========================= */
+
+        .courses-section {
+            padding: 70px 7%;
+            text-align: center;
+        }
+
+        .courses-section h2 {
+            font-size: 44px;
+            margin-bottom: 15px;
+            color: #172554;
+        }
+
+        .courses-subtitle {
+            color: #64748b;
+            font-size: 18px;
+            margin-bottom: 50px;
+        }
+
+        .course-container {
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr);
+
+            gap: 30px;
+
+            max-width: 1650px;
+
             margin: auto;
         }
 
 
         /* =========================
-           COURSE LAYOUT
+           COURSE CARD
         ========================= */
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-
-            margin: 40px auto;
-
-            display: grid;
-
-            grid-template-columns: 270px 1fr;
-
-            gap: 30px;
-        }
-
-
-        /* =========================
-           SIDEBAR
-        ========================= */
-
-        .sidebar {
+        .course-card {
             background: white;
 
-            border-radius: 12px;
+            border-radius: 15px;
 
-            padding: 25px;
+            padding: 40px 25px;
 
-            height: fit-content;
+            min-height: 320px;
 
-            box-shadow:
-                0 5px 20px rgba(0,0,0,0.08);
-
-            position: sticky;
-
-            top: 90px;
-        }
-
-        .sidebar h3 {
-            margin-bottom: 15px;
-
-            color: #172554;
-        }
-
-        .sidebar a {
-            display: block;
-
-            color: #374151;
-
-            padding: 9px 10px;
-
-            border-radius: 6px;
-
-            margin-bottom: 5px;
-        }
-
-        .sidebar a:hover {
-            background: #eff6ff;
-
-            color: #2563eb;
-        }
-
-
-        /* =========================
-           CONTENT
-        ========================= */
-
-        .content {
-            background: white;
-
-            border-radius: 12px;
-
-            padding: 40px;
-
-            box-shadow:
-                0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .content section {
-            margin-bottom: 55px;
-
-            scroll-margin-top: 90px;
-        }
-
-        .content h2 {
-            color: #172554;
-
-            font-size: 32px;
-
-            margin-bottom: 15px;
-
-            border-bottom: 2px solid #e5e7eb;
-
-            padding-bottom: 10px;
-        }
-
-        .content h3 {
-            color: #1e40af;
-
-            margin-top: 25px;
-
-            margin-bottom: 10px;
-        }
-
-
-        /* =========================
-           INFO BOX
-        ========================= */
-
-        .info-box {
-            background: #eff6ff;
-
-            border-left: 5px solid #2563eb;
-
-            padding: 18px;
-
-            margin: 20px 0;
-
-            border-radius: 6px;
-        }
-
-
-        /* =========================
-           CODE BOX
-        ========================= */
-
-        pre {
-            background: #111827;
-
-            color: #e5e7eb;
-
-            padding: 20px;
-
-            border-radius: 8px;
-
-            overflow-x: auto;
-
-            margin: 15px 0;
-        }
-
-        code {
-            font-family: Consolas, monospace;
-
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           TABLE
-        ========================= */
-
-        table {
-            width: 100%;
-
-            border-collapse: collapse;
-
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            border: 1px solid #d1d5db;
-
-            padding: 12px;
-
-            text-align: left;
-        }
-
-        th {
-            background: #eff6ff;
-
-            color: #172554;
-        }
-
-
-        /* =========================
-           BUTTONS
-        ========================= */
-
-        .buttons {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
 
-            justify-content: space-between;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 
-            margin-top: 40px;
-
-            gap: 15px;
+            transition: 0.3s;
         }
 
-        .btn {
+        .course-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* =========================
+           LANGUAGE LOGOS
+        ========================= */
+
+        .course-logo {
+            width: 75px;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            font-size: 70px;
+        }
+
+
+        /* HTML Logo */
+
+        .html-logo {
+            color: #e34f26;
+        }
+
+
+        /* CSS Logo */
+
+        .css-logo {
+            color: #1572b6;
+        }
+
+
+        /* JavaScript Logo */
+
+        .javascript-logo {
+            color: #f7df1e;
+        }
+
+
+        /* Python Logo */
+
+        .python-logo {
+            color: #3776ab;
+        }
+
+
+        /* C Logo */
+
+        .c-logo {
+            color: #A8B9CC;
+        }
+
+
+        /* =========================
+           COURSE TITLE
+        ========================= */
+
+        .course-card h3 {
+            font-size: 30px;
+
+            margin-bottom: 15px;
+
+            color: #111827;
+        }
+
+        .course-card p {
+            color: #64748b;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+
+            max-width: 300px;
+        }
+
+
+        /* =========================
+           COURSE BUTTON
+        ========================= */
+
+        .course-btn {
+            display: inline-block;
+
             background: #2563eb;
 
             color: white;
 
-            padding: 12px 20px;
+            padding: 13px 24px;
 
             border-radius: 7px;
 
-            border: none;
+            font-size: 16px;
 
-            cursor: pointer;
+            font-weight: bold;
 
-            font-size: 15px;
+            transition: 0.3s;
+
+            margin-top: auto;
         }
 
-        .btn:hover {
+        .course-btn:hover {
             background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-section {
+            background: white;
+
+            padding: 70px 7%;
+
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #172554;
+        }
+
+        .about-section p {
+            max-width: 800px;
+
+            margin: auto;
+
+            color: #64748b;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-section {
+            padding: 70px 7%;
+
+            text-align: center;
+
+            background: #f4f7fb;
+        }
+
+        .contact-section h2 {
+            font-size: 40px;
+
+            margin-bottom: 20px;
+
+            color: #172554;
+        }
+
+        .contact-section p {
+            color: #64748b;
+
+            font-size: 18px;
+
+            margin: 8px 0;
         }
 
 
@@ -339,8 +403,10 @@
             text-align: center;
 
             padding: 25px;
+        }
 
-            margin-top: 50px;
+        footer p {
+            font-size: 15px;
         }
 
 
@@ -348,30 +414,60 @@
            RESPONSIVE
         ========================= */
 
-        @media (max-width: 850px) {
+        /* Laptop / Tablet */
 
-            .container {
-                grid-template-columns: 1fr;
+        @media (max-width: 1300px) {
+
+            .course-container {
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            .sidebar {
-                position: static;
+        }
+
+
+        /* Tablet */
+
+        @media (max-width: 900px) {
+
+            .course-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
             }
 
             .nav-links {
-                gap: 10px;
+                gap: 12px;
             }
 
             .nav-links a {
-                font-size: 13px;
+                font-size: 14px;
             }
 
             .hero h1 {
                 font-size: 36px;
             }
 
-            .content {
-                padding: 25px;
+            .courses-section h2 {
+                font-size: 34px;
+            }
+
+            .course-container {
+                grid-template-columns: 1fr;
+            }
+
+            .course-card {
+                max-width: 450px;
+                width: 100%;
+                margin: auto;
             }
 
         }
@@ -397,15 +493,19 @@
         <ul class="nav-links">
 
             <li>
-                <a href="index.html">Home</a>
+                <a href="#home">Home</a>
             </li>
 
             <li>
-                <a href="#topics">C Topics</a>
+                <a href="#courses">Courses</a>
             </li>
 
             <li>
-                <a href="#introduction">Introduction</a>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
             </li>
 
         </ul>
@@ -413,623 +513,250 @@
     </nav>
 
 
+
     <!-- =========================
          HERO
     ========================= -->
 
-    <section class="hero">
+    <section id="home" class="hero">
 
-        <h1>C Programming Course</h1>
+        <div class="hero-content">
 
-        <p>
-            Learn C Programming from the basics to advanced
-            concepts with simple explanations and practical examples.
-        </p>
+            <h1>
+                Learn Coding With
+                <span>Code With Me</span>
+            </h1>
+
+            <p>
+                Learn HTML, CSS, JavaScript, Python and C
+                with simple tutorials and practical examples.
+            </p>
+
+            <a href="#courses" class="hero-btn">
+                Explore Courses
+            </a>
+
+        </div>
 
     </section>
 
 
+
     <!-- =========================
-         MAIN CONTAINER
+         COURSES
     ========================= -->
 
-    <div class="container">
+    <section id="courses" class="courses-section">
+
+        <h2>Our Courses</h2>
+
+        <p class="courses-subtitle">
+            Choose a programming course and start learning step by step.
+        </p>
 
 
-        <!-- =========================
-             SIDEBAR
-        ========================= -->
-
-        <aside class="sidebar">
-
-            <h3>C Course Topics</h3>
-
-            <a href="#introduction">
-                1. C Introduction
-            </a>
-
-            <a href="#installation">
-                2. C Installation
-            </a>
-
-            <a href="#syntax">
-                3. C Syntax
-            </a>
-
-            <a href="#comments">
-                4. C Comments
-            </a>
-
-            <a href="#variables">
-                5. C Variables
-            </a>
-
-            <a href="#datatypes">
-                6. C Data Types
-            </a>
-
-            <a href="#constants">
-                7. C Constants
-            </a>
-
-            <a href="#operators">
-                8. C Operators
-            </a>
-
-            <a href="#ifelse">
-                9. C If Else
-            </a>
-
-            <a href="#switch">
-                10. C Switch
-            </a>
-
-            <a href="#loops">
-                11. C Loops
-            </a>
-
-            <a href="#functions">
-                12. C Functions
-            </a>
-
-            <a href="#arrays">
-                13. C Arrays
-            </a>
-
-            <a href="#strings">
-                14. C Strings
-            </a>
-
-            <a href="#pointers">
-                15. C Pointers
-            </a>
-
-            <a href="#structures">
-                16. C Structures
-            </a>
-
-            <a href="#projects">
-                17. C Projects
-            </a>
-
-        </aside>
+        <div class="course-container">
 
 
-        <!-- =========================
-             CONTENT
-        ========================= -->
+            <!-- =========================
+                 HTML COURSE
+            ========================= -->
 
-        <main class="content">
+            <div class="course-card">
 
+                <div class="course-logo html-logo">
 
-            <!-- INTRODUCTION -->
-
-            <section id="introduction">
-
-                <h2>1. C Introduction</h2>
-
-                <p>
-                    C is a general-purpose programming language
-                    used to develop software, operating systems,
-                    embedded systems and many other applications.
-                </p>
-
-                <div class="info-box">
-
-                    <strong>Important:</strong>
-
-                    C is a procedural programming language and
-                    is widely used for learning programming fundamentals.
+                    <i class="devicon-html5-plain"></i>
 
                 </div>
 
-                <h3>First C Program</h3>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main()
-{
-    printf("Hello World!");
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- INSTALLATION -->
-
-            <section id="installation">
-
-                <h2>2. C Installation</h2>
+                <h3>HTML</h3>
 
                 <p>
-                    To run C programs, you need a C compiler.
-                    Popular C compilers include GCC and Clang.
+                    Learn HTML from basic tags to forms,
+                    tables, multimedia and projects.
                 </p>
 
-                <h3>Example</h3>
+                <a
+                    href="html/html-introduction.html"
+                    class="course-btn">
 
-<pre><code>gcc program.c -o program
+                    Start HTML Course
 
-./program</code></pre>
-
-            </section>
-
-
-            <!-- SYNTAX -->
-
-            <section id="syntax">
-
-                <h2>3. C Syntax</h2>
-
-                <p>
-                    C programs are generally written using
-                    functions, statements and expressions.
-                </p>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main()
-{
-    printf("Welcome to C");
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- COMMENTS -->
-
-            <section id="comments">
-
-                <h2>4. C Comments</h2>
-
-                <p>
-                    Comments are used to explain code.
-                    They are ignored by the compiler.
-                </p>
-
-<pre><code>// This is a single-line comment
-
-/*
-   This is a
-   multi-line comment
-*/</code></pre>
-
-            </section>
-
-
-            <!-- VARIABLES -->
-
-            <section id="variables">
-
-                <h2>5. C Variables</h2>
-
-                <p>
-                    Variables are used to store data in memory.
-                </p>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main()
-{
-    int age = 20;
-
-    printf("%d", age);
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- DATA TYPES -->
-
-            <section id="datatypes">
-
-                <h2>6. C Data Types</h2>
-
-                <table>
-
-                    <tr>
-                        <th>Data Type</th>
-                        <th>Example</th>
-                    </tr>
-
-                    <tr>
-                        <td>int</td>
-                        <td>10</td>
-                    </tr>
-
-                    <tr>
-                        <td>float</td>
-                        <td>10.5</td>
-                    </tr>
-
-                    <tr>
-                        <td>double</td>
-                        <td>20.12345</td>
-                    </tr>
-
-                    <tr>
-                        <td>char</td>
-                        <td>'A'</td>
-                    </tr>
-
-                </table>
-
-<pre><code>int age = 20;
-
-float price = 99.50;
-
-char grade = 'A';</code></pre>
-
-            </section>
-
-
-            <!-- CONSTANTS -->
-
-            <section id="constants">
-
-                <h2>7. C Constants</h2>
-
-                <p>
-                    A constant is a value that should not change
-                    during program execution.
-                </p>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main()
-{
-    const int age = 18;
-
-    printf("%d", age);
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- OPERATORS -->
-
-            <section id="operators">
-
-                <h2>8. C Operators</h2>
-
-                <p>
-                    Operators are symbols used to perform
-                    operations on values and variables.
-                </p>
-
-<pre><code>int a = 10;
-int b = 5;
-
-printf("%d", a + b);
-printf("%d", a - b);
-printf("%d", a * b);
-printf("%d", a / b);</code></pre>
-
-            </section>
-
-
-            <!-- IF ELSE -->
-
-            <section id="ifelse">
-
-                <h2>9. C If Else</h2>
-
-                <p>
-                    The if-else statement is used for decision making.
-                </p>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main()
-{
-    int age = 20;
-
-    if(age >= 18)
-    {
-        printf("Adult");
-    }
-    else
-    {
-        printf("Minor");
-    }
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- SWITCH -->
-
-            <section id="switch">
-
-                <h2>10. C Switch</h2>
-
-                <p>
-                    The switch statement is used to select one
-                    option from multiple cases.
-                </p>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main()
-{
-    int number = 2;
-
-    switch(number)
-    {
-        case 1:
-            printf("One");
-            break;
-
-        case 2:
-            printf("Two");
-            break;
-
-        default:
-            printf("Other");
-    }
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- LOOPS -->
-
-            <section id="loops">
-
-                <h2>11. C Loops</h2>
-
-                <p>
-                    Loops are used to execute a block of code
-                    repeatedly.
-                </p>
-
-                <h3>For Loop</h3>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main()
-{
-    int i;
-
-    for(i = 1; i <= 5; i++)
-    {
-        printf("%d\n", i);
-    }
-
-    return 0;
-}</code></pre>
-
-                <h3>While Loop</h3>
-
-<pre><code>int i = 1;
-
-while(i <= 5)
-{
-    printf("%d\n", i);
-
-    i++;
-}</code></pre>
-
-            </section>
-
-
-            <!-- FUNCTIONS -->
-
-            <section id="functions">
-
-                <h2>12. C Functions</h2>
-
-                <p>
-                    Functions are blocks of code designed to
-                    perform a particular task.
-                </p>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-void hello()
-{
-    printf("Hello World!");
-}
-
-int main()
-{
-    hello();
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- ARRAYS -->
-
-            <section id="arrays">
-
-                <h2>13. C Arrays</h2>
-
-                <p>
-                    An array stores multiple values of the same
-                    data type.
-                </p>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main()
-{
-    int numbers[5] = {10, 20, 30, 40, 50};
-
-    printf("%d", numbers[0]);
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- STRINGS -->
-
-            <section id="strings">
-
-                <h2>14. C Strings</h2>
-
-                <p>
-                    A string is a sequence of characters.
-                </p>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main()
-{
-    char name[] = "Code With Me";
-
-    printf("%s", name);
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- POINTERS -->
-
-            <section id="pointers">
-
-                <h2>15. C Pointers</h2>
-
-                <p>
-                    A pointer is a variable that stores the
-                    memory address of another variable.
-                </p>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-int main()
-{
-    int number = 10;
-
-    int *ptr = &number;
-
-    printf("%d", *ptr);
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- STRUCTURES -->
-
-            <section id="structures">
-
-                <h2>16. C Structures</h2>
-
-                <p>
-                    Structures allow you to group different
-                    types of data together.
-                </p>
-
-<pre><code>#include &lt;stdio.h&gt;
-
-struct Student
-{
-    int age;
-    char grade;
-};
-
-int main()
-{
-    struct Student s1;
-
-    s1.age = 20;
-    s1.grade = 'A';
-
-    printf("%d\n", s1.age);
-    printf("%c", s1.grade);
-
-    return 0;
-}</code></pre>
-
-            </section>
-
-
-            <!-- PROJECTS -->
-
-            <section id="projects">
-
-                <h2>17. C Projects</h2>
-
-                <p>
-                    After learning the fundamentals of C,
-                    you can practice by creating small projects.
-                </p>
-
-                <div class="info-box">
-
-                    <strong>Project Ideas:</strong>
-
-                    <ul>
-                        <li>Calculator</li>
-                        <li>Student Management System</li>
-                        <li>Number Guessing Game</li>
-                        <li>Simple Banking Program</li>
-                        <li>Quiz Game</li>
-                    </ul>
-
-                </div>
-
-            </section>
-
-
-            <!-- BUTTONS -->
-
-            <div class="buttons">
-
-                <a href="index.html" class="btn">
-                    ← Back to Home
-                </a>
-
-                <a href="#introduction" class="btn">
-                    Start Again ↑
                 </a>
 
             </div>
 
 
-        </main>
 
-    </div>
+            <!-- =========================
+                 CSS COURSE
+            ========================= -->
+
+            <div class="course-card">
+
+                <div class="course-logo css-logo">
+
+                    <i class="devicon-css3-plain"></i>
+
+                </div>
+
+                <h3>CSS</h3>
+
+                <p>
+                    Learn CSS styling, colors, layouts,
+                    flexbox, grid and responsive design.
+                </p>
+
+                <a
+                    href="css/css-introduction.html"
+                    class="course-btn">
+
+                    Start CSS Course
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =========================
+                 JAVASCRIPT COURSE
+            ========================= -->
+
+            <div class="course-card">
+
+                <div class="course-logo javascript-logo">
+
+                    <i class="devicon-javascript-plain"></i>
+
+                </div>
+
+                <h3>JavaScript</h3>
+
+                <p>
+                    Learn JavaScript fundamentals,
+                    functions, arrays, DOM and projects.
+                </p>
+
+                <a
+                    href="javascript/javascript-introduction.html"
+                    class="course-btn">
+
+                    Start JavaScript Course
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =========================
+                 PYTHON COURSE
+            ========================= -->
+
+            <div class="course-card">
+
+                <div class="course-logo python-logo">
+
+                    <i class="devicon-python-plain"></i>
+
+                </div>
+
+                <h3>Python</h3>
+
+                <p>
+                    Learn Python from basics to functions,
+                    loops, classes, modules and projects.
+                </p>
+
+                <a
+                    href="python/python-introduction.html"
+                    class="course-btn">
+
+                    Start Python Course
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =========================
+                 C COURSE
+            ========================= -->
+
+            <div class="course-card">
+
+                <div class="course-logo c-logo">
+
+                    <i class="devicon-c-plain"></i>
+
+                </div>
+
+                <h3>C Programming</h3>
+
+                <p>
+                    Learn C programming from basic syntax
+                    to variables, loops, functions, arrays,
+                    pointers and projects.
+                </p>
+
+                <!-- UPDATED C COURSE LINK -->
+                <a
+                    href="./c-course.html"
+                    class="course-btn">
+
+                    Start C Course
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section id="about" class="about-section">
+
+        <h2>About Us</h2>
+
+        <p>
+            Code With Me is a learning platform where
+            beginners can learn programming and web
+            development step by step through simple
+            tutorials, examples and projects.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section id="contact" class="contact-section">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            📞 Contact: 123456789
+        </p>
+
+        <p>
+            📍 Location: Gujarat, India
+        </p>
+
+    </section>
+
 
 
     <!-- =========================
