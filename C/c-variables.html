@@ -1,0 +1,836 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Variables | Code With Me</title>
+
+    <meta name="description"
+        content="Learn C variables with simple explanations and examples.">
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #111827;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+
+            height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+
+            font-weight: bold;
+
+            color: white;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+
+            gap: 25px;
+
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: linear-gradient(
+                135deg,
+                #172554,
+                #2563eb
+            );
+
+            color: white;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+
+            max-width: 800px;
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: 40px auto;
+
+            display: grid;
+
+            grid-template-columns: 260px 1fr;
+
+            gap: 30px;
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            height: fit-content;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+
+            position: sticky;
+
+            top: 90px;
+        }
+
+        .sidebar h3 {
+            color: #172554;
+
+            margin-bottom: 15px;
+        }
+
+        .sidebar a {
+            display: block;
+
+            color: #374151;
+
+            padding: 9px 10px;
+
+            border-radius: 6px;
+
+            margin-bottom: 5px;
+        }
+
+        .sidebar a:hover {
+            background: #eff6ff;
+
+            color: #2563eb;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 40px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .content h2 {
+            color: #172554;
+
+            font-size: 32px;
+
+            margin-bottom: 20px;
+
+            border-bottom: 2px solid #e5e7eb;
+
+            padding-bottom: 10px;
+        }
+
+        .content h3 {
+            color: #1e40af;
+
+            margin-top: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #eff6ff;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 18px;
+
+            margin: 20px 0;
+
+            border-radius: 6px;
+        }
+
+
+        /* =========================
+           CODE
+        ========================= */
+
+        pre {
+            background: #111827;
+
+            color: #e5e7eb;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            overflow-x: auto;
+
+            margin: 15px 0 25px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+
+            padding: 12px;
+
+            text-align: left;
+        }
+
+        th {
+            background: #eff6ff;
+
+            color: #172554;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 40px;
+
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="c-introduction.html">C Introduction</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <h1>C Variables</h1>
+
+        <p>
+            Learn how variables work in C programming,
+            how to declare them, assign values and use them
+            in your programs.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <div class="container">
+
+
+        <!-- =========================
+             SIDEBAR
+        ========================= -->
+
+        <aside class="sidebar">
+
+            <h3>C Programming</h3>
+
+            <a href="c-introduction.html">
+                C Introduction
+            </a>
+
+            <a href="c-installation.html">
+                C Installation
+            </a>
+
+            <a href="c-syntax.html">
+                C Syntax
+            </a>
+
+            <a href="c-comments.html">
+                C Comments
+            </a>
+
+            <a href="c-variables.html">
+                C Variables
+            </a>
+
+        </aside>
+
+
+        <!-- =========================
+             CONTENT
+        ========================= -->
+
+        <main class="content">
+
+
+            <!-- INTRODUCTION -->
+
+            <h2>What are Variables in C?</h2>
+
+            <p>
+                A variable is a named memory location used to
+                store data in a C program.
+            </p>
+
+            <p>
+                The value stored inside a variable can normally
+                be changed while the program is running.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                If you want to store a person's age, you can
+                create an integer variable such as
+                <strong>age</strong>.
+                
+            </div>
+
+
+            <!-- DECLARATION -->
+
+            <h3>Variable Declaration</h3>
+
+            <p>
+                Before using a variable, you generally declare it
+                by specifying its data type and name.
+            </p>
+
+<pre><code>int age;</code></pre>
+
+            <p>
+                Here:
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>int</strong> is the data type.
+                </li>
+
+                <li>
+                    <strong>age</strong> is the variable name.
+                </li>
+
+            </ul>
+
+
+            <!-- ASSIGNMENT -->
+
+            <h3>Assigning a Value</h3>
+
+            <p>
+                You can assign a value to a variable using
+                the assignment operator <strong>=</strong>.
+            </p>
+
+<pre><code>int age;
+
+age = 20;</code></pre>
+
+
+            <!-- DECLARATION + ASSIGNMENT -->
+
+            <h3>Declaration and Initialization</h3>
+
+            <p>
+                You can declare a variable and assign its value
+                at the same time.
+            </p>
+
+<pre><code>int age = 20;</code></pre>
+
+
+            <!-- MULTIPLE VARIABLES -->
+
+            <h3>Multiple Variables</h3>
+
+            <p>
+                You can declare multiple variables of the same
+                data type.
+            </p>
+
+<pre><code>int age = 20;
+int marks = 85;
+int year = 2026;</code></pre>
+
+
+            <!-- DIFFERENT DATA TYPES -->
+
+            <h3>Variables with Different Data Types</h3>
+
+            <p>
+                C provides different data types for storing
+                different kinds of values.
+            </p>
+
+<pre><code>int age = 20;
+
+float price = 99.50;
+
+double distance = 123.456789;
+
+char grade = 'A';</code></pre>
+
+
+            <!-- TABLE -->
+
+            <h3>Examples of Variables</h3>
+
+            <table>
+
+                <tr>
+
+                    <th>Data Type</th>
+
+                    <th>Variable</th>
+
+                    <th>Example Value</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>int</td>
+
+                    <td>age</td>
+
+                    <td>20</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>float</td>
+
+                    <td>price</td>
+
+                    <td>99.50</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>double</td>
+
+                    <td>distance</td>
+
+                    <td>123.456789</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>char</td>
+
+                    <td>grade</td>
+
+                    <td>'A'</td>
+
+                </tr>
+
+            </table>
+
+
+            <!-- COMPLETE PROGRAM -->
+
+            <h3>Complete C Program Using Variables</h3>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int age = 20;
+
+    float marks = 85.5;
+
+    char grade = 'A';
+
+    printf("Age: %d\n", age);
+
+    printf("Marks: %.2f\n", marks);
+
+    printf("Grade: %c\n", grade);
+
+    return 0;
+}</code></pre>
+
+
+            <!-- OUTPUT -->
+
+            <h3>Output</h3>
+
+<pre><code>Age: 20
+Marks: 85.50
+Grade: A</code></pre>
+
+
+            <!-- VARIABLE NAMING -->
+
+            <h3>Rules for Naming Variables</h3>
+
+            <p>
+                Variable names in C should follow certain rules.
+            </p>
+
+            <ul>
+
+                <li>
+                    A variable name can contain letters,
+                    digits and underscores.
+                </li>
+
+                <li>
+                    A variable name cannot start with a digit.
+                </li>
+
+                <li>
+                    Spaces are not allowed in variable names.
+                </li>
+
+                <li>
+                    C variable names are case-sensitive.
+                </li>
+
+                <li>
+                    C keywords cannot be used as variable names.
+                </li>
+
+            </ul>
+
+
+            <h3>Valid Variable Names</h3>
+
+<pre><code>int age;
+
+int studentAge;
+
+int student_age;
+
+int marks1;</code></pre>
+
+
+            <h3>Invalid Variable Names</h3>
+
+<pre><code>int 1age;        // Cannot start with a number
+
+int student age; // Spaces are not allowed
+
+int float;       // Keyword cannot be used</code></pre>
+
+
+            <!-- CONSTANT VS VARIABLE -->
+
+            <h3>Variable vs Constant</h3>
+
+            <table>
+
+                <tr>
+
+                    <th>Variable</th>
+
+                    <th>Constant</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Its value can normally change.</td>
+
+                    <td>Its value should not change.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Example: int age = 20;</td>
+
+                    <td>Example: const int age = 20;</td>
+
+                </tr>
+
+            </table>
+
+
+            <!-- IMPORTANT -->
+
+            <div class="info-box">
+
+                <strong>Remember:</strong>
+
+                A variable has a data type, a name and a value.
+                For example:
+
+<pre><code>int age = 20;</code></pre>
+
+                <strong>int</strong> → Data type<br>
+
+                <strong>age</strong> → Variable name<br>
+
+                <strong>20</strong> → Value
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="buttons">
+
+                <a href="c-comments.html" class="btn">
+                    ← Previous
+                </a>
+
+                <a href="c-datatypes.html" class="btn">
+                    Next →
+                </a>
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+```
