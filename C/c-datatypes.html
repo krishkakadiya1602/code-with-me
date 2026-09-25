@@ -1,0 +1,716 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Data Types | Code With Me</title>
+
+    <meta name="description"
+          content="Learn C data types with simple explanations and examples.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #4f46e5;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #4f46e5;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1e3a8a, #4f46e5);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+        /* Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            height: fit-content;
+            position: sticky;
+            top: 90px;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 15px;
+            color: #111827;
+        }
+
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 5px;
+        }
+
+        .sidebar a:hover {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        .sidebar a.active {
+            background: #4f46e5;
+            color: white;
+        }
+
+        /* Main Content */
+        .content {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .content h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #eef2ff;
+            border-left: 5px solid #4f46e5;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #4f46e5;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        /* Code Box */
+        .code-title {
+            background: #111827;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px 8px 0 0;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        pre {
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 20px;
+            overflow-x: auto;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 20px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 25px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 250px;
+            padding: 15px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .buttons {
+            margin-top: 12px;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-right: 8px;
+        }
+
+        .run-btn {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .note {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* Navigation Buttons */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+        }
+
+        .lesson-navigation a {
+            text-decoration: none;
+            background: #4f46e5;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 6px;
+        }
+
+        .lesson-navigation a:hover {
+            background: #3730a3;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .content {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">
+        Code <span>WithMe</span>
+    </div>
+
+    <div>
+        <a href="../index.html">Home</a>
+        <a href="../index.html#courses">Courses</a>
+        <a href="c-introduction.html">C</a>
+        <a href="../index.html#about">About</a>
+    </div>
+</nav>
+
+
+<!-- Page Header -->
+<header class="page-header">
+    <h1>C Data Types</h1>
+    <p>Learn different data types used in C programming</p>
+</header>
+
+
+<!-- Main Layout -->
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <h3>C Course</h3>
+
+        <a href="c-introduction.html">
+            C Introduction
+        </a>
+
+        <a href="c-installation.html">
+            C Installation
+        </a>
+
+        <a href="c-syntax.html">
+            C Syntax
+        </a>
+
+        <a href="c-comments.html">
+            C Comments
+        </a>
+
+        <a href="c-variables.html">
+            C Variables
+        </a>
+
+        <a href="c-datatypes.html" class="active">
+            C Data Types
+        </a>
+
+    </aside>
+
+
+    <!-- Content -->
+    <main class="content">
+
+        <h2>What are Data Types in C?</h2>
+
+        <p>
+            Data types specify the type of data that a variable can store.
+            For example, an integer variable stores whole numbers, while a
+            character variable stores a single character.
+        </p>
+
+        <div class="info-box">
+            <strong>Important:</strong>
+            Every variable in C must have a data type.
+        </div>
+
+
+        <h2>Types of Data Types in C</h2>
+
+        <p>
+            C provides several built-in data types. Some of the commonly
+            used data types are:
+        </p>
+
+        <div class="table-container">
+
+            <table>
+                <tr>
+                    <th>Data Type</th>
+                    <th>Used For</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>int</td>
+                    <td>Whole numbers</td>
+                    <td>100</td>
+                </tr>
+
+                <tr>
+                    <td>float</td>
+                    <td>Decimal numbers</td>
+                    <td>10.5</td>
+                </tr>
+
+                <tr>
+                    <td>double</td>
+                    <td>Large decimal values</td>
+                    <td>123.456</td>
+                </tr>
+
+                <tr>
+                    <td>char</td>
+                    <td>Single character</td>
+                    <td>'A'</td>
+                </tr>
+
+                <tr>
+                    <td>void</td>
+                    <td>No value</td>
+                    <td>void</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+        <h2>1. int Data Type</h2>
+
+        <p>
+            The <strong>int</strong> data type is used to store whole numbers
+            without decimal values.
+        </p>
+
+        <div class="code-title">Example</div>
+
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age = 20;
+
+    printf("Age = %d", age);
+
+    return 0;
+}</code></pre>
+
+
+        <h2>2. float Data Type</h2>
+
+        <p>
+            The <strong>float</strong> data type is used to store numbers
+            containing decimal values.
+        </p>
+
+        <div class="code-title">Example</div>
+
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    float price = 99.50;
+
+    printf("Price = %.2f", price);
+
+    return 0;
+}</code></pre>
+
+
+        <h2>3. double Data Type</h2>
+
+        <p>
+            The <strong>double</strong> data type is used to store decimal
+            numbers with greater precision than float.
+        </p>
+
+        <div class="code-title">Example</div>
+
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    double number = 12345.6789;
+
+    printf("Number = %lf", number);
+
+    return 0;
+}</code></pre>
+
+
+        <h2>4. char Data Type</h2>
+
+        <p>
+            The <strong>char</strong> data type is used to store a single
+            character.
+        </p>
+
+        <div class="code-title">Example</div>
+
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    char grade = 'A';
+
+    printf("Grade = %c", grade);
+
+    return 0;
+}</code></pre>
+
+
+        <h2>5. void Data Type</h2>
+
+        <p>
+            The <strong>void</strong> data type represents the absence of a
+            value. It is commonly used with functions that do not return a
+            value.
+        </p>
+
+        <div class="code-title">Example</div>
+
+        <pre><code>#include &lt;stdio.h&gt;
+
+void message() {
+    printf("Hello from C!");
+}
+
+int main() {
+
+    message();
+
+    return 0;
+}</code></pre>
+
+
+        <h2>Example Using Multiple Data Types</h2>
+
+        <p>
+            We can use different data types in the same C program.
+        </p>
+
+        <div class="code-title">Complete Example</div>
+
+        <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age = 20;
+    float height = 5.8;
+    double salary = 25000.75;
+    char grade = 'A';
+
+    printf("Age = %d\n", age);
+    printf("Height = %.1f\n", height);
+    printf("Salary = %.2lf\n", salary);
+    printf("Grade = %c\n", grade);
+
+    return 0;
+}</code></pre>
+
+
+        <h2>Format Specifiers</h2>
+
+        <p>
+            Format specifiers are used with <strong>printf()</strong> to
+            display different types of data.
+        </p>
+
+        <div class="table-container">
+
+            <table>
+                <tr>
+                    <th>Data Type</th>
+                    <th>Format Specifier</th>
+                </tr>
+
+                <tr>
+                    <td>int</td>
+                    <td>%d</td>
+                </tr>
+
+                <tr>
+                    <td>float</td>
+                    <td>%f</td>
+                </tr>
+
+                <tr>
+                    <td>double</td>
+                    <td>%lf</td>
+                </tr>
+
+                <tr>
+                    <td>char</td>
+                    <td>%c</td>
+                </tr>
+
+                <tr>
+                    <td>string</td>
+                    <td>%s</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+        <div class="note">
+            <strong>Note:</strong>
+            A string is not a separate built-in data type in C. Strings are
+            generally represented using arrays of characters.
+        </div>
+
+
+        <h2>Try It Yourself</h2>
+
+        <p>
+            You can write a C program below. This editor is for practicing
+            the code structure. To actually compile and execute C code,
+            you need a C compiler or an online C compiler.
+        </p>
+
+        <div class="editor">
+
+            <textarea id="codeEditor">#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age = 20;
+    float height = 5.8;
+    char grade = 'A';
+
+    printf("Age = %d\n", age);
+    printf("Height = %.1f\n", height);
+    printf("Grade = %c\n", grade);
+
+    return 0;
+}</textarea>
+
+            <div class="buttons">
+                <button class="run-btn" onclick="showCodeMessage()">
+                    Run Code
+                </button>
+
+                <button class="clear-btn" onclick="clearEditor()">
+                    Clear
+                </button>
+            </div>
+
+        </div>
+
+        <div id="editorMessage"></div>
+
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="c-variables.html">
+                ← Previous
+            </a>
+
+            <a href="c-operators.html">
+                Next →
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 Code With Me | Learn Coding</p>
+</footer>
+
+
+<script>
+
+    function showCodeMessage() {
+
+        const message = document.getElementById("editorMessage");
+
+        message.innerHTML = `
+            <div style="
+                margin-top:15px;
+                padding:15px;
+                background:#eef2ff;
+                border-left:5px solid #4f46e5;
+                border-radius:6px;
+            ">
+                <strong>Practice Mode:</strong>
+                This page shows the C code editor. To execute C code,
+                use a C compiler or online C compiler.
+            </div>
+        `;
+    }
+
+
+    function clearEditor() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("editorMessage").innerHTML = "";
+    }
+
+</script>
+
+</body>
+</html>
+```
