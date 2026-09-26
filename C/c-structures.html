@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C Structures | Code With Me</title>
+
+<meta name="description" content="Learn C Structures with syntax, examples, structure members, arrays of structures, nested structures and pointers to structures.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* Navbar */
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+/* Sections */
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+/* Code */
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+/* Editor */
+textarea {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.run-btn:hover {
+    background: #1d4ed8;
+}
+
+.clear-btn:hover {
+    background: #b91c1c;
+}
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+/* Navigation */
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.page-navigation a:hover {
+    background: #1d4ed8;
+}
+
+/* Footer */
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../index.html#courses">Courses</a></li>
+    <li><a href="../index.html#about">About</a></li>
+</ul>
+```
+
+</nav>
+
+<!-- Hero -->
+
+<header class="hero">
+
+```
+<h1>C Structures</h1>
+
+<p>
+    Learn how to group different types of data using structures in C.
+</p>
+```
+
+</header>
+
+<main class="container">
+
+```
+<!-- Introduction -->
+<section class="section">
+
+    <h2>What is a Structure in C?</h2>
+
+    <p>
+        A structure in C is a user-defined data type that allows you
+        to store different types of data under one name.
+    </p>
+
+    <p>
+        For example, a student may have a name, age, roll number and
+        marks. These values have different data types, but they can be
+        grouped together using a structure.
+    </p>
+
+    <div class="highlight">
+
+        <strong>Important:</strong>
+
+        A structure can contain members of different data types.
+
+    </div>
+
+</section>
+
+
+<!-- Why Structures -->
+<section class="section">
+
+    <h2>Why Use Structures?</h2>
+
+    <p>Structures are useful when you want to represent a real-world object.</p>
+
+    <ul>
+
+        <li>Store related data together.</li>
+        <li>Organize complex data.</li>
+        <li>Represent real-world entities.</li>
+        <li>Store different data types together.</li>
+        <li>Create arrays of records.</li>
+        <li>Make programs easier to manage.</li>
+
+    </ul>
+
+</section>
+
+
+<!-- Syntax -->
+<section class="section">
+
+    <h2>Structure Syntax</h2>
+
+    <p>The basic syntax of a structure is:</p>
+
+    <div class="code-title">Syntax</div>
+
+    <pre><code>struct structure_name {
+data_type member1;
+data_type member2;
+data_type member3;
+```
+
+};</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Note:</strong>
+
+        Don't forget the semicolon <strong>;</strong> after the closing
+        curly brace.
+
+    </div>
+
+</section>
+
+
+<!-- Simple Structure -->
+<section class="section">
+
+    <h2>Simple Structure Example</h2>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+struct Student {
+int rollNo;
+float marks;
+};
+
+int main() {
+
+```
+struct Student s1;
+
+s1.rollNo = 101;
+s1.marks = 85.5;
+
+printf("Roll Number: %d\n", s1.rollNo);
+printf("Marks: %.2f\n", s1.marks);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Structure Members -->
+<section class="section">
+
+    <h2>Accessing Structure Members</h2>
+
+    <p>
+        The dot <strong>.</strong> operator is used to access members
+        of a structure variable.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>struct Student {
+int age;
+float marks;
+```
+
+};
+
+int main() {
+
+```
+struct Student student;
+
+student.age = 20;
+student.marks = 90.5;
+
+printf("%d\n", student.age);
+printf("%.2f\n", student.marks);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Initialization -->
+<section class="section">
+
+    <h2>Initializing a Structure</h2>
+
+    <p>
+        A structure can be initialized when the variable is declared.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+struct Student {
+int rollNo;
+char grade;
+float marks;
+};
+
+int main() {
+
+```
+struct Student s1 = {101, 'A', 92.5};
+
+printf("Roll No: %d\n", s1.rollNo);
+printf("Grade: %c\n", s1.grade);
+printf("Marks: %.2f\n", s1.marks);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Structure with String -->
+<section class="section">
+
+    <h2>Structure with String</h2>
+
+    <p>
+        A structure can also contain a character array for storing
+        a string.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+#include <string.h>
+
+struct Student {
+char name[50];
+int age;
+};
+
+int main() {
+
+```
+struct Student s1;
+
+strcpy(s1.name, "Krish");
+s1.age = 20;
+
+printf("Name: %s\n", s1.name);
+printf("Age: %d\n", s1.age);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Multiple Variables -->
+<section class="section">
+
+    <h2>Multiple Structure Variables</h2>
+
+    <p>
+        You can create multiple variables using the same structure.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+struct Student {
+int rollNo;
+float marks;
+};
+
+int main() {
+
+```
+struct Student s1, s2;
+
+s1.rollNo = 101;
+s1.marks = 85.5;
+
+s2.rollNo = 102;
+s2.marks = 91.5;
+
+printf("Student 1: %d %.2f\n", s1.rollNo, s1.marks);
+printf("Student 2: %d %.2f\n", s2.rollNo, s2.marks);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Array of Structures -->
+<section class="section">
+
+    <h2>Array of Structures</h2>
+
+    <p>
+        An array of structures allows you to store multiple records
+        of the same structure type.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+struct Student {
+int rollNo;
+float marks;
+};
+
+int main() {
+
+```
+struct Student students[3] = {
+    {101, 85.5},
+    {102, 90.0},
+    {103, 78.5}
+};
+
+for (int i = 0; i &lt; 3; i++) {
+
+    printf("Roll No: %d\n", students[i].rollNo);
+    printf("Marks: %.2f\n\n", students[i].marks);
+
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Nested Structures -->
+<section class="section">
+
+    <h2>Nested Structures</h2>
+
+    <p>
+        A structure can contain another structure as one of its members.
+        This is called a nested structure.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+struct Address {
+char city[30];
+int pincode;
+};
+
+struct Student {
+int rollNo;
+struct Address address;
+};
+
+int main() {
+
+```
+struct Student s1 = {
+    101,
+    {"Ahmedabad", 380001}
+};
+
+printf("Roll No: %d\n", s1.rollNo);
+printf("City: %s\n", s1.address.city);
+printf("Pincode: %d\n", s1.address.pincode);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Pointer to Structure -->
+<section class="section">
+
+    <h2>Pointer to Structure</h2>
+
+    <p>
+        A pointer can store the address of a structure variable.
+    </p>
+
+    <p>
+        The arrow operator <strong>-&gt;</strong> is used to access
+        structure members through a pointer.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+struct Student {
+int rollNo;
+float marks;
+};
+
+int main() {
+
+```
+struct Student s1 = {101, 88.5};
+
+struct Student *ptr;
+
+ptr = &amp;s1;
+
+printf("Roll No: %d\n", ptr-&gt;rollNo);
+printf("Marks: %.2f\n", ptr-&gt;marks);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Structure Pointer Difference -->
+<section class="section">
+
+    <h2>Dot Operator vs Arrow Operator</h2>
+
+    <table>
+
+        <tr>
+            <th>Operator</th>
+            <th>Used With</th>
+            <th>Example</th>
+        </tr>
+
+        <tr>
+            <td>.</td>
+            <td>Structure variable</td>
+            <td>student.age</td>
+        </tr>
+
+        <tr>
+            <td>-&gt;</td>
+            <td>Pointer to structure</td>
+            <td>ptr-&gt;age</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- Structure Function -->
+<section class="section">
+
+    <h2>Passing Structure to a Function</h2>
+
+    <p>
+        A structure variable can be passed to a function as an argument.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+struct Student {
+int rollNo;
+float marks;
+};
+
+void display(struct Student s) {
+
+```
+printf("Roll No: %d\n", s.rollNo);
+printf("Marks: %.2f\n", s.marks);
+```
+
+}
+
+int main() {
+
+```
+struct Student s1 = {101, 89.5};
+
+display(s1);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Returning Structure -->
+<section class="section">
+
+    <h2>Returning a Structure from a Function</h2>
+
+    <p>
+        A function can also return a structure.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+struct Student {
+int rollNo;
+float marks;
+};
+
+struct Student createStudent() {
+
+```
+struct Student s;
+
+s.rollNo = 101;
+s.marks = 95.5;
+
+return s;
+```
+
+}
+
+int main() {
+
+```
+struct Student student;
+
+student = createStudent();
+
+printf("Roll No: %d\n", student.rollNo);
+printf("Marks: %.2f\n", student.marks);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Typedef -->
+<section class="section">
+
+    <h2>Using typedef with Structure</h2>
+
+    <p>
+        The <strong>typedef</strong> keyword can make structure
+        declarations shorter and easier to read.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+typedef struct {
+int rollNo;
+float marks;
+} Student;
+
+int main() {
+
+```
+Student s1;
+
+s1.rollNo = 101;
+s1.marks = 92.5;
+
+printf("Roll No: %d\n", s1.rollNo);
+printf("Marks: %.2f\n", s1.marks);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Structure vs Array -->
+<section class="section">
+
+    <h2>Structure vs Array</h2>
+
+    <table>
+
+        <tr>
+            <th>Structure</th>
+            <th>Array</th>
+        </tr>
+
+        <tr>
+            <td>Can store different data types.</td>
+            <td>Normally stores elements of the same data type.</td>
+        </tr>
+
+        <tr>
+            <td>Members can have different names.</td>
+            <td>Elements are accessed using indexes.</td>
+        </tr>
+
+        <tr>
+            <td>Example: Student record.</td>
+            <td>Example: List of marks.</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- Structure vs Union -->
+<section class="section">
+
+    <h2>Structure vs Union</h2>
+
+    <table>
+
+        <tr>
+            <th>Structure</th>
+            <th>Union</th>
+        </tr>
+
+        <tr>
+            <td>Each member has separate memory.</td>
+            <td>Members share the same memory.</td>
+        </tr>
+
+        <tr>
+            <td>Multiple members can contain values at the same time.</td>
+            <td>Typically one member's value is used at a time.</td>
+        </tr>
+
+        <tr>
+            <td>Size is generally related to the combined member storage.</td>
+            <td>Size is generally based on its largest member, subject to alignment.</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- Important Points -->
+<section class="section">
+
+    <h2>Important Points</h2>
+
+    <ul>
+
+        <li>A structure is a user-defined data type.</li>
+
+        <li>A structure can contain different data types.</li>
+
+        <li>The <strong>struct</strong> keyword is used to define a structure.</li>
+
+        <li>The dot <strong>.</strong> operator accesses members of a structure variable.</li>
+
+        <li>The arrow <strong>-&gt;</strong> operator accesses members through a structure pointer.</li>
+
+        <li>Structures can contain arrays and other structures.</li>
+
+        <li>You can create arrays of structures.</li>
+
+        <li>Structures can be passed to and returned from functions.</li>
+
+        <li><strong>typedef</strong> can make structure declarations shorter.</li>
+
+    </ul>
+
+</section>
+
+
+<!-- Common Mistakes -->
+<section class="section">
+
+    <h2>Common Mistakes</h2>
+
+    <h3>1. Forgetting the semicolon</h3>
+
+    <pre><code>struct Student {
+int age;
+```
+
+};</code></pre>
+
+```
+    <h3>2. Using the wrong operator</h3>
+
+    <p>
+        Use <strong>.</strong> for a structure variable and
+        <strong>-&gt;</strong> for a pointer to a structure.
+    </p>
+
+    <h3>3. Accessing a member that does not exist</h3>
+
+    <pre><code>struct Student {
+int age;
+```
+
+};
+
+struct Student s;
+
+s.name = "Krish";   // Error</code></pre>
+
+```
+    <p>
+        The member <strong>name</strong> was not declared in the structure.
+    </p>
+
+</section>
+
+
+<!-- Real World Example -->
+<section class="section">
+
+    <h2>Real-World Example: Employee Record</h2>
+
+    <p>
+        Structures are commonly useful for storing records such as
+        employees, students, products and customers.
+    </p>
+
+    <div class="code-title">Employee Structure</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+struct Employee {
+int id;
+char name[50];
+float salary;
+};
+
+int main() {
+
+```
+struct Employee employee = {
+    101,
+    "Krish",
+    35000.50
+};
+
+printf("Employee ID: %d\n", employee.id);
+printf("Employee Name: %s\n", employee.name);
+printf("Salary: %.2f\n", employee.salary);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Editor -->
+<section class="section">
+
+    <h2>C Structure Code Editor</h2>
+
+    <p>
+        Write a C structure program below and click
+        <strong>Run Code</strong>.
+    </p>
+
+    <textarea id="codeEditor">#include <stdio.h>
+```
+
+struct Student {
+int rollNo;
+float marks;
+};
+
+int main() {
+
+```
+struct Student s1;
+
+s1.rollNo = 101;
+s1.marks = 90.5;
+
+printf("Roll No: %d\n", s1.rollNo);
+printf("Marks: %.2f\n", s1.marks);
+
+return 0;
+```
+
+}</textarea>
+
+```
+    <div class="buttons">
+
+        <button class="run-btn" onclick="runCode()">
+            Run Code
+        </button>
+
+        <button class="clear-btn" onclick="clearCode()">
+            Clear
+        </button>
+
+    </div>
+
+    <div class="output" id="output">
+        Output will appear here...
+    </div>
+
+</section>
+
+
+<!-- Navigation -->
+<div class="page-navigation">
+
+    <a href="c-functions.html">
+        ← Previous: C Functions
+    </a>
+
+    <a href="c-pointers.html">
+        Next: C Pointers →
+    </a>
+
+</div>
+```
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent = "Please enter some C code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C code in the browser, " +
+        "you need a C compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
