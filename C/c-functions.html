@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C Functions | Code With Me</title>
+
+<meta name="description" content="Learn functions in C programming with syntax, declaration, definition, parameters, return values, function types, recursion and examples.">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* NAVBAR */
+
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+/* SECTION */
+
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* HIGHLIGHT */
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+/* CODE */
+
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+/* EDITOR */
+
+textarea {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+/* BUTTONS */
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.run-btn:hover {
+    background: #1d4ed8;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.clear-btn:hover {
+    background: #b91c1c;
+}
+
+/* OUTPUT */
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+/* NAVIGATION */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.page-navigation a:hover {
+    background: #1d4ed8;
+}
+
+/* FOOTER */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../index.html#courses">Courses</a></li>
+    <li><a href="../index.html#about">About</a></li>
+</ul>
+```
+
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+```
+<h1>C Functions</h1>
+
+<p>Learn how to create, call and use functions in C programming.</p>
+```
+
+</header>
+
+<main class="container">
+
+<!-- INTRODUCTION -->
+
+<section class="section">
+
+```
+<h2>What is a Function in C?</h2>
+
+<p>
+    A <strong>function</strong> in C is a block of code that performs
+    a specific task.
+</p>
+
+<p>
+    Functions help divide a large program into smaller and reusable
+    pieces of code.
+</p>
+
+<div class="highlight">
+
+    <strong>Simple idea:</strong>
+
+    <br>
+
+    Create a function → Call the function → Function performs a task
+
+</div>
+```
+
+</section>
+
+<!-- WHY FUNCTIONS -->
+
+<section class="section">
+
+```
+<h2>Why Use Functions?</h2>
+
+<ul>
+
+    <li>Functions make programs easier to understand.</li>
+
+    <li>Functions reduce code duplication.</li>
+
+    <li>Functions make code reusable.</li>
+
+    <li>Functions make debugging easier.</li>
+
+    <li>Functions divide a large program into smaller tasks.</li>
+
+    <li>Functions make programs easier to maintain.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- FUNCTION SYNTAX -->
+
+<section class="section">
+
+```
+<h2>Function Syntax</h2>
+
+<div class="code-title">
+    C Function Syntax
+</div>
+
+<pre><code>return_type function_name(parameters)
+```
+
+{
+// code
+}</code></pre>
+
+```
+<table>
+
+    <tr>
+        <th>Part</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>return_type</td>
+        <td>The type of value returned by the function.</td>
+    </tr>
+
+    <tr>
+        <td>function_name</td>
+        <td>The name used to identify the function.</td>
+    </tr>
+
+    <tr>
+        <td>parameters</td>
+        <td>Values received by the function.</td>
+    </tr>
+
+    <tr>
+        <td>function body</td>
+        <td>The statements executed when the function is called.</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- SIMPLE FUNCTION -->
+
+<section class="section">
+
+```
+<h2>Simple Function Example</h2>
+
+<p>
+    Here is a simple function that prints a message.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+void greet()
+{
+printf("Hello from Code With Me!");
+}
+
+int main()
+{
+greet();
+
+```
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    Hello from Code With Me!
+
+</div>
+```
+
+</section>
+
+<!-- FUNCTION CALL -->
+
+<section class="section">
+
+```
+<h2>Calling a Function</h2>
+
+<p>
+    A function does not execute automatically when it is defined.
+    You must call it to execute its code.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>void hello()
+```
+
+{
+printf("Hello!");
+}
+
+int main()
+{
+hello();
+
+```
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>
+    In this example, <code>hello();</code> is the function call.
+</p>
+```
+
+</section>
+
+<!-- FUNCTION DECLARATION -->
+
+<section class="section">
+
+```
+<h2>Function Declaration</h2>
+
+<p>
+    A function declaration tells the compiler about the function
+    before it is used.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+void greet();
+
+int main()
+{
+greet();
+
+```
+return 0;
+```
+
+}
+
+void greet()
+{
+printf("Hello!");
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Function declaration:</strong>
+
+    <br>
+
+    <code>void greet();</code>
+
+</div>
+```
+
+</section>
+
+<!-- FUNCTION DEFINITION -->
+
+<section class="section">
+
+```
+<h2>Function Definition</h2>
+
+<p>
+    The function definition contains the actual code that performs
+    the task.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>void greet()
+```
+
+{
+printf("Hello!");
+}</code></pre>
+
+</section>
+
+<!-- PARAMETERS -->
+
+<section class="section">
+
+```
+<h2>Function Parameters</h2>
+
+<p>
+    Parameters allow you to pass data into a function.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+void greet(char name[])
+{
+printf("Hello %s!", name);
+}
+
+int main()
+{
+greet("Krish");
+
+```
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    Hello Krish!
+
+</div>
+```
+
+</section>
+
+<!-- MULTIPLE PARAMETERS -->
+
+<section class="section">
+
+```
+<h2>Multiple Parameters</h2>
+
+<p>
+    A function can accept more than one parameter.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+void add(int a, int b)
+{
+printf("Sum = %d", a + b);
+}
+
+int main()
+{
+add(10, 20);
+
+```
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    Sum = 30
+
+</div>
+```
+
+</section>
+
+<!-- RETURN VALUE -->
+
+<section class="section">
+
+```
+<h2>Function with Return Value</h2>
+
+<p>
+    A function can return a value using the <code>return</code>
+    statement.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int add(int a, int b)
+{
+return a + b;
+}
+
+int main()
+{
+int result;
+
+```
+result = add(10, 20);
+
+printf("Sum = %d", result);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    Sum = 30
+
+</div>
+```
+
+</section>
+
+<!-- VOID -->
+
+<section class="section">
+
+```
+<h2>void Functions</h2>
+
+<p>
+    The <code>void</code> return type means that the function
+    does not return a value.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>void display()
+```
+
+{
+printf("Welcome to C Programming");
+}</code></pre>
+
+</section>
+
+<!-- FUNCTION TYPES -->
+
+<section class="section">
+
+```
+<h2>Types of Functions</h2>
+
+<p>
+    Functions can commonly be categorized based on whether they
+    take parameters and whether they return a value.
+</p>
+
+<table>
+
+    <tr>
+        <th>Type</th>
+        <th>Example</th>
+    </tr>
+
+    <tr>
+        <td>No parameters, no return value</td>
+        <td><code>void display()</code></td>
+    </tr>
+
+    <tr>
+        <td>Parameters, no return value</td>
+        <td><code>void display(int x)</code></td>
+    </tr>
+
+    <tr>
+        <td>No parameters, returns a value</td>
+        <td><code>int getNumber()</code></td>
+    </tr>
+
+    <tr>
+        <td>Parameters and return value</td>
+        <td><code>int add(int a, int b)</code></td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- NO PARAMETERS NO RETURN -->
+
+<section class="section">
+
+```
+<h2>1. No Parameters and No Return Value</h2>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+void message()
+{
+printf("Welcome to C Programming!");
+}
+
+int main()
+{
+message();
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- PARAMETERS NO RETURN -->
+
+<section class="section">
+
+```
+<h2>2. Parameters and No Return Value</h2>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+void square(int number)
+{
+printf("Square = %d", number * number);
+}
+
+int main()
+{
+square(5);
+
+```
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    Square = 25
+
+</div>
+```
+
+</section>
+
+<!-- NO PARAMETERS RETURN -->
+
+<section class="section">
+
+```
+<h2>3. No Parameters and Return Value</h2>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int getNumber()
+{
+return 100;
+}
+
+int main()
+{
+int number;
+
+```
+number = getNumber();
+
+printf("Number = %d", number);
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- PARAMETERS RETURN -->
+
+<section class="section">
+
+```
+<h2>4. Parameters and Return Value</h2>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int multiply(int a, int b)
+{
+return a * b;
+}
+
+int main()
+{
+int result;
+
+```
+result = multiply(5, 4);
+
+printf("Result = %d", result);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    Result = 20
+
+</div>
+```
+
+</section>
+
+<!-- PASS BY VALUE -->
+
+<section class="section">
+
+```
+<h2>Pass by Value</h2>
+
+<p>
+    In C, arguments are passed to functions by value by default.
+    The function receives a copy of the value.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+void change(int x)
+{
+x = 100;
+}
+
+int main()
+{
+int number = 10;
+
+```
+change(number);
+
+printf("Number = %d", number);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    Number = 10
+
+    <br><br>
+
+    Changing <code>x</code> inside the function does not change
+    the original variable in <code>main()</code>.
+
+</div>
+```
+
+</section>
+
+<!-- LOCAL VARIABLES -->
+
+<section class="section">
+
+```
+<h2>Local Variables in Functions</h2>
+
+<p>
+    A variable declared inside a function is normally local to
+    that function and cannot be directly accessed from another
+    function.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>void display()
+```
+
+{
+int number = 10;
+
+```
+printf("%d", number);
+```
+
+}</code></pre>
+
+</section>
+
+<!-- RECURSION -->
+
+<section class="section">
+
+```
+<h2>Recursion in C</h2>
+
+<p>
+    Recursion occurs when a function calls itself.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+void count(int number)
+{
+if (number > 0)
+{
+printf("%d\n", number);
+
+```
+    count(number - 1);
+}
+```
+
+}
+
+int main()
+{
+count(5);
+
+```
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    5
+    <br>
+    4
+    <br>
+    3
+    <br>
+    2
+    <br>
+    1
+
+</div>
+```
+
+</section>
+
+<!-- FACTORIAL RECURSION -->
+
+<section class="section">
+
+```
+<h2>Factorial Using Recursion</h2>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int factorial(int n)
+{
+if (n == 0)
+{
+return 1;
+}
+
+```
+return n * factorial(n - 1);
+```
+
+}
+
+int main()
+{
+int result;
+
+```
+result = factorial(5);
+
+printf("Factorial = %d", result);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    Factorial = 120
+
+</div>
+```
+
+</section>
+
+<!-- LIBRARY FUNCTIONS -->
+
+<section class="section">
+
+```
+<h2>Library Functions</h2>
+
+<p>
+    C also provides many predefined functions through standard
+    libraries.
+</p>
+
+<table>
+
+    <tr>
+        <th>Function</th>
+        <th>Header</th>
+        <th>Purpose</th>
+    </tr>
+
+    <tr>
+        <td>printf()</td>
+        <td>stdio.h</td>
+        <td>Prints formatted output.</td>
+    </tr>
+
+    <tr>
+        <td>scanf()</td>
+        <td>stdio.h</td>
+        <td>Reads formatted input.</td>
+    </tr>
+
+    <tr>
+        <td>strlen()</td>
+        <td>string.h</td>
+        <td>Finds the length of a string.</td>
+    </tr>
+
+    <tr>
+        <td>sqrt()</td>
+        <td>math.h</td>
+        <td>Calculates square root.</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- USER DEFINED -->
+
+<section class="section">
+
+```
+<h2>User-Defined Functions</h2>
+
+<p>
+    A function created by the programmer is called a
+    <strong>user-defined function</strong>.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int square(int number)
+{
+return number * number;
+}
+
+int main()
+{
+printf("%d", square(6));
+
+```
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    36
+
+</div>
+```
+
+</section>
+
+<!-- FUNCTION PROTOTYPE -->
+
+<section class="section">
+
+```
+<h2>Function Prototype</h2>
+
+<p>
+    A function prototype specifies the function name, return type
+    and parameter types before the function is used.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int add(int, int);
+
+int main()
+{
+int result;
+
+```
+result = add(10, 20);
+
+printf("%d", result);
+
+return 0;
+```
+
+}
+
+int add(int a, int b)
+{
+return a + b;
+}</code></pre>
+
+</section>
+
+<!-- IMPORTANT POINTS -->
+
+<section class="section">
+
+```
+<h2>Important Points</h2>
+
+<ul>
+
+    <li>
+        A function performs a specific task.
+    </li>
+
+    <li>
+        Functions can be called multiple times.
+    </li>
+
+    <li>
+        A function may accept zero or more parameters.
+    </li>
+
+    <li>
+        A function may return a value or use <code>void</code>.
+    </li>
+
+    <li>
+        Function prototypes can be used to declare functions
+        before their definitions.
+    </li>
+
+    <li>
+        C supports user-defined functions and library functions.
+    </li>
+
+    <li>
+        Recursive functions call themselves.
+    </li>
+
+</ul>
+```
+
+</section>
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+
+```
+<h2>Common Mistakes</h2>
+
+<h3>1. Forgetting the function call</h3>
+
+<p>
+    Defining a function does not automatically execute it.
+    You must call the function.
+</p>
+
+<h3>2. Wrong return type</h3>
+
+<p>
+    Make sure the returned value matches the function's return type.
+</p>
+
+<h3>3. Wrong number of arguments</h3>
+
+<p>
+    When calling a function, pass the required arguments with
+    compatible types.
+</p>
+
+<h3>4. Forgetting the return statement</h3>
+
+<p>
+    A non-void function should return an appropriate value.
+</p>
+```
+
+</section>
+
+<!-- CODE EDITOR -->
+
+<section class="section">
+
+```
+<h2>Try C Functions Code</h2>
+
+<p>
+    Write your C function program below.
+</p>
+
+<textarea id="codeEditor">#include <stdio.h>
+```
+
+int add(int a, int b)
+{
+return a + b;
+}
+
+int main()
+{
+int result;
+
+```
+result = add(10, 20);
+
+printf("Sum = %d", result);
+
+return 0;
+```
+
+}</textarea>
+
+```
+<div class="buttons">
+
+    <button class="run-btn" onclick="runCode()">
+        Run Code
+    </button>
+
+    <button class="clear-btn" onclick="clearCode()">
+        Clear
+    </button>
+
+</div>
+
+<div class="output" id="output">
+    Output will appear here...
+</div>
+```
+
+</section>
+
+<!-- NAVIGATION -->
+
+<div class="page-navigation">
+
+```
+<a href="c-string-functions.html">
+    ← Previous: C String Functions
+</a>
+
+<a href="c-pointers.html">
+    Next: C Pointers →
+</a>
+```
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent = "Please enter some C code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C code in the browser, " +
+        "you need a C compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
