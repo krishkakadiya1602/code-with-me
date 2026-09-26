@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C switch Statement | Code With Me</title>
+
+<meta name="description" content="Learn C switch statement with syntax, examples, cases, break, default and practical programs.">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* NAVBAR */
+
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+/* SECTION */
+
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* HIGHLIGHT */
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+/* CODE */
+
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+/* EDITOR */
+
+textarea {
+    width: 100%;
+    min-height: 320px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+/* BUTTONS */
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.run-btn:hover {
+    background: #1d4ed8;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.clear-btn:hover {
+    background: #b91c1c;
+}
+
+/* OUTPUT */
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+/* NAVIGATION */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.page-navigation a:hover {
+    background: #1d4ed8;
+}
+
+/* FOOTER */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../index.html#courses">Courses</a></li>
+    <li><a href="../index.html#about">About</a></li>
+</ul>
+```
+
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+```
+<h1>C switch Statement</h1>
+
+<p>Learn how to use switch, case, break and default in C programming.</p>
+```
+
+</header>
+
+<main class="container">
+
+<!-- INTRODUCTION -->
+
+<section class="section">
+
+```
+<h2>What is a switch Statement in C?</h2>
+
+<p>
+    The <strong>switch</strong> statement in C is a decision-making
+    statement used to execute one block of code from multiple choices.
+</p>
+
+<p>
+    It is especially useful when you need to compare one variable
+    with several constant values.
+</p>
+
+<div class="highlight">
+
+    <strong>Example:</strong>
+
+    If a user enters a number from 1 to 3, you can use
+    <code>switch</code> to perform a different operation for each number.
+
+</div>
+```
+
+</section>
+
+<!-- WHY SWITCH -->
+
+<section class="section">
+
+```
+<h2>Why Use switch?</h2>
+
+<p>
+    A switch statement can make programs easier to read when there
+    are many possible choices.
+</p>
+
+<ul>
+
+    <li>Used for multiple choices</li>
+    <li>Makes decision-making code easier to understand</li>
+    <li>Useful for menu-driven programs</li>
+    <li>Uses <code>case</code> labels for different choices</li>
+    <li>Uses <code>break</code> to stop execution of a case</li>
+
+</ul>
+```
+
+</section>
+
+<!-- SYNTAX -->
+
+<section class="section">
+
+```
+<h2>Syntax of switch</h2>
+
+<div class="code-title">
+    C Syntax
+</div>
+
+<pre><code>switch (expression)
+```
+
+{
+case value1:
+// code
+break;
+
+```
+case value2:
+    // code
+    break;
+
+case value3:
+    // code
+    break;
+
+default:
+    // code
+```
+
+}</code></pre>
+
+</section>
+
+<!-- COMPONENTS -->
+
+<section class="section">
+
+```
+<h2>Parts of a switch Statement</h2>
+
+<table>
+
+    <tr>
+        <th>Keyword / Part</th>
+        <th>Purpose</th>
+    </tr>
+
+    <tr>
+        <td>switch</td>
+        <td>Starts the switch statement.</td>
+    </tr>
+
+    <tr>
+        <td>expression</td>
+        <td>The value that will be compared with cases.</td>
+    </tr>
+
+    <tr>
+        <td>case</td>
+        <td>Defines a possible value.</td>
+    </tr>
+
+    <tr>
+        <td>break</td>
+        <td>Stops execution of the switch statement.</td>
+    </tr>
+
+    <tr>
+        <td>default</td>
+        <td>Runs when no case matches.</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- SIMPLE EXAMPLE -->
+
+<section class="section">
+
+```
+<h2>Simple switch Example</h2>
+
+<p>
+    The following program checks the value of a number.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int number = 2;
+
+```
+switch (number)
+{
+    case 1:
+        printf("You selected One");
+        break;
+
+    case 2:
+        printf("You selected Two");
+        break;
+
+    case 3:
+        printf("You selected Three");
+        break;
+
+    default:
+        printf("Invalid choice");
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    You selected Two
+
+</div>
+```
+
+</section>
+
+<!-- CASE -->
+
+<section class="section">
+
+```
+<h2>Using case</h2>
+
+<p>
+    The <code>case</code> keyword defines a possible value
+    that can match the switch expression.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>int day = 1;
+```
+
+switch (day)
+{
+case 1:
+printf("Monday");
+break;
+
+```
+case 2:
+    printf("Tuesday");
+    break;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- BREAK -->
+
+<section class="section">
+
+```
+<h2>Using break</h2>
+
+<p>
+    The <code>break</code> statement is commonly used at the end
+    of every case.
+</p>
+
+<p>
+    It stops the switch statement after the matching case has been
+    executed.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>int number = 1;
+```
+
+switch (number)
+{
+case 1:
+printf("One");
+break;
+
+```
+case 2:
+    printf("Two");
+    break;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    Without <code>break</code>, execution can continue into the
+    following cases. This behavior is called <strong>fall-through</strong>.
+
+</div>
+```
+
+</section>
+
+<!-- DEFAULT -->
+
+<section class="section">
+
+```
+<h2>Using default</h2>
+
+<p>
+    The <code>default</code> case executes when none of the
+    specified cases match the switch expression.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>int number = 10;
+```
+
+switch (number)
+{
+case 1:
+printf("One");
+break;
+
+```
+case 2:
+    printf("Two");
+    break;
+
+default:
+    printf("Invalid number");
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    Invalid number
+
+</div>
+```
+
+</section>
+
+<!-- MENU PROGRAM -->
+
+<section class="section">
+
+```
+<h2>Menu Program Using switch</h2>
+
+<p>
+    The switch statement is commonly used to create simple
+    menu-based programs.
+</p>
+
+<div class="code-title">
+    C Program
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int choice;
+
+```
+printf("1. Add\n");
+printf("2. Subtract\n");
+printf("3. Multiply\n");
+
+printf("Enter your choice: ");
+scanf("%d", &amp;choice);
+
+switch (choice)
+{
+    case 1:
+        printf("You selected Addition");
+        break;
+
+    case 2:
+        printf("You selected Subtraction");
+        break;
+
+    case 3:
+        printf("You selected Multiplication");
+        break;
+
+    default:
+        printf("Invalid choice");
+}
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- CHARACTER -->
+
+<section class="section">
+
+```
+<h2>switch with Character</h2>
+
+<p>
+    A switch statement can also be used with character values.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+char grade = 'A';
+
+```
+switch (grade)
+{
+    case 'A':
+        printf("Excellent");
+        break;
+
+    case 'B':
+        printf("Good");
+        break;
+
+    case 'C':
+        printf("Average");
+        break;
+
+    default:
+        printf("Invalid grade");
+}
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- MULTIPLE CASE -->
+
+<section class="section">
+
+```
+<h2>Multiple Cases with Same Code</h2>
+
+<p>
+    Multiple cases can execute the same block of code.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>char grade = 'A';
+```
+
+switch (grade)
+{
+case 'A':
+case 'B':
+printf("Good grade");
+break;
+
+```
+case 'C':
+    printf("Average grade");
+    break;
+
+default:
+    printf("Invalid grade");
+```
+
+}</code></pre>
+
+```
+<p>
+    Here, both <code>A</code> and <code>B</code> execute
+    the same statement.
+</p>
+```
+
+</section>
+
+<!-- SWITCH VS IF -->
+
+<section class="section">
+
+```
+<h2>switch vs if-else</h2>
+
+<table>
+
+    <tr>
+        <th>switch</th>
+        <th>if-else</th>
+    </tr>
+
+    <tr>
+        <td>Useful for multiple fixed choices.</td>
+        <td>Useful for conditions and ranges.</td>
+    </tr>
+
+    <tr>
+        <td>Uses case labels.</td>
+        <td>Uses conditions.</td>
+    </tr>
+
+    <tr>
+        <td>Often easier to read for menus.</td>
+        <td>More flexible for complex conditions.</td>
+    </tr>
+
+    <tr>
+        <td>Uses break to exit a case.</td>
+        <td>Does not require break.</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- IMPORTANT POINTS -->
+
+<section class="section">
+
+```
+<h2>Important Points</h2>
+
+<ul>
+
+    <li>
+        The <code>switch</code> expression is evaluated once.
+    </li>
+
+    <li>
+        Each <code>case</code> represents a possible value.
+    </li>
+
+    <li>
+        Case values must be constant expressions.
+    </li>
+
+    <li>
+        The <code>break</code> statement is commonly used to stop
+        execution after a matching case.
+    </li>
+
+    <li>
+        The <code>default</code> case is optional.
+    </li>
+
+    <li>
+        Multiple cases can share the same code.
+    </li>
+
+    <li>
+        If no case matches and there is no default case,
+        nothing inside the switch is executed.
+    </li>
+
+</ul>
+```
+
+</section>
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+
+```
+<h2>Common Mistakes</h2>
+
+<h3>1. Forgetting break</h3>
+
+<p>
+    Forgetting <code>break</code> may cause execution to continue
+    into subsequent cases.
+</p>
+
+<h3>2. Using duplicate case values</h3>
+
+<p>
+    Two cases in the same switch cannot have the same value.
+</p>
+
+<h3>3. Confusing case with a condition</h3>
+
+<p>
+    A case is matched against the switch expression. It is not
+    normally written as a general condition such as
+    <code>case x &gt; 5:</code>.
+</p>
+```
+
+</section>
+
+<!-- CODE EDITOR -->
+
+<section class="section">
+
+```
+<h2>Try C switch Code</h2>
+
+<p>
+    Write your C switch program below.
+</p>
+
+<textarea id="codeEditor">#include <stdio.h>
+```
+
+int main()
+{
+int choice;
+
+```
+printf("Enter a number (1-3): ");
+scanf("%d", &choice);
+
+switch (choice)
+{
+    case 1:
+        printf("You selected One");
+        break;
+
+    case 2:
+        printf("You selected Two");
+        break;
+
+    case 3:
+        printf("You selected Three");
+        break;
+
+    default:
+        printf("Invalid choice");
+}
+
+return 0;
+```
+
+}</textarea>
+
+```
+<div class="buttons">
+
+    <button class="run-btn" onclick="runCode()">
+        Run Code
+    </button>
+
+    <button class="clear-btn" onclick="clearCode()">
+        Clear
+    </button>
+
+</div>
+
+<div class="output" id="output">
+    Output will appear here...
+</div>
+```
+
+</section>
+
+<!-- NAVIGATION -->
+
+<div class="page-navigation">
+
+```
+<a href="c-if-else.html">
+    ← Previous: C if-else
+</a>
+
+<a href="c-type-casting.html">
+    Next: C Type Casting →
+</a>
+```
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent = "Please enter some C code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C code in the browser, " +
+        "you need a C compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
