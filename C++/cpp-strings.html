@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C++ Strings | Code With Me</title>
+
+<meta name="description" content="Learn C++ Strings with simple examples. Understand string declaration, input, access, modification, concatenation, comparison, string functions, and more.">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* NAVBAR */
+
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+/* HIGHLIGHT */
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+
+/* CODE */
+
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+
+/* EDITOR */
+
+textarea {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+
+/* NAVIGATION */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
+
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
+
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
+
+</ul>
+```
+
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+```
+<h1>C++ Strings</h1>
+
+<p>
+    Learn how to create, access, modify and work with strings in C++.
+</p>
+```
+
+</header>
+
+<main class="container">
+
+<!-- INTRODUCTION -->
+
+<section class="section">
+
+```
+<h2>What is a String in C++?</h2>
+
+<p>
+    A string is a sequence of characters used to store text.
+    For example, a person's name, city, sentence or message can be
+    stored in a string.
+</p>
+
+<div class="highlight">
+
+    <strong>Example:</strong>
+
+    <br><br>
+
+    <code>"Hello"</code>
+
+    <br>
+
+    <code>"Code With Me"</code>
+
+    <br>
+
+    <code>"C++ Programming"</code>
+
+</div>
+
+<p>
+    In modern C++, the <strong>string</strong> class from the
+    <strong>&lt;string&gt;</strong> header is commonly used to work
+    with text.
+</p>
+```
+
+</section>
+
+<!-- STRING HEADER -->
+
+<section class="section">
+
+```
+<h2>Including the String Header</h2>
+
+<p>
+    To use the C++ string class, include the
+    <strong>&lt;string&gt;</strong> header.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string name = "Krish";
+
+cout &lt;&lt; name;
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- DECLARATION -->
+
+<section class="section">
+
+```
+<h2>Declaring a String</h2>
+
+<p>
+    You can declare a string using the <strong>string</strong>
+    data type.
+</p>
+
+<div class="code-title">
+    Syntax
+</div>
+
+<pre><code>string variableName;</code></pre>
+
+<h3>Example</h3>
+
+<pre><code>string name;</code></pre>
+
+<p>
+    You can also declare and initialize a string at the same time.
+</p>
+
+<pre><code>string name = "Krish";</code></pre>
+```
+
+</section>
+
+<!-- STRING INITIALIZATION -->
+
+<section class="section">
+
+```
+<h2>String Initialization</h2>
+
+<p>
+    There are different ways to initialize a string.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>string name1 = "Krish";
+```
+
+string name2("Rahul");
+
+string name3{"Amit"};</code></pre>
+
+```
+<p>
+    All three create strings containing text.
+</p>
+```
+
+</section>
+
+<!-- OUTPUT -->
+
+<section class="section">
+
+```
+<h2>Printing a String</h2>
+
+<p>
+    You can use <strong>cout</strong> to print a string.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string name = "Krish";
+
+cout &lt;&lt; name;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Krish</code></pre>
+```
+
+</section>
+
+<!-- STRING INPUT -->
+
+<section class="section">
+
+```
+<h2>Taking String Input</h2>
+
+<p>
+    You can use <strong>cin</strong> to take a single word as input.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string name;
+
+cout &lt;&lt; "Enter your name: ";
+
+cin &gt;&gt; name;
+
+cout &lt;&lt; "Hello " &lt;&lt; name;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Important:</strong>
+
+    <br>
+
+    <code>cin &gt;&gt; name;</code>
+    reads only one word.
+
+    <br><br>
+
+    For example, if the user enters
+    <strong>Krish Kakadiya</strong>, only
+    <strong>Krish</strong> will be read.
+
+</div>
+```
+
+</section>
+
+<!-- GETLINE -->
+
+<section class="section">
+
+```
+<h2>Using getline()</h2>
+
+<p>
+    The <strong>getline()</strong> function is used to read a complete
+    line, including spaces.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string fullName;
+
+cout &lt;&lt; "Enter your full name: ";
+
+getline(cin, fullName);
+
+cout &lt;&lt; "Your name is: " &lt;&lt; fullName;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>
+    If the user enters:
+</p>
+
+<pre><code>Krish Kakadiya</code></pre>
+
+<p>
+    The complete text is stored in the string.
+</p>
+```
+
+</section>
+
+<!-- ACCESS CHARACTERS -->
+
+<section class="section">
+
+```
+<h2>Accessing String Characters</h2>
+
+<p>
+    You can access individual characters using an index.
+    String indexing starts from <strong>0</strong>.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string name = "Hello";
+
+cout &lt;&lt; name[0] &lt;&lt; endl;
+cout &lt;&lt; name[1] &lt;&lt; endl;
+cout &lt;&lt; name[4] &lt;&lt; endl;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>H
+```
+
+e
+o</code></pre>
+
+</section>
+
+<!-- MODIFY -->
+
+<section class="section">
+
+```
+<h2>Changing String Characters</h2>
+
+<p>
+    Individual characters can be changed using their index.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "Hello";
+
+text[0] = 'J';
+
+cout &lt;&lt; text;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Jello</code></pre>
+```
+
+</section>
+
+<!-- STRING LENGTH -->
+
+<section class="section">
+
+```
+<h2>Finding String Length</h2>
+
+<p>
+    You can use <strong>length()</strong> or
+    <strong>size()</strong> to find the number of characters.
+</p>
+
+<div class="code-title">
+    Using length()
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "Hello";
+
+cout &lt;&lt; text.length();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>5</code></pre>
+
+<div class="code-title">
+    Using size()
+</div>
+
+<pre><code>string text = "Hello";
+```
+
+cout << text.size();</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Note:</strong>
+
+    <code>length()</code> and <code>size()</code>
+    return the number of characters in the string.
+
+</div>
+```
+
+</section>
+
+<!-- CONCATENATION -->
+
+<section class="section">
+
+```
+<h2>String Concatenation</h2>
+
+<p>
+    Concatenation means joining two or more strings together.
+</p>
+
+<p>
+    In C++, you can use the <strong>+</strong> operator.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string firstName = "Krish";
+string lastName = "Kakadiya";
+
+string fullName = firstName + " " + lastName;
+
+cout &lt;&lt; fullName;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Krish Kakadiya</code></pre>
+```
+
+</section>
+
+<!-- APPEND -->
+
+<section class="section">
+
+```
+<h2>Using append()</h2>
+
+<p>
+    The <strong>append()</strong> function adds text to the end
+    of a string.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "Hello ";
+
+text.append("World");
+
+cout &lt;&lt; text;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Hello World</code></pre>
+```
+
+</section>
+
+<!-- COMPARE -->
+
+<section class="section">
+
+```
+<h2>Comparing Strings</h2>
+
+<p>
+    You can compare strings using comparison operators such as
+    <strong>==</strong>, <strong>!=</strong>, <strong>&lt;</strong>
+    and <strong>&gt;</strong>.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string password = "12345";
+
+if(password == "12345") {
+
+    cout &lt;&lt; "Correct password";
+
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Correct password</code></pre>
+```
+
+</section>
+
+<!-- COMPARE FUNCTION -->
+
+<section class="section">
+
+```
+<h2>Using compare()</h2>
+
+<p>
+    The <strong>compare()</strong> function can also be used to
+    compare strings.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string first = "Hello";
+string second = "Hello";
+
+if(first.compare(second) == 0) {
+
+    cout &lt;&lt; "Strings are equal";
+
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Strings are equal</code></pre>
+```
+
+</section>
+
+<!-- EMPTY -->
+
+<section class="section">
+
+```
+<h2>Checking if a String is Empty</h2>
+
+<p>
+    The <strong>empty()</strong> function checks whether a string
+    contains no characters.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text;
+
+if(text.empty()) {
+
+    cout &lt;&lt; "String is empty";
+
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>String is empty</code></pre>
+```
+
+</section>
+
+<!-- CLEAR -->
+
+<section class="section">
+
+```
+<h2>Clearing a String</h2>
+
+<p>
+    The <strong>clear()</strong> function removes all characters
+    from a string.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "Hello World";
+
+text.clear();
+
+cout &lt;&lt; text;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    After calling <code>clear()</code>, the string becomes empty.
+
+</div>
+```
+
+</section>
+
+<!-- AT -->
+
+<section class="section">
+
+```
+<h2>Using at()</h2>
+
+<p>
+    The <strong>at()</strong> function can be used to access a
+    character at a specific position.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "Hello";
+
+cout &lt;&lt; text.at(1);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>e</code></pre>
+```
+
+</section>
+
+<!-- FIND -->
+
+<section class="section">
+
+```
+<h2>Finding Text with find()</h2>
+
+<p>
+    The <strong>find()</strong> function searches for a substring
+    inside another string.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "I am learning C++";
+
+cout &lt;&lt; text.find("C++");
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>
+    The function returns the position where the searched text begins.
+</p>
+```
+
+</section>
+
+<!-- SUBSTRING -->
+
+<section class="section">
+
+```
+<h2>Using substr()</h2>
+
+<p>
+    The <strong>substr()</strong> function is used to extract a
+    part of a string.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "Hello World";
+
+string part = text.substr(0, 5);
+
+cout &lt;&lt; part;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Hello</code></pre>
+```
+
+</section>
+
+<!-- INSERT -->
+
+<section class="section">
+
+```
+<h2>Using insert()</h2>
+
+<p>
+    The <strong>insert()</strong> function inserts text at a
+    specific position.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "Hello World";
+
+text.insert(6, "C++ ");
+
+cout &lt;&lt; text;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Hello C++ World</code></pre>
+```
+
+</section>
+
+<!-- ERASE -->
+
+<section class="section">
+
+```
+<h2>Using erase()</h2>
+
+<p>
+    The <strong>erase()</strong> function removes characters from
+    a string.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "Hello World";
+
+text.erase(5, 6);
+
+cout &lt;&lt; text;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Hello</code></pre>
+```
+
+</section>
+
+<!-- LOOP -->
+
+<section class="section">
+
+```
+<h2>Loop Through a String</h2>
+
+<p>
+    You can use a loop to access every character in a string.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "Hello";
+
+for(int i = 0; i &lt; text.length(); i++) {
+
+    cout &lt;&lt; text[i] &lt;&lt; endl;
+
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>H
+```
+
+e
+l
+l
+o</code></pre>
+
+</section>
+
+<!-- RANGE LOOP -->
+
+<section class="section">
+
+```
+<h2>Range-Based Loop with String</h2>
+
+<p>
+    A range-based for loop provides a simple way to process each
+    character.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string text = "Hello";
+
+for(char character : text) {
+
+    cout &lt;&lt; character &lt;&lt; endl;
+
+}
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- STRING FUNCTIONS TABLE -->
+
+<section class="section">
+
+```
+<h2>Important C++ String Functions</h2>
+
+<table>
+
+    <tr>
+        <th>Function</th>
+        <th>Purpose</th>
+    </tr>
+
+    <tr>
+        <td><code>length()</code></td>
+        <td>Returns the length of the string.</td>
+    </tr>
+
+    <tr>
+        <td><code>size()</code></td>
+        <td>Returns the number of characters.</td>
+    </tr>
+
+    <tr>
+        <td><code>append()</code></td>
+        <td>Adds text to the end.</td>
+    </tr>
+
+    <tr>
+        <td><code>find()</code></td>
+        <td>Searches for text.</td>
+    </tr>
+
+    <tr>
+        <td><code>substr()</code></td>
+        <td>Extracts part of a string.</td>
+    </tr>
+
+    <tr>
+        <td><code>insert()</code></td>
+        <td>Inserts text at a position.</td>
+    </tr>
+
+    <tr>
+        <td><code>erase()</code></td>
+        <td>Removes characters.</td>
+    </tr>
+
+    <tr>
+        <td><code>clear()</code></td>
+        <td>Removes all characters.</td>
+    </tr>
+
+    <tr>
+        <td><code>empty()</code></td>
+        <td>Checks whether the string is empty.</td>
+    </tr>
+
+    <tr>
+        <td><code>at()</code></td>
+        <td>Accesses a character at a position.</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- STRING VS CHARACTER -->
+
+<section class="section">
+
+```
+<h2>String vs Character</h2>
+
+<table>
+
+    <tr>
+        <th>Character</th>
+        <th>String</th>
+    </tr>
+
+    <tr>
+        <td><code>'A'</code></td>
+        <td><code>"Hello"</code></td>
+    </tr>
+
+    <tr>
+        <td>Uses single quotes</td>
+        <td>Uses double quotes</td>
+    </tr>
+
+    <tr>
+        <td>Stores one character</td>
+        <td>Stores multiple characters</td>
+    </tr>
+
+    <tr>
+        <td><code>char</code></td>
+        <td><code>string</code></td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+
+```
+<h2>Common Mistakes with Strings</h2>
+
+<h3>1. Using Single Quotes for a String</h3>
+
+<pre><code>string name = 'Krish';</code></pre>
+
+<p>
+    This is incorrect. Strings use double quotes.
+</p>
+
+<pre><code>string name = "Krish";</code></pre>
+
+
+<h3>2. Using cin for a Full Sentence</h3>
+
+<pre><code>string name;
+```
+
+cin >> name;</code></pre>
+
+```
+<p>
+    This reads only one word. Use <strong>getline()</strong>
+    when you need spaces.
+</p>
+
+
+<h3>3. Invalid Index</h3>
+
+<pre><code>string text = "Hello";
+```
+
+cout << text[10];</code></pre>
+
+```
+<p>
+    The index should be within the valid range of the string.
+</p>
+```
+
+</section>
+
+<!-- COMPLETE EXAMPLE -->
+
+<section class="section">
+
+```
+<h2>Complete C++ String Example</h2>
+
+<div class="code-title">
+    Complete Program
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string firstName;
+string lastName;
+
+cout &lt;&lt; "Enter your first name: ";
+cin &gt;&gt; firstName;
+
+cout &lt;&lt; "Enter your last name: ";
+cin &gt;&gt; lastName;
+
+string fullName = firstName + " " + lastName;
+
+cout &lt;&lt; endl;
+
+cout &lt;&lt; "Full Name: " &lt;&lt; fullName &lt;&lt; endl;
+
+cout &lt;&lt; "Length: "
+     &lt;&lt; fullName.length()
+     &lt;&lt; endl;
+
+cout &lt;&lt; "First Character: "
+     &lt;&lt; fullName[0]
+     &lt;&lt; endl;
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- QUICK SUMMARY -->
+
+<section class="section">
+
+```
+<h2>C++ Strings Quick Summary</h2>
+
+<table>
+
+    <tr>
+        <th>Concept</th>
+        <th>Example</th>
+    </tr>
+
+    <tr>
+        <td>Declaration</td>
+        <td><code>string name;</code></td>
+    </tr>
+
+    <tr>
+        <td>Initialization</td>
+        <td><code>string name = "Krish";</code></td>
+    </tr>
+
+    <tr>
+        <td>Input</td>
+        <td><code>cin &gt;&gt; name;</code></td>
+    </tr>
+
+    <tr>
+        <td>Full Line Input</td>
+        <td><code>getline(cin, name);</code></td>
+    </tr>
+
+    <tr>
+        <td>Access Character</td>
+        <td><code>name[0]</code></td>
+    </tr>
+
+    <tr>
+        <td>Length</td>
+        <td><code>name.length()</code></td>
+    </tr>
+
+    <tr>
+        <td>Concatenate</td>
+        <td><code>first + last</code></td>
+    </tr>
+
+    <tr>
+        <td>Append</td>
+        <td><code>name.append("...")</code></td>
+    </tr>
+
+    <tr>
+        <td>Search</td>
+        <td><code>name.find("text")</code></td>
+    </tr>
+
+    <tr>
+        <td>Substring</td>
+        <td><code>name.substr(0, 5)</code></td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- EDITOR -->
+
+<section class="section">
+
+```
+<h2>Try C++ String Code</h2>
+
+<p>
+    Write your C++ string code below and click
+    <strong>Run Code</strong>.
+</p>
+
+<textarea id="codeEditor">#include <iostream>
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+string name = "Code With Me";
+
+cout << "Welcome to " << name << endl;
+cout << "Length = " << name.length() << endl;
+
+return 0;
+```
+
+}</textarea>
+
+```
+<div class="buttons">
+
+    <button class="run-btn" onclick="runCode()">
+        Run Code
+    </button>
+
+    <button class="clear-btn" onclick="clearCode()">
+        Clear
+    </button>
+
+</div>
+
+<div class="output" id="output">
+    Output will appear here...
+</div>
+```
+
+</section>
+
+<!-- PAGE NAVIGATION -->
+
+<div class="page-navigation">
+
+```
+<a href="cpp-arrays.html">
+    ← Previous: C++ Arrays
+</a>
+
+<a href="cpp-pointers.html">
+    Next: C++ Pointers →
+</a>
+```
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code =
+        document.getElementById("codeEditor").value;
+
+    const output =
+        document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some C++ code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C++ code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C++ code in the browser, " +
+        "you need a C++ compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
