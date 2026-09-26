@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C++ Installation | Code With Me</title>
+
+<meta name="description" content="Learn how to install C++ on Windows using a C++ compiler and VS Code. Check the compiler, write your first C++ program and run it.">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* Navbar */
+
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+
+/* Hero */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+
+/* Container */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+
+/* Sections */
+
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    margin-bottom: 12px;
+}
+
+.section ul,
+.section ol {
+    margin-left: 25px;
+}
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+
+/* Code */
+
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+
+/* Steps */
+
+.step {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 18px;
+    margin: 15px 0;
+}
+
+.step-number {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+
+/* Editor */
+
+textarea {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.run-btn:hover {
+    background: #1d4ed8;
+}
+
+.clear-btn:hover {
+    background: #b91c1c;
+}
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+
+/* Navigation */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.page-navigation a:hover {
+    background: #1d4ed8;
+}
+
+
+/* Footer */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
+
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
+
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
+
+</ul>
+```
+
+</nav>
+
+<!-- Hero -->
+
+<header class="hero">
+
+```
+<h1>C++ Installation</h1>
+
+<p>
+    Learn how to install a C++ compiler and start programming.
+</p>
+```
+
+</header>
+
+<main class="container">
+
+<!-- Introduction -->
+
+<section class="section">
+
+```
+<h2>Introduction</h2>
+
+<p>
+    Before writing and running C++ programs, you need a
+    C++ compiler on your computer.
+</p>
+
+<p>
+    A compiler converts C++ source code into a form that
+    the computer can execute.
+</p>
+
+<div class="highlight">
+
+    <strong>For Windows beginners:</strong>
+
+    A common setup is a C++ compiler such as GCC/MinGW
+    together with a code editor such as Visual Studio Code.
+
+</div>
+```
+
+</section>
+
+<!-- Requirements -->
+
+<section class="section">
+
+```
+<h2>What Do You Need?</h2>
+
+<table>
+
+    <tr>
+        <th>Software</th>
+        <th>Purpose</th>
+    </tr>
+
+    <tr>
+        <td>C++ Compiler</td>
+        <td>Compiles C++ source code.</td>
+    </tr>
+
+    <tr>
+        <td>Visual Studio Code</td>
+        <td>Used to write and manage C++ source code.</td>
+    </tr>
+
+    <tr>
+        <td>Terminal / Command Prompt</td>
+        <td>Used to compile and run programs from the command line.</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- Compiler -->
+
+<section class="section">
+
+```
+<h2>What is a C++ Compiler?</h2>
+
+<p>
+    A compiler translates C++ source code into machine code
+    or another executable form that can run on your computer.
+</p>
+
+<p>
+    One commonly used compiler toolchain is
+    <strong>GCC</strong>. On Windows, GCC can be provided
+    through environments such as MinGW-w64.
+</p>
+
+<div class="highlight">
+
+    <strong>Important:</strong>
+
+    Installing VS Code alone does not install a C++ compiler.
+    You need a compiler/toolchain separately.
+
+</div>
+```
+
+</section>
+
+<!-- Step 1 -->
+
+<section class="section">
+
+```
+<h2>Step 1: Install a C++ Compiler</h2>
+
+<div class="step">
+
+    <h3>
+        <span class="step-number">1</span>
+        Download a GCC/MinGW-w64 Toolchain
+    </h3>
+
+    <p>
+        Install a Windows-compatible GCC/MinGW-w64 toolchain
+        from a trusted source.
+    </p>
+
+</div>
+
+
+<div class="step">
+
+    <h3>
+        <span class="step-number">2</span>
+        Choose the Installation Folder
+    </h3>
+
+    <p>
+        Install the compiler in a simple folder path.
+        For example:
+    </p>
+
+    <div class="code-title">
+        Example Folder
+    </div>
+
+    <pre><code>C:\mingw64</code></pre>
+
+    <p>
+        The exact folder depends on the compiler package
+        you install.
+    </p>
+
+</div>
+
+
+<div class="step">
+
+    <h3>
+        <span class="step-number">3</span>
+        Locate the bin Folder
+    </h3>
+
+    <p>
+        The compiler executable files are normally inside
+        the toolchain's <strong>bin</strong> folder.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+
+    <pre><code>C:\mingw64\bin</code></pre>
+
+</div>
+```
+
+</section>
+
+<!-- PATH -->
+
+<section class="section">
+
+```
+<h2>Step 2: Add Compiler to PATH</h2>
+
+<p>
+    Adding the compiler's bin folder to the Windows PATH
+    allows you to run compiler commands from Command Prompt
+    or PowerShell.
+</p>
+
+<div class="step">
+
+    <h3>
+        <span class="step-number">1</span>
+        Open Environment Variables
+    </h3>
+
+    <p>
+        Search for:
+    </p>
+
+    <div class="code-title">
+        Windows Search
+    </div>
+
+    <pre><code>Environment Variables</code></pre>
+
+</div>
+
+
+<div class="step">
+
+    <h3>
+        <span class="step-number">2</span>
+        Open Path Settings
+    </h3>
+
+    <p>
+        Open the Environment Variables window and find
+        the <strong>Path</strong> variable under the
+        appropriate user or system variables.
+    </p>
+
+</div>
+
+
+<div class="step">
+
+    <h3>
+        <span class="step-number">3</span>
+        Add the bin Folder
+    </h3>
+
+    <p>
+        Add the path to your compiler's bin directory.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+
+    <pre><code>C:\mingw64\bin</code></pre>
+
+</div>
+```
+
+</section>
+
+<!-- Check Compiler -->
+
+<section class="section">
+
+```
+<h2>Step 3: Check the Compiler</h2>
+
+<p>
+    Open Command Prompt or PowerShell and type:
+</p>
+
+<div class="code-title">
+    Command
+</div>
+
+<pre><code>g++ --version</code></pre>
+
+<p>
+    If the compiler is installed and PATH is configured
+    correctly, you should see version information.
+</p>
+
+<div class="highlight">
+
+    <strong>If you see:</strong>
+
+    <pre><code>'g++' is not recognized...</code></pre>
+
+    then the compiler may not be installed correctly or
+    its bin folder may not have been added to PATH.
+
+</div>
+```
+
+</section>
+
+<!-- VS Code -->
+
+<section class="section">
+
+```
+<h2>Step 4: Install Visual Studio Code</h2>
+
+<p>
+    Visual Studio Code is a source-code editor that can be
+    used to write C++ programs.
+</p>
+
+<ol>
+
+    <li>Download and install Visual Studio Code.</li>
+
+    <li>Open Visual Studio Code.</li>
+
+    <li>Create a folder for your C++ programs.</li>
+
+    <li>Open that folder in VS Code.</li>
+
+    <li>Create a file with the <strong>.cpp</strong> extension.</li>
+
+</ol>
+
+<div class="code-title">
+    Example File
+</div>
+
+<pre><code>hello.cpp</code></pre>
+```
+
+</section>
+
+<!-- Extension -->
+
+<section class="section">
+
+```
+<h2>Step 5: Install the C++ Extension</h2>
+
+<p>
+    In VS Code, open the Extensions section and search for
+    the official Microsoft C/C++ extension.
+</p>
+
+<p>
+    This extension provides C++ language support such as
+    syntax highlighting, code completion and debugging
+    integration.
+</p>
+
+<div class="highlight">
+
+    <strong>Tip:</strong>
+
+    Make sure you install the C/C++ extension from
+    Microsoft.
+
+</div>
+```
+
+</section>
+
+<!-- First Program -->
+
+<section class="section">
+
+```
+<h2>Step 6: Create Your First C++ Program</h2>
+
+<p>
+    Create a file named:
+</p>
+
+<div class="code-title">
+    File Name
+</div>
+
+<pre><code>hello.cpp</code></pre>
+
+<p>
+    Then write the following program:
+</p>
+
+<div class="code-title">
+    hello.cpp
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+cout << "Hello, World!";
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Compile -->
+
+<section class="section">
+
+```
+<h2>Step 7: Compile the C++ Program</h2>
+
+<p>
+    Open the terminal in the folder containing
+    <strong>hello.cpp</strong>.
+</p>
+
+<p>
+    Use the following command:
+</p>
+
+<div class="code-title">
+    Compile Command
+</div>
+
+<pre><code>g++ hello.cpp -o hello</code></pre>
+
+<p>
+    This command asks g++ to compile the source file
+    and create an executable named <strong>hello</strong>.
+</p>
+```
+
+</section>
+
+<!-- Run -->
+
+<section class="section">
+
+```
+<h2>Step 8: Run the Program</h2>
+
+<p>
+    On Windows, after successful compilation, run:
+</p>
+
+<div class="code-title">
+    Command Prompt / PowerShell
+</div>
+
+<pre><code>hello</code></pre>
+
+<p>
+    In some shells, you can use:
+</p>
+
+<pre><code>.\hello.exe</code></pre>
+
+<div class="code-title">
+    Output
+</div>
+
+<pre><code>Hello, World!</code></pre>
+```
+
+</section>
+
+<!-- Compilation Process -->
+
+<section class="section">
+
+```
+<h2>How C++ Compilation Works</h2>
+
+<p>
+    A simple C++ development process looks like this:
+</p>
+
+<div class="highlight">
+
+    <strong>Write Code</strong>
+    →
+    <strong>Compile</strong>
+    →
+    <strong>Executable</strong>
+    →
+    <strong>Run</strong>
+
+</div>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>hello.cpp
+↓
+```
+
+g++ hello.cpp -o hello
+↓
+hello.exe
+↓
+Program Output</code></pre>
+
+</section>
+
+<!-- File Extension -->
+
+<section class="section">
+
+```
+<h2>C++ File Extension</h2>
+
+<p>
+    C++ source files commonly use the
+    <strong>.cpp</strong> extension.
+</p>
+
+<table>
+
+    <tr>
+        <th>Extension</th>
+        <th>Meaning</th>
+    </tr>
+
+    <tr>
+        <td>.cpp</td>
+        <td>Common C++ source file</td>
+    </tr>
+
+    <tr>
+        <td>.h</td>
+        <td>Common header file extension</td>
+    </tr>
+
+    <tr>
+        <td>.hpp</td>
+        <td>Common C++ header file extension</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- Common Errors -->
+
+<section class="section">
+
+```
+<h2>Common Installation Problems</h2>
+
+<h3>1. g++ is not recognized</h3>
+
+<p>
+    Check whether the compiler is installed and whether
+    its bin directory has been added to PATH.
+</p>
+
+
+<h3>2. VS Code cannot find the compiler</h3>
+
+<p>
+    Check your compiler installation and make sure
+    g++ can be run from the terminal.
+</p>
+
+
+<h3>3. Program does not compile</h3>
+
+<p>
+    Check the source code for syntax errors and make sure
+    the file has a .cpp extension.
+</p>
+
+
+<h3>4. Command Prompt was already open</h3>
+
+<p>
+    After changing PATH, close and reopen Command Prompt
+    or PowerShell so the new PATH can be loaded.
+</p>
+```
+
+</section>
+
+<!-- Important Points -->
+
+<section class="section">
+
+```
+<h2>Important Points to Remember</h2>
+
+<ul>
+
+    <li>VS Code is an editor, not the C++ compiler itself.</li>
+
+    <li>You need a C++ compiler/toolchain to compile C++ programs.</li>
+
+    <li>GCC provides the commonly used g++ compiler command.</li>
+
+    <li>The compiler's bin directory may need to be added to PATH.</li>
+
+    <li>C++ source files commonly use the .cpp extension.</li>
+
+    <li>You can check the compiler using <strong>g++ --version</strong>.</li>
+
+    <li>You can compile a simple file using <strong>g++ hello.cpp -o hello</strong>.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- Code Editor -->
+
+<section class="section">
+
+```
+<h2>C++ Installation Practice</h2>
+
+<p>
+    You can practice writing your first C++ program below.
+</p>
+
+<textarea id="codeEditor">#include <iostream>
+```
+
+using namespace std;
+
+int main()
+{
+cout << "C++ is installed and ready!";
+
+```
+return 0;
+```
+
+}</textarea>
+
+```
+<div class="buttons">
+
+    <button class="run-btn" onclick="runCode()">
+        Run Code
+    </button>
+
+    <button class="clear-btn" onclick="clearCode()">
+        Clear
+    </button>
+
+</div>
+
+<div class="output" id="output">
+    Output will appear here...
+</div>
+```
+
+</section>
+
+<!-- Navigation -->
+
+<div class="page-navigation">
+
+```
+<a href="cpp-introduction.html">
+    ← Previous: C++ Introduction
+</a>
+
+<a href="cpp-ide.html">
+    Next: C++ IDE and Compiler →
+</a>
+```
+
+</div>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some C++ code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C++ code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C++ code in the browser, " +
+        "you need a C++ compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
