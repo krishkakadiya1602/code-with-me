@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C while Loop | Code With Me</title>
+
+<meta name="description" content="Learn while loop in C programming with syntax, examples, flow, infinite loops, practical programs and exercises.">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* NAVBAR */
+
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+/* SECTION */
+
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* HIGHLIGHT */
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+/* CODE */
+
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+/* EDITOR */
+
+textarea {
+    width: 100%;
+    min-height: 330px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+/* BUTTONS */
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.run-btn:hover {
+    background: #1d4ed8;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.clear-btn:hover {
+    background: #b91c1c;
+}
+
+/* OUTPUT */
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+/* NAVIGATION */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.page-navigation a:hover {
+    background: #1d4ed8;
+}
+
+/* FOOTER */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../index.html#courses">Courses</a></li>
+    <li><a href="../index.html#about">About</a></li>
+</ul>
+```
+
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+```
+<h1>C while Loop</h1>
+
+<p>Learn how to repeat a block of code using the while loop in C.</p>
+```
+
+</header>
+
+<main class="container">
+
+<!-- INTRODUCTION -->
+
+<section class="section">
+
+```
+<h2>What is a while Loop in C?</h2>
+
+<p>
+    The <strong>while loop</strong> in C is a looping statement
+    that repeatedly executes a block of code as long as a specified
+    condition is true.
+</p>
+
+<p>
+    The condition is checked before each iteration of the loop.
+    If the condition becomes false, the loop stops.
+</p>
+
+<div class="highlight">
+
+    <strong>Simple idea:</strong>
+
+    <br>
+
+    Check condition → Execute code → Update value → Check condition again
+
+</div>
+```
+
+</section>
+
+<!-- WHY USE -->
+
+<section class="section">
+
+```
+<h2>Why Use a while Loop?</h2>
+
+<ul>
+
+    <li>To repeat code multiple times.</li>
+
+    <li>Useful when the number of repetitions is not known in advance.</li>
+
+    <li>Useful for input validation.</li>
+
+    <li>Useful for menu-driven programs.</li>
+
+    <li>Useful for processing data until a condition becomes false.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- SYNTAX -->
+
+<section class="section">
+
+```
+<h2>Syntax of while Loop</h2>
+
+<div class="code-title">
+    C Syntax
+</div>
+
+<pre><code>while (condition)
+```
+
+{
+// code to execute
+}</code></pre>
+
+```
+<p>
+    The condition is checked before the statements inside the
+    loop are executed.
+</p>
+```
+
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section class="section">
+
+```
+<h2>How while Loop Works</h2>
+
+<ol>
+
+    <li>The condition is checked.</li>
+
+    <li>If the condition is true, the loop body executes.</li>
+
+    <li>The loop body updates the required variable.</li>
+
+    <li>The condition is checked again.</li>
+
+    <li>This continues until the condition becomes false.</li>
+
+</ol>
+
+<div class="highlight">
+
+    If the condition is false at the beginning, the body of the
+    while loop will not execute even once.
+
+</div>
+```
+
+</section>
+
+<!-- SIMPLE EXAMPLE -->
+
+<section class="section">
+
+```
+<h2>Simple while Loop Example</h2>
+
+<p>
+    The following program prints numbers from 1 to 5.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int i = 1;
+
+```
+while (i &lt;= 5)
+{
+    printf("%d\n", i);
+    i++;
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    1
+    <br>
+    2
+    <br>
+    3
+    <br>
+    4
+    <br>
+    5
+
+</div>
+```
+
+</section>
+
+<!-- INITIALIZATION -->
+
+<section class="section">
+
+```
+<h2>Initialization in while Loop</h2>
+
+<p>
+    Before starting a while loop, you normally initialize the
+    variable used in the condition.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>int i = 1;
+```
+
+while (i <= 5)
+{
+printf("%d\n", i);
+i++;
+}</code></pre>
+
+```
+<p>
+    Here, <code>i</code> starts with the value <code>1</code>.
+</p>
+```
+
+</section>
+
+<!-- UPDATE -->
+
+<section class="section">
+
+```
+<h2>Updating the Loop Variable</h2>
+
+<p>
+    The loop variable should normally be changed inside the loop.
+    Otherwise, the condition may never become false.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>int i = 1;
+```
+
+while (i <= 5)
+{
+printf("%d\n", i);
+
+```
+i++;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Important:</strong>
+
+    The statement <code>i++</code> increases the value of
+    <code>i</code> after every iteration.
+
+</div>
+```
+
+</section>
+
+<!-- DECREASING -->
+
+<section class="section">
+
+```
+<h2>Decreasing Values Using while</h2>
+
+<p>
+    A while loop can also be used to count down.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int i = 5;
+
+```
+while (i &gt;= 1)
+{
+    printf("%d\n", i);
+    i--;
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    5
+    <br>
+    4
+    <br>
+    3
+    <br>
+    2
+    <br>
+    1
+
+</div>
+```
+
+</section>
+
+<!-- EVEN NUMBERS -->
+
+<section class="section">
+
+```
+<h2>Print Even Numbers Using while</h2>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int i = 2;
+
+```
+while (i &lt;= 10)
+{
+    printf("%d\n", i);
+    i = i + 2;
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    2
+    <br>
+    4
+    <br>
+    6
+    <br>
+    8
+    <br>
+    10
+
+</div>
+```
+
+</section>
+
+<!-- SUM -->
+
+<section class="section">
+
+```
+<h2>Calculate Sum Using while Loop</h2>
+
+<p>
+    We can use a while loop to calculate the sum of numbers.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int i = 1;
+int sum = 0;
+
+```
+while (i &lt;= 5)
+{
+    sum = sum + i;
+    i++;
+}
+
+printf("Sum = %d", sum);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    Sum = 15
+
+</div>
+```
+
+</section>
+
+<!-- USER INPUT -->
+
+<section class="section">
+
+```
+<h2>while Loop with User Input</h2>
+
+<p>
+    A while loop can continue running until the user enters
+    a particular value.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int number;
+
+```
+printf("Enter a number: ");
+scanf("%d", &amp;number);
+
+while (number != 0)
+{
+    printf("You entered %d\n", number);
+
+    printf("Enter another number (0 to stop): ");
+    scanf("%d", &amp;number);
+}
+
+printf("Loop ended.");
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- FACTORIAL -->
+
+<section class="section">
+
+```
+<h2>Factorial Using while Loop</h2>
+
+<p>
+    The factorial of a positive integer can also be calculated
+    using a while loop.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int number;
+int factorial = 1;
+
+```
+printf("Enter a positive number: ");
+scanf("%d", &amp;number);
+
+while (number &gt; 0)
+{
+    factorial = factorial * number;
+    number--;
+}
+
+printf("Factorial = %d", factorial);
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- INFINITE LOOP -->
+
+<section class="section">
+
+```
+<h2>Infinite while Loop</h2>
+
+<p>
+    An infinite loop is a loop whose condition never becomes false.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>int i = 1;
+```
+
+while (i <= 5)
+{
+printf("%d\n", i);
+}</code></pre>
+
+```
+<div class="highlight">
+
+    In this example, <code>i</code> is never increased.
+    Therefore, <code>i</code> remains <code>1</code> and the
+    condition always remains true.
+
+</div>
+
+<p>
+    To avoid this problem, update the loop variable properly.
+</p>
+```
+
+</section>
+
+<!-- BREAK -->
+
+<section class="section">
+
+```
+<h2>Using break with while Loop</h2>
+
+<p>
+    The <code>break</code> statement can immediately terminate
+    a while loop.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int i = 1;
+
+```
+while (i &lt;= 10)
+{
+    if (i == 5)
+    {
+        break;
+    }
+
+    printf("%d\n", i);
+
+    i++;
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    1
+    <br>
+    2
+    <br>
+    3
+    <br>
+    4
+
+</div>
+```
+
+</section>
+
+<!-- CONTINUE -->
+
+<section class="section">
+
+```
+<h2>Using continue with while Loop</h2>
+
+<p>
+    The <code>continue</code> statement skips the remaining
+    statements of the current iteration and moves to the next
+    iteration.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int i = 0;
+
+```
+while (i &lt; 5)
+{
+    i++;
+
+    if (i == 3)
+    {
+        continue;
+    }
+
+    printf("%d\n", i);
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Output:</strong>
+
+    <br>
+
+    1
+    <br>
+    2
+    <br>
+    4
+    <br>
+    5
+
+</div>
+```
+
+</section>
+
+<!-- WHILE VS FOR -->
+
+<section class="section">
+
+```
+<h2>while Loop vs for Loop</h2>
+
+<table>
+
+    <tr>
+        <th>while Loop</th>
+        <th>for Loop</th>
+    </tr>
+
+    <tr>
+        <td>Useful when the number of iterations may not be known.</td>
+        <td>Often useful when the number of iterations is known.</td>
+    </tr>
+
+    <tr>
+        <td>Initialization is normally written before the loop.</td>
+        <td>Initialization can be written inside the for statement.</td>
+    </tr>
+
+    <tr>
+        <td>Update is normally written inside the loop body.</td>
+        <td>Update can be written inside the for statement.</td>
+    </tr>
+
+    <tr>
+        <td>Syntax is simple and condition-focused.</td>
+        <td>Initialization, condition and update are grouped together.</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- IMPORTANT POINTS -->
+
+<section class="section">
+
+```
+<h2>Important Points</h2>
+
+<ul>
+
+    <li>
+        A while loop checks its condition before executing the body.
+    </li>
+
+    <li>
+        If the condition is false initially, the loop executes zero times.
+    </li>
+
+    <li>
+        Always make sure the loop can eventually reach a false condition.
+    </li>
+
+    <li>
+        The loop variable should normally be initialized before the loop.
+    </li>
+
+    <li>
+        The loop variable should normally be updated inside the loop.
+    </li>
+
+    <li>
+        The <code>break</code> statement can terminate the loop early.
+    </li>
+
+    <li>
+        The <code>continue</code> statement can skip the current iteration.
+    </li>
+
+</ul>
+```
+
+</section>
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+
+```
+<h2>Common Mistakes</h2>
+
+<h3>1. Forgetting to update the variable</h3>
+
+<p>
+    If the variable used in the condition is never updated,
+    the loop may become infinite.
+</p>
+
+<h3>2. Incorrect condition</h3>
+
+<p>
+    Make sure the condition eventually becomes false.
+</p>
+
+<h3>3. Incorrect initialization</h3>
+
+<p>
+    Initialize the loop variable with a value that makes sense
+    for your condition.
+</p>
+
+<h3>4. Creating an accidental infinite loop</h3>
+
+<p>
+    Always check the initialization, condition and update together.
+</p>
+```
+
+</section>
+
+<!-- CODE EDITOR -->
+
+<section class="section">
+
+```
+<h2>Try C while Loop Code</h2>
+
+<p>
+    Write your C while loop program below.
+</p>
+
+<textarea id="codeEditor">#include <stdio.h>
+```
+
+int main()
+{
+int i = 1;
+
+```
+while (i <= 5)
+{
+    printf("%d\n", i);
+    i++;
+}
+
+return 0;
+```
+
+}</textarea>
+
+```
+<div class="buttons">
+
+    <button class="run-btn" onclick="runCode()">
+        Run Code
+    </button>
+
+    <button class="clear-btn" onclick="clearCode()">
+        Clear
+    </button>
+
+</div>
+
+<div class="output" id="output">
+    Output will appear here...
+</div>
+```
+
+</section>
+
+<!-- NAVIGATION -->
+
+<div class="page-navigation">
+
+```
+<a href="c-switch.html">
+    ← Previous: C switch
+</a>
+
+<a href="c-do-while-loop.html">
+    Next: C do-while Loop →
+</a>
+```
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent = "Please enter some C code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C code in the browser, " +
+        "you need a C compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
