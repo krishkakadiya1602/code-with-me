@@ -10,10 +10,10 @@
     <title>Code With Me | Learn Coding</title>
 
     <meta name="description"
-        content="Learn HTML, CSS, JavaScript, Python and C with simple coding tutorials and examples">
+        content="Learn HTML, CSS, JavaScript, Python, C and C++ with simple coding tutorials and examples">
 
     <meta name="keywords"
-        content="HTML, CSS, JavaScript, Python, C, coding, programming, web development">
+        content="HTML, CSS, JavaScript, Python, C, C++, coding, programming, web development">
 
     <meta name="author" content="Code With Me">
 
@@ -183,7 +183,8 @@
         .course-container {
             display: grid;
 
-            grid-template-columns: repeat(5, 1fr);
+            /* Changed from 5 to 6 columns */
+            grid-template-columns: repeat(6, 1fr);
 
             gap: 30px;
 
@@ -274,6 +275,13 @@
 
         .c-logo {
             color: #A8B9CC;
+        }
+
+
+        /* C++ Logo */
+
+        .cpp-logo {
+            color: #00599C;
         }
 
 
@@ -414,9 +422,9 @@
            RESPONSIVE
         ========================= */
 
-        /* Laptop / Tablet */
+        /* Laptop */
 
-        @media (max-width: 1300px) {
+        @media (max-width: 1500px) {
 
             .course-container {
                 grid-template-columns: repeat(3, 1fr);
@@ -528,7 +536,7 @@
             </h1>
 
             <p>
-                Learn HTML, CSS, JavaScript, Python and C
+                Learn HTML, CSS, JavaScript, Python, C and C++
                 with simple tutorials and practical examples.
             </p>
 
@@ -692,10 +700,44 @@
                     pointers and projects.
                 </p>
 
-                <!-- C COURSE LINK -->
-                <a href="./C/c-introduction.html" class="course-btn">
-    Start C Course
-</a>
+                <a
+                    href="./c/c-introduction.html"
+                    class="course-btn">
+
+                    Start C Course
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =========================
+                 C++ PROGRAMMING COURSE
+            ========================= -->
+
+            <div class="course-card">
+
+                <div class="course-logo cpp-logo">
+                    <i class="devicon-cplusplus-plain"></i>
+                </div>
+
+                <h3>C++ Programming</h3>
+
+                <p>
+                    Learn C++ programming from basic syntax
+                    to variables, loops, functions, arrays,
+                    OOP and projects.
+                </p>
+
+                <a
+                    href="./cpp/cpp-introduction.html"
+                    class="course-btn">
+
+                    Start C++ Course
+
+                </a>
+
             </div>
 
 
