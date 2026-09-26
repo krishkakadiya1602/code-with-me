@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>C++ Projects | Code With Me</title>
+
+<meta name="description"
+      content="Learn C++ through practical projects including calculator, number guessing game, quiz, ATM system and student management system.">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #222;
+        line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+        background: #111827;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .nav-links a:hover {
+        color: #38bdf8;
+    }
+
+    /* HERO */
+    .hero {
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    /* CONTAINER */
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    /* SECTION */
+    .section {
+        background: white;
+        padding: 30px;
+        margin-bottom: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+        color: #1e3a8a;
+        margin-bottom: 15px;
+    }
+
+    .section h3 {
+        color: #2563eb;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .section ul,
+    .section ol {
+        padding-left: 25px;
+    }
+
+    /* HIGHLIGHT */
+    .highlight {
+        background: #eff6ff;
+        border-left: 5px solid #2563eb;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    /* PROJECT CARD */
+    .project-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 22px;
+        margin: 20px 0;
+    }
+
+    .project-card h3 {
+        margin-top: 0;
+    }
+
+    .difficulty {
+        display: inline-block;
+        background: #dbeafe;
+        color: #1e40af;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    /* CODE */
+    .code-title {
+        background: #111827;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 8px 8px 0 0;
+        font-weight: bold;
+    }
+
+    pre {
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 20px;
+        overflow-x: auto;
+        border-radius: 0 0 8px 8px;
+        font-family: Consolas, monospace;
+    }
+
+    /* TABLE */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    table th {
+        background: #1e3a8a;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background: #f8fafc;
+    }
+
+    /* EDITOR */
+    textarea {
+        width: 100%;
+        min-height: 400px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: Consolas, monospace;
+        font-size: 15px;
+        resize: vertical;
+        background: #111827;
+        color: #f8fafc;
+    }
+
+    .buttons {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+    }
+
+    button {
+        padding: 11px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .run-btn {
+        background: #2563eb;
+        color: white;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+        color: white;
+    }
+
+    .run-btn:hover {
+        background: #1d4ed8;
+    }
+
+    .clear-btn:hover {
+        background: #b91c1c;
+    }
+
+    .output {
+        margin-top: 15px;
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 15px;
+        min-height: 100px;
+        white-space: pre-wrap;
+        font-family: Consolas, monospace;
+    }
+
+    /* NAVIGATION */
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 30px 0 50px;
+    }
+
+    .page-navigation a {
+        text-decoration: none;
+        background: #2563eb;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .page-navigation a:hover {
+        background: #1d4ed8;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 30px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+
+        nav {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .page-navigation {
+            flex-direction: column;
+        }
+
+        .page-navigation a {
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- NAVBAR -->
+<nav>
+
+    <a href="../index.html" class="logo">
+        Code <span>WithMe</span>
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+
+    <h1>C++ Projects</h1>
+
+    <p>
+        Practice C++ with Real-World Beginner and Intermediate Projects
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- INTRODUCTION -->
+    <section class="section">
+
+        <h2>Why Build C++ Projects?</h2>
+
+        <p>
+            Learning C++ syntax is only the beginning. Building projects
+            helps you understand how different programming concepts work
+            together in a complete application.
+        </p>
+
+        <p>
+            These projects can help you practice variables, conditions,
+            loops, functions, arrays, strings, classes, file handling
+            and Object-Oriented Programming.
+        </p>
+
+        <div class="highlight">
+
+            <strong>Tip:</strong>
+
+            <br>
+
+            Start with small projects and gradually increase the
+            complexity of your programs.
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT ROADMAP -->
+    <section class="section">
+
+        <h2>C++ Project Roadmap</h2>
+
+        <table>
+
+            <tr>
+                <th>Project</th>
+                <th>Difficulty</th>
+                <th>Main Concepts</th>
+            </tr>
+
+            <tr>
+                <td>Simple Calculator</td>
+                <td>Beginner</td>
+                <td>Variables, switch, functions</td>
+            </tr>
+
+            <tr>
+                <td>Number Guessing Game</td>
+                <td>Beginner</td>
+                <td>Loops, conditions, random numbers</td>
+            </tr>
+
+            <tr>
+                <td>Student Grade Calculator</td>
+                <td>Beginner</td>
+                <td>Arrays, loops, conditions</td>
+            </tr>
+
+            <tr>
+                <td>Quiz Game</td>
+                <td>Beginner</td>
+                <td>Conditions, strings, loops</td>
+            </tr>
+
+            <tr>
+                <td>ATM System</td>
+                <td>Intermediate</td>
+                <td>Functions, loops, conditions</td>
+            </tr>
+
+            <tr>
+                <td>Student Management System</td>
+                <td>Intermediate</td>
+                <td>Classes, vectors, file handling</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- PROJECT 1 -->
+    <section class="section">
+
+        <h2>Project 1: Simple Calculator</h2>
+
+        <div class="project-card">
+
+            <span class="difficulty">
+                Beginner
+            </span>
+
+            <h3>Calculator using switch</h3>
+
+            <p>
+                Create a calculator that performs addition, subtraction,
+                multiplication and division.
+            </p>
+
+            <p>
+                <strong>Concepts Used:</strong>
+                Variables, operators, switch statement and conditions.
+            </p>
+
+            <div class="code-title">
+                C++ Code
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+double num1, num2;
+char operation;
+
+cout &lt;&lt; "Enter first number: ";
+cin &gt;&gt; num1;
+
+cout &lt;&lt; "Enter operator (+, -, *, /): ";
+cin &gt;&gt; operation;
+
+cout &lt;&lt; "Enter second number: ";
+cin &gt;&gt; num2;
+
+switch (operation) {
+
+    case '+':
+        cout &lt;&lt; "Result = " &lt;&lt; num1 + num2;
+        break;
+
+    case '-':
+        cout &lt;&lt; "Result = " &lt;&lt; num1 - num2;
+        break;
+
+    case '*':
+        cout &lt;&lt; "Result = " &lt;&lt; num1 * num2;
+        break;
+
+    case '/':
+        if (num2 != 0)
+            cout &lt;&lt; "Result = " &lt;&lt; num1 / num2;
+        else
+            cout &lt;&lt; "Cannot divide by zero.";
+        break;
+
+    default:
+        cout &lt;&lt; "Invalid operator.";
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT 2 -->
+    <section class="section">
+
+        <h2>Project 2: Number Guessing Game</h2>
+
+        <div class="project-card">
+
+            <span class="difficulty">
+                Beginner
+            </span>
+
+            <h3>Guess the Secret Number</h3>
+
+            <p>
+                The computer generates a random number and the user
+                tries to guess it.
+            </p>
+
+            <p>
+                <strong>Concepts Used:</strong>
+                Loops, conditions, random numbers and user input.
+            </p>
+
+            <div class="code-title">
+                C++ Code
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+```
+
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+
+```
+srand(time(0));
+
+int secretNumber = rand() % 100 + 1;
+int guess;
+int attempts = 0;
+
+cout &lt;&lt; "Guess a number between 1 and 100." &lt;&lt; endl;
+
+do {
+
+    cout &lt;&lt; "Enter your guess: ";
+    cin &gt;&gt; guess;
+
+    attempts++;
+
+    if (guess &gt; secretNumber) {
+
+        cout &lt;&lt; "Too high!" &lt;&lt; endl;
+
+    }
+    else if (guess &lt; secretNumber) {
+
+        cout &lt;&lt; "Too low!" &lt;&lt; endl;
+
+    }
+    else {
+
+        cout &lt;&lt; "Correct!" &lt;&lt; endl;
+        cout &lt;&lt; "Attempts: " &lt;&lt; attempts &lt;&lt; endl;
+
+    }
+
+} while (guess != secretNumber);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT 3 -->
+    <section class="section">
+
+        <h2>Project 3: Student Grade Calculator</h2>
+
+        <div class="project-card">
+
+            <span class="difficulty">
+                Beginner
+            </span>
+
+            <h3>Calculate Average and Grade</h3>
+
+            <p>
+                Create a program that accepts marks for multiple subjects
+                and calculates the average and grade.
+            </p>
+
+            <p>
+                <strong>Concepts Used:</strong>
+                Arrays, loops, conditions and arithmetic operators.
+            </p>
+
+            <div class="code-title">
+                C++ Code
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+int marks[5];
+int total = 0;
+
+for (int i = 0; i &lt; 5; i++) {
+
+    cout &lt;&lt; "Enter marks for subject "
+         &lt;&lt; i + 1 &lt;&lt; ": ";
+
+    cin &gt;&gt; marks[i];
+
+    total += marks[i];
+}
+
+double average = total / 5.0;
+
+cout &lt;&lt; endl;
+cout &lt;&lt; "Total Marks = " &lt;&lt; total &lt;&lt; endl;
+cout &lt;&lt; "Average = " &lt;&lt; average &lt;&lt; endl;
+
+if (average &gt;= 90)
+    cout &lt;&lt; "Grade: A+";
+else if (average &gt;= 80)
+    cout &lt;&lt; "Grade: A";
+else if (average &gt;= 70)
+    cout &lt;&lt; "Grade: B";
+else if (average &gt;= 60)
+    cout &lt;&lt; "Grade: C";
+else if (average &gt;= 50)
+    cout &lt;&lt; "Grade: D";
+else
+    cout &lt;&lt; "Grade: F";
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT 4 -->
+    <section class="section">
+
+        <h2>Project 4: Quiz Game</h2>
+
+        <div class="project-card">
+
+            <span class="difficulty">
+                Beginner
+            </span>
+
+            <h3>Simple C++ Quiz</h3>
+
+            <p>
+                Build a quiz application that asks multiple-choice
+                questions and calculates the final score.
+            </p>
+
+            <p>
+                <strong>Concepts Used:</strong>
+                Conditions, loops, variables and user input.
+            </p>
+
+            <div class="code-title">
+                C++ Code
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+int answer;
+int score = 0;
+
+cout &lt;&lt; "===== C++ Quiz =====" &lt;&lt; endl;
+
+cout &lt;&lt; endl;
+
+cout &lt;&lt; "1. Which language is C++ based on?" &lt;&lt; endl;
+cout &lt;&lt; "1. Java" &lt;&lt; endl;
+cout &lt;&lt; "2. C" &lt;&lt; endl;
+cout &lt;&lt; "3. Python" &lt;&lt; endl;
+
+cout &lt;&lt; "Answer: ";
+cin &gt;&gt; answer;
+
+if (answer == 2) {
+    score++;
+}
+
+
+cout &lt;&lt; endl;
+
+cout &lt;&lt; "2. Which symbol ends a C++ statement?" &lt;&lt; endl;
+cout &lt;&lt; "1. ." &lt;&lt; endl;
+cout &lt;&lt; "2. ," &lt;&lt; endl;
+cout &lt;&lt; "3. ;" &lt;&lt; endl;
+
+cout &lt;&lt; "Answer: ";
+cin &gt;&gt; answer;
+
+if (answer == 3) {
+    score++;
+}
+
+
+cout &lt;&lt; endl;
+
+cout &lt;&lt; "3. Which keyword is used to create a class?" &lt;&lt; endl;
+cout &lt;&lt; "1. class" &lt;&lt; endl;
+cout &lt;&lt; "2. object" &lt;&lt; endl;
+cout &lt;&lt; "3. structure" &lt;&lt; endl;
+
+cout &lt;&lt; "Answer: ";
+cin &gt;&gt; answer;
+
+if (answer == 1) {
+    score++;
+}
+
+
+cout &lt;&lt; endl;
+
+cout &lt;&lt; "Your Score: "
+     &lt;&lt; score
+     &lt;&lt; " / 3";
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT 5 -->
+    <section class="section">
+
+        <h2>Project 5: ATM System</h2>
+
+        <div class="project-card">
+
+            <span class="difficulty">
+                Intermediate
+            </span>
+
+            <h3>Simple ATM Simulation</h3>
+
+            <p>
+                Create an ATM system that allows the user to check
+                balance, deposit money and withdraw money.
+            </p>
+
+            <p>
+                <strong>Concepts Used:</strong>
+                Functions, switch, loops, conditions and variables.
+            </p>
+
+            <div class="code-title">
+                C++ Code
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+double balance = 5000;
+double amount;
+
+int choice;
+
+do {
+
+    cout &lt;&lt; endl;
+    cout &lt;&lt; "===== ATM MENU =====" &lt;&lt; endl;
+
+    cout &lt;&lt; "1. Check Balance" &lt;&lt; endl;
+    cout &lt;&lt; "2. Deposit Money" &lt;&lt; endl;
+    cout &lt;&lt; "3. Withdraw Money" &lt;&lt; endl;
+    cout &lt;&lt; "4. Exit" &lt;&lt; endl;
+
+    cout &lt;&lt; "Enter choice: ";
+    cin &gt;&gt; choice;
+
+    switch (choice) {
+
+        case 1:
+
+            cout &lt;&lt; "Balance = ₹"
+                 &lt;&lt; balance;
+
+            break;
+
+
+        case 2:
+
+            cout &lt;&lt; "Enter deposit amount: ";
+            cin &gt;&gt; amount;
+
+            if (amount &gt; 0) {
+
+                balance += amount;
+
+                cout &lt;&lt; "Deposit successful.";
+
+            }
+            else {
+
+                cout &lt;&lt; "Invalid amount.";
+
+            }
+
+            break;
+
+
+        case 3:
+
+            cout &lt;&lt; "Enter withdrawal amount: ";
+            cin &gt;&gt; amount;
+
+            if (amount &gt; 0 &amp;&amp; amount &lt;= balance) {
+
+                balance -= amount;
+
+                cout &lt;&lt; "Withdrawal successful.";
+
+            }
+            else {
+
+                cout &lt;&lt; "Invalid amount or insufficient balance.";
+
+            }
+
+            break;
+
+
+        case 4:
+
+            cout &lt;&lt; "Thank you.";
+
+            break;
+
+
+        default:
+
+            cout &lt;&lt; "Invalid choice.";
+    }
+
+} while (choice != 4);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT 6 -->
+    <section class="section">
+
+        <h2>Project 6: Student Management System</h2>
+
+        <div class="project-card">
+
+            <span class="difficulty">
+                Intermediate
+            </span>
+
+            <h3>Using Classes and Vectors</h3>
+
+            <p>
+                Create a basic student management system that stores
+                student information and displays all records.
+            </p>
+
+            <p>
+                <strong>Concepts Used:</strong>
+                Classes, objects, vectors, strings and loops.
+            </p>
+
+            <div class="code-title">
+                C++ Code
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+```
+
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class Student {
+
+public:
+
+```
+string name;
+int age;
+double marks;
+
+Student(string n, int a, double m) {
+
+    name = n;
+    age = a;
+    marks = m;
+}
+
+void display() {
+
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Marks: " &lt;&lt; marks &lt;&lt; endl;
+
+    cout &lt;&lt; "------------------" &lt;&lt; endl;
+}
+```
+
+};
+
+int main() {
+
+```
+vector&lt;Student&gt; students;
+
+students.push_back(
+    Student("Krish", 20, 85)
+);
+
+students.push_back(
+    Student("Rahul", 21, 78)
+);
+
+students.push_back(
+    Student("Amit", 19, 91)
+);
+
+for (Student student : students) {
+
+    student.display();
+
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT 7 -->
+    <section class="section">
+
+        <h2>Project 7: Contact Management System</h2>
+
+        <div class="project-card">
+
+            <span class="difficulty">
+                Intermediate
+            </span>
+
+            <h3>Store Contact Information</h3>
+
+            <p>
+                Create a simple application for storing and displaying
+                contact names and phone numbers.
+            </p>
+
+            <p>
+                <strong>Concepts Used:</strong>
+                Classes, vectors, strings and functions.
+            </p>
+
+            <div class="code-title">
+                C++ Code
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+```
+
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class Contact {
+
+public:
+
+```
+string name;
+string phone;
+
+Contact(string n, string p) {
+
+    name = n;
+    phone = p;
+
+}
+
+void display() {
+
+    cout &lt;&lt; "Name: "
+         &lt;&lt; name &lt;&lt; endl;
+
+    cout &lt;&lt; "Phone: "
+         &lt;&lt; phone &lt;&lt; endl;
+
+    cout &lt;&lt; "----------------" &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+vector&lt;Contact&gt; contacts;
+
+contacts.push_back(
+    Contact("Krish", "9876543210")
+);
+
+contacts.push_back(
+    Contact("Rahul", "9876501234")
+);
+
+for (Contact contact : contacts) {
+
+    contact.display();
+
+}
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT 8 -->
+    <section class="section">
+
+        <h2>Project 8: To-Do List</h2>
+
+        <div class="project-card">
+
+            <span class="difficulty">
+                Intermediate
+            </span>
+
+            <h3>Simple To-Do Application</h3>
+
+            <p>
+                Build a program that allows users to add and display
+                tasks.
+            </p>
+
+            <p>
+                <strong>Concepts Used:</strong>
+                Vectors, strings, loops and switch statements.
+            </p>
+
+            <div class="code-title">
+                C++ Code
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+```
+
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+vector&lt;string&gt; tasks;
+
+int choice;
+string task;
+
+do {
+
+    cout &lt;&lt; endl;
+    cout &lt;&lt; "===== TO-DO LIST =====" &lt;&lt; endl;
+
+    cout &lt;&lt; "1. Add Task" &lt;&lt; endl;
+    cout &lt;&lt; "2. Show Tasks" &lt;&lt; endl;
+    cout &lt;&lt; "3. Exit" &lt;&lt; endl;
+
+    cout &lt;&lt; "Enter choice: ";
+    cin &gt;&gt; choice;
+
+    cin.ignore();
+
+    switch (choice) {
+
+        case 1:
+
+            cout &lt;&lt; "Enter task: ";
+
+            getline(cin, task);
+
+            tasks.push_back(task);
+
+            cout &lt;&lt; "Task added.";
+
+            break;
+
+
+        case 2:
+
+            if (tasks.empty()) {
+
+                cout &lt;&lt; "No tasks available.";
+
+            }
+            else {
+
+                cout &lt;&lt; endl;
+                cout &lt;&lt; "Your Tasks:" &lt;&lt; endl;
+
+                for (int i = 0;
+                     i &lt; tasks.size();
+                     i++) {
+
+                    cout &lt;&lt; i + 1
+                         &lt;&lt; ". "
+                         &lt;&lt; tasks[i]
+                         &lt;&lt; endl;
+
+                }
+            }
+
+            break;
+
+
+        case 3:
+
+            cout &lt;&lt; "Goodbye.";
+
+            break;
+
+
+        default:
+
+            cout &lt;&lt; "Invalid choice.";
+
+    }
+
+} while (choice != 3);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT 9 -->
+    <section class="section">
+
+        <h2>Project 9: Bank Account System</h2>
+
+        <div class="project-card">
+
+            <span class="difficulty">
+                Intermediate
+            </span>
+
+            <h3>Object-Oriented Bank Account</h3>
+
+            <p>
+                Create a bank account class with deposit, withdrawal
+                and balance functions.
+            </p>
+
+            <p>
+                <strong>Concepts Used:</strong>
+                Classes, encapsulation, constructors and functions.
+            </p>
+
+            <div class="code-title">
+                C++ Code
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class BankAccount {
+
+private:
+
+```
+double balance;
+```
+
+public:
+
+```
+BankAccount(double initialBalance) {
+
+    balance = initialBalance;
+
+}
+
+void deposit(double amount) {
+
+    if (amount &gt; 0) {
+
+        balance += amount;
+
+        cout &lt;&lt; "Deposit successful." &lt;&lt; endl;
+
+    }
+
+}
+
+void withdraw(double amount) {
+
+    if (amount &gt; 0 &amp;&amp; amount &lt;= balance) {
+
+        balance -= amount;
+
+        cout &lt;&lt; "Withdrawal successful." &lt;&lt; endl;
+
+    }
+    else {
+
+        cout &lt;&lt; "Invalid amount or insufficient balance."
+             &lt;&lt; endl;
+
+    }
+
+}
+
+void showBalance() {
+
+    cout &lt;&lt; "Balance: ₹"
+         &lt;&lt; balance
+         &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+BankAccount account(5000);
+
+account.showBalance();
+
+account.deposit(2000);
+
+account.showBalance();
+
+account.withdraw(1000);
+
+account.showBalance();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT DEVELOPMENT -->
+    <section class="section">
+
+        <h2>How to Build Your Own C++ Project</h2>
+
+        <ol>
+
+            <li>
+                Choose a simple problem to solve.
+            </li>
+
+            <li>
+                Write down the required features.
+            </li>
+
+            <li>
+                Decide what data the program needs.
+            </li>
+
+            <li>
+                Break the program into functions or classes.
+            </li>
+
+            <li>
+                Write the code step by step.
+            </li>
+
+            <li>
+                Test each feature separately.
+            </li>
+
+            <li>
+                Fix errors and improve the program.
+            </li>
+
+            <li>
+                Add additional features after the basic version works.
+            </li>
+
+        </ol>
+
+    </section>
+
+
+    <!-- PROJECT IDEAS -->
+    <section class="section">
+
+        <h2>More C++ Project Ideas</h2>
+
+        <ul>
+
+            <li>Library Management System</li>
+
+            <li>Hospital Management System</li>
+
+            <li>Employee Management System</li>
+
+            <li>Inventory Management System</li>
+
+            <li>Restaurant Billing System</li>
+
+            <li>Movie Ticket Booking System</li>
+
+            <li>Hotel Management System</li>
+
+            <li>Banking Application</li>
+
+            <li>Online Shopping Cart</li>
+
+            <li>Expense Tracker</li>
+
+            <li>File-Based Contact Book</li>
+
+            <li>School Management System</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- FILE HANDLING PROJECT -->
+    <section class="section">
+
+        <h2>Advanced Project: File-Based Student Management</h2>
+
+        <p>
+            After learning C++ file handling, you can improve the
+            Student Management System by storing records permanently
+            in a file.
+        </p>
+
+        <div class="highlight">
+
+            Suggested features:
+
+            <br><br>
+
+            ✔ Add Student
+
+            <br>
+
+            ✔ Display Students
+
+            <br>
+
+            ✔ Search Student
+
+            <br>
+
+            ✔ Update Student
+
+            <br>
+
+            ✔ Delete Student
+
+            <br>
+
+            ✔ Save Data to File
+
+            <br>
+
+            ✔ Load Data from File
+
+        </div>
+
+    </section>
+
+
+    <!-- IMPORTANT POINTS -->
+    <section class="section">
+
+        <h2>Important Points</h2>
+
+        <ul>
+
+            <li>
+                Projects help you apply C++ concepts in practical programs.
+            </li>
+
+            <li>
+                Start with beginner projects before moving to large systems.
+            </li>
+
+            <li>
+                Use functions to divide large programs into smaller parts.
+            </li>
+
+            <li>
+                Use classes when your project contains related data and behavior.
+            </li>
+
+            <li>
+                Use vectors when the amount of stored data can change.
+            </li>
+
+            <li>
+                Use file handling when data needs to persist after
+                the program closes.
+            </li>
+
+            <li>
+                Test your program with different inputs.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- CODE EDITOR -->
+    <section class="section">
+
+        <h2>Try C++ Project Code</h2>
+
+        <p>
+            Write your C++ project code below:
+        </p>
+
+        <textarea id="codeEditor">#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+double num1, num2;
+char operation;
+
+cout &lt;&lt; "===== Simple Calculator =====" &lt;&lt; endl;
+
+cout &lt;&lt; "Enter first number: ";
+cin &gt;&gt; num1;
+
+cout &lt;&lt; "Enter operator (+, -, *, /): ";
+cin &gt;&gt; operation;
+
+cout &lt;&lt; "Enter second number: ";
+cin &gt;&gt; num2;
+
+switch (operation) {
+
+    case '+':
+        cout &lt;&lt; "Result = "
+             &lt;&lt; num1 + num2;
+        break;
+
+    case '-':
+        cout &lt;&lt; "Result = "
+             &lt;&lt; num1 - num2;
+        break;
+
+    case '*':
+        cout &lt;&lt; "Result = "
+             &lt;&lt; num1 * num2;
+        break;
+
+    case '/':
+        if (num2 != 0)
+            cout &lt;&lt; "Result = "
+                 &lt;&lt; num1 / num2;
+        else
+            cout &lt;&lt; "Cannot divide by zero.";
+        break;
+
+    default:
+        cout &lt;&lt; "Invalid operator.";
+}
+
+return 0;
+```
+
+}</textarea>
+
+```
+        <div class="buttons">
+
+            <button class="run-btn" onclick="runCode()">
+                Run Code
+            </button>
+
+            <button class="clear-btn" onclick="clearCode()">
+                Clear
+            </button>
+
+        </div>
+
+        <div class="output" id="output">
+            Output will appear here...
+        </div>
+
+    </section>
+
+
+    <!-- FINAL SUMMARY -->
+    <section class="section">
+
+        <h2>Final Summary</h2>
+
+        <p>
+            C++ projects are one of the best ways to practice programming
+            concepts after learning the fundamentals.
+        </p>
+
+        <div class="highlight">
+
+            <strong>Beginner Path:</strong>
+
+            <br><br>
+
+            Calculator → Number Guessing Game → Quiz →
+            Grade Calculator
+
+            <br><br>
+
+            <strong>Intermediate Path:</strong>
+
+            <br><br>
+
+            ATM System → Bank Account →
+            Student Management →
+            Contact Management →
+            File-Based Projects
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+
+        <a href="cpp-file-handling.html">
+            ← Previous: C++ File Handling
+        </a>
+
+        <a href="../index.html#courses">
+            Back to Courses →
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 Code With Me | Learn Coding
+    </p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+    function runCode() {
+
+        const code =
+            document.getElementById("codeEditor").value;
+
+        const output =
+            document.getElementById("output");
+
+        if (code.trim() === "") {
+
+            output.textContent =
+                "Please enter some C++ code.";
+
+            return;
+        }
+
+        output.textContent =
+            "C++ project code submitted successfully!\n\n" +
+            "Note: This editor is a demonstration interface. " +
+            "To actually compile and execute C++ code in the browser, " +
+            "you need a C++ compiler/backend.";
+
+    }
+
+
+    function clearCode() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("output").textContent =
+            "Output will appear here...";
+
+    }
+
+</script>
+```
+
+</body>
+</html>
