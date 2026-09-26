@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C++ Variables | Code With Me</title>
+
+    <meta name="description"
+        content="Learn C++ Variables with simple explanations, syntax, examples and practical programs.">
+
+    <meta name="keywords"
+        content="C++ variables, C++ variables tutorial, C++ programming, C++ examples">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #111827;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #1e40af
+            );
+
+            color: white;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            opacity: 0.95;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+
+        /* =========================
+           CONTENT CARD
+        ========================= */
+
+        .content-card {
+            background: white;
+
+            padding: 35px;
+
+            margin-bottom: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.07);
+        }
+
+        .content-card h2 {
+            color: #172554;
+
+            font-size: 30px;
+
+            margin-bottom: 18px;
+        }
+
+        .content-card h3 {
+            color: #1d4ed8;
+
+            font-size: 23px;
+
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .content-card p {
+            color: #475569;
+
+            font-size: 17px;
+
+            margin-bottom: 15px;
+        }
+
+        .content-card ul {
+            margin-left: 25px;
+
+            color: #475569;
+
+            font-size: 17px;
+        }
+
+        .content-card li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #eff6ff;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 18px 20px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+
+            color: #1e3a8a;
+        }
+
+
+        .warning-box {
+            background: #fff7ed;
+
+            border-left: 5px solid #f97316;
+
+            padding: 18px 20px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+
+            color: #9a3412;
+        }
+
+
+        /* =========================
+           CODE BLOCK
+        ========================= */
+
+        .code-title {
+            background: #1e293b;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 8px 8px 0 0;
+
+            font-weight: bold;
+        }
+
+        pre {
+            background: #0f172a;
+
+            color: #e2e8f0;
+
+            padding: 20px;
+
+            overflow-x: auto;
+
+            border-radius: 0 0 8px 8px;
+
+            margin-bottom: 20px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           OUTPUT
+        ========================= */
+
+        .output {
+            background: #111827;
+
+            color: #22c55e;
+
+            padding: 18px;
+
+            border-radius: 8px;
+
+            font-family: Consolas, monospace;
+
+            margin-bottom: 20px;
+
+            white-space: pre-line;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #dbe3ee;
+
+            padding: 13px;
+
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+
+        /* =========================
+           EDITOR
+        ========================= */
+
+        .editor {
+            background: #0f172a;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            margin-top: 20px;
+        }
+
+        .editor textarea {
+            width: 100%;
+
+            min-height: 230px;
+
+            resize: vertical;
+
+            background: #020617;
+
+            color: #e2e8f0;
+
+            border: 1px solid #334155;
+
+            border-radius: 8px;
+
+            padding: 15px;
+
+            font-family: Consolas, monospace;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .editor-buttons {
+            margin-top: 15px;
+
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #output {
+            background: #020617;
+
+            color: #22c55e;
+
+            padding: 15px;
+
+            margin-top: 15px;
+
+            border-radius: 8px;
+
+            min-height: 50px;
+
+            font-family: Consolas, monospace;
+
+            white-space: pre-line;
+        }
+
+
+        /* =========================
+           NAVIGATION BUTTONS
+        ========================= */
+
+        .page-navigation {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin: 40px 0;
+        }
+
+        .nav-btn {
+            background: #2563eb;
+
+            color: white;
+
+            padding: 14px 25px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 40px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .content-card {
+                padding: 25px 20px;
+            }
+
+            .content-card h2 {
+                font-size: 26px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+            <li>
+                <a href="../index.html#contact">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <h1>C++ Variables</h1>
+
+        <p>
+            Learn how to create, store and use variables in C++.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <div class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="content-card">
+
+            <h2>What are Variables in C++?</h2>
+
+            <p>
+                A variable is a named memory location used to store
+                data in a C++ program.
+            </p>
+
+            <p>
+                The value stored inside a variable can usually be
+                changed during the execution of the program.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                If you create a variable called
+                <strong>age</strong>, it can store a person's age.
+
+            </div>
+
+        </section>
+
+
+        <!-- SYNTAX -->
+
+        <section class="content-card">
+
+            <h2>C++ Variable Syntax</h2>
+
+            <p>
+                The basic syntax for creating a variable is:
+            </p>
+
+            <div class="code-title">
+                Syntax
+            </div>
+
+            <pre><code>dataType variableName = value;</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>int age = 20;</code></pre>
+
+            <p>
+                In this example:
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>int</strong> is the data type.
+                </li>
+
+                <li>
+                    <strong>age</strong> is the variable name.
+                </li>
+
+                <li>
+                    <strong>20</strong> is the value stored in the variable.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- DECLARATION -->
+
+        <section class="content-card">
+
+            <h2>Declaring Variables</h2>
+
+            <p>
+                You can declare a variable first and assign a value
+                later.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int age;
+
+    age = 20;
+
+    cout &lt;&lt; age;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">20</div>
+
+        </section>
+
+
+        <!-- INITIALIZATION -->
+
+        <section class="content-card">
+
+            <h2>Variable Initialization</h2>
+
+            <p>
+                Initialization means giving a variable its first
+                value when it is created.
+            </p>
+
+            <pre><code>int age = 20;
+float price = 99.50;
+char grade = 'A';
+string name = "Krish";
+bool isStudent = true;</code></pre>
+
+        </section>
+
+
+        <!-- DATA TYPES -->
+
+        <section class="content-card">
+
+            <h2>Variables with Different Data Types</h2>
+
+            <p>
+                C++ provides different data types for storing
+                different kinds of values.
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>Data Type</th>
+                    <th>Example</th>
+                    <th>Used For</th>
+                </tr>
+
+                <tr>
+                    <td>int</td>
+                    <td>int age = 20;</td>
+                    <td>Whole numbers</td>
+                </tr>
+
+                <tr>
+                    <td>float</td>
+                    <td>float price = 25.5;</td>
+                    <td>Decimal numbers</td>
+                </tr>
+
+                <tr>
+                    <td>double</td>
+                    <td>double pi = 3.14159;</td>
+                    <td>More precise decimal values</td>
+                </tr>
+
+                <tr>
+                    <td>char</td>
+                    <td>char grade = 'A';</td>
+                    <td>Single character</td>
+                </tr>
+
+                <tr>
+                    <td>string</td>
+                    <td>string name = "Krish";</td>
+                    <td>Text</td>
+                </tr>
+
+                <tr>
+                    <td>bool</td>
+                    <td>bool active = true;</td>
+                    <td>True or false</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- MULTIPLE VARIABLES -->
+
+        <section class="content-card">
+
+            <h2>Multiple Variables</h2>
+
+            <p>
+                You can create multiple variables in a C++ program.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    string name = "Krish";
+    int age = 20;
+    float marks = 85.5;
+
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Marks: " &lt;&lt; marks;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">Name: Krish
+Age: 20
+Marks: 85.5</div>
+
+        </section>
+
+
+        <!-- CHANGE VALUE -->
+
+        <section class="content-card">
+
+            <h2>Changing Variable Values</h2>
+
+            <p>
+                The value of a variable can be changed after it
+                has been created.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int age = 20;
+
+    cout &lt;&lt; age &lt;&lt; endl;
+
+    age = 21;
+
+    cout &lt;&lt; age;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">20
+21</div>
+
+        </section>
+
+
+        <!-- CONST -->
+
+        <section class="content-card">
+
+            <h2>Constant Variables</h2>
+
+            <p>
+                If you do not want the value of a variable to change,
+                you can use the <strong>const</strong> keyword.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    const double PI = 3.14159;
+
+    cout &lt;&lt; PI;
+
+    return 0;
+}</code></pre>
+
+            <div class="warning-box">
+
+                <strong>Important:</strong>
+                A const variable cannot be changed after it has
+                been initialized.
+
+            </div>
+
+        </section>
+
+
+        <!-- NAMING RULES -->
+
+        <section class="content-card">
+
+            <h2>C++ Variable Naming Rules</h2>
+
+            <p>
+                Follow these rules when creating variable names:
+            </p>
+
+            <ul>
+
+                <li>
+                    Variable names can contain letters, numbers
+                    and underscores.
+                </li>
+
+                <li>
+                    A variable name cannot start with a number.
+                </li>
+
+                <li>
+                    Spaces are not allowed in variable names.
+                </li>
+
+                <li>
+                    C++ variable names are case-sensitive.
+                </li>
+
+                <li>
+                    C++ keywords cannot be used as variable names.
+                </li>
+
+            </ul>
+
+            <h3>Valid Variable Names</h3>
+
+            <pre><code>int age;
+int studentAge;
+int student_age;
+int marks1;
+int totalMarks;</code></pre>
+
+            <h3>Invalid Variable Names</h3>
+
+            <pre><code>int 1age;
+int student age;
+int class;
+int total-marks;</code></pre>
+
+        </section>
+
+
+        <!-- CASE SENSITIVE -->
+
+        <section class="content-card">
+
+            <h2>C++ Variables are Case-Sensitive</h2>
+
+            <p>
+                C++ treats uppercase and lowercase letters as
+                different.
+            </p>
+
+            <pre><code>int age = 20;
+int Age = 30;
+
+cout &lt;&lt; age &lt;&lt; endl;
+cout &lt;&lt; Age;</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">20
+30</div>
+
+            <p>
+                Here, <strong>age</strong> and <strong>Age</strong>
+                are two different variables.
+            </p>
+
+        </section>
+
+
+        <!-- PRACTICAL PROGRAM -->
+
+        <section class="content-card">
+
+            <h2>Practical Example</h2>
+
+            <p>
+                Let's create a simple C++ program using different
+                variables.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    string name = "Krish";
+    int age = 20;
+    double salary = 25000.50;
+    char grade = 'A';
+    bool student = true;
+
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Salary: " &lt;&lt; salary &lt;&lt; endl;
+    cout &lt;&lt; "Grade: " &lt;&lt; grade &lt;&lt; endl;
+    cout &lt;&lt; "Student: " &lt;&lt; student &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">Name: Krish
+Age: 20
+Salary: 25000.5
+Grade: A
+Student: 1</div>
+
+        </section>
+
+
+        <!-- INTERACTIVE DEMO -->
+
+        <section class="content-card">
+
+            <h2>Try C++ Variables</h2>
+
+            <p>
+                This is a browser-based demonstration. It simulates
+                the output of a simple C++ variable program.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="code">#include <iostream>
+using namespace std;
+
+int main() {
+
+    string name = "Krish";
+    int age = 20;
+
+    cout << "Name: " << name << endl;
+    cout << "Age: " << age << endl;
+
+    return 0;
+}</textarea>
+
+                <div class="editor-buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+                        Run Code
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="content-card">
+
+            <h2>C++ Variables - Summary</h2>
+
+            <ul>
+
+                <li>
+                    A variable is used to store data.
+                </li>
+
+                <li>
+                    Every variable has a data type and a name.
+                </li>
+
+                <li>
+                    Variables can be initialized when declared.
+                </li>
+
+                <li>
+                    Variable values can be changed.
+                </li>
+
+                <li>
+                    The <strong>const</strong> keyword creates
+                    a constant variable.
+                </li>
+
+                <li>
+                    C++ variable names are case-sensitive.
+                </li>
+
+                <li>
+                    Variable names must follow C++ naming rules.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="page-navigation">
+
+            <a
+                href="./cpp-data-types.html"
+                class="nav-btn">
+
+                ← Previous: Data Types
+
+            </a>
+
+            <a
+                href="./cpp-input-output.html"
+                class="nav-btn">
+
+                Next: Input & Output →
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("code").value;
+
+            const output =
+                document.getElementById("output");
+
+
+            let result = "";
+
+
+            if (
+                code.includes('string name = "Krish"') &&
+                code.includes("int age = 20")
+            ) {
+
+                result =
+                    "Name: Krish\nAge: 20";
+
+            }
+
+            else if (
+                code.includes("int age = 20")
+            ) {
+
+                result =
+                    "Age: 20";
+
+            }
+
+            else {
+
+                result =
+                    "Demo Output:\n\n" +
+                    "This browser editor is a C++ demonstration.\n" +
+                    "For full C++ execution, use a C++ compiler.";
+
+            }
+
+
+            output.textContent = result;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
