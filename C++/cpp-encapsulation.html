@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C++ Encapsulation | Code With Me</title>
+
+    <meta name="description"
+          content="Learn C++ Encapsulation with simple explanations, access specifiers, getters, setters, examples and programs.">
+
+    <meta name="keywords"
+          content="C++ encapsulation, C++ private, C++ public, C++ protected, getters setters, C++ OOP">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Main */
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #374151;
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Diagram */
+        .diagram {
+            background: #f8fafc;
+            border: 2px solid #dbeafe;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .diagram-box {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 8px;
+            margin: 8px;
+            font-weight: bold;
+        }
+
+        .diagram-arrow {
+            font-size: 25px;
+            color: #2563eb;
+            margin: 5px;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .editor-buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #output {
+            margin-top: 15px;
+            min-height: 100px;
+            background: #0f172a;
+            color: #22c55e;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+
+            .diagram-box {
+                display: block;
+                max-width: 250px;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code<span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+
+        <h1>C++ Encapsulation</h1>
+
+        <p>
+            Learn how to protect data and control access using encapsulation
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+        <section class="section">
+
+            <h2>What is Encapsulation in C++?</h2>
+
+            <p>
+                <strong>Encapsulation</strong> is one of the important
+                concepts of Object-Oriented Programming (OOP).
+            </p>
+
+            <p>
+                Encapsulation means combining data and functions into a
+                single unit, usually a class, and controlling access to
+                that data.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Simple Definition:</strong>
+
+                Encapsulation means wrapping data and the functions that
+                operate on that data together inside a class and restricting
+                direct access when needed.
+
+            </div>
+
+            <h3>Why is Encapsulation Used?</h3>
+
+            <ul>
+
+                <li>To protect data from unwanted direct access.</li>
+
+                <li>To control how data is changed.</li>
+
+                <li>To improve code security and organization.</li>
+
+                <li>To hide internal implementation details.</li>
+
+                <li>To make programs easier to maintain.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Basic Example -->
+        <section class="section">
+
+            <h2>Simple Encapsulation Example</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Student
+{
+private:
+
+    int marks;
+
+public:
+
+    void setMarks(int m)
+    {
+        marks = m;
+    }
+
+    int getMarks()
+    {
+        return marks;
+    }
+};
+
+int main()
+{
+    Student s;
+
+    s.setMarks(90);
+
+    cout &lt;&lt; s.getMarks();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>90</code></pre>
+
+            <div class="success-box">
+
+                Here, <span class="inline-code">marks</span> is private,
+                so it cannot be accessed directly from outside the class.
+
+                The value is accessed through
+                <span class="inline-code">setMarks()</span> and
+                <span class="inline-code">getMarks()</span>.
+
+            </div>
+
+        </section>
+
+
+        <!-- Data Hiding -->
+        <section class="section">
+
+            <h2>Encapsulation and Data Hiding</h2>
+
+            <p>
+                Data hiding means preventing direct access to internal
+                data from outside the class.
+            </p>
+
+            <p>
+                In C++, the <span class="inline-code">private</span>
+                access specifier is commonly used for data hiding.
+            </p>
+
+            <pre><code>class Account
+{
+private:
+
+    double balance;
+
+public:
+
+    void setBalance(double amount)
+    {
+        balance = amount;
+    }
+
+    double getBalance()
+    {
+        return balance;
+    }
+};</code></pre>
+
+            <div class="info-box">
+
+                The outside code cannot directly access
+                <span class="inline-code">balance</span>.
+                It must use the public functions provided by the class.
+
+            </div>
+
+        </section>
+
+
+        <!-- Private -->
+        <section class="section">
+
+            <h2>Private Members</h2>
+
+            <p>
+                A private member can only be accessed from inside the class
+                or through permitted mechanisms such as member functions.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Person
+{
+private:
+
+    int age;
+
+public:
+
+    void setAge(int a)
+    {
+        age = a;
+    }
+
+    void showAge()
+    {
+        cout &lt;&lt; "Age = " &lt;&lt; age;
+    }
+};
+
+int main()
+{
+    Person p;
+
+    p.setAge(20);
+
+    p.showAge();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Age = 20</code></pre>
+
+        </section>
+
+
+        <!-- Direct Access -->
+        <section class="section">
+
+            <h2>Why Direct Access Can Be a Problem</h2>
+
+            <p>
+                Suppose we have a bank account balance.
+                If the balance is publicly accessible, outside code could
+                assign an invalid value directly.
+            </p>
+
+            <pre><code>class BankAccount
+{
+public:
+
+    double balance;
+};</code></pre>
+
+            <p>
+                Code outside the class could then do:
+            </p>
+
+            <pre><code>BankAccount account;
+
+account.balance = -5000;</code></pre>
+
+            <div class="warning-box">
+
+                This allows outside code to change the data without the
+                class checking whether the value is valid.
+
+            </div>
+
+        </section>
+
+
+        <!-- Controlled Access -->
+        <section class="section">
+
+            <h2>Controlled Access with Encapsulation</h2>
+
+            <p>
+                We can make the balance private and validate values through
+                a public function.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class BankAccount
+{
+private:
+
+    double balance = 0;
+
+public:
+
+    void deposit(double amount)
+    {
+        if (amount &gt; 0)
+        {
+            balance += amount;
+        }
+    }
+
+    double getBalance()
+    {
+        return balance;
+    }
+};
+
+int main()
+{
+    BankAccount account;
+
+    account.deposit(5000);
+
+    cout &lt;&lt; "Balance = "
+         &lt;&lt; account.getBalance();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Balance = 5000</code></pre>
+
+            <div class="success-box">
+
+                The class controls how the balance is modified instead of
+                allowing direct modification.
+
+            </div>
+
+        </section>
+
+
+        <!-- Getter -->
+        <section class="section">
+
+            <h2>Getter Function</h2>
+
+            <p>
+                A <strong>getter</strong> is a function used to read the
+                value of a private data member.
+            </p>
+
+            <pre><code>int getAge()
+{
+    return age;
+}</code></pre>
+
+            <p>
+                A getter normally starts with the word
+                <span class="inline-code">get</span>, although this is
+                only a naming convention.
+            </p>
+
+        </section>
+
+
+        <!-- Setter -->
+        <section class="section">
+
+            <h2>Setter Function</h2>
+
+            <p>
+                A <strong>setter</strong> is a function used to change the
+                value of a private data member.
+            </p>
+
+            <pre><code>void setAge(int a)
+{
+    age = a;
+}</code></pre>
+
+            <p>
+                Setters can also validate data before storing it.
+            </p>
+
+            <pre><code>void setAge(int a)
+{
+    if (a &gt;= 0)
+    {
+        age = a;
+    }
+}</code></pre>
+
+        </section>
+
+
+        <!-- Getter Setter -->
+        <section class="section">
+
+            <h2>Getter and Setter Example</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Employee
+{
+private:
+
+    string name;
+    int salary;
+
+public:
+
+    void setName(string n)
+    {
+        name = n;
+    }
+
+    string getName()
+    {
+        return name;
+    }
+
+    void setSalary(int s)
+    {
+        if (s &gt;= 0)
+        {
+            salary = s;
+        }
+    }
+
+    int getSalary()
+    {
+        return salary;
+    }
+};
+
+int main()
+{
+    Employee e;
+
+    e.setName("Krish");
+    e.setSalary(30000);
+
+    cout &lt;&lt; "Name: "
+         &lt;&lt; e.getName()
+         &lt;&lt; endl;
+
+    cout &lt;&lt; "Salary: "
+         &lt;&lt; e.getSalary();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Name: Krish
+Salary: 30000</code></pre>
+
+        </section>
+
+
+        <!-- Access Specifiers -->
+        <section class="section">
+
+            <h2>Access Specifiers</h2>
+
+            <p>
+                C++ provides three main access specifiers:
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>public</strong>
+                </li>
+
+                <li>
+                    <strong>private</strong>
+                </li>
+
+                <li>
+                    <strong>protected</strong>
+                </li>
+
+            </ul>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Access Specifier</th>
+                            <th>Inside Class</th>
+                            <th>Outside Class</th>
+                            <th>Derived Class</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>public</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+
+                        <tr>
+                            <td>private</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+
+                        <tr>
+                            <td>protected</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Public -->
+        <section class="section">
+
+            <h2>Public Members</h2>
+
+            <p>
+                Public members can be accessed from outside the class.
+            </p>
+
+            <pre><code>class Student
+{
+public:
+
+    string name;
+
+    void show()
+    {
+        cout &lt;&lt; name;
+    }
+};
+
+int main()
+{
+    Student s;
+
+    s.name = "Krish";
+
+    s.show();
+}</code></pre>
+
+        </section>
+
+
+        <!-- Private -->
+        <section class="section">
+
+            <h2>Private Members</h2>
+
+            <p>
+                Private members cannot be accessed directly from outside
+                the class.
+            </p>
+
+            <pre><code>class Student
+{
+private:
+
+    int marks;
+
+public:
+
+    void setMarks(int m)
+    {
+        marks = m;
+    }
+};</code></pre>
+
+            <p>
+                This would be invalid:
+            </p>
+
+            <pre><code>Student s;
+
+s.marks = 90;</code></pre>
+
+            <div class="warning-box">
+
+                <strong>Error:</strong>
+                <span class="inline-code">marks</span> is private and
+                cannot be accessed directly from outside the class.
+
+            </div>
+
+        </section>
+
+
+        <!-- Protected -->
+        <section class="section">
+
+            <h2>Protected Members</h2>
+
+            <p>
+                Protected members can be accessed inside the class and
+                by derived classes.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Parent
+{
+protected:
+
+    int number = 100;
+};
+
+class Child : public Parent
+{
+public:
+
+    void show()
+    {
+        cout &lt;&lt; number;
+    }
+};
+
+int main()
+{
+    Child c;
+
+    c.show();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>100</code></pre>
+
+        </section>
+
+
+        <!-- Encapsulation Diagram -->
+        <section class="section">
+
+            <h2>How Encapsulation Works</h2>
+
+            <div class="diagram">
+
+                <div class="diagram-box">
+                    Private Data
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-box">
+                    Getter / Setter
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-box">
+                    Outside Code
+                </div>
+
+            </div>
+
+            <p>
+                The outside code interacts with the class through the
+                public interface instead of directly accessing private data.
+            </p>
+
+        </section>
+
+
+        <!-- Benefits -->
+        <section class="section">
+
+            <h2>Advantages of Encapsulation</h2>
+
+            <ul>
+
+                <li>
+                    <strong>Data Protection:</strong>
+                    Private data cannot be directly modified from outside.
+                </li>
+
+                <li>
+                    <strong>Controlled Access:</strong>
+                    Public methods can control how data is read or changed.
+                </li>
+
+                <li>
+                    <strong>Validation:</strong>
+                    Setter functions can reject invalid values.
+                </li>
+
+                <li>
+                    <strong>Maintainability:</strong>
+                    Internal implementation can change without changing
+                    the public interface.
+                </li>
+
+                <li>
+                    <strong>Organization:</strong>
+                    Related data and functions stay together inside a class.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Real Life Example -->
+        <section class="section">
+
+            <h2>Real-Life Example of Encapsulation</h2>
+
+            <p>
+                A bank account is a useful real-world example.
+            </p>
+
+            <ul>
+
+                <li>
+                    Account balance is private.
+                </li>
+
+                <li>
+                    Deposit is performed through a function.
+                </li>
+
+                <li>
+                    Withdrawal is performed through a function.
+                </li>
+
+                <li>
+                    The class can check whether a transaction is valid.
+                </li>
+
+            </ul>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class BankAccount
+{
+private:
+
+    double balance = 0;
+
+public:
+
+    void deposit(double amount)
+    {
+        if (amount &gt; 0)
+        {
+            balance += amount;
+        }
+    }
+
+    void withdraw(double amount)
+    {
+        if (amount &gt; 0 &amp;&amp; amount &lt;= balance)
+        {
+            balance -= amount;
+        }
+    }
+
+    double getBalance()
+    {
+        return balance;
+    }
+};
+
+int main()
+{
+    BankAccount account;
+
+    account.deposit(10000);
+    account.withdraw(2500);
+
+    cout &lt;&lt; "Balance = "
+         &lt;&lt; account.getBalance();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Balance = 7500</code></pre>
+
+        </section>
+
+
+        <!-- Encapsulation vs Data Hiding -->
+        <section class="section">
+
+            <h2>Encapsulation vs Data Hiding</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Encapsulation</th>
+                            <th>Data Hiding</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                Combines data and functions into a class.
+                            </td>
+
+                            <td>
+                                Restricts direct access to internal data.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Focuses on organizing and controlling access.
+                            </td>
+
+                            <td>
+                                Focuses specifically on hiding implementation
+                                details or data.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Encapsulation and Inheritance -->
+        <section class="section">
+
+            <h2>Encapsulation with Inheritance</h2>
+
+            <p>
+                Encapsulation can also be used when working with inheritance.
+                Private members of a base class are not directly accessible
+                by derived classes.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Person
+{
+private:
+
+    string name;
+
+public:
+
+    void setName(string n)
+    {
+        name = n;
+    }
+
+    string getName()
+    {
+        return name;
+    }
+};
+
+class Student : public Person
+{
+public:
+
+    void showStudent()
+    {
+        cout &lt;&lt; "Student: "
+             &lt;&lt; getName();
+    }
+};
+
+int main()
+{
+    Student s;
+
+    s.setName("Krish");
+
+    s.showStudent();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Student: Krish</code></pre>
+
+            <div class="info-box">
+
+                The derived class uses the public functions of the base
+                class to work with its private data.
+
+            </div>
+
+        </section>
+
+
+        <!-- Practical Example -->
+        <section class="section">
+
+            <h2>Practical Example: Student Marks</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Student
+{
+private:
+
+    int marks;
+
+public:
+
+    void setMarks(int m)
+    {
+        if (m &gt;= 0 &amp;&amp; m &lt;= 100)
+        {
+            marks = m;
+        }
+        else
+        {
+            cout &lt;&lt; "Invalid marks" &lt;&lt; endl;
+        }
+    }
+
+    int getMarks()
+    {
+        return marks;
+    }
+};
+
+int main()
+{
+    Student student;
+
+    student.setMarks(85);
+
+    cout &lt;&lt; "Marks = "
+         &lt;&lt; student.getMarks();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Marks = 85</code></pre>
+
+            <div class="success-box">
+
+                The setter checks that marks are between 0 and 100 before
+                storing the value.
+
+            </div>
+
+        </section>
+
+
+        <!-- Important Points -->
+        <section class="section">
+
+            <h2>Important Points to Remember</h2>
+
+            <ol>
+
+                <li>
+                    Encapsulation is an OOP concept.
+                </li>
+
+                <li>
+                    Data and functions can be grouped inside a class.
+                </li>
+
+                <li>
+                    Private members cannot be accessed directly from outside.
+                </li>
+
+                <li>
+                    Getters can be used to read private data.
+                </li>
+
+                <li>
+                    Setters can be used to modify private data.
+                </li>
+
+                <li>
+                    Setters can validate data before changing it.
+                </li>
+
+                <li>
+                    Public functions can provide controlled access.
+                </li>
+
+                <li>
+                    Encapsulation improves organization and maintainability.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- Interactive Editor -->
+        <section class="section">
+
+            <h2>Try C++ Encapsulation Example</h2>
+
+            <p>
+                Try the following encapsulation example.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include &lt;iostream&gt;
+using namespace std;
+
+class Student
+{
+private:
+
+    int marks;
+
+public:
+
+    void setMarks(int m)
+    {
+        if (m &gt;= 0 &amp;&amp; m &lt;= 100)
+        {
+            marks = m;
+        }
+    }
+
+    int getMarks()
+    {
+        return marks;
+    }
+};
+
+int main()
+{
+    Student s;
+
+    s.setMarks(90);
+
+    cout &lt;&lt; "Marks = "
+         &lt;&lt; s.getMarks();
+
+    return 0;
+}</textarea>
+
+                <div class="editor-buttons">
+
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+
+            <div class="warning-box">
+
+                <strong>Note:</strong>
+                This is a browser demonstration and does not compile
+                arbitrary C++ code. A real C++ compiler/backend is required
+                to execute arbitrary C++ programs.
+
+            </div>
+
+        </section>
+
+
+        <!-- Summary -->
+        <section class="section">
+
+            <h2>C++ Encapsulation Summary</h2>
+
+            <ul>
+
+                <li>
+                    Encapsulation is an important OOP concept.
+                </li>
+
+                <li>
+                    It combines data and functions inside a class.
+                </li>
+
+                <li>
+                    Private members help restrict direct access.
+                </li>
+
+                <li>
+                    Getters are commonly used to read private data.
+                </li>
+
+                <li>
+                    Setters are commonly used to modify private data.
+                </li>
+
+                <li>
+                    Setters can validate input before changing data.
+                </li>
+
+                <li>
+                    C++ provides public, private and protected access specifiers.
+                </li>
+
+                <li>
+                    Encapsulation helps create controlled interfaces.
+                </li>
+
+                <li>
+                    Encapsulation improves organization and maintainability.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="./cpp-inheritance.html">
+                ← Previous: Inheritance
+            </a>
+
+            <a href="./cpp-polymorphism.html">
+                Next: Polymorphism →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+
+            if (
+                code.includes("class Student") &&
+                code.includes("private") &&
+                code.includes("setMarks") &&
+                code.includes("getMarks") &&
+                code.includes("s.setMarks(90)")
+            ) {
+
+                output.textContent =
+                    "Marks = 90";
+
+            }
+
+            else if (
+                code.includes("class BankAccount") &&
+                code.includes("deposit(5000)")
+            ) {
+
+                output.textContent =
+                    "Balance = 5000";
+
+            }
+
+            else if (
+                code.includes("class BankAccount") &&
+                code.includes("deposit(10000)") &&
+                code.includes("withdraw(2500)")
+            ) {
+
+                output.textContent =
+                    "Balance = 7500";
+
+            }
+
+            else if (
+                code.includes("setName(\"Krish\")") &&
+                code.includes("getName()")
+            ) {
+
+                output.textContent =
+                    "Student: Krish";
+
+            }
+
+            else if (
+                code.includes("class Employee") &&
+                code.includes("setSalary")
+            ) {
+
+                output.textContent =
+                    "Name: Krish\n" +
+                    "Salary: 30000";
+
+            }
+
+            else {
+
+                output.textContent =
+                    "This demo supports the encapsulation examples shown on this page.\n\n" +
+                    "For arbitrary C++ code, connect the editor to a real C++ compiler/backend.";
+
+            }
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+</body>
+</html>
