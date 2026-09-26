@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C++ Pointers | Code With Me</title>
+
+    <meta name="description"
+          content="Learn C++ Pointers with simple explanations, syntax, examples and programs.">
+
+    <meta name="keywords"
+          content="C++ pointers, C++ pointer syntax, pointer variables, C++ programming">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #374151;
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* Info boxes */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Pointer Diagram */
+        .pointer-diagram {
+            background: #f8fafc;
+            border: 2px solid #dbeafe;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: Consolas, monospace;
+        }
+
+        .pointer-diagram .address {
+            color: #7c3aed;
+            font-weight: bold;
+        }
+
+        .pointer-diagram .arrow {
+            font-size: 25px;
+            color: #2563eb;
+            margin: 8px 0;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 280px;
+            padding: 15px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .editor-buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #output {
+            margin-top: 15px;
+            min-height: 100px;
+            background: #0f172a;
+            color: #22c55e;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code<span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+
+        <h1>C++ Pointers</h1>
+
+        <p>
+            Learn pointers, memory addresses, dereferencing and pointer operations
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+        <section class="section">
+
+            <h2>What is a Pointer in C++?</h2>
+
+            <p>
+                A <strong>pointer</strong> is a variable that stores the
+                memory address of another variable.
+            </p>
+
+            <p>
+                Unlike a normal variable that stores a value, a pointer
+                stores the location where that value is stored in memory.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Simple Definition:</strong>
+
+                A pointer is a variable that stores the address of another
+                variable.
+
+            </div>
+
+            <h3>Example</h3>
+
+            <pre><code>int number = 10;
+
+int *ptr = &amp;number;</code></pre>
+
+            <p>
+                Here:
+            </p>
+
+            <ul>
+
+                <li>
+                    <span class="inline-code">number</span>
+                    stores the value <strong>10</strong>.
+                </li>
+
+                <li>
+                    <span class="inline-code">&amp;number</span>
+                    gives the memory address of number.
+                </li>
+
+                <li>
+                    <span class="inline-code">ptr</span>
+                    stores the address of number.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Memory Concept -->
+        <section class="section">
+
+            <h2>Understanding Memory Address</h2>
+
+            <p>
+                Every variable is stored at a location in computer memory.
+                That location has an address.
+            </p>
+
+            <div class="pointer-diagram">
+
+                <div>
+                    Variable:
+                    <strong>number</strong>
+                </div>
+
+                <div>
+                    Value:
+                    <strong>10</strong>
+                </div>
+
+                <div class="address">
+                    Address: 0x7ffe1234
+                </div>
+
+                <div class="arrow">
+                    ↑
+                </div>
+
+                <div>
+                    Pointer:
+                    <strong>ptr</strong>
+                </div>
+
+                <div>
+                    Stores:
+                    <strong>0x7ffe1234</strong>
+                </div>
+
+            </div>
+
+            <div class="warning-box">
+
+                <strong>Note:</strong>
+                The actual memory address will normally be different every
+                time the program runs.
+
+            </div>
+
+        </section>
+
+
+        <!-- Pointer Declaration -->
+        <section class="section">
+
+            <h2>Pointer Declaration</h2>
+
+            <p>
+                A pointer is declared using the
+                <span class="inline-code">*</span>
+                symbol.
+            </p>
+
+            <pre><code>int *ptr;</code></pre>
+
+            <p>
+                This declares a pointer named
+                <span class="inline-code">ptr</span>
+                that can store the address of an integer variable.
+            </p>
+
+            <h3>Other Pointer Types</h3>
+
+            <pre><code>int *intPtr;
+
+float *floatPtr;
+
+double *doublePtr;
+
+char *charPtr;</code></pre>
+
+        </section>
+
+
+        <!-- Address Operator -->
+        <section class="section">
+
+            <h2>Address-of Operator (&amp;)</h2>
+
+            <p>
+                The <span class="inline-code">&amp;</span> operator is called
+                the <strong>address-of operator</strong>.
+            </p>
+
+            <p>
+                It returns the memory address of a variable.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int number = 10;
+
+    cout &lt;&lt; &amp;number;
+
+    return 0;
+}</code></pre>
+
+            <p>
+                The output will be a memory address similar to:
+            </p>
+
+            <pre><code>0x7ffe1234</code></pre>
+
+            <div class="info-box">
+
+                The exact address is not fixed. It depends on where the
+                operating system places the variable in memory.
+
+            </div>
+
+        </section>
+
+
+        <!-- Dereferencing -->
+        <section class="section">
+
+            <h2>Dereferencing a Pointer</h2>
+
+            <p>
+                The <span class="inline-code">*</span> operator can also be
+                used to access the value stored at the address held by a pointer.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int number = 10;
+
+    int *ptr = &amp;number;
+
+    cout &lt;&lt; *ptr;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>10</code></pre>
+
+            <div class="success-box">
+
+                <strong>Remember:</strong>
+
+                <ul>
+                    <li><span class="inline-code">&amp;number</span> → address of number</li>
+                    <li><span class="inline-code">ptr</span> → stores the address</li>
+                    <li><span class="inline-code">*ptr</span> → value at that address</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Complete Example -->
+        <section class="section">
+
+            <h2>Pointer Example</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int number = 50;
+
+    int *ptr = &amp;number;
+
+    cout &lt;&lt; "Value = " &lt;&lt; number &lt;&lt; endl;
+    cout &lt;&lt; "Address = " &lt;&lt; &amp;number &lt;&lt; endl;
+    cout &lt;&lt; "Pointer stores = " &lt;&lt; ptr &lt;&lt; endl;
+    cout &lt;&lt; "Value using pointer = " &lt;&lt; *ptr &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+            <h3>Possible Output</h3>
+
+            <pre><code>Value = 50
+Address = 0x7ffe1234
+Pointer stores = 0x7ffe1234
+Value using pointer = 50</code></pre>
+
+        </section>
+
+
+        <!-- Changing Value -->
+        <section class="section">
+
+            <h2>Changing a Variable Using a Pointer</h2>
+
+            <p>
+                A pointer can be used to modify the value of the original
+                variable.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int number = 10;
+
+    int *ptr = &amp;number;
+
+    *ptr = 100;
+
+    cout &lt;&lt; number;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>100</code></pre>
+
+            <p>
+                When we write
+                <span class="inline-code">*ptr = 100;</span>,
+                we change the value stored in the original variable.
+            </p>
+
+        </section>
+
+
+        <!-- Pointer and Variables -->
+        <section class="section">
+
+            <h2>Pointer and Variable Relationship</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Expression</th>
+                            <th>Meaning</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>number</td>
+                            <td>Value stored in number</td>
+                        </tr>
+
+                        <tr>
+                            <td>&amp;number</td>
+                            <td>Address of number</td>
+                        </tr>
+
+                        <tr>
+                            <td>ptr</td>
+                            <td>Address stored inside pointer</td>
+                        </tr>
+
+                        <tr>
+                            <td>*ptr</td>
+                            <td>Value located at the pointer's address</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Pointer Initialization -->
+        <section class="section">
+
+            <h2>Initializing a Pointer</h2>
+
+            <p>
+                It is good practice to initialize a pointer before using it.
+            </p>
+
+            <pre><code>int number = 20;
+
+int *ptr = &amp;number;</code></pre>
+
+            <p>
+                You can also initialize a pointer with
+                <span class="inline-code">nullptr</span>.
+            </p>
+
+            <pre><code>int *ptr = nullptr;</code></pre>
+
+            <div class="info-box">
+
+                <strong>nullptr</strong> means that the pointer is currently
+                not pointing to a valid object.
+
+            </div>
+
+        </section>
+
+
+        <!-- Null Pointer -->
+        <section class="section">
+
+            <h2>Null Pointer</h2>
+
+            <p>
+                A null pointer does not point to an object.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int *ptr = nullptr;
+
+    if (ptr == nullptr)
+    {
+        cout &lt;&lt; "Pointer is null";
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Pointer is null</code></pre>
+
+            <div class="warning-box">
+
+                Never dereference a null pointer.
+
+                <pre><code>*ptr = 10;</code></pre>
+
+                The above code is invalid when
+                <span class="inline-code">ptr</span>
+                is null and can cause a program failure.
+
+            </div>
+
+        </section>
+
+
+        <!-- Pointer Arithmetic -->
+        <section class="section">
+
+            <h2>Pointer Arithmetic</h2>
+
+            <p>
+                Pointers can be increased or decreased.
+                This is especially useful when working with arrays.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int numbers[] = {10, 20, 30};
+
+    int *ptr = numbers;
+
+    cout &lt;&lt; *ptr &lt;&lt; endl;
+
+    ptr++;
+
+    cout &lt;&lt; *ptr &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>10
+20</code></pre>
+
+            <p>
+                When the pointer is incremented, it moves to the next
+                element of the appropriate type.
+            </p>
+
+        </section>
+
+
+        <!-- Pointer with Array -->
+        <section class="section">
+
+            <h2>Pointers and Arrays</h2>
+
+            <p>
+                The name of an array can be used as a pointer to its first
+                element in many expressions.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int numbers[] = {10, 20, 30, 40, 50};
+
+    int *ptr = numbers;
+
+    cout &lt;&lt; *ptr &lt;&lt; endl;
+    cout &lt;&lt; *(ptr + 1) &lt;&lt; endl;
+    cout &lt;&lt; *(ptr + 2) &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>10
+20
+30</code></pre>
+
+        </section>
+
+
+        <!-- Pointer with Function -->
+        <section class="section">
+
+            <h2>Pointers and Functions</h2>
+
+            <p>
+                Pointers can be passed to functions so that the function
+                can modify the original data.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void changeValue(int *ptr)
+{
+    *ptr = 100;
+}
+
+int main()
+{
+    int number = 10;
+
+    changeValue(&amp;number);
+
+    cout &lt;&lt; number;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>100</code></pre>
+
+        </section>
+
+
+        <!-- Swap -->
+        <section class="section">
+
+            <h2>Swapping Two Numbers Using Pointers</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void swapNumbers(int *a, int *b)
+{
+    int temp = *a;
+
+    *a = *b;
+
+    *b = temp;
+}
+
+int main()
+{
+    int x = 10;
+    int y = 20;
+
+    swapNumbers(&amp;x, &amp;y);
+
+    cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;
+    cout &lt;&lt; "y = " &lt;&lt; y &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>x = 20
+y = 10</code></pre>
+
+        </section>
+
+
+        <!-- Pointer to Pointer -->
+        <section class="section">
+
+            <h2>Pointer to Pointer</h2>
+
+            <p>
+                A pointer can also store the address of another pointer.
+                This is called a <strong>pointer to pointer</strong>.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int number = 10;
+
+    int *ptr = &amp;number;
+
+    int **ptr2 = &amp;ptr;
+
+    cout &lt;&lt; **ptr2;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>10</code></pre>
+
+            <p>
+                Here:
+            </p>
+
+            <ul>
+                <li><span class="inline-code">number</span> stores 10.</li>
+                <li><span class="inline-code">ptr</span> stores the address of number.</li>
+                <li><span class="inline-code">ptr2</span> stores the address of ptr.</li>
+                <li><span class="inline-code">**ptr2</span> accesses the value 10.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- Const Pointer -->
+        <section class="section">
+
+            <h2>Pointer to Constant</h2>
+
+            <p>
+                A pointer can point to a constant value that should not be
+                modified through that pointer.
+            </p>
+
+            <pre><code>int number = 10;
+
+const int *ptr = &amp;number;</code></pre>
+
+            <p>
+                You cannot change the value through
+                <span class="inline-code">ptr</span>.
+            </p>
+
+            <pre><code>// Not allowed through ptr
+
+*ptr = 20;</code></pre>
+
+        </section>
+
+
+        <!-- Common Errors -->
+        <section class="section">
+
+            <h2>Common Pointer Mistakes</h2>
+
+            <h3>1. Using an uninitialized pointer</h3>
+
+            <pre><code>int *ptr;
+
+*ptr = 10;</code></pre>
+
+            <p>
+                This pointer does not point to a valid known location.
+            </p>
+
+            <h3>2. Dereferencing nullptr</h3>
+
+            <pre><code>int *ptr = nullptr;
+
+*ptr = 10;</code></pre>
+
+            <p>
+                This can cause undefined behavior.
+            </p>
+
+            <h3>3. Using a pointer after its target is gone</h3>
+
+            <p>
+                A pointer should not be used after the object it points to
+                has been destroyed or gone out of scope.
+            </p>
+
+            <div class="warning-box">
+
+                <strong>Important:</strong>
+                Pointers are powerful but must be used carefully because
+                incorrect pointer operations can cause crashes or undefined
+                behavior.
+
+            </div>
+
+        </section>
+
+
+        <!-- Pointer vs Normal Variable -->
+        <section class="section">
+
+            <h2>Pointer vs Normal Variable</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Normal Variable</th>
+                            <th>Pointer Variable</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Stores a value</td>
+                            <td>Stores a memory address</td>
+                        </tr>
+
+                        <tr>
+                            <td>Example: int x = 10;</td>
+                            <td>Example: int *ptr = &amp;x;</td>
+                        </tr>
+
+                        <tr>
+                            <td>Access value directly</td>
+                            <td>Use * to dereference</td>
+                        </tr>
+
+                        <tr>
+                            <td>Does not normally represent another variable's address</td>
+                            <td>Can point to another variable</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Important Operators -->
+        <section class="section">
+
+            <h2>Important Pointer Operators</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Operator</th>
+                            <th>Name</th>
+                            <th>Purpose</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>&amp;</td>
+                            <td>Address-of operator</td>
+                            <td>Gets the address of a variable</td>
+                        </tr>
+
+                        <tr>
+                            <td>*</td>
+                            <td>Dereference operator</td>
+                            <td>Accesses the value at an address</td>
+                        </tr>
+
+                        <tr>
+                            <td>++</td>
+                            <td>Increment</td>
+                            <td>Moves pointer to the next element</td>
+                        </tr>
+
+                        <tr>
+                            <td>--</td>
+                            <td>Decrement</td>
+                            <td>Moves pointer to the previous element</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Practical Example -->
+        <section class="section">
+
+            <h2>Practical Example: Find Array Values Using Pointer</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int numbers[] = {10, 20, 30, 40, 50};
+
+    int *ptr = numbers;
+
+    for (int i = 0; i &lt; 5; i++)
+    {
+        cout &lt;&lt; *(ptr + i) &lt;&lt; " ";
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>10 20 30 40 50</code></pre>
+
+        </section>
+
+
+        <!-- Interactive Editor -->
+        <section class="section">
+
+            <h2>Try C++ Pointer Example</h2>
+
+            <p>
+                Try the example below in the editor.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int number = 10;
+
+    int *ptr = &amp;number;
+
+    cout &lt;&lt; "Value = " &lt;&lt; number &lt;&lt; endl;
+    cout &lt;&lt; "Value using pointer = " &lt;&lt; *ptr &lt;&lt; endl;
+
+    *ptr = 100;
+
+    cout &lt;&lt; "New value = " &lt;&lt; number;
+
+    return 0;
+}</textarea>
+
+                <div class="editor-buttons">
+
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+
+            <div class="warning-box">
+
+                <strong>Note:</strong>
+                This is a browser demonstration, not a complete C++
+                compiler. It recognizes the examples on this page.
+                A real C++ compiler/backend is required to execute arbitrary
+                C++ programs.
+
+            </div>
+
+        </section>
+
+
+        <!-- Summary -->
+        <section class="section">
+
+            <h2>C++ Pointers Summary</h2>
+
+            <ul>
+
+                <li>A pointer stores the memory address of another variable.</li>
+
+                <li>The <span class="inline-code">&amp;</span> operator gets an address.</li>
+
+                <li>The <span class="inline-code">*</span> operator dereferences a pointer.</li>
+
+                <li>Pointers can modify the value of another variable.</li>
+
+                <li>Pointers are commonly used with arrays and functions.</li>
+
+                <li><span class="inline-code">nullptr</span> represents a null pointer.</li>
+
+                <li>Pointer arithmetic is useful when working with arrays.</li>
+
+                <li>A pointer can also point to another pointer.</li>
+
+                <li>Uninitialized and invalid pointers should be avoided.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="./cpp-functions.html">
+                ← Previous: Functions
+            </a>
+
+            <a href="./cpp-arrays.html">
+                Next: Arrays →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+
+            if (
+                code.includes("int number = 10") &&
+                code.includes("int *ptr = &number") &&
+                code.includes("*ptr = 100")
+            ) {
+
+                output.textContent =
+                    "Value = 10\n" +
+                    "Value using pointer = 10\n" +
+                    "New value = 100";
+
+            }
+
+            else if (
+                code.includes("int number = 10") &&
+                code.includes("int *ptr = &number") &&
+                code.includes("*ptr")
+            ) {
+
+                output.textContent =
+                    "Value = 10\n" +
+                    "Value using pointer = 10";
+
+            }
+
+            else if (
+                code.includes("int numbers[] = {10, 20, 30, 40, 50}") &&
+                code.includes("*(ptr + i)")
+            ) {
+
+                output.textContent =
+                    "10 20 30 40 50";
+
+            }
+
+            else if (
+                code.includes("int number = 50") &&
+                code.includes("int *ptr = &number")
+            ) {
+
+                output.textContent =
+                    "Value = 50\n" +
+                    "Address = [memory address]\n" +
+                    "Pointer stores = [same memory address]\n" +
+                    "Value using pointer = 50";
+
+            }
+
+            else {
+
+                output.textContent =
+                    "This demo supports the pointer examples shown on this page.\n\n" +
+                    "For arbitrary C++ code, connect the editor to a real C++ compiler/backend.";
+
+            }
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+</body>
+</html>
