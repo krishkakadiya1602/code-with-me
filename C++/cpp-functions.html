@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C++ Functions | Code With Me</title>
+
+    <meta name="description"
+          content="Learn C++ Functions with simple explanations, syntax, examples and programs.">
+
+    <meta name="keywords"
+          content="C++ functions, C++ function syntax, C++ user defined functions, C++ programming">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Main */
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #374151;
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        /* Info box */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 260px;
+            padding: 15px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .editor-buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #output {
+            margin-top: 15px;
+            min-height: 100px;
+            background: #0f172a;
+            color: #22c55e;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="../index.html" class="logo">
+            Code<span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1>C++ Functions</h1>
+        <p>Learn how to create and use functions in C++</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2>What is a Function in C++?</h2>
+
+            <p>
+                A <strong>function</strong> is a block of code that performs a
+                specific task.
+            </p>
+
+            <p>
+                Functions help us divide a large program into smaller and
+                reusable parts.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Definition:</strong>
+                A function is a reusable block of code designed to perform
+                a particular task.
+            </div>
+
+            <h3>Why Use Functions?</h3>
+
+            <ul>
+                <li>Functions make programs easier to understand.</li>
+                <li>Functions reduce code repetition.</li>
+                <li>Functions make code reusable.</li>
+                <li>Functions make debugging easier.</li>
+                <li>Functions help divide large programs into smaller parts.</li>
+            </ul>
+        </section>
+
+        <!-- Basic Function -->
+        <section class="section">
+            <h2>Basic C++ Function</h2>
+
+            <p>
+                Here is a simple function named
+                <span class="inline-code">myFunction()</span>.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void myFunction()
+{
+    cout &lt;&lt; "Hello from function!";
+}
+
+int main()
+{
+    myFunction();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Hello from function!</code></pre>
+        </section>
+
+        <!-- Function Syntax -->
+        <section class="section">
+            <h2>C++ Function Syntax</h2>
+
+            <pre><code>returnType functionName(parameters)
+{
+    // code to execute
+}</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>void greet()
+{
+    cout &lt;&lt; "Hello!";
+}</code></pre>
+
+            <p>Here:</p>
+
+            <ul>
+                <li><strong>void</strong> → return type</li>
+                <li><strong>greet</strong> → function name</li>
+                <li><strong>()</strong> → parameters</li>
+                <li><strong>{ }</strong> → function body</li>
+            </ul>
+        </section>
+
+        <!-- Calling Function -->
+        <section class="section">
+            <h2>Calling a Function</h2>
+
+            <p>
+                Creating a function does not automatically execute it.
+                We need to <strong>call</strong> the function.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void greet()
+{
+    cout &lt;&lt; "Welcome to C++!";
+}
+
+int main()
+{
+    greet();
+
+    return 0;
+}</code></pre>
+
+            <p>
+                The statement
+                <span class="inline-code">greet();</span>
+                calls the function.
+            </p>
+        </section>
+
+        <!-- Parameters -->
+        <section class="section">
+            <h2>Function Parameters</h2>
+
+            <p>
+                Parameters allow us to pass data into a function.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void greet(string name)
+{
+    cout &lt;&lt; "Hello " &lt;&lt; name;
+}
+
+int main()
+{
+    greet("Krish");
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Hello Krish</code></pre>
+        </section>
+
+        <!-- Multiple Parameters -->
+        <section class="section">
+            <h2>Multiple Parameters</h2>
+
+            <p>
+                A function can have more than one parameter.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void add(int a, int b)
+{
+    cout &lt;&lt; "Sum = " &lt;&lt; a + b;
+}
+
+int main()
+{
+    add(10, 20);
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Sum = 30</code></pre>
+        </section>
+
+        <!-- Return Value -->
+        <section class="section">
+            <h2>Function with Return Value</h2>
+
+            <p>
+                A function can return a value to the code that called it.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int main()
+{
+    int result = add(10, 20);
+
+    cout &lt;&lt; "Result = " &lt;&lt; result;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Result = 30</code></pre>
+
+            <div class="info-box">
+                The <span class="inline-code">return</span> statement sends
+                a value back to the caller.
+            </div>
+        </section>
+
+        <!-- Void -->
+        <section class="section">
+            <h2>Void Function</h2>
+
+            <p>
+                A <span class="inline-code">void</span> function does not
+                return a value.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void message()
+{
+    cout &lt;&lt; "Welcome to Code With Me!";
+}
+
+int main()
+{
+    message();
+
+    return 0;
+}</code></pre>
+        </section>
+
+        <!-- Function Declaration -->
+        <section class="section">
+            <h2>Function Declaration</h2>
+
+            <p>
+                A function declaration tells the compiler about a function
+                before the function is actually defined.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+// Function declaration
+int add(int, int);
+
+int main()
+{
+    cout &lt;&lt; add(5, 10);
+
+    return 0;
+}
+
+// Function definition
+int add(int a, int b)
+{
+    return a + b;
+}</code></pre>
+        </section>
+
+        <!-- Function Definition -->
+        <section class="section">
+            <h2>Function Definition</h2>
+
+            <p>
+                The function definition contains the actual code that
+                performs the task.
+            </p>
+
+            <pre><code>int multiply(int a, int b)
+{
+    return a * b;
+}</code></pre>
+        </section>
+
+        <!-- Pass by Value -->
+        <section class="section">
+            <h2>Pass by Value</h2>
+
+            <p>
+                In pass by value, a copy of the variable is passed to the
+                function.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void change(int x)
+{
+    x = 100;
+}
+
+int main()
+{
+    int number = 10;
+
+    change(number);
+
+    cout &lt;&lt; number;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>10</code></pre>
+
+            <div class="info-box">
+                The original variable does not change because the function
+                receives a copy of its value.
+            </div>
+        </section>
+
+        <!-- Pass by Reference -->
+        <section class="section">
+            <h2>Pass by Reference</h2>
+
+            <p>
+                In pass by reference, the function works with the original
+                variable.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void change(int &amp;x)
+{
+    x = 100;
+}
+
+int main()
+{
+    int number = 10;
+
+    change(number);
+
+    cout &lt;&lt; number;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>100</code></pre>
+        </section>
+
+        <!-- Default Parameters -->
+        <section class="section">
+            <h2>Default Parameters</h2>
+
+            <p>
+                A function parameter can have a default value.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void greet(string name = "User")
+{
+    cout &lt;&lt; "Hello " &lt;&lt; name;
+}
+
+int main()
+{
+    greet();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Hello User</code></pre>
+
+            <p>
+                If we provide a value, that value will be used instead.
+            </p>
+
+            <pre><code>greet("Krish");</code></pre>
+        </section>
+
+        <!-- Function Overloading -->
+        <section class="section">
+            <h2>Function Overloading</h2>
+
+            <p>
+                Function overloading allows multiple functions to have the
+                same name but different parameters.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+double add(double a, double b)
+{
+    return a + b;
+}
+
+int main()
+{
+    cout &lt;&lt; add(10, 20) &lt;&lt; endl;
+    cout &lt;&lt; add(5.5, 2.5);
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>30
+8</code></pre>
+        </section>
+
+        <!-- Recursion -->
+        <section class="section">
+            <h2>Recursive Function</h2>
+
+            <p>
+                A recursive function is a function that calls itself.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void countDown(int n)
+{
+    if (n &gt; 0)
+    {
+        cout &lt;&lt; n &lt;&lt; " ";
+        countDown(n - 1);
+    }
+}
+
+int main()
+{
+    countDown(5);
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>5 4 3 2 1</code></pre>
+
+            <div class="warning-box">
+                <strong>Important:</strong>
+                A recursive function should have a stopping condition.
+                Without one, it can continue calling itself indefinitely.
+            </div>
+        </section>
+
+        <!-- Function Types -->
+        <section class="section">
+            <h2>Types of Functions</h2>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>No parameters, no return value</td>
+                            <td>Performs a task without input or output value</td>
+                            <td>void greet()</td>
+                        </tr>
+
+                        <tr>
+                            <td>Parameters, no return value</td>
+                            <td>Receives values but does not return a value</td>
+                            <td>void add(int a, int b)</td>
+                        </tr>
+
+                        <tr>
+                            <td>No parameters, return value</td>
+                            <td>Returns a value without receiving parameters</td>
+                            <td>int getNumber()</td>
+                        </tr>
+
+                        <tr>
+                            <td>Parameters and return value</td>
+                            <td>Receives values and returns a result</td>
+                            <td>int add(int a, int b)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Practical Example -->
+        <section class="section">
+            <h2>Practical Example: Calculator Using Functions</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int subtract(int a, int b)
+{
+    return a - b;
+}
+
+int multiply(int a, int b)
+{
+    return a * b;
+}
+
+int divide(int a, int b)
+{
+    return a / b;
+}
+
+int main()
+{
+    int a = 20;
+    int b = 5;
+
+    cout &lt;&lt; "Addition = " &lt;&lt; add(a, b) &lt;&lt; endl;
+    cout &lt;&lt; "Subtraction = " &lt;&lt; subtract(a, b) &lt;&lt; endl;
+    cout &lt;&lt; "Multiplication = " &lt;&lt; multiply(a, b) &lt;&lt; endl;
+    cout &lt;&lt; "Division = " &lt;&lt; divide(a, b) &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Addition = 25
+Subtraction = 15
+Multiplication = 100
+Division = 4</code></pre>
+
+            <div class="success-box">
+                Functions make the calculator program easier to organize
+                because each operation has its own function.
+            </div>
+        </section>
+
+        <!-- Important Keywords -->
+        <section class="section">
+            <h2>Important Function Concepts</h2>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Concept</th>
+                            <th>Meaning</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Function Declaration</td>
+                            <td>Tells the compiler about the function.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Function Definition</td>
+                            <td>Contains the actual function code.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Function Call</td>
+                            <td>Executes the function.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Parameter</td>
+                            <td>Variable that receives input.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Argument</td>
+                            <td>Actual value passed to a function.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Return</td>
+                            <td>Sends a value back from the function.</td>
+                        </tr>
+
+                        <tr>
+                            <td>void</td>
+                            <td>Indicates that a function returns no value.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Interactive Demo -->
+        <section class="section">
+            <h2>Try a C++ Function Example</h2>
+
+            <p>
+                Enter a simple C++ function example below and click
+                <strong>Run Code</strong>.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include &lt;iostream&gt;
+using namespace std;
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int main()
+{
+    cout &lt;&lt; add(10, 20);
+
+    return 0;
+}</textarea>
+
+                <div class="editor-buttons">
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+                </div>
+
+                <div id="output">Output will appear here...</div>
+
+            </div>
+
+            <div class="warning-box">
+                <strong>Note:</strong>
+                This browser demonstration does not compile arbitrary C++
+                code. It recognizes the example patterns on this page.
+                A real C++ compiler/backend is required to execute arbitrary
+                C++ programs.
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="section">
+            <h2>C++ Functions Summary</h2>
+
+            <ul>
+                <li>A function is a reusable block of code.</li>
+                <li>Functions help organize large programs.</li>
+                <li>Functions can accept parameters.</li>
+                <li>Functions can return values.</li>
+                <li><span class="inline-code">void</span> means no return value.</li>
+                <li>Functions must be called to execute them.</li>
+                <li>Functions can use default parameters.</li>
+                <li>C++ supports function overloading.</li>
+                <li>Functions can call themselves using recursion.</li>
+                <li>Pass by reference can modify the original variable.</li>
+            </ul>
+        </section>
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="./cpp-do-while.html">
+                ← Previous: Do While Loop
+            </a>
+
+            <a href="./cpp-arrays.html">
+                Next: Arrays →
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function runCode() {
+
+            const code = document.getElementById("codeEditor").value;
+            const output = document.getElementById("output");
+
+            if (code.includes("add(10, 20)")) {
+
+                output.textContent =
+                    "30";
+
+            } else if (code.includes("greet(\"Krish\")")) {
+
+                output.textContent =
+                    "Hello Krish";
+
+            } else if (code.includes("greet()")) {
+
+                output.textContent =
+                    "Hello User";
+
+            } else if (
+                code.includes("countDown(5)") &&
+                code.includes("countDown(n - 1)")
+            ) {
+
+                output.textContent =
+                    "5 4 3 2 1";
+
+            } else if (
+                code.includes("add(5, 10)")
+            ) {
+
+                output.textContent =
+                    "15";
+
+            } else {
+
+                output.textContent =
+                    "This demo supports the example programs shown on this page.\n\n" +
+                    "For arbitrary C++ code, connect this editor to a real C++ compiler/backend.";
+
+            }
+        }
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+    </script>
+
+</body>
+</html>
