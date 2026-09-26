@@ -1,0 +1,1268 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Memory Management | Code With Me</title>
+
+    <meta name="description" content="Learn memory management in C including malloc, calloc, realloc and free with simple examples.">
+    <meta name="keywords" content="C memory management, malloc, calloc, realloc, free, dynamic memory allocation">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+            font-size: 15px;
+        }
+
+        .output {
+            background: #1f2937;
+            color: #86efac;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: Consolas, monospace;
+            white-space: pre-wrap;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Lists */
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            padding: 18px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .editor-buttons {
+            margin-top: 12px;
+        }
+
+        button {
+            padding: 11px 22px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #result {
+            background: #111827;
+            color: #86efac;
+            min-height: 80px;
+            margin-top: 15px;
+            padding: 18px;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            white-space: pre-wrap;
+        }
+
+        /* Navigation */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .nav-btn {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul>
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html">C</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+
+        <h1>C Memory Management</h1>
+
+        <p>
+            Learn dynamic memory allocation using malloc(), calloc(),
+            realloc() and free().
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+        <section class="section">
+
+            <h2>What is Memory Management in C?</h2>
+
+            <p>
+                Memory management means allocating, using and releasing
+                memory during the execution of a program.
+            </p>
+
+            <p>
+                C provides functions that allow programmers to allocate
+                memory dynamically when the required amount of memory is
+                not known in advance.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                Dynamic memory allocation in C is mainly performed using
+                functions from the
+                <strong>&lt;stdlib.h&gt;</strong> header file.
+
+            </div>
+
+            <pre><code>#include &lt;stdlib.h&gt;</code></pre>
+
+        </section>
+
+
+        <!-- Why Memory Management -->
+        <section class="section">
+
+            <h2>Why is Memory Management Important?</h2>
+
+            <ul>
+
+                <li>It allows programs to allocate memory when needed.</li>
+
+                <li>It allows memory to be released when it is no longer required.</li>
+
+                <li>It helps create dynamic data structures.</li>
+
+                <li>It is useful when the amount of data is unknown at compile time.</li>
+
+                <li>It allows efficient use of available memory.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Static vs Dynamic -->
+        <section class="section">
+
+            <h2>Static vs Dynamic Memory Allocation</h2>
+
+            <table>
+
+                <tr>
+                    <th>Static Memory</th>
+                    <th>Dynamic Memory</th>
+                </tr>
+
+                <tr>
+                    <td>Memory size is generally determined before execution.</td>
+                    <td>Memory can be allocated during program execution.</td>
+                </tr>
+
+                <tr>
+                    <td>Example: int numbers[10];</td>
+                    <td>Example: malloc(10 * sizeof(int));</td>
+                </tr>
+
+                <tr>
+                    <td>Usually simpler to use.</td>
+                    <td>Requires careful memory management.</td>
+                </tr>
+
+                <tr>
+                    <td>Size cannot be changed in the same way as dynamically allocated memory.</td>
+                    <td>Memory can be resized using realloc().</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- malloc -->
+        <section class="section">
+
+            <h2>malloc() in C</h2>
+
+            <p>
+                The <strong>malloc()</strong> function allocates a block of
+                memory of the requested size.
+            </p>
+
+            <p>
+                The allocated memory is not initialized by malloc().
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>pointer = malloc(number_of_bytes);</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    int *ptr;
+
+    ptr = malloc(sizeof(int));
+
+    if(ptr == NULL)
+    {
+        printf("Memory allocation failed");
+        return 1;
+    }
+
+    *ptr = 50;
+
+    printf("Value = %d", *ptr);
+
+    free(ptr);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">
+Value = 50
+            </div>
+
+        </section>
+
+
+        <!-- malloc array -->
+        <section class="section">
+
+            <h2>Using malloc() for an Array</h2>
+
+            <p>
+                malloc() can be used to dynamically allocate memory for
+                multiple elements.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    int n = 5;
+
+    int *numbers;
+
+    numbers = malloc(n * sizeof(int));
+
+    if(numbers == NULL)
+    {
+        printf("Memory allocation failed");
+        return 1;
+    }
+
+    for(int i = 0; i &lt; n; i++)
+    {
+        numbers[i] = (i + 1) * 10;
+    }
+
+    for(int i = 0; i &lt; n; i++)
+    {
+        printf("%d ", numbers[i]);
+    }
+
+    free(numbers);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">
+10 20 30 40 50
+            </div>
+
+        </section>
+
+
+        <!-- calloc -->
+        <section class="section">
+
+            <h2>calloc() in C</h2>
+
+            <p>
+                The <strong>calloc()</strong> function allocates memory for
+                multiple elements and initializes the allocated memory to
+                zero.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>pointer = calloc(number_of_elements, size_of_each_element);</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    int *numbers;
+
+    numbers = calloc(5, sizeof(int));
+
+    if(numbers == NULL)
+    {
+        printf("Memory allocation failed");
+        return 1;
+    }
+
+    for(int i = 0; i &lt; 5; i++)
+    {
+        printf("%d ", numbers[i]);
+    }
+
+    free(numbers);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">
+0 0 0 0 0
+            </div>
+
+        </section>
+
+
+        <!-- malloc vs calloc -->
+        <section class="section">
+
+            <h2>malloc() vs calloc()</h2>
+
+            <table>
+
+                <tr>
+                    <th>malloc()</th>
+                    <th>calloc()</th>
+                </tr>
+
+                <tr>
+                    <td>Takes one main size argument.</td>
+                    <td>Takes number of elements and size of each element.</td>
+                </tr>
+
+                <tr>
+                    <td>Memory is not initialized.</td>
+                    <td>Allocated memory is initialized to zero.</td>
+                </tr>
+
+                <tr>
+                    <td>Example: malloc(5 * sizeof(int))</td>
+                    <td>Example: calloc(5, sizeof(int))</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- realloc -->
+        <section class="section">
+
+            <h2>realloc() in C</h2>
+
+            <p>
+                The <strong>realloc()</strong> function changes the size of
+                previously allocated memory.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>pointer = realloc(pointer, new_size);</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    int *numbers;
+
+    numbers = malloc(3 * sizeof(int));
+
+    if(numbers == NULL)
+    {
+        printf("Memory allocation failed");
+        return 1;
+    }
+
+    numbers[0] = 10;
+    numbers[1] = 20;
+    numbers[2] = 30;
+
+    numbers = realloc(numbers, 5 * sizeof(int));
+
+    if(numbers == NULL)
+    {
+        printf("Memory reallocation failed");
+        return 1;
+    }
+
+    numbers[3] = 40;
+    numbers[4] = 50;
+
+    for(int i = 0; i &lt; 5; i++)
+    {
+        printf("%d ", numbers[i]);
+    }
+
+    free(numbers);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">
+10 20 30 40 50
+            </div>
+
+        </section>
+
+
+        <!-- free -->
+        <section class="section">
+
+            <h2>free() in C</h2>
+
+            <p>
+                The <strong>free()</strong> function releases dynamically
+                allocated memory.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>free(pointer);</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    int *ptr;
+
+    ptr = malloc(sizeof(int));
+
+    if(ptr == NULL)
+    {
+        return 1;
+    }
+
+    *ptr = 100;
+
+    printf("Value = %d\n", *ptr);
+
+    free(ptr);
+
+    ptr = NULL;
+
+    return 0;
+}</code></pre>
+
+            <div class="output">
+Value = 100
+            </div>
+
+            <div class="success-box">
+
+                After dynamically allocated memory is no longer required,
+                release it using <strong>free()</strong>.
+
+            </div>
+
+        </section>
+
+
+        <!-- Complete Example -->
+        <section class="section">
+
+            <h2>Complete Dynamic Memory Example</h2>
+
+            <p>
+                The following program uses malloc(), stores values, prints
+                them and finally releases the allocated memory.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    int n;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &amp;n);
+
+    int *numbers = malloc(n * sizeof(int));
+
+    if(numbers == NULL)
+    {
+        printf("Memory allocation failed");
+        return 1;
+    }
+
+    for(int i = 0; i &lt; n; i++)
+    {
+        numbers[i] = (i + 1) * 10;
+    }
+
+    printf("Array elements:\n");
+
+    for(int i = 0; i &lt; n; i++)
+    {
+        printf("%d ", numbers[i]);
+    }
+
+    free(numbers);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">
+Enter number of elements: 5
+
+Array elements:
+10 20 30 40 50
+            </div>
+
+        </section>
+
+
+        <!-- sizeof -->
+        <section class="section">
+
+            <h2>Using sizeof() with Dynamic Memory</h2>
+
+            <p>
+                The <strong>sizeof()</strong> operator helps determine the
+                number of bytes required for a data type.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    int n = 5;
+
+    int *numbers = malloc(n * sizeof(int));
+
+    if(numbers == NULL)
+    {
+        return 1;
+    }
+
+    printf("Size of one integer = %zu bytes\n", sizeof(int));
+
+    printf("Memory allocated = %zu bytes",
+           n * sizeof(int));
+
+    free(numbers);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">
+Size of one integer = 4 bytes
+Memory allocated = 20 bytes
+            </div>
+
+            <div class="info-box">
+                The exact size of C data types can depend on the compiler
+                and platform. Do not assume that int is always 4 bytes.
+            </div>
+
+        </section>
+
+
+        <!-- Memory Leak -->
+        <section class="section">
+
+            <h2>What is a Memory Leak?</h2>
+
+            <p>
+                A memory leak occurs when dynamically allocated memory is no
+                longer needed but the program does not release it.
+            </p>
+
+            <h3>Example of a Memory Leak</h3>
+
+            <pre><code>int *ptr;
+
+ptr = malloc(100 * sizeof(int));
+
+/* Memory is allocated */
+
+/* free(ptr) is never called */</code></pre>
+
+            <p>
+                If this happens repeatedly, the program may consume more
+                and more memory.
+            </p>
+
+            <div class="warning-box">
+
+                <strong>Important:</strong>
+
+                Every successful dynamic allocation should have a suitable
+                plan for releasing the memory when it is no longer needed.
+
+            </div>
+
+        </section>
+
+
+        <!-- Dangling Pointer -->
+        <section class="section">
+
+            <h2>Dangling Pointer</h2>
+
+            <p>
+                A dangling pointer is a pointer that refers to memory that
+                is no longer valid.
+            </p>
+
+            <pre><code>int *ptr = malloc(sizeof(int));
+
+*ptr = 50;
+
+free(ptr);
+
+/* ptr should not be dereferenced here */</code></pre>
+
+            <p>
+                A common practice after freeing a pointer is to assign
+                <strong>NULL</strong> to it when the pointer remains in scope.
+            </p>
+
+            <pre><code>free(ptr);
+ptr = NULL;</code></pre>
+
+        </section>
+
+
+        <!-- Double Free -->
+        <section class="section">
+
+            <h2>What is Double Free?</h2>
+
+            <p>
+                Double free means attempting to release the same allocated
+                memory more than once.
+            </p>
+
+            <pre><code>free(ptr);
+
+/* Wrong */
+free(ptr);</code></pre>
+
+            <p>
+                A safer pattern is:
+            </p>
+
+            <pre><code>free(ptr);
+ptr = NULL;</code></pre>
+
+            <div class="warning-box">
+
+                Never use or free a pointer again after its memory has been
+                released unless it has been assigned a new valid allocation.
+
+            </div>
+
+        </section>
+
+
+        <!-- malloc calloc realloc free table -->
+        <section class="section">
+
+            <h2>Dynamic Memory Functions</h2>
+
+            <table>
+
+                <tr>
+                    <th>Function</th>
+                    <th>Purpose</th>
+                    <th>Header</th>
+                </tr>
+
+                <tr>
+                    <td>malloc()</td>
+                    <td>Allocates a block of memory.</td>
+                    <td>&lt;stdlib.h&gt;</td>
+                </tr>
+
+                <tr>
+                    <td>calloc()</td>
+                    <td>Allocates memory for multiple elements and initializes it to zero.</td>
+                    <td>&lt;stdlib.h&gt;</td>
+                </tr>
+
+                <tr>
+                    <td>realloc()</td>
+                    <td>Changes the size of an allocated memory block.</td>
+                    <td>&lt;stdlib.h&gt;</td>
+                </tr>
+
+                <tr>
+                    <td>free()</td>
+                    <td>Releases dynamically allocated memory.</td>
+                    <td>&lt;stdlib.h&gt;</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Memory Management Process -->
+        <section class="section">
+
+            <h2>Dynamic Memory Management Process</h2>
+
+            <ol>
+
+                <li>Decide how much memory is required.</li>
+
+                <li>Allocate memory using malloc() or calloc().</li>
+
+                <li>Check whether the allocation succeeded.</li>
+
+                <li>Use the allocated memory.</li>
+
+                <li>Resize it with realloc() if necessary.</li>
+
+                <li>Release it using free() when it is no longer required.</li>
+
+            </ol>
+
+            <pre><code>Allocate
+   ↓
+Check
+   ↓
+Use Memory
+   ↓
+Resize if Required
+   ↓
+free()
+   ↓
+Memory Released</code></pre>
+
+        </section>
+
+
+        <!-- Common Mistakes -->
+        <section class="section">
+
+            <h2>Common Memory Management Mistakes</h2>
+
+            <ul>
+
+                <li>Forgetting to call free().</li>
+
+                <li>Using memory after calling free().</li>
+
+                <li>Freeing the same memory twice.</li>
+
+                <li>Using an uninitialized pointer.</li>
+
+                <li>Not checking whether malloc() or calloc() returned NULL.</li>
+
+                <li>Allocating the wrong amount of memory.</li>
+
+                <li>Using realloc() incorrectly and losing the original pointer.</li>
+
+            </ul>
+
+            <div class="warning-box">
+
+                <strong>Remember:</strong>
+
+                Dynamic memory management gives you more control over memory,
+                but it also requires careful programming.
+
+            </div>
+
+        </section>
+
+
+        <!-- Interactive Editor -->
+        <section class="section">
+
+            <h2>Try C Memory Management Example</h2>
+
+            <p>
+                Try the example below. This browser editor demonstrates the
+                expected output, but it is not a complete C compiler.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="code">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    int *numbers;
+
+    numbers = malloc(5 * sizeof(int));
+
+    if(numbers == NULL)
+    {
+        printf("Memory allocation failed");
+        return 1;
+    }
+
+    for(int i = 0; i &lt; 5; i++)
+    {
+        numbers[i] = (i + 1) * 10;
+    }
+
+    for(int i = 0; i &lt; 5; i++)
+    {
+        printf("%d ", numbers[i]);
+    }
+
+    free(numbers);
+
+    return 0;
+}</textarea>
+
+                <div class="editor-buttons">
+
+                    <button class="run-btn" onclick="runCode()">
+                        Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div id="result">
+                    Output will appear here...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Summary -->
+        <section class="section">
+
+            <h2>Summary</h2>
+
+            <div class="success-box">
+
+                <ul>
+
+                    <li>Memory management controls how memory is allocated and released.</li>
+
+                    <li><strong>malloc()</strong> allocates a block of memory.</li>
+
+                    <li><strong>calloc()</strong> allocates memory and initializes it to zero.</li>
+
+                    <li><strong>realloc()</strong> changes the size of an allocated block.</li>
+
+                    <li><strong>free()</strong> releases dynamically allocated memory.</li>
+
+                    <li>Always check whether memory allocation succeeded.</li>
+
+                    <li>Do not access memory after it has been freed.</li>
+
+                    <li>Be careful about memory leaks and dangling pointers.</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Previous Next -->
+        <div class="page-navigation">
+
+            <a href="c-pointers.html" class="nav-btn">
+                ← Previous
+            </a>
+
+            <a href="c-strings.html" class="nav-btn">
+                Next →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function runCode() {
+
+            const code = document.getElementById("code").value;
+            const result = document.getElementById("result");
+
+            if (
+                code.includes("malloc") &&
+                code.includes("numbers") &&
+                code.includes("free")
+            ) {
+
+                result.textContent =
+                    "Output:\n\n" +
+                    "10 20 30 40 50";
+
+            }
+
+            else if (code.includes("calloc")) {
+
+                result.textContent =
+                    "Demo Output:\n\n" +
+                    "calloc() example detected.\n" +
+                    "Allocated memory is initialized to zero.";
+
+            }
+
+            else if (code.includes("realloc")) {
+
+                result.textContent =
+                    "Demo Output:\n\n" +
+                    "realloc() example detected.\n" +
+                    "Memory can be resized during program execution.";
+
+            }
+
+            else if (code.includes("free")) {
+
+                result.textContent =
+                    "Demo Output:\n\n" +
+                    "free() releases dynamically allocated memory.";
+
+            }
+
+            else if (code.includes("printf")) {
+
+                result.textContent =
+                    "Demo Output:\n\n" +
+                    "Your C code contains printf().\n\n" +
+                    "For complete C execution, use a real C compiler.";
+
+            }
+
+            else {
+
+                result.textContent =
+                    "Output:\n\n" +
+                    "This browser editor is a demonstration only.\n" +
+                    "A real C compiler is required to execute arbitrary C programs.";
+
+            }
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("result").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
