@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C++ Switch Statement | Code With Me</title>
+
+    <meta name="description"
+        content="Learn C++ switch statements with syntax, examples, break, default, multiple cases and practical programs.">
+
+    <meta name="keywords"
+        content="C++ switch statement, C++ switch case, C++ break, C++ default, C++ tutorial">
+
+    <meta name="author" content="Code With Me">
+
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #111827;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #1e40af
+            );
+
+            color: white;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            opacity: 0.95;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+
+        /* =========================
+           CONTENT CARD
+        ========================= */
+
+        .content-card {
+            background: white;
+
+            padding: 35px;
+
+            margin-bottom: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.07);
+        }
+
+        .content-card h2 {
+            color: #172554;
+
+            font-size: 30px;
+
+            margin-bottom: 18px;
+        }
+
+        .content-card h3 {
+            color: #1d4ed8;
+
+            font-size: 23px;
+
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .content-card p {
+            color: #475569;
+
+            font-size: 17px;
+
+            margin-bottom: 15px;
+        }
+
+        .content-card ul {
+            margin-left: 25px;
+
+            color: #475569;
+
+            font-size: 17px;
+        }
+
+        .content-card li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #eff6ff;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 18px 20px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+
+            color: #1e3a8a;
+        }
+
+
+        .warning-box {
+            background: #fff7ed;
+
+            border-left: 5px solid #f97316;
+
+            padding: 18px 20px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+
+            color: #9a3412;
+        }
+
+
+        /* =========================
+           CODE BLOCK
+        ========================= */
+
+        .code-title {
+            background: #1e293b;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 8px 8px 0 0;
+
+            font-weight: bold;
+        }
+
+        pre {
+            background: #0f172a;
+
+            color: #e2e8f0;
+
+            padding: 20px;
+
+            overflow-x: auto;
+
+            border-radius: 0 0 8px 8px;
+
+            margin-bottom: 20px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           OUTPUT
+        ========================= */
+
+        .output {
+            background: #111827;
+
+            color: #22c55e;
+
+            padding: 18px;
+
+            border-radius: 8px;
+
+            font-family: Consolas, monospace;
+
+            margin-bottom: 20px;
+
+            white-space: pre-line;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #dbe3ee;
+
+            padding: 13px;
+
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+
+        /* =========================
+           EDITOR
+        ========================= */
+
+        .editor {
+            background: #0f172a;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            margin-top: 20px;
+        }
+
+        .editor textarea {
+            width: 100%;
+
+            min-height: 280px;
+
+            resize: vertical;
+
+            background: #020617;
+
+            color: #e2e8f0;
+
+            border: 1px solid #334155;
+
+            border-radius: 8px;
+
+            padding: 15px;
+
+            font-family: Consolas, monospace;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .editor-buttons {
+            margin-top: 15px;
+
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #output {
+            background: #020617;
+
+            color: #22c55e;
+
+            padding: 15px;
+
+            margin-top: 15px;
+
+            border-radius: 8px;
+
+            min-height: 50px;
+
+            font-family: Consolas, monospace;
+
+            white-space: pre-line;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .page-navigation {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin: 40px 0;
+        }
+
+        .nav-btn {
+            background: #2563eb;
+
+            color: white;
+
+            padding: 14px 25px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 40px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .content-card {
+                padding: 25px 20px;
+            }
+
+            .content-card h2 {
+                font-size: 26px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+            <li>
+                <a href="../index.html#contact">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <h1>C++ Switch Statement</h1>
+
+        <p>
+            Learn how to use switch, case, break and default in C++.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <div class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="content-card">
+
+            <h2>What is a Switch Statement?</h2>
+
+            <p>
+                The <strong>switch</strong> statement is a control
+                statement used to execute one block of code from
+                multiple possible choices.
+            </p>
+
+            <p>
+                It is useful when you want to compare one expression
+                with several fixed values.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+                A menu program can use switch to perform different
+                operations based on the option selected by the user.
+
+            </div>
+
+        </section>
+
+
+        <!-- SYNTAX -->
+
+        <section class="content-card">
+
+            <h2>C++ Switch Syntax</h2>
+
+            <p>
+                The basic syntax of a switch statement is:
+            </p>
+
+            <div class="code-title">
+                Syntax
+            </div>
+
+            <pre><code>switch (expression) {
+
+    case value1:
+        // code
+        break;
+
+    case value2:
+        // code
+        break;
+
+    default:
+        // code
+
+}</code></pre>
+
+            <p>
+                The expression is compared with each case value.
+                When a matching case is found, its code executes.
+            </p>
+
+        </section>
+
+
+        <!-- SIMPLE EXAMPLE -->
+
+        <section class="content-card">
+
+            <h2>Simple Switch Example</h2>
+
+            <p>
+                Here is a simple example using a number from 1 to 3.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number = 2;
+
+    switch (number) {
+
+        case 1:
+            cout &lt;&lt; "One";
+            break;
+
+        case 2:
+            cout &lt;&lt; "Two";
+            break;
+
+        case 3:
+            cout &lt;&lt; "Three";
+            break;
+
+        default:
+            cout &lt;&lt; "Invalid number";
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">Two</div>
+
+        </section>
+
+
+        <!-- CASE -->
+
+        <section class="content-card">
+
+            <h2>Using case</h2>
+
+            <p>
+                The <strong>case</strong> keyword defines a possible
+                value that the switch expression can match.
+            </p>
+
+            <pre><code>int choice = 1;
+
+switch (choice) {
+
+    case 1:
+        cout &lt;&lt; "You selected Option 1";
+        break;
+
+    case 2:
+        cout &lt;&lt; "You selected Option 2";
+        break;
+
+}</code></pre>
+
+            <p>
+                If <strong>choice</strong> is 1, the first case runs.
+                If it is 2, the second case runs.
+            </p>
+
+        </section>
+
+
+        <!-- BREAK -->
+
+        <section class="content-card">
+
+            <h2>Using break</h2>
+
+            <p>
+                The <strong>break</strong> statement stops the switch
+                after a matching case has been executed.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number = 2;
+
+    switch (number) {
+
+        case 1:
+            cout &lt;&lt; "One";
+            break;
+
+        case 2:
+            cout &lt;&lt; "Two";
+            break;
+
+        case 3:
+            cout &lt;&lt; "Three";
+            break;
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="warning-box">
+
+                <strong>Important:</strong>
+                If you leave out <strong>break</strong>, execution can
+                continue into the following cases.
+
+            </div>
+
+        </section>
+
+
+        <!-- DEFAULT -->
+
+        <section class="content-card">
+
+            <h2>Using default</h2>
+
+            <p>
+                The <strong>default</strong> block runs when none of
+                the cases match the switch expression.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number = 5;
+
+    switch (number) {
+
+        case 1:
+            cout &lt;&lt; "One";
+            break;
+
+        case 2:
+            cout &lt;&lt; "Two";
+            break;
+
+        case 3:
+            cout &lt;&lt; "Three";
+            break;
+
+        default:
+            cout &lt;&lt; "Invalid number";
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">Invalid number</div>
+
+        </section>
+
+
+        <!-- DAY PROGRAM -->
+
+        <section class="content-card">
+
+            <h2>Example: Days of the Week</h2>
+
+            <p>
+                A switch statement can be used to display the day
+                according to a number.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int day = 3;
+
+    switch (day) {
+
+        case 1:
+            cout &lt;&lt; "Monday";
+            break;
+
+        case 2:
+            cout &lt;&lt; "Tuesday";
+            break;
+
+        case 3:
+            cout &lt;&lt; "Wednesday";
+            break;
+
+        case 4:
+            cout &lt;&lt; "Thursday";
+            break;
+
+        case 5:
+            cout &lt;&lt; "Friday";
+            break;
+
+        case 6:
+            cout &lt;&lt; "Saturday";
+            break;
+
+        case 7:
+            cout &lt;&lt; "Sunday";
+            break;
+
+        default:
+            cout &lt;&lt; "Invalid day";
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">Wednesday</div>
+
+        </section>
+
+
+        <!-- CHARACTER SWITCH -->
+
+        <section class="content-card">
+
+            <h2>Switch with Characters</h2>
+
+            <p>
+                A switch statement can also be used with a
+                character.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    char grade = 'A';
+
+    switch (grade) {
+
+        case 'A':
+            cout &lt;&lt; "Excellent";
+            break;
+
+        case 'B':
+            cout &lt;&lt; "Very Good";
+            break;
+
+        case 'C':
+            cout &lt;&lt; "Good";
+            break;
+
+        case 'D':
+            cout &lt;&lt; "Pass";
+            break;
+
+        default:
+            cout &lt;&lt; "Invalid grade";
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">Excellent</div>
+
+        </section>
+
+
+        <!-- MULTIPLE CASES -->
+
+        <section class="content-card">
+
+            <h2>Multiple Cases with the Same Code</h2>
+
+            <p>
+                Multiple cases can be used together when they should
+                execute the same code.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int day = 6;
+
+    switch (day) {
+
+        case 6:
+        case 7:
+            cout &lt;&lt; "Weekend";
+            break;
+
+        default:
+            cout &lt;&lt; "Weekday";
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">Weekend</div>
+
+        </section>
+
+
+        <!-- CALCULATOR -->
+
+        <section class="content-card">
+
+            <h2>Example: Simple Calculator</h2>
+
+            <p>
+                Switch statements are useful for creating menu-based
+                programs such as calculators.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    double num1, num2;
+    char operation;
+
+    cout &lt;&lt; "Enter first number: ";
+    cin &gt;&gt; num1;
+
+    cout &lt;&lt; "Enter operator (+, -, *, /): ";
+    cin &gt;&gt; operation;
+
+    cout &lt;&lt; "Enter second number: ";
+    cin &gt;&gt; num2;
+
+    switch (operation) {
+
+        case '+':
+            cout &lt;&lt; "Result: " &lt;&lt; num1 + num2;
+            break;
+
+        case '-':
+            cout &lt;&lt; "Result: " &lt;&lt; num1 - num2;
+            break;
+
+        case '*':
+            cout &lt;&lt; "Result: " &lt;&lt; num1 * num2;
+            break;
+
+        case '/':
+            if (num2 != 0) {
+                cout &lt;&lt; "Result: "
+                     &lt;&lt; num1 / num2;
+            } else {
+                cout &lt;&lt; "Cannot divide by zero";
+            }
+            break;
+
+        default:
+            cout &lt;&lt; "Invalid operator";
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Example Output</h3>
+
+            <div class="output">Enter first number: 10
+Enter operator (+, -, *, /): +
+Enter second number: 5
+Result: 15</div>
+
+        </section>
+
+
+        <!-- MENU -->
+
+        <section class="content-card">
+
+            <h2>Example: Menu Program</h2>
+
+            <p>
+                A switch statement is commonly used for menu-driven
+                applications.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int choice;
+
+    cout &lt;&lt; "----- MENU -----" &lt;&lt; endl;
+    cout &lt;&lt; "1. Start" &lt;&lt; endl;
+    cout &lt;&lt; "2. Settings" &lt;&lt; endl;
+    cout &lt;&lt; "3. Exit" &lt;&lt; endl;
+
+    cout &lt;&lt; "Enter your choice: ";
+    cin &gt;&gt; choice;
+
+    switch (choice) {
+
+        case 1:
+            cout &lt;&lt; "Starting program...";
+            break;
+
+        case 2:
+            cout &lt;&lt; "Opening settings...";
+            break;
+
+        case 3:
+            cout &lt;&lt; "Exiting program...";
+            break;
+
+        default:
+            cout &lt;&lt; "Invalid choice";
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Example Output</h3>
+
+            <div class="output">----- MENU -----
+1. Start
+2. Settings
+3. Exit
+Enter your choice: 1
+Starting program...</div>
+
+        </section>
+
+
+        <!-- SWITCH TABLE -->
+
+        <section class="content-card">
+
+            <h2>Important Switch Keywords</h2>
+
+            <table>
+
+                <tr>
+                    <th>Keyword</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>switch</td>
+                    <td>
+                        Starts the switch statement.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>case</td>
+                    <td>
+                        Defines a possible matching value.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>break</td>
+                    <td>
+                        Stops execution of the switch.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>default</td>
+                    <td>
+                        Runs when no case matches.
+                    </td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- SWITCH VS IF -->
+
+        <section class="content-card">
+
+            <h2>Switch vs If-Else</h2>
+
+            <table>
+
+                <tr>
+                    <th>Switch</th>
+                    <th>If-Else</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Useful for multiple fixed choices.
+                    </td>
+
+                    <td>
+                        Useful for conditions and ranges.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Uses case values.
+                    </td>
+
+                    <td>
+                        Uses conditions.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Uses break to stop cases.
+                    </td>
+
+                    <td>
+                        Does not require break.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Good for menus and fixed options.
+                    </td>
+
+                    <td>
+                        Good for comparisons and complex conditions.
+                    </td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- INTERACTIVE DEMO -->
+
+        <section class="content-card">
+
+            <h2>Try C++ Switch Statement</h2>
+
+            <p>
+                Try the following C++ switch example in the editor.
+                This browser editor provides a demonstration of the
+                expected output.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="code">#include <iostream>
+using namespace std;
+
+int main() {
+
+    int choice = 2;
+
+    switch (choice) {
+
+        case 1:
+            cout << "You selected Start";
+            break;
+
+        case 2:
+            cout << "You selected Settings";
+            break;
+
+        case 3:
+            cout << "You selected Exit";
+            break;
+
+        default:
+            cout << "Invalid choice";
+    }
+
+    return 0;
+}</textarea>
+
+                <div class="editor-buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+
+                        Run Code
+
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+
+            <div class="warning-box">
+
+                <strong>Note:</strong>
+                This editor is a browser demonstration and does not
+                compile arbitrary C++ code. A real C++ compiler is
+                required for general C++ program execution.
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="content-card">
+
+            <h2>C++ Switch Statement - Summary</h2>
+
+            <ul>
+
+                <li>
+                    The <strong>switch</strong> statement is used for
+                    multiple fixed choices.
+                </li>
+
+                <li>
+                    Each possible value is written using
+                    <strong>case</strong>.
+                </li>
+
+                <li>
+                    <strong>break</strong> stops execution of the
+                    switch after a matching case.
+                </li>
+
+                <li>
+                    <strong>default</strong> executes when no case
+                    matches.
+                </li>
+
+                <li>
+                    Multiple cases can share the same code.
+                </li>
+
+                <li>
+                    Switch statements are commonly used for
+                    menus, calculators and fixed options.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="page-navigation">
+
+            <a
+                href="./cpp-if-else.html"
+                class="nav-btn">
+
+                ← Previous: If Else
+
+            </a>
+
+            <a
+                href="./cpp-for-loop.html"
+                class="nav-btn">
+
+                Next: For Loop →
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("code").value;
+
+            const output =
+                document.getElementById("output");
+
+
+            let result = "";
+
+
+            if (
+                code.includes("choice = 1") ||
+                code.includes("choice=1")
+            ) {
+
+                result =
+                    "You selected Start";
+
+            }
+
+            else if (
+                code.includes("choice = 2") ||
+                code.includes("choice=2")
+            ) {
+
+                result =
+                    "You selected Settings";
+
+            }
+
+            else if (
+                code.includes("choice = 3") ||
+                code.includes("choice=3")
+            ) {
+
+                result =
+                    "You selected Exit";
+
+            }
+
+            else if (
+                code.includes("default:")
+            ) {
+
+                result =
+                    "Invalid choice";
+
+            }
+
+            else {
+
+                result =
+                    "Demo Output:\n\n" +
+                    "This browser editor demonstrates a C++ switch statement.\n" +
+                    "For full C++ execution, use a C++ compiler.";
+
+            }
+
+
+            output.textContent = result;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
