@@ -1,0 +1,1205 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Operators | Code With Me</title>
+
+    <meta name="description"
+          content="Learn C operators including arithmetic, assignment, relational, logical, increment, decrement, bitwise and ternary operators with simple examples.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #2563eb;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        .section ul {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* ================= CODE ================= */
+
+        .code-title {
+            background: #111827;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+        }
+
+        pre {
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 20px;
+            overflow-x: auto;
+            border-radius: 0 0 8px 8px;
+            font-family: Consolas, monospace;
+            margin-bottom: 20px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* ================= EDITOR ================= */
+
+        .editor {
+            margin-top: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            background: #111827;
+            color: #f8fafc;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .output {
+            margin-top: 15px;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0 50px;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="hero">
+
+        <h1>C Operators</h1>
+
+        <p>
+            Learn how operators are used in C programming
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- ================= INTRODUCTION ================= -->
+
+        <section class="section">
+
+            <h2>What are Operators in C?</h2>
+
+            <p>
+                Operators are special symbols that are used to perform
+                operations on values and variables in a C program.
+            </p>
+
+            <p>
+                For example, the <strong>+</strong> operator is used
+                to add two values.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Example:</strong>
+
+                <br><br>
+
+                <strong>10 + 5 = 15</strong>
+
+                <br><br>
+
+                Here, <strong>+</strong> is the operator and
+                <strong>10</strong> and <strong>5</strong> are operands.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TYPES ================= -->
+
+        <section class="section">
+
+            <h2>Types of Operators in C</h2>
+
+            <p>
+                C provides several types of operators:
+            </p>
+
+            <ul>
+                <li>Arithmetic Operators</li>
+                <li>Assignment Operators</li>
+                <li>Relational Operators</li>
+                <li>Logical Operators</li>
+                <li>Increment and Decrement Operators</li>
+                <li>Bitwise Operators</li>
+                <li>Conditional (Ternary) Operator</li>
+                <li>Other Operators</li>
+            </ul>
+
+        </section>
+
+
+        <!-- ================= ARITHMETIC ================= -->
+
+        <section class="section">
+
+            <h2>1. Arithmetic Operators</h2>
+
+            <p>
+                Arithmetic operators are used to perform mathematical
+                operations.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Name</th>
+                        <th>Example</th>
+                    </tr>
+
+                    <tr>
+                        <td>+</td>
+                        <td>Addition</td>
+                        <td>a + b</td>
+                    </tr>
+
+                    <tr>
+                        <td>-</td>
+                        <td>Subtraction</td>
+                        <td>a - b</td>
+                    </tr>
+
+                    <tr>
+                        <td>*</td>
+                        <td>Multiplication</td>
+                        <td>a * b</td>
+                    </tr>
+
+                    <tr>
+                        <td>/</td>
+                        <td>Division</td>
+                        <td>a / b</td>
+                    </tr>
+
+                    <tr>
+                        <td>%</td>
+                        <td>Modulus</td>
+                        <td>a % b</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int a = 10;
+    int b = 3;
+
+    printf("Addition = %d\n", a + b);
+    printf("Subtraction = %d\n", a - b);
+    printf("Multiplication = %d\n", a * b);
+    printf("Division = %d\n", a / b);
+    printf("Remainder = %d\n", a % b);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= ASSIGNMENT ================= -->
+
+        <section class="section">
+
+            <h2>2. Assignment Operators</h2>
+
+            <p>
+                Assignment operators are used to assign values to variables.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Example</th>
+                        <th>Meaning</th>
+                    </tr>
+
+                    <tr>
+                        <td>=</td>
+                        <td>a = 10</td>
+                        <td>Assign 10 to a</td>
+                    </tr>
+
+                    <tr>
+                        <td>+=</td>
+                        <td>a += 5</td>
+                        <td>a = a + 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>-=</td>
+                        <td>a -= 5</td>
+                        <td>a = a - 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>*=</td>
+                        <td>a *= 5</td>
+                        <td>a = a * 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>/=</td>
+                        <td>a /= 5</td>
+                        <td>a = a / 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>%=</td>
+                        <td>a %= 5</td>
+                        <td>a = a % 5</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number = 10;
+
+    number += 5;
+
+    printf("Number = %d", number);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= RELATIONAL ================= -->
+
+        <section class="section">
+
+            <h2>3. Relational Operators</h2>
+
+            <p>
+                Relational operators are used to compare two values.
+                They produce either <strong>1 (true)</strong> or
+                <strong>0 (false)</strong>.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                    </tr>
+
+                    <tr>
+                        <td>==</td>
+                        <td>Equal to</td>
+                        <td>a == b</td>
+                    </tr>
+
+                    <tr>
+                        <td>!=</td>
+                        <td>Not equal to</td>
+                        <td>a != b</td>
+                    </tr>
+
+                    <tr>
+                        <td>&gt;</td>
+                        <td>Greater than</td>
+                        <td>a &gt; b</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;</td>
+                        <td>Less than</td>
+                        <td>a &lt; b</td>
+                    </tr>
+
+                    <tr>
+                        <td>&gt;=</td>
+                        <td>Greater than or equal to</td>
+                        <td>a &gt;= b</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;=</td>
+                        <td>Less than or equal to</td>
+                        <td>a &lt;= b</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int a = 10;
+    int b = 20;
+
+    printf("%d\n", a == b);
+    printf("%d\n", a &lt; b);
+    printf("%d\n", a &gt; b);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= LOGICAL ================= -->
+
+        <section class="section">
+
+            <h2>4. Logical Operators</h2>
+
+            <p>
+                Logical operators are used to combine or reverse
+                conditions.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Name</th>
+                        <th>Example</th>
+                    </tr>
+
+                    <tr>
+                        <td>&amp;&amp;</td>
+                        <td>Logical AND</td>
+                        <td>a &gt; 5 &amp;&amp; b &gt; 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>||</td>
+                        <td>Logical OR</td>
+                        <td>a &gt; 5 || b &gt; 5</td>
+                    </tr>
+
+                    <tr>
+                        <td>!</td>
+                        <td>Logical NOT</td>
+                        <td>!(a &gt; 5)</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age = 20;
+
+    if (age &gt;= 18 &amp;&amp; age &lt;= 60) {
+        printf("Age is between 18 and 60");
+    }
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= INCREMENT ================= -->
+
+        <section class="section">
+
+            <h2>5. Increment and Decrement Operators</h2>
+
+            <p>
+                The increment operator <strong>++</strong> increases
+                a value by 1.
+            </p>
+
+            <p>
+                The decrement operator <strong>--</strong> decreases
+                a value by 1.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Meaning</th>
+                    </tr>
+
+                    <tr>
+                        <td>++</td>
+                        <td>Increase by 1</td>
+                    </tr>
+
+                    <tr>
+                        <td>--</td>
+                        <td>Decrease by 1</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number = 10;
+
+    number++;
+
+    printf("After increment = %d\n", number);
+
+    number--;
+
+    printf("After decrement = %d", number);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= BITWISE ================= -->
+
+        <section class="section">
+
+            <h2>6. Bitwise Operators</h2>
+
+            <p>
+                Bitwise operators perform operations on the individual
+                bits of integer values.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Name</th>
+                    </tr>
+
+                    <tr>
+                        <td>&amp;</td>
+                        <td>Bitwise AND</td>
+                    </tr>
+
+                    <tr>
+                        <td>|</td>
+                        <td>Bitwise OR</td>
+                    </tr>
+
+                    <tr>
+                        <td>^</td>
+                        <td>Bitwise XOR</td>
+                    </tr>
+
+                    <tr>
+                        <td>~</td>
+                        <td>Bitwise NOT</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;&lt;</td>
+                        <td>Left Shift</td>
+                    </tr>
+
+                    <tr>
+                        <td>&gt;&gt;</td>
+                        <td>Right Shift</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int a = 5;
+    int b = 3;
+
+    printf("AND = %d\n", a &amp; b);
+    printf("OR = %d\n", a | b);
+    printf("XOR = %d\n", a ^ b);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= TERNARY ================= -->
+
+        <section class="section">
+
+            <h2>7. Conditional (Ternary) Operator</h2>
+
+            <p>
+                The conditional operator is also called the ternary
+                operator because it uses three operands.
+            </p>
+
+            <p>
+                Its syntax is:
+            </p>
+
+            <div class="highlight">
+
+                <strong>condition ? value_if_true : value_if_false;</strong>
+
+            </div>
+
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age = 20;
+
+    const char *result;
+
+    result = (age &gt;= 18) ? "Adult" : "Minor";
+
+    printf("%s", result);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= SIZEOF ================= -->
+
+        <section class="section">
+
+            <h2>8. sizeof Operator</h2>
+
+            <p>
+                The <strong>sizeof</strong> operator is used to find
+                the amount of memory occupied by a data type or variable.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number;
+
+    printf("Size of int = %zu bytes",
+           sizeof(number));
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= OPERATOR PRECEDENCE ================= -->
+
+        <section class="section">
+
+            <h2>Operator Precedence</h2>
+
+            <p>
+                Operator precedence determines the order in which
+                operators are evaluated in an expression.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int result;
+
+    result = 10 + 5 * 2;
+
+    printf("Result = %d", result);
+
+    return 0;
+}</code></pre>
+
+            <div class="highlight">
+
+                <strong>Output:</strong> 20
+
+                <br><br>
+
+                Multiplication is performed before addition, so:
+
+                <br>
+
+                10 + (5 * 2) = 20
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUMMARY ================= -->
+
+        <section class="section">
+
+            <h2>Operators Summary</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Type</th>
+                        <th>Main Operators</th>
+                    </tr>
+
+                    <tr>
+                        <td>Arithmetic</td>
+                        <td>+, -, *, /, %</td>
+                    </tr>
+
+                    <tr>
+                        <td>Assignment</td>
+                        <td>=, +=, -=, *=, /=, %=</td>
+                    </tr>
+
+                    <tr>
+                        <td>Relational</td>
+                        <td>==, !=, &gt;, &lt;, &gt;=, &lt;=</td>
+                    </tr>
+
+                    <tr>
+                        <td>Logical</td>
+                        <td>&amp;&amp;, ||, !</td>
+                    </tr>
+
+                    <tr>
+                        <td>Increment / Decrement</td>
+                        <td>++, --</td>
+                    </tr>
+
+                    <tr>
+                        <td>Bitwise</td>
+                        <td>&amp;, |, ^, ~, &lt;&lt;, &gt;&gt;</td>
+                    </tr>
+
+                    <tr>
+                        <td>Conditional</td>
+                        <td>?:</td>
+                    </tr>
+
+                    <tr>
+                        <td>Other</td>
+                        <td>sizeof</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= IMPORTANT ================= -->
+
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <div class="highlight">
+
+                <p>
+                    Operators are used to perform operations on values
+                    and variables.
+                </p>
+
+                <p>
+                    Arithmetic operators are mainly used for calculations.
+                </p>
+
+                <p>
+                    Relational operators compare values.
+                </p>
+
+                <p>
+                    Logical operators are used to combine conditions.
+                </p>
+
+                <p>
+                    Assignment operators assign or update values.
+                </p>
+
+                <p>
+                    The ternary operator provides a short way to write
+                    a simple conditional expression.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EDITOR ================= -->
+
+        <section class="section">
+
+            <h2>Try C Code</h2>
+
+            <p>
+                Write your C code below and click the Run button.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include <stdio.h>
+
+int main() {
+
+    int a = 10;
+    int b = 3;
+
+    printf("Addition = %d\n", a + b);
+    printf("Subtraction = %d\n", a - b);
+    printf("Multiplication = %d\n", a * b);
+    printf("Division = %d\n", a / b);
+    printf("Remainder = %d\n", a % b);
+
+    return 0;
+}</textarea>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="output"
+                    id="output">
+
+                    Output will appear here...
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <div class="page-navigation">
+
+            <a href="c-input-output.html">
+                ← Previous: C Input and Output
+            </a>
+
+            <a href="c-arithmetic-operators.html">
+                Next: C Arithmetic Operators →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+            if (code.trim() === "") {
+
+                output.textContent =
+                    "Please enter some C code.";
+
+                return;
+            }
+
+            output.textContent =
+                "C code submitted successfully!\n\n" +
+                "Note: To actually execute C code in the browser, " +
+                "you need a C compiler/backend.";
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
