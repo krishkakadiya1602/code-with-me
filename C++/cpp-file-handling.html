@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>C++ File Handling | Code With Me</title>
+
+<meta name="description"
+      content="Learn C++ File Handling with simple explanations and examples using ofstream, ifstream, fstream, reading, writing, appending and managing files.">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #222;
+        line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+        background: #111827;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .nav-links a:hover {
+        color: #38bdf8;
+    }
+
+    /* HERO */
+    .hero {
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    /* CONTAINER */
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    /* SECTION */
+    .section {
+        background: white;
+        padding: 30px;
+        margin-bottom: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+        color: #1e3a8a;
+        margin-bottom: 15px;
+    }
+
+    .section h3 {
+        color: #2563eb;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .section ul,
+    .section ol {
+        padding-left: 25px;
+    }
+
+    /* HIGHLIGHT */
+    .highlight {
+        background: #eff6ff;
+        border-left: 5px solid #2563eb;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    /* CODE */
+    .code-title {
+        background: #111827;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 8px 8px 0 0;
+        font-weight: bold;
+    }
+
+    pre {
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 20px;
+        overflow-x: auto;
+        border-radius: 0 0 8px 8px;
+        font-family: Consolas, monospace;
+    }
+
+    /* TABLE */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    table th {
+        background: #1e3a8a;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background: #f8fafc;
+    }
+
+    /* EDITOR */
+    textarea {
+        width: 100%;
+        min-height: 400px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: Consolas, monospace;
+        font-size: 15px;
+        resize: vertical;
+        background: #111827;
+        color: #f8fafc;
+    }
+
+    .buttons {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+    }
+
+    button {
+        padding: 11px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .run-btn {
+        background: #2563eb;
+        color: white;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+        color: white;
+    }
+
+    .run-btn:hover {
+        background: #1d4ed8;
+    }
+
+    .clear-btn:hover {
+        background: #b91c1c;
+    }
+
+    .output {
+        margin-top: 15px;
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 15px;
+        min-height: 100px;
+        white-space: pre-wrap;
+        font-family: Consolas, monospace;
+    }
+
+    /* NAVIGATION */
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 30px 0 50px;
+    }
+
+    .page-navigation a {
+        text-decoration: none;
+        background: #2563eb;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .page-navigation a:hover {
+        background: #1d4ed8;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 30px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+
+        nav {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .page-navigation {
+            flex-direction: column;
+        }
+
+        .page-navigation a {
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- NAVBAR -->
+<nav>
+
+    <a href="../index.html" class="logo">
+        Code <span>WithMe</span>
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+
+    <h1>C++ File Handling</h1>
+
+    <p>
+        Learn How to Create, Write, Read and Manage Files in C++
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- INTRODUCTION -->
+    <section class="section">
+
+        <h2>What is File Handling in C++?</h2>
+
+        <p>
+            <strong>File handling</strong> is used to store data
+            permanently in files.
+        </p>
+
+        <p>
+            Normally, data stored in variables is lost when a program
+            ends. File handling allows a program to save data in a file
+            so that it can be used later.
+        </p>
+
+        <div class="highlight">
+
+            <strong>Simple Definition:</strong>
+
+            <br>
+
+            File handling means creating, opening, reading, writing,
+            updating and closing files using a C++ program.
+
+        </div>
+
+    </section>
+
+
+    <!-- WHY -->
+    <section class="section">
+
+        <h2>Why Use File Handling?</h2>
+
+        <ul>
+
+            <li>To permanently store data.</li>
+
+            <li>To read previously saved information.</li>
+
+            <li>To create files using a program.</li>
+
+            <li>To update existing data.</li>
+
+            <li>To store large amounts of information.</li>
+
+            <li>To maintain records such as students, employees and products.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- HEADER -->
+    <section class="section">
+
+        <h2>File Handling Header</h2>
+
+        <p>
+            C++ provides file handling functionality through the
+            <strong>&lt;fstream&gt;</strong> header.
+        </p>
+
+        <div class="code-title">
+            Include fstream
+        </div>
+
+        <pre><code>#include &lt;fstream&gt;</code></pre>
+
+        <p>
+            The <strong>fstream</strong> header provides classes
+            for working with files.
+        </p>
+
+    </section>
+
+
+    <!-- CLASSES -->
+    <section class="section">
+
+        <h2>C++ File Handling Classes</h2>
+
+        <table>
+
+            <tr>
+                <th>Class</th>
+                <th>Purpose</th>
+            </tr>
+
+            <tr>
+                <td>ofstream</td>
+                <td>Used to create and write to files.</td>
+            </tr>
+
+            <tr>
+                <td>ifstream</td>
+                <td>Used to read data from files.</td>
+            </tr>
+
+            <tr>
+                <td>fstream</td>
+                <td>Used for both reading and writing.</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- OFSTREAM -->
+    <section class="section">
+
+        <h2>ofstream</h2>
+
+        <p>
+            <strong>ofstream</strong> stands for output file stream.
+        </p>
+
+        <p>
+            It is mainly used to write data into a file.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;fstream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+ofstream file("example.txt");
+
+file &lt;&lt; "Hello, C++ File Handling!";
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <p>
+            This program creates a file named
+            <strong>example.txt</strong> and writes text into it.
+        </p>
+
+    </section>
+
+
+    <!-- FILE CLOSE -->
+    <section class="section">
+
+        <h2>Closing a File</h2>
+
+        <p>
+            After completing file operations, you should close the file.
+        </p>
+
+        <div class="code-title">
+            Syntax
+        </div>
+
+        <pre><code>file.close();</code></pre>
+
+        <div class="highlight">
+
+            Closing a file releases the associated resources and
+            ensures pending output is properly written.
+
+        </div>
+
+    </section>
+
+
+    <!-- IFSTREAM -->
+    <section class="section">
+
+        <h2>ifstream</h2>
+
+        <p>
+            <strong>ifstream</strong> stands for input file stream.
+        </p>
+
+        <p>
+            It is used to read data from a file.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+ifstream file("example.txt");
+
+string text;
+
+while (getline(file, text)) {
+
+    cout &lt;&lt; text &lt;&lt; endl;
+
+}
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- FSTREAM -->
+    <section class="section">
+
+        <h2>fstream</h2>
+
+        <p>
+            <strong>fstream</strong> can be used for both reading
+            and writing files.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;fstream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+fstream file;
+
+file.open("example.txt",
+          ios::in | ios::out);
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- OPEN -->
+    <section class="section">
+
+        <h2>Opening a File</h2>
+
+        <p>
+            A file can be opened directly when creating a stream object.
+        </p>
+
+        <div class="code-title">
+            Method 1
+        </div>
+
+        <pre><code>ofstream file("example.txt");</code></pre>
+
+        <p>
+            Or you can use the <strong>open()</strong> function.
+        </p>
+
+        <div class="code-title">
+            Method 2
+        </div>
+
+        <pre><code>ofstream file;
+```
+
+file.open("example.txt");</code></pre>
+
+```
+    </section>
+
+
+    <!-- FILE MODES -->
+    <section class="section">
+
+        <h2>File Opening Modes</h2>
+
+        <p>
+            C++ provides different file opening modes.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Mode</th>
+                <th>Meaning</th>
+            </tr>
+
+            <tr>
+                <td>ios::in</td>
+                <td>Open for reading.</td>
+            </tr>
+
+            <tr>
+                <td>ios::out</td>
+                <td>Open for writing.</td>
+            </tr>
+
+            <tr>
+                <td>ios::app</td>
+                <td>Append data at the end of the file.</td>
+            </tr>
+
+            <tr>
+                <td>ios::ate</td>
+                <td>Open and initially position at the end.</td>
+            </tr>
+
+            <tr>
+                <td>ios::trunc</td>
+                <td>Truncate existing file contents when opening for output.</td>
+            </tr>
+
+            <tr>
+                <td>ios::binary</td>
+                <td>Open in binary mode.</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- WRITE -->
+    <section class="section">
+
+        <h2>Writing Data to a File</h2>
+
+        <p>
+            The insertion operator <strong>&lt;&lt;</strong> can be
+            used to write data to a file.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;fstream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+ofstream file("student.txt");
+
+file &lt;&lt; "Name: Krish" &lt;&lt; endl;
+file &lt;&lt; "Age: 20" &lt;&lt; endl;
+file &lt;&lt; "Course: C++" &lt;&lt; endl;
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- READ -->
+    <section class="section">
+
+        <h2>Reading Data from a File</h2>
+
+        <p>
+            The extraction operator <strong>&gt;&gt;</strong> can be
+            used to read formatted data.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+#include <fstream>
+
+using namespace std;
+
+int main() {
+
+```
+ifstream file("student.txt");
+
+string name;
+
+file &gt;&gt; name;
+
+cout &lt;&lt; name;
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <div class="highlight">
+
+            For reading complete lines including spaces,
+            <strong>getline()</strong> is usually more convenient.
+
+        </div>
+
+    </section>
+
+
+    <!-- GETLINE -->
+    <section class="section">
+
+        <h2>Reading Line by Line</h2>
+
+        <p>
+            The <strong>getline()</strong> function reads a complete
+            line from a file.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+ifstream file("student.txt");
+
+string line;
+
+while (getline(file, line)) {
+
+    cout &lt;&lt; line &lt;&lt; endl;
+
+}
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- APPEND -->
+    <section class="section">
+
+        <h2>Appending Data to a File</h2>
+
+        <p>
+            The <strong>ios::app</strong> mode adds new data to
+            the end of an existing file.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;fstream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+ofstream file("example.txt", ios::app);
+
+file &lt;&lt; "New line added." &lt;&lt; endl;
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <div class="highlight">
+
+            <strong>ios::app</strong> is useful when you want to
+            preserve existing content and add new content.
+
+        </div>
+
+    </section>
+
+
+    <!-- CHECK OPEN -->
+    <section class="section">
+
+        <h2>Checking Whether a File Opened</h2>
+
+        <p>
+            You should check whether the file was successfully opened
+            before performing file operations.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+#include <fstream>
+
+using namespace std;
+
+int main() {
+
+```
+ifstream file("example.txt");
+
+if (!file.is_open()) {
+
+    cout &lt;&lt; "Unable to open file.";
+
+    return 1;
+}
+
+cout &lt;&lt; "File opened successfully.";
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- FILE EXISTS -->
+    <section class="section">
+
+        <h2>Checking File State</h2>
+
+        <p>
+            C++ stream objects provide functions for checking
+            the state of file operations.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Function</th>
+                <th>Purpose</th>
+            </tr>
+
+            <tr>
+                <td>is_open()</td>
+                <td>Checks whether the file is open.</td>
+            </tr>
+
+            <tr>
+                <td>good()</td>
+                <td>Checks whether the stream is in a good state.</td>
+            </tr>
+
+            <tr>
+                <td>fail()</td>
+                <td>Checks whether an operation has failed.</td>
+            </tr>
+
+            <tr>
+                <td>eof()</td>
+                <td>Checks whether the end-of-file condition is reached.</td>
+            </tr>
+
+            <tr>
+                <td>bad()</td>
+                <td>Checks for a serious stream error.</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- EOF -->
+    <section class="section">
+
+        <h2>Reading Until End of File</h2>
+
+        <p>
+            A common and safe pattern for reading text files line by
+            line is to make <strong>getline()</strong> the loop condition.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+ifstream file("example.txt");
+
+string line;
+
+while (getline(file, line)) {
+
+    cout &lt;&lt; line &lt;&lt; endl;
+
+}
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <div class="highlight">
+
+            Prefer <strong>while (getline(file, line))</strong>
+            instead of using <strong>while (!file.eof())</strong>
+            for line-based text reading.
+
+        </div>
+
+    </section>
+
+
+    <!-- UPDATE -->
+    <section class="section">
+
+        <h2>Updating a File</h2>
+
+        <p>
+            You can open a file using appropriate modes to read,
+            write or append data.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;fstream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+fstream file;
+
+file.open("data.txt",
+          ios::in | ios::out);
+
+if (!file.is_open()) {
+
+    return 1;
+}
+
+// Read or write data here.
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- MULTIPLE LINES -->
+    <section class="section">
+
+        <h2>Writing Multiple Lines</h2>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;fstream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+ofstream file("students.txt");
+
+file &lt;&lt; "Krish" &lt;&lt; endl;
+file &lt;&lt; "Rahul" &lt;&lt; endl;
+file &lt;&lt; "Amit" &lt;&lt; endl;
+file &lt;&lt; "Jay" &lt;&lt; endl;
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- STUDENT EXAMPLE -->
+    <section class="section">
+
+        <h2>Practical Example: Student Records</h2>
+
+        <p>
+            File handling can be used to store student information.
+        </p>
+
+        <div class="code-title">
+            C++ Program
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+#include <fstream>
+
+using namespace std;
+
+int main() {
+
+```
+ofstream file("students.txt");
+
+if (!file.is_open()) {
+
+    cout &lt;&lt; "File could not be opened.";
+
+    return 1;
+}
+
+file &lt;&lt; "Krish 20 C++" &lt;&lt; endl;
+file &lt;&lt; "Rahul 21 Java" &lt;&lt; endl;
+file &lt;&lt; "Amit 19 Python" &lt;&lt; endl;
+
+file.close();
+
+cout &lt;&lt; "Student data saved successfully.";
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- READ STUDENT -->
+    <section class="section">
+
+        <h2>Reading Student Records</h2>
+
+        <div class="code-title">
+            C++ Program
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+ifstream file("students.txt");
+
+if (!file.is_open()) {
+
+    cout &lt;&lt; "File could not be opened.";
+
+    return 1;
+}
+
+string line;
+
+while (getline(file, line)) {
+
+    cout &lt;&lt; line &lt;&lt; endl;
+
+}
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- BINARY -->
+    <section class="section">
+
+        <h2>Binary File Handling</h2>
+
+        <p>
+            Binary mode is used when working with binary data.
+        </p>
+
+        <p>
+            The <strong>ios::binary</strong> flag can be combined
+            with file streams.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;fstream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+ofstream file(
+    "data.bin",
+    ios::binary
+);
+
+if (!file.is_open()) {
+
+    return 1;
+}
+
+int number = 100;
+
+file.write(
+    reinterpret_cast&lt;const char*&gt;(&amp;number),
+    sizeof(number)
+);
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <div class="highlight">
+
+            Binary file handling is useful for raw data and
+            applications where binary representation is required.
+
+        </div>
+
+    </section>
+
+
+    <!-- READ BINARY -->
+    <section class="section">
+
+        <h2>Reading a Binary File</h2>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+#include <fstream>
+
+using namespace std;
+
+int main() {
+
+```
+ifstream file(
+    "data.bin",
+    ios::binary
+);
+
+if (!file.is_open()) {
+
+    return 1;
+}
+
+int number;
+
+file.read(
+    reinterpret_cast&lt;char*&gt;(&amp;number),
+    sizeof(number)
+);
+
+cout &lt;&lt; number;
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- FILE POINTERS -->
+    <section class="section">
+
+        <h2>File Pointers</h2>
+
+        <p>
+            C++ streams maintain positions used for reading and
+            writing data.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Function</th>
+                <th>Purpose</th>
+            </tr>
+
+            <tr>
+                <td>seekg()</td>
+                <td>Moves the input/read position.</td>
+            </tr>
+
+            <tr>
+                <td>seekp()</td>
+                <td>Moves the output/write position.</td>
+            </tr>
+
+            <tr>
+                <td>tellg()</td>
+                <td>Returns the current input position.</td>
+            </tr>
+
+            <tr>
+                <td>tellp()</td>
+                <td>Returns the current output position.</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- SEEK -->
+    <section class="section">
+
+        <h2>Example of seekg()</h2>
+
+        <div class="code-title">
+            C++ Program
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+#include <fstream>
+
+using namespace std;
+
+int main() {
+
+```
+ifstream file("example.txt");
+
+if (!file.is_open()) {
+
+    return 1;
+}
+
+file.seekg(0);
+
+char ch;
+
+file.get(ch);
+
+cout &lt;&lt; ch;
+
+file.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- IMPORTANT -->
+    <section class="section">
+
+        <h2>Important File Handling Points</h2>
+
+        <ul>
+
+            <li>
+                Include <strong>&lt;fstream&gt;</strong> for file streams.
+            </li>
+
+            <li>
+                Use <strong>ofstream</strong> for writing.
+            </li>
+
+            <li>
+                Use <strong>ifstream</strong> for reading.
+            </li>
+
+            <li>
+                Use <strong>fstream</strong> for reading and writing.
+            </li>
+
+            <li>
+                Use <strong>ios::app</strong> to append data.
+            </li>
+
+            <li>
+                Use <strong>getline()</strong> to read complete lines.
+            </li>
+
+            <li>
+                Check <strong>is_open()</strong> before performing operations.
+            </li>
+
+            <li>
+                Close files after completing operations.
+            </li>
+
+            <li>
+                Use <strong>ios::binary</strong> for binary file operations.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+    <section class="section">
+
+        <h2>Common Mistakes</h2>
+
+        <h3>1. Forgetting &lt;fstream&gt;</h3>
+
+        <p>
+            Make sure to include:
+        </p>
+
+        <pre><code>#include &lt;fstream&gt;</code></pre>
+
+
+        <h3>2. Not Checking the File</h3>
+
+        <p>
+            Always check whether the file opened successfully.
+        </p>
+
+        <pre><code>if (!file.is_open()) {
+// Handle error
+```
+
+}</code></pre>
+
+```
+        <h3>3. Forgetting to Close the File</h3>
+
+        <p>
+            Close the file after completing file operations.
+        </p>
+
+        <pre><code>file.close();</code></pre>
+
+
+        <h3>4. Using eof() Incorrectly</h3>
+
+        <p>
+            For line-based reading, prefer:
+        </p>
+
+        <pre><code>while (getline(file, line)) {
+cout &lt;&lt; line;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- COMPLETE EXAMPLE -->
+    <section class="section">
+
+        <h2>Complete File Handling Example</h2>
+
+        <div class="code-title">
+            C++ Program
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+// Write data
+ofstream outFile("student.txt");
+
+if (!outFile.is_open()) {
+
+    cout &lt;&lt; "Unable to create file.";
+
+    return 1;
+}
+
+outFile &lt;&lt; "Name: Krish" &lt;&lt; endl;
+outFile &lt;&lt; "Course: C++" &lt;&lt; endl;
+outFile &lt;&lt; "Topic: File Handling" &lt;&lt; endl;
+
+outFile.close();
+
+
+// Read data
+ifstream inFile("student.txt");
+
+if (!inFile.is_open()) {
+
+    cout &lt;&lt; "Unable to open file.";
+
+    return 1;
+}
+
+string line;
+
+while (getline(inFile, line)) {
+
+    cout &lt;&lt; line &lt;&lt; endl;
+
+}
+
+inFile.close();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- OUTPUT -->
+    <section class="section">
+
+        <h2>Output</h2>
+
+        <div class="code-title">
+            Program Output
+        </div>
+
+        <pre><code>Name: Krish
+```
+
+Course: C++
+Topic: File Handling</code></pre>
+
+```
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section class="section">
+
+        <h2>Quick Summary</h2>
+
+        <table>
+
+            <tr>
+                <th>Concept</th>
+                <th>Meaning</th>
+            </tr>
+
+            <tr>
+                <td>ofstream</td>
+                <td>Write data to a file.</td>
+            </tr>
+
+            <tr>
+                <td>ifstream</td>
+                <td>Read data from a file.</td>
+            </tr>
+
+            <tr>
+                <td>fstream</td>
+                <td>Read and write files.</td>
+            </tr>
+
+            <tr>
+                <td>open()</td>
+                <td>Opens a file.</td>
+            </tr>
+
+            <tr>
+                <td>close()</td>
+                <td>Closes a file.</td>
+            </tr>
+
+            <tr>
+                <td>getline()</td>
+                <td>Reads a complete line.</td>
+            </tr>
+
+            <tr>
+                <td>ios::app</td>
+                <td>Appends data to the end.</td>
+            </tr>
+
+            <tr>
+                <td>ios::binary</td>
+                <td>Opens a file in binary mode.</td>
+            </tr>
+
+            <tr>
+                <td>is_open()</td>
+                <td>Checks whether a file is open.</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- CODE EDITOR -->
+    <section class="section">
+
+        <h2>Try C++ File Handling Code</h2>
+
+        <p>
+            Write your C++ code below:
+        </p>
+
+        <textarea id="codeEditor">#include &lt;iostream&gt;
+```
+
+#include <fstream>
+
+using namespace std;
+
+int main() {
+
+```
+ofstream file("example.txt");
+
+if (!file.is_open()) {
+
+    cout &lt;&lt; "Unable to open file.";
+
+    return 1;
+}
+
+file &lt;&lt; "Hello from Code With Me!";
+
+file.close();
+
+cout &lt;&lt; "Data written successfully.";
+
+return 0;
+```
+
+}</textarea>
+
+```
+        <div class="buttons">
+
+            <button class="run-btn" onclick="runCode()">
+                Run Code
+            </button>
+
+            <button class="clear-btn" onclick="clearCode()">
+                Clear
+            </button>
+
+        </div>
+
+        <div class="output" id="output">
+            Output will appear here...
+        </div>
+
+    </section>
+
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+
+        <a href="cpp-abstraction.html">
+            ← Previous: C++ Abstraction
+        </a>
+
+        <a href="cpp-vector.html">
+            Next: C++ Vectors →
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 Code With Me | Learn Coding
+    </p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+    function runCode() {
+
+        const code =
+            document.getElementById("codeEditor").value;
+
+        const output =
+            document.getElementById("output");
+
+        if (code.trim() === "") {
+
+            output.textContent =
+                "Please enter some C++ code.";
+
+            return;
+        }
+
+        output.textContent =
+            "C++ code submitted successfully!\n\n" +
+            "Note: This editor is a demonstration interface. " +
+            "To actually compile and execute C++ code in the browser, " +
+            "you need a C++ compiler/backend. " +
+            "File operations also require a real C++ runtime environment.";
+
+    }
+
+
+    function clearCode() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("output").textContent =
+            "Output will appear here...";
+
+    }
+
+</script>
+```
+
+</body>
+</html>
