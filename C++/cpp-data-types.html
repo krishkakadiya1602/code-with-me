@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>C++ Data Types | Code With Me</title>
+
+<meta name="description"
+      content="Learn C++ data types including int, float, double, char, bool, string, void, and modifiers with examples.">
+
+<meta name="keywords"
+      content="C++ data types, int, float, double, char, bool, string, void, C++ tutorial">
+
+<meta name="author" content="Code With Me">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #222;
+        line-height: 1.7;
+    }
+
+    nav {
+        background: #111827;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .nav-links a:hover {
+        color: #38bdf8;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    .section {
+        background: white;
+        padding: 30px;
+        margin-bottom: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+        color: #1e3a8a;
+        margin-bottom: 15px;
+    }
+
+    .section h3 {
+        color: #2563eb;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .highlight {
+        background: #eff6ff;
+        border-left: 5px solid #2563eb;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    .code-title {
+        background: #111827;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 8px 8px 0 0;
+        font-weight: bold;
+    }
+
+    pre {
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 20px;
+        overflow-x: auto;
+        border-radius: 0 0 8px 8px;
+        font-family: Consolas, monospace;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    table th {
+        background: #1e3a8a;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background: #f8fafc;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 350px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: Consolas, monospace;
+        font-size: 15px;
+        resize: vertical;
+        background: #111827;
+        color: #f8fafc;
+    }
+
+    .buttons {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+    }
+
+    button {
+        padding: 11px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .run-btn {
+        background: #2563eb;
+        color: white;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+        color: white;
+    }
+
+    .output {
+        margin-top: 15px;
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 15px;
+        min-height: 100px;
+        white-space: pre-wrap;
+        font-family: Consolas, monospace;
+    }
+
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 30px 0 50px;
+    }
+
+    .page-navigation a {
+        text-decoration: none;
+        background: #2563eb;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .page-navigation a:hover {
+        background: #1d4ed8;
+    }
+
+    .note {
+        background: #fff7ed;
+        border-left: 5px solid #f97316;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 30px;
+    }
+
+    @media (max-width: 700px) {
+
+        nav {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .page-navigation {
+            flex-direction: column;
+        }
+
+        .page-navigation a {
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
+
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
+
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
+</ul>
+```
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<header class="hero">
+
+```
+<h1>C++ Data Types</h1>
+
+<p>
+    Learn about different data types used in C++
+</p>
+```
+
+</header>
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="container">
+
+```
+<!-- INTRODUCTION -->
+
+<section class="section">
+
+    <h2>What are Data Types in C++?</h2>
+
+    <p>
+        A data type specifies what kind of value a variable can store.
+        It also tells the compiler how much memory may be required to
+        store that value and how the value should be interpreted.
+    </p>
+
+    <div class="highlight">
+
+        <strong>Example:</strong>
+
+        <br>
+
+        If you want to store a person's age, you can use
+        <code>int</code>.
+
+        <br>
+
+        If you want to store a person's name, you can use
+        <code>string</code>.
+
+    </div>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+
+    int age = 20;
+    string name = "Krish";
+
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- TYPES -->
+
+<section class="section">
+
+    <h2>Types of Data Types in C++</h2>
+
+    <p>
+        C++ data types can generally be divided into several categories.
+    </p>
+
+    <table>
+
+        <tr>
+            <th>Category</th>
+            <th>Examples</th>
+        </tr>
+
+        <tr>
+            <td>Basic / Fundamental</td>
+            <td>int, float, double, char, bool, void</td>
+        </tr>
+
+        <tr>
+            <td>String</td>
+            <td>string</td>
+        </tr>
+
+        <tr>
+            <td>Derived</td>
+            <td>Arrays, Pointers, References</td>
+        </tr>
+
+        <tr>
+            <td>User-defined</td>
+            <td>struct, class, enum, union</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- INTEGER -->
+
+<section class="section">
+
+    <h2>1. int</h2>
+
+    <p>
+        The <code>int</code> data type is used to store whole numbers.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int age = 20;
+    int marks = 85;
+
+    cout &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; marks &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+        <strong>Examples:</strong> -10, 0, 25, 100, 500
+    </div>
+
+</section>
+
+
+<!-- FLOAT -->
+
+<section class="section">
+
+    <h2>2. float</h2>
+
+    <p>
+        The <code>float</code> data type is used to store decimal numbers
+        with single precision.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    float price = 99.50f;
+    float temperature = 36.5f;
+
+    cout &lt;&lt; price &lt;&lt; endl;
+    cout &lt;&lt; temperature &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- DOUBLE -->
+
+<section class="section">
+
+    <h2>3. double</h2>
+
+    <p>
+        The <code>double</code> data type is used to store decimal numbers
+        with more precision than <code>float</code>.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    double pi = 3.14159265359;
+
+    cout &lt;&lt; pi &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Tip:</strong>
+
+        <br>
+
+        Use <code>double</code> when you need more decimal precision.
+
+    </div>
+
+</section>
+
+
+<!-- CHAR -->
+
+<section class="section">
+
+    <h2>4. char</h2>
+
+    <p>
+        The <code>char</code> data type stores a single character.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    char grade = 'A';
+    char symbol = '#';
+
+    cout &lt;&lt; grade &lt;&lt; endl;
+    cout &lt;&lt; symbol &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="note">
+
+        <strong>Important:</strong>
+
+        <br>
+
+        Character values use single quotes:
+
+        <br>
+
+        <code>'A'</code>
+
+        <br><br>
+
+        A string uses double quotes:
+
+        <br>
+
+        <code>"Hello"</code>
+
+    </div>
+
+</section>
+
+
+<!-- BOOL -->
+
+<section class="section">
+
+    <h2>5. bool</h2>
+
+    <p>
+        The <code>bool</code> data type stores one of two values:
+        <code>true</code> or <code>false</code>.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    bool isStudent = true;
+    bool isPassed = false;
+
+    cout &lt;&lt; isStudent &lt;&lt; endl;
+    cout &lt;&lt; isPassed &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+    <p>
+        By default, <code>cout</code> usually displays
+        <code>true</code> as <code>1</code> and
+        <code>false</code> as <code>0</code>.
+    </p>
+
+</section>
+
+
+<!-- STRING -->
+
+<section class="section">
+
+    <h2>6. string</h2>
+
+    <p>
+        The <code>string</code> type is used to store text.
+        It is provided by the C++ standard library.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+
+    string name = "Krish";
+    string city = "Gujarat";
+
+    cout &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; city &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        Remember to include:
+
+        <br><br>
+
+        <code>#include &lt;string&gt;</code>
+
+    </div>
+
+</section>
+
+
+<!-- VOID -->
+
+<section class="section">
+
+    <h2>7. void</h2>
+
+    <p>
+        The <code>void</code> type means that there is no value.
+        It is commonly used with functions that do not return a value.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void message() {
+
+    cout &lt;&lt; "Hello C++!" &lt;&lt; endl;
+}
+
+int main() {
+
+    message();
+
+    return 0;
+}</code></pre>
+
+```
+    <p>
+        Here, the function <code>message()</code> does not return
+        any value, so its return type is <code>void</code>.
+    </p>
+
+</section>
+
+
+<!-- DATA TYPE TABLE -->
+
+<section class="section">
+
+    <h2>C++ Fundamental Data Types</h2>
+
+    <table>
+
+        <tr>
+            <th>Data Type</th>
+            <th>Used For</th>
+            <th>Example</th>
+        </tr>
+
+        <tr>
+            <td>int</td>
+            <td>Whole numbers</td>
+            <td>25</td>
+        </tr>
+
+        <tr>
+            <td>float</td>
+            <td>Decimal numbers</td>
+            <td>10.5f</td>
+        </tr>
+
+        <tr>
+            <td>double</td>
+            <td>More precise decimal numbers</td>
+            <td>10.12345</td>
+        </tr>
+
+        <tr>
+            <td>char</td>
+            <td>Single character</td>
+            <td>'A'</td>
+        </tr>
+
+        <tr>
+            <td>bool</td>
+            <td>True/false values</td>
+            <td>true</td>
+        </tr>
+
+        <tr>
+            <td>string</td>
+            <td>Text</td>
+            <td>"Hello"</td>
+        </tr>
+
+        <tr>
+            <td>void</td>
+            <td>No value</td>
+            <td>void function()</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- MULTIPLE VARIABLES -->
+
+<section class="section">
+
+    <h2>Declaring Multiple Variables</h2>
+
+    <p>
+        You can declare multiple variables of the same data type.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int x = 10, y = 20, z = 30;
+
+    cout &lt;&lt; x &lt;&lt; endl;
+    cout &lt;&lt; y &lt;&lt; endl;
+    cout &lt;&lt; z &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- TYPE SIZE -->
+
+<section class="section">
+
+    <h2>Finding the Size of a Data Type</h2>
+
+    <p>
+        C++ provides the <code>sizeof</code> operator to find the
+        amount of memory occupied by a type or variable.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    cout &lt;&lt; "int: " &lt;&lt; sizeof(int) &lt;&lt; " bytes" &lt;&lt; endl;
+    cout &lt;&lt; "float: " &lt;&lt; sizeof(float) &lt;&lt; " bytes" &lt;&lt; endl;
+    cout &lt;&lt; "double: " &lt;&lt; sizeof(double) &lt;&lt; " bytes" &lt;&lt; endl;
+    cout &lt;&lt; "char: " &lt;&lt; sizeof(char) &lt;&lt; " byte" &lt;&lt; endl;
+    cout &lt;&lt; "bool: " &lt;&lt; sizeof(bool) &lt;&lt; " byte" &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="note">
+
+        <strong>Note:</strong>
+
+        <br>
+
+        The exact size of some C++ data types can depend on the
+        compiler and platform. Use <code>sizeof()</code> when you
+        need to know the size in your current environment.
+
+    </div>
+
+</section>
+
+
+<!-- SIGNED UNSIGNED -->
+
+<section class="section">
+
+    <h2>Signed and Unsigned Types</h2>
+
+    <p>
+        Integer types can also use modifiers such as
+        <code>signed</code> and <code>unsigned</code>.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    signed int temperature = -10;
+    unsigned int students = 50;
+
+    cout &lt;&lt; temperature &lt;&lt; endl;
+    cout &lt;&lt; students &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+    <p>
+        An unsigned integer is intended for non-negative values.
+    </p>
+
+</section>
+
+
+<!-- SHORT LONG -->
+
+<section class="section">
+
+    <h2>short and long</h2>
+
+    <p>
+        C++ also provides integer type modifiers such as
+        <code>short</code> and <code>long</code>.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    short smallNumber = 100;
+    long largeNumber = 1000000;
+
+    cout &lt;&lt; smallNumber &lt;&lt; endl;
+    cout &lt;&lt; largeNumber &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- TYPE CONVERSION -->
+
+<section class="section">
+
+    <h2>Data Type Conversion</h2>
+
+    <p>
+        Sometimes you need to convert one data type into another.
+        C++ supports different forms of type conversion.
+    </p>
+
+    <h3>Example: int to double</h3>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number = 10;
+
+    double result = number;
+
+    cout &lt;&lt; result &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+    <p>
+        Here, the integer value is automatically converted to
+        a <code>double</code>.
+    </p>
+
+</section>
+
+
+<!-- TYPE CASTING -->
+
+<section class="section">
+
+    <h2>Explicit Type Casting</h2>
+
+    <p>
+        You can explicitly convert a value using a cast.
+        One common C++ style is <code>static_cast</code>.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    double price = 99.99;
+
+    int number = static_cast&lt;int&gt;(price);
+
+    cout &lt;&lt; number &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        The decimal part is removed when converting
+        <code>99.99</code> to an integer.
+
+    </div>
+
+</section>
+
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+
+    <h2>Common Mistakes</h2>
+
+    <h3>1. Using double quotes for char</h3>
+```
+
+<pre><code>// Wrong
+char grade = "A";
+
+// Correct
+char grade = 'A';</code></pre>
+
+```
+    <h3>2. Forgetting string header</h3>
+```
+
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;</code></pre>
+
+```
+    <h3>3. Using an unsuitable data type</h3>
+```
+
+<pre><code>// Whole number
+int age = 20;
+
+// Decimal number
+double price = 99.99;
+
+// Character
+char grade = 'A';
+
+// Text
+string name = "Krish";</code></pre>
+
+```
+</section>
+
+
+<!-- IMPORTANT POINTS -->
+
+<section class="section">
+
+    <h2>Important Points to Remember</h2>
+
+    <ul>
+        <li><code>int</code> is commonly used for whole numbers.</li>
+        <li><code>float</code> stores decimal values with single precision.</li>
+        <li><code>double</code> provides more floating-point precision than float.</li>
+        <li><code>char</code> stores a single character.</li>
+        <li><code>bool</code> stores true or false.</li>
+        <li><code>string</code> stores text.</li>
+        <li><code>void</code> represents no value.</li>
+        <li><code>sizeof()</code> can be used to check the size of a type or object.</li>
+        <li>Use single quotes for character literals.</li>
+        <li>Use double quotes for string literals.</li>
+        <li>Use <code>static_cast</code> for clear explicit conversions.</li>
+    </ul>
+
+</section>
+
+
+<!-- COMPLETE EXAMPLE -->
+
+<section class="section">
+
+    <h2>Complete C++ Data Types Example</h2>
+
+    <div class="code-title">
+        Complete Program
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+int main() {
+
+    int age = 20;
+
+    float height = 5.8f;
+
+    double salary = 25000.75;
+
+    char grade = 'A';
+
+    bool isStudent = true;
+
+    string name = "Krish";
+
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Height: " &lt;&lt; height &lt;&lt; endl;
+    cout &lt;&lt; "Salary: " &lt;&lt; salary &lt;&lt; endl;
+    cout &lt;&lt; "Grade: " &lt;&lt; grade &lt;&lt; endl;
+    cout &lt;&lt; "Student: " &lt;&lt; isStudent &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- CODE EDITOR -->
+
+<section class="section">
+
+    <h2>C++ Code Editor</h2>
+
+    <p>
+        Write your C++ code below.
+    </p>
+
+    <textarea id="codeEditor">#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main() {
+
+```
+int age = 20;
+double price = 99.99;
+char grade = 'A';
+bool passed = true;
+string name = "Krish";
+
+cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+cout &lt;&lt; "Price: " &lt;&lt; price &lt;&lt; endl;
+cout &lt;&lt; "Grade: " &lt;&lt; grade &lt;&lt; endl;
+cout &lt;&lt; "Passed: " &lt;&lt; passed &lt;&lt; endl;
+
+return 0;
+```
+
+}</textarea>
+
+```
+    <div class="buttons">
+
+        <button class="run-btn" onclick="runCode()">
+            Run Code
+        </button>
+
+        <button class="clear-btn" onclick="clearCode()">
+            Clear
+        </button>
+
+    </div>
+
+    <div class="output" id="output">
+        Output will appear here...
+    </div>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<div class="page-navigation">
+
+    <a href="cpp-variables.html">
+        ← Previous: C++ Variables
+    </a>
+
+    <a href="cpp-constants.html">
+        Next: C++ Constants →
+    </a>
+
+</div>
+```
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some C++ code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C++ code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C++ code in the browser, " +
+        "you need a C++ compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
