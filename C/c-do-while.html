@@ -1,0 +1,1352 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C do while Loop | Code With Me</title>
+
+    <meta name="description"
+          content="Learn C do while loop with syntax, examples, user input, break, continue, and practical programs.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #1d4ed8;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #111827;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* Inline Code */
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            color: #dc2626;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1d4ed8;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            background: #111827;
+            color: #f8fafc;
+            border: none;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .output-title {
+            margin-top: 25px;
+        }
+
+        #output {
+            background: #000;
+            color: #22c55e;
+            min-height: 120px;
+            padding: 20px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+            margin-top: 10px;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 30px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code<span>WithMe</span>
+        </a>
+
+        <ul>
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <main class="container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+
+            <h1>C do while Loop</h1>
+
+            <p>
+                Learn how to use the do while loop to repeat code in C.
+            </p>
+
+        </div>
+
+
+        <!-- Introduction -->
+        <section>
+
+            <h2>Introduction to do while Loop</h2>
+
+            <p>
+                The <strong>do while loop</strong> in C is a looping
+                statement used to execute a block of code repeatedly.
+            </p>
+
+            <p>
+                Unlike a normal <strong>while loop</strong>, a do while
+                loop executes its code block <strong>at least once</strong>
+                before checking the condition.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Important:</strong>
+
+                <br><br>
+
+                In a do while loop:
+
+                <br><br>
+
+                <strong>1.</strong> The code executes first.
+
+                <br>
+
+                <strong>2.</strong> The condition is checked afterward.
+
+                <br>
+
+                <strong>3.</strong> If the condition is true, the loop runs again.
+
+                <br>
+
+                <strong>4.</strong> If the condition is false, the loop stops.
+
+            </div>
+
+        </section>
+
+
+        <!-- Syntax -->
+        <section>
+
+            <h2>1. Syntax of do while Loop</h2>
+
+            <p>
+                The basic syntax of a do while loop is:
+            </p>
+
+            <pre><code>do {
+    // code to execute
+} while (condition);</code></pre>
+
+            <div class="warning-box">
+
+                <strong>Important:</strong>
+
+                Notice the semicolon <strong>;</strong> after
+                <span class="inline-code">while (condition)</span>.
+
+            </div>
+
+        </section>
+
+
+        <!-- Simple Example -->
+        <section>
+
+            <h2>2. Simple do while Example</h2>
+
+            <p>
+                This program prints numbers from 1 to 5 using a do while loop.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int i = 1;
+
+    do {
+
+        printf("%d\n", i);
+
+        i++;
+
+    } while (i &lt;= 5);
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+3
+4
+5</code></pre>
+
+        </section>
+
+
+        <!-- How it works -->
+        <section>
+
+            <h2>3. How do while Loop Works</h2>
+
+            <p>
+                Consider the following code:
+            </p>
+
+            <pre><code>int i = 1;
+
+do {
+    printf("%d\n", i);
+    i++;
+} while (i &lt;= 5);</code></pre>
+
+            <p>The loop works in this order:</p>
+
+            <ol style="margin-left: 25px;">
+
+                <li>
+                    Variable <strong>i</strong> is initialized to 1.
+                </li>
+
+                <li>
+                    The code inside <strong>do</strong> executes.
+                </li>
+
+                <li>
+                    <strong>i</strong> is increased by 1.
+                </li>
+
+                <li>
+                    The condition <strong>i &lt;= 5</strong> is checked.
+                </li>
+
+                <li>
+                    If the condition is true, the loop executes again.
+                </li>
+
+                <li>
+                    If the condition is false, the loop stops.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- At least once -->
+        <section>
+
+            <h2>4. do while Executes at Least Once</h2>
+
+            <p>
+                This is the most important feature of a do while loop.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int i = 10;
+
+    do {
+
+        printf("Hello");
+
+        i++;
+
+    } while (i &lt; 5);
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Hello</code></pre>
+
+            <div class="success-box">
+
+                Even though <strong>10 &lt; 5</strong> is false,
+                "Hello" is printed once because the code executes before
+                the condition is checked.
+
+            </div>
+
+        </section>
+
+
+        <!-- While vs Do While -->
+        <section>
+
+            <h2>5. while vs do while</h2>
+
+            <table>
+
+                <tr>
+                    <th>Feature</th>
+                    <th>while Loop</th>
+                    <th>do while Loop</th>
+                </tr>
+
+                <tr>
+                    <td>Condition checked</td>
+                    <td>Before execution</td>
+                    <td>After execution</td>
+                </tr>
+
+                <tr>
+                    <td>Minimum executions</td>
+                    <td>0</td>
+                    <td>1</td>
+                </tr>
+
+                <tr>
+                    <td>Semicolon after condition</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                </tr>
+
+                <tr>
+                    <td>Useful for</td>
+                    <td>Condition-based repetition</td>
+                    <td>Menu/input programs</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Increment -->
+        <section>
+
+            <h2>6. do while with Increment</h2>
+
+            <p>
+                We can use the increment operator
+                <span class="inline-code">++</span>
+                to increase the loop variable.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int i = 1;
+
+    do {
+
+        printf("%d ", i);
+
+        i++;
+
+    } while (i &lt;= 10);
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1 2 3 4 5 6 7 8 9 10</code></pre>
+
+        </section>
+
+
+        <!-- Decrement -->
+        <section>
+
+            <h2>7. do while with Decrement</h2>
+
+            <p>
+                The decrement operator
+                <span class="inline-code">--</span>
+                can be used to count backward.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int i = 5;
+
+    do {
+
+        printf("%d\n", i);
+
+        i--;
+
+    } while (i &gt;= 1);
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>5
+4
+3
+2
+1</code></pre>
+
+        </section>
+
+
+        <!-- Sum -->
+        <section>
+
+            <h2>8. Calculate Sum Using do while</h2>
+
+            <p>
+                A do while loop can be used to calculate the sum of numbers.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int i = 1;
+    int sum = 0;
+
+    do {
+
+        sum = sum + i;
+
+        i++;
+
+    } while (i &lt;= 5);
+
+    printf("Sum = %d", sum);
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Sum = 15</code></pre>
+
+        </section>
+
+
+        <!-- Even Numbers -->
+        <section>
+
+            <h2>9. Print Even Numbers</h2>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int i = 2;
+
+    do {
+
+        printf("%d ", i);
+
+        i += 2;
+
+    } while (i &lt;= 10);
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>2 4 6 8 10</code></pre>
+
+        </section>
+
+
+        <!-- Multiplication Table -->
+        <section>
+
+            <h2>10. Multiplication Table Using do while</h2>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number = 5;
+    int i = 1;
+
+    do {
+
+        printf("%d x %d = %d\n",
+               number,
+               i,
+               number * i);
+
+        i++;
+
+    } while (i &lt;= 10);
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50</code></pre>
+
+        </section>
+
+
+        <!-- User Input -->
+        <section>
+
+            <h2>11. do while with User Input</h2>
+
+            <p>
+                The do while loop is commonly used with user input.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number;
+
+    do {
+
+        printf("Enter a positive number: ");
+        scanf("%d", &amp;number);
+
+    } while (number &lt;= 0);
+
+    printf("You entered: %d", number);
+
+    return 0;
+}</code></pre>
+
+            <p>Example:</p>
+
+            <pre><code>Enter a positive number: -5
+Enter a positive number: -2
+Enter a positive number: 10
+You entered: 10</code></pre>
+
+        </section>
+
+
+        <!-- Menu -->
+        <section>
+
+            <h2>12. Menu Using do while</h2>
+
+            <p>
+                One common use of a do while loop is creating a menu
+                that continues until the user chooses an exit option.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int choice;
+
+    do {
+
+        printf("\n1. Start");
+        printf("\n2. Settings");
+        printf("\n3. Exit");
+
+        printf("\nEnter your choice: ");
+        scanf("%d", &amp;choice);
+
+        if (choice == 1) {
+            printf("Starting...");
+        }
+        else if (choice == 2) {
+            printf("Opening Settings...");
+        }
+        else if (choice == 3) {
+            printf("Goodbye!");
+        }
+        else {
+            printf("Invalid choice");
+        }
+
+    } while (choice != 3);
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- break -->
+        <section>
+
+            <h2>13. Using break in do while</h2>
+
+            <p>
+                The <strong>break</strong> statement can immediately stop
+                a do while loop.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int i = 1;
+
+    do {
+
+        if (i == 4) {
+            break;
+        }
+
+        printf("%d\n", i);
+
+        i++;
+
+    } while (i &lt;= 10);
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+3</code></pre>
+
+        </section>
+
+
+        <!-- continue -->
+        <section>
+
+            <h2>14. Using continue in do while</h2>
+
+            <p>
+                The <strong>continue</strong> statement skips the current
+                iteration and continues with the next iteration.
+            </p>
+
+            <div class="warning-box">
+
+                When using <strong>continue</strong> in a do while loop,
+                make sure the loop variable is updated correctly. Otherwise,
+                the loop can become infinite.
+
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int i = 0;
+
+    do {
+
+        i++;
+
+        if (i == 3) {
+            continue;
+        }
+
+        printf("%d\n", i);
+
+    } while (i &lt; 5);
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>1
+2
+4
+5</code></pre>
+
+        </section>
+
+
+        <!-- Infinite Loop -->
+        <section>
+
+            <h2>15. Infinite do while Loop</h2>
+
+            <p>
+                If the condition of a do while loop is always true,
+                the loop will continue indefinitely.
+            </p>
+
+            <pre><code>do {
+    printf("Hello");
+} while (1);</code></pre>
+
+            <div class="warning-box">
+
+                <strong>Warning:</strong>
+
+                This creates an infinite loop. The program will keep running
+                until it is stopped.
+
+            </div>
+
+        </section>
+
+
+        <!-- Common Mistakes -->
+        <section>
+
+            <h2>16. Common Mistakes</h2>
+
+            <ul style="margin-left: 25px;">
+
+                <li>
+                    Forgetting the semicolon after
+                    <strong>while(condition)</strong>.
+                </li>
+
+                <li>
+                    Forgetting to update the loop variable.
+                </li>
+
+                <li>
+                    Creating an infinite loop accidentally.
+                </li>
+
+                <li>
+                    Using an incorrect condition.
+                </li>
+
+            </ul>
+
+            <h3>Correct:</h3>
+
+            <pre><code>do {
+    printf("%d", i);
+    i++;
+} while (i &lt;= 5);</code></pre>
+
+            <h3>Incorrect:</h3>
+
+            <pre><code>do {
+    printf("%d", i);
+    i++;
+} while (i &lt;= 5)</code></pre>
+
+            <p>
+                The semicolon after the while condition is required.
+            </p>
+
+        </section>
+
+
+        <!-- Interactive Editor -->
+        <section>
+
+            <h2>17. Try C do while Loop</h2>
+
+            <p>
+                Write your C code below and click
+                <strong>Run Code</strong>.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include &lt;stdio.h&gt;
+
+int main() {
+
+    int i = 1;
+
+    do {
+
+        printf("%d\n", i);
+
+        i++;
+
+    } while (i &lt;= 5);
+
+    return 0;
+}</textarea>
+
+                <div class="buttons">
+
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <h3 class="output-title">
+                    Output
+                </h3>
+
+                <div id="output">
+                    Click "Run Code" to see the output.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Summary -->
+        <section>
+
+            <h2>Summary</h2>
+
+            <ul style="margin-left: 25px;">
+
+                <li>
+                    A <strong>do while loop</strong> repeatedly executes
+                    a block of code.
+                </li>
+
+                <li>
+                    The code inside the do block executes before the
+                    condition is checked.
+                </li>
+
+                <li>
+                    A do while loop executes at least once.
+                </li>
+
+                <li>
+                    The condition is checked after every iteration.
+                </li>
+
+                <li>
+                    A semicolon is required after
+                    <strong>while(condition)</strong>.
+                </li>
+
+                <li>
+                    <strong>break</strong> can be used to stop the loop.
+                </li>
+
+                <li>
+                    <strong>continue</strong> can skip an iteration.
+                </li>
+
+                <li>
+                    do while loops are useful for menus and
+                    repeated user input.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Previous / Next -->
+        <div class="lesson-navigation">
+
+            <a href="c-while-loop.html">
+                ← Previous: C While Loop
+            </a>
+
+            <a href="c-break-continue.html">
+                Next: C Break & Continue →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+            /*
+             * This is a simple browser demonstration.
+             * A real C compiler is required to execute
+             * arbitrary C programs.
+             */
+
+            let result = "";
+
+            /*
+             * Detect a simple do while loop:
+             *
+             * int i = 1;
+             * do {
+             *     printf("%d\n", i);
+             *     i++;
+             * } while (i <= 5);
+             */
+
+            const startMatch = code.match(
+                /\bint\s+(\w+)\s*=\s*(-?\d+)\s*;/
+            );
+
+            const loopMatch = code.match(
+                /do\s*\{[\s\S]*?\}\s*while\s*\(\s*(\w+)\s*(<=|<|>=|>)\s*(-?\d+)\s*\)\s*;/
+            );
+
+            if (
+                startMatch &&
+                loopMatch &&
+                code.includes("printf")
+            ) {
+
+                const variable =
+                    startMatch[1];
+
+                let current =
+                    parseInt(startMatch[2]);
+
+                const loopVariable =
+                    loopMatch[1];
+
+                const operator =
+                    loopMatch[2];
+
+                const end =
+                    parseInt(loopMatch[3]);
+
+                /*
+                 * Make sure the loop variable is the same.
+                 */
+
+                if (variable !== loopVariable) {
+
+                    output.textContent =
+                        "The loop variable could not be detected correctly.";
+
+                    return;
+                }
+
+                /*
+                 * Detect ++ or --.
+                 */
+
+                let step = 1;
+
+                if (
+                    code.includes(variable + "++") ||
+                    code.includes("++" + variable)
+                ) {
+
+                    step = 1;
+
+                }
+                else if (
+                    code.includes(variable + "--") ||
+                    code.includes("--" + variable)
+                ) {
+
+                    step = -1;
+
+                }
+
+                /*
+                 * Generate output.
+                 */
+
+                let values = [];
+
+                let safety = 0;
+
+                do {
+
+                    values.push(current);
+
+                    current += step;
+
+                    safety++;
+
+                    if (safety > 1000) {
+                        break;
+                    }
+
+                    let condition = false;
+
+                    if (operator === "<") {
+                        condition = current < end;
+                    }
+
+                    else if (operator === "<=") {
+                        condition = current <= end;
+                    }
+
+                    else if (operator === ">") {
+                        condition = current > end;
+                    }
+
+                    else if (operator === ">=") {
+                        condition = current >= end;
+                    }
+
+                    if (!condition) {
+                        break;
+                    }
+
+                } while (true);
+
+                result =
+                    values.join("\n");
+
+            }
+
+            else if (code.includes("printf")) {
+
+                const matches = [];
+
+                const regex =
+                    /printf\s*\(\s*"([^"]*)"/g;
+
+                let match;
+
+                while (
+                    (match = regex.exec(code)) !== null
+                ) {
+
+                    matches.push(
+                        match[1]
+                            .replace(/\\n/g, "\n")
+                            .replace(/\\t/g, "\t")
+                    );
+
+                }
+
+                if (matches.length > 0) {
+
+                    result =
+                        matches.join("\n");
+
+                }
+                else {
+
+                    result =
+                        "C code detected. A real C compiler is required for full execution.";
+
+                }
+
+            }
+
+            else {
+
+                result =
+                    "No printf() statement found. A real C compiler is required to execute this code.";
+
+            }
+
+            output.textContent = result;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output cleared.";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
