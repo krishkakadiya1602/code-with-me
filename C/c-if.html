@@ -1,0 +1,984 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C if Statement | Code With Me</title>
+
+    <meta name="description"
+          content="Learn the C if statement with simple examples, syntax, conditions, and practical programs.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #2563eb;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        .section ul,
+        .section ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* ================= CODE ================= */
+
+        .code-title {
+            background: #111827;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+        }
+
+        pre {
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 20px;
+            overflow-x: auto;
+            border-radius: 0 0 8px 8px;
+            font-family: Consolas, monospace;
+            margin-bottom: 20px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* ================= FLOW ================= */
+
+        .flow-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .flow-item {
+            background: #eff6ff;
+            border: 2px solid #2563eb;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .arrow {
+            font-size: 24px;
+            color: #2563eb;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* ================= EDITOR ================= */
+
+        .editor {
+            margin-top: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 320px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            background: #111827;
+            color: #f8fafc;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .output {
+            margin-top: 15px;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0 50px;
+        }
+
+        .page-navigation a {
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .page-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .page-navigation a {
+                text-align: center;
+            }
+
+            .flow-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code <span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <header class="hero">
+
+        <h1>C if Statement</h1>
+
+        <p>
+            Learn how to use conditions with the if statement in C
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- ================= INTRODUCTION ================= -->
+
+        <section class="section">
+
+            <h2>What is an if Statement in C?</h2>
+
+            <p>
+                The <strong>if statement</strong> is a decision-making
+                statement in C programming.
+            </p>
+
+            <p>
+                It allows a program to execute a block of code only when
+                a specified condition is true.
+            </p>
+
+            <div class="highlight">
+
+                <strong>In simple words:</strong>
+
+                <br><br>
+
+                If a condition is true → execute the code.
+
+                <br>
+
+                If a condition is false → skip the code.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SYNTAX ================= -->
+
+        <section class="section">
+
+            <h2>Syntax of if Statement</h2>
+
+            <div class="code-title">
+                Syntax
+            </div>
+
+            <pre><code>if (condition)
+{
+    // code to execute
+}</code></pre>
+
+            <p>
+                The condition is placed inside parentheses
+                <strong>( )</strong>.
+            </p>
+
+            <p>
+                If the condition evaluates to true, the statements
+                inside the curly braces <strong>{ }</strong> are executed.
+            </p>
+
+        </section>
+
+
+        <!-- ================= FLOW ================= -->
+
+        <section class="section">
+
+            <h2>How if Statement Works</h2>
+
+            <div class="flow-box">
+
+                <div class="flow-item">
+                    Start
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="flow-item">
+                    Check the condition
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="flow-item">
+                    Is the condition true?
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="flow-item">
+                    Execute the code inside if
+                </div>
+
+                <div class="arrow">
+                    ↓
+                </div>
+
+                <div class="flow-item">
+                    Continue the program
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SIMPLE EXAMPLE ================= -->
+
+        <section class="section">
+
+            <h2>Simple if Example</h2>
+
+            <p>
+                In this example, the message is printed only when the
+                condition is true.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int age = 20;
+
+    if (age &gt;= 18)
+    {
+        printf("You are an adult.");
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="highlight">
+
+                <strong>Output:</strong>
+
+                <br>
+
+                You are an adult.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= COMPARISON ================= -->
+
+        <section class="section">
+
+            <h2>Using Comparison Operators</h2>
+
+            <p>
+                The if statement is commonly used with relational
+                operators.
+            </p>
+
+            <div class="table-container">
+
+                <table>
+
+                    <tr>
+                        <th>Operator</th>
+                        <th>Meaning</th>
+                        <th>Example</th>
+                    </tr>
+
+                    <tr>
+                        <td>==</td>
+                        <td>Equal to</td>
+                        <td>age == 18</td>
+                    </tr>
+
+                    <tr>
+                        <td>!=</td>
+                        <td>Not equal to</td>
+                        <td>age != 18</td>
+                    </tr>
+
+                    <tr>
+                        <td>&gt;</td>
+                        <td>Greater than</td>
+                        <td>age &gt; 18</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;</td>
+                        <td>Less than</td>
+                        <td>age &lt; 18</td>
+                    </tr>
+
+                    <tr>
+                        <td>&gt;=</td>
+                        <td>Greater than or equal to</td>
+                        <td>age &gt;= 18</td>
+                    </tr>
+
+                    <tr>
+                        <td>&lt;=</td>
+                        <td>Less than or equal to</td>
+                        <td>age &lt;= 18</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= USER INPUT ================= -->
+
+        <section class="section">
+
+            <h2>if Statement with User Input</h2>
+
+            <p>
+                We can take input from the user and then use an
+                if statement to make a decision.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &amp;number);
+
+    if (number &gt; 0)
+    {
+        printf("The number is positive.");
+    }
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= EVEN ================= -->
+
+        <section class="section">
+
+            <h2>Check if a Number is Even</h2>
+
+            <p>
+                The modulus operator <strong>%</strong> can be used
+                with an if statement to check whether a number is even.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &amp;number);
+
+    if (number % 2 == 0)
+    {
+        printf("The number is even.");
+    }
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= MARKS ================= -->
+
+        <section class="section">
+
+            <h2>Check Passing Marks</h2>
+
+            <p>
+                Here, the program checks whether a student's marks
+                are greater than or equal to 40.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int marks;
+
+    printf("Enter your marks: ");
+    scanf("%d", &amp;marks);
+
+    if (marks &gt;= 40)
+    {
+        printf("You passed.");
+    }
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= MULTIPLE CONDITIONS ================= -->
+
+        <section class="section">
+
+            <h2>Using Multiple Conditions</h2>
+
+            <p>
+                Logical operators can be used to combine multiple
+                conditions inside an if statement.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int age = 25;
+
+    if (age &gt;= 18 &amp;&amp; age &lt;= 60)
+    {
+        printf("Age is between 18 and 60.");
+    }
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= WITHOUT BRACES ================= -->
+
+        <section class="section">
+
+            <h2>if Statement Without Curly Braces</h2>
+
+            <p>
+                If there is only one statement inside an if statement,
+                curly braces can technically be omitted.
+            </p>
+
+            <div class="code-title">
+                Example
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int age = 20;
+
+    if (age &gt;= 18)
+        printf("Adult");
+
+    return 0;
+}</code></pre>
+
+            <div class="highlight">
+
+                <strong>Recommendation:</strong>
+
+                <br>
+
+                For beginners, using curly braces is recommended because
+                it makes the code easier to read and helps prevent mistakes
+                when adding more statements later.
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= IMPORTANT ================= -->
+
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <div class="highlight">
+
+                <p>
+                    The <strong>if</strong> statement is used for
+                    decision making.
+                </p>
+
+                <p>
+                    The condition is written inside parentheses
+                    <strong>( )</strong>.
+                </p>
+
+                <p>
+                    Code inside <strong>{ }</strong> executes when the
+                    condition is true.
+                </p>
+
+                <p>
+                    Relational and logical operators are commonly used
+                    with if statements.
+                </p>
+
+                <p>
+                    C treats a non-zero expression as true and
+                    zero as false.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= COMMON MISTAKES ================= -->
+
+        <section class="section">
+
+            <h2>Common Mistakes</h2>
+
+            <h3>1. Using = instead of ==</h3>
+
+            <p>
+                Remember that <strong>=</strong> is an assignment operator,
+                while <strong>==</strong> checks equality.
+            </p>
+
+            <div class="code-title">
+                Correct
+            </div>
+
+            <pre><code>if (number == 10)
+{
+    printf("Number is 10");
+}</code></pre>
+
+
+            <h3>2. Forgetting the parentheses</h3>
+
+            <p>
+                The condition must be placed inside parentheses.
+            </p>
+
+            <div class="code-title">
+                Correct
+            </div>
+
+            <pre><code>if (age &gt;= 18)
+{
+    printf("Adult");
+}</code></pre>
+
+        </section>
+
+
+        <!-- ================= EDITOR ================= -->
+
+        <section class="section">
+
+            <h2>Try C Code</h2>
+
+            <p>
+                Write your C code below and click the Run button.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include <stdio.h>
+
+int main()
+{
+    int age;
+
+    printf("Enter your age: ");
+    scanf("%d", &age);
+
+    if (age >= 18)
+    {
+        printf("You are an adult.");
+    }
+
+    return 0;
+}</textarea>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="output"
+                    id="output">
+
+                    Output will appear here...
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NAVIGATION ================= -->
+
+        <div class="page-navigation">
+
+            <a href="c-operators.html">
+                ← Previous: C Operators
+            </a>
+
+            <a href="c-if-else.html">
+                Next: C if-else →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me | Learn Coding
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+            if (code.trim() === "") {
+
+                output.textContent =
+                    "Please enter some C code.";
+
+                return;
+            }
+
+            output.textContent =
+                "C code submitted successfully!\n\n" +
+                "Note: To actually execute C code in the browser, " +
+                "you need a C compiler/backend.";
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
