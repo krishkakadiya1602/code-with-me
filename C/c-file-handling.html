@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C File Handling | Code With Me</title>
+
+<meta name="description" content="Learn C File Handling with fopen, fclose, fprintf, fscanf, fgets, fputs, file modes, reading, writing and appending files.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+textarea {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.run-btn:hover {
+    background: #1d4ed8;
+}
+
+.clear-btn:hover {
+    background: #b91c1c;
+}
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.page-navigation a:hover {
+    background: #1d4ed8;
+}
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../index.html#courses">Courses</a></li>
+    <li><a href="../index.html#about">About</a></li>
+</ul>
+```
+
+</nav>
+
+<!-- Hero -->
+
+<header class="hero">
+
+```
+<h1>C File Handling</h1>
+
+<p>
+    Learn how to create, open, read, write and manage files in C.
+</p>
+```
+
+</header>
+
+<main class="container">
+
+```
+<!-- Introduction -->
+<section class="section">
+
+    <h2>What is File Handling in C?</h2>
+
+    <p>
+        File handling in C allows a program to create, open, read,
+        write, append and close files stored on a computer.
+    </p>
+
+    <p>
+        Normally, data stored in variables is lost when a program
+        finishes. Files allow data to be stored permanently.
+    </p>
+
+    <div class="highlight">
+
+        <strong>Important:</strong>
+        C provides file handling functions through the
+        <strong>stdio.h</strong> header file.
+
+    </div>
+
+</section>
+
+
+<!-- Why File Handling -->
+<section class="section">
+
+    <h2>Why Use File Handling?</h2>
+
+    <ul>
+
+        <li>Store data permanently.</li>
+        <li>Read previously stored information.</li>
+        <li>Save program results.</li>
+        <li>Maintain student or employee records.</li>
+        <li>Create configuration files.</li>
+        <li>Store large amounts of data.</li>
+
+    </ul>
+
+</section>
+
+
+<!-- FILE Pointer -->
+<section class="section">
+
+    <h2>FILE Pointer</h2>
+
+    <p>
+        C uses a special pointer called a <strong>FILE pointer</strong>
+        to work with files.
+    </p>
+
+    <div class="code-title">Syntax</div>
+
+    <pre><code>FILE *filePointer;</code></pre>
+
+    <p>
+        The FILE pointer keeps track of the file being accessed.
+    </p>
+
+</section>
+
+
+<!-- fopen -->
+<section class="section">
+
+    <h2>Opening a File using fopen()</h2>
+
+    <p>
+        The <strong>fopen()</strong> function is used to open a file.
+    </p>
+
+    <div class="code-title">Syntax</div>
+
+    <pre><code>FILE *fopen(const char *filename, const char *mode);</code></pre>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+
+file = fopen("data.txt", "r");
+
+if (file == NULL) {
+    printf("Unable to open file.\n");
+    return 1;
+}
+
+printf("File opened successfully.\n");
+
+fclose(file);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- File Modes -->
+<section class="section">
+
+    <h2>File Opening Modes</h2>
+
+    <table>
+
+        <tr>
+            <th>Mode</th>
+            <th>Description</th>
+        </tr>
+
+        <tr>
+            <td>r</td>
+            <td>Open an existing file for reading.</td>
+        </tr>
+
+        <tr>
+            <td>w</td>
+            <td>Open a file for writing. Creates a new file or overwrites an existing file.</td>
+        </tr>
+
+        <tr>
+            <td>a</td>
+            <td>Open a file for appending data at the end.</td>
+        </tr>
+
+        <tr>
+            <td>r+</td>
+            <td>Open an existing file for reading and writing.</td>
+        </tr>
+
+        <tr>
+            <td>w+</td>
+            <td>Open a file for reading and writing. Existing contents may be overwritten.</td>
+        </tr>
+
+        <tr>
+            <td>a+</td>
+            <td>Open a file for reading and appending.</td>
+        </tr>
+
+        <tr>
+            <td>rb</td>
+            <td>Open a binary file for reading.</td>
+        </tr>
+
+        <tr>
+            <td>wb</td>
+            <td>Open a binary file for writing.</td>
+        </tr>
+
+        <tr>
+            <td>ab</td>
+            <td>Open a binary file for appending.</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- fclose -->
+<section class="section">
+
+    <h2>Closing a File using fclose()</h2>
+
+    <p>
+        The <strong>fclose()</strong> function closes an opened file.
+    </p>
+
+    <div class="code-title">Syntax</div>
+
+    <pre><code>fclose(filePointer);</code></pre>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+
+file = fopen("data.txt", "r");
+
+if (file == NULL) {
+    printf("File could not be opened.");
+    return 1;
+}
+
+printf("File opened successfully.");
+
+fclose(file);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        Always close a file after finishing file operations.
+
+    </div>
+
+</section>
+
+
+<!-- Writing -->
+<section class="section">
+
+    <h2>Writing to a File</h2>
+
+    <p>
+        The <strong>w</strong> mode can be used to write data to a file.
+    </p>
+
+    <div class="code-title">Example using fprintf()</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+
+file = fopen("data.txt", "w");
+
+if (file == NULL) {
+    printf("File could not be opened.");
+    return 1;
+}
+
+fprintf(file, "Hello, Code With Me!\n");
+fprintf(file, "Learning C File Handling.");
+
+fclose(file);
+
+printf("Data written successfully.");
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- fputs -->
+<section class="section">
+
+    <h2>Writing using fputs()</h2>
+
+    <p>
+        The <strong>fputs()</strong> function writes a string to a file.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+
+file = fopen("data.txt", "w");
+
+if (file == NULL) {
+    printf("File could not be opened.");
+    return 1;
+}
+
+fputs("Welcome to Code With Me!\n", file);
+fputs("C programming is interesting.", file);
+
+fclose(file);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- fputc -->
+<section class="section">
+
+    <h2>Writing a Character using fputc()</h2>
+
+    <p>
+        The <strong>fputc()</strong> function writes a single character
+        to a file.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+
+file = fopen("data.txt", "w");
+
+if (file == NULL) {
+    return 1;
+}
+
+fputc('A', file);
+fputc('B', file);
+fputc('C', file);
+
+fclose(file);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Reading -->
+<section class="section">
+
+    <h2>Reading from a File</h2>
+
+    <p>
+        The <strong>r</strong> mode is used to open an existing file
+        for reading.
+    </p>
+
+    <div class="code-title">Example using fgets()</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+char text[100];
+
+file = fopen("data.txt", "r");
+
+if (file == NULL) {
+    printf("File could not be opened.");
+    return 1;
+}
+
+while (fgets(text, sizeof(text), file) != NULL) {
+
+    printf("%s", text);
+
+}
+
+fclose(file);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- fgetc -->
+<section class="section">
+
+    <h2>Reading a Character using fgetc()</h2>
+
+    <p>
+        The <strong>fgetc()</strong> function reads one character
+        at a time from a file.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+char ch;
+
+file = fopen("data.txt", "r");
+
+if (file == NULL) {
+    printf("File could not be opened.");
+    return 1;
+}
+
+while ((ch = fgetc(file)) != EOF) {
+
+    printf("%c", ch);
+
+}
+
+fclose(file);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Note:</strong>
+        For general portable code, <strong>fgetc()</strong> should
+        normally be stored in an <strong>int</strong> variable so
+        that the special <strong>EOF</strong> value can be detected
+        correctly.
+
+    </div>
+
+</section>
+
+
+<!-- fscanf -->
+<section class="section">
+
+    <h2>Reading using fscanf()</h2>
+
+    <p>
+        The <strong>fscanf()</strong> function can read formatted data
+        from a file.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+
+int age;
+float marks;
+
+file = fopen("student.txt", "r");
+
+if (file == NULL) {
+    printf("File could not be opened.");
+    return 1;
+}
+
+fscanf(file, "%d %f", &amp;age, &amp;marks);
+
+printf("Age: %d\n", age);
+printf("Marks: %.2f\n", marks);
+
+fclose(file);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Appending -->
+<section class="section">
+
+    <h2>Appending Data to a File</h2>
+
+    <p>
+        The <strong>a</strong> mode is used to add new data at the
+        end of an existing file.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+
+file = fopen("data.txt", "a");
+
+if (file == NULL) {
+    printf("File could not be opened.");
+    return 1;
+}
+
+fprintf(file, "\nThis is new data.");
+
+fclose(file);
+
+printf("Data appended successfully.");
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Important:</strong>
+        Append mode normally preserves the existing contents and
+        adds new data at the end.
+
+    </div>
+
+</section>
+
+
+<!-- Complete Example -->
+<section class="section">
+
+    <h2>Complete File Handling Example</h2>
+
+    <p>
+        The following program writes information to a file and then
+        reads it back.
+    </p>
+
+    <div class="code-title">Complete Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+char text[100];
+
+/* Write to file */
+
+file = fopen("message.txt", "w");
+
+if (file == NULL) {
+    printf("Unable to create file.");
+    return 1;
+}
+
+fprintf(file, "Welcome to Code With Me!\n");
+fprintf(file, "Learning C File Handling.");
+
+fclose(file);
+
+
+/* Read from file */
+
+file = fopen("message.txt", "r");
+
+if (file == NULL) {
+    printf("Unable to open file.");
+    return 1;
+}
+
+printf("File Contents:\n");
+
+while (fgets(text, sizeof(text), file) != NULL) {
+
+    printf("%s", text);
+
+}
+
+fclose(file);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- File Functions -->
+<section class="section">
+
+    <h2>Important File Handling Functions</h2>
+
+    <table>
+
+        <tr>
+            <th>Function</th>
+            <th>Purpose</th>
+        </tr>
+
+        <tr>
+            <td>fopen()</td>
+            <td>Opens a file.</td>
+        </tr>
+
+        <tr>
+            <td>fclose()</td>
+            <td>Closes a file.</td>
+        </tr>
+
+        <tr>
+            <td>fprintf()</td>
+            <td>Writes formatted data to a file.</td>
+        </tr>
+
+        <tr>
+            <td>fscanf()</td>
+            <td>Reads formatted data from a file.</td>
+        </tr>
+
+        <tr>
+            <td>fputs()</td>
+            <td>Writes a string to a file.</td>
+        </tr>
+
+        <tr>
+            <td>fgets()</td>
+            <td>Reads a line/string from a file.</td>
+        </tr>
+
+        <tr>
+            <td>fputc()</td>
+            <td>Writes one character to a file.</td>
+        </tr>
+
+        <tr>
+            <td>fgetc()</td>
+            <td>Reads one character from a file.</td>
+        </tr>
+
+        <tr>
+            <td>feof()</td>
+            <td>Checks the end-of-file indicator.</td>
+        </tr>
+
+        <tr>
+            <td>fseek()</td>
+            <td>Moves the file position indicator.</td>
+        </tr>
+
+        <tr>
+            <td>ftell()</td>
+            <td>Returns the current file position.</td>
+        </tr>
+
+        <tr>
+            <td>rewind()</td>
+            <td>Moves the file position back to the beginning.</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- Error Handling -->
+<section class="section">
+
+    <h2>Checking File Errors</h2>
+
+    <p>
+        Always check whether <strong>fopen()</strong> returned
+        <strong>NULL</strong> before using a file.
+    </p>
+
+    <div class="code-title">Example</div>
+
+    <pre><code>#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+
+file = fopen("data.txt", "r");
+
+if (file == NULL) {
+
+    printf("Error: File could not be opened.");
+
+    return 1;
+}
+
+printf("File opened successfully.");
+
+fclose(file);
+
+return 0;
+```
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- Binary Files -->
+<section class="section">
+
+    <h2>Text Files vs Binary Files</h2>
+
+    <table>
+
+        <tr>
+            <th>Text File</th>
+            <th>Binary File</th>
+        </tr>
+
+        <tr>
+            <td>Stores data as text characters.</td>
+            <td>Stores data as binary bytes.</td>
+        </tr>
+
+        <tr>
+            <td>Easy for humans to read.</td>
+            <td>Usually not directly human-readable.</td>
+        </tr>
+
+        <tr>
+            <td>Examples: .txt, .csv</td>
+            <td>Examples: images, compiled data, binary records.</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- Important Points -->
+<section class="section">
+
+    <h2>Important Points</h2>
+
+    <ul>
+
+        <li>Include <strong>stdio.h</strong> for standard C file functions.</li>
+
+        <li>Use a <strong>FILE *</strong> pointer to work with files.</li>
+
+        <li>Use <strong>fopen()</strong> to open a file.</li>
+
+        <li>Always check whether <strong>fopen()</strong> returned NULL.</li>
+
+        <li>Use <strong>fclose()</strong> after completing file operations.</li>
+
+        <li>Use <strong>w</strong> to write to a file.</li>
+
+        <li>Use <strong>r</strong> to read an existing file.</li>
+
+        <li>Use <strong>a</strong> to append data.</li>
+
+        <li>Use <strong>fprintf()</strong> for formatted output.</li>
+
+        <li>Use <strong>fscanf()</strong> for formatted input.</li>
+
+        <li>Use <strong>fgets()</strong> to read a line of text.</li>
+
+        <li>Use <strong>fputs()</strong> to write a string.</li>
+
+    </ul>
+
+</section>
+
+
+<!-- Common Mistakes -->
+<section class="section">
+
+    <h2>Common Mistakes</h2>
+
+    <h3>1. Forgetting to check NULL</h3>
+
+    <pre><code>FILE *file = fopen("data.txt", "r");
+```
+
+if (file == NULL) {
+printf("File not found.");
+}</code></pre>
+
+```
+    <h3>2. Forgetting fclose()</h3>
+
+    <p>
+        Always close the file when you are finished using it.
+    </p>
+
+    <h3>3. Using the wrong file mode</h3>
+
+    <p>
+        For example, opening an existing file with <strong>w</strong>
+        can overwrite its previous contents.
+    </p>
+
+    <h3>4. Reading a file that does not exist</h3>
+
+    <p>
+        Opening a missing file with <strong>r</strong> normally fails,
+        so always check the returned pointer.
+    </p>
+
+</section>
+
+
+<!-- Editor -->
+<section class="section">
+
+    <h2>C File Handling Code Editor</h2>
+
+    <p>
+        Write your C file-handling program below and click
+        <strong>Run Code</strong>.
+    </p>
+
+    <textarea id="codeEditor">#include &lt;stdio.h&gt;
+```
+
+int main() {
+
+```
+FILE *file;
+
+file = fopen("data.txt", "w");
+
+if (file == NULL) {
+    printf("File could not be opened.");
+    return 1;
+}
+
+fprintf(file, "Hello from Code With Me!");
+
+fclose(file);
+
+printf("Data written successfully.");
+
+return 0;
+```
+
+}</textarea>
+
+```
+    <div class="buttons">
+
+        <button class="run-btn" onclick="runCode()">
+            Run Code
+        </button>
+
+        <button class="clear-btn" onclick="clearCode()">
+            Clear
+        </button>
+
+    </div>
+
+    <div class="output" id="output">
+        Output will appear here...
+    </div>
+
+</section>
+
+
+<!-- Navigation -->
+<div class="page-navigation">
+
+    <a href="c-pointers.html">
+        ← Previous: C Pointers
+    </a>
+
+    <a href="c-preprocessors.html">
+        Next: C Preprocessors →
+    </a>
+
+</div>
+```
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent = "Please enter some C code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C code in the browser, " +
+        "you need a C compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
