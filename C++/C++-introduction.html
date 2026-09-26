@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C++ Introduction | Code With Me</title>
+
+<meta name="description" content="Learn C++ programming from the beginning. Understand what C++ is, its features, uses, first program, syntax and applications.">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* Navbar */
+
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+
+/* Hero */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+
+/* Container */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+
+/* Sections */
+
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    margin-bottom: 12px;
+}
+
+.section ul {
+    margin-left: 25px;
+}
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+
+/* Code */
+
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+
+/* Editor */
+
+textarea {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.run-btn:hover {
+    background: #1d4ed8;
+}
+
+.clear-btn:hover {
+    background: #b91c1c;
+}
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+
+/* Navigation */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.page-navigation a:hover {
+    background: #1d4ed8;
+}
+
+
+/* Footer */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
+
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
+
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
+
+</ul>
+```
+
+</nav>
+
+<!-- Hero -->
+
+<header class="hero">
+
+```
+<h1>C++ Introduction</h1>
+
+<p>
+    Learn the basics of C++ programming from the beginning.
+</p>
+```
+
+</header>
+
+<main class="container">
+
+<!-- What is C++ -->
+
+<section class="section">
+
+```
+<h2>What is C++?</h2>
+
+<p>
+    C++ is a general-purpose programming language used to
+    develop software, applications, games, operating systems,
+    embedded systems and many other types of programs.
+</p>
+
+<p>
+    C++ was developed as an extension of the C programming
+    language. It supports procedural programming as well as
+    object-oriented programming.
+</p>
+
+<div class="highlight">
+
+    <strong>Simple Definition:</strong>
+
+    C++ is a powerful programming language that combines
+    features of C with object-oriented and other modern
+    programming features.
+
+</div>
+```
+
+</section>
+
+<!-- History -->
+
+<section class="section">
+
+```
+<h2>History of C++</h2>
+
+<p>
+    C++ was created by Bjarne Stroustrup at Bell Labs.
+    Development began in the early 1980s.
+</p>
+
+<p>
+    The language was originally developed as an extension
+    of the C language and was initially known as
+    "C with Classes".
+</p>
+
+<p>
+    Over time, it became the programming language known
+    as C++ and gained many features for object-oriented
+    and generic programming.
+</p>
+```
+
+</section>
+
+<!-- Why Learn -->
+
+<section class="section">
+
+```
+<h2>Why Learn C++?</h2>
+
+<p>
+    C++ is still widely used in many areas of software
+    development.
+</p>
+
+<ul>
+
+    <li>Learn object-oriented programming.</li>
+
+    <li>Understand memory and performance concepts.</li>
+
+    <li>Build high-performance applications.</li>
+
+    <li>Learn data structures and algorithms.</li>
+
+    <li>Develop games and game engines.</li>
+
+    <li>Build desktop applications.</li>
+
+    <li>Understand concepts useful for systems programming.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- Features -->
+
+<section class="section">
+
+```
+<h2>Important Features of C++</h2>
+
+<table>
+
+    <tr>
+        <th>Feature</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>Object-Oriented</td>
+        <td>Supports classes, objects, inheritance and polymorphism.</td>
+    </tr>
+
+    <tr>
+        <td>Fast</td>
+        <td>Can be used to build high-performance programs.</td>
+    </tr>
+
+    <tr>
+        <td>Portable</td>
+        <td>C++ programs can be compiled for different platforms.</td>
+    </tr>
+
+    <tr>
+        <td>Compiled</td>
+        <td>C++ source code is normally compiled into machine code.</td>
+    </tr>
+
+    <tr>
+        <td>Generic Programming</td>
+        <td>Supports templates and generic programming.</td>
+    </tr>
+
+    <tr>
+        <td>STL</td>
+        <td>Provides the Standard Template Library with useful containers and algorithms.</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- First Program -->
+
+<section class="section">
+
+```
+<h2>Your First C++ Program</h2>
+
+<p>
+    Let's write a simple C++ program that displays
+    "Hello, World!".
+</p>
+
+<div class="code-title">
+    Hello World Program
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+cout << "Hello, World!";
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Explanation -->
+
+<section class="section">
+
+```
+<h2>Understanding the First Program</h2>
+
+<h3>1. #include &lt;iostream&gt;</h3>
+
+<p>
+    The iostream header provides standard input and output
+    functionality such as <strong>cout</strong> and
+    <strong>cin</strong>.
+</p>
+
+
+<h3>2. using namespace std;</h3>
+
+<p>
+    This allows us to use names from the standard library
+    without writing <strong>std::</strong> every time.
+</p>
+
+
+<h3>3. int main()</h3>
+
+<p>
+    The main() function is the entry point of a normal C++
+    program.
+</p>
+
+
+<h3>4. cout</h3>
+
+<p>
+    The cout object is used to display output on the screen.
+</p>
+
+
+<h3>5. return 0;</h3>
+
+<p>
+    This returns a value from the main function and normally
+    indicates successful program completion.
+</p>
+```
+
+</section>
+
+<!-- Output -->
+
+<section class="section">
+
+```
+<h2>Program Output</h2>
+
+<div class="code-title">
+    Output
+</div>
+
+<pre><code>Hello, World!</code></pre>
+```
+
+</section>
+
+<!-- C++ Syntax -->
+
+<section class="section">
+
+```
+<h2>Basic C++ Syntax</h2>
+
+<p>
+    A simple C++ program generally contains header files,
+    functions, statements and a main function.
+</p>
+
+<div class="code-title">
+    Basic Structure
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+// Your code goes here
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- C++ vs C -->
+
+<section class="section">
+
+```
+<h2>C vs C++</h2>
+
+<table>
+
+    <tr>
+        <th>C</th>
+        <th>C++</th>
+    </tr>
+
+    <tr>
+        <td>Procedural programming language.</td>
+        <td>Supports procedural and object-oriented programming.</td>
+    </tr>
+
+    <tr>
+        <td>Does not have classes and objects as core language features.</td>
+        <td>Supports classes and objects.</td>
+    </tr>
+
+    <tr>
+        <td>Uses printf() for common output.</td>
+        <td>Commonly uses cout for stream output.</td>
+    </tr>
+
+    <tr>
+        <td>Uses scanf() for common input.</td>
+        <td>Commonly uses cin for stream input.</td>
+    </tr>
+
+    <tr>
+        <td>Supports structures.</td>
+        <td>Supports structures and classes.</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- C++ Applications -->
+
+<section class="section">
+
+```
+<h2>Applications of C++</h2>
+
+<p>
+    C++ is used in many different areas of technology.
+</p>
+
+<ul>
+
+    <li>Game development</li>
+
+    <li>Desktop software</li>
+
+    <li>Operating system components</li>
+
+    <li>Embedded systems</li>
+
+    <li>Real-time applications</li>
+
+    <li>Graphics and rendering software</li>
+
+    <li>Browsers and software infrastructure</li>
+
+    <li>High-performance applications</li>
+
+    <li>Competitive programming</li>
+
+    <li>Data structures and algorithms</li>
+
+</ul>
+```
+
+</section>
+
+<!-- C++ Data Types Preview -->
+
+<section class="section">
+
+```
+<h2>C++ Basic Data Types</h2>
+
+<table>
+
+    <tr>
+        <th>Data Type</th>
+        <th>Example</th>
+        <th>Used For</th>
+    </tr>
+
+    <tr>
+        <td>int</td>
+        <td>int age = 20;</td>
+        <td>Integer values</td>
+    </tr>
+
+    <tr>
+        <td>float</td>
+        <td>float price = 10.5f;</td>
+        <td>Decimal values</td>
+    </tr>
+
+    <tr>
+        <td>double</td>
+        <td>double value = 25.55;</td>
+        <td>More precise decimal values</td>
+    </tr>
+
+    <tr>
+        <td>char</td>
+        <td>char grade = 'A';</td>
+        <td>Single character</td>
+    </tr>
+
+    <tr>
+        <td>bool</td>
+        <td>bool isOpen = true;</td>
+        <td>True or false values</td>
+    </tr>
+
+    <tr>
+        <td>string</td>
+        <td>string name = "Krish";</td>
+        <td>Text</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- Input Output -->
+
+<section class="section">
+
+```
+<h2>Input and Output in C++</h2>
+
+<p>
+    C++ commonly uses <strong>cout</strong> for output and
+    <strong>cin</strong> for input.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+int age;
+
+```
+cout &lt;&lt; "Enter your age: ";
+
+cin &gt;&gt; age;
+
+cout &lt;&lt; "Your age is: " &lt;&lt; age;
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- OOP -->
+
+<section class="section">
+
+```
+<h2>C++ and Object-Oriented Programming</h2>
+
+<p>
+    One of the most important parts of C++ is
+    Object-Oriented Programming, also called OOP.
+</p>
+
+<p>
+    OOP allows programs to be organized using classes
+    and objects.
+</p>
+
+<h3>Main OOP Concepts</h3>
+
+<ul>
+
+    <li>Classes</li>
+
+    <li>Objects</li>
+
+    <li>Encapsulation</li>
+
+    <li>Inheritance</li>
+
+    <li>Polymorphism</li>
+
+    <li>Abstraction</li>
+
+</ul>
+
+<div class="highlight">
+
+    These concepts will be explained in detail in later
+    C++ lessons.
+
+</div>
+```
+
+</section>
+
+<!-- Simple Class Preview -->
+
+<section class="section">
+
+```
+<h2>Simple C++ Class Example</h2>
+
+<p>
+    Here is a small preview of how a class looks in C++.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Student
+{
+public:
+
+```
+string name;
+
+void display()
+{
+    cout &lt;&lt; "Student Name: " &lt;&lt; name;
+}
+```
+
+};
+
+int main()
+{
+Student student;
+
+```
+student.name = "Krish";
+
+student.display();
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Advantages -->
+
+<section class="section">
+
+```
+<h2>Advantages of C++</h2>
+
+<ul>
+
+    <li>High performance.</li>
+
+    <li>Supports object-oriented programming.</li>
+
+    <li>Supports generic programming.</li>
+
+    <li>Provides powerful standard libraries.</li>
+
+    <li>Useful for learning data structures and algorithms.</li>
+
+    <li>Used in performance-critical software.</li>
+
+    <li>Supports low-level programming concepts.</li>
+
+    <li>Large ecosystem and long history.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- Important Points -->
+
+<section class="section">
+
+```
+<h2>Important Points to Remember</h2>
+
+<ul>
+
+    <li>C++ is a general-purpose programming language.</li>
+
+    <li>C++ evolved from the C programming language.</li>
+
+    <li>C++ supports object-oriented programming.</li>
+
+    <li>The main() function is the normal entry point of a program.</li>
+
+    <li>cout is commonly used for output.</li>
+
+    <li>cin is commonly used for input.</li>
+
+    <li>Classes and objects are important concepts in C++.</li>
+
+    <li>C++ is widely used for high-performance applications.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- Code Editor -->
+
+<section class="section">
+
+```
+<h2>C++ Code Editor</h2>
+
+<p>
+    Write a simple C++ program below and click
+    <strong>Run Code</strong>.
+</p>
+
+<textarea id="codeEditor">#include <iostream>
+```
+
+using namespace std;
+
+int main()
+{
+cout << "Hello, Code With Me!";
+
+```
+return 0;
+```
+
+}</textarea>
+
+```
+<div class="buttons">
+
+    <button class="run-btn" onclick="runCode()">
+        Run Code
+    </button>
+
+    <button class="clear-btn" onclick="clearCode()">
+        Clear
+    </button>
+
+</div>
+
+<div class="output" id="output">
+    Output will appear here...
+</div>
+```
+
+</section>
+
+<!-- Navigation -->
+
+<div class="page-navigation">
+
+```
+<a href="cpp-installation.html">
+    ← Previous: C++ Installation
+</a>
+
+<a href="cpp-features.html">
+    Next: C++ Features →
+</a>
+```
+
+</div>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some C++ code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C++ code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C++ code in the browser, " +
+        "you need a C++ compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
