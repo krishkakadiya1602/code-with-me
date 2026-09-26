@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C++ While Loop | Code With Me</title>
+
+    <meta name="description"
+        content="Learn C++ while loops with syntax, examples, infinite loops, practical programs and an interactive demonstration.">
+
+    <meta name="keywords"
+        content="C++ while loop, C++ loops, while statement C++, C++ tutorial">
+
+    <meta name="author" content="Code With Me">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #111827;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #1e40af
+            );
+
+            color: white;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            opacity: 0.95;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+
+        /* =========================
+           CONTENT CARD
+        ========================= */
+
+        .content-card {
+            background: white;
+
+            padding: 35px;
+
+            margin-bottom: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.07);
+        }
+
+        .content-card h2 {
+            color: #172554;
+
+            font-size: 30px;
+
+            margin-bottom: 18px;
+        }
+
+        .content-card h3 {
+            color: #1d4ed8;
+
+            font-size: 23px;
+
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .content-card p {
+            color: #475569;
+
+            font-size: 17px;
+
+            margin-bottom: 15px;
+        }
+
+        .content-card ul {
+            margin-left: 25px;
+
+            color: #475569;
+
+            font-size: 17px;
+        }
+
+        .content-card li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #eff6ff;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 18px 20px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+
+            color: #1e3a8a;
+        }
+
+
+        .warning-box {
+            background: #fff7ed;
+
+            border-left: 5px solid #f97316;
+
+            padding: 18px 20px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+
+            color: #9a3412;
+        }
+
+
+        /* =========================
+           CODE
+        ========================= */
+
+        .code-title {
+            background: #1e293b;
+
+            color: white;
+
+            padding: 12px 18px;
+
+            border-radius: 8px 8px 0 0;
+
+            font-weight: bold;
+        }
+
+        pre {
+            background: #0f172a;
+
+            color: #e2e8f0;
+
+            padding: 20px;
+
+            overflow-x: auto;
+
+            border-radius: 0 0 8px 8px;
+
+            margin-bottom: 20px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           OUTPUT
+        ========================= */
+
+        .output {
+            background: #111827;
+
+            color: #22c55e;
+
+            padding: 18px;
+
+            border-radius: 8px;
+
+            font-family: Consolas, monospace;
+
+            margin-bottom: 20px;
+
+            white-space: pre-line;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #dbe3ee;
+
+            padding: 13px;
+
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+
+        /* =========================
+           EDITOR
+        ========================= */
+
+        .editor {
+            background: #0f172a;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            margin-top: 20px;
+        }
+
+        .editor textarea {
+            width: 100%;
+
+            min-height: 300px;
+
+            resize: vertical;
+
+            background: #020617;
+
+            color: #e2e8f0;
+
+            border: 1px solid #334155;
+
+            border-radius: 8px;
+
+            padding: 15px;
+
+            font-family: Consolas, monospace;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .editor-buttons {
+            margin-top: 15px;
+
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .run-btn,
+        .clear-btn {
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+        #output {
+            background: #020617;
+
+            color: #22c55e;
+
+            padding: 15px;
+
+            margin-top: 15px;
+
+            border-radius: 8px;
+
+            min-height: 50px;
+
+            font-family: Consolas, monospace;
+
+            white-space: pre-line;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .page-navigation {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin: 40px 0;
+        }
+
+        .nav-btn {
+            background: #2563eb;
+
+            color: white;
+
+            padding: 14px 25px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 40px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .content-card {
+                padding: 25px 20px;
+            }
+
+            .content-card h2 {
+                font-size: 26px;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+
+            <li>
+                <a href="../index.html#contact">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <h1>C++ While Loop</h1>
+
+        <p>
+            Learn how to repeat code using the C++ while loop.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <div class="container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="content-card">
+
+            <h2>What is a While Loop?</h2>
+
+            <p>
+                A <strong>while loop</strong> is a control structure
+                used to repeatedly execute a block of code while a
+                condition is true.
+            </p>
+
+            <p>
+                The condition is checked before every iteration of
+                the loop.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Simple idea:</strong>
+
+                <br>
+
+                Check condition → Execute code → Update value →
+                Check condition again.
+
+            </div>
+
+        </section>
+
+
+        <!-- SYNTAX -->
+
+        <section class="content-card">
+
+            <h2>While Loop Syntax</h2>
+
+            <p>
+                The basic syntax of a C++ while loop is:
+            </p>
+
+            <div class="code-title">
+                Syntax
+            </div>
+
+            <pre><code>while (condition) {
+
+    // code to execute
+
+}</code></pre>
+
+            <p>
+                The loop continues as long as the condition evaluates
+                to <strong>true</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- SIMPLE EXAMPLE -->
+
+        <section class="content-card">
+
+            <h2>Simple While Loop Example</h2>
+
+            <p>
+                Let's print numbers from 1 to 5 using a while loop.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int i = 1;
+
+    while (i &lt;= 5) {
+
+        cout &lt;&lt; i &lt;&lt; endl;
+
+        i++;
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">1
+2
+3
+4
+5</div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+
+        <section class="content-card">
+
+            <h2>How Does a While Loop Work?</h2>
+
+            <p>
+                Consider the following program:
+            </p>
+
+            <pre><code>int i = 1;
+
+while (i &lt;= 5) {
+
+    cout &lt;&lt; i &lt;&lt; endl;
+
+    i++;
+}</code></pre>
+
+            <p>
+                The execution happens like this:
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>Step</th>
+                    <th>Value of i</th>
+                    <th>Condition</th>
+                    <th>Result</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1 &lt;= 5</td>
+                    <td>Print 1</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2 &lt;= 5</td>
+                    <td>Print 2</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3 &lt;= 5</td>
+                    <td>Print 3</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>4</td>
+                    <td>4 &lt;= 5</td>
+                    <td>Print 4</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5 &lt;= 5</td>
+                    <td>Print 5</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>6</td>
+                    <td>6 &lt;= 5</td>
+                    <td>Stop</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- COUNTDOWN -->
+
+        <section class="content-card">
+
+            <h2>Printing Numbers in Reverse</h2>
+
+            <p>
+                A while loop can also be used to print numbers in
+                descending order.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int i = 5;
+
+    while (i &gt;= 1) {
+
+        cout &lt;&lt; i &lt;&lt; endl;
+
+        i--;
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">5
+4
+3
+2
+1</div>
+
+        </section>
+
+
+        <!-- SUM -->
+
+        <section class="content-card">
+
+            <h2>Example: Sum of Numbers</h2>
+
+            <p>
+                We can use a while loop to calculate the sum of
+                numbers from 1 to 10.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int i = 1;
+    int sum = 0;
+
+    while (i &lt;= 10) {
+
+        sum = sum + i;
+
+        i++;
+    }
+
+    cout &lt;&lt; "Sum = " &lt;&lt; sum;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">Sum = 55</div>
+
+        </section>
+
+
+        <!-- EVEN NUMBERS -->
+
+        <section class="content-card">
+
+            <h2>Example: Print Even Numbers</h2>
+
+            <p>
+                A while loop can be used to print even numbers.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int i = 2;
+
+    while (i &lt;= 10) {
+
+        cout &lt;&lt; i &lt;&lt; endl;
+
+        i = i + 2;
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">2
+4
+6
+8
+10</div>
+
+        </section>
+
+
+        <!-- USER INPUT -->
+
+        <section class="content-card">
+
+            <h2>While Loop with User Input</h2>
+
+            <p>
+                A while loop can continue running based on user input.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number;
+
+    cout &lt;&lt; "Enter a number: ";
+    cin &gt;&gt; number;
+
+    while (number &gt; 0) {
+
+        cout &lt;&lt; number &lt;&lt; endl;
+
+        number--;
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Example Output</h3>
+
+            <div class="output">Enter a number: 5
+5
+4
+3
+2
+1</div>
+
+        </section>
+
+
+        <!-- MULTIPLICATION TABLE -->
+
+        <section class="content-card">
+
+            <h2>Example: Multiplication Table</h2>
+
+            <p>
+                A while loop can be used to generate a multiplication
+                table.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number;
+    int i = 1;
+
+    cout &lt;&lt; "Enter a number: ";
+    cin &gt;&gt; number;
+
+    while (i &lt;= 10) {
+
+        cout &lt;&lt; number
+             &lt;&lt; " x "
+             &lt;&lt; i
+             &lt;&lt; " = "
+             &lt;&lt; number * i
+             &lt;&lt; endl;
+
+        i++;
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Example Output</h3>
+
+            <div class="output">Enter a number: 5
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50</div>
+
+        </section>
+
+
+        <!-- INFINITE LOOP -->
+
+        <section class="content-card">
+
+            <h2>Infinite While Loop</h2>
+
+            <p>
+                If the condition of a while loop never becomes false,
+                the loop can continue indefinitely.
+            </p>
+
+            <pre><code>int i = 1;
+
+while (i &lt;= 5) {
+
+    cout &lt;&lt; i;
+
+}</code></pre>
+
+            <div class="warning-box">
+
+                <strong>Warning:</strong>
+                In the example above, <strong>i</strong> is never
+                changed, so the condition remains true. This can
+                create an infinite loop.
+
+            </div>
+
+            <p>
+                A common solution is to update the loop variable:
+            </p>
+
+            <pre><code>i++;</code></pre>
+
+        </section>
+
+
+        <!-- BREAK -->
+
+        <section class="content-card">
+
+            <h2>While Loop with break</h2>
+
+            <p>
+                The <strong>break</strong> statement can immediately
+                stop a while loop.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int i = 1;
+
+    while (i &lt;= 10) {
+
+        if (i == 6) {
+            break;
+        }
+
+        cout &lt;&lt; i &lt;&lt; endl;
+
+        i++;
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">1
+2
+3
+4
+5</div>
+
+        </section>
+
+
+        <!-- CONTINUE -->
+
+        <section class="content-card">
+
+            <h2>While Loop with continue</h2>
+
+            <p>
+                The <strong>continue</strong> statement skips the
+                current iteration and continues with the next one.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int i = 0;
+
+    while (i &lt; 10) {
+
+        i++;
+
+        if (i == 5) {
+            continue;
+        }
+
+        cout &lt;&lt; i &lt;&lt; endl;
+    }
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">1
+2
+3
+4
+6
+7
+8
+9
+10</div>
+
+        </section>
+
+
+        <!-- WHILE VS FOR -->
+
+        <section class="content-card">
+
+            <h2>While Loop vs For Loop</h2>
+
+            <table>
+
+                <tr>
+                    <th>While Loop</th>
+                    <th>For Loop</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Useful when the number of iterations is not
+                        always known.
+                    </td>
+
+                    <td>
+                        Useful when the number of iterations is known.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Initialization is usually written before
+                        the loop.
+                    </td>
+
+                    <td>
+                        Initialization is usually inside the loop.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Update is normally written inside the loop.
+                    </td>
+
+                    <td>
+                        Update is usually written in the loop header.
+                    </td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- PRACTICAL PROGRAM -->
+
+        <section class="content-card">
+
+            <h2>Practical Example: Password Attempts</h2>
+
+            <p>
+                A while loop can be used to repeat an action until
+                a condition is satisfied.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int password;
+    int attempts = 0;
+
+    while (attempts &lt; 3) {
+
+        cout &lt;&lt; "Enter password: ";
+        cin &gt;&gt; password;
+
+        if (password == 1234) {
+
+            cout &lt;&lt; "Login successful!";
+            break;
+        }
+
+        cout &lt;&lt; "Incorrect password." &lt;&lt; endl;
+
+        attempts++;
+    }
+
+    if (attempts == 3) {
+        cout &lt;&lt; "Too many attempts.";
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="warning-box">
+
+                This is only a basic programming example. Real
+                applications should not store passwords directly in
+                source code.
+
+            </div>
+
+        </section>
+
+
+        <!-- IMPORTANT POINTS -->
+
+        <section class="content-card">
+
+            <h2>Important Points About While Loops</h2>
+
+            <ul>
+
+                <li>
+                    A while loop checks the condition before executing
+                    the loop body.
+                </li>
+
+                <li>
+                    If the condition is false initially, the loop
+                    may execute zero times.
+                </li>
+
+                <li>
+                    The loop variable should normally be updated.
+                </li>
+
+                <li>
+                    Forgetting to update the variable can create an
+                    infinite loop.
+                </li>
+
+                <li>
+                    <strong>break</strong> can terminate the loop.
+                </li>
+
+                <li>
+                    <strong>continue</strong> can skip an iteration.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERACTIVE EDITOR -->
+
+        <section class="content-card">
+
+            <h2>Try C++ While Loop</h2>
+
+            <p>
+                Try this while-loop example in the editor below.
+                The browser editor provides a demonstration of the
+                expected output.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="code">#include <iostream>
+using namespace std;
+
+int main() {
+
+    int i = 1;
+
+    while (i <= 5) {
+
+        cout << i << endl;
+
+        i++;
+    }
+
+    return 0;
+}</textarea>
+
+
+                <div class="editor-buttons">
+
+                    <button
+                        class="run-btn"
+                        onclick="runCode()">
+
+                        Run Code
+
+                    </button>
+
+
+                    <button
+                        class="clear-btn"
+                        onclick="clearCode()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+
+
+            <div class="warning-box">
+
+                <strong>Note:</strong>
+                This is a browser demonstration and does not compile
+                arbitrary C++ code. A real C++ compiler is required
+                for full C++ execution.
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="content-card">
+
+            <h2>C++ While Loop - Summary</h2>
+
+            <ul>
+
+                <li>
+                    The <strong>while</strong> loop repeats code while
+                    a condition is true.
+                </li>
+
+                <li>
+                    The condition is checked before every iteration.
+                </li>
+
+                <li>
+                    A loop variable should normally be updated.
+                </li>
+
+                <li>
+                    <strong>break</strong> stops the loop.
+                </li>
+
+                <li>
+                    <strong>continue</strong> skips the current
+                    iteration.
+                </li>
+
+                <li>
+                    While loops are useful when the number of
+                    iterations depends on a condition.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="page-navigation">
+
+            <a
+                href="./cpp-switch.html"
+                class="nav-btn">
+
+                ← Previous: Switch
+
+            </a>
+
+
+            <a
+                href="./cpp-do-while.html"
+                class="nav-btn">
+
+                Next: Do While →
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("code").value;
+
+            const output =
+                document.getElementById("output");
+
+
+            let result = "";
+
+
+            /*
+             * Browser demonstration.
+             * This does not compile arbitrary C++.
+             */
+
+            if (
+                code.includes("i = 1") &&
+                code.includes("i <= 5") &&
+                code.includes("i++")
+            ) {
+
+                result =
+                    "1\n" +
+                    "2\n" +
+                    "3\n" +
+                    "4\n" +
+                    "5";
+
+            }
+
+            else if (
+                code.includes("i = 5") &&
+                code.includes("i >= 1") &&
+                code.includes("i--")
+            ) {
+
+                result =
+                    "5\n" +
+                    "4\n" +
+                    "3\n" +
+                    "2\n" +
+                    "1";
+
+            }
+
+            else if (
+                code.includes("sum = sum + i") &&
+                code.includes("i <= 10")
+            ) {
+
+                result =
+                    "Sum = 55";
+
+            }
+
+            else {
+
+                result =
+                    "Demo Output:\n\n" +
+                    "This browser editor demonstrates a C++ while loop.\n" +
+                    "For full C++ execution, use a C++ compiler.";
+
+            }
+
+
+            output.textContent = result;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("code").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
