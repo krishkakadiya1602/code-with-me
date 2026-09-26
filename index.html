@@ -1,803 +1,805 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+```
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Code With Me | Learn Coding</title>
+<title>Code With Me | Learn Coding</title>
 
-    <meta name="description"
-        content="Learn HTML, CSS, JavaScript, Python, C and C++ with simple coding tutorials and examples">
+<meta name="description"
+    content="Learn HTML, CSS, JavaScript, Python, C and C++ with simple coding tutorials and examples">
 
-    <meta name="keywords"
-        content="HTML, CSS, JavaScript, Python, C, C++, coding, programming, web development">
+<meta name="keywords"
+    content="HTML, CSS, JavaScript, Python, C, C++, coding, programming, web development">
 
-    <meta name="author" content="Code With Me">
+<meta name="author" content="Code With Me">
 
-    <!-- Devicon - Programming Language Logos -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<!-- Devicon - Programming Language Logos -->
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
 
-    <style>
+<style>
 
-        /* =========================
-           GLOBAL
-        ========================= */
+    /* =========================
+       GLOBAL
+    ========================= */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f7fb;
+        color: #111827;
+        line-height: 1.6;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+        background: #111827;
+        height: 70px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 7%;
+
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 26px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .logo span {
+        color: #3b82f6;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #3b82f6;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+        min-height: 420px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        padding: 60px 20px;
+
+        background: linear-gradient(
+            135deg,
+            #eaf2ff,
+            #f8fbff
+        );
+    }
+
+    .hero-content {
+        max-width: 800px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: #111827;
+    }
+
+    .hero h1 span {
+        color: #2563eb;
+    }
+
+    .hero p {
+        font-size: 19px;
+        color: #64748b;
+        margin-bottom: 30px;
+    }
+
+    .hero-btn {
+        display: inline-block;
+
+        background: #2563eb;
+        color: white;
+
+        padding: 13px 25px;
+
+        border-radius: 7px;
+
+        font-weight: bold;
+
+        transition: 0.3s;
+    }
+
+    .hero-btn:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+    }
+
+
+    /* =========================
+       COURSES
+    ========================= */
+
+    .courses-section {
+        padding: 70px 7%;
+        text-align: center;
+    }
+
+    .courses-section h2 {
+        font-size: 44px;
+        margin-bottom: 15px;
+        color: #172554;
+    }
+
+    .courses-subtitle {
+        color: #64748b;
+        font-size: 18px;
+        margin-bottom: 50px;
+    }
+
+    .course-container {
+        display: grid;
+
+        grid-template-columns: repeat(6, 1fr);
+
+        gap: 30px;
+
+        max-width: 1650px;
+
+        margin: auto;
+    }
+
+
+    /* =========================
+       COURSE CARD
+    ========================= */
+
+    .course-card {
+        background: white;
+
+        border-radius: 15px;
+
+        padding: 40px 25px;
+
+        min-height: 320px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+        transition: 0.3s;
+    }
+
+    .course-card:hover {
+        transform: translateY(-8px);
+
+        box-shadow:
+            0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+
+
+    /* =========================
+       LANGUAGE LOGOS
+    ========================= */
+
+    .course-logo {
+        width: 75px;
+        height: 75px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-bottom: 18px;
+
+        font-size: 70px;
+    }
+
+
+    /* HTML Logo */
+
+    .html-logo {
+        color: #e34f26;
+    }
+
+
+    /* CSS Logo */
+
+    .css-logo {
+        color: #1572b6;
+    }
+
+
+    /* JavaScript Logo */
+
+    .javascript-logo {
+        color: #f7df1e;
+    }
+
+
+    /* Python Logo */
+
+    .python-logo {
+        color: #3776ab;
+    }
+
+
+    /* C Logo */
+
+    .c-logo {
+        color: #A8B9CC;
+    }
+
+
+    /* C++ Logo */
+
+    .cpp-logo {
+        color: #00599C;
+    }
+
+
+    /* =========================
+       COURSE TITLE
+    ========================= */
+
+    .course-card h3 {
+        font-size: 30px;
+
+        margin-bottom: 15px;
+
+        color: #111827;
+    }
+
+    .course-card p {
+        color: #64748b;
+
+        font-size: 17px;
+
+        line-height: 1.8;
+
+        margin-bottom: 25px;
+
+        max-width: 300px;
+    }
+
+
+    /* =========================
+       COURSE BUTTON
+    ========================= */
+
+    .course-btn {
+        display: inline-block;
+
+        background: #2563eb;
+
+        color: white;
+
+        padding: 13px 24px;
+
+        border-radius: 7px;
+
+        font-size: 16px;
+
+        font-weight: bold;
+
+        transition: 0.3s;
+
+        margin-top: auto;
+    }
+
+    .course-btn:hover {
+        background: #1d4ed8;
+
+        transform: translateY(-2px);
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-section {
+        background: white;
+
+        padding: 70px 7%;
+
+        text-align: center;
+    }
+
+    .about-section h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+        color: #172554;
+    }
+
+    .about-section p {
+        max-width: 800px;
+
+        margin: auto;
+
+        color: #64748b;
+
+        font-size: 18px;
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-section {
+        padding: 70px 7%;
+
+        text-align: center;
+
+        background: #f4f7fb;
+    }
+
+    .contact-section h2 {
+        font-size: 40px;
+
+        margin-bottom: 20px;
+
+        color: #172554;
+    }
+
+    .contact-section p {
+        color: #64748b;
+
+        font-size: 18px;
+
+        margin: 8px 0;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        background: #111827;
+
+        color: white;
+
+        text-align: center;
+
+        padding: 25px;
+    }
+
+    footer p {
+        font-size: 15px;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    /* Laptop */
+
+    @media (max-width: 1500px) {
+
+        .course-container {
+            grid-template-columns: repeat(3, 1fr);
         }
 
-        html {
-            scroll-behavior: smooth;
+    }
+
+
+    /* Tablet */
+
+    @media (max-width: 900px) {
+
+        .course-container {
+            grid-template-columns: repeat(2, 1fr);
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f7fb;
-            color: #111827;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-        }
+    }
 
 
-        /* =========================
-           NAVBAR
-        ========================= */
+    /* Mobile */
+
+    @media (max-width: 700px) {
 
         nav {
-            background: #111827;
-            height: 70px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 7%;
-
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-            color: white;
-        }
-
-        .logo span {
-            color: #3b82f6;
+            padding: 0 20px;
         }
 
         .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
+            gap: 12px;
         }
 
         .nav-links a {
-            color: white;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #3b82f6;
-        }
-
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 420px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            padding: 60px 20px;
-
-            background: linear-gradient(
-                135deg,
-                #eaf2ff,
-                #f8fbff
-            );
-        }
-
-        .hero-content {
-            max-width: 800px;
+            font-size: 14px;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #111827;
-        }
-
-        .hero h1 span {
-            color: #2563eb;
-        }
-
-        .hero p {
-            font-size: 19px;
-            color: #64748b;
-            margin-bottom: 30px;
-        }
-
-        .hero-btn {
-            display: inline-block;
-
-            background: #2563eb;
-            color: white;
-
-            padding: 13px 25px;
-
-            border-radius: 7px;
-
-            font-weight: bold;
-
-            transition: 0.3s;
-        }
-
-        .hero-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-
-
-        /* =========================
-           COURSES
-        ========================= */
-
-        .courses-section {
-            padding: 70px 7%;
-            text-align: center;
+            font-size: 36px;
         }
 
         .courses-section h2 {
-            font-size: 44px;
-            margin-bottom: 15px;
-            color: #172554;
-        }
-
-        .courses-subtitle {
-            color: #64748b;
-            font-size: 18px;
-            margin-bottom: 50px;
+            font-size: 34px;
         }
 
         .course-container {
-            display: grid;
-
-            /* Changed from 5 to 6 columns */
-            grid-template-columns: repeat(6, 1fr);
-
-            gap: 30px;
-
-            max-width: 1650px;
-
-            margin: auto;
+            grid-template-columns: 1fr;
         }
-
-
-        /* =========================
-           COURSE CARD
-        ========================= */
 
         .course-card {
-            background: white;
-
-            border-radius: 15px;
-
-            padding: 40px 25px;
-
-            min-height: 320px;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-
-            transition: 0.3s;
-        }
-
-        .course-card:hover {
-            transform: translateY(-8px);
-
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.12);
-        }
-
-
-        /* =========================
-           LANGUAGE LOGOS
-        ========================= */
-
-        .course-logo {
-            width: 75px;
-            height: 75px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin-bottom: 18px;
-
-            font-size: 70px;
-        }
-
-
-        /* HTML Logo */
-
-        .html-logo {
-            color: #e34f26;
-        }
-
-
-        /* CSS Logo */
-
-        .css-logo {
-            color: #1572b6;
-        }
-
-
-        /* JavaScript Logo */
-
-        .javascript-logo {
-            color: #f7df1e;
-        }
-
-
-        /* Python Logo */
-
-        .python-logo {
-            color: #3776ab;
-        }
-
-
-        /* C Logo */
-
-        .c-logo {
-            color: #A8B9CC;
-        }
-
-
-        /* C++ Logo */
-
-        .cpp-logo {
-            color: #00599C;
-        }
-
-
-        /* =========================
-           COURSE TITLE
-        ========================= */
-
-        .course-card h3 {
-            font-size: 30px;
-
-            margin-bottom: 15px;
-
-            color: #111827;
-        }
-
-        .course-card p {
-            color: #64748b;
-
-            font-size: 17px;
-
-            line-height: 1.8;
-
-            margin-bottom: 25px;
-
-            max-width: 300px;
-        }
-
-
-        /* =========================
-           COURSE BUTTON
-        ========================= */
-
-        .course-btn {
-            display: inline-block;
-
-            background: #2563eb;
-
-            color: white;
-
-            padding: 13px 24px;
-
-            border-radius: 7px;
-
-            font-size: 16px;
-
-            font-weight: bold;
-
-            transition: 0.3s;
-
-            margin-top: auto;
-        }
-
-        .course-btn:hover {
-            background: #1d4ed8;
-
-            transform: translateY(-2px);
-        }
-
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about-section {
-            background: white;
-
-            padding: 70px 7%;
-
-            text-align: center;
-        }
-
-        .about-section h2 {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: #172554;
-        }
-
-        .about-section p {
-            max-width: 800px;
-
+            max-width: 450px;
+            width: 100%;
             margin: auto;
-
-            color: #64748b;
-
-            font-size: 18px;
         }
 
+    }
 
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact-section {
-            padding: 70px 7%;
-
-            text-align: center;
-
-            background: #f4f7fb;
-        }
-
-        .contact-section h2 {
-            font-size: 40px;
-
-            margin-bottom: 20px;
-
-            color: #172554;
-        }
-
-        .contact-section p {
-            color: #64748b;
-
-            font-size: 18px;
-
-            margin: 8px 0;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #111827;
-
-            color: white;
-
-            text-align: center;
-
-            padding: 25px;
-        }
-
-        footer p {
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        /* Laptop */
-
-        @media (max-width: 1500px) {
-
-            .course-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-        }
-
-
-        /* Tablet */
-
-        @media (max-width: 900px) {
-
-            .course-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-        }
-
-
-        /* Mobile */
-
-        @media (max-width: 700px) {
-
-            nav {
-                padding: 0 20px;
-            }
-
-            .nav-links {
-                gap: 12px;
-            }
-
-            .nav-links a {
-                font-size: 14px;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .courses-section h2 {
-                font-size: 34px;
-            }
-
-            .course-container {
-                grid-template-columns: 1fr;
-            }
-
-            .course-card {
-                max-width: 450px;
-                width: 100%;
-                margin: auto;
-            }
-
-        }
-
-    </style>
+</style>
+```
 
 </head>
 
-
 <body>
 
+```
+<!-- =========================
+     NAVBAR
+========================= -->
 
-    <!-- =========================
-         NAVBAR
-    ========================= -->
+<nav>
 
-    <nav>
+    <div class="logo">
+        Code<span>WithMe</span>
+    </div>
 
-        <div class="logo">
-            Code<span>WithMe</span>
-        </div>
+    <ul class="nav-links">
 
-        <ul class="nav-links">
+        <li>
+            <a href="#home">Home</a>
+        </li>
 
-            <li>
-                <a href="#home">Home</a>
-            </li>
+        <li>
+            <a href="#courses">Courses</a>
+        </li>
 
-            <li>
-                <a href="#courses">Courses</a>
-            </li>
+        <li>
+            <a href="#about">About</a>
+        </li>
 
-            <li>
-                <a href="#about">About</a>
-            </li>
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
 
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
+    </ul>
 
-        </ul>
-
-    </nav>
+</nav>
 
 
 
-    <!-- =========================
-         HERO
-    ========================= -->
+<!-- =========================
+     HERO
+========================= -->
 
-    <section id="home" class="hero">
+<section id="home" class="hero">
 
-        <div class="hero-content">
+    <div class="hero-content">
 
-            <h1>
-                Learn Coding With
-                <span>Code With Me</span>
-            </h1>
+        <h1>
+            Learn Coding With
+            <span>Code With Me</span>
+        </h1>
+
+        <p>
+            Learn HTML, CSS, JavaScript, Python, C and C++
+            with simple tutorials and practical examples.
+        </p>
+
+        <a href="#courses" class="hero-btn">
+            Explore Courses
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     COURSES
+========================= -->
+
+<section id="courses" class="courses-section">
+
+    <h2>Our Courses</h2>
+
+    <p class="courses-subtitle">
+        Choose a programming course and start learning step by step.
+    </p>
+
+
+    <div class="course-container">
+
+
+        <!-- =========================
+             HTML COURSE
+        ========================= -->
+
+        <div class="course-card">
+
+            <div class="course-logo html-logo">
+                <i class="devicon-html5-plain"></i>
+            </div>
+
+            <h3>HTML</h3>
 
             <p>
-                Learn HTML, CSS, JavaScript, Python, C and C++
-                with simple tutorials and practical examples.
+                Learn HTML from basic tags to forms,
+                tables, multimedia and projects.
             </p>
 
-            <a href="#courses" class="hero-btn">
-                Explore Courses
+            <a
+                href="./html/html-introduction.html"
+                class="course-btn">
+
+                Start HTML Course
+
             </a>
 
         </div>
 
-    </section>
 
 
+        <!-- =========================
+             CSS COURSE
+        ========================= -->
 
-    <!-- =========================
-         COURSES
-    ========================= -->
+        <div class="course-card">
 
-    <section id="courses" class="courses-section">
-
-        <h2>Our Courses</h2>
-
-        <p class="courses-subtitle">
-            Choose a programming course and start learning step by step.
-        </p>
-
-
-        <div class="course-container">
-
-
-            <!-- =========================
-                 HTML COURSE
-            ========================= -->
-
-            <div class="course-card">
-
-                <div class="course-logo html-logo">
-                    <i class="devicon-html5-plain"></i>
-                </div>
-
-                <h3>HTML</h3>
-
-                <p>
-                    Learn HTML from basic tags to forms,
-                    tables, multimedia and projects.
-                </p>
-
-                <a
-                    href="./html/html-introduction.html"
-                    class="course-btn">
-
-                    Start HTML Course
-
-                </a>
-
+            <div class="course-logo css-logo">
+                <i class="devicon-css3-plain"></i>
             </div>
 
+            <h3>CSS</h3>
 
+            <p>
+                Learn CSS styling, colors, layouts,
+                flexbox, grid and responsive design.
+            </p>
 
-            <!-- =========================
-                 CSS COURSE
-            ========================= -->
+            <a
+                href="./css/css-introduction.html"
+                class="course-btn">
 
-            <div class="course-card">
+                Start CSS Course
 
-                <div class="course-logo css-logo">
-                    <i class="devicon-css3-plain"></i>
-                </div>
-
-                <h3>CSS</h3>
-
-                <p>
-                    Learn CSS styling, colors, layouts,
-                    flexbox, grid and responsive design.
-                </p>
-
-                <a
-                    href="./css/css-introduction.html"
-                    class="course-btn">
-
-                    Start CSS Course
-
-                </a>
-
-            </div>
-
-
-
-            <!-- =========================
-                 JAVASCRIPT COURSE
-            ========================= -->
-
-            <div class="course-card">
-
-                <div class="course-logo javascript-logo">
-                    <i class="devicon-javascript-plain"></i>
-                </div>
-
-                <h3>JavaScript</h3>
-
-                <p>
-                    Learn JavaScript fundamentals,
-                    functions, arrays, DOM and projects.
-                </p>
-
-                <a
-                    href="./javascript/javascript-introduction.html"
-                    class="course-btn">
-
-                    Start JavaScript Course
-
-                </a>
-
-            </div>
-
-
-
-            <!-- =========================
-                 PYTHON COURSE
-            ========================= -->
-
-            <div class="course-card">
-
-                <div class="course-logo python-logo">
-                    <i class="devicon-python-plain"></i>
-                </div>
-
-                <h3>Python</h3>
-
-                <p>
-                    Learn Python from basics to functions,
-                    loops, classes, modules and projects.
-                </p>
-
-                <a
-                    href="./python/python-introduction.html"
-                    class="course-btn">
-
-                    Start Python Course
-
-                </a>
-
-            </div>
-
-
-
-            <!-- =========================
-                 C PROGRAMMING COURSE
-            ========================= -->
-
-            <div class="course-card">
-
-                <div class="course-logo c-logo">
-                    <i class="devicon-c-plain"></i>
-                </div>
-
-                <h3>C Programming</h3>
-
-                <p>
-                    Learn C programming from basic syntax
-                    to variables, loops, functions, arrays,
-                    pointers and projects.
-                </p>
-
-                <a
-                    href="./c/c-introduction.html"
-                    class="course-btn">
-
-                    Start C Course
-
-                </a>
-
-            </div>
-
-
-
-            <!-- =========================
-                 C++ PROGRAMMING COURSE
-            ========================= -->
-
-            <div class="course-card">
-
-                <div class="course-logo cpp-logo">
-                    <i class="devicon-cplusplus-plain"></i>
-                </div>
-
-                <h3>C++ Programming</h3>
-
-                <p>
-                    Learn C++ programming from basic syntax
-                    to variables, loops, functions, arrays,
-                    OOP and projects.
-                </p>
-
-                <a
-                    href="./cpp/cpp-introduction.html"
-                    class="course-btn">
-
-                    Start C++ Course
-
-                </a>
-
-            </div>
-
+            </a>
 
         </div>
 
-    </section>
+
+
+        <!-- =========================
+             JAVASCRIPT COURSE
+        ========================= -->
+
+        <div class="course-card">
+
+            <div class="course-logo javascript-logo">
+                <i class="devicon-javascript-plain"></i>
+            </div>
+
+            <h3>JavaScript</h3>
+
+            <p>
+                Learn JavaScript fundamentals,
+                functions, arrays, DOM and projects.
+            </p>
+
+            <a
+                href="./javascript/javascript-introduction.html"
+                class="course-btn">
+
+                Start JavaScript Course
+
+            </a>
+
+        </div>
 
 
 
-    <!-- =========================
-         ABOUT
-    ========================= -->
+        <!-- =========================
+             PYTHON COURSE
+        ========================= -->
 
-    <section id="about" class="about-section">
+        <div class="course-card">
 
-        <h2>About Us</h2>
+            <div class="course-logo python-logo">
+                <i class="devicon-python-plain"></i>
+            </div>
 
-        <p>
-            Code With Me is a learning platform where
-            beginners can learn programming and web
-            development step by step through simple
-            tutorials, examples and projects.
-        </p>
+            <h3>Python</h3>
 
-    </section>
+            <p>
+                Learn Python from basics to functions,
+                loops, classes, modules and projects.
+            </p>
 
+            <a
+                href="./python/python-introduction.html"
+                class="course-btn">
 
+                Start Python Course
 
-    <!-- =========================
-         CONTACT
-    ========================= -->
+            </a>
 
-    <section id="contact" class="contact-section">
-
-        <h2>Contact Us</h2>
-
-        <p>
-            📞 Contact: 123456789
-        </p>
-
-        <p>
-            📍 Location: Gujarat, India
-        </p>
-
-    </section>
+        </div>
 
 
 
-    <!-- =========================
-         FOOTER
-    ========================= -->
+        <!-- =========================
+             C PROGRAMMING COURSE
+        ========================= -->
 
-    <footer>
+        <div class="course-card">
 
-        <p>
-            © 2026 Code With Me. All Rights Reserved.
-        </p>
+            <div class="course-logo c-logo">
+                <i class="devicon-c-plain"></i>
+            </div>
 
-    </footer>
+            <h3>C Programming</h3>
 
+            <p>
+                Learn C programming from basic syntax
+                to variables, loops, functions, arrays,
+                pointers and projects.
+            </p>
+
+            <a
+                href="./c/c-introduction.html"
+                class="course-btn">
+
+                Start C Course
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =========================
+             C++ PROGRAMMING COURSE
+        ========================= -->
+
+        <div class="course-card">
+
+            <div class="course-logo cpp-logo">
+                <i class="devicon-cplusplus-plain"></i>
+            </div>
+
+            <h3>C++ Programming</h3>
+
+            <p>
+                Learn C++ programming from basic syntax
+                to variables, loops, functions, arrays,
+                OOP and projects.
+            </p>
+
+            <!-- FIXED C++ COURSE PATH -->
+            <a
+                href="./c/cpp-introduction.html"
+                class="course-btn">
+
+                Start C++ Course
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about" class="about-section">
+
+    <h2>About Us</h2>
+
+    <p>
+        Code With Me is a learning platform where
+        beginners can learn programming and web
+        development step by step through simple
+        tutorials, examples and projects.
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact" class="contact-section">
+
+    <h2>Contact Us</h2>
+
+    <p>
+        📞 Contact: 123456789
+    </p>
+
+    <p>
+        📍 Location: Gujarat, India
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 Code With Me. All Rights Reserved.
+    </p>
+
+</footer>
+```
 
 </body>
 
