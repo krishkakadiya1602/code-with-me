@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C++ Classes and Objects | Code With Me</title>
+
+<meta name="description" content="Learn C++ Classes and Objects with simple examples. Understand classes, objects, attributes, methods, access specifiers, constructors, and member functions.">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* NAVBAR */
+
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+/* HIGHLIGHT */
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+
+/* CODE */
+
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+
+/* EDITOR */
+
+textarea {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+
+/* NAVIGATION */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
+
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
+
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
+
+</ul>
+```
+
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+```
+<h1>C++ Classes and Objects</h1>
+
+<p>
+    Learn the foundation of Object-Oriented Programming in C++.
+</p>
+```
+
+</header>
+
+<main class="container">
+
+<!-- INTRODUCTION -->
+
+<section class="section">
+
+```
+<h2>What are Classes and Objects?</h2>
+
+<p>
+    Classes and objects are one of the most important concepts in
+    C++ Object-Oriented Programming (OOP).
+</p>
+
+<p>
+    A <strong>class</strong> is a blueprint or template used to
+    create objects.
+</p>
+
+<p>
+    An <strong>object</strong> is an instance of a class.
+</p>
+
+<div class="highlight">
+
+    <strong>Simple Example:</strong>
+
+    <br><br>
+
+    Class = Car design
+
+    <br>
+
+    Object = Actual car created from that design
+
+</div>
+```
+
+</section>
+
+<!-- WHY USE -->
+
+<section class="section">
+
+```
+<h2>Why Use Classes and Objects?</h2>
+
+<p>
+    Classes and objects help us organize data and functions together.
+</p>
+
+<ul>
+
+    <li>They make programs easier to organize.</li>
+
+    <li>They help represent real-world entities.</li>
+
+    <li>They support Object-Oriented Programming.</li>
+
+    <li>They improve code reusability.</li>
+
+    <li>They provide data protection using access specifiers.</li>
+
+    <li>They make large programs easier to maintain.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- CLASS SYNTAX -->
+
+<section class="section">
+
+```
+<h2>Class Syntax</h2>
+
+<p>
+    The basic syntax of a class is:
+</p>
+
+<div class="code-title">
+    Syntax
+</div>
+
+<pre><code>class ClassName {
+
+// data members
+
+// member functions
+```
+
+};</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Important:</strong>
+
+    A semicolon <strong>;</strong> is required after the closing
+    curly bracket of a class.
+
+</div>
+```
+
+</section>
+
+<!-- SIMPLE CLASS -->
+
+<section class="section">
+
+```
+<h2>Creating a Simple Class</h2>
+
+<p>
+    Let's create a simple class called <strong>Car</strong>.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Car {
+
+public:
+
+```
+string brand;
+```
+
+};
+
+int main() {
+
+```
+Car car1;
+
+car1.brand = "Toyota";
+
+cout &lt;&lt; car1.brand;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Toyota</code></pre>
+```
+
+</section>
+
+<!-- OBJECT -->
+
+<section class="section">
+
+```
+<h2>Creating an Object</h2>
+
+<p>
+    An object is created from a class.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>class Student {
+```
+
+public:
+
+```
+string name;
+```
+
+};
+
+int main() {
+
+```
+Student student1;
+```
+
+}</code></pre>
+
+```
+<p>
+    Here:
+</p>
+
+<ul>
+
+    <li><strong>Student</strong> is the class.</li>
+
+    <li><strong>student1</strong> is the object.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- MULTIPLE OBJECTS -->
+
+<section class="section">
+
+```
+<h2>Creating Multiple Objects</h2>
+
+<p>
+    You can create multiple objects from the same class.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+class Student {
+
+public:
+
+```
+string name;
+int age;
+```
+
+};
+
+int main() {
+
+```
+Student student1;
+Student student2;
+
+student1.name = "Krish";
+student1.age = 20;
+
+student2.name = "Rahul";
+student2.age = 21;
+
+cout &lt;&lt; student1.name &lt;&lt; endl;
+cout &lt;&lt; student2.name &lt;&lt; endl;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Krish
+```
+
+Rahul</code></pre>
+
+</section>
+
+<!-- ATTRIBUTES -->
+
+<section class="section">
+
+```
+<h2>Class Attributes</h2>
+
+<p>
+    Variables declared inside a class are called
+    <strong>attributes</strong> or <strong>data members</strong>.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>class Student {
+```
+
+public:
+
+```
+string name;
+int age;
+double marks;
+```
+
+};</code></pre>
+
+```
+<p>
+    Here <strong>name</strong>, <strong>age</strong>, and
+    <strong>marks</strong> are attributes.
+</p>
+```
+
+</section>
+
+<!-- ACCESS ATTRIBUTES -->
+
+<section class="section">
+
+```
+<h2>Accessing Class Attributes</h2>
+
+<p>
+    Use the dot <strong>.</strong> operator to access public
+    attributes.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+class Student {
+
+public:
+
+```
+string name;
+int age;
+```
+
+};
+
+int main() {
+
+```
+Student student;
+
+student.name = "Krish";
+student.age = 20;
+
+cout &lt;&lt; "Name: " &lt;&lt; student.name &lt;&lt; endl;
+cout &lt;&lt; "Age: " &lt;&lt; student.age;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Name: Krish
+```
+
+Age: 20</code></pre>
+
+</section>
+
+<!-- MEMBER FUNCTIONS -->
+
+<section class="section">
+
+```
+<h2>Class Member Functions</h2>
+
+<p>
+    A function defined inside a class is called a
+    <strong>member function</strong> or method.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Car {
+
+public:
+
+```
+void drive() {
+
+    cout &lt;&lt; "Car is driving";
+
+}
+```
+
+};
+
+int main() {
+
+```
+Car myCar;
+
+myCar.drive();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Car is driving</code></pre>
+```
+
+</section>
+
+<!-- FUNCTION WITH ATTRIBUTE -->
+
+<section class="section">
+
+```
+<h2>Member Function with Attributes</h2>
+
+<p>
+    A member function can work with the data members of the class.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+class Student {
+
+public:
+
+```
+string name;
+int age;
+
+void display() {
+
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Student student;
+
+student.name = "Krish";
+student.age = 20;
+
+student.display();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Name: Krish
+```
+
+Age: 20</code></pre>
+
+</section>
+
+<!-- METHOD OUTSIDE -->
+
+<section class="section">
+
+```
+<h2>Defining a Function Outside the Class</h2>
+
+<p>
+    You can declare a function inside the class and define it
+    outside using the scope resolution operator
+    <strong>::</strong>.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Car {
+
+public:
+
+```
+void start();
+```
+
+};
+
+void Car::start() {
+
+```
+cout &lt;&lt; "Car started";
+```
+
+}
+
+int main() {
+
+```
+Car myCar;
+
+myCar.start();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Car started</code></pre>
+```
+
+</section>
+
+<!-- PUBLIC -->
+
+<section class="section">
+
+```
+<h2>Public Access Specifier</h2>
+
+<p>
+    Members declared under <strong>public</strong> can be accessed
+    from outside the class.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>class Student {
+```
+
+public:
+
+```
+string name;
+```
+
+};
+
+int main() {
+
+```
+Student student;
+
+student.name = "Krish";
+```
+
+}</code></pre>
+
+</section>
+
+<!-- PRIVATE -->
+
+<section class="section">
+
+```
+<h2>Private Access Specifier</h2>
+
+<p>
+    Members declared under <strong>private</strong> cannot be
+    accessed directly from outside the class.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>class Student {
+```
+
+private:
+
+```
+int marks;
+```
+
+public:
+
+```
+void setMarks(int m) {
+
+    marks = m;
+
+}
+
+int getMarks() {
+
+    return marks;
+
+}
+```
+
+};</code></pre>
+
+</section>
+
+<!-- PROTECTED -->
+
+<section class="section">
+
+```
+<h2>Protected Access Specifier</h2>
+
+<p>
+    The <strong>protected</strong> access specifier is mainly used
+    when working with inheritance.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>class Parent {
+```
+
+protected:
+
+```
+int value;
+```
+
+};</code></pre>
+
+```
+<p>
+    Protected members can be accessed inside the class and by
+    derived classes.
+</p>
+```
+
+</section>
+
+<!-- ACCESS SPECIFIERS TABLE -->
+
+<section class="section">
+
+```
+<h2>C++ Access Specifiers</h2>
+
+<table>
+
+    <tr>
+        <th>Specifier</th>
+        <th>Same Class</th>
+        <th>Outside Class</th>
+        <th>Derived Class</th>
+    </tr>
+
+    <tr>
+        <td>public</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+    </tr>
+
+    <tr>
+        <td>private</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>No</td>
+    </tr>
+
+    <tr>
+        <td>protected</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Yes</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- CONSTRUCTOR -->
+
+<section class="section">
+
+```
+<h2>Constructor</h2>
+
+<p>
+    A constructor is a special member function that is automatically
+    called when an object is created.
+</p>
+
+<p>
+    A constructor has the same name as the class and does not have
+    a return type.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Student {
+
+public:
+
+```
+Student() {
+
+    cout &lt;&lt; "Constructor called";
+
+}
+```
+
+};
+
+int main() {
+
+```
+Student student;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Constructor called</code></pre>
+```
+
+</section>
+
+<!-- CONSTRUCTOR PARAMETERS -->
+
+<section class="section">
+
+```
+<h2>Parameterized Constructor</h2>
+
+<p>
+    A constructor can accept parameters to initialize an object.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+class Student {
+
+public:
+
+```
+string name;
+int age;
+
+Student(string n, int a) {
+
+    name = n;
+    age = a;
+
+}
+
+void display() {
+
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Student student("Krish", 20);
+
+student.display();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Name: Krish
+```
+
+Age: 20</code></pre>
+
+</section>
+
+<!-- THIS POINTER -->
+
+<section class="section">
+
+```
+<h2>Using this Pointer</h2>
+
+<p>
+    The <strong>this</strong> pointer refers to the current object.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+class Student {
+
+private:
+
+```
+string name;
+```
+
+public:
+
+```
+Student(string name) {
+
+    this-&gt;name = name;
+
+}
+
+void display() {
+
+    cout &lt;&lt; name;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Student student("Krish");
+
+student.display();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Krish</code></pre>
+```
+
+</section>
+
+<!-- GETTERS SETTERS -->
+
+<section class="section">
+
+```
+<h2>Getters and Setters</h2>
+
+<p>
+    Getters and setters are commonly used to access and modify
+    private data members safely.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Student {
+
+private:
+
+```
+int age;
+```
+
+public:
+
+```
+void setAge(int a) {
+
+    age = a;
+
+}
+
+int getAge() {
+
+    return age;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Student student;
+
+student.setAge(20);
+
+cout &lt;&lt; "Age: " &lt;&lt; student.getAge();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Age: 20</code></pre>
+```
+
+</section>
+
+<!-- MULTIPLE OBJECTS -->
+
+<section class="section">
+
+```
+<h2>Multiple Objects with Different Data</h2>
+
+<p>
+    Each object has its own copy of the non-static data members.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+class Car {
+
+public:
+
+```
+string brand;
+
+void display() {
+
+    cout &lt;&lt; brand &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Car car1;
+Car car2;
+
+car1.brand = "Toyota";
+car2.brand = "BMW";
+
+car1.display();
+car2.display();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Toyota
+```
+
+BMW</code></pre>
+
+</section>
+
+<!-- REAL WORLD EXAMPLE -->
+
+<section class="section">
+
+```
+<h2>Real-World Example</h2>
+
+<p>
+    Classes are useful for representing real-world entities.
+</p>
+
+<div class="code-title">
+    Student Class
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+class Student {
+
+public:
+
+```
+string name;
+int age;
+double marks;
+
+void display() {
+
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Marks: " &lt;&lt; marks &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Student student;
+
+student.name = "Krish";
+student.age = 20;
+student.marks = 85.5;
+
+student.display();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Name: Krish
+```
+
+Age: 20
+Marks: 85.5</code></pre>
+
+</section>
+
+<!-- CLASS VS OBJECT -->
+
+<section class="section">
+
+```
+<h2>Class vs Object</h2>
+
+<table>
+
+    <tr>
+        <th>Class</th>
+        <th>Object</th>
+    </tr>
+
+    <tr>
+        <td>Blueprint or template</td>
+        <td>Instance of a class</td>
+    </tr>
+
+    <tr>
+        <td>Defines attributes and functions</td>
+        <td>Uses those attributes and functions</td>
+    </tr>
+
+    <tr>
+        <td>Does not represent a specific instance</td>
+        <td>Represents a specific instance</td>
+    </tr>
+
+    <tr>
+        <td><code>class Car { };</code></td>
+        <td><code>Car car1;</code></td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- IMPORTANT CONCEPTS -->
+
+<section class="section">
+
+```
+<h2>Important Concepts</h2>
+
+<ul>
+
+    <li>A class is a blueprint for objects.</li>
+
+    <li>An object is an instance of a class.</li>
+
+    <li>Classes can contain variables and functions.</li>
+
+    <li>Variables inside a class are called data members.</li>
+
+    <li>Functions inside a class are called member functions.</li>
+
+    <li>The dot <strong>.</strong> operator accesses public members.</li>
+
+    <li>Constructors are called automatically when objects are created.</li>
+
+    <li>Access specifiers control accessibility.</li>
+
+    <li>Classes are a fundamental part of C++ OOP.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+
+```
+<h2>Common Mistakes</h2>
+
+<h3>1. Forgetting the Semicolon</h3>
+
+<pre><code>class Car {
+```
+
+public:
+
+```
+string brand;
+```
+
+}   // Wrong</code></pre>
+
+```
+<p>
+    A semicolon is required after the class definition.
+</p>
+
+<pre><code>class Car {
+```
+
+public:
+
+```
+string brand;
+```
+
+};</code></pre>
+
+```
+<h3>2. Accessing Private Members Directly</h3>
+
+<pre><code>class Student {
+```
+
+private:
+
+```
+int age;
+```
+
+};
+
+Student student;
+
+student.age = 20;</code></pre>
+
+```
+<p>
+    This is not allowed because <strong>age</strong> is private.
+    Use a public setter or member function.
+</p>
+
+
+<h3>3. Forgetting to Create an Object</h3>
+
+<pre><code>class Car {
+```
+
+public:
+
+```
+void drive() {
+
+    cout &lt;&lt; "Driving";
+
+}
+```
+
+};</code></pre>
+
+```
+<p>
+    The class definition alone does not call the function.
+    You need an object such as:
+</p>
+
+<pre><code>Car car;
+```
+
+car.drive();</code></pre>
+
+</section>
+
+<!-- COMPLETE EXAMPLE -->
+
+<section class="section">
+
+```
+<h2>Complete C++ Classes and Objects Example</h2>
+
+<div class="code-title">
+    Complete Program
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+class Student {
+
+private:
+
+```
+string name;
+int age;
+double marks;
+```
+
+public:
+
+```
+Student(string n, int a, double m) {
+
+    name = n;
+    age = a;
+    marks = m;
+
+}
+
+void display() {
+
+    cout &lt;&lt; "Student Information" &lt;&lt; endl;
+    cout &lt;&lt; "-------------------" &lt;&lt; endl;
+
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Marks: " &lt;&lt; marks &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Student student("Krish", 20, 85.5);
+
+student.display();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>Output:</p>
+
+<pre><code>Student Information
+```
+
+---
+
+Name: Krish
+Age: 20
+Marks: 85.5</code></pre>
+
+</section>
+
+<!-- QUICK SUMMARY -->
+
+<section class="section">
+
+```
+<h2>C++ Classes and Objects Quick Summary</h2>
+
+<table>
+
+    <tr>
+        <th>Concept</th>
+        <th>Example</th>
+    </tr>
+
+    <tr>
+        <td>Class</td>
+        <td><code>class Student { };</code></td>
+    </tr>
+
+    <tr>
+        <td>Object</td>
+        <td><code>Student student;</code></td>
+    </tr>
+
+    <tr>
+        <td>Attribute</td>
+        <td><code>string name;</code></td>
+    </tr>
+
+    <tr>
+        <td>Method</td>
+        <td><code>void display() { }</code></td>
+    </tr>
+
+    <tr>
+        <td>Public</td>
+        <td><code>public:</code></td>
+    </tr>
+
+    <tr>
+        <td>Private</td>
+        <td><code>private:</code></td>
+    </tr>
+
+    <tr>
+        <td>Protected</td>
+        <td><code>protected:</code></td>
+    </tr>
+
+    <tr>
+        <td>Constructor</td>
+        <td><code>Student() { }</code></td>
+    </tr>
+
+    <tr>
+        <td>Object Access</td>
+        <td><code>student.display();</code></td>
+    </tr>
+
+    <tr>
+        <td>Scope Resolution</td>
+        <td><code>Student::display()</code></td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- EDITOR -->
+
+<section class="section">
+
+```
+<h2>Try C++ Classes and Objects Code</h2>
+
+<p>
+    Write your C++ classes and objects code below and click
+    <strong>Run Code</strong>.
+</p>
+
+<textarea id="codeEditor">#include <iostream>
+```
+
+#include <string>
+
+using namespace std;
+
+class Student {
+
+public:
+
+```
+string name;
+int age;
+
+void display() {
+
+    cout << "Name: " << name << endl;
+    cout << "Age: " << age << endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Student student;
+
+student.name = "Krish";
+student.age = 20;
+
+student.display();
+
+return 0;
+```
+
+}</textarea>
+
+```
+<div class="buttons">
+
+    <button class="run-btn" onclick="runCode()">
+        Run Code
+    </button>
+
+    <button class="clear-btn" onclick="clearCode()">
+        Clear
+    </button>
+
+</div>
+
+<div class="output" id="output">
+    Output will appear here...
+</div>
+```
+
+</section>
+
+<!-- PAGE NAVIGATION -->
+
+<div class="page-navigation">
+
+```
+<a href="cpp-strings.html">
+    ← Previous: C++ Strings
+</a>
+
+<a href="cpp-constructors.html">
+    Next: C++ Constructors →
+</a>
+```
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code =
+        document.getElementById("codeEditor").value;
+
+    const output =
+        document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some C++ code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C++ code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C++ code in the browser, " +
+        "you need a C++ compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
