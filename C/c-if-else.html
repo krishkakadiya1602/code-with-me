@@ -1,0 +1,1017 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C if else | Code With Me</title>
+
+    <meta name="description"
+        content="Learn C if, else if and else statements with simple examples and explanations.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Main */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #1d4ed8;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #111827;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* Info boxes */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            color: #dc2626;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1d4ed8;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 280px;
+            padding: 15px;
+            background: #111827;
+            color: #f8fafc;
+            border: none;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #output {
+            background: #000;
+            color: #22c55e;
+            min-height: 100px;
+            padding: 20px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+            margin-top: 10px;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 30px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code<span>WithMe</span>
+        </a>
+
+        <ul>
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="../index.html#courses">Courses</a>
+            </li>
+
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <main class="container">
+
+        <!-- Header -->
+        <div class="page-header">
+
+            <h1>C if else</h1>
+
+            <p>
+                Learn how to make decisions in C using if, else if and else.
+            </p>
+
+        </div>
+
+
+        <!-- Introduction -->
+        <section>
+
+            <h2>Introduction to if else</h2>
+
+            <p>
+                In C programming, decision-making statements are used to
+                execute different blocks of code depending on a condition.
+            </p>
+
+            <p>
+                The <span class="inline-code">if</span> statement checks
+                whether a condition is true or false.
+            </p>
+
+            <div class="info-box">
+
+                <strong>In simple words:</strong>
+
+                <br><br>
+
+                If a condition is true → execute one block of code.
+
+                <br>
+
+                If a condition is false → execute another block of code.
+
+            </div>
+
+        </section>
+
+
+        <!-- if statement -->
+        <section>
+
+            <h2>1. C if Statement</h2>
+
+            <p>
+                The <strong>if</strong> statement executes a block of code
+                only when the specified condition is true.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>if (condition) {
+    // code to execute
+}</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age = 20;
+
+    if (age &gt;= 18) {
+        printf("You are eligible.");
+    }
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>You are eligible.</code></pre>
+
+        </section>
+
+
+        <!-- if condition -->
+        <section>
+
+            <h2>2. How if Condition Works</h2>
+
+            <p>
+                Suppose we have the following condition:
+            </p>
+
+            <pre><code>age &gt;= 18</code></pre>
+
+            <p>
+                If the value of <strong>age</strong> is 20, the condition
+                is true, so the code inside the if statement executes.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Example:</strong>
+
+                <br><br>
+
+                age = 20
+
+                <br>
+
+                20 &gt;= 18 → TRUE
+
+                <br>
+
+                Therefore, the code inside <strong>if</strong> executes.
+
+            </div>
+
+        </section>
+
+
+        <!-- if else -->
+        <section>
+
+            <h2>3. C if else Statement</h2>
+
+            <p>
+                The <strong>if else</strong> statement is used when we want
+                to execute one block of code when the condition is true
+                and another block when the condition is false.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>if (condition) {
+    // code when condition is true
+}
+else {
+    // code when condition is false
+}</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number = 10;
+
+    if (number &gt; 0) {
+        printf("Positive number");
+    }
+    else {
+        printf("Negative number");
+    }
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Positive number</code></pre>
+
+        </section>
+
+
+        <!-- User Input -->
+        <section>
+
+            <h2>4. if else with User Input</h2>
+
+            <p>
+                We can use <strong>scanf()</strong> to take input from
+                the user and then use an if else statement.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &amp;number);
+
+    if (number &gt; 0) {
+        printf("Positive number");
+    }
+    else {
+        printf("Zero or negative number");
+    }
+
+    return 0;
+}</code></pre>
+
+            <p>Example Output:</p>
+
+            <pre><code>Enter a number: 25
+Positive number</code></pre>
+
+        </section>
+
+
+        <!-- else if -->
+        <section>
+
+            <h2>5. C else if Statement</h2>
+
+            <p>
+                The <strong>else if</strong> statement is used when we
+                have multiple conditions to check.
+            </p>
+
+            <h3>Syntax</h3>
+
+            <pre><code>if (condition1) {
+    // code
+}
+else if (condition2) {
+    // code
+}
+else {
+    // code
+}</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int marks = 75;
+
+    if (marks &gt;= 90) {
+        printf("Grade A+");
+    }
+    else if (marks &gt;= 75) {
+        printf("Grade A");
+    }
+    else if (marks &gt;= 50) {
+        printf("Grade B");
+    }
+    else {
+        printf("Fail");
+    }
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Grade A</code></pre>
+
+        </section>
+
+
+        <!-- Multiple Conditions -->
+        <section>
+
+            <h2>6. Multiple Conditions</h2>
+
+            <p>
+                We can use logical operators such as
+                <span class="inline-code">&amp;&amp;</span>,
+                <span class="inline-code">||</span> and
+                <span class="inline-code">!</span>
+                with if statements.
+            </p>
+
+            <h3>Example using &&</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int age = 25;
+
+    if (age &gt;= 18 &amp;&amp; age &lt;= 60) {
+        printf("Age is between 18 and 60");
+    }
+    else {
+        printf("Age is outside the range");
+    }
+
+    return 0;
+}</code></pre>
+
+            <p>Output:</p>
+
+            <pre><code>Age is between 18 and 60</code></pre>
+
+        </section>
+
+
+        <!-- Even Odd -->
+        <section>
+
+            <h2>7. Example: Check Even or Odd</h2>
+
+            <p>
+                The modulus operator <strong>%</strong> can be used to
+                determine whether a number is even or odd.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &amp;number);
+
+    if (number % 2 == 0) {
+        printf("Even number");
+    }
+    else {
+        printf("Odd number");
+    }
+
+    return 0;
+}</code></pre>
+
+            <p>Example Output:</p>
+
+            <pre><code>Enter a number: 10
+Even number</code></pre>
+
+        </section>
+
+
+        <!-- Positive Negative -->
+        <section>
+
+            <h2>8. Example: Positive, Negative or Zero</h2>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &amp;number);
+
+    if (number &gt; 0) {
+        printf("Positive number");
+    }
+    else if (number &lt; 0) {
+        printf("Negative number");
+    }
+    else {
+        printf("Zero");
+    }
+
+    return 0;
+}</code></pre>
+
+            <p>Example Output:</p>
+
+            <pre><code>Enter a number: -5
+Negative number</code></pre>
+
+        </section>
+
+
+        <!-- Comparison Operators -->
+        <section>
+
+            <h2>9. Comparison Operators</h2>
+
+            <p>
+                Comparison operators are commonly used inside if conditions.
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>Operator</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>==</td>
+                    <td>Equal to</td>
+                    <td>a == b</td>
+                </tr>
+
+                <tr>
+                    <td>!=</td>
+                    <td>Not equal to</td>
+                    <td>a != b</td>
+                </tr>
+
+                <tr>
+                    <td>&gt;</td>
+                    <td>Greater than</td>
+                    <td>a &gt; b</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;</td>
+                    <td>Less than</td>
+                    <td>a &lt; b</td>
+                </tr>
+
+                <tr>
+                    <td>&gt;=</td>
+                    <td>Greater than or equal to</td>
+                    <td>a &gt;= b</td>
+                </tr>
+
+                <tr>
+                    <td>&lt;=</td>
+                    <td>Less than or equal to</td>
+                    <td>a &lt;= b</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Important Note -->
+        <section>
+
+            <h2>10. Important Notes</h2>
+
+            <div class="warning-box">
+
+                <strong>Remember:</strong>
+
+                <ul style="margin-left: 20px; margin-top: 10px;">
+
+                    <li>
+                        Use <strong>==</strong> to compare two values.
+                    </li>
+
+                    <li>
+                        Use <strong>=</strong> to assign a value.
+                    </li>
+
+                    <li>
+                        Conditions are written inside parentheses
+                        <strong>( )</strong>.
+                    </li>
+
+                    <li>
+                        Code that belongs to a condition is normally
+                        placed inside <strong>{ }</strong>.
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <h3>Wrong:</h3>
+
+            <pre><code>if (number = 10)</code></pre>
+
+            <h3>Correct:</h3>
+
+            <pre><code>if (number == 10)</code></pre>
+
+        </section>
+
+
+        <!-- Interactive Editor -->
+        <section>
+
+            <h2>11. Try C if else</h2>
+
+            <p>
+                Write your C code below and click
+                <strong>Run Code</strong>.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include &lt;stdio.h&gt;
+
+int main() {
+
+    int number = 10;
+
+    if (number % 2 == 0) {
+        printf("Even number");
+    }
+    else {
+        printf("Odd number");
+    }
+
+    return 0;
+}</textarea>
+
+                <div class="buttons">
+
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <h3>Output</h3>
+
+                <div id="output">
+                    Click "Run Code" to see the output.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Summary -->
+        <section>
+
+            <h2>Summary</h2>
+
+            <ul style="margin-left: 20px;">
+
+                <li>
+                    <strong>if</strong> executes code when a condition is true.
+                </li>
+
+                <li>
+                    <strong>else</strong> executes code when the if condition is false.
+                </li>
+
+                <li>
+                    <strong>else if</strong> is used to check multiple conditions.
+                </li>
+
+                <li>
+                    Comparison operators are commonly used with if statements.
+                </li>
+
+                <li>
+                    Logical operators can be used to combine multiple conditions.
+                </li>
+
+                <li>
+                    Use <strong>==</strong> for comparison and
+                    <strong>=</strong> for assignment.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Previous / Next -->
+        <div class="lesson-navigation">
+
+            <a href="c-input-output.html">
+                ← Previous: C Input and Output
+            </a>
+
+            <a href="c-switch.html">
+                Next: C Switch →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+            /*
+             * This is a simple browser demonstration.
+             * A real C compiler is required to execute
+             * complete C programs.
+             */
+
+            let result = "";
+
+            /*
+             * Detect common examples from the editor.
+             */
+
+            if (
+                code.includes("number % 2 == 0") ||
+                code.includes("number % 2 == 0")
+            ) {
+
+                const numberMatch =
+                    code.match(/number\s*=\s*(-?\d+)/);
+
+                if (numberMatch) {
+
+                    const number =
+                        parseInt(numberMatch[1]);
+
+                    if (number % 2 === 0) {
+                        result = "Even number";
+                    } else {
+                        result = "Odd number";
+                    }
+
+                } else {
+
+                    result =
+                        "C code detected. A real C compiler is required for full execution.";
+
+                }
+
+            }
+
+            else if (code.includes('printf')) {
+
+                const matches = [];
+
+                const regex =
+                    /printf\s*\(\s*"([^"]*)"/g;
+
+                let match;
+
+                while (
+                    (match = regex.exec(code)) !== null
+                ) {
+
+                    matches.push(
+                        match[1]
+                            .replace(/\\n/g, "\n")
+                            .replace(/\\t/g, "\t")
+                    );
+
+                }
+
+                if (matches.length > 0) {
+
+                    result =
+                        matches.join("\n");
+
+                } else {
+
+                    result =
+                        "C code detected. A real C compiler is required for full execution.";
+
+                }
+
+            }
+
+            else {
+
+                result =
+                    "No printf() statement found. A real C compiler is required to execute this code.";
+
+            }
+
+            output.textContent = result;
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output cleared.";
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
