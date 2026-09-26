@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>C++ Polymorphism | Code With Me</title>
+
+<meta name="description"
+      content="Learn C++ Polymorphism with simple explanations, examples, compile-time polymorphism, run-time polymorphism, function overloading, method overriding and virtual functions.">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #222;
+        line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+        background: #111827;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .nav-links a:hover {
+        color: #38bdf8;
+    }
+
+    /* HERO */
+    .hero {
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    /* CONTAINER */
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    /* SECTION */
+    .section {
+        background: white;
+        padding: 30px;
+        margin-bottom: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+        color: #1e3a8a;
+        margin-bottom: 15px;
+    }
+
+    .section h3 {
+        color: #2563eb;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* HIGHLIGHT */
+    .highlight {
+        background: #eff6ff;
+        border-left: 5px solid #2563eb;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    /* CODE */
+    .code-title {
+        background: #111827;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 8px 8px 0 0;
+        font-weight: bold;
+    }
+
+    pre {
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 20px;
+        overflow-x: auto;
+        border-radius: 0 0 8px 8px;
+        font-family: Consolas, monospace;
+    }
+
+    /* TABLE */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    table th {
+        background: #1e3a8a;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background: #f8fafc;
+    }
+
+    /* EDITOR */
+    textarea {
+        width: 100%;
+        min-height: 400px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: Consolas, monospace;
+        font-size: 15px;
+        resize: vertical;
+        background: #111827;
+        color: #f8fafc;
+    }
+
+    .buttons {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+    }
+
+    button {
+        padding: 11px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .run-btn {
+        background: #2563eb;
+        color: white;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+        color: white;
+    }
+
+    .output {
+        margin-top: 15px;
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 15px;
+        min-height: 100px;
+        white-space: pre-wrap;
+        font-family: Consolas, monospace;
+    }
+
+    /* NAVIGATION */
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 30px 0 50px;
+    }
+
+    .page-navigation a {
+        text-decoration: none;
+        background: #2563eb;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .page-navigation a:hover {
+        background: #1d4ed8;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 30px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+
+        nav {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .page-navigation {
+            flex-direction: column;
+        }
+
+        .page-navigation a {
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- NAVBAR -->
+<nav>
+
+    <a href="../index.html" class="logo">
+        Code <span>WithMe</span>
+    </a>
+
+    <ul class="nav-links">
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+
+    <h1>C++ Polymorphism</h1>
+
+    <p>
+        Learn Compile-Time and Run-Time Polymorphism in C++
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- INTRODUCTION -->
+    <section class="section">
+
+        <h2>What is Polymorphism in C++?</h2>
+
+        <p>
+            <strong>Polymorphism</strong> is one of the important concepts
+            of Object-Oriented Programming (OOP) in C++.
+        </p>
+
+        <p>
+            The word polymorphism means
+            <strong>"many forms"</strong>.
+        </p>
+
+        <p>
+            In C++, polymorphism allows the same function, operator,
+            or interface to behave differently depending on the situation.
+        </p>
+
+        <div class="highlight">
+
+            <strong>Simple Definition:</strong>
+
+            <br>
+
+            Polymorphism means one name can have multiple forms
+            or behaviors.
+
+        </div>
+
+    </section>
+
+
+    <!-- REAL LIFE EXAMPLE -->
+    <section class="section">
+
+        <h2>Real-Life Example of Polymorphism</h2>
+
+        <p>
+            Consider the word <strong>"sound"</strong>.
+        </p>
+
+        <p>
+            A dog can make a bark sound, while a cat can make a meow sound.
+        </p>
+
+        <p>
+            The same action "make sound" has different behaviors.
+        </p>
+
+        <div class="highlight">
+
+            Dog → Bark
+
+            <br>
+
+            Cat → Meow
+
+            <br>
+
+            Cow → Moo
+
+        </div>
+
+        <p>
+            This is similar to polymorphism in programming.
+        </p>
+
+    </section>
+
+
+    <!-- WHY -->
+    <section class="section">
+
+        <h2>Why Use Polymorphism?</h2>
+
+        <ul>
+
+            <li>It makes programs flexible.</li>
+
+            <li>It improves code reusability.</li>
+
+            <li>It supports Object-Oriented Programming.</li>
+
+            <li>It allows one interface to have different implementations.</li>
+
+            <li>It makes large programs easier to maintain.</li>
+
+            <li>It helps implement inheritance-based designs.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- TYPES -->
+    <section class="section">
+
+        <h2>Types of Polymorphism in C++</h2>
+
+        <p>
+            C++ mainly supports two types of polymorphism:
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Type</th>
+                <th>Also Called</th>
+                <th>When Decided</th>
+            </tr>
+
+            <tr>
+                <td>Compile-Time Polymorphism</td>
+                <td>Static Polymorphism</td>
+                <td>Compile Time</td>
+            </tr>
+
+            <tr>
+                <td>Run-Time Polymorphism</td>
+                <td>Dynamic Polymorphism</td>
+                <td>Run Time</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- COMPILE TIME -->
+    <section class="section">
+
+        <h2>1. Compile-Time Polymorphism</h2>
+
+        <p>
+            Compile-time polymorphism is resolved by the compiler
+            during compilation.
+        </p>
+
+        <p>
+            Common examples include:
+        </p>
+
+        <ul>
+
+            <li>Function Overloading</li>
+
+            <li>Operator Overloading</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- FUNCTION OVERLOADING -->
+    <section class="section">
+
+        <h2>Function Overloading</h2>
+
+        <p>
+            Function overloading means having multiple functions
+            with the same name but different parameters.
+        </p>
+
+        <div class="code-title">
+            Example: Function Overloading
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Calculator {
+
+public:
+
+```
+int add(int a, int b) {
+    return a + b;
+}
+
+int add(int a, int b, int c) {
+    return a + b + c;
+}
+```
+
+};
+
+int main() {
+
+```
+Calculator obj;
+
+cout &lt;&lt; obj.add(10, 20) &lt;&lt; endl;
+
+cout &lt;&lt; obj.add(10, 20, 30) &lt;&lt; endl;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <p>
+            Here, both functions have the same name
+            <strong>add()</strong>, but they have different parameters.
+        </p>
+
+    </section>
+
+
+    <!-- OUTPUT -->
+    <section class="section">
+
+        <h2>Output</h2>
+
+        <div class="code-title">
+            Program Output
+        </div>
+
+        <pre><code>30
+```
+
+60</code></pre>
+
+```
+    </section>
+
+
+    <!-- OPERATOR OVERLOADING -->
+    <section class="section">
+
+        <h2>Operator Overloading</h2>
+
+        <p>
+            Operator overloading allows operators such as
+            <strong>+</strong>, <strong>-</strong>, <strong>==</strong>,
+            etc. to work with user-defined objects.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Number {
+
+public:
+
+```
+int value;
+
+Number(int v) {
+    value = v;
+}
+
+Number operator+(Number obj) {
+
+    return Number(value + obj.value);
+}
+```
+
+};
+
+int main() {
+
+```
+Number n1(10);
+Number n2(20);
+
+Number result = n1 + n2;
+
+cout &lt;&lt; result.value;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- RUN TIME -->
+    <section class="section">
+
+        <h2>2. Run-Time Polymorphism</h2>
+
+        <p>
+            Run-time polymorphism is resolved while the program
+            is running.
+        </p>
+
+        <p>
+            It is commonly achieved using:
+        </p>
+
+        <ul>
+
+            <li>Inheritance</li>
+
+            <li>Function Overriding</li>
+
+            <li>Virtual Functions</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- FUNCTION OVERRIDING -->
+    <section class="section">
+
+        <h2>Function Overriding</h2>
+
+        <p>
+            Function overriding occurs when a derived class provides
+            its own implementation of a function that already exists
+            in the base class.
+        </p>
+
+        <div class="code-title">
+            Example: Function Overriding
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Animal {
+
+public:
+
+```
+void sound() {
+
+    cout &lt;&lt; "Animal makes a sound";
+
+}
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() {
+
+    cout &lt;&lt; "Dog barks";
+
+}
+```
+
+};
+
+int main() {
+
+```
+Dog obj;
+
+obj.sound();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <p>
+            The <strong>Dog</strong> class provides its own version
+            of the <strong>sound()</strong> function.
+        </p>
+
+    </section>
+
+
+    <!-- VIRTUAL FUNCTION -->
+    <section class="section">
+
+        <h2>Virtual Function</h2>
+
+        <p>
+            A virtual function is a member function in a base class
+            that can be overridden by a derived class.
+        </p>
+
+        <p>
+            The <strong>virtual</strong> keyword enables dynamic
+            dispatch when using a base-class pointer or reference.
+        </p>
+
+        <div class="code-title">
+            Example: Virtual Function
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Animal {
+
+public:
+
+```
+virtual void sound() {
+
+    cout &lt;&lt; "Animal makes a sound" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Dog barks" &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Animal* animal;
+
+Dog dog;
+
+animal = &amp;dog;
+
+animal-&gt;sound();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- OUTPUT -->
+    <section class="section">
+
+        <h2>Output</h2>
+
+        <div class="code-title">
+            Program Output
+        </div>
+
+        <pre><code>Dog barks</code></pre>
+
+        <div class="highlight">
+
+            Because <strong>sound()</strong> is virtual,
+            the derived class version is called at run time.
+
+        </div>
+
+    </section>
+
+
+    <!-- WITHOUT VIRTUAL -->
+    <section class="section">
+
+        <h2>What Happens Without virtual?</h2>
+
+        <p>
+            If the function is not virtual, calling through a
+            base-class pointer normally uses the base-class version.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Animal {
+
+public:
+
+```
+void sound() {
+
+    cout &lt;&lt; "Animal sound";
+
+}
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() {
+
+    cout &lt;&lt; "Dog barks";
+
+}
+```
+
+};
+
+int main() {
+
+```
+Animal* animal;
+
+Dog dog;
+
+animal = &amp;dog;
+
+animal-&gt;sound();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <div class="highlight">
+
+            Output:
+
+            <br><br>
+
+            <strong>Animal sound</strong>
+
+            <br><br>
+
+            This happens because <strong>sound()</strong> is not virtual.
+
+        </div>
+
+    </section>
+
+
+    <!-- VIRTUAL COMPARISON -->
+    <section class="section">
+
+        <h2>With virtual vs Without virtual</h2>
+
+        <table>
+
+            <tr>
+                <th>Feature</th>
+                <th>Without virtual</th>
+                <th>With virtual</th>
+            </tr>
+
+            <tr>
+                <td>Binding</td>
+                <td>Static</td>
+                <td>Dynamic</td>
+            </tr>
+
+            <tr>
+                <td>Decision</td>
+                <td>Compile time</td>
+                <td>Run time</td>
+            </tr>
+
+            <tr>
+                <td>Base pointer</td>
+                <td>Base version normally called</td>
+                <td>Overridden version can be called</td>
+            </tr>
+
+            <tr>
+                <td>Polymorphism</td>
+                <td>Not dynamic</td>
+                <td>Run-time polymorphism</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- OVERRIDE -->
+    <section class="section">
+
+        <h2>override Keyword</h2>
+
+        <p>
+            The <strong>override</strong> keyword tells the compiler
+            that a derived class function is intended to override
+            a virtual function from the base class.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>class Animal {
+```
+
+public:
+
+```
+virtual void sound() {
+    cout &lt;&lt; "Animal sound";
+}
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() override {
+    cout &lt;&lt; "Dog barks";
+}
+```
+
+};</code></pre>
+
+```
+        <div class="highlight">
+
+            Using <strong>override</strong> is recommended because
+            the compiler can detect mistakes in the function signature.
+
+        </div>
+
+    </section>
+
+
+    <!-- MULTIPLE DERIVED CLASSES -->
+    <section class="section">
+
+        <h2>Polymorphism with Multiple Classes</h2>
+
+        <p>
+            A common use of run-time polymorphism is to have multiple
+            derived classes with different implementations.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Animal {
+
+public:
+
+```
+virtual void sound() {
+
+    cout &lt;&lt; "Animal sound" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Dog barks" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Cat : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Cat meows" &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Animal* animal;
+
+Dog dog;
+Cat cat;
+
+animal = &amp;dog;
+animal-&gt;sound();
+
+animal = &amp;cat;
+animal-&gt;sound();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- OUTPUT -->
+    <section class="section">
+
+        <h2>Output</h2>
+
+        <div class="code-title">
+            Program Output
+        </div>
+
+        <pre><code>Dog barks
+```
+
+Cat meows</code></pre>
+
+```
+    </section>
+
+
+    <!-- POINTER ARRAY -->
+    <section class="section">
+
+        <h2>Polymorphism Using Base Class Pointer</h2>
+
+        <p>
+            A base-class pointer can point to different derived-class
+            objects.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Animal {
+
+public:
+
+```
+virtual void sound() {
+
+    cout &lt;&lt; "Animal sound" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Dog barks" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Cat : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Cat meows" &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Animal* animals[2];
+
+Dog dog;
+Cat cat;
+
+animals[0] = &amp;dog;
+animals[1] = &amp;cat;
+
+animals[0]-&gt;sound();
+animals[1]-&gt;sound();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <p>
+            The same <strong>sound()</strong> call produces different
+            results depending on the object.
+        </p>
+
+    </section>
+
+
+    <!-- ABSTRACT CLASS -->
+    <section class="section">
+
+        <h2>Polymorphism and Abstract Classes</h2>
+
+        <p>
+            Polymorphism is also commonly used with abstract classes.
+        </p>
+
+        <p>
+            An abstract class can contain a pure virtual function.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Shape {
+
+public:
+
+```
+virtual void draw() = 0;
+```
+
+};
+
+class Circle : public Shape {
+
+public:
+
+```
+void draw() override {
+
+    cout &lt;&lt; "Drawing Circle";
+
+}
+```
+
+};
+
+int main() {
+
+```
+Circle c;
+
+c.draw();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <div class="highlight">
+
+            <strong>virtual void draw() = 0;</strong>
+
+            <br><br>
+
+            This is called a <strong>pure virtual function</strong>.
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPILE VS RUNTIME -->
+    <section class="section">
+
+        <h2>Compile-Time vs Run-Time Polymorphism</h2>
+
+        <table>
+
+            <tr>
+                <th>Feature</th>
+                <th>Compile-Time</th>
+                <th>Run-Time</th>
+            </tr>
+
+            <tr>
+                <td>Other Name</td>
+                <td>Static Polymorphism</td>
+                <td>Dynamic Polymorphism</td>
+            </tr>
+
+            <tr>
+                <td>Decision</td>
+                <td>Compile time</td>
+                <td>Run time</td>
+            </tr>
+
+            <tr>
+                <td>Examples</td>
+                <td>Function / Operator Overloading</td>
+                <td>Virtual Functions / Overriding</td>
+            </tr>
+
+            <tr>
+                <td>Inheritance Required?</td>
+                <td>Not necessarily</td>
+                <td>Usually</td>
+            </tr>
+
+            <tr>
+                <td>Main Purpose</td>
+                <td>Multiple forms at compile time</td>
+                <td>Dynamic behavior at run time</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- IMPORTANT POINTS -->
+    <section class="section">
+
+        <h2>Important Points</h2>
+
+        <ul>
+
+            <li>
+                Polymorphism means "many forms".
+            </li>
+
+            <li>
+                C++ supports compile-time and run-time polymorphism.
+            </li>
+
+            <li>
+                Function overloading is compile-time polymorphism.
+            </li>
+
+            <li>
+                Operator overloading is compile-time polymorphism.
+            </li>
+
+            <li>
+                Function overriding is commonly used for run-time polymorphism.
+            </li>
+
+            <li>
+                Virtual functions enable dynamic dispatch through
+                base-class pointers or references.
+            </li>
+
+            <li>
+                The <strong>override</strong> keyword helps verify
+                that a function actually overrides a base virtual function.
+            </li>
+
+            <li>
+                Polymorphism is an important feature of OOP.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+    <section class="section">
+
+        <h2>Common Mistakes</h2>
+
+        <h3>1. Forgetting virtual</h3>
+
+        <p>
+            If you want dynamic dispatch through a base pointer,
+            remember to make the base function virtual.
+        </p>
+
+        <h3>2. Wrong Function Signature</h3>
+
+        <p>
+            The derived function must correctly match the virtual
+            function it is overriding.
+        </p>
+
+        <h3>3. Forgetting override</h3>
+
+        <p>
+            Using <strong>override</strong> is recommended because
+            it helps the compiler detect accidental mismatches.
+        </p>
+
+        <h3>4. Trying to Create an Abstract Class Object</h3>
+
+        <p>
+            A class containing a pure virtual function cannot be
+            instantiated directly.
+        </p>
+
+    </section>
+
+
+    <!-- COMPLETE EXAMPLE -->
+    <section class="section">
+
+        <h2>Complete Polymorphism Example</h2>
+
+        <div class="code-title">
+            C++ Program
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Animal {
+
+public:
+
+```
+virtual void sound() {
+
+    cout &lt;&lt; "Animal makes a sound" &lt;&lt; endl;
+
+}
+
+virtual ~Animal() = default;
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Dog barks" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Cat : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Cat meows" &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Animal* animal1 = new Dog();
+Animal* animal2 = new Cat();
+
+animal1-&gt;sound();
+animal2-&gt;sound();
+
+delete animal1;
+delete animal2;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section class="section">
+
+        <h2>Quick Summary</h2>
+
+        <table>
+
+            <tr>
+                <th>Concept</th>
+                <th>Meaning</th>
+            </tr>
+
+            <tr>
+                <td>Polymorphism</td>
+                <td>One interface/name with multiple forms</td>
+            </tr>
+
+            <tr>
+                <td>Function Overloading</td>
+                <td>Same function name with different parameters</td>
+            </tr>
+
+            <tr>
+                <td>Operator Overloading</td>
+                <td>Giving operators behavior for user-defined types</td>
+            </tr>
+
+            <tr>
+                <td>Function Overriding</td>
+                <td>Derived class provides a new implementation</td>
+            </tr>
+
+            <tr>
+                <td>Virtual Function</td>
+                <td>Enables dynamic dispatch</td>
+            </tr>
+
+            <tr>
+                <td>override</td>
+                <td>Confirms intended overriding</td>
+            </tr>
+
+            <tr>
+                <td>Pure Virtual Function</td>
+                <td>Creates an abstract interface</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- CODE EDITOR -->
+    <section class="section">
+
+        <h2>Try C++ Polymorphism Code</h2>
+
+        <p>
+            Write your C++ code below:
+        </p>
+
+        <textarea id="codeEditor">#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Animal {
+
+public:
+
+```
+virtual void sound() {
+
+    cout &lt;&lt; "Animal sound" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Dog barks" &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Animal* animal;
+
+Dog dog;
+
+animal = &amp;dog;
+
+animal-&gt;sound();
+
+return 0;
+```
+
+}</textarea>
+
+```
+        <div class="buttons">
+
+            <button class="run-btn" onclick="runCode()">
+                Run Code
+            </button>
+
+            <button class="clear-btn" onclick="clearCode()">
+                Clear
+            </button>
+
+        </div>
+
+        <div class="output" id="output">
+            Output will appear here...
+        </div>
+
+    </section>
+
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+
+        <a href="cpp-inheritance.html">
+            ← Previous: C++ Inheritance
+        </a>
+
+        <a href="cpp-function-overloading.html">
+            Next: Function Overloading →
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 Code With Me | Learn Coding
+    </p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+    function runCode() {
+
+        const code =
+            document.getElementById("codeEditor").value;
+
+        const output =
+            document.getElementById("output");
+
+        if (code.trim() === "") {
+
+            output.textContent =
+                "Please enter some C++ code.";
+
+            return;
+        }
+
+        output.textContent =
+            "C++ code submitted successfully!\n\n" +
+            "Note: This editor is a demonstration interface. " +
+            "To actually compile and execute C++ code in the browser, " +
+            "you need a C++ compiler/backend.";
+
+    }
+
+
+    function clearCode() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("output").textContent =
+            "Output will appear here...";
+
+    }
+
+</script>
+```
+
+</body>
+</html>
