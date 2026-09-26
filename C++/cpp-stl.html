@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C++ STL | Code With Me</title>
+
+    <meta name="description"
+        content="Learn C++ STL including vectors, lists, stacks, queues, sets, maps, iterators and algorithms with simple examples.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        ul {
+            margin-left: 25px;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 10px;
+            resize: vertical;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        #output {
+            background: #020617;
+            color: #22c55e;
+            min-height: 120px;
+            margin-top: 15px;
+            padding: 18px;
+            border-radius: 10px;
+            white-space: pre-wrap;
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-nav a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .lesson-nav a:hover {
+            background: #1d4ed8;
+        }
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 22px;
+            }
+
+            .lesson-nav {
+                flex-direction: column;
+            }
+
+            .lesson-nav a {
+                text-align: center;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>C++ STL</h1>
+        <p>
+            Learn the Standard Template Library in C++ with
+            containers, iterators, algorithms and practical examples.
+        </p>
+    </section>
+
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="section">
+
+            <h2>What is C++ STL?</h2>
+
+            <p>
+                STL stands for <strong>Standard Template Library</strong>.
+                It is a collection of ready-to-use template classes and
+                functions provided by C++.
+            </p>
+
+            <p>
+                STL helps programmers perform common programming tasks
+                without writing everything from scratch.
+            </p>
+
+            <div class="info-box">
+                <strong>STL mainly contains:</strong>
+                Containers, Iterators, Algorithms and Function Objects.
+            </div>
+
+        </section>
+
+
+        <!-- Why STL -->
+        <section class="section">
+
+            <h2>Why Use STL?</h2>
+
+            <ul>
+                <li>Reduces the amount of code you need to write.</li>
+                <li>Provides reusable data structures.</li>
+                <li>Provides useful searching and sorting algorithms.</li>
+                <li>Makes programs easier to develop.</li>
+                <li>Works with different data types using templates.</li>
+                <li>Provides efficient and commonly used implementations.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- Components -->
+        <section class="section">
+
+            <h2>Main Components of STL</h2>
+
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>Purpose</th>
+                    <th>Examples</th>
+                </tr>
+
+                <tr>
+                    <td>Containers</td>
+                    <td>Store collections of data.</td>
+                    <td>vector, list, map, set</td>
+                </tr>
+
+                <tr>
+                    <td>Iterators</td>
+                    <td>Access and move through container elements.</td>
+                    <td>begin(), end()</td>
+                </tr>
+
+                <tr>
+                    <td>Algorithms</td>
+                    <td>Perform operations on data.</td>
+                    <td>sort(), find(), reverse()</td>
+                </tr>
+
+                <tr>
+                    <td>Function Objects</td>
+                    <td>Objects that can behave like functions.</td>
+                    <td>greater&lt;&gt;, less&lt;&gt;</td>
+                </tr>
+            </table>
+
+        </section>
+
+
+        <!-- Vector -->
+        <section class="section">
+
+            <h2>1. Vector</h2>
+
+            <p>
+                A <strong>vector</strong> is a dynamic array that can
+                automatically change its size.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main()
+{
+    vector&lt;int&gt; numbers = {10, 20, 30, 40};
+
+    for (int number : numbers)
+    {
+        cout &lt;&lt; number &lt;&lt; " ";
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                10 20 30 40
+            </div>
+
+        </section>
+
+
+        <!-- Vector functions -->
+        <section class="section">
+
+            <h2>Common Vector Functions</h2>
+
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>push_back()</td>
+                    <td>Adds an element at the end.</td>
+                </tr>
+
+                <tr>
+                    <td>pop_back()</td>
+                    <td>Removes the last element.</td>
+                </tr>
+
+                <tr>
+                    <td>size()</td>
+                    <td>Returns the number of elements.</td>
+                </tr>
+
+                <tr>
+                    <td>front()</td>
+                    <td>Returns the first element.</td>
+                </tr>
+
+                <tr>
+                    <td>back()</td>
+                    <td>Returns the last element.</td>
+                </tr>
+
+                <tr>
+                    <td>empty()</td>
+                    <td>Checks whether the vector is empty.</td>
+                </tr>
+            </table>
+
+            <pre><code>vector&lt;int&gt; numbers;
+
+numbers.push_back(10);
+numbers.push_back(20);
+numbers.push_back(30);
+
+cout &lt;&lt; numbers.size();</code></pre>
+
+        </section>
+
+
+        <!-- List -->
+        <section class="section">
+
+            <h2>2. List</h2>
+
+            <p>
+                A <strong>list</strong> stores elements in a sequence and
+                supports efficient insertion and removal at known positions.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;list&gt;
+using namespace std;
+
+int main()
+{
+    list&lt;int&gt; numbers = {10, 20, 30};
+
+    numbers.push_front(5);
+    numbers.push_back(40);
+
+    for (int number : numbers)
+    {
+        cout &lt;&lt; number &lt;&lt; " ";
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                5 10 20 30 40
+            </div>
+
+        </section>
+
+
+        <!-- Stack -->
+        <section class="section">
+
+            <h2>3. Stack</h2>
+
+            <p>
+                A <strong>stack</strong> follows the
+                <strong>LIFO</strong> principle.
+            </p>
+
+            <p>
+                LIFO means <strong>Last In, First Out</strong>.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;stack&gt;
+using namespace std;
+
+int main()
+{
+    stack&lt;int&gt; numbers;
+
+    numbers.push(10);
+    numbers.push(20);
+    numbers.push(30);
+
+    cout &lt;&lt; numbers.top();
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                30
+            </div>
+
+        </section>
+
+
+        <!-- Queue -->
+        <section class="section">
+
+            <h2>4. Queue</h2>
+
+            <p>
+                A <strong>queue</strong> generally follows the
+                <strong>FIFO</strong> principle.
+            </p>
+
+            <p>
+                FIFO means <strong>First In, First Out</strong>.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int main()
+{
+    queue&lt;int&gt; numbers;
+
+    numbers.push(10);
+    numbers.push(20);
+    numbers.push(30);
+
+    cout &lt;&lt; numbers.front();
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                10
+            </div>
+
+        </section>
+
+
+        <!-- Priority Queue -->
+        <section class="section">
+
+            <h2>5. Priority Queue</h2>
+
+            <p>
+                A <strong>priority_queue</strong> gives access to the
+                highest-priority element according to its ordering.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int main()
+{
+    priority_queue&lt;int&gt; numbers;
+
+    numbers.push(10);
+    numbers.push(50);
+    numbers.push(30);
+
+    cout &lt;&lt; numbers.top();
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                50
+            </div>
+
+        </section>
+
+
+        <!-- Set -->
+        <section class="section">
+
+            <h2>6. Set</h2>
+
+            <p>
+                A <strong>set</strong> stores unique elements and keeps
+                them ordered according to its comparison rules.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;set&gt;
+using namespace std;
+
+int main()
+{
+    set&lt;int&gt; numbers;
+
+    numbers.insert(30);
+    numbers.insert(10);
+    numbers.insert(20);
+    numbers.insert(10);
+
+    for (int number : numbers)
+    {
+        cout &lt;&lt; number &lt;&lt; " ";
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                10 20 30
+            </div>
+
+            <div class="info-box">
+                Notice that the duplicate value <strong>10</strong>
+                appears only once.
+            </div>
+
+        </section>
+
+
+        <!-- Map -->
+        <section class="section">
+
+            <h2>7. Map</h2>
+
+            <p>
+                A <strong>map</strong> stores data in key-value pairs.
+                Keys in a map are unique.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;map&gt;
+using namespace std;
+
+int main()
+{
+    map&lt;string, int&gt; marks;
+
+    marks["Krish"] = 90;
+    marks["Rahul"] = 85;
+    marks["Amit"] = 80;
+
+    cout &lt;&lt; marks["Krish"];
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                90
+            </div>
+
+        </section>
+
+
+        <!-- Unordered Map -->
+        <section class="section">
+
+            <h2>8. Unordered Map</h2>
+
+            <p>
+                An <strong>unordered_map</strong> stores key-value pairs
+                using hashing and does not maintain elements in sorted key order.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;unordered_map&gt;
+using namespace std;
+
+int main()
+{
+    unordered_map&lt;string, int&gt; age;
+
+    age["Krish"] = 20;
+    age["Rahul"] = 21;
+
+    cout &lt;&lt; age["Krish"];
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- Iterator -->
+        <section class="section">
+
+            <h2>9. Iterators</h2>
+
+            <p>
+                Iterators are objects used to access elements inside
+                STL containers.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main()
+{
+    vector&lt;int&gt; numbers = {10, 20, 30};
+
+    vector&lt;int&gt;::iterator it;
+
+    for (it = numbers.begin(); it != numbers.end(); ++it)
+    {
+        cout &lt;&lt; *it &lt;&lt; " ";
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                10 20 30
+            </div>
+
+        </section>
+
+
+        <!-- Algorithms -->
+        <section class="section">
+
+            <h2>10. STL Algorithms</h2>
+
+            <p>
+                The C++ STL provides many ready-to-use algorithms.
+            </p>
+
+            <h3>sort()</h3>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main()
+{
+    vector&lt;int&gt; numbers = {40, 10, 30, 20};
+
+    sort(numbers.begin(), numbers.end());
+
+    for (int number : numbers)
+    {
+        cout &lt;&lt; number &lt;&lt; " ";
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                10 20 30 40
+            </div>
+
+        </section>
+
+
+        <!-- reverse -->
+        <section class="section">
+
+            <h2>reverse()</h2>
+
+            <p>
+                The <strong>reverse()</strong> algorithm reverses the
+                elements in a range.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main()
+{
+    vector&lt;int&gt; numbers = {10, 20, 30, 40};
+
+    reverse(numbers.begin(), numbers.end());
+
+    for (int number : numbers)
+    {
+        cout &lt;&lt; number &lt;&lt; " ";
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                40 30 20 10
+            </div>
+
+        </section>
+
+
+        <!-- find -->
+        <section class="section">
+
+            <h2>find()</h2>
+
+            <p>
+                The <strong>find()</strong> algorithm searches for a value
+                in a range.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main()
+{
+    vector&lt;int&gt; numbers = {10, 20, 30, 40};
+
+    auto result = find(
+        numbers.begin(),
+        numbers.end(),
+        30
+    );
+
+    if (result != numbers.end())
+    {
+        cout &lt;&lt; "Element found";
+    }
+    else
+    {
+        cout &lt;&lt; "Element not found";
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                Element found
+            </div>
+
+        </section>
+
+
+        <!-- count -->
+        <section class="section">
+
+            <h2>count()</h2>
+
+            <p>
+                The <strong>count()</strong> algorithm counts how many
+                times a value occurs in a range.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main()
+{
+    vector&lt;int&gt; numbers = {
+        10, 20, 10, 30, 10
+    };
+
+    int result = count(
+        numbers.begin(),
+        numbers.end(),
+        10
+    );
+
+    cout &lt;&lt; result;
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                3
+            </div>
+
+        </section>
+
+
+        <!-- Common Containers -->
+        <section class="section">
+
+            <h2>Common STL Containers</h2>
+
+            <table>
+                <tr>
+                    <th>Container</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>vector</td>
+                    <td>Dynamic array.</td>
+                </tr>
+
+                <tr>
+                    <td>array</td>
+                    <td>Fixed-size array.</td>
+                </tr>
+
+                <tr>
+                    <td>list</td>
+                    <td>Doubly linked list.</td>
+                </tr>
+
+                <tr>
+                    <td>deque</td>
+                    <td>Double-ended queue.</td>
+                </tr>
+
+                <tr>
+                    <td>stack</td>
+                    <td>LIFO container adapter.</td>
+                </tr>
+
+                <tr>
+                    <td>queue</td>
+                    <td>FIFO container adapter.</td>
+                </tr>
+
+                <tr>
+                    <td>priority_queue</td>
+                    <td>Priority-based container adapter.</td>
+                </tr>
+
+                <tr>
+                    <td>set</td>
+                    <td>Ordered unique elements.</td>
+                </tr>
+
+                <tr>
+                    <td>unordered_set</td>
+                    <td>Hash-based unique elements.</td>
+                </tr>
+
+                <tr>
+                    <td>map</td>
+                    <td>Ordered key-value pairs.</td>
+                </tr>
+
+                <tr>
+                    <td>unordered_map</td>
+                    <td>Hash-based key-value pairs.</td>
+                </tr>
+            </table>
+
+        </section>
+
+
+        <!-- Common Algorithms -->
+        <section class="section">
+
+            <h2>Common STL Algorithms</h2>
+
+            <table>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>sort()</td>
+                    <td>Sorts elements.</td>
+                </tr>
+
+                <tr>
+                    <td>reverse()</td>
+                    <td>Reverses elements.</td>
+                </tr>
+
+                <tr>
+                    <td>find()</td>
+                    <td>Searches for an element.</td>
+                </tr>
+
+                <tr>
+                    <td>count()</td>
+                    <td>Counts occurrences.</td>
+                </tr>
+
+                <tr>
+                    <td>max()</td>
+                    <td>Returns the larger value.</td>
+                </tr>
+
+                <tr>
+                    <td>min()</td>
+                    <td>Returns the smaller value.</td>
+                </tr>
+
+                <tr>
+                    <td>swap()</td>
+                    <td>Swaps two values.</td>
+                </tr>
+
+                <tr>
+                    <td>binary_search()</td>
+                    <td>Checks whether a value exists in a sorted range.</td>
+                </tr>
+            </table>
+
+        </section>
+
+
+        <!-- Practical Example -->
+        <section class="section">
+
+            <h2>Practical Example: Student Marks</h2>
+
+            <p>
+                STL can make it easy to store and sort student marks.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main()
+{
+    vector&lt;int&gt; marks = {
+        78, 92, 65, 88, 95
+    };
+
+    sort(marks.begin(), marks.end());
+
+    cout &lt;&lt; "Sorted Marks:\n";
+
+    for (int mark : marks)
+    {
+        cout &lt;&lt; mark &lt;&lt; " ";
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                Sorted Marks:<br>
+                65 78 88 92 95
+            </div>
+
+        </section>
+
+
+        <!-- STL Advantages -->
+        <section class="section">
+
+            <h2>Advantages of STL</h2>
+
+            <ul>
+                <li>Reusable components.</li>
+                <li>Less development time.</li>
+                <li>Powerful containers.</li>
+                <li>Useful built-in algorithms.</li>
+                <li>Supports generic programming.</li>
+                <li>Works with many different data types.</li>
+                <li>Makes code shorter and easier to maintain.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- Important Notes -->
+        <section class="section">
+
+            <h2>Important STL Points</h2>
+
+            <div class="info-box">
+
+                <p>
+                    <strong>1. Containers</strong> store data.
+                </p>
+
+                <p>
+                    <strong>2. Iterators</strong> help access container elements.
+                </p>
+
+                <p>
+                    <strong>3. Algorithms</strong> perform operations on data.
+                </p>
+
+                <p>
+                    <strong>4. Templates</strong> allow STL components to
+                    work with different data types.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Interactive Demo -->
+        <section class="section">
+
+            <h2>Interactive STL Demo</h2>
+
+            <p>
+                This browser demo demonstrates the basic idea of
+                sorting a vector.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeInput">vector&lt;int&gt; numbers = {40, 10, 30, 20};
+
+sort(numbers.begin(), numbers.end());
+
+for (int number : numbers)
+{
+    cout &lt;&lt; number &lt;&lt; " ";
+}</textarea>
+
+                <div class="buttons">
+
+                    <button class="run-btn" onclick="runDemo()">
+                        ▶ Run Demo
+                    </button>
+
+                    <button class="clear-btn" onclick="clearDemo()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+
+            <div class="warning-box">
+                <strong>Note:</strong>
+                This is a browser-based demonstration. It does not compile
+                arbitrary C++ code. A real C++ compiler is required to
+                execute complete STL programs.
+            </div>
+
+        </section>
+
+
+        <!-- Summary -->
+        <section class="section">
+
+            <h2>Summary</h2>
+
+            <p>
+                C++ STL is a powerful collection of reusable components
+                that makes programming easier and faster.
+            </p>
+
+            <ul>
+                <li><strong>vector</strong> is a dynamic array.</li>
+                <li><strong>list</strong> is a linked-list container.</li>
+                <li><strong>stack</strong> follows LIFO.</li>
+                <li><strong>queue</strong> generally follows FIFO.</li>
+                <li><strong>set</strong> stores unique ordered elements.</li>
+                <li><strong>map</strong> stores key-value pairs.</li>
+                <li><strong>iterators</strong> provide access to container elements.</li>
+                <li><strong>algorithms</strong> perform operations such as sorting and searching.</li>
+            </ul>
+
+            <div class="success-box">
+                <strong>Next Step:</strong>
+                Practice vector, set, map, stack, queue and STL algorithms
+                with different programs.
+            </div>
+
+        </section>
+
+
+        <!-- Navigation -->
+        <div class="lesson-nav">
+
+            <a href="./cpp-exception-handling.html">
+                ← Previous: Exception Handling
+            </a>
+
+            <a href="./cpp-projects.html">
+                Next: C++ Projects →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+    </footer>
+
+
+    <script>
+
+        function runDemo() {
+
+            const code = document.getElementById("codeInput").value;
+            const output = document.getElementById("output");
+
+            /*
+             * Browser demonstration only.
+             * This does not execute real C++ code.
+             */
+
+            if (
+                code.includes("sort") &&
+                code.includes("numbers")
+            ) {
+
+                output.textContent =
+                    "Sorted vector:\n" +
+                    "10 20 30 40";
+
+            } else if (
+                code.includes("vector")
+            ) {
+
+                output.textContent =
+                    "Vector detected.\n\n" +
+                    "This browser demo supports a simple " +
+                    "vector sorting example.";
+
+            } else {
+
+                output.textContent =
+                    "STL demo could not recognize this example.";
+
+            }
+        }
+
+
+        function clearDemo() {
+
+            document.getElementById("codeInput").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+</body>
+</html>
