@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C++ Inheritance | Code With Me</title>
+
+    <meta name="description"
+          content="Learn C++ Inheritance with simple explanations, syntax, examples, types of inheritance and programs.">
+
+    <meta name="keywords"
+          content="C++ inheritance, C++ single inheritance, multiple inheritance, multilevel inheritance, hierarchical inheritance">
+
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #374151;
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        /* Boxes */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .inline-code {
+            background: #e5e7eb;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Diagram */
+        .diagram {
+            background: #f8fafc;
+            border: 2px solid #dbeafe;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .diagram-box {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 8px;
+            margin: 8px;
+        }
+
+        .diagram-arrow {
+            font-size: 25px;
+            color: #2563eb;
+            margin: 5px;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .editor-buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 11px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #output {
+            margin-top: 15px;
+            min-height: 100px;
+            background: #0f172a;
+            color: #22c55e;
+            padding: 18px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: Consolas, monospace;
+        }
+
+        /* Navigation */
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-navigation a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .lesson-navigation a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+
+            .lesson-navigation a {
+                text-align: center;
+            }
+
+            .diagram-box {
+                display: block;
+                margin: 10px auto;
+                max-width: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+        <a href="../index.html" class="logo">
+            Code<span>WithMe</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="hero">
+
+        <h1>C++ Inheritance</h1>
+
+        <p>
+            Learn how one class can inherit properties and functions from another class
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- Introduction -->
+        <section class="section">
+
+            <h2>What is Inheritance in C++?</h2>
+
+            <p>
+                <strong>Inheritance</strong> is an important feature of
+                Object-Oriented Programming (OOP).
+            </p>
+
+            <p>
+                It allows one class to acquire the properties and functions
+                of another class.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Simple Definition:</strong>
+
+                Inheritance allows a new class to reuse the data members
+                and member functions of an existing class.
+
+            </div>
+
+            <p>
+                The existing class is called the
+                <strong>base class</strong> or <strong>parent class</strong>.
+            </p>
+
+            <p>
+                The new class is called the
+                <strong>derived class</strong> or <strong>child class</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- Basic Structure -->
+        <section class="section">
+
+            <h2>Basic Structure of Inheritance</h2>
+
+            <pre><code>class Base
+{
+    // Base class members
+};
+
+class Derived : public Base
+{
+    // Derived class members
+};</code></pre>
+
+            <p>
+                The colon <span class="inline-code">:</span> is used to
+                specify inheritance.
+            </p>
+
+            <div class="diagram">
+
+                <div class="diagram-box">
+                    Base Class
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-box">
+                    Derived Class
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Simple Example -->
+        <section class="section">
+
+            <h2>Simple Inheritance Example</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Animal
+{
+public:
+
+    void eat()
+    {
+        cout &lt;&lt; "Animal is eating" &lt;&lt; endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void bark()
+    {
+        cout &lt;&lt; "Dog is barking" &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Dog d;
+
+    d.eat();
+    d.bark();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Animal is eating
+Dog is barking</code></pre>
+
+            <div class="success-box">
+
+                The <strong>Dog</strong> class inherits the
+                <span class="inline-code">eat()</span> function from
+                the <strong>Animal</strong> class.
+
+            </div>
+
+        </section>
+
+
+        <!-- Base and Derived -->
+        <section class="section">
+
+            <h2>Base Class and Derived Class</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Term</th>
+                            <th>Meaning</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Base Class</td>
+                            <td>The class whose members are inherited.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Derived Class</td>
+                            <td>The class that inherits from another class.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Parent Class</td>
+                            <td>Another name for the base class.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Child Class</td>
+                            <td>Another name for the derived class.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Single Inheritance -->
+        <section class="section">
+
+            <h2>1. Single Inheritance</h2>
+
+            <p>
+                In single inheritance, one derived class inherits from
+                one base class.
+            </p>
+
+            <div class="diagram">
+
+                <div class="diagram-box">
+                    Parent
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-box">
+                    Child
+                </div>
+
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Vehicle
+{
+public:
+
+    void start()
+    {
+        cout &lt;&lt; "Vehicle started" &lt;&lt; endl;
+    }
+};
+
+class Car : public Vehicle
+{
+public:
+
+    void drive()
+    {
+        cout &lt;&lt; "Car is driving" &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Car c;
+
+    c.start();
+    c.drive();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Vehicle started
+Car is driving</code></pre>
+
+        </section>
+
+
+        <!-- Multilevel -->
+        <section class="section">
+
+            <h2>2. Multilevel Inheritance</h2>
+
+            <p>
+                In multilevel inheritance, a class is derived from another
+                derived class.
+            </p>
+
+            <div class="diagram">
+
+                <div class="diagram-box">
+                    Grandparent
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-box">
+                    Parent
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-box">
+                    Child
+                </div>
+
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Animal
+{
+public:
+
+    void eat()
+    {
+        cout &lt;&lt; "Animal eats" &lt;&lt; endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void bark()
+    {
+        cout &lt;&lt; "Dog barks" &lt;&lt; endl;
+    }
+};
+
+class Puppy : public Dog
+{
+public:
+
+    void play()
+    {
+        cout &lt;&lt; "Puppy plays" &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Puppy p;
+
+    p.eat();
+    p.bark();
+    p.play();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Animal eats
+Dog barks
+Puppy plays</code></pre>
+
+        </section>
+
+
+        <!-- Multiple -->
+        <section class="section">
+
+            <h2>3. Multiple Inheritance</h2>
+
+            <p>
+                In multiple inheritance, one derived class inherits from
+                more than one base class.
+            </p>
+
+            <div class="diagram">
+
+                <div>
+                    <span class="diagram-box">Base A</span>
+                    <span class="diagram-box">Base B</span>
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-box">
+                    Derived
+                </div>
+
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Father
+{
+public:
+
+    void fatherProperty()
+    {
+        cout &lt;&lt; "Father property" &lt;&lt; endl;
+    }
+};
+
+class Mother
+{
+public:
+
+    void motherProperty()
+    {
+        cout &lt;&lt; "Mother property" &lt;&lt; endl;
+    }
+};
+
+class Child : public Father, public Mother
+{
+public:
+
+    void childAction()
+    {
+        cout &lt;&lt; "Child action" &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Child c;
+
+    c.fatherProperty();
+    c.motherProperty();
+    c.childAction();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Father property
+Mother property
+Child action</code></pre>
+
+        </section>
+
+
+        <!-- Hierarchical -->
+        <section class="section">
+
+            <h2>4. Hierarchical Inheritance</h2>
+
+            <p>
+                In hierarchical inheritance, multiple derived classes
+                inherit from the same base class.
+            </p>
+
+            <div class="diagram">
+
+                <div class="diagram-box">
+                    Animal
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div>
+                    <span class="diagram-box">Dog</span>
+                    <span class="diagram-box">Cat</span>
+                </div>
+
+            </div>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Animal
+{
+public:
+
+    void eat()
+    {
+        cout &lt;&lt; "Animal eats" &lt;&lt; endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void bark()
+    {
+        cout &lt;&lt; "Dog barks" &lt;&lt; endl;
+    }
+};
+
+class Cat : public Animal
+{
+public:
+
+    void meow()
+    {
+        cout &lt;&lt; "Cat meows" &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Dog d;
+    Cat c;
+
+    d.eat();
+    d.bark();
+
+    c.eat();
+    c.meow();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Animal eats
+Dog barks
+Animal eats
+Cat meows</code></pre>
+
+        </section>
+
+
+        <!-- Hybrid -->
+        <section class="section">
+
+            <h2>5. Hybrid Inheritance</h2>
+
+            <p>
+                Hybrid inheritance is a combination of two or more types
+                of inheritance.
+            </p>
+
+            <div class="info-box">
+
+                Hybrid inheritance can combine structures such as
+                multiple inheritance and multilevel inheritance.
+
+            </div>
+
+            <p>
+                A hybrid structure may look like:
+            </p>
+
+            <div class="diagram">
+
+                <div class="diagram-box">
+                    A
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div>
+                    <span class="diagram-box">B</span>
+                    <span class="diagram-box">C</span>
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-box">
+                    D
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Access Modes -->
+        <section class="section">
+
+            <h2>Inheritance Access Modes</h2>
+
+            <p>
+                C++ supports three inheritance access modes:
+            </p>
+
+            <ul>
+                <li><strong>public</strong></li>
+                <li><strong>protected</strong></li>
+                <li><strong>private</strong></li>
+            </ul>
+
+            <pre><code>class Child : public Parent
+{
+};</code></pre>
+
+            <p>
+                The access mode affects how inherited members are accessible
+                through the derived class.
+            </p>
+
+        </section>
+
+
+        <!-- Public Inheritance -->
+        <section class="section">
+
+            <h2>Public Inheritance</h2>
+
+            <p>
+                In public inheritance, public members of the base class
+                remain public in the derived class.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Parent
+{
+public:
+
+    void show()
+    {
+        cout &lt;&lt; "Parent function";
+    }
+};
+
+class Child : public Parent
+{
+};
+
+int main()
+{
+    Child c;
+
+    c.show();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Parent function</code></pre>
+
+        </section>
+
+
+        <!-- Protected -->
+        <section class="section">
+
+            <h2>Protected Members and Inheritance</h2>
+
+            <p>
+                A protected member cannot normally be accessed directly
+                from outside the class hierarchy, but it can be accessed
+                by derived classes.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Parent
+{
+protected:
+
+    int number = 100;
+};
+
+class Child : public Parent
+{
+public:
+
+    void show()
+    {
+        cout &lt;&lt; number;
+    }
+};
+
+int main()
+{
+    Child c;
+
+    c.show();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>100</code></pre>
+
+        </section>
+
+
+        <!-- Constructor -->
+        <section class="section">
+
+            <h2>Inheritance and Constructors</h2>
+
+            <p>
+                When a derived object is created, the base class constructor
+                is initialized before the derived class constructor.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Parent
+{
+public:
+
+    Parent()
+    {
+        cout &lt;&lt; "Parent constructor" &lt;&lt; endl;
+    }
+};
+
+class Child : public Parent
+{
+public:
+
+    Child()
+    {
+        cout &lt;&lt; "Child constructor" &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Child c;
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Parent constructor
+Child constructor</code></pre>
+
+        </section>
+
+
+        <!-- Function Overriding -->
+        <section class="section">
+
+            <h2>Function Overriding</h2>
+
+            <p>
+                A derived class can provide its own version of a function
+                that already exists in the base class.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Animal
+{
+public:
+
+    void sound()
+    {
+        cout &lt;&lt; "Animal makes a sound" &lt;&lt; endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void sound()
+    {
+        cout &lt;&lt; "Dog barks" &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Dog d;
+
+    d.sound();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Dog barks</code></pre>
+
+        </section>
+
+
+        <!-- Scope Resolution -->
+        <section class="section">
+
+            <h2>Accessing Base Class Function</h2>
+
+            <p>
+                If a derived class has a function with the same name as
+                the base class, the scope resolution operator can be used
+                to access the base class version.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Animal
+{
+public:
+
+    void sound()
+    {
+        cout &lt;&lt; "Animal sound" &lt;&lt; endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void sound()
+    {
+        cout &lt;&lt; "Dog barks" &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Dog d;
+
+    d.sound();
+
+    d.Animal::sound();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Dog barks
+Animal sound</code></pre>
+
+        </section>
+
+
+        <!-- Advantages -->
+        <section class="section">
+
+            <h2>Advantages of Inheritance</h2>
+
+            <ul>
+
+                <li>Code reusability</li>
+
+                <li>Reduces duplicate code</li>
+
+                <li>Makes programs easier to organize</li>
+
+                <li>Supports object-oriented programming</li>
+
+                <li>Allows derived classes to extend existing classes</li>
+
+                <li>Helps create relationships between classes</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Types Table -->
+        <section class="section">
+
+            <h2>Types of C++ Inheritance</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Single</td>
+                            <td>One derived class inherits from one base class.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Multiple</td>
+                            <td>One derived class inherits from multiple base classes.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Multilevel</td>
+                            <td>A derived class becomes a base class for another class.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Hierarchical</td>
+                            <td>Multiple derived classes inherit from one base class.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Hybrid</td>
+                            <td>Combination of multiple inheritance types.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Practical Example -->
+        <section class="section">
+
+            <h2>Practical Example: Employee System</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Employee
+{
+public:
+
+    string name;
+    int salary;
+
+    void showEmployee()
+    {
+        cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+        cout &lt;&lt; "Salary: " &lt;&lt; salary &lt;&lt; endl;
+    }
+};
+
+class Developer : public Employee
+{
+public:
+
+    string language;
+
+    void showDeveloper()
+    {
+        cout &lt;&lt; "Programming Language: "
+             &lt;&lt; language &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Developer d;
+
+    d.name = "Krish";
+    d.salary = 30000;
+    d.language = "C++";
+
+    d.showEmployee();
+    d.showDeveloper();
+
+    return 0;
+}</code></pre>
+
+            <h3>Output</h3>
+
+            <pre><code>Name: Krish
+Salary: 30000
+Programming Language: C++</code></pre>
+
+        </section>
+
+
+        <!-- Interactive Editor -->
+        <section class="section">
+
+            <h2>Try C++ Inheritance Example</h2>
+
+            <p>
+                Try the inheritance example below.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeEditor">#include &lt;iostream&gt;
+using namespace std;
+
+class Animal
+{
+public:
+
+    void eat()
+    {
+        cout &lt;&lt; "Animal is eating" &lt;&lt; endl;
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void bark()
+    {
+        cout &lt;&lt; "Dog is barking" &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    Dog d;
+
+    d.eat();
+    d.bark();
+
+    return 0;
+}</textarea>
+
+                <div class="editor-buttons">
+
+                    <button class="run-btn" onclick="runCode()">
+                        ▶ Run Code
+                    </button>
+
+                    <button class="clear-btn" onclick="clearCode()">
+                        Clear
+                    </button>
+
+                </div>
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+
+            <div class="warning-box">
+
+                <strong>Note:</strong>
+                This is a browser demonstration and does not compile
+                arbitrary C++ code. A real C++ compiler/backend is required
+                to execute arbitrary C++ programs.
+
+            </div>
+
+        </section>
+
+
+        <!-- Summary -->
+        <section class="section">
+
+            <h2>C++ Inheritance Summary</h2>
+
+            <ul>
+
+                <li>Inheritance is an important OOP concept.</li>
+
+                <li>It allows one class to inherit members from another class.</li>
+
+                <li>The existing class is called the base or parent class.</li>
+
+                <li>The new class is called the derived or child class.</li>
+
+                <li>C++ supports single inheritance.</li>
+
+                <li>C++ supports multiple inheritance.</li>
+
+                <li>C++ supports multilevel inheritance.</li>
+
+                <li>C++ supports hierarchical inheritance.</li>
+
+                <li>Hybrid inheritance combines multiple inheritance structures.</li>
+
+                <li>Inheritance helps improve code reusability.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- Navigation -->
+        <div class="lesson-navigation">
+
+            <a href="./cpp-pointers.html">
+                ← Previous: Pointers
+            </a>
+
+            <a href="./cpp-polymorphism.html">
+                Next: Polymorphism →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Code With Me. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function runCode() {
+
+            const code =
+                document.getElementById("codeEditor").value;
+
+            const output =
+                document.getElementById("output");
+
+
+            if (
+                code.includes("class Animal") &&
+                code.includes("class Dog : public Animal") &&
+                code.includes("d.eat()") &&
+                code.includes("d.bark()")
+            ) {
+
+                output.textContent =
+                    "Animal is eating\n" +
+                    "Dog is barking";
+
+            }
+
+            else if (
+                code.includes("class Vehicle") &&
+                code.includes("class Car : public Vehicle")
+            ) {
+
+                output.textContent =
+                    "Vehicle started\n" +
+                    "Car is driving";
+
+            }
+
+            else if (
+                code.includes("class Animal") &&
+                code.includes("class Dog : public Animal") &&
+                code.includes("class Puppy : public Dog")
+            ) {
+
+                output.textContent =
+                    "Animal eats\n" +
+                    "Dog barks\n" +
+                    "Puppy plays";
+
+            }
+
+            else if (
+                code.includes("class Father") &&
+                code.includes("class Mother") &&
+                code.includes("class Child : public Father, public Mother")
+            ) {
+
+                output.textContent =
+                    "Father property\n" +
+                    "Mother property\n" +
+                    "Child action";
+
+            }
+
+            else if (
+                code.includes("class Parent") &&
+                code.includes("class Child : public Parent")
+            ) {
+
+                output.textContent =
+                    "Parent function";
+
+            }
+
+            else {
+
+                output.textContent =
+                    "This demo supports the inheritance examples shown on this page.\n\n" +
+                    "For arbitrary C++ code, connect the editor to a real C++ compiler/backend.";
+
+            }
+
+        }
+
+
+        function clearCode() {
+
+            document.getElementById("codeEditor").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+</body>
+</html>
