@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>C++ Abstraction | Code With Me</title>
+
+<meta name="description"
+      content="Learn C++ Abstraction with simple explanations, abstract classes, pure virtual functions, interfaces and practical examples.">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #222;
+        line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+        background: #111827;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .nav-links a:hover {
+        color: #38bdf8;
+    }
+
+    /* HERO */
+    .hero {
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    /* CONTAINER */
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    /* SECTION */
+    .section {
+        background: white;
+        padding: 30px;
+        margin-bottom: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+        color: #1e3a8a;
+        margin-bottom: 15px;
+    }
+
+    .section h3 {
+        color: #2563eb;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .section ul,
+    .section ol {
+        padding-left: 25px;
+    }
+
+    /* HIGHLIGHT */
+    .highlight {
+        background: #eff6ff;
+        border-left: 5px solid #2563eb;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    /* CODE */
+    .code-title {
+        background: #111827;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 8px 8px 0 0;
+        font-weight: bold;
+    }
+
+    pre {
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 20px;
+        overflow-x: auto;
+        border-radius: 0 0 8px 8px;
+        font-family: Consolas, monospace;
+    }
+
+    /* TABLE */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    table th {
+        background: #1e3a8a;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background: #f8fafc;
+    }
+
+    /* EDITOR */
+    textarea {
+        width: 100%;
+        min-height: 400px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: Consolas, monospace;
+        font-size: 15px;
+        resize: vertical;
+        background: #111827;
+        color: #f8fafc;
+    }
+
+    .buttons {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+    }
+
+    button {
+        padding: 11px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .run-btn {
+        background: #2563eb;
+        color: white;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+        color: white;
+    }
+
+    .run-btn:hover {
+        background: #1d4ed8;
+    }
+
+    .clear-btn:hover {
+        background: #b91c1c;
+    }
+
+    .output {
+        margin-top: 15px;
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 15px;
+        min-height: 100px;
+        white-space: pre-wrap;
+        font-family: Consolas, monospace;
+    }
+
+    /* NAVIGATION */
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 30px 0 50px;
+    }
+
+    .page-navigation a {
+        text-decoration: none;
+        background: #2563eb;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .page-navigation a:hover {
+        background: #1d4ed8;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 30px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+
+        nav {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .page-navigation {
+            flex-direction: column;
+        }
+
+        .page-navigation a {
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- NAVBAR -->
+<nav>
+
+    <a href="../index.html" class="logo">
+        Code <span>WithMe</span>
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+
+    <h1>C++ Abstraction</h1>
+
+    <p>
+        Learn Abstract Classes, Pure Virtual Functions and Interfaces
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- INTRODUCTION -->
+    <section class="section">
+
+        <h2>What is Abstraction in C++?</h2>
+
+        <p>
+            <strong>Abstraction</strong> is one of the important
+            concepts of Object-Oriented Programming (OOP) in C++.
+        </p>
+
+        <p>
+            Abstraction means showing only the important information
+            to the user and hiding unnecessary implementation details.
+        </p>
+
+        <div class="highlight">
+
+            <strong>Simple Definition:</strong>
+
+            <br>
+
+            Abstraction means
+            <strong>hiding implementation details and showing only
+            essential features.</strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- REAL LIFE EXAMPLE -->
+    <section class="section">
+
+        <h2>Real-Life Example of Abstraction</h2>
+
+        <p>
+            Consider an ATM machine.
+        </p>
+
+        <p>
+            When you use an ATM, you select options such as
+            withdrawing money or checking your balance.
+        </p>
+
+        <p>
+            You do not need to know how the ATM internally communicates
+            with the bank server, verifies the transaction, or updates
+            the database.
+        </p>
+
+        <div class="highlight">
+
+            You see:
+
+            <br><br>
+
+            ✔ Withdraw Money
+
+            <br>
+
+            ✔ Deposit Money
+
+            <br>
+
+            ✔ Check Balance
+
+            <br><br>
+
+            The internal implementation is hidden.
+
+        </div>
+
+    </section>
+
+
+    <!-- ANOTHER EXAMPLE -->
+    <section class="section">
+
+        <h2>Another Real-Life Example</h2>
+
+        <p>
+            Consider driving a car.
+        </p>
+
+        <p>
+            You use the steering wheel, accelerator and brake
+            to control the car.
+        </p>
+
+        <p>
+            You do not need to understand every internal engine
+            operation to drive the car.
+        </p>
+
+        <div class="highlight">
+
+            <strong>Interface:</strong> Steering wheel, brake, accelerator
+
+            <br><br>
+
+            <strong>Hidden Implementation:</strong> Internal engine mechanism
+
+        </div>
+
+    </section>
+
+
+    <!-- WHY -->
+    <section class="section">
+
+        <h2>Why Use Abstraction?</h2>
+
+        <ul>
+
+            <li>
+                It hides unnecessary implementation details.
+            </li>
+
+            <li>
+                It makes programs easier to understand.
+            </li>
+
+            <li>
+                It improves security by hiding internal details.
+            </li>
+
+            <li>
+                It reduces code complexity.
+            </li>
+
+            <li>
+                It provides a clear interface for users.
+            </li>
+
+            <li>
+                It makes large programs easier to maintain.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- ABSTRACTION METHODS -->
+    <section class="section">
+
+        <h2>How is Abstraction Achieved in C++?</h2>
+
+        <p>
+            C++ commonly achieves abstraction using:
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+
+            <tr>
+                <td>Access Specifiers</td>
+                <td>
+                    public, private and protected can control
+                    access to class members.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Abstract Classes</td>
+                <td>
+                    Classes containing one or more pure virtual
+                    functions.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Pure Virtual Functions</td>
+                <td>
+                    Functions declared using <strong>= 0</strong>.
+                </td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- CLASS ABSTRACTION -->
+    <section class="section">
+
+        <h2>Abstraction Using Classes</h2>
+
+        <p>
+            A class can hide internal data and implementation
+            using private members.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class BankAccount {
+
+private:
+
+```
+double balance;
+```
+
+public:
+
+```
+void setBalance(double amount) {
+
+    balance = amount;
+
+}
+
+void showBalance() {
+
+    cout &lt;&lt; "Balance: " &lt;&lt; balance;
+
+}
+```
+
+};
+
+int main() {
+
+```
+BankAccount account;
+
+account.setBalance(5000);
+
+account.showBalance();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+        <p>
+            The variable <strong>balance</strong> is private.
+            The user interacts with it through public functions.
+        </p>
+
+    </section>
+
+
+    <!-- ABSTRACT CLASS -->
+    <section class="section">
+
+        <h2>What is an Abstract Class?</h2>
+
+        <p>
+            An <strong>abstract class</strong> is a class that
+            contains at least one pure virtual function.
+        </p>
+
+        <p>
+            An abstract class cannot be instantiated directly.
+        </p>
+
+        <div class="highlight">
+
+            <strong>Important:</strong>
+
+            <br><br>
+
+            You cannot create an object directly from an abstract class.
+
+        </div>
+
+    </section>
+
+
+    <!-- PURE VIRTUAL -->
+    <section class="section">
+
+        <h2>Pure Virtual Function</h2>
+
+        <p>
+            A pure virtual function is declared by assigning
+            <strong>0</strong> to a virtual function.
+        </p>
+
+        <div class="code-title">
+            Syntax
+        </div>
+
+        <pre><code>virtual void functionName() = 0;</code></pre>
+
+        <p>
+            A class containing a pure virtual function becomes
+            an abstract class.
+        </p>
+
+    </section>
+
+
+    <!-- ABSTRACT CLASS EXAMPLE -->
+    <section class="section">
+
+        <h2>Abstract Class Example</h2>
+
+        <div class="code-title">
+            C++ Program
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Animal {
+
+public:
+
+```
+virtual void sound() = 0;
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Dog barks";
+
+}
+```
+
+};
+
+int main() {
+
+```
+Dog dog;
+
+dog.sound();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- OUTPUT -->
+    <section class="section">
+
+        <h2>Output</h2>
+
+        <div class="code-title">
+            Program Output
+        </div>
+
+        <pre><code>Dog barks</code></pre>
+
+    </section>
+
+
+    <!-- WHY ABSTRACT -->
+    <section class="section">
+
+        <h2>Why is Animal an Abstract Class?</h2>
+
+        <p>
+            The <strong>Animal</strong> class contains:
+        </p>
+
+        <pre><code>virtual void sound() = 0;</code></pre>
+
+        <p>
+            Therefore, <strong>Animal</strong> becomes an abstract class.
+        </p>
+
+        <p>
+            The derived <strong>Dog</strong> class provides the
+            implementation of <strong>sound()</strong>.
+        </p>
+
+    </section>
+
+
+    <!-- CANNOT CREATE OBJECT -->
+    <section class="section">
+
+        <h2>Cannot Create an Object of Abstract Class</h2>
+
+        <p>
+            The following code is invalid:
+        </p>
+
+        <div class="code-title">
+            Invalid Example
+        </div>
+
+        <pre><code>Animal animal;</code></pre>
+
+        <p>
+            You cannot create an object of an abstract class because
+            it contains an unimplemented pure virtual function.
+        </p>
+
+        <div class="highlight">
+
+            ❌ <strong>Animal animal;</strong> — Not allowed
+
+            <br><br>
+
+            ✔ <strong>Dog dog;</strong> — Allowed
+
+        </div>
+
+    </section>
+
+
+    <!-- MULTIPLE DERIVED -->
+    <section class="section">
+
+        <h2>Abstraction with Multiple Derived Classes</h2>
+
+        <p>
+            One abstract class can provide a common interface for
+            multiple derived classes.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Animal {
+
+public:
+
+```
+virtual void sound() = 0;
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Dog barks" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Cat : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Cat meows" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Cow : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Cow moos" &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Dog dog;
+Cat cat;
+Cow cow;
+
+dog.sound();
+cat.sound();
+cow.sound();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- OUTPUT -->
+    <section class="section">
+
+        <h2>Output</h2>
+
+        <div class="code-title">
+            Program Output
+        </div>
+
+        <pre><code>Dog barks
+```
+
+Cat meows
+Cow moos</code></pre>
+
+```
+    </section>
+
+
+    <!-- ABSTRACT SHAPE -->
+    <section class="section">
+
+        <h2>Practical Example: Shape</h2>
+
+        <p>
+            Suppose we have different shapes such as Circle and Rectangle.
+        </p>
+
+        <p>
+            Every shape can have an area, but the calculation of
+            the area is different for each shape.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Shape {
+
+public:
+
+```
+virtual void area() = 0;
+```
+
+};
+
+class Circle : public Shape {
+
+public:
+
+```
+void area() override {
+
+    cout &lt;&lt; "Area of Circle" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Rectangle : public Shape {
+
+public:
+
+```
+void area() override {
+
+    cout &lt;&lt; "Area of Rectangle" &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Circle circle;
+
+Rectangle rectangle;
+
+circle.area();
+
+rectangle.area();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- INTERFACE -->
+    <section class="section">
+
+        <h2>Abstraction as an Interface</h2>
+
+        <p>
+            C++ does not have a separate <strong>interface</strong>
+            keyword like some other languages.
+        </p>
+
+        <p>
+            However, a class containing pure virtual functions can
+            be used as an interface-like design.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Payment {
+
+public:
+
+```
+virtual void pay() = 0;
+
+virtual ~Payment() = default;
+```
+
+};
+
+class CreditCard : public Payment {
+
+public:
+
+```
+void pay() override {
+
+    cout &lt;&lt; "Payment using Credit Card";
+
+}
+```
+
+};
+
+class UPI : public Payment {
+
+public:
+
+```
+void pay() override {
+
+    cout &lt;&lt; "Payment using UPI";
+
+}
+```
+
+};
+
+int main() {
+
+```
+CreditCard card;
+
+UPI upi;
+
+card.pay();
+
+cout &lt;&lt; endl;
+
+upi.pay();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- ABSTRACTION VS ENCAPSULATION -->
+    <section class="section">
+
+        <h2>Abstraction vs Encapsulation</h2>
+
+        <p>
+            Abstraction and encapsulation are related OOP concepts,
+            but they are not the same.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>Feature</th>
+                <th>Abstraction</th>
+                <th>Encapsulation</th>
+            </tr>
+
+            <tr>
+                <td>Main Idea</td>
+                <td>Hide implementation details</td>
+                <td>Bundle data and methods together</td>
+            </tr>
+
+            <tr>
+                <td>Focus</td>
+                <td>What an object does</td>
+                <td>How data is protected and accessed</td>
+            </tr>
+
+            <tr>
+                <td>Common Tools</td>
+                <td>Abstract classes, pure virtual functions</td>
+                <td>Classes, private/protected members</td>
+            </tr>
+
+            <tr>
+                <td>Example</td>
+                <td>Payment interface</td>
+                <td>Private bank balance</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- VIRTUAL FUNCTION -->
+    <section class="section">
+
+        <h2>Abstraction and Virtual Functions</h2>
+
+        <p>
+            Pure virtual functions are declared using the
+            <strong>virtual</strong> keyword.
+        </p>
+
+        <div class="code-title">
+            Syntax
+        </div>
+
+        <pre><code>class Base {
+```
+
+public:
+
+```
+virtual void display() = 0;
+```
+
+};</code></pre>
+
+```
+        <p>
+            A derived class must provide an implementation for the
+            pure virtual function to become concrete and instantiable.
+        </p>
+
+    </section>
+
+
+    <!-- VIRTUAL DESTRUCTOR -->
+    <section class="section">
+
+        <h2>Virtual Destructor</h2>
+
+        <p>
+            When a class is intended to be used polymorphically,
+            its destructor is often made virtual.
+        </p>
+
+        <div class="code-title">
+            Example
+        </div>
+
+        <pre><code>class Animal {
+```
+
+public:
+
+```
+virtual void sound() = 0;
+
+virtual ~Animal() = default;
+```
+
+};</code></pre>
+
+```
+        <div class="highlight">
+
+            A virtual destructor is important when deleting a derived
+            object through a base-class pointer.
+
+        </div>
+
+    </section>
+
+
+    <!-- IMPORTANT POINTS -->
+    <section class="section">
+
+        <h2>Important Points</h2>
+
+        <ul>
+
+            <li>
+                Abstraction hides unnecessary implementation details.
+            </li>
+
+            <li>
+                It shows only essential features to the user.
+            </li>
+
+            <li>
+                An abstract class contains at least one pure virtual function.
+            </li>
+
+            <li>
+                A pure virtual function is declared using <strong>= 0</strong>.
+            </li>
+
+            <li>
+                Objects cannot be created directly from an abstract class.
+            </li>
+
+            <li>
+                Derived classes can implement pure virtual functions.
+            </li>
+
+            <li>
+                C++ can use abstract classes as interface-like designs.
+            </li>
+
+            <li>
+                Virtual destructors are useful for polymorphic base classes.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+    <section class="section">
+
+        <h2>Common Mistakes</h2>
+
+        <h3>1. Creating an Abstract Class Object</h3>
+
+        <pre><code>Animal animal;</code></pre>
+
+        <p>
+            This is not allowed when Animal contains a pure virtual function.
+        </p>
+
+
+        <h3>2. Not Implementing a Pure Virtual Function</h3>
+
+        <p>
+            If a derived class does not implement all required pure
+            virtual functions, it also remains abstract.
+        </p>
+
+
+        <h3>3. Forgetting virtual</h3>
+
+        <p>
+            Make the base function virtual when dynamic dispatch
+            through a base pointer or reference is required.
+        </p>
+
+
+        <h3>4. Incorrect Function Signature</h3>
+
+        <p>
+            The derived function must correctly match the base
+            virtual function.
+        </p>
+
+    </section>
+
+
+    <!-- COMPLETE EXAMPLE -->
+    <section class="section">
+
+        <h2>Complete Abstraction Example</h2>
+
+        <div class="code-title">
+            C++ Program
+        </div>
+
+        <pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Vehicle {
+
+public:
+
+```
+virtual void start() = 0;
+
+virtual ~Vehicle() = default;
+```
+
+};
+
+class Car : public Vehicle {
+
+public:
+
+```
+void start() override {
+
+    cout &lt;&lt; "Car starts with a key or button" &lt;&lt; endl;
+
+}
+```
+
+};
+
+class Bike : public Vehicle {
+
+public:
+
+```
+void start() override {
+
+    cout &lt;&lt; "Bike starts with a key or button" &lt;&lt; endl;
+
+}
+```
+
+};
+
+int main() {
+
+```
+Car car;
+
+Bike bike;
+
+car.start();
+
+bike.start();
+
+return 0;
+```
+
+}</code></pre>
+
+```
+    </section>
+
+
+    <!-- OUTPUT -->
+    <section class="section">
+
+        <h2>Output</h2>
+
+        <div class="code-title">
+            Program Output
+        </div>
+
+        <pre><code>Car starts with a key or button
+```
+
+Bike starts with a key or button</code></pre>
+
+```
+    </section>
+
+
+    <!-- QUICK SUMMARY -->
+    <section class="section">
+
+        <h2>Quick Summary</h2>
+
+        <table>
+
+            <tr>
+                <th>Concept</th>
+                <th>Meaning</th>
+            </tr>
+
+            <tr>
+                <td>Abstraction</td>
+                <td>
+                    Hiding implementation details and showing
+                    essential features.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Abstract Class</td>
+                <td>
+                    A class containing at least one pure virtual function.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Pure Virtual Function</td>
+                <td>
+                    A virtual function declared with <strong>= 0</strong>.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Interface-like Class</td>
+                <td>
+                    A class primarily containing pure virtual functions.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Implementation</td>
+                <td>
+                    Usually provided by derived classes.
+                </td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- CODE EDITOR -->
+    <section class="section">
+
+        <h2>Try C++ Abstraction Code</h2>
+
+        <p>
+            Write your C++ code below:
+        </p>
+
+        <textarea id="codeEditor">#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+class Animal {
+
+public:
+
+```
+virtual void sound() = 0;
+
+virtual ~Animal() = default;
+```
+
+};
+
+class Dog : public Animal {
+
+public:
+
+```
+void sound() override {
+
+    cout &lt;&lt; "Dog barks";
+
+}
+```
+
+};
+
+int main() {
+
+```
+Dog dog;
+
+dog.sound();
+
+return 0;
+```
+
+}</textarea>
+
+```
+        <div class="buttons">
+
+            <button class="run-btn" onclick="runCode()">
+                Run Code
+            </button>
+
+            <button class="clear-btn" onclick="clearCode()">
+                Clear
+            </button>
+
+        </div>
+
+        <div class="output" id="output">
+            Output will appear here...
+        </div>
+
+    </section>
+
+
+    <!-- PAGE NAVIGATION -->
+    <div class="page-navigation">
+
+        <a href="cpp-polymorphism.html">
+            ← Previous: C++ Polymorphism
+        </a>
+
+        <a href="cpp-function-overloading.html">
+            Next: Function Overloading →
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 Code With Me | Learn Coding
+    </p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+    function runCode() {
+
+        const code =
+            document.getElementById("codeEditor").value;
+
+        const output =
+            document.getElementById("output");
+
+        if (code.trim() === "") {
+
+            output.textContent =
+                "Please enter some C++ code.";
+
+            return;
+        }
+
+        output.textContent =
+            "C++ code submitted successfully!\n\n" +
+            "Note: This editor is a demonstration interface. " +
+            "To actually compile and execute C++ code in the browser, " +
+            "you need a C++ compiler/backend.";
+
+    }
+
+
+    function clearCode() {
+
+        document.getElementById("codeEditor").value = "";
+
+        document.getElementById("output").textContent =
+            "Output will appear here...";
+
+    }
+
+</script>
+```
+
+</body>
+</html>
