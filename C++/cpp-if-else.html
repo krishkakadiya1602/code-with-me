@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>C++ if-else Statement | Code With Me</title>
+
+<meta name="description"
+      content="Learn C++ if-else statements with syntax, examples, conditions, comparison operators, user input, and practical programs.">
+
+<meta name="keywords"
+      content="C++ if else, C++ if statement, C++ conditions, C++ tutorial, C++ decision making">
+
+<meta name="author" content="Code With Me">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #222;
+        line-height: 1.7;
+    }
+
+    nav {
+        background: #111827;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .nav-links a:hover {
+        color: #38bdf8;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    .section {
+        background: white;
+        padding: 30px;
+        margin-bottom: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+        color: #1e3a8a;
+        margin-bottom: 15px;
+    }
+
+    .section h3 {
+        color: #2563eb;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .highlight {
+        background: #eff6ff;
+        border-left: 5px solid #2563eb;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    .note {
+        background: #fff7ed;
+        border-left: 5px solid #f97316;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    .code-title {
+        background: #111827;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 8px 8px 0 0;
+        font-weight: bold;
+    }
+
+    pre {
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 20px;
+        overflow-x: auto;
+        border-radius: 0 0 8px 8px;
+        font-family: Consolas, monospace;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    table th {
+        background: #1e3a8a;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background: #f8fafc;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 350px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: Consolas, monospace;
+        font-size: 15px;
+        resize: vertical;
+        background: #111827;
+        color: #f8fafc;
+    }
+
+    .buttons {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+    }
+
+    button {
+        padding: 11px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .run-btn {
+        background: #2563eb;
+        color: white;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+        color: white;
+    }
+
+    .output {
+        margin-top: 15px;
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 15px;
+        min-height: 100px;
+        white-space: pre-wrap;
+        font-family: Consolas, monospace;
+    }
+
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 30px 0 50px;
+    }
+
+    .page-navigation a {
+        text-decoration: none;
+        background: #2563eb;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .page-navigation a:hover {
+        background: #1d4ed8;
+    }
+
+    ul {
+        padding-left: 25px;
+    }
+
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 30px;
+    }
+
+    @media (max-width: 700px) {
+
+        nav {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .page-navigation {
+            flex-direction: column;
+        }
+
+        .page-navigation a {
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
+
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
+
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
+
+</ul>
+```
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<header class="hero">
+
+```
+<h1>C++ if-else Statement</h1>
+
+<p>
+    Learn how to make decisions in C++ using if-else
+</p>
+```
+
+</header>
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="container">
+
+```
+<!-- INTRODUCTION -->
+
+<section class="section">
+
+    <h2>What is if-else in C++?</h2>
+
+    <p>
+        The <code>if-else</code> statement is used to make decisions
+        in a C++ program.
+    </p>
+
+    <p>
+        It checks a condition. If the condition is
+        <strong>true</strong>, the <code>if</code> block executes.
+        Otherwise, the <code>else</code> block executes.
+    </p>
+
+    <div class="highlight">
+
+        <strong>Simple idea:</strong>
+
+        <br><br>
+
+        If condition is TRUE → execute <code>if</code>
+
+        <br>
+
+        If condition is FALSE → execute <code>else</code>
+
+    </div>
+
+</section>
+
+
+<!-- SYNTAX -->
+
+<section class="section">
+
+    <h2>Syntax of if-else</h2>
+
+    <div class="code-title">
+        Syntax
+    </div>
+```
+
+<pre><code>if (condition) {
+
+    // code if condition is true
+
+}
+else {
+
+    // code if condition is false
+
+}</code></pre>
+
+```
+    <h3>Example</h3>
+```
+
+<pre><code>int age = 20;
+
+if (age &gt;= 18) {
+
+    cout &lt;&lt; "You are an adult.";
+
+}
+else {
+
+    cout &lt;&lt; "You are not an adult.";
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="section">
+
+    <h2>How if-else Works</h2>
+
+    <ol>
+        <li>The program evaluates the condition.</li>
+        <li>If the condition is true, the <code>if</code> block executes.</li>
+        <li>If the condition is false, the <code>else</code> block executes.</li>
+        <li>After that, the program continues with the next statement.</li>
+    </ol>
+
+    <div class="highlight">
+
+        Example:
+
+        <br><br>
+
+        <code>age = 20</code>
+
+        <br>
+
+        <code>age &gt;= 18</code> → TRUE
+
+        <br>
+
+        Therefore:
+
+        <code>You are an adult.</code>
+
+    </div>
+
+</section>
+
+
+<!-- SIMPLE EXAMPLE -->
+
+<section class="section">
+
+    <h2>Simple if-else Example</h2>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number = 10;
+
+    if (number &gt; 0) {
+
+        cout &lt;&lt; "Positive number";
+
+    }
+    else {
+
+        cout &lt;&lt; "Zero or negative number";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+
+        <br>
+
+        Positive number
+
+    </div>
+
+</section>
+
+
+<!-- EVEN ODD -->
+
+<section class="section">
+
+    <h2>Check Even or Odd</h2>
+
+    <p>
+        We can use the modulus operator <code>%</code> with
+        if-else to check whether a number is even or odd.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number = 15;
+
+    if (number % 2 == 0) {
+
+        cout &lt;&lt; "Even number";
+
+    }
+    else {
+
+        cout &lt;&lt; "Odd number";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+
+        <br>
+
+        Odd number
+
+    </div>
+
+</section>
+
+
+<!-- POSITIVE NEGATIVE -->
+
+<section class="section">
+
+    <h2>Check Positive or Negative</h2>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number;
+
+    cout &lt;&lt; "Enter a number: ";
+    cin &gt;&gt; number;
+
+    if (number &gt;= 0) {
+
+        cout &lt;&lt; "Positive number";
+
+    }
+    else {
+
+        cout &lt;&lt; "Negative number";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- PASS FAIL -->
+
+<section class="section">
+
+    <h2>Check Pass or Fail</h2>
+
+    <p>
+        We can use if-else to check whether a student has passed
+        an examination.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int marks;
+
+    cout &lt;&lt; "Enter your marks: ";
+    cin &gt;&gt; marks;
+
+    if (marks &gt;= 40) {
+
+        cout &lt;&lt; "You passed.";
+
+    }
+    else {
+
+        cout &lt;&lt; "You failed.";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- GREATER NUMBER -->
+
+<section class="section">
+
+    <h2>Find the Greater Number</h2>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int a, b;
+
+    cout &lt;&lt; "Enter first number: ";
+    cin &gt;&gt; a;
+
+    cout &lt;&lt; "Enter second number: ";
+    cin &gt;&gt; b;
+
+    if (a &gt; b) {
+
+        cout &lt;&lt; a &lt;&lt; " is greater.";
+
+    }
+    else {
+
+        cout &lt;&lt; b &lt;&lt; " is greater.";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="note">
+
+        <strong>Note:</strong>
+
+        If both numbers are equal, this program will print the
+        second number as greater. For handling equality separately,
+        use an <code>if - else if - else</code> structure.
+
+    </div>
+
+</section>
+
+
+<!-- COMPARISON OPERATORS -->
+
+<section class="section">
+
+    <h2>Comparison Operators with if-else</h2>
+
+    <table>
+
+        <tr>
+            <th>Operator</th>
+            <th>Meaning</th>
+            <th>Example</th>
+        </tr>
+
+        <tr>
+            <td>==</td>
+            <td>Equal to</td>
+            <td>a == b</td>
+        </tr>
+
+        <tr>
+            <td>!=</td>
+            <td>Not equal to</td>
+            <td>a != b</td>
+        </tr>
+
+        <tr>
+            <td>&gt;</td>
+            <td>Greater than</td>
+            <td>a &gt; b</td>
+        </tr>
+
+        <tr>
+            <td>&lt;</td>
+            <td>Less than</td>
+            <td>a &lt; b</td>
+        </tr>
+
+        <tr>
+            <td>&gt;=</td>
+            <td>Greater than or equal to</td>
+            <td>a &gt;= b</td>
+        </tr>
+
+        <tr>
+            <td>&lt;=</td>
+            <td>Less than or equal to</td>
+            <td>a &lt;= b</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- LOGICAL OPERATORS -->
+
+<section class="section">
+
+    <h2>Using Logical Operators</h2>
+
+    <p>
+        You can combine multiple conditions using logical operators.
+    </p>
+
+    <h3>AND Operator &&</h3>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int age = 25;
+    bool hasLicense = true;
+
+    if (age &gt;= 18 &amp;&amp; hasLicense) {
+
+        cout &lt;&lt; "You can drive.";
+
+    }
+    else {
+
+        cout &lt;&lt; "You cannot drive.";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <h3>OR Operator ||</h3>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int age = 17;
+
+    if (age &lt; 18 || age &gt; 60) {
+
+        cout &lt;&lt; "Special category.";
+
+    }
+    else {
+
+        cout &lt;&lt; "Normal category.";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- STRING CONDITION -->
+
+<section class="section">
+
+    <h2>if-else with String</h2>
+
+    <p>
+        You can compare strings using <code>==</code>.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+
+    string password;
+
+    cout &lt;&lt; "Enter password: ";
+    cin &gt;&gt; password;
+
+    if (password == "1234") {
+
+        cout &lt;&lt; "Correct password.";
+
+    }
+    else {
+
+        cout &lt;&lt; "Wrong password.";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- NESTED IF ELSE -->
+
+<section class="section">
+
+    <h2>Nested if-else</h2>
+
+    <p>
+        An <code>if-else</code> statement can be placed inside
+        another <code>if</code> or <code>else</code> block.
+        This is called nested if-else.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int age = 20;
+    bool citizen = true;
+
+    if (age &gt;= 18) {
+
+        if (citizen) {
+
+            cout &lt;&lt; "Eligible.";
+
+        }
+        else {
+
+            cout &lt;&lt; "Not eligible because of citizenship.";
+
+        }
+
+    }
+    else {
+
+        cout &lt;&lt; "Not eligible because of age.";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- MULTIPLE CONDITIONS -->
+
+<section class="section">
+
+    <h2>Multiple Conditions</h2>
+
+    <p>
+        You can use logical operators to check multiple conditions.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int marks;
+
+    cout &lt;&lt; "Enter marks: ";
+    cin &gt;&gt; marks;
+
+    if (marks &gt;= 40 &amp;&amp; marks &lt;= 100) {
+
+        cout &lt;&lt; "Pass";
+
+    }
+    else {
+
+        cout &lt;&lt; "Fail";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- BOOLEAN -->
+
+<section class="section">
+
+    <h2>if-else with bool</h2>
+
+    <p>
+        A boolean variable can directly be used as a condition.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    bool loggedIn = true;
+
+    if (loggedIn) {
+
+        cout &lt;&lt; "Welcome to the website.";
+
+    }
+    else {
+
+        cout &lt;&lt; "Please login.";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+
+    <h2>Common Mistakes</h2>
+
+    <h3>1. Using = instead of ==</h3>
+```
+
+<pre><code>// Wrong
+if (age = 18) {
+    cout &lt;&lt; "Adult";
+}
+
+// Correct
+if (age == 18) {
+    cout &lt;&lt; "Adult";
+}</code></pre>
+
+```
+    <h3>2. Forgetting braces</h3>
+```
+
+<pre><code>if (age &gt;= 18) {
+
+    cout &lt;&lt; "Adult";
+
+}
+else {
+
+    cout &lt;&lt; "Minor";
+
+}</code></pre>
+
+```
+    <h3>3. Incorrect condition</h3>
+```
+
+<pre><code>// Example
+if (marks &gt;= 40) {
+
+    cout &lt;&lt; "Pass";
+
+}
+else {
+
+    cout &lt;&lt; "Fail";
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- IF VS IF ELSE -->
+
+<section class="section">
+
+    <h2>if vs if-else</h2>
+
+    <table>
+
+        <tr>
+            <th>if</th>
+            <th>if-else</th>
+        </tr>
+
+        <tr>
+            <td>Executes code when condition is true.</td>
+            <td>Executes one block when true and another when false.</td>
+        </tr>
+
+        <tr>
+            <td>No alternative block.</td>
+            <td>Has an alternative <code>else</code> block.</td>
+        </tr>
+
+        <tr>
+            <td>Useful for one-sided decisions.</td>
+            <td>Useful when there are two possible paths.</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- IMPORTANT POINTS -->
+
+<section class="section">
+
+    <h2>Important Points to Remember</h2>
+
+    <ul>
+
+        <li>
+            <code>if</code> checks a condition.
+        </li>
+
+        <li>
+            <code>else</code> executes when the if condition is false.
+        </li>
+
+        <li>
+            Conditions normally produce a true or false result.
+        </li>
+
+        <li>
+            Use <code>==</code> for comparison.
+        </li>
+
+        <li>
+            Use <code>=</code> for assignment.
+        </li>
+
+        <li>
+            Multiple conditions can be combined using
+            <code>&amp;&amp;</code>, <code>||</code>, and <code>!</code>.
+        </li>
+
+        <li>
+            An if-else statement can be nested inside another condition.
+        </li>
+
+        <li>
+            Curly braces <code>{ }</code> are recommended for
+            readable and safer code.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- COMPLETE EXAMPLE -->
+
+<section class="section">
+
+    <h2>Complete if-else Example</h2>
+
+    <div class="code-title">
+        Student Result Program
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int marks;
+
+    cout &lt;&lt; "Enter your marks: ";
+    cin &gt;&gt; marks;
+
+    if (marks &gt;= 90) {
+
+        cout &lt;&lt; "Grade A+";
+
+    }
+    else if (marks &gt;= 75) {
+
+        cout &lt;&lt; "Grade A";
+
+    }
+    else if (marks &gt;= 60) {
+
+        cout &lt;&lt; "Grade B";
+
+    }
+    else if (marks &gt;= 40) {
+
+        cout &lt;&lt; "Grade C";
+
+    }
+    else {
+
+        cout &lt;&lt; "Fail";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="note">
+
+        This example also introduces the
+        <code>else if</code> structure, which is useful when
+        there are more than two possible conditions.
+
+    </div>
+
+</section>
+
+
+<!-- CODE EDITOR -->
+
+<section class="section">
+
+    <h2>C++ Code Editor</h2>
+
+    <p>
+        Write your C++ if-else program below.
+    </p>
+
+    <textarea id="codeEditor">#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+int number;
+
+cout &lt;&lt; "Enter a number: ";
+cin &gt;&gt; number;
+
+if (number % 2 == 0) {
+
+    cout &lt;&lt; "Even number";
+
+}
+else {
+
+    cout &lt;&lt; "Odd number";
+
+}
+
+return 0;
+```
+
+}</textarea>
+
+```
+    <div class="buttons">
+
+        <button class="run-btn" onclick="runCode()">
+            Run Code
+        </button>
+
+        <button class="clear-btn" onclick="clearCode()">
+            Clear
+        </button>
+
+    </div>
+
+    <div class="output" id="output">
+        Output will appear here...
+    </div>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<div class="page-navigation">
+
+    <a href="cpp-if.html">
+        ← Previous: C++ if Statement
+    </a>
+
+    <a href="cpp-else-if.html">
+        Next: C++ else-if Statement →
+    </a>
+
+</div>
+```
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some C++ code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C++ code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C++ code in the browser, " +
+        "you need a C++ compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
