@@ -1,0 +1,1001 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Arrays | Code With Me</title>
+
+    <meta name="description" content="Learn C Arrays with simple explanations, syntax, examples and programs.">
+    <meta name="keywords" content="C Arrays, C programming arrays, one dimensional array, two dimensional array">
+    <meta name="author" content="Code With Me">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Main */
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .section h3 {
+            color: #1e40af;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Info box */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .success-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+            font-size: 15px;
+        }
+
+        .output {
+            background: #1f2937;
+            color: #86efac;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: Consolas, monospace;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #2563eb;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Lists */
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            padding: 18px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .editor-buttons {
+            margin-top: 12px;
+        }
+
+        button {
+            padding: 11px 22px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #result {
+            background: #111827;
+            color: #86efac;
+            min-height: 80px;
+            margin-top: 15px;
+            padding: 18px;
+            border-radius: 8px;
+            font-family: Consolas, monospace;
+            white-space: pre-wrap;
+        }
+
+        /* Navigation */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .nav-btn {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .page-navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html">C</a></li>
+            <li><a href="../index.html#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1>C Arrays</h1>
+        <p>Learn how to store and work with multiple values using Arrays in C.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2>What is an Array in C?</h2>
+
+            <p>
+                An array in C is a collection of multiple values of the
+                <strong>same data type</strong> stored in consecutive memory
+                locations.
+            </p>
+
+            <p>
+                Instead of creating separate variables for many values, we can
+                use a single array to store them.
+            </p>
+
+            <div class="info-box">
+                <strong>Example:</strong>
+                If you want to store the marks of 5 students, instead of
+                creating five separate variables, you can use one array.
+            </div>
+
+            <pre><code>int marks[5];</code></pre>
+        </section>
+
+        <!-- Why Arrays -->
+        <section class="section">
+            <h2>Why Do We Use Arrays?</h2>
+
+            <ul>
+                <li>To store multiple values of the same data type.</li>
+                <li>To reduce the number of variables.</li>
+                <li>To easily process large amounts of data.</li>
+                <li>Arrays work very well with loops.</li>
+                <li>They make programs more organized.</li>
+            </ul>
+        </section>
+
+        <!-- Syntax -->
+        <section class="section">
+            <h2>Array Syntax</h2>
+
+            <p>The basic syntax for declaring an array is:</p>
+
+            <pre><code>data_type array_name[array_size];</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>int numbers[5];</code></pre>
+
+            <p>
+                Here:
+            </p>
+
+            <ul>
+                <li><strong>int</strong> → data type</li>
+                <li><strong>numbers</strong> → array name</li>
+                <li><strong>5</strong> → number of elements</li>
+            </ul>
+        </section>
+
+        <!-- Initialization -->
+        <section class="section">
+            <h2>Array Initialization</h2>
+
+            <p>
+                You can declare and initialize an array at the same time.
+            </p>
+
+            <pre><code>int numbers[5] = {10, 20, 30, 40, 50};</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="output">10 20 30 40 50</div>
+        </section>
+
+        <!-- Index -->
+        <section class="section">
+            <h2>Array Index</h2>
+
+            <p>
+                Array indexing starts from <strong>0</strong>, not 1.
+            </p>
+
+            <table>
+                <tr>
+                    <th>Index</th>
+                    <th>Value</th>
+                </tr>
+
+                <tr>
+                    <td>0</td>
+                    <td>10</td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>20</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>30</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>40</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>50</td>
+                </tr>
+            </table>
+
+            <pre><code>int numbers[5] = {10, 20, 30, 40, 50};
+
+printf("%d", numbers[0]);</code></pre>
+
+            <div class="output">10</div>
+        </section>
+
+        <!-- Access Elements -->
+        <section class="section">
+            <h2>Accessing Array Elements</h2>
+
+            <p>
+                You can access individual elements using their index.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int numbers[5] = {10, 20, 30, 40, 50};
+
+    printf("%d\n", numbers[0]);
+    printf("%d\n", numbers[1]);
+    printf("%d\n", numbers[2]);
+    printf("%d\n", numbers[3]);
+    printf("%d\n", numbers[4]);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">10
+20
+30
+40
+50</div>
+        </section>
+
+        <!-- Change element -->
+        <section class="section">
+            <h2>Changing Array Elements</h2>
+
+            <p>
+                You can change an array element by assigning a new value to
+                its index.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int numbers[3] = {10, 20, 30};
+
+    numbers[1] = 100;
+
+    printf("%d\n", numbers[0]);
+    printf("%d\n", numbers[1]);
+    printf("%d\n", numbers[2]);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">10
+100
+30</div>
+        </section>
+
+        <!-- Array and Loop -->
+        <section class="section">
+            <h2>Arrays with for Loop</h2>
+
+            <p>
+                Loops are commonly used to access all elements of an array.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int numbers[5] = {10, 20, 30, 40, 50};
+
+    for(int i = 0; i &lt; 5; i++)
+    {
+        printf("%d\n", numbers[i]);
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="output">10
+20
+30
+40
+50</div>
+        </section>
+
+        <!-- User Input -->
+        <section class="section">
+            <h2>Taking Array Input from User</h2>
+
+            <p>
+                We can use a loop with <strong>scanf()</strong> to take values
+                from the user.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int numbers[5];
+
+    printf("Enter 5 numbers:\n");
+
+    for(int i = 0; i &lt; 5; i++)
+    {
+        scanf("%d", &amp;numbers[i]);
+    }
+
+    printf("Array elements are:\n");
+
+    for(int i = 0; i &lt; 5; i++)
+    {
+        printf("%d ", numbers[i]);
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="output">Enter 5 numbers:
+10
+20
+30
+40
+50
+
+Array elements are:
+10 20 30 40 50</div>
+        </section>
+
+        <!-- Sum -->
+        <section class="section">
+            <h2>Find Sum of Array Elements</h2>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int numbers[5] = {10, 20, 30, 40, 50};
+    int sum = 0;
+
+    for(int i = 0; i &lt; 5; i++)
+    {
+        sum = sum + numbers[i];
+    }
+
+    printf("Sum = %d", sum);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">Sum = 150</div>
+        </section>
+
+        <!-- Average -->
+        <section class="section">
+            <h2>Find Average of Array Elements</h2>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int numbers[5] = {10, 20, 30, 40, 50};
+    int sum = 0;
+    float average;
+
+    for(int i = 0; i &lt; 5; i++)
+    {
+        sum = sum + numbers[i];
+    }
+
+    average = (float)sum / 5;
+
+    printf("Average = %.2f", average);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">Average = 30.00</div>
+        </section>
+
+        <!-- Largest -->
+        <section class="section">
+            <h2>Find Largest Element</h2>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int numbers[5] = {25, 10, 45, 5, 30};
+    int largest = numbers[0];
+
+    for(int i = 1; i &lt; 5; i++)
+    {
+        if(numbers[i] &gt; largest)
+        {
+            largest = numbers[i];
+        }
+    }
+
+    printf("Largest = %d", largest);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">Largest = 45</div>
+        </section>
+
+        <!-- Smallest -->
+        <section class="section">
+            <h2>Find Smallest Element</h2>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int numbers[5] = {25, 10, 45, 5, 30};
+    int smallest = numbers[0];
+
+    for(int i = 1; i &lt; 5; i++)
+    {
+        if(numbers[i] &lt; smallest)
+        {
+            smallest = numbers[i];
+        }
+    }
+
+    printf("Smallest = %d", smallest);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">Smallest = 5</div>
+        </section>
+
+        <!-- One Dimensional -->
+        <section class="section">
+            <h2>One-Dimensional Array</h2>
+
+            <p>
+                A one-dimensional array stores elements in a single row or
+                sequence.
+            </p>
+
+            <pre><code>int numbers[5] = {10, 20, 30, 40, 50};</code></pre>
+
+            <p>It can be visualized as:</p>
+
+            <pre><code>Index:   0    1    2    3    4
+Value:  10   20   30   40   50</code></pre>
+        </section>
+
+        <!-- Two Dimensional -->
+        <section class="section">
+            <h2>Two-Dimensional Array</h2>
+
+            <p>
+                A two-dimensional array stores data in rows and columns.
+                It is commonly used to represent matrices and tables.
+            </p>
+
+            <pre><code>int matrix[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+};</code></pre>
+
+            <p>The array looks like:</p>
+
+            <pre><code>1  2  3
+4  5  6</code></pre>
+
+            <h3>Example</h3>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int matrix[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+
+    for(int i = 0; i &lt; 2; i++)
+    {
+        for(int j = 0; j &lt; 3; j++)
+        {
+            printf("%d ", matrix[i][j]);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="output">1 2 3
+4 5 6</div>
+        </section>
+
+        <!-- Character Array -->
+        <section class="section">
+            <h2>Character Array</h2>
+
+            <p>
+                A character array can be used to store a string.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    char name[] = "Krish";
+
+    printf("%s", name);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">Krish</div>
+
+            <div class="info-box">
+                In C, strings are stored as character arrays and end with a
+                special null character <strong>\0</strong>.
+            </div>
+        </section>
+
+        <!-- Array Size -->
+        <section class="section">
+            <h2>Finding Array Size</h2>
+
+            <p>
+                The <strong>sizeof()</strong> operator can be used to find
+                the total size of an array in bytes.
+            </p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int numbers[] = {10, 20, 30, 40, 50};
+
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+
+    printf("Number of elements = %d", size);
+
+    return 0;
+}</code></pre>
+
+            <div class="output">Number of elements = 5</div>
+        </section>
+
+        <!-- Array Types -->
+        <section class="section">
+            <h2>Types of Arrays in C</h2>
+
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>1D Array</td>
+                    <td>Stores data in a single sequence.</td>
+                    <td>int a[5];</td>
+                </tr>
+
+                <tr>
+                    <td>2D Array</td>
+                    <td>Stores data in rows and columns.</td>
+                    <td>int a[2][3];</td>
+                </tr>
+
+                <tr>
+                    <td>Multidimensional Array</td>
+                    <td>Array with more than two dimensions.</td>
+                    <td>int a[2][3][4];</td>
+                </tr>
+
+                <tr>
+                    <td>Character Array</td>
+                    <td>Used to store characters and strings.</td>
+                    <td>char name[20];</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Important Rules -->
+        <section class="section">
+            <h2>Important Rules of Arrays</h2>
+
+            <ul>
+                <li>Array indexing starts from 0.</li>
+                <li>All elements normally have the same data type.</li>
+                <li>The array size determines the number of elements it can store.</li>
+                <li>Accessing an index outside the array bounds can cause undefined behavior.</li>
+                <li>Loops are commonly used to process arrays.</li>
+                <li>C does not automatically check array bounds.</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>Warning:</strong>
+                If an array has 5 elements, valid indexes are only
+                <strong>0 to 4</strong>.
+            </div>
+
+            <pre><code>int numbers[5] = {10, 20, 30, 40, 50};
+
+/* Correct */
+printf("%d", numbers[4]);
+
+/* Wrong - outside the valid range */
+printf("%d", numbers[5]);</code></pre>
+        </section>
+
+        <!-- Interactive Editor -->
+        <section class="section">
+            <h2>Try C Array Example</h2>
+
+            <p>
+                Write a simple array program below. This browser demo supports
+                basic array-style examples.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="code">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int numbers[5] = {10, 20, 30, 40, 50};
+
+    for(int i = 0; i &lt; 5; i++)
+    {
+        printf("%d ", numbers[i]);
+    }
+
+    return 0;
+}</textarea>
+
+                <div class="editor-buttons">
+                    <button class="run-btn" onclick="runCode()">Run Code</button>
+                    <button class="clear-btn" onclick="clearCode()">Clear</button>
+                </div>
+
+                <div id="result">Output will appear here...</div>
+
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="section">
+            <h2>Summary</h2>
+
+            <div class="success-box">
+                <ul>
+                    <li>An array stores multiple values of the same data type.</li>
+                    <li>Array indexing starts from 0.</li>
+                    <li>Arrays can be initialized during declaration.</li>
+                    <li>Loops are commonly used with arrays.</li>
+                    <li>One-dimensional arrays store values in a sequence.</li>
+                    <li>Two-dimensional arrays store values in rows and columns.</li>
+                    <li>Character arrays can be used to store strings.</li>
+                    <li>The sizeof() operator can help determine the number of elements.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Previous Next -->
+        <div class="page-navigation">
+
+            <a href="c-break-continue.html" class="nav-btn">
+                ← Previous
+            </a>
+
+            <a href="c-functions.html" class="nav-btn">
+                Next →
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function runCode() {
+
+            const code = document.getElementById("code").value;
+            const result = document.getElementById("result");
+
+            /*
+             * This is a simple browser demonstration.
+             * It is not a complete C compiler.
+             */
+
+            if (code.includes("numbers[5]") ||
+                code.includes("numbers [5]")) {
+
+                result.textContent =
+                    "Possible output:\n\n10 20 30 40 50";
+            }
+
+            else if (code.includes("{10, 20, 30, 40, 50}")) {
+
+                result.textContent =
+                    "Output:\n\n10 20 30 40 50";
+            }
+
+            else if (code.includes("printf")) {
+
+                result.textContent =
+                    "Demo Output:\n\nYour C code contains printf().\n\n" +
+                    "For complete C execution, use a C compiler.";
+            }
+
+            else {
+
+                result.textContent =
+                    "Output:\n\nThis browser editor is a demonstration only.\n" +
+                    "A real C compiler is required to execute arbitrary C programs.";
+            }
+        }
+
+        function clearCode() {
+            document.getElementById("code").value = "";
+            document.getElementById("result").textContent =
+                "Output will appear here...";
+        }
+    </script>
+
+</body>
+</html>
+```
