@@ -1,565 +1,1094 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>C Comments | Code With Me</title>
+<title>C Syntax | Code With Me</title>
 
-    <meta name="description" content="Learn C comments with simple examples. Understand single-line and multi-line comments in C programming.">
-    <meta name="keywords" content="C comments, C programming comments, single line comments, multi line comments, C language">
-    <meta name="author" content="Code With Me">
+<meta name="description" content="Learn C programming syntax with simple examples. Understand headers, main function, statements, variables, comments and basic C program structure.">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background: #f5f7fb;
-            color: #222;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Navbar */
-        nav {
-            background: #111827;
-            padding: 15px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
 
-        .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-decoration: none;
-        }
+/* Navbar */
 
-        .logo span {
-            color: #38bdf8;
-        }
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-        }
+.logo span {
+    color: #38bdf8;
+}
 
-        .nav-links a:hover {
-            color: #38bdf8;
-        }
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
 
-        /* Header */
-        .page-header {
-            background: linear-gradient(135deg, #111827, #2563eb);
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
 
-        .page-header h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
+.nav-links a:hover {
+    color: #38bdf8;
+}
 
-        .page-header p {
-            font-size: 18px;
-            opacity: 0.9;
-        }
 
-        /* Main Container */
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 40px auto;
-        }
+/* Hero */
 
-        .content-section {
-            background: white;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
 
-        .content-section h2 {
-            color: #1d4ed8;
-            margin-bottom: 15px;
-            font-size: 28px;
-        }
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
 
-        .content-section h3 {
-            color: #111827;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
+.hero p {
+    font-size: 18px;
+}
 
-        .content-section p {
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
 
-        .content-section ul {
-            margin-left: 25px;
-            margin-bottom: 15px;
-        }
+/* Container */
 
-        .content-section li {
-            margin-bottom: 8px;
-        }
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
 
-        /* Info Box */
-        .info-box {
-            background: #eff6ff;
-            border-left: 5px solid #2563eb;
-            padding: 18px;
-            margin: 20px 0;
-            border-radius: 6px;
-        }
 
-        .info-box strong {
-            color: #1d4ed8;
-        }
+/* Sections */
 
-        /* Code Block */
-        pre {
-            background: #111827;
-            color: #e5e7eb;
-            padding: 20px;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 15px 0;
-            font-size: 15px;
-        }
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
 
-        code {
-            font-family: Consolas, Monaco, monospace;
-        }
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
 
-        /* Editor */
-        .editor {
-            margin-top: 20px;
-        }
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
 
-        .editor textarea {
-            width: 100%;
-            height: 280px;
-            padding: 18px;
-            background: #111827;
-            color: #f8fafc;
-            border: none;
-            border-radius: 8px;
-            resize: vertical;
-            font-family: Consolas, Monaco, monospace;
-            font-size: 15px;
-            outline: none;
-        }
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
 
-        .buttons {
-            margin-top: 12px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
 
-        .buttons button {
-            padding: 11px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: bold;
-        }
+/* Code */
 
-        .run-btn {
-            background: #2563eb;
-            color: white;
-        }
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
 
-        .run-btn:hover {
-            background: #1d4ed8;
-        }
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
 
-        .clear-btn {
-            background: #dc2626;
-            color: white;
-        }
 
-        .clear-btn:hover {
-            background: #b91c1c;
-        }
+/* Tables */
 
-        /* Output */
-        .output-title {
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
 
-        #output {
-            background: #020617;
-            color: #22c55e;
-            min-height: 100px;
-            padding: 18px;
-            border-radius: 8px;
-            white-space: pre-wrap;
-            font-family: Consolas, Monaco, monospace;
-        }
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
 
-        /* Navigation */
-        .lesson-navigation {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin: 35px 0;
-        }
+table th {
+    background: #1e3a8a;
+    color: white;
+}
 
-        .lesson-navigation a {
-            text-decoration: none;
-            background: #2563eb;
-            color: white;
-            padding: 12px 22px;
-            border-radius: 7px;
-            font-weight: bold;
-        }
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
 
-        .lesson-navigation a:hover {
-            background: #1d4ed8;
-        }
 
-        /* Footer */
-        footer {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-        }
+/* Editor */
 
-        footer p {
-            margin: 5px;
-        }
+textarea {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 12px;
-            }
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
 
-            .nav-links {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
 
-            .page-header h1 {
-                font-size: 32px;
-            }
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
 
-            .content-section {
-                padding: 20px;
-            }
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
 
-            .lesson-navigation {
-                flex-direction: column;
-            }
+.run-btn:hover {
+    background: #1d4ed8;
+}
 
-            .lesson-navigation a {
-                text-align: center;
-            }
-        }
-    </style>
+.clear-btn:hover {
+    background: #b91c1c;
+}
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+
+/* Page Navigation */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.page-navigation a:hover {
+    background: #1d4ed8;
+}
+
+
+/* Footer */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <a href="../index.html" class="logo">
-            Code<span>WithMe</span>
-        </a>
+<!-- Navbar -->
 
-        <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../index.html#courses">Courses</a></li>
-            <li><a href="../index.html#c-topics">C</a></li>
-            <li><a href="../index.html#about">About</a></li>
-        </ul>
-    </nav>
+<nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <h1>C Comments</h1>
-        <p>Learn how to write comments in C programming</p>
-    </header>
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
 
-    <!-- Main Content -->
-    <main class="container">
+<ul class="nav-links">
 
-        <!-- Introduction -->
-        <section class="content-section">
-            <h2>What are Comments in C?</h2>
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
 
-            <p>
-                Comments are notes written inside a C program to explain the code.
-                Comments are ignored by the C compiler, so they do not affect the
-                execution of the program.
-            </p>
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
 
-            <p>
-                Comments are very useful for making your code easier to understand,
-                especially when working on large programs or working with other
-                developers.
-            </p>
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
 
-            <div class="info-box">
-                <strong>Remember:</strong>
-                Comments are not executed by the C compiler.
-                They are only used to explain or document your code.
-            </div>
-        </section>
+</ul>
+```
 
-        <!-- Types -->
-        <section class="content-section">
-            <h2>Types of Comments in C</h2>
+</nav>
 
-            <p>
-                C provides two main types of comments:
-            </p>
+<!-- Hero -->
 
-            <ul>
-                <li><strong>Single-line comments</strong></li>
-                <li><strong>Multi-line comments</strong></li>
-            </ul>
-        </section>
+<header class="hero">
 
-        <!-- Single Line -->
-        <section class="content-section">
-            <h2>1. Single-Line Comments</h2>
+```
+<h1>C Syntax</h1>
 
-            <p>
-                A single-line comment starts with two forward slashes
-                <strong>//</strong>.
-            </p>
+<p>
+    Learn the basic syntax and structure of a C program.
+</p>
+```
 
-            <p>
-                Everything after <strong>//</strong> on that line is treated as
-                a comment.
-            </p>
+</header>
 
-            <h3>Example:</h3>
+<main class="container">
 
-            <pre><code>#include &lt;stdio.h&gt;
+<!-- Introduction -->
 
-int main() {
+<section class="section">
 
-    // This is a single-line comment
+```
+<h2>What is C Syntax?</h2>
 
-    printf("Hello World!");
+<p>
+    C syntax is the set of rules that defines how a C program
+    should be written.
+</p>
 
-    return 0;
+<p>
+    Just like English has grammar rules, C programming has
+    syntax rules that the compiler follows.
+</p>
+
+<div class="highlight">
+
+    <strong>Important:</strong>
+
+    If the syntax of a C program is incorrect, the compiler
+    may show a syntax error.
+
+</div>
+```
+
+</section>
+
+<!-- Basic Structure -->
+
+<section class="section">
+
+```
+<h2>Basic Structure of a C Program</h2>
+
+<p>
+    A basic C program usually contains a header file,
+    the main function, statements and a return statement.
+</p>
+
+<div class="code-title">
+    Basic C Program
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+printf("Hello World!");
+
+```
+return 0;
+```
+
 }</code></pre>
 
-            <div class="info-box">
-                <strong>Note:</strong>
-                The compiler ignores the line beginning with
-                <strong>//</strong>.
-            </div>
-        </section>
+</section>
 
-        <!-- Multi Line -->
-        <section class="content-section">
-            <h2>2. Multi-Line Comments</h2>
+<!-- Explanation -->
 
-            <p>
-                Multi-line comments are used when you want to write comments
-                across multiple lines.
-            </p>
+<section class="section">
 
-            <p>
-                Multi-line comments start with <strong>/*</strong> and end with
-                <strong>*/</strong>.
-            </p>
+```
+<h2>Understanding the Program</h2>
 
-            <h3>Example:</h3>
+<h3>1. #include &lt;stdio.h&gt;</h3>
 
-            <pre><code>#include &lt;stdio.h&gt;
+<p>
+    This line includes the Standard Input Output library.
+    It allows us to use functions such as
+    <strong>printf()</strong> and <strong>scanf()</strong>.
+</p>
 
-int main() {
+<h3>2. int main()</h3>
 
-    /*
-       This is a multi-line comment.
-       It can contain multiple lines.
-    */
+<p>
+    The <strong>main()</strong> function is the starting point
+    of a C program.
+</p>
 
-    printf("Hello World!");
+<h3>3. Curly Braces { }</h3>
 
-    return 0;
+<p>
+    Curly braces define the beginning and end of a block of code.
+</p>
+
+<h3>4. printf()</h3>
+
+<p>
+    The <strong>printf()</strong> function is used to display
+    output on the screen.
+</p>
+
+<h3>5. return 0;</h3>
+
+<p>
+    The return statement indicates that the program finished
+    successfully.
+</p>
+```
+
+</section>
+
+<!-- Semicolon -->
+
+<section class="section">
+
+```
+<h2>Semicolon in C</h2>
+
+<p>
+    Most C statements end with a semicolon
+    <strong>;</strong>.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+printf("Hello");
+printf("Welcome to C");
+
+```
+return 0;
+```
+
 }</code></pre>
-        </section>
 
-        <!-- Comments with Code -->
-        <section class="content-section">
-            <h2>Comments with C Code</h2>
+```
+<div class="highlight">
 
-            <p>
-                You can also use comments to temporarily disable a line of code.
-            </p>
+    <strong>Remember:</strong>
 
-            <pre><code>#include &lt;stdio.h&gt;
+    Forgetting a semicolon can cause a compiler error.
 
-int main() {
+</div>
+```
 
-    printf("Hello World!");
+</section>
 
-    // printf("This line will not execute");
+<!-- Comments -->
 
-    return 0;
+<section class="section">
+
+```
+<h2>Comments in C</h2>
+
+<p>
+    Comments are used to explain code. The compiler ignores comments.
+</p>
+
+<div class="code-title">
+    Single-Line Comment
+</div>
+
+<pre><code>// This is a comment
+```
+
+printf("Hello");</code></pre>
+
+```
+<div class="code-title">
+    Multi-Line Comment
+</div>
+
+<pre><code>/*
+```
+
+This is a
+multi-line comment
+*/
+
+printf("Hello");</code></pre>
+
+</section>
+
+<!-- Variables -->
+
+<section class="section">
+
+```
+<h2>Variables in C</h2>
+
+<p>
+    Variables are used to store data in a C program.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int age = 20;
+float marks = 85.5;
+
+```
+printf("Age: %d\n", age);
+printf("Marks: %.2f", marks);
+
+return 0;
+```
+
 }</code></pre>
 
-            <p>
-                In this example, the second <strong>printf()</strong> statement
-                is commented out, so it will not be executed.
-            </p>
-        </section>
+</section>
 
-        <!-- Why Comments -->
-        <section class="content-section">
-            <h2>Why Use Comments?</h2>
+<!-- Data Types -->
 
-            <ul>
-                <li>To explain what your code does.</li>
-                <li>To make code easier to understand.</li>
-                <li>To document complex logic.</li>
-                <li>To temporarily disable code.</li>
-                <li>To make large programs easier to maintain.</li>
-            </ul>
-        </section>
+<section class="section">
 
-        <!-- Important Points -->
-        <section class="content-section">
-            <h2>Main Points</h2>
+```
+<h2>Data Types in C</h2>
 
-            <ul>
-                <li>Comments are ignored by the C compiler.</li>
-                <li>Use <strong>//</strong> for single-line comments.</li>
-                <li>Use <strong>/* */</strong> for multi-line comments.</li>
-                <li>Comments make programs easier to understand.</li>
-                <li>Comments can be used to temporarily disable code.</li>
-            </ul>
-        </section>
+<p>
+    C provides different data types for storing different kinds
+    of values.
+</p>
 
-        <!-- Code Editor -->
-        <section class="content-section">
-            <h2>C Code Editor</h2>
+<table>
 
-            <p>
-                Write your C code below and click <strong>Run Code</strong>.
-            </p>
+    <tr>
+        <th>Data Type</th>
+        <th>Example</th>
+        <th>Purpose</th>
+    </tr>
 
-            <div class="editor">
+    <tr>
+        <td>int</td>
+        <td>int age = 20;</td>
+        <td>Stores integers</td>
+    </tr>
 
-                <textarea id="codeEditor">#include <stdio.h>
+    <tr>
+        <td>float</td>
+        <td>float price = 25.5;</td>
+        <td>Stores decimal values</td>
+    </tr>
 
-int main() {
+    <tr>
+        <td>double</td>
+        <td>double value = 25.55;</td>
+        <td>Stores larger decimal values</td>
+    </tr>
 
-    // This is a single-line comment
+    <tr>
+        <td>char</td>
+        <td>char grade = 'A';</td>
+        <td>Stores a character</td>
+    </tr>
 
-    /*
-       This is a multi-line comment
-    */
+</table>
+```
 
-    printf("Hello from Code With Me!");
+</section>
 
-    return 0;
+<!-- Identifiers -->
+
+<section class="section">
+
+```
+<h2>Identifiers in C</h2>
+
+<p>
+    Identifiers are names given to variables, functions,
+    arrays and other program elements.
+</p>
+
+<h3>Valid Identifiers</h3>
+
+<pre><code>age
+```
+
+studentName
+total_marks
+number1</code></pre>
+
+```
+<h3>Invalid Identifiers</h3>
+
+<pre><code>1number
+```
+
+student-name
+total marks</code></pre>
+
+```
+<div class="highlight">
+
+    An identifier cannot normally start with a number and
+    cannot contain spaces or hyphens.
+
+</div>
+```
+
+</section>
+
+<!-- Keywords -->
+
+<section class="section">
+
+```
+<h2>Keywords in C</h2>
+
+<p>
+    Keywords are reserved words that have special meaning in C.
+    They cannot normally be used as variable names.
+</p>
+
+<table>
+
+    <tr>
+        <th>Keyword</th>
+        <th>Purpose</th>
+    </tr>
+
+    <tr>
+        <td>int</td>
+        <td>Integer data type</td>
+    </tr>
+
+    <tr>
+        <td>float</td>
+        <td>Floating-point data type</td>
+    </tr>
+
+    <tr>
+        <td>char</td>
+        <td>Character data type</td>
+    </tr>
+
+    <tr>
+        <td>if</td>
+        <td>Conditional statement</td>
+    </tr>
+
+    <tr>
+        <td>else</td>
+        <td>Alternative condition</td>
+    </tr>
+
+    <tr>
+        <td>for</td>
+        <td>Loop</td>
+    </tr>
+
+    <tr>
+        <td>while</td>
+        <td>Loop</td>
+    </tr>
+
+    <tr>
+        <td>return</td>
+        <td>Returns a value from a function</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- Case Sensitive -->
+
+<section class="section">
+
+```
+<h2>C is Case-Sensitive</h2>
+
+<p>
+    C is a case-sensitive programming language.
+    This means uppercase and lowercase letters are different.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>int age = 20;
+```
+
+int Age = 30;</code></pre>
+
+```
+<p>
+    Here, <strong>age</strong> and <strong>Age</strong> are
+    two different variables.
+</p>
+```
+
+</section>
+
+<!-- printf -->
+
+<section class="section">
+
+```
+<h2>Output using printf()</h2>
+
+<p>
+    The printf() function is used to display information.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+printf("Hello World!");
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- scanf -->
+
+<section class="section">
+
+```
+<h2>Input using scanf()</h2>
+
+<p>
+    The scanf() function is commonly used to take input from
+    the user.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int age;
+
+```
+printf("Enter your age: ");
+scanf("%d", &amp;age);
+
+printf("Your age is %d", age);
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Escape Sequences -->
+
+<section class="section">
+
+```
+<h2>Escape Sequences</h2>
+
+<p>
+    Escape sequences are special characters used inside strings.
+</p>
+
+<table>
+
+    <tr>
+        <th>Escape Sequence</th>
+        <th>Meaning</th>
+    </tr>
+
+    <tr>
+        <td>\n</td>
+        <td>New line</td>
+    </tr>
+
+    <tr>
+        <td>\t</td>
+        <td>Horizontal tab</td>
+    </tr>
+
+    <tr>
+        <td>\\</td>
+        <td>Backslash</td>
+    </tr>
+
+    <tr>
+        <td>\"</td>
+        <td>Double quotation mark</td>
+    </tr>
+
+    <tr>
+        <td>\'</td>
+        <td>Single quotation mark</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- Complete Example -->
+
+<section class="section">
+
+```
+<h2>Complete C Syntax Example</h2>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;stdio.h&gt;
+```
+
+int main()
+{
+int age;
+float marks;
+
+```
+printf("Enter your age: ");
+scanf("%d", &amp;age);
+
+printf("Enter your marks: ");
+scanf("%f", &amp;marks);
+
+printf("\nAge: %d\n", age);
+printf("Marks: %.2f\n", marks);
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Important Rules -->
+
+<section class="section">
+
+```
+<h2>Important C Syntax Rules</h2>
+
+<ul>
+
+    <li>C statements generally end with a semicolon.</li>
+
+    <li>C is case-sensitive.</li>
+
+    <li>Program execution normally starts from main().</li>
+
+    <li>Use curly braces to define blocks of code.</li>
+
+    <li>Use appropriate data types for variables.</li>
+
+    <li>Use comments to explain your code.</li>
+
+    <li>Keywords cannot normally be used as identifiers.</li>
+
+    <li>Strings are written inside double quotes.</li>
+
+    <li>Character constants are written inside single quotes.</li>
+
+    <li>Use #include to include required header files.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- Common Mistakes -->
+
+<section class="section">
+
+```
+<h2>Common C Syntax Mistakes</h2>
+
+<h3>1. Missing Semicolon</h3>
+
+<pre><code>int age = 20</code></pre>
+
+<p>
+    Correct:
+</p>
+
+<pre><code>int age = 20;</code></pre>
+
+
+<h3>2. Incorrect Capitalization</h3>
+
+<pre><code>Printf("Hello");</code></pre>
+
+<p>
+    Correct:
+</p>
+
+<pre><code>printf("Hello");</code></pre>
+
+
+<h3>3. Missing Header File</h3>
+
+<p>
+    If you use printf(), include the appropriate standard I/O header:
+</p>
+
+<pre><code>#include &lt;stdio.h&gt;</code></pre>
+
+
+<h3>4. Incorrect Quotes</h3>
+
+<pre><code>printf('Hello');</code></pre>
+
+<p>
+    For a string, use double quotes:
+</p>
+
+<pre><code>printf("Hello");</code></pre>
+```
+
+</section>
+
+<!-- Code Editor -->
+
+<section class="section">
+
+```
+<h2>C Syntax Code Editor</h2>
+
+<p>
+    Write a simple C program below.
+</p>
+
+<textarea id="codeEditor">#include <stdio.h>
+```
+
+int main()
+{
+printf("Hello, Code With Me!");
+
+```
+return 0;
+```
+
 }</textarea>
 
-                <div class="buttons">
-                    <button class="run-btn" onclick="runCode()">
-                        ▶ Run Code
-                    </button>
+```
+<div class="buttons">
 
-                    <button class="clear-btn" onclick="clearCode()">
-                        Clear
-                    </button>
-                </div>
+    <button class="run-btn" onclick="runCode()">
+        Run Code
+    </button>
 
-                <h3 class="output-title">Output</h3>
+    <button class="clear-btn" onclick="clearCode()">
+        Clear
+    </button>
 
-                <div id="output">
-Click "Run Code" to see the output.
-                </div>
+</div>
 
-            </div>
-        </section>
+<div class="output" id="output">
+    Output will appear here...
+</div>
+```
 
-        <!-- Navigation -->
-        <div class="lesson-navigation">
+</section>
 
-            <a href="c-installation.html">
-                ← Previous: C Installation
-            </a>
+<!-- Page Navigation -->
 
-            <a href="c-comments.html">
-                Next: C Comments →
-            </a>
+<div class="page-navigation">
 
-        </div>
+```
+<a href="c-installation.html">
+    ← Previous: C Installation
+</a>
 
-    </main>
+<a href="c-comments.html">
+    Next: C Comments →
+</a>
+```
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Code With Me. All Rights Reserved.</p>
-        <p>Learn HTML, CSS, JavaScript, Python and C Programming.</p>
-    </footer>
+</div>
 
-    <script>
-        function runCode() {
+</main>
 
-            const code = document.getElementById("codeEditor").value;
-            const output = document.getElementById("output");
+<!-- Footer -->
 
-            /*
-             * This is a simple demonstration.
-             * A real C compiler is required to execute C code.
-             */
+<footer>
 
-            const printfMatch = code.match(
-                /printf\s*\(\s*"([^"]*)"\s*\)/
-            );
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
 
-            if (printfMatch) {
-                output.textContent = printfMatch[1];
-            } else {
-                output.textContent =
-                    "Code entered successfully.\n\n" +
-                    "A C compiler is required to execute this program.";
-            }
-        }
+</footer>
 
-        function clearCode() {
-            document.getElementById("codeEditor").value = "";
-            document.getElementById("output").textContent =
-                "Editor cleared.";
-        }
-    </script>
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some C code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C code in the browser, " +
+        "you need a C compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
 
 </body>
 </html>
-```
