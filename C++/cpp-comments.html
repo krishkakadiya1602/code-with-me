@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C++ Comments | Code With Me</title>
+
+<meta name="description" content="Learn C++ comments with simple examples. Understand single-line comments, multi-line comments, their uses and common mistakes in C++.">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* Navbar */
+
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+
+/* Hero */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+
+/* Container */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+
+/* Sections */
+
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    margin-bottom: 12px;
+}
+
+.section ul,
+.section ol {
+    margin-left: 25px;
+}
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+
+/* Code */
+
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+
+/* Table */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+
+/* Editor */
+
+textarea {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.run-btn:hover {
+    background: #1d4ed8;
+}
+
+.clear-btn:hover {
+    background: #b91c1c;
+}
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+
+/* Navigation */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.page-navigation a:hover {
+    background: #1d4ed8;
+}
+
+
+/* Footer */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
+
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
+
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
+
+</ul>
+```
+
+</nav>
+
+<!-- Hero -->
+
+<header class="hero">
+
+```
+<h1>C++ Comments</h1>
+
+<p>
+    Learn how to write comments in C++ programs.
+</p>
+```
+
+</header>
+
+<main class="container">
+
+<!-- Introduction -->
+
+<section class="section">
+
+```
+<h2>What are Comments in C++?</h2>
+
+<p>
+    Comments are notes written inside a C++ program to
+    explain what the code does.
+</p>
+
+<p>
+    Comments are ignored by the C++ compiler, which means
+    they do not affect the execution of the program.
+</p>
+
+<div class="highlight">
+
+    <strong>Simple Definition:</strong>
+
+    A comment is a piece of text in source code that is
+    written for developers and is not executed as program code.
+
+</div>
+```
+
+</section>
+
+<!-- Why Comments -->
+
+<section class="section">
+
+```
+<h2>Why Use Comments?</h2>
+
+<p>
+    Comments make code easier to understand, especially
+    when programs become large.
+</p>
+
+<ul>
+
+    <li>Explain what a section of code does.</li>
+
+    <li>Make code easier to read.</li>
+
+    <li>Help developers understand complex logic.</li>
+
+    <li>Document important information.</li>
+
+    <li>Help while maintaining large projects.</li>
+
+    <li>Temporarily disable code during testing.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- Types -->
+
+<section class="section">
+
+```
+<h2>Types of Comments in C++</h2>
+
+<p>
+    C++ mainly supports two common types of comments:
+</p>
+
+<table>
+
+    <tr>
+        <th>Type</th>
+        <th>Syntax</th>
+        <th>Use</th>
+    </tr>
+
+    <tr>
+        <td>Single-Line Comment</td>
+        <td>//</td>
+        <td>Used for comments on one line</td>
+    </tr>
+
+    <tr>
+        <td>Multi-Line Comment</td>
+        <td>/* ... */</td>
+        <td>Used for comments spanning multiple lines</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- Single Line -->
+
+<section class="section">
+
+```
+<h2>1. Single-Line Comments</h2>
+
+<p>
+    A single-line comment starts with two forward slashes:
+    <strong>//</strong>
+</p>
+
+<p>
+    Everything after <strong>//</strong> on that line is
+    treated as a comment.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>// This is a single-line comment
+```
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+cout << "Hello World!";
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Comment After Code -->
+
+<section class="section">
+
+```
+<h2>Comment After a Statement</h2>
+
+<p>
+    You can also place a single-line comment after a
+    statement.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+int age = 20; // Store the user's age
+
+```
+cout &lt;&lt; age; // Display the age
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Multiple Single Line -->
+
+<section class="section">
+
+```
+<h2>Multiple Single-Line Comments</h2>
+
+<p>
+    You can write multiple single-line comments by using
+    <strong>//</strong> on each line.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>// Create two variables
+```
+
+int a = 10;
+int b = 20;
+
+// Add the values
+int sum = a + b;
+
+// Display the result
+cout << sum;</code></pre>
+
+</section>
+
+<!-- Multi Line -->
+
+<section class="section">
+
+```
+<h2>2. Multi-Line Comments</h2>
+
+<p>
+    Multi-line comments start with
+    <strong>/*</strong> and end with
+    <strong>*/</strong>.
+</p>
+
+<p>
+    They can contain one or multiple lines.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>/*
+```
+
+This is a multi-line comment.
+
+It can contain
+multiple lines.
+*/
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+cout << "Hello World!";
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Multi Line Program -->
+
+<section class="section">
+
+```
+<h2>Multi-Line Comment in a Program</h2>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+/*
+Create two numbers
+and calculate their sum.
+*/
+
+```
+int a = 10;
+int b = 20;
+
+int sum = a + b;
+
+cout &lt;&lt; "Sum = " &lt;&lt; sum;
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Disable Code -->
+
+<section class="section">
+
+```
+<h2>Using Comments to Disable Code</h2>
+
+<p>
+    Comments can also be used to temporarily prevent a
+    line of code from being compiled.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+cout << "Hello";
+
+```
+// cout &lt;&lt; "This line is disabled";
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<p>
+    The commented-out statement will not be executed.
+</p>
+```
+
+</section>
+
+<!-- Multi Line Disable -->
+
+<section class="section">
+
+```
+<h2>Disable Multiple Lines</h2>
+
+<p>
+    You can temporarily disable multiple lines using a
+    multi-line comment.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+cout << "Start";
+
+```
+/*
+cout &lt;&lt; "Line 1";
+cout &lt;&lt; "Line 2";
+cout &lt;&lt; "Line 3";
+*/
+
+cout &lt;&lt; "End";
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Comments vs Code -->
+
+<section class="section">
+
+```
+<h2>Comments vs Code</h2>
+
+<table>
+
+    <tr>
+        <th>Code</th>
+        <th>Comment</th>
+    </tr>
+
+    <tr>
+        <td>Executed by the compiler/program.</td>
+        <td>Ignored by the compiler.</td>
+    </tr>
+
+    <tr>
+        <td>Produces program behavior.</td>
+        <td>Used to explain code.</td>
+    </tr>
+
+    <tr>
+        <td>Required for program functionality.</td>
+        <td>Usually optional.</td>
+    </tr>
+
+    <tr>
+        <td>Must follow C++ syntax.</td>
+        <td>Can contain explanatory text.</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- Good Comments -->
+
+<section class="section">
+
+```
+<h2>Good Comments</h2>
+
+<p>
+    Good comments explain <strong>why</strong> something
+    is being done or clarify code that may not be obvious.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>// Calculate the final price after applying the discount
+```
+
+double finalPrice = price - discount;</code></pre>
+
+</section>
+
+<!-- Bad Comments -->
+
+<section class="section">
+
+```
+<h2>Avoid Unnecessary Comments</h2>
+
+<p>
+    Comments should provide useful information. Avoid
+    comments that simply repeat obvious code.
+</p>
+
+<div class="code-title">
+    Less Useful
+</div>
+
+<pre><code>int age = 20; // Set age to 20</code></pre>
+
+<p>
+    In simple code, the statement may already be clear.
+    Comments become more useful when they explain
+    non-obvious logic or decisions.
+</p>
+```
+
+</section>
+
+<!-- Comments with Code -->
+
+<section class="section">
+
+```
+<h2>Comments with Conditions</h2>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+int age = 20;
+
+```
+// Check whether the person is an adult
+if (age &gt;= 18)
+{
+    cout &lt;&lt; "Adult";
+}
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Comments with Functions -->
+
+<section class="section">
+
+```
+<h2>Comments with Functions</h2>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+// Function to display a welcome message
+void welcome()
+{
+cout << "Welcome to Code With Me!";
+}
+
+int main()
+{
+welcome();
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Important Rules -->
+
+<section class="section">
+
+```
+<h2>Important Rules for C++ Comments</h2>
+
+<ul>
+
+    <li>Use <strong>//</strong> for a single-line comment.</li>
+
+    <li>Use <strong>/* */</strong> for a multi-line comment.</li>
+
+    <li>Comments are ignored by the compiler.</li>
+
+    <li>Comments do not normally affect program output.</li>
+
+    <li>Use comments to make code easier to understand.</li>
+
+    <li>Avoid writing unnecessary comments everywhere.</li>
+
+    <li>Comments can temporarily disable code during testing.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- Common Mistakes -->
+
+<section class="section">
+
+```
+<h2>Common Mistakes</h2>
+
+<h3>1. Forgetting the Closing */</h3>
+
+<div class="code-title">
+    Incorrect
+</div>
+
+<pre><code>/*
+```
+
+This comment does not end properly.</code></pre>
+
+```
+<p>
+    A multi-line comment must be closed with
+    <strong>*/</strong>.
+</p>
+
+
+<h3>2. Using Wrong Comment Syntax</h3>
+
+<p>
+    C++ uses <strong>//</strong> and
+    <strong>/* */</strong> for comments.
+</p>
+
+
+<h3>3. Writing Comments Inside a String</h3>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>cout &lt;&lt; "// This is text";</code></pre>
+
+<p>
+    Here <strong>//</strong> is part of the string and is
+    not treated as a comment.
+</p>
+```
+
+</section>
+
+<!-- Complete Example -->
+
+<section class="section">
+
+```
+<h2>Complete Example</h2>
+
+<div class="code-title">
+    C++ Comments Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+// Program execution starts here
+int main()
+{
+// Create two variables
+int a = 10;
+int b = 20;
+
+```
+/*
+   Calculate the sum
+   of the two numbers.
+*/
+int sum = a + b;
+
+// Display the result
+cout &lt;&lt; "Sum = " &lt;&lt; sum;
+
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="code-title">
+    Output
+</div>
+
+<pre><code>Sum = 30</code></pre>
+```
+
+</section>
+
+<!-- Editor -->
+
+<section class="section">
+
+```
+<h2>C++ Comments Code Editor</h2>
+
+<p>
+    Practice using single-line and multi-line comments.
+</p>
+
+<textarea id="codeEditor">#include <iostream>
+```
+
+using namespace std;
+
+// This is a single-line comment
+
+int main()
+{
+/*
+This is a
+multi-line comment.
+*/
+
+```
+int a = 10;
+int b = 20;
+
+// Calculate the sum
+int sum = a + b;
+
+cout << "Sum = " << sum;
+
+return 0;
+```
+
+}</textarea>
+
+```
+<div class="buttons">
+
+    <button class="run-btn" onclick="runCode()">
+        Run Code
+    </button>
+
+    <button class="clear-btn" onclick="clearCode()">
+        Clear
+    </button>
+
+</div>
+
+<div class="output" id="output">
+    Output will appear here...
+</div>
+```
+
+</section>
+
+<!-- Navigation -->
+
+<div class="page-navigation">
+
+```
+<a href="cpp-syntax.html">
+    ← Previous: C++ Syntax
+</a>
+
+<a href="cpp-variables.html">
+    Next: C++ Variables →
+</a>
+```
+
+</div>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some C++ code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C++ code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C++ code in the browser, " +
+        "you need a C++ compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
