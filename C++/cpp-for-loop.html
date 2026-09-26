@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>C++ for Loop | Code With Me</title>
+
+<meta name="description"
+      content="Learn C++ for loops with syntax, examples, nested loops, break, continue, counting, and practical programs.">
+
+<meta name="keywords"
+      content="C++ for loop, C++ loops, for loop examples, nested for loop, C++ tutorial">
+
+<meta name="author" content="Code With Me">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #222;
+        line-height: 1.7;
+    }
+
+    nav {
+        background: #111827;
+        padding: 15px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .logo span {
+        color: #38bdf8;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .nav-links a:hover {
+        color: #38bdf8;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    .section {
+        background: white;
+        padding: 30px;
+        margin-bottom: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+        color: #1e3a8a;
+        margin-bottom: 15px;
+    }
+
+    .section h3 {
+        color: #2563eb;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .highlight {
+        background: #eff6ff;
+        border-left: 5px solid #2563eb;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    .note {
+        background: #fff7ed;
+        border-left: 5px solid #f97316;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+    }
+
+    .code-title {
+        background: #111827;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 8px 8px 0 0;
+        font-weight: bold;
+    }
+
+    pre {
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 20px;
+        overflow-x: auto;
+        border-radius: 0 0 8px 8px;
+        font-family: Consolas, monospace;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    table th {
+        background: #1e3a8a;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background: #f8fafc;
+    }
+
+    ul,
+    ol {
+        padding-left: 25px;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 350px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: Consolas, monospace;
+        font-size: 15px;
+        resize: vertical;
+        background: #111827;
+        color: #f8fafc;
+    }
+
+    .buttons {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+    }
+
+    button {
+        padding: 11px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .run-btn {
+        background: #2563eb;
+        color: white;
+    }
+
+    .clear-btn {
+        background: #dc2626;
+        color: white;
+    }
+
+    .output {
+        margin-top: 15px;
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 15px;
+        min-height: 100px;
+        white-space: pre-wrap;
+        font-family: Consolas, monospace;
+    }
+
+    .page-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 30px 0 50px;
+    }
+
+    .page-navigation a {
+        text-decoration: none;
+        background: #2563eb;
+        color: white;
+        padding: 12px 22px;
+        border-radius: 7px;
+        font-weight: bold;
+    }
+
+    .page-navigation a:hover {
+        background: #1d4ed8;
+    }
+
+    footer {
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 30px;
+    }
+
+    @media (max-width: 700px) {
+
+        nav {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .page-navigation {
+            flex-direction: column;
+        }
+
+        .page-navigation a {
+            text-align: center;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
+
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
+
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
+
+</ul>
+```
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<header class="hero">
+
+```
+<h1>C++ for Loop</h1>
+
+<p>
+    Learn how to repeat code using the for loop in C++
+</p>
+```
+
+</header>
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="container">
+
+```
+<!-- INTRODUCTION -->
+
+<section class="section">
+
+    <h2>What is a for Loop in C++?</h2>
+
+    <p>
+        A <code>for</code> loop is used to repeatedly execute a block
+        of code while a condition is true.
+    </p>
+
+    <p>
+        It is especially useful when you know how many times you want
+        to repeat a particular block of code.
+    </p>
+
+    <div class="highlight">
+
+        <strong>Example:</strong>
+
+        <br><br>
+
+        If you want to print numbers from 1 to 10,
+        instead of writing <code>cout</code> ten times,
+        you can use a <code>for</code> loop.
+
+    </div>
+
+</section>
+
+
+<!-- SYNTAX -->
+
+<section class="section">
+
+    <h2>Syntax of for Loop</h2>
+
+    <div class="code-title">
+        Syntax
+    </div>
+```
+
+<pre><code>for (initialization; condition; update) {
+
+    // code to execute
+
+}</code></pre>
+
+```
+    <h3>Three Important Parts</h3>
+
+    <table>
+
+        <tr>
+            <th>Part</th>
+            <th>Purpose</th>
+        </tr>
+
+        <tr>
+            <td>Initialization</td>
+            <td>Runs once before the loop starts.</td>
+        </tr>
+
+        <tr>
+            <td>Condition</td>
+            <td>Checked before each iteration.</td>
+        </tr>
+
+        <tr>
+            <td>Update</td>
+            <td>Changes the loop variable after each iteration.</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- SIMPLE EXAMPLE -->
+
+<section class="section">
+
+    <h2>Simple for Loop Example</h2>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    for (int i = 1; i &lt;= 5; i++) {
+
+        cout &lt;&lt; i &lt;&lt; endl;
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+```
+
+<pre><code>1
+2
+3
+4
+5</code></pre>
+
+```
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="section">
+
+    <h2>How a for Loop Works</h2>
+
+    <ol>
+
+        <li>
+            <strong>Initialization:</strong>
+            <code>int i = 1</code>
+        </li>
+
+        <li>
+            <strong>Condition:</strong>
+            <code>i &lt;= 5</code>
+        </li>
+
+        <li>
+            The loop body executes.
+        </li>
+
+        <li>
+            <strong>Update:</strong>
+            <code>i++</code>
+        </li>
+
+        <li>
+            The condition is checked again.
+        </li>
+
+        <li>
+            The process continues until the condition becomes false.
+        </li>
+
+    </ol>
+
+    <div class="highlight">
+
+        The loop stops when:
+
+        <br><br>
+
+        <code>i &lt;= 5</code> becomes false.
+
+    </div>
+
+</section>
+
+
+<!-- PRINT 1 TO 10 -->
+
+<section class="section">
+
+    <h2>Print Numbers from 1 to 10</h2>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    for (int i = 1; i &lt;= 10; i++) {
+
+        cout &lt;&lt; i &lt;&lt; " ";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+
+        <br>
+
+        1 2 3 4 5 6 7 8 9 10
+
+    </div>
+
+</section>
+
+
+<!-- PRINT 10 TO 1 -->
+
+<section class="section">
+
+    <h2>Print Numbers from 10 to 1</h2>
+
+    <p>
+        You can decrease the loop variable using <code>i--</code>.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    for (int i = 10; i &gt;= 1; i--) {
+
+        cout &lt;&lt; i &lt;&lt; " ";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+
+        <br>
+
+        10 9 8 7 6 5 4 3 2 1
+
+    </div>
+
+</section>
+
+
+<!-- EVEN NUMBERS -->
+
+<section class="section">
+
+    <h2>Print Even Numbers</h2>
+
+    <p>
+        You can increase the loop variable by 2 to print even numbers.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    for (int i = 2; i &lt;= 20; i += 2) {
+
+        cout &lt;&lt; i &lt;&lt; " ";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+
+        <br>
+
+        2 4 6 8 10 12 14 16 18 20
+
+    </div>
+
+</section>
+
+
+<!-- ODD NUMBERS -->
+
+<section class="section">
+
+    <h2>Print Odd Numbers</h2>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    for (int i = 1; i &lt;= 20; i += 2) {
+
+        cout &lt;&lt; i &lt;&lt; " ";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+
+        <br>
+
+        1 3 5 7 9 11 13 15 17 19
+
+    </div>
+
+</section>
+
+
+<!-- SUM -->
+
+<section class="section">
+
+    <h2>Find the Sum of Numbers</h2>
+
+    <p>
+        A for loop can be used to calculate the sum of numbers.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int sum = 0;
+
+    for (int i = 1; i &lt;= 10; i++) {
+
+        sum = sum + i;
+
+    }
+
+    cout &lt;&lt; "Sum = " &lt;&lt; sum;
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+
+        <br>
+
+        Sum = 55
+
+    </div>
+
+</section>
+
+
+<!-- MULTIPLICATION TABLE -->
+
+<section class="section">
+
+    <h2>Multiplication Table</h2>
+
+    <p>
+        A for loop is commonly used to create multiplication tables.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number;
+
+    cout &lt;&lt; "Enter a number: ";
+    cin &gt;&gt; number;
+
+    for (int i = 1; i &lt;= 10; i++) {
+
+        cout &lt;&lt; number &lt;&lt; " x "
+             &lt;&lt; i &lt;&lt; " = "
+             &lt;&lt; number * i
+             &lt;&lt; endl;
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- FACTORIAL -->
+
+<section class="section">
+
+    <h2>Find Factorial Using for Loop</h2>
+
+    <p>
+        The factorial of a number is the product of all positive
+        integers from 1 to that number.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int number;
+    long long factorial = 1;
+
+    cout &lt;&lt; "Enter a number: ";
+    cin &gt;&gt; number;
+
+    for (int i = 1; i &lt;= number; i++) {
+
+        factorial = factorial * i;
+
+    }
+
+    cout &lt;&lt; "Factorial = " &lt;&lt; factorial;
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- ARRAY -->
+
+<section class="section">
+
+    <h2>Loop Through an Array</h2>
+
+    <p>
+        A for loop is commonly used to access every element of an array.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int numbers[] = {10, 20, 30, 40, 50};
+
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+
+    for (int i = 0; i &lt; size; i++) {
+
+        cout &lt;&lt; numbers[i] &lt;&lt; endl;
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- NESTED LOOP -->
+
+<section class="section">
+
+    <h2>Nested for Loop</h2>
+
+    <p>
+        A loop inside another loop is called a nested loop.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    for (int i = 1; i &lt;= 3; i++) {
+
+        for (int j = 1; j &lt;= 3; j++) {
+
+            cout &lt;&lt; "* ";
+
+        }
+
+        cout &lt;&lt; endl;
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+```
+
+<pre><code>* * *
+* * *
+* * *</code></pre>
+
+```
+    </div>
+
+</section>
+
+
+<!-- PATTERN -->
+
+<section class="section">
+
+    <h2>Print a Triangle Pattern</h2>
+
+    <p>
+        Nested for loops are useful for creating patterns.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    for (int i = 1; i &lt;= 5; i++) {
+
+        for (int j = 1; j &lt;= i; j++) {
+
+            cout &lt;&lt; "* ";
+
+        }
+
+        cout &lt;&lt; endl;
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+```
+
+<pre><code>*
+* *
+* * *
+* * * *
+* * * * *</code></pre>
+
+```
+    </div>
+
+</section>
+
+
+<!-- BREAK -->
+
+<section class="section">
+
+    <h2>Using break in a for Loop</h2>
+
+    <p>
+        The <code>break</code> statement immediately stops the loop.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    for (int i = 1; i &lt;= 10; i++) {
+
+        if (i == 6) {
+
+            break;
+
+        }
+
+        cout &lt;&lt; i &lt;&lt; " ";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+
+        <br>
+
+        1 2 3 4 5
+
+    </div>
+
+</section>
+
+
+<!-- CONTINUE -->
+
+<section class="section">
+
+    <h2>Using continue in a for Loop</h2>
+
+    <p>
+        The <code>continue</code> statement skips the current iteration
+        and moves to the next iteration.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    for (int i = 1; i &lt;= 10; i++) {
+
+        if (i == 5) {
+
+            continue;
+
+        }
+
+        cout &lt;&lt; i &lt;&lt; " ";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+
+        <br>
+
+        1 2 3 4 6 7 8 9 10
+
+    </div>
+
+</section>
+
+
+<!-- MULTIPLE VARIABLES -->
+
+<section class="section">
+
+    <h2>for Loop with Multiple Variables</h2>
+
+    <p>
+        A for loop can work with more than one variable.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    for (int i = 1, j = 10; i &lt;= 5; i++, j--) {
+
+        cout &lt;&lt; "i = " &lt;&lt; i
+             &lt;&lt; ", j = " &lt;&lt; j
+             &lt;&lt; endl;
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+</section>
+
+
+<!-- OMIT PARTS -->
+
+<section class="section">
+
+    <h2>Omitting Parts of a for Loop</h2>
+
+    <p>
+        Some parts of the for loop can technically be omitted,
+        although this should be done carefully.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int i = 1;
+
+    for (; i &lt;= 5; i++) {
+
+        cout &lt;&lt; i &lt;&lt; " ";
+
+    }
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="note">
+
+        The initialization was performed before the loop,
+        so the initialization section of the for statement is empty.
+
+    </div>
+
+</section>
+
+
+<!-- INFINITE LOOP -->
+
+<section class="section">
+
+    <h2>Infinite for Loop</h2>
+
+    <p>
+        A for loop can become infinite if its condition never becomes
+        false.
+    </p>
+
+    <div class="code-title">
+        Example
+    </div>
+```
+
+<pre><code>for (;;) {
+
+    cout &lt;&lt; "This loop never ends.";
+
+}</code></pre>
+
+```
+    <div class="note">
+
+        <strong>Warning:</strong>
+
+        Avoid infinite loops unless you intentionally need one.
+        An infinite loop can keep running until the program is stopped.
+
+    </div>
+
+</section>
+
+
+<!-- FOR LOOP VS WHILE -->
+
+<section class="section">
+
+    <h2>for Loop vs while Loop</h2>
+
+    <table>
+
+        <tr>
+            <th>for Loop</th>
+            <th>while Loop</th>
+        </tr>
+
+        <tr>
+            <td>Useful when the number of iterations is known.</td>
+            <td>Useful when the number of iterations may not be known.</td>
+        </tr>
+
+        <tr>
+            <td>Initialization, condition and update are commonly together.</td>
+            <td>Initialization and update are usually written separately.</td>
+        </tr>
+
+        <tr>
+            <td>Compact for counting operations.</td>
+            <td>Useful for condition-controlled repetition.</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+
+    <h2>Common Mistakes</h2>
+
+    <h3>1. Forgetting the update</h3>
+```
+
+<pre><code>// Can create an infinite loop
+for (int i = 1; i &lt;= 10;) {
+
+    cout &lt;&lt; i;
+
+}</code></pre>
+
+```
+    <h3>2. Wrong condition</h3>
+```
+
+<pre><code>// Check the condition carefully
+for (int i = 1; i &lt;= 10; i++) {
+
+    cout &lt;&lt; i;
+
+}</code></pre>
+
+```
+    <h3>3. Using semicolon after the loop</h3>
+```
+
+<pre><code>// Usually not what you want
+for (int i = 1; i &lt;= 5; i++);
+
+{
+    cout &lt;&lt; "Hello";
+}</code></pre>
+
+```
+    <h3>4. Wrong starting value</h3>
+```
+
+<pre><code>// Starts from 0
+for (int i = 0; i &lt; 5; i++) {
+
+    cout &lt;&lt; i;
+
+}</code></pre>
+
+```
+</section>
+
+
+<!-- IMPORTANT POINTS -->
+
+<section class="section">
+
+    <h2>Important Points to Remember</h2>
+
+    <ul>
+
+        <li>
+            A <code>for</code> loop repeats a block of code.
+        </li>
+
+        <li>
+            It contains initialization, condition and update.
+        </li>
+
+        <li>
+            The condition is checked before every iteration.
+        </li>
+
+        <li>
+            <code>i++</code> increases the variable by 1.
+        </li>
+
+        <li>
+            <code>i--</code> decreases the variable by 1.
+        </li>
+
+        <li>
+            <code>break</code> stops the loop.
+        </li>
+
+        <li>
+            <code>continue</code> skips the current iteration.
+        </li>
+
+        <li>
+            Nested for loops can be used to create patterns.
+        </li>
+
+        <li>
+            For loops are commonly used with arrays.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- COMPLETE EXAMPLE -->
+
+<section class="section">
+
+    <h2>Complete for Loop Example</h2>
+
+    <div class="code-title">
+        Sum of Even Numbers
+    </div>
+```
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+    int sum = 0;
+
+    for (int i = 2; i &lt;= 20; i += 2) {
+
+        sum += i;
+
+    }
+
+    cout &lt;&lt; "Sum of even numbers from 2 to 20 = "
+         &lt;&lt; sum;
+
+    return 0;
+}</code></pre>
+
+```
+    <div class="highlight">
+
+        <strong>Output:</strong>
+
+        <br>
+
+        Sum of even numbers from 2 to 20 = 110
+
+    </div>
+
+</section>
+
+
+<!-- CODE EDITOR -->
+
+<section class="section">
+
+    <h2>C++ Code Editor</h2>
+
+    <p>
+        Write your C++ for loop program below.
+    </p>
+
+    <textarea id="codeEditor">#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main() {
+
+```
+for (int i = 1; i &lt;= 10; i++) {
+
+    cout &lt;&lt; i &lt;&lt; " ";
+
+}
+
+return 0;
+```
+
+}</textarea>
+
+```
+    <div class="buttons">
+
+        <button class="run-btn" onclick="runCode()">
+            Run Code
+        </button>
+
+        <button class="clear-btn" onclick="clearCode()">
+            Clear
+        </button>
+
+    </div>
+
+    <div class="output" id="output">
+        Output will appear here...
+    </div>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<div class="page-navigation">
+
+    <a href="cpp-while-loop.html">
+        ← Previous: C++ while Loop
+    </a>
+
+    <a href="cpp-nested-loops.html">
+        Next: C++ Nested Loops →
+    </a>
+
+</div>
+```
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some C++ code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C++ code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C++ code in the browser, " +
+        "you need a C++ compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
