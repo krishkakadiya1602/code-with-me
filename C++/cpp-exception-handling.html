@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C++ Exception Handling | Code With Me</title>
+
+    <meta name="description"
+        content="Learn C++ Exception Handling with try, catch, and throw statements with simple examples and explanations.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        nav {
+            background: #111827;
+            color: white;
+            padding: 15px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Main */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        /* Code */
+        pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 15px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* Editor */
+        .editor {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 280px;
+            padding: 18px;
+            background: #111827;
+            color: #e5e7eb;
+            border: none;
+            border-radius: 10px;
+            resize: vertical;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .buttons {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        #output {
+            background: #020617;
+            color: #22c55e;
+            min-height: 100px;
+            margin-top: 15px;
+            padding: 18px;
+            border-radius: 10px;
+            white-space: pre-wrap;
+            font-family: Consolas, Monaco, monospace;
+        }
+
+        /* Navigation */
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .lesson-nav a {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .lesson-nav a:hover {
+            background: #1d4ed8;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 22px;
+            }
+
+            .lesson-nav {
+                flex-direction: column;
+            }
+
+            .lesson-nav a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            Code<span>WithMe</span>
+        </div>
+
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#courses">Courses</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>C++ Exception Handling</h1>
+        <p>
+            Learn how to handle runtime errors in C++ using
+            try, catch, and throw.
+        </p>
+    </section>
+
+
+    <main class="container">
+
+        <!-- Introduction -->
+        <section class="section">
+
+            <h2>What is Exception Handling in C++?</h2>
+
+            <p>
+                Exception handling is a mechanism used in C++ to handle
+                runtime errors without stopping the entire program suddenly.
+            </p>
+
+            <p>
+                For example, dividing a number by zero or receiving an invalid
+                value can cause problems during program execution.
+            </p>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                C++ exception handling mainly uses three keywords:
+                <strong>try</strong>, <strong>catch</strong>, and
+                <strong>throw</strong>.
+            </div>
+
+        </section>
+
+
+        <!-- Why Exception Handling -->
+        <section class="section">
+
+            <h2>Why Use Exception Handling?</h2>
+
+            <p>Exception handling helps you:</p>
+
+            <ul>
+                <li>Handle runtime errors.</li>
+                <li>Prevent unexpected program termination.</li>
+                <li>Separate error-handling code from normal code.</li>
+                <li>Make programs more reliable.</li>
+                <li>Display meaningful error messages.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- Three Keywords -->
+        <section class="section">
+
+            <h2>Three Important Keywords</h2>
+
+            <table>
+                <tr>
+                    <th>Keyword</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td><strong>try</strong></td>
+                    <td>Contains code that may generate an exception.</td>
+                </tr>
+
+                <tr>
+                    <td><strong>throw</strong></td>
+                    <td>Used to generate an exception.</td>
+                </tr>
+
+                <tr>
+                    <td><strong>catch</strong></td>
+                    <td>Handles the exception.</td>
+                </tr>
+            </table>
+
+        </section>
+
+
+        <!-- Basic Syntax -->
+        <section class="section">
+
+            <h2>Basic Syntax</h2>
+
+            <pre><code>try
+{
+    // Code that may cause an exception
+
+    throw exception;
+}
+catch (type variable)
+{
+    // Handle the exception
+}</code></pre>
+
+            <p>
+                The <strong>try</strong> block contains risky code.
+                If an exception occurs, the <strong>throw</strong> statement
+                sends it to the appropriate <strong>catch</strong> block.
+            </p>
+
+        </section>
+
+
+        <!-- Simple Example -->
+        <section class="section">
+
+            <h2>Simple Exception Example</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    try
+    {
+        throw 10;
+    }
+    catch (int error)
+    {
+        cout &lt;&lt; "Exception caught: " &lt;&lt; error;
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                Exception caught: 10
+            </div>
+
+        </section>
+
+
+        <!-- throw -->
+        <section class="section">
+
+            <h2>The throw Keyword</h2>
+
+            <p>
+                The <strong>throw</strong> keyword is used to generate an
+                exception.
+            </p>
+
+            <pre><code>throw 10;</code></pre>
+
+            <p>
+                You can throw different types of values such as integers,
+                strings, characters, and objects.
+            </p>
+
+            <pre><code>throw 10;
+
+throw 'A';
+
+throw "Something went wrong";</code></pre>
+
+        </section>
+
+
+        <!-- catch -->
+        <section class="section">
+
+            <h2>The catch Keyword</h2>
+
+            <p>
+                The <strong>catch</strong> block receives and handles the
+                exception thrown by the <strong>throw</strong> statement.
+            </p>
+
+            <pre><code>try
+{
+    throw 100;
+}
+catch (int number)
+{
+    cout &lt;&lt; "Number: " &lt;&lt; number;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                Number: 100
+            </div>
+
+        </section>
+
+
+        <!-- Division Example -->
+        <section class="section">
+
+            <h2>Exception Handling with Division</h2>
+
+            <p>
+                We can use exception handling to check whether the user is
+                trying to divide by zero.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int a = 10;
+    int b = 0;
+
+    try
+    {
+        if (b == 0)
+        {
+            throw "Cannot divide by zero";
+        }
+
+        cout &lt;&lt; a / b;
+    }
+    catch (const char* message)
+    {
+        cout &lt;&lt; message;
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                Cannot divide by zero
+            </div>
+
+        </section>
+
+
+        <!-- Multiple Catch -->
+        <section class="section">
+
+            <h2>Multiple catch Blocks</h2>
+
+            <p>
+                C++ allows multiple <strong>catch</strong> blocks for handling
+                different types of exceptions.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    try
+    {
+        throw 10;
+    }
+
+    catch (int number)
+    {
+        cout &lt;&lt; "Integer exception: " &lt;&lt; number;
+    }
+
+    catch (char character)
+    {
+        cout &lt;&lt; "Character exception: " &lt;&lt; character;
+    }
+
+    return 0;
+}</code></pre>
+
+        </section>
+
+
+        <!-- String Exception -->
+        <section class="section">
+
+            <h2>Throwing a String</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    try
+    {
+        throw "Invalid input!";
+    }
+
+    catch (const char* message)
+    {
+        cout &lt;&lt; message;
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                Invalid input!
+            </div>
+
+        </section>
+
+
+        <!-- Generic Catch -->
+        <section class="section">
+
+            <h2>Generic Catch Block</h2>
+
+            <p>
+                The <strong>catch(...)</strong> syntax can be used to catch
+                exceptions of any type.
+            </p>
+
+            <pre><code>try
+{
+    throw 100;
+}
+
+catch (...)
+{
+    cout &lt;&lt; "Some exception occurred.";
+}</code></pre>
+
+            <div class="info-box">
+                <strong>Note:</strong>
+                The ellipsis <strong>...</strong> means that the catch block
+                can handle an exception of any type.
+            </div>
+
+        </section>
+
+
+        <!-- Standard Exception -->
+        <section class="section">
+
+            <h2>Standard Exceptions</h2>
+
+            <p>
+                C++ provides standard exception classes through the
+                <strong>&lt;stdexcept&gt;</strong> header.
+            </p>
+
+            <pre><code>#include &lt;iostream&gt;
+#include &lt;stdexcept&gt;
+using namespace std;
+
+int main()
+{
+    try
+    {
+        throw runtime_error("Runtime error occurred!");
+    }
+
+    catch (runtime_error& error)
+    {
+        cout &lt;&lt; error.what();
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Output:</strong><br>
+                Runtime error occurred!
+            </div>
+
+        </section>
+
+
+        <!-- what -->
+        <section class="section">
+
+            <h2>The what() Function</h2>
+
+            <p>
+                Standard exception objects provide the
+                <strong>what()</strong> function to return an error message.
+            </p>
+
+            <pre><code>catch (exception& error)
+{
+    cout &lt;&lt; error.what();
+}</code></pre>
+
+            <p>
+                The <strong>what()</strong> function returns a description
+                of the exception.
+            </p>
+
+        </section>
+
+
+        <!-- User Input -->
+        <section class="section">
+
+            <h2>Exception Handling with User Input</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int age;
+
+    cout &lt;&lt; "Enter your age: ";
+    cin &gt;&gt; age;
+
+    try
+    {
+        if (age &lt; 0)
+        {
+            throw "Age cannot be negative";
+        }
+
+        cout &lt;&lt; "Your age is: " &lt;&lt; age;
+    }
+
+    catch (const char* message)
+    {
+        cout &lt;&lt; message;
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="info-box">
+                This technique allows the program to validate input and
+                handle invalid values safely.
+            </div>
+
+        </section>
+
+
+        <!-- Practical Example -->
+        <section class="section">
+
+            <h2>Practical Example: Bank Withdrawal</h2>
+
+            <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    double balance = 5000;
+    double amount;
+
+    cout &lt;&lt; "Enter withdrawal amount: ";
+    cin &gt;&gt; amount;
+
+    try
+    {
+        if (amount &lt;= 0)
+        {
+            throw "Invalid withdrawal amount";
+        }
+
+        if (amount &gt; balance)
+        {
+            throw "Insufficient balance";
+        }
+
+        balance = balance - amount;
+
+        cout &lt;&lt; "Withdrawal successful\n";
+        cout &lt;&lt; "Remaining balance: " &lt;&lt; balance;
+    }
+
+    catch (const char* message)
+    {
+        cout &lt;&lt; message;
+    }
+
+    return 0;
+}</code></pre>
+
+            <div class="success-box">
+                <strong>Example Output:</strong><br>
+                Withdrawal successful<br>
+                Remaining balance: 3000
+            </div>
+
+        </section>
+
+
+        <!-- Exception Flow -->
+        <section class="section">
+
+            <h2>How Exception Handling Works</h2>
+
+            <table>
+                <tr>
+                    <th>Step</th>
+                    <th>What Happens?</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Program enters the try block.</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>An error or exceptional condition occurs.</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>The throw statement generates the exception.</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>C++ searches for a matching catch block.</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>The catch block handles the exception.</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>Program continues after exception handling.</td>
+                </tr>
+            </table>
+
+        </section>
+
+
+        <!-- Important Points -->
+        <section class="section">
+
+            <h2>Important Points</h2>
+
+            <ul>
+                <li>Use <strong>try</strong> for code that may cause an exception.</li>
+                <li>Use <strong>throw</strong> to generate an exception.</li>
+                <li>Use <strong>catch</strong> to handle an exception.</li>
+                <li>Multiple catch blocks can be used.</li>
+                <li><strong>catch(...)</strong> can catch any exception type.</li>
+                <li>Standard exceptions are available through C++ libraries.</li>
+                <li>The <strong>what()</strong> function can provide an error message.</li>
+                <li>Exception handling improves program reliability.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- Comparison -->
+        <section class="section">
+
+            <h2>Exception Handling Keywords</h2>
+
+            <table>
+                <tr>
+                    <th>Keyword</th>
+                    <th>Meaning</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>try</td>
+                    <td>Tests code that may produce an exception.</td>
+                    <td>try { }</td>
+                </tr>
+
+                <tr>
+                    <td>throw</td>
+                    <td>Generates an exception.</td>
+                    <td>throw 10;</td>
+                </tr>
+
+                <tr>
+                    <td>catch</td>
+                    <td>Handles an exception.</td>
+                    <td>catch(int x) { }</td>
+                </tr>
+            </table>
+
+        </section>
+
+
+        <!-- Interactive Demo -->
+        <section class="section">
+
+            <h2>Interactive C++ Exception Handling Demo</h2>
+
+            <p>
+                Try changing the value of <strong>number</strong> in the
+                example below.
+            </p>
+
+            <div class="editor">
+
+                <textarea id="codeInput">int number = 0;
+
+try
+{
+    if (number == 0)
+    {
+        throw "Cannot divide by zero!";
+    }
+
+    cout &lt;&lt; "Division is possible.";
+}
+catch (const char* message)
+{
+    cout &lt;&lt; message;
+}</textarea>
+
+                <div class="buttons">
+                    <button class="run-btn" onclick="runDemo()">
+                        ▶ Run Demo
+                    </button>
+
+                    <button class="clear-btn" onclick="clearDemo()">
+                        Clear
+                    </button>
+                </div>
+
+                <div id="output">
+                    Output will appear here...
+                </div>
+
+            </div>
+
+            <div class="warning-box">
+                <strong>Note:</strong>
+                This is a browser-based demonstration. It does not compile
+                arbitrary C++ code like a real C++ compiler.
+            </div>
+
+        </section>
+
+
+        <!-- Summary -->
+        <section class="section">
+
+            <h2>Summary</h2>
+
+            <p>
+                C++ Exception Handling is used to handle unexpected situations
+                and runtime errors in a controlled way.
+            </p>
+
+            <ul>
+                <li><strong>try</strong> contains code that may cause an exception.</li>
+                <li><strong>throw</strong> generates an exception.</li>
+                <li><strong>catch</strong> handles the exception.</li>
+                <li>Multiple catch blocks can handle different exception types.</li>
+                <li><strong>catch(...)</strong> can handle any exception type.</li>
+                <li>Standard exceptions provide useful error information.</li>
+            </ul>
+
+            <div class="success-box">
+                <strong>Next Step:</strong>
+                Practice using try, throw, and catch with different programs.
+            </div>
+
+        </section>
+
+
+        <!-- Previous / Next -->
+        <div class="lesson-nav">
+
+            <a href="./cpp-encapsulation.html">
+                ← Previous: Encapsulation
+            </a>
+
+            <a href="./cpp-polymorphism.html">
+                Next: Polymorphism →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Code With Me. All Rights Reserved.</p>
+    </footer>
+
+
+    <script>
+
+        function runDemo() {
+
+            const code = document.getElementById("codeInput").value;
+            const output = document.getElementById("output");
+
+            /*
+             * This is only a simple browser demonstration.
+             * It does not execute real C++ code.
+             */
+
+            const numberMatch = code.match(
+                /int\s+number\s*=\s*(-?\d+)/
+            );
+
+            if (!numberMatch) {
+                output.textContent =
+                    "Demo could not detect the number variable.";
+                return;
+            }
+
+            const number = parseInt(numberMatch[1]);
+
+            if (number === 0) {
+
+                output.textContent =
+                    "Cannot divide by zero!";
+
+            } else {
+
+                output.textContent =
+                    "Division is possible.\n\n" +
+                    "The value of number is: " + number;
+
+            }
+        }
+
+
+        function clearDemo() {
+
+            document.getElementById("codeInput").value = "";
+
+            document.getElementById("output").textContent =
+                "Output will appear here...";
+
+        }
+
+    </script>
+
+</body>
+</html>
