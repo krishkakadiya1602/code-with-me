@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>C++ Syntax | Code With Me</title>
+
+<meta name="description" content="Learn C++ syntax with simple examples. Understand the basic structure of a C++ program, statements, semicolons, braces, variables, functions and comments.">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* Navbar */
+
+nav {
+    background: #111827;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+
+/* Hero */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+
+/* Container */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+
+/* Sections */
+
+.section {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.section h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    margin-bottom: 12px;
+}
+
+.section ul,
+.section ol {
+    margin-left: 25px;
+}
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+
+/* Code */
+
+.code-title {
+    background: #111827;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+pre {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 8px 8px;
+    font-family: Consolas, monospace;
+}
+
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background: #1e3a8a;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+
+/* Editor */
+
+textarea {
+    width: 100%;
+    min-height: 350px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background: #111827;
+    color: #f8fafc;
+}
+
+.buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.run-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.clear-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.run-btn:hover {
+    background: #1d4ed8;
+}
+
+.clear-btn:hover {
+    background: #b91c1c;
+}
+
+.output {
+    margin-top: 15px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+}
+
+
+/* Page Navigation */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0 50px;
+}
+
+.page-navigation a {
+    text-decoration: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.page-navigation a:hover {
+    background: #1d4ed8;
+}
+
+
+/* Footer */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .page-navigation {
+        flex-direction: column;
+    }
+
+    .page-navigation a {
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav>
+
+```
+<a href="../index.html" class="logo">
+    Code <span>WithMe</span>
+</a>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="../index.html">Home</a>
+    </li>
+
+    <li>
+        <a href="../index.html#courses">Courses</a>
+    </li>
+
+    <li>
+        <a href="../index.html#about">About</a>
+    </li>
+
+</ul>
+```
+
+</nav>
+
+<!-- Hero -->
+
+<header class="hero">
+
+```
+<h1>C++ Syntax</h1>
+
+<p>
+    Learn the basic rules and structure of C++ programs.
+</p>
+```
+
+</header>
+
+<main class="container">
+
+<!-- Introduction -->
+
+<section class="section">
+
+```
+<h2>What is C++ Syntax?</h2>
+
+<p>
+    C++ syntax is the set of rules that tells us how
+    C++ programs should be written.
+</p>
+
+<p>
+    Just like human languages have grammar rules,
+    programming languages have syntax rules.
+</p>
+
+<div class="highlight">
+
+    <strong>Important:</strong>
+
+    If the syntax of a C++ program is incorrect,
+    the compiler may report an error.
+
+</div>
+```
+
+</section>
+
+<!-- Basic Structure -->
+
+<section class="section">
+
+```
+<h2>Basic Structure of a C++ Program</h2>
+
+<p>
+    A simple C++ program can contain header files,
+    a main function, statements and a return statement.
+</p>
+
+<div class="code-title">
+    Basic C++ Program
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+cout << "Hello World!";
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Explanation -->
+
+<section class="section">
+
+```
+<h2>Understanding the Program</h2>
+
+<h3>1. #include &lt;iostream&gt;</h3>
+
+<p>
+    This includes the input/output stream library.
+    It provides functionality such as
+    <strong>cout</strong> and <strong>cin</strong>.
+</p>
+
+
+<h3>2. using namespace std;</h3>
+
+<p>
+    This allows us to use standard library names such as
+    <strong>cout</strong> and <strong>cin</strong>
+    without writing <strong>std::</strong> before them.
+</p>
+
+
+<h3>3. int main()</h3>
+
+<p>
+    The main() function is the normal entry point of
+    a C++ program.
+</p>
+
+
+<h3>4. Curly Braces { }</h3>
+
+<p>
+    Curly braces define the beginning and end of a block
+    of code.
+</p>
+
+
+<h3>5. cout</h3>
+
+<p>
+    The cout object is commonly used to display output.
+</p>
+
+
+<h3>6. return 0;</h3>
+
+<p>
+    This returns a value from the main function and
+    normally indicates successful completion.
+</p>
+```
+
+</section>
+
+<!-- Semicolon -->
+
+<section class="section">
+
+```
+<h2>Semicolon in C++</h2>
+
+<p>
+    Most C++ statements end with a semicolon
+    <strong>;</strong>.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+cout << "Hello";
+cout << "Welcome to C++";
+
+```
+return 0;
+```
+
+}</code></pre>
+
+```
+<div class="highlight">
+
+    <strong>Remember:</strong>
+
+    Forgetting a required semicolon can cause a
+    compiler error.
+
+</div>
+```
+
+</section>
+
+<!-- Variables -->
+
+<section class="section">
+
+```
+<h2>Variables in C++</h2>
+
+<p>
+    Variables are used to store data in a C++ program.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+int age = 20;
+double marks = 85.5;
+
+```
+cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+cout &lt;&lt; "Marks: " &lt;&lt; marks;
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Data Types -->
+
+<section class="section">
+
+```
+<h2>Basic Data Types</h2>
+
+<p>
+    C++ provides different data types for storing
+    different kinds of values.
+</p>
+
+<table>
+
+    <tr>
+        <th>Data Type</th>
+        <th>Example</th>
+        <th>Purpose</th>
+    </tr>
+
+    <tr>
+        <td>int</td>
+        <td>int age = 20;</td>
+        <td>Stores integer values</td>
+    </tr>
+
+    <tr>
+        <td>float</td>
+        <td>float price = 10.5f;</td>
+        <td>Stores decimal values</td>
+    </tr>
+
+    <tr>
+        <td>double</td>
+        <td>double value = 25.55;</td>
+        <td>Stores decimal values with more precision</td>
+    </tr>
+
+    <tr>
+        <td>char</td>
+        <td>char grade = 'A';</td>
+        <td>Stores a character</td>
+    </tr>
+
+    <tr>
+        <td>bool</td>
+        <td>bool active = true;</td>
+        <td>Stores true or false</td>
+    </tr>
+
+    <tr>
+        <td>string</td>
+        <td>string name = "Krish";</td>
+        <td>Stores text</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- Input -->
+
+<section class="section">
+
+```
+<h2>Input Syntax</h2>
+
+<p>
+    The <strong>cin</strong> object is commonly used to
+    take input from the user.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+int age;
+
+```
+cout &lt;&lt; "Enter your age: ";
+
+cin &gt;&gt; age;
+
+cout &lt;&lt; "Your age is: " &lt;&lt; age;
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Output -->
+
+<section class="section">
+
+```
+<h2>Output Syntax</h2>
+
+<p>
+    The <strong>cout</strong> object is used to display
+    output.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+cout << "Hello, Code With Me!";
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Multiple Statements -->
+
+<section class="section">
+
+```
+<h2>Multiple Statements</h2>
+
+<p>
+    A C++ program can contain multiple statements.
+    Each statement normally ends with a semicolon.
+</p>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+int main()
+{
+int a = 10;
+int b = 20;
+int sum = a + b;
+
+```
+cout &lt;&lt; sum;
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Comments -->
+
+<section class="section">
+
+```
+<h2>Comments in C++</h2>
+
+<p>
+    Comments are used to explain code and are ignored
+    by the compiler.
+</p>
+
+<h3>Single-Line Comment</h3>
+
+<pre><code>// This is a single-line comment
+```
+
+cout << "Hello";</code></pre>
+
+```
+<h3>Multi-Line Comment</h3>
+
+<pre><code>/*
+```
+
+This is a
+multi-line comment
+*/
+
+cout << "Hello";</code></pre>
+
+```
+<p>
+    Comments will be covered in detail in the next lesson.
+</p>
+```
+
+</section>
+
+<!-- Case Sensitive -->
+
+<section class="section">
+
+```
+<h2>C++ is Case-Sensitive</h2>
+
+<p>
+    C++ is case-sensitive. Uppercase and lowercase letters
+    are treated as different characters.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>int age = 20;
+```
+
+int Age = 30;</code></pre>
+
+```
+<p>
+    Here, <strong>age</strong> and <strong>Age</strong>
+    are different variable names.
+</p>
+```
+
+</section>
+
+<!-- Identifiers -->
+
+<section class="section">
+
+```
+<h2>Identifiers in C++</h2>
+
+<p>
+    Identifiers are names given to variables, functions,
+    classes and other program elements.
+</p>
+
+<h3>Valid Identifiers</h3>
+
+<pre><code>age
+```
+
+studentName
+total_marks
+number1</code></pre>
+
+```
+<h3>Invalid Identifiers</h3>
+
+<pre><code>1number
+```
+
+student-name
+total marks</code></pre>
+
+```
+<div class="highlight">
+
+    Identifiers should follow C++ naming rules.
+    They cannot contain spaces, and they cannot normally
+    start with a number.
+
+</div>
+```
+
+</section>
+
+<!-- Keywords -->
+
+<section class="section">
+
+```
+<h2>Keywords in C++</h2>
+
+<p>
+    Keywords are reserved words that have special meaning
+    in the C++ language.
+</p>
+
+<table>
+
+    <tr>
+        <th>Keyword</th>
+        <th>Purpose</th>
+    </tr>
+
+    <tr>
+        <td>int</td>
+        <td>Integer data type</td>
+    </tr>
+
+    <tr>
+        <td>float</td>
+        <td>Floating-point data type</td>
+    </tr>
+
+    <tr>
+        <td>double</td>
+        <td>Double-precision floating-point type</td>
+    </tr>
+
+    <tr>
+        <td>char</td>
+        <td>Character data type</td>
+    </tr>
+
+    <tr>
+        <td>if</td>
+        <td>Conditional statement</td>
+    </tr>
+
+    <tr>
+        <td>else</td>
+        <td>Alternative condition</td>
+    </tr>
+
+    <tr>
+        <td>for</td>
+        <td>Loop</td>
+    </tr>
+
+    <tr>
+        <td>while</td>
+        <td>Loop</td>
+    </tr>
+
+    <tr>
+        <td>class</td>
+        <td>Defines a class</td>
+    </tr>
+
+    <tr>
+        <td>return</td>
+        <td>Returns a value from a function</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- Blocks -->
+
+<section class="section">
+
+```
+<h2>Code Blocks</h2>
+
+<p>
+    Curly braces <strong>{ }</strong> are used to group
+    statements into a block.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>if (age &gt;= 18)
+```
+
+{
+cout << "Adult";
+}</code></pre>
+
+```
+<p>
+    The statements inside the braces belong to the
+    if block.
+</p>
+```
+
+</section>
+
+<!-- Functions -->
+
+<section class="section">
+
+```
+<h2>Functions</h2>
+
+<p>
+    Functions are blocks of code designed to perform
+    a particular task.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+using namespace std;
+
+void greet()
+{
+cout << "Hello!";
+}
+
+int main()
+{
+greet();
+
+```
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- String -->
+
+<section class="section">
+
+```
+<h2>String Syntax</h2>
+
+<p>
+    Strings are used to store text. The C++ Standard Library
+    provides the <strong>string</strong> type.
+</p>
+
+<div class="code-title">
+    Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main()
+{
+string name = "Krish";
+
+```
+cout &lt;&lt; name;
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Operators -->
+
+<section class="section">
+
+```
+<h2>Basic Operators</h2>
+
+<p>
+    Operators are symbols used to perform operations
+    on values and variables.
+</p>
+
+<table>
+
+    <tr>
+        <th>Operator</th>
+        <th>Meaning</th>
+        <th>Example</th>
+    </tr>
+
+    <tr>
+        <td>+</td>
+        <td>Addition</td>
+        <td>a + b</td>
+    </tr>
+
+    <tr>
+        <td>-</td>
+        <td>Subtraction</td>
+        <td>a - b</td>
+    </tr>
+
+    <tr>
+        <td>*</td>
+        <td>Multiplication</td>
+        <td>a * b</td>
+    </tr>
+
+    <tr>
+        <td>/</td>
+        <td>Division</td>
+        <td>a / b</td>
+    </tr>
+
+    <tr>
+        <td>%</td>
+        <td>Modulus</td>
+        <td>a % b</td>
+    </tr>
+
+    <tr>
+        <td>==</td>
+        <td>Equal to</td>
+        <td>a == b</td>
+    </tr>
+
+</table>
+```
+
+</section>
+
+<!-- Complete Example -->
+
+<section class="section">
+
+```
+<h2>Complete C++ Syntax Example</h2>
+
+<p>
+    The following program combines several basic C++ syntax
+    concepts.
+</p>
+
+<div class="code-title">
+    Complete Example
+</div>
+
+<pre><code>#include &lt;iostream&gt;
+```
+
+#include <string>
+
+using namespace std;
+
+int main()
+{
+string name;
+int age;
+
+```
+cout &lt;&lt; "Enter your name: ";
+cin &gt;&gt; name;
+
+cout &lt;&lt; "Enter your age: ";
+cin &gt;&gt; age;
+
+cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+
+return 0;
+```
+
+}</code></pre>
+
+</section>
+
+<!-- Common Mistakes -->
+
+<section class="section">
+
+```
+<h2>Common C++ Syntax Mistakes</h2>
+
+<h3>1. Missing Semicolon</h3>
+
+<pre><code>int age = 20</code></pre>
+
+<p>
+    Correct:
+</p>
+
+<pre><code>int age = 20;</code></pre>
+
+
+<h3>2. Incorrect Capitalization</h3>
+
+<pre><code>Cout &lt;&lt; "Hello";</code></pre>
+
+<p>
+    Correct:
+</p>
+
+<pre><code>cout &lt;&lt; "Hello";</code></pre>
+
+
+<h3>3. Missing Curly Brace</h3>
+
+<pre><code>if (age &gt;= 18)
+```
+
+{
+cout << "Adult";</code></pre>
+
+```
+<p>
+    Make sure every opening brace has the appropriate
+    closing brace.
+</p>
+
+
+<h3>4. Wrong String Quotes</h3>
+
+<pre><code>cout &lt;&lt; 'Hello';</code></pre>
+
+<p>
+    For a string, use double quotes:
+</p>
+
+<pre><code>cout &lt;&lt; "Hello";</code></pre>
+```
+
+</section>
+
+<!-- Important Rules -->
+
+<section class="section">
+
+```
+<h2>Important C++ Syntax Rules</h2>
+
+<ul>
+
+    <li>Most C++ statements end with a semicolon.</li>
+
+    <li>C++ is case-sensitive.</li>
+
+    <li>Program execution normally starts from main().</li>
+
+    <li>Use curly braces to define code blocks.</li>
+
+    <li>Use appropriate data types for variables.</li>
+
+    <li>Keywords have special meanings and cannot be used freely as identifiers.</li>
+
+    <li>Use double quotes for strings.</li>
+
+    <li>Use single quotes for character literals.</li>
+
+    <li>Use #include to include required headers.</li>
+
+    <li>Use cout for common output and cin for common input.</li>
+
+</ul>
+```
+
+</section>
+
+<!-- Editor -->
+
+<section class="section">
+
+```
+<h2>C++ Syntax Code Editor</h2>
+
+<p>
+    Write a simple C++ program below.
+</p>
+
+<textarea id="codeEditor">#include <iostream>
+```
+
+using namespace std;
+
+int main()
+{
+int a = 10;
+int b = 20;
+
+```
+int sum = a + b;
+
+cout << "Sum = " << sum;
+
+return 0;
+```
+
+}</textarea>
+
+```
+<div class="buttons">
+
+    <button class="run-btn" onclick="runCode()">
+        Run Code
+    </button>
+
+    <button class="clear-btn" onclick="clearCode()">
+        Clear
+    </button>
+
+</div>
+
+<div class="output" id="output">
+    Output will appear here...
+</div>
+```
+
+</section>
+
+<!-- Navigation -->
+
+<div class="page-navigation">
+
+```
+<a href="cpp-ide.html">
+    ← Previous: C++ IDE and Compiler
+</a>
+
+<a href="cpp-comments.html">
+    Next: C++ Comments →
+</a>
+```
+
+</div>
+
+</main>
+
+<!-- Footer -->
+
+<footer>
+
+```
+<p>
+    © 2026 Code With Me | Learn Coding
+</p>
+```
+
+</footer>
+
+<script>
+
+function runCode() {
+
+    const code = document.getElementById("codeEditor").value;
+
+    const output = document.getElementById("output");
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some C++ code.";
+
+        return;
+    }
+
+    output.textContent =
+        "C++ code submitted successfully!\n\n" +
+        "Note: This editor is a demonstration interface. " +
+        "To actually compile and execute C++ code in the browser, " +
+        "you need a C++ compiler/backend.";
+
+}
+
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Output will appear here...";
+
+}
+
+</script>
+
+</body>
+</html>
