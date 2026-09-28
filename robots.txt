@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://krishkakadiya1602.github.io/code-with-me/sitemap.xml
