@@ -1,0 +1,863 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Java Installation | Code With Me</title>
+
+    <meta name="description"
+        content="Learn how to install Java JDK on your computer and verify Java installation with Code With Me.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .content-card {
+            background: white;
+
+            padding: 45px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =========================
+           HEADINGS
+        ========================= */
+
+        h1 {
+            color: #172554;
+
+            font-size: 42px;
+
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #172554;
+
+            font-size: 28px;
+
+            margin-top: 35px;
+
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #1e3a8a;
+
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #475569;
+
+            font-size: 17px;
+
+            margin-bottom: 15px;
+        }
+
+        ul,
+        ol {
+            margin: 15px 0 20px 25px;
+
+            color: #475569;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #eff6ff;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            margin: 25px 0;
+        }
+
+        .info-box p {
+            margin-bottom: 0;
+        }
+
+
+        /* =========================
+           WARNING BOX
+        ========================= */
+
+        .warning-box {
+            background: #fff7ed;
+
+            border-left: 5px solid #f97316;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            margin: 25px 0;
+        }
+
+
+        /* =========================
+           CODE BLOCK
+        ========================= */
+
+        .code-block {
+            background: #020617;
+
+            color: #e2e8f0;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            overflow-x: auto;
+
+            margin: 20px 0;
+
+            font-family: Consolas, Monaco, monospace;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           STEP BOX
+        ========================= */
+
+        .step {
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 10px;
+
+            padding: 25px;
+
+            margin: 20px 0;
+        }
+
+        .step-number {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 35px;
+
+            height: 35px;
+
+            background: #2563eb;
+
+            color: white;
+
+            border-radius: 50%;
+
+            font-weight: bold;
+
+            margin-right: 10px;
+        }
+
+        .step h3 {
+            display: inline;
+        }
+
+
+        /* =========================
+           DOWNLOAD BUTTON
+        ========================= */
+
+        .download-btn {
+            display: inline-block;
+
+            background: #16a34a;
+
+            color: white;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            margin-top: 10px;
+
+            transition: 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #15803d;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           TERMINAL
+        ========================= */
+
+        .terminal {
+            background: #020617;
+
+            color: #22c55e;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            font-family: Consolas, Monaco, monospace;
+
+            font-size: 15px;
+
+            overflow-x: auto;
+
+            margin: 20px 0;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navigation {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            display: inline-block;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+        .home-btn {
+            background: #475569;
+        }
+
+        .home-btn:hover {
+            background: #334155;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+        footer p {
+            color: white;
+
+            font-size: 15px;
+
+            margin: 0;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .content-card {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            h2 {
+                font-size: 25px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        Code<span>WithMe</span>
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="../index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">
+                Courses
+            </a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="../index.html#instagram">
+                Instagram
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="container">
+
+    <div class="content-card">
+
+
+        <h1>Java Installation</h1>
+
+        <p>
+            Before you start writing and running Java programs,
+            you need to install the Java Development Kit (JDK)
+            on your computer.
+        </p>
+
+        <p>
+            The JDK provides the tools required to develop,
+            compile and run Java applications.
+        </p>
+
+
+        <!-- =========================
+             WHAT IS JDK?
+        ========================= -->
+
+        <h2>What is JDK?</h2>
+
+        <p>
+            JDK stands for <strong>Java Development Kit</strong>.
+            It is a software package used to develop Java applications.
+        </p>
+
+        <div class="info-box">
+
+            <p>
+                <strong>JDK = Development tools + JRE + JVM</strong>
+            </p>
+
+        </div>
+
+        <p>
+            The JDK includes tools such as the Java compiler
+            and the Java runtime environment required for
+            developing Java programs.
+        </p>
+
+
+        <!-- =========================
+             DOWNLOAD
+        ========================= -->
+
+        <h2>Step 1: Download Java JDK</h2>
+
+        <p>
+            Download a suitable JDK distribution for your
+            operating system.
+        </p>
+
+        <p>
+            You can use an OpenJDK distribution such as
+            Eclipse Temurin.
+        </p>
+
+        <a
+            href="https://adoptium.net/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="download-btn">
+
+            Download Java JDK
+
+        </a>
+
+
+        <!-- =========================
+             WINDOWS INSTALLATION
+        ========================= -->
+
+        <h2>Step 2: Install Java on Windows</h2>
+
+        <div class="step">
+
+            <span class="step-number">1</span>
+
+            <h3>Download the JDK</h3>
+
+            <p>
+                Download the Windows installer for the JDK
+                from a trusted JDK distribution website.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <span class="step-number">2</span>
+
+            <h3>Open the Installer</h3>
+
+            <p>
+                Open the downloaded installer file and
+                follow the installation instructions.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <span class="step-number">3</span>
+
+            <h3>Choose Installation Location</h3>
+
+            <p>
+                Select the installation location or keep
+                the default location provided by the installer.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <span class="step-number">4</span>
+
+            <h3>Complete Installation</h3>
+
+            <p>
+                Click the install button and wait until
+                the installation process is completed.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             VERIFY INSTALLATION
+        ========================= -->
+
+        <h2>Step 3: Verify Java Installation</h2>
+
+        <p>
+            After installing Java, open Command Prompt
+            or Terminal and type:
+        </p>
+
+        <div class="terminal">
+java --version
+        </div>
+
+        <p>
+            If Java is installed correctly, the terminal
+            should display the installed Java version.
+        </p>
+
+
+        <h3>Check the Java Compiler</h3>
+
+        <p>
+            You can also check whether the Java compiler
+            is available by running:
+        </p>
+
+        <div class="terminal">
+javac --version
+        </div>
+
+        <div class="info-box">
+
+            <p>
+                <strong>java</strong> is used to run Java programs,
+                while <strong>javac</strong> is the Java compiler
+                used to compile Java source code.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             JAVA PROGRAM
+        ========================= -->
+
+        <h2>Step 4: Create Your First Java Program</h2>
+
+        <p>
+            Create a file named:
+        </p>
+
+        <div class="code-block">
+Main.java
+        </div>
+
+        <p>
+            Add the following code:
+        </p>
+
+        <div class="code-block"><pre>public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println("Hello, Java!");
+
+    }
+
+}</pre></div>
+
+
+        <!-- =========================
+             COMPILE PROGRAM
+        ========================= -->
+
+        <h2>Step 5: Compile the Program</h2>
+
+        <p>
+            Open the terminal in the folder where
+            <strong>Main.java</strong> is located.
+        </p>
+
+        <p>
+            Run the following command:
+        </p>
+
+        <div class="terminal">
+javac Main.java
+        </div>
+
+        <p>
+            If there are no errors, Java will create a
+            compiled class file named:
+        </p>
+
+        <div class="code-block">
+Main.class
+        </div>
+
+
+        <!-- =========================
+             RUN PROGRAM
+        ========================= -->
+
+        <h2>Step 6: Run the Java Program</h2>
+
+        <p>
+            After compiling the program, run:
+        </p>
+
+        <div class="terminal">
+java Main
+        </div>
+
+        <p>
+            You should see:
+        </p>
+
+        <div class="terminal">
+Hello, Java!
+        </div>
+
+
+        <!-- =========================
+             COMMON PROBLEM
+        ========================= -->
+
+        <h2>Common Installation Problem</h2>
+
+        <div class="warning-box">
+
+            <p>
+                <strong>
+                    'java' is not recognized as an internal or external command
+                </strong>
+            </p>
+
+            <p>
+                This usually means Java is not installed correctly
+                or the Java executable is not available through
+                your system PATH.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             SUMMARY
+        ========================= -->
+
+        <h2>Java Installation Summary</h2>
+
+        <ol>
+
+            <li>
+                Download a JDK.
+            </li>
+
+            <li>
+                Install the JDK on your computer.
+            </li>
+
+            <li>
+                Open Command Prompt or Terminal.
+            </li>
+
+            <li>
+                Run <strong>java --version</strong>.
+            </li>
+
+            <li>
+                Run <strong>javac --version</strong>.
+            </li>
+
+            <li>
+                Create a Java file.
+            </li>
+
+            <li>
+                Compile it using <strong>javac</strong>.
+            </li>
+
+            <li>
+                Run it using <strong>java</strong>.
+            </li>
+
+        </ol>
+
+
+        <!-- =========================
+             NAVIGATION
+        ========================= -->
+
+        <div class="navigation">
+
+            <a
+                href="java-introduction.html"
+                class="nav-btn">
+
+                ← Previous
+
+            </a>
+
+
+            <a
+                href="../index.html"
+                class="nav-btn home-btn">
+
+                🏠 Home
+
+            </a>
+
+
+            <a
+                href="java-syntax.html"
+                class="nav-btn">
+
+                Next →
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 Code With Me. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
+```
