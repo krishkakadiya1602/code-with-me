@@ -1,0 +1,840 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Java Introduction | Code With Me</title>
+
+    <meta name="description"
+        content="Learn Java introduction, Java features, Java syntax and write your first Java program with Code With Me.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            background: #111827;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .content-card {
+            background: white;
+            padding: 45px;
+            border-radius: 15px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #172554;
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #172554;
+            font-size: 28px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #1e3a8a;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #475569;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin: 15px 0 20px 25px;
+            color: #475569;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           JAVA INFO BOX
+        ========================= */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            margin: 25px 0;
+        }
+
+        .info-box p {
+            margin-bottom: 0;
+        }
+
+
+        /* =========================
+           CODE EDITOR
+        ========================= */
+
+        .editor-section {
+            margin-top: 40px;
+        }
+
+        .editor-section h2 {
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 260px;
+
+            padding: 20px;
+
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+
+            background: #0f172a;
+            color: #e2e8f0;
+
+            font-family: Consolas, Monaco, monospace;
+            font-size: 15px;
+
+            resize: vertical;
+
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .editor-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+
+            margin-top: 15px;
+        }
+
+        button {
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .run-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .run-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .preview-btn {
+            background: #16a34a;
+            color: white;
+        }
+
+        .preview-btn:hover {
+            background: #15803d;
+        }
+
+        .clear-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+
+
+        /* =========================
+           OUTPUT
+        ========================= */
+
+        .output-section {
+            margin-top: 25px;
+        }
+
+        .output-section h3 {
+            margin-bottom: 10px;
+        }
+
+        #output {
+            width: 100%;
+            min-height: 150px;
+
+            padding: 20px;
+
+            background: #020617;
+
+            color: #22c55e;
+
+            border-radius: 10px;
+
+            font-family: Consolas, Monaco, monospace;
+
+            white-space: pre-wrap;
+
+            overflow-x: auto;
+        }
+
+
+        /* =========================
+           NAVIGATION BUTTONS
+        ========================= */
+
+        .navigation {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-top: 40px;
+        }
+
+        .nav-btn {
+            display: inline-block;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .home-btn {
+            background: #475569;
+        }
+
+        .home-btn:hover {
+            background: #334155;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .content-card {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            h2 {
+                font-size: 25px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        Code<span>WithMe</span>
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="../index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="../index.html#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="../index.html#about">About</a>
+        </li>
+
+        <li>
+            <a href="../index.html#instagram">Instagram</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="container">
+
+    <div class="content-card">
+
+        <h1>Java Introduction</h1>
+
+        <p>
+            Java is a popular, high-level, object-oriented programming
+            language used to build many types of applications.
+        </p>
+
+        <p>
+            Java was developed by Sun Microsystems and was first released
+            in 1995. Today, Java is widely used for web applications,
+            desktop applications, enterprise software, Android development,
+            and many other types of software.
+        </p>
+
+
+        <!-- =========================
+             WHAT IS JAVA?
+        ========================= -->
+
+        <h2>What is Java?</h2>
+
+        <p>
+            Java is a programming language designed to be simple,
+            object-oriented, secure and portable.
+        </p>
+
+        <div class="info-box">
+
+            <p>
+                <strong>Java principle:</strong>
+                "Write Once, Run Anywhere."
+            </p>
+
+        </div>
+
+        <p>
+            Java programs are compiled into bytecode. This bytecode can
+            run on any system that has a Java Virtual Machine (JVM).
+        </p>
+
+
+        <!-- =========================
+             FEATURES
+        ========================= -->
+
+        <h2>Features of Java</h2>
+
+        <ul>
+
+            <li>Simple and easy to learn</li>
+
+            <li>Object-oriented</li>
+
+            <li>Platform independent</li>
+
+            <li>Secure</li>
+
+            <li>Portable</li>
+
+            <li>Robust</li>
+
+            <li>Multithreaded</li>
+
+            <li>High performance with JVM optimizations</li>
+
+        </ul>
+
+
+        <!-- =========================
+             WHERE JAVA IS USED
+        ========================= -->
+
+        <h2>Where is Java Used?</h2>
+
+        <p>
+            Java is used in many areas of software development.
+        </p>
+
+        <ul>
+
+            <li>Web applications</li>
+
+            <li>Desktop applications</li>
+
+            <li>Enterprise applications</li>
+
+            <li>Android applications</li>
+
+            <li>Banking and financial systems</li>
+
+            <li>Cloud applications</li>
+
+            <li>Big data technologies</li>
+
+            <li>Backend development</li>
+
+        </ul>
+
+
+        <!-- =========================
+             FIRST JAVA PROGRAM
+        ========================= -->
+
+        <h2>Your First Java Program</h2>
+
+        <p>
+            A basic Java program can look like this:
+        </p>
+
+        <div class="info-box">
+
+<pre><code>public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println("Hello, World!");
+
+    }
+
+}</code></pre>
+
+        </div>
+
+
+        <h3>Understanding the Program</h3>
+
+        <ul>
+
+            <li>
+                <strong>public class Main</strong>
+                creates a Java class named Main.
+            </li>
+
+            <li>
+                <strong>main()</strong>
+                is the starting point of a Java application.
+            </li>
+
+            <li>
+                <strong>System.out.println()</strong>
+                prints text to the output.
+            </li>
+
+        </ul>
+
+
+        <!-- =========================
+             JAVA SYNTAX
+        ========================= -->
+
+        <h2>Basic Java Syntax</h2>
+
+        <p>
+            Java statements usually end with a semicolon
+            <strong>;</strong>.
+        </p>
+
+        <div class="info-box">
+
+<pre><code>int age = 20;
+
+System.out.println(age);</code></pre>
+
+        </div>
+
+
+        <!-- =========================
+             JAVA COMMENTS
+        ========================= -->
+
+        <h2>Java Comments</h2>
+
+        <p>
+            Comments are used to explain code and are ignored by
+            the Java compiler.
+        </p>
+
+        <div class="info-box">
+
+<pre><code>// This is a single-line comment
+
+/*
+   This is a
+   multi-line comment
+*/</code></pre>
+
+        </div>
+
+
+        <!-- =========================
+             CODE EDITOR
+        ========================= -->
+
+        <div class="editor-section">
+
+            <h2>Try Java Code</h2>
+
+            <p>
+                Write your Java code in the editor below.
+            </p>
+
+            <textarea id="codeEditor">public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println("Hello, Code With Me!");
+
+    }
+
+}</textarea>
+
+
+            <div class="editor-buttons">
+
+                <button
+                    type="button"
+                    class="run-btn"
+                    onclick="runCode()">
+
+                    ▶ Run Code
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="preview-btn"
+                    onclick="showPreview()">
+
+                    👁 Preview
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="clear-btn"
+                    onclick="clearCode()">
+
+                    ✕ Clear
+
+                </button>
+
+            </div>
+
+
+            <div class="output-section">
+
+                <h3>Output</h3>
+
+                <pre id="output">Click "Run Code" to see the output.</pre>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             NAVIGATION
+        ========================= -->
+
+        <div class="navigation">
+
+            <a
+                href="../index.html"
+                class="nav-btn home-btn">
+
+                🏠 Home
+
+            </a>
+
+
+            <a
+                href="java-installation.html"
+                class="nav-btn">
+
+                Next → Java Installation
+
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 Code With Me. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =========================
+   RUN JAVA CODE
+========================= */
+
+function runCode() {
+
+    const code =
+        document.getElementById("codeEditor").value;
+
+    const output =
+        document.getElementById("output");
+
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "Please enter some Java code.";
+
+        return;
+    }
+
+
+    /*
+       This page cannot directly compile Java
+       inside the browser without a Java compiler
+       or backend service.
+
+       The following simple check provides a
+       beginner-friendly demonstration.
+    */
+
+    const printMatch =
+        code.match(
+            /System\.out\.println\s*\(\s*["']([\s\S]*?)["']\s*\)/
+        );
+
+
+    if (printMatch) {
+
+        output.textContent =
+            printMatch[1];
+
+    } else {
+
+        output.textContent =
+            "Java code entered successfully.\n\n" +
+            "To execute Java code, a Java compiler/JDK " +
+            "or backend execution service is required.";
+
+    }
+
+}
+
+
+/* =========================
+   PREVIEW
+========================= */
+
+function showPreview() {
+
+    const code =
+        document.getElementById("codeEditor").value;
+
+    const output =
+        document.getElementById("output");
+
+
+    if (code.trim() === "") {
+
+        output.textContent =
+            "There is no code to preview.";
+
+        return;
+    }
+
+
+    output.textContent =
+        "Java Code Preview:\n\n" + code;
+
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+function clearCode() {
+
+    document.getElementById("codeEditor").value = "";
+
+    document.getElementById("output").textContent =
+        "Editor cleared.";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
